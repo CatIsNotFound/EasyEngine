@@ -1,0 +1,1012 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Engine类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_engine.html','','class_easy_engine_1_1_engine-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Engine类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>引擎类  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a21aaab8bbbf9faf626b71c0f28ed9b14" id="r_a21aaab8bbbf9faf626b71c0f28ed9b14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21aaab8bbbf9faf626b71c0f28ed9b14">Engine</a> (const std::string &amp;title, uint32_t width=800, uint32_t height=600)</td></tr>
+<tr class="memdesc:a21aaab8bbbf9faf626b71c0f28ed9b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">定义窗口并初始化引擎资源  <br /></td></tr>
+<tr class="memitem:ad2530b5fbbea2ad182c83461d3f5c149" id="r_ad2530b5fbbea2ad182c83461d3f5c149"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2530b5fbbea2ad182c83461d3f5c149">exec</a> ()</td></tr>
+<tr class="memdesc:ad2530b5fbbea2ad182c83461d3f5c149"><td class="mdescLeft">&#160;</td><td class="mdescRight">事件循环，保证引擎持续运作  <br /></td></tr>
+<tr class="memitem:a272a2105228cba94cc353f989b0011f9" id="r_a272a2105228cba94cc353f989b0011f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a272a2105228cba94cc353f989b0011f9">show</a> (SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a272a2105228cba94cc353f989b0011f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示指定窗口  <br /></td></tr>
+<tr class="memitem:a1b9cbccfbfbdc0540e2541108b32f717" id="r_a1b9cbccfbfbdc0540e2541108b32f717"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b9cbccfbfbdc0540e2541108b32f717">showAll</a> ()</td></tr>
+<tr class="memdesc:a1b9cbccfbfbdc0540e2541108b32f717"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示所有窗口  <br /></td></tr>
+<tr class="memitem:ac9bc753dcc986c09052ba67e8ccb4ab7" id="r_ac9bc753dcc986c09052ba67e8ccb4ab7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9bc753dcc986c09052ba67e8ccb4ab7">hide</a> (SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:ac9bc753dcc986c09052ba67e8ccb4ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">隐藏指定窗口  <br /></td></tr>
+<tr class="memitem:aa4576d3dc3e9da3fa9515a4a2378c7e3" id="r_aa4576d3dc3e9da3fa9515a4a2378c7e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4576d3dc3e9da3fa9515a4a2378c7e3">resize</a> (int width, int height, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:aa4576d3dc3e9da3fa9515a4a2378c7e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整窗口大小  <br /></td></tr>
+<tr class="memitem:ad906d9933e0da82b9e81e65c85ab1ea3" id="r_ad906d9933e0da82b9e81e65c85ab1ea3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad906d9933e0da82b9e81e65c85ab1ea3">move</a> (int x, int y, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:ad906d9933e0da82b9e81e65c85ab1ea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动指定窗口位置  <br /></td></tr>
+<tr class="memitem:a2b2e2ce6f54e8900979814f808b2049a" id="r_a2b2e2ce6f54e8900979814f808b2049a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b2e2ce6f54e8900979814f808b2049a">setGeometry</a> (int x, int y, int width, int height, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a2b2e2ce6f54e8900979814f808b2049a"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置指定窗口的位置、大小  <br /></td></tr>
+<tr class="memitem:a6106d33771e370822b38cf8f85ce2a75" id="r_a6106d33771e370822b38cf8f85ce2a75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6106d33771e370822b38cf8f85ce2a75">setResizable</a> (bool resizeable, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a6106d33771e370822b38cf8f85ce2a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否可调节窗口大小  <br /></td></tr>
+<tr class="memitem:a421839d4befc2c37d16f9956116ddbbe" id="r_a421839d4befc2c37d16f9956116ddbbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421839d4befc2c37d16f9956116ddbbe">setBorderlessWindow</a> (bool enabled, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a421839d4befc2c37d16f9956116ddbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置窗口为无边框窗口  <br /></td></tr>
+<tr class="memitem:af65c9c61af634b87585ff4ea0052c1a0" id="r_af65c9c61af634b87585ff4ea0052c1a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af65c9c61af634b87585ff4ea0052c1a0">setFullScreen</a> (bool enabled, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:af65c9c61af634b87585ff4ea0052c1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置指定窗口是否为全屏  <br /></td></tr>
+<tr class="memitem:aad213c3ad36ac11e6b457d5fde128d1e" id="r_aad213c3ad36ac11e6b457d5fde128d1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad213c3ad36ac11e6b457d5fde128d1e">setWindowTitle</a> (const std::string &amp;title, SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:aad213c3ad36ac11e6b457d5fde128d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改窗口标题  <br /></td></tr>
+<tr class="memitem:a282de1155b05980b1edddc8d0b6bc4ed" id="r_a282de1155b05980b1edddc8d0b6bc4ed"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a282de1155b05980b1edddc8d0b6bc4ed">windowTitle</a> (SWindowID window_id)</td></tr>
+<tr class="memdesc:a282de1155b05980b1edddc8d0b6bc4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定窗口的标题  <br /></td></tr>
+<tr class="memitem:aa83321639c89239c6333ac1ee5d2f5c3" id="r_aa83321639c89239c6333ac1ee5d2f5c3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa83321639c89239c6333ac1ee5d2f5c3">newWindow</a> (const std::string &amp;title, uint32_t width=800, uint32_t height=600)</td></tr>
+<tr class="memdesc:aa83321639c89239c6333ac1ee5d2f5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">新建一个子窗口  <br /></td></tr>
+<tr class="memitem:a39e133ec46d32e1d1d2243d975ebff09" id="r_a39e133ec46d32e1d1d2243d975ebff09"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39e133ec46d32e1d1d2243d975ebff09">removeWindow</a> (SWindowID window_id)</td></tr>
+<tr class="memdesc:a39e133ec46d32e1d1d2243d975ebff09"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除一个窗口  <br /></td></tr>
+<tr class="memitem:a8490688cb2669d39df068a0055082149" id="r_a8490688cb2669d39df068a0055082149"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8490688cb2669d39df068a0055082149">window</a> (SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a8490688cb2669d39df068a0055082149"><td class="mdescLeft">&#160;</td><td class="mdescRight">获得指定 ID 的窗口  <br /></td></tr>
+<tr class="memitem:afa2ab8a04166fbc0fed19a91e6ff3b75" id="r_afa2ab8a04166fbc0fed19a91e6ff3b75"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75">windowIDList</a> ()</td></tr>
+<tr class="memdesc:afa2ab8a04166fbc0fed19a91e6ff3b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取所有可用的窗口 ID  <br /></td></tr>
+<tr class="memitem:a39b495dcb4ce33bb5fab76824b853e77" id="r_a39b495dcb4ce33bb5fab76824b853e77"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39b495dcb4ce33bb5fab76824b853e77">windowCount</a> () const</td></tr>
+<tr class="memdesc:a39b495dcb4ce33bb5fab76824b853e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取窗口总个数  <br /></td></tr>
+<tr class="memitem:a2cbb7deffc1740da3c471a099f6ab779" id="r_a2cbb7deffc1740da3c471a099f6ab779"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cbb7deffc1740da3c471a099f6ab779">installEventHandler</a> (std::function&lt; bool(SEvent)&gt; event_handler)</td></tr>
+<tr class="memdesc:a2cbb7deffc1740da3c471a099f6ab779"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装自定义事件处理器  <br /></td></tr>
+<tr class="memitem:acb4e2107e5c31d729dbae944e503bdb0" id="r_acb4e2107e5c31d729dbae944e503bdb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4e2107e5c31d729dbae944e503bdb0">painter</a> (SWindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:acb4e2107e5c31d729dbae944e503bdb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定窗口的渲染器  <br /></td></tr>
+<tr class="memitem:a5ccc24ade1d3b3d3755f3cadba98fbf1" id="r_a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ccc24ade1d3b3d3755f3cadba98fbf1">setFPS</a> (uint32_t <a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610">fps</a>)</td></tr>
+<tr class="memdesc:a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置最大限定帧数  <br /></td></tr>
+<tr class="memitem:a3bca3b3709d0757cc3ece1c58cd1d610" id="r_a3bca3b3709d0757cc3ece1c58cd1d610"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610">fps</a> ()</td></tr>
+<tr class="memdesc:a3bca3b3709d0757cc3ece1c58cd1d610"><td class="mdescLeft">&#160;</td><td class="mdescRight">实时获取当前刷新的帧数  <br /></td></tr>
+<tr class="memitem:a23c04fd8df861221b37a1b362e0451b4" id="r_a23c04fd8df861221b37a1b362e0451b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23c04fd8df861221b37a1b362e0451b4">setFrameDropTolerance</a> (float ratio=1.5f)</td></tr>
+<tr class="memdesc:a23c04fd8df861221b37a1b362e0451b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置丢帧检测的宽容度比例  <br /></td></tr>
+<tr class="memitem:ae6586519d2a9dc15ee517d00afd27664" id="r_ae6586519d2a9dc15ee517d00afd27664"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6586519d2a9dc15ee517d00afd27664">frameDropTolerance</a> () const</td></tr>
+<tr class="memdesc:ae6586519d2a9dc15ee517d00afd27664"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前丢帧检测的宽容度比例  <br /></td></tr>
+<tr class="memitem:a8b1d629b195d5b9e2976864c671fc76d" id="r_a8b1d629b195d5b9e2976864c671fc76d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b1d629b195d5b9e2976864c671fc76d">setFrameDropThreshold</a> (uint32_t count=3)</td></tr>
+<tr class="memdesc:a8b1d629b195d5b9e2976864c671fc76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置连续慢帧阈值  <br /></td></tr>
+<tr class="memitem:ad6f36b53fbb659f1f79fa8a1be0f453a" id="r_ad6f36b53fbb659f1f79fa8a1be0f453a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a">frameDropThreshold</a> () const</td></tr>
+<tr class="memdesc:ad6f36b53fbb659f1f79fa8a1be0f453a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前连续慢帧阈值  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a1f99da50084e20c61c6666e004378dd3" id="r_a1f99da50084e20c61c6666e004378dd3"><td class="memItemLeft" align="right" valign="top"><a id="a1f99da50084e20c61c6666e004378dd3" name="a1f99da50084e20c61c6666e004378dd3"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Painter</b></td></tr>
+<tr class="memitem:a9daac1e9f186a9341e2a138d426f9867" id="r_a9daac1e9f186a9341e2a138d426f9867"><td class="memItemLeft" align="right" valign="top"><a id="a9daac1e9f186a9341e2a138d426f9867" name="a9daac1e9f186a9341e2a138d426f9867"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>引擎类 </p>
+<p>控制所有游戏流程：初始化、渲染、运行、释放等 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="a21aaab8bbbf9faf626b71c0f28ed9b14" name="a21aaab8bbbf9faf626b71c0f28ed9b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21aaab8bbbf9faf626b71c0f28ed9b14">&#9670;&#160;</a></span>Engine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Engine::Engine </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>width</em></span><span class="paramdefsep"> = </span><span class="paramdefval">800</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>height</em></span><span class="paramdefsep"> = </span><span class="paramdefval">600</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>定义窗口并初始化引擎资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>窗口标题 </td></tr>
+    <tr><td class="paramname">width</td><td>窗口宽度（像素） </td></tr>
+    <tr><td class="paramname">height</td><td>窗口高度（像素） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否已初始化引擎 </dd></dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="ad2530b5fbbea2ad182c83461d3f5c149" name="ad2530b5fbbea2ad182c83461d3f5c149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2530b5fbbea2ad182c83461d3f5c149">&#9670;&#160;</a></span>exec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EasyEngine::Engine::exec </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>事件循环，保证引擎持续运作 </p>
+<dl class="section note"><dt>注解</dt><dd>必须调用此函数，否则引擎将会被自动释放 </dd></dl>
+
+</div>
+</div>
+<a id="a3bca3b3709d0757cc3ece1c58cd1d610" name="a3bca3b3709d0757cc3ece1c58cd1d610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bca3b3709d0757cc3ece1c58cd1d610">&#9670;&#160;</a></span>fps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t EasyEngine::Engine::fps </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>实时获取当前刷新的帧数 </p>
+<p>即每秒渲染了多少画面 </p><dl class="section return"><dt>返回</dt><dd>返回当前秒刷新的帧数 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a5ccc24ade1d3b3d3755f3cadba98fbf1" title="设置最大限定帧数">setFPS</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad6f36b53fbb659f1f79fa8a1be0f453a" name="ad6f36b53fbb659f1f79fa8a1be0f453a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6f36b53fbb659f1f79fa8a1be0f453a">&#9670;&#160;</a></span>frameDropThreshold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t EasyEngine::Engine::frameDropThreshold </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前连续慢帧阈值 </p>
+<dl class="section return"><dt>返回</dt><dd>当前阈值 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8b1d629b195d5b9e2976864c671fc76d" title="设置连续慢帧阈值">setFrameDropThreshold</a> </dd>
+<dd>
+<a class="el" href="#a23c04fd8df861221b37a1b362e0451b4" title="设置丢帧检测的宽容度比例">setFrameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#ae6586519d2a9dc15ee517d00afd27664" title="获取当前丢帧检测的宽容度比例">frameDropTolerance</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae6586519d2a9dc15ee517d00afd27664" name="ae6586519d2a9dc15ee517d00afd27664"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6586519d2a9dc15ee517d00afd27664">&#9670;&#160;</a></span>frameDropTolerance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float EasyEngine::Engine::frameDropTolerance </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前丢帧检测的宽容度比例 </p>
+<dl class="section return"><dt>返回</dt><dd>当前宽容度比例 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a23c04fd8df861221b37a1b362e0451b4" title="设置丢帧检测的宽容度比例">setFrameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#a8b1d629b195d5b9e2976864c671fc76d" title="设置连续慢帧阈值">setFrameDropThreshold</a> </dd>
+<dd>
+<a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a" title="获取当前连续慢帧阈值">frameDropThreshold</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac9bc753dcc986c09052ba67e8ccb4ab7" name="ac9bc753dcc986c09052ba67e8ccb4ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9bc753dcc986c09052ba67e8ccb4ab7">&#9670;&#160;</a></span>hide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::hide </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>隐藏指定窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>窗口 ID （默认指定主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a272a2105228cba94cc353f989b0011f9" title="显示指定窗口">show</a> </dd>
+<dd>
+<a class="el" href="#a1b9cbccfbfbdc0540e2541108b32f717" title="显示所有窗口">showAll</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2cbb7deffc1740da3c471a099f6ab779" name="a2cbb7deffc1740da3c471a099f6ab779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cbb7deffc1740da3c471a099f6ab779">&#9670;&#160;</a></span>installEventHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::installEventHandler </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; bool(SEvent)&gt;</td>          <td class="paramname"><span class="paramname"><em>event_handler</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>安装自定义事件处理器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_event_handler</td><td>用于处理的事件处理器</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>可使用函数指针、<span class="tt">std::function</span>、语法糖等 </p><dl class="section note"><dt>注解</dt><dd>需要特别注意： </dd>
+<dd>
+1. 指定的事件处理器必须以 <span class="tt">bool</span> 返回。当返回 true 表示持续运行，false 表示结束运行并释放引擎； </dd>
+<dd>
+2. 原有指定函数指针、 <span class="tt">std::function</span>、语法糖等的事件处理器将被替换。 </dd></dl>
+
+</div>
+</div>
+<a id="ad906d9933e0da82b9e81e65c85ab1ea3" name="ad906d9933e0da82b9e81e65c85ab1ea3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad906d9933e0da82b9e81e65c85ab1ea3">&#9670;&#160;</a></span>move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::move </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动指定窗口位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>窗口在显示器的横坐标 </td></tr>
+    <tr><td class="paramname">y</td><td>窗口在显示器的纵坐标 </td></tr>
+    <tr><td class="paramname">window_id</td><td>窗口 ID（默认指定主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示已移动指定窗口 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="aa83321639c89239c6333ac1ee5d2f5c3" name="aa83321639c89239c6333ac1ee5d2f5c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83321639c89239c6333ac1ee5d2f5c3">&#9670;&#160;</a></span>newWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t EasyEngine::Engine::newWindow </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>width</em></span><span class="paramdefsep"> = </span><span class="paramdefval">800</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>height</em></span><span class="paramdefsep"> = </span><span class="paramdefval">600</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>新建一个子窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>窗口标题 </td></tr>
+    <tr><td class="paramname">width</td><td>窗口宽度 </td></tr>
+    <tr><td class="paramname">height</td><td>窗口高度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回新打开的窗口 ID；若无法新建，则返回 0。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8490688cb2669d39df068a0055082149" title="获得指定 ID 的窗口">window</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd>
+<dd>
+<a class="el" href="#a39e133ec46d32e1d1d2243d975ebff09" title="移除一个窗口">removeWindow</a> </dd></dl>
+
+</div>
+</div>
+<a id="acb4e2107e5c31d729dbae944e503bdb0" name="acb4e2107e5c31d729dbae944e503bdb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4e2107e5c31d729dbae944e503bdb0">&#9670;&#160;</a></span>painter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_painter.html">EasyEngine::Painter</a> * EasyEngine::Engine::painter </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定窗口的渲染器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>指定窗口（默认为主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a39e133ec46d32e1d1d2243d975ebff09" name="a39e133ec46d32e1d1d2243d975ebff09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e133ec46d32e1d1d2243d975ebff09">&#9670;&#160;</a></span>removeWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::removeWindow </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移除一个窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>窗口 ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8490688cb2669d39df068a0055082149" title="获得指定 ID 的窗口">window</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="aa4576d3dc3e9da3fa9515a4a2378c7e3" name="aa4576d3dc3e9da3fa9515a4a2378c7e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4576d3dc3e9da3fa9515a4a2378c7e3">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::resize </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整窗口大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>窗口宽度（按像素） </td></tr>
+    <tr><td class="paramname">height</td><td>窗口高度（按像素） </td></tr>
+    <tr><td class="paramname">window_id</td><td>窗口 ID（默认指定主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示已调整窗口大小，否则为 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a421839d4befc2c37d16f9956116ddbbe" name="a421839d4befc2c37d16f9956116ddbbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421839d4befc2c37d16f9956116ddbbe">&#9670;&#160;</a></span>setBorderlessWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::setBorderlessWindow </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置窗口为无边框窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>是否允许 </td></tr>
+    <tr><td class="paramname">window_id</td><td>指定的窗口 ID（默认为主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5ccc24ade1d3b3d3755f3cadba98fbf1" name="a5ccc24ade1d3b3d3755f3cadba98fbf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ccc24ade1d3b3d3755f3cadba98fbf1">&#9670;&#160;</a></span>setFPS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::setFPS </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>fps</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置最大限定帧数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fps</td><td>固定帧率，即每秒持续刷新多少画面 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610" title="实时获取当前刷新的帧数">fps</a> </dd>
+<dd>
+<a class="el" href="#ae6586519d2a9dc15ee517d00afd27664" title="获取当前丢帧检测的宽容度比例">frameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a" title="获取当前连续慢帧阈值">frameDropThreshold</a> </dd>
+<dd>
+<a class="el" href="#a23c04fd8df861221b37a1b362e0451b4" title="设置丢帧检测的宽容度比例">setFrameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#a8b1d629b195d5b9e2976864c671fc76d" title="设置连续慢帧阈值">setFrameDropThreshold</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8b1d629b195d5b9e2976864c671fc76d" name="a8b1d629b195d5b9e2976864c671fc76d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b1d629b195d5b9e2976864c671fc76d">&#9670;&#160;</a></span>setFrameDropThreshold()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::setFrameDropThreshold </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span><span class="paramdefsep"> = </span><span class="paramdefval">3</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置连续慢帧阈值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>连续多少帧慢帧后触发丢帧，默认3帧 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a23c04fd8df861221b37a1b362e0451b4" title="设置丢帧检测的宽容度比例">setFrameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#ae6586519d2a9dc15ee517d00afd27664" title="获取当前丢帧检测的宽容度比例">frameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a" title="获取当前连续慢帧阈值">frameDropThreshold</a> </dd></dl>
+
+</div>
+</div>
+<a id="a23c04fd8df861221b37a1b362e0451b4" name="a23c04fd8df861221b37a1b362e0451b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c04fd8df861221b37a1b362e0451b4">&#9670;&#160;</a></span>setFrameDropTolerance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::setFrameDropTolerance </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1.5f</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置丢帧检测的宽容度比例 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>丢帧触发比例，默认1.5表示超过目标帧时长1.5倍时开始检测 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8b1d629b195d5b9e2976864c671fc76d" title="设置连续慢帧阈值">setFrameDropThreshold</a> </dd>
+<dd>
+<a class="el" href="#ae6586519d2a9dc15ee517d00afd27664" title="获取当前丢帧检测的宽容度比例">frameDropTolerance</a> </dd>
+<dd>
+<a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a" title="获取当前连续慢帧阈值">frameDropThreshold</a> </dd></dl>
+
+</div>
+</div>
+<a id="af65c9c61af634b87585ff4ea0052c1a0" name="af65c9c61af634b87585ff4ea0052c1a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af65c9c61af634b87585ff4ea0052c1a0">&#9670;&#160;</a></span>setFullScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::setFullScreen </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置指定窗口是否为全屏 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>允许窗口是否全屏 </td></tr>
+    <tr><td class="paramname">window_id</td><td>指定窗口 ID（默认主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2b2e2ce6f54e8900979814f808b2049a" name="a2b2e2ce6f54e8900979814f808b2049a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b2e2ce6f54e8900979814f808b2049a">&#9670;&#160;</a></span>setGeometry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::setGeometry </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>height</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置指定窗口的位置、大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>指定窗口位置（横坐标） </td></tr>
+    <tr><td class="paramname">y</td><td>指定窗口位置（纵坐标） </td></tr>
+    <tr><td class="paramname">width</td><td>指定窗口宽度 </td></tr>
+    <tr><td class="paramname">height</td><td>指定窗口高度 </td></tr>
+    <tr><td class="paramname">window_id</td><td>窗口 ID（默认指定主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示是否生效 </dd></dl>
+
+</div>
+</div>
+<a id="a6106d33771e370822b38cf8f85ce2a75" name="a6106d33771e370822b38cf8f85ce2a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6106d33771e370822b38cf8f85ce2a75">&#9670;&#160;</a></span>setResizable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::setResizable </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>resizeable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>是否可调节窗口大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resizeable</td><td>设置指定窗口是否可以缩放 </td></tr>
+    <tr><td class="paramname">window_id</td><td>窗口 ID （默认为主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="aad213c3ad36ac11e6b457d5fde128d1e" name="aad213c3ad36ac11e6b457d5fde128d1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad213c3ad36ac11e6b457d5fde128d1e">&#9670;&#160;</a></span>setWindowTitle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::setWindowTitle </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>title</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>修改窗口标题 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">title</td><td>新的窗口标题名称 </td></tr>
+    <tr><td class="paramname">window_id</td><td>指定窗口 ID（默认主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a282de1155b05980b1edddc8d0b6bc4ed" title="获取指定窗口的标题">windowTitle</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a272a2105228cba94cc353f989b0011f9" name="a272a2105228cba94cc353f989b0011f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272a2105228cba94cc353f989b0011f9">&#9670;&#160;</a></span>show()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::show </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>显示指定窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>窗口 ID （默认指定主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示成功，若找不到窗口 ID 等则返回 false </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a1b9cbccfbfbdc0540e2541108b32f717" title="显示所有窗口">showAll</a> </dd>
+<dd>
+<a class="el" href="#ac9bc753dcc986c09052ba67e8ccb4ab7" title="隐藏指定窗口">hide</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="a1b9cbccfbfbdc0540e2541108b32f717" name="a1b9cbccfbfbdc0540e2541108b32f717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b9cbccfbfbdc0540e2541108b32f717">&#9670;&#160;</a></span>showAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EasyEngine::Engine::showAll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>显示所有窗口 </p>
+<dl class="section return"><dt>返回</dt><dd>若成功则返回 0，失败将返回失败的窗口个数 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a272a2105228cba94cc353f989b0011f9" title="显示指定窗口">show</a> </dd>
+<dd>
+<a class="el" href="#ac9bc753dcc986c09052ba67e8ccb4ab7" title="隐藏指定窗口">hide</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8490688cb2669d39df068a0055082149" name="a8490688cb2669d39df068a0055082149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8490688cb2669d39df068a0055082149">&#9670;&#160;</a></span>window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_easy_engine_1_1_window.html">EasyEngine::Window</a> * EasyEngine::Engine::window </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获得指定 ID 的窗口 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>窗口 ID（默认为主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回得到的窗口，若找不到窗口 ID 则返回空定义 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd>
+<dd>
+<a class="el" href="#a39b495dcb4ce33bb5fab76824b853e77" title="获取窗口总个数">windowCount</a> </dd></dl>
+
+</div>
+</div>
+<a id="a39b495dcb4ce33bb5fab76824b853e77" name="a39b495dcb4ce33bb5fab76824b853e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b495dcb4ce33bb5fab76824b853e77">&#9670;&#160;</a></span>windowCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t EasyEngine::Engine::windowCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取窗口总个数 </p>
+<dl class="section return"><dt>返回</dt><dd>返回窗口个数 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="afa2ab8a04166fbc0fed19a91e6ff3b75" name="afa2ab8a04166fbc0fed19a91e6ff3b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa2ab8a04166fbc0fed19a91e6ff3b75">&#9670;&#160;</a></span>windowIDList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; uint32_t &gt; EasyEngine::Engine::windowIDList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取所有可用的窗口 ID </p>
+<dl class="section return"><dt>返回</dt><dd>返回一个存储窗口 ID 的列表，通常第一个为主窗口 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8490688cb2669d39df068a0055082149" title="获得指定 ID 的窗口">window</a> </dd>
+<dd>
+<a class="el" href="#a39b495dcb4ce33bb5fab76824b853e77" title="获取窗口总个数">windowCount</a> </dd></dl>
+
+</div>
+</div>
+<a id="a282de1155b05980b1edddc8d0b6bc4ed" name="a282de1155b05980b1edddc8d0b6bc4ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a282de1155b05980b1edddc8d0b6bc4ed">&#9670;&#160;</a></span>windowTitle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string EasyEngine::Engine::windowTitle </td>
+          <td>(</td>
+          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定窗口的标题 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window_id</td><td>指定窗口 ID（默认主窗口） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回窗口标题 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aad213c3ad36ac11e6b457d5fde128d1e" title="修改窗口标题">setWindowTitle</a> </dd>
+<dd>
+<a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_core_8h_source.html">Core.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Core.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="class_easy_engine_1_1_engine.html">Engine</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

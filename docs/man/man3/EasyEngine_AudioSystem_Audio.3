@@ -1,0 +1,73 @@
+.TH "EasyEngine::AudioSystem::Audio" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::AudioSystem::Audio \- 音频属性  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPlayStatus\fP { \fBUnload\fP, \fBLoading\fP, \fBLoaded\fP = 0x2, \fBPlaying\fP = 0x4, \fBPaused\fP = 0x8, \fBFailed\fP = 0x10 }"
+.br
+.RI "播放状态 "
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBurl\fP"
+.br
+.RI "音频源地址 "
+.ti -1c
+.RI "\fBPlayStatus\fP \fBstatus\fP {\fBUnload\fP}"
+.br
+.RI "播放状态 "
+.ti -1c
+.RI "MIX_Audio * \fBaudio\fP {nullptr}"
+.br
+.RI "音频 "
+.ti -1c
+.RI "bool \fBis_stream\fP {false}"
+.br
+.RI "是否为流音频 "
+.in -1c
+.SH "详细描述"
+.PP 
+音频属性 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum \fBEasyEngine::AudioSystem::Audio::PlayStatus\fP"
+
+.PP
+播放状态 标识了该音频的播放状态 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIUnload \fP
+未加载，没有载入任何音频 
+.TP
+\f(BILoading \fP
+正在载入音频 
+.TP
+\f(BILoaded \fP(0x2)
+准备就绪 
+.TP
+\f(BIPlaying \fP(0x4)
+正在播放 
+.TP
+\f(BIPaused \fP(0x8)
+已暂停 
+.TP
+\f(BIFailed \fP(0x10)
+失效，常用于表示无法加载音频时 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

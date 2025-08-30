@@ -1,0 +1,120 @@
+.TH "D:/Coding/EasyEngine/src/Core.h" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/Coding/EasyEngine/src/Core.h \- 引擎内核  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'Algorithm\&.h'\fP
+.br
+\fR#include 'Components\&.h'\fP
+.br
+\fR#include 'Resources\&.h'\fP
+.br
+
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "class \fBEasyEngine::Window\fP"
+.br
+.RI "窗口类 "
+.ti -1c
+.RI "class \fBEasyEngine::Engine\fP"
+.br
+.RI "引擎类 "
+.ti -1c
+.RI "class \fBEasyEngine::Painter\fP"
+.br
+.RI "图形绘制器 "
+.ti -1c
+.RI "class \fBEasyEngine::EventSystem\fP"
+.br
+.RI "事件系统 "
+.ti -1c
+.RI "class \fBEasyEngine::AudioSystem\fP"
+.br
+.RI "音频系统 "
+.ti -1c
+.RI "struct \fBEasyEngine::AudioSystem::Audio\fP"
+.br
+.RI "音频属性 "
+.in -1c
+.SS "命名空间"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBEasyEngine\fP"
+.br
+.RI "引擎 "
+.ti -1c
+.RI "namespace \fBStdAudioSpec\fP"
+.br
+.RI "标准音频格式 "
+.in -1c
+.SS "类型定义"
+
+.in +1c
+.ti -1c
+.RI "using \fBSEvent\fP = SDL_Event"
+.br
+.ti -1c
+.RI "using \fBSWinEvent\fP = SDL_WindowEvent"
+.br
+.ti -1c
+.RI "using \fBSWindow\fP = SDL_Window"
+.br
+.ti -1c
+.RI "using \fBSWindowID\fP = SDL_WindowID"
+.br
+.ti -1c
+.RI "using \fBSAudioSpec\fP = SDL_AudioSpec"
+.br
+.in -1c
+.SS "变量"
+
+.in +1c
+.ti -1c
+.RI "constexpr SAudioSpec \fBEasyEngine::StdAudioSpec::Low\fP = {SDL_AUDIO_S16, 1, 16000}"
+.br
+.RI "音频格式（磁带录像机级别） "
+.ti -1c
+.RI "constexpr SAudioSpec \fBEasyEngine::StdAudioSpec::Mono\fP = {SDL_AUDIO_S16, 1, 44100}"
+.br
+.RI "音频格式（单声道） "
+.ti -1c
+.RI "constexpr SAudioSpec \fBEasyEngine::StdAudioSpec::Stereo\fP = {SDL_AUDIO_S16, 2, 44100}"
+.br
+.RI "音频格式 (CD 音质) "
+.ti -1c
+.RI "constexpr SAudioSpec \fBEasyEngine::StdAudioSpec::High\fP = {SDL_AUDIO_S16, 2, 48000}"
+.br
+.RI "音频格式（高级别） "
+.ti -1c
+.RI "constexpr SAudioSpec \fBEasyEngine::StdAudioSpec::HIFI\fP = {SDL_AUDIO_S32, 2, 96000}"
+.br
+.RI "音频格式（Hi-fi 高音质） "
+.in -1c
+.SH "详细描述"
+.PP 
+引擎内核 
+
+定义引擎核心控制类，负责窗口管理、渲染控制、事件处理等核心流程。
+
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright © 2025 CatIsNotFound 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+CatIsNotFound 
+.RE
+.PP
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

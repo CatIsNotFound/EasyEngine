@@ -1,0 +1,212 @@
+.TH "EasyEngine::Algorithm" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Algorithm \- 算法库  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Algorithm\&.h>\fP
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static SColor \fBhexToRGBA\fP (const std::string &hex)"
+.br
+.RI "十六进制转换 RGBA "
+.ti -1c
+.RI "static std::string \fBrgbaToHex\fP (const SColor &color, bool add_alpha=false)"
+.br
+.RI "RGBA 转换十六进制 "
+.ti -1c
+.RI "static std::vector< \fBVector2\fP > \fBmidCircleF\fP (const \fBVector2\fP &point, uint32_t radius)"
+.br
+.RI "中心圆算法 "
+.ti -1c
+.RI "static \fBVector2\fP \fBspiritScaledPosition\fP (const \fBComponents::Spirit::Properties\fP &properties)"
+.br
+.RI "获取某个精灵经过缩放后所在的位置 "
+.ti -1c
+.RI "static \fBVector2\fP \fBspiritScaledPosition\fP (const \fBVector2\fP &position, const float scaled, const \fBVector2\fP &scaled_position)"
+.br
+.RI "获取某个精灵经过缩放后所在的位置 "
+.ti -1c
+.RI "static \fBSize\fP \fBspiritScaledSize\fP (const \fBComponents::Spirit\fP &spirit, const \fBComponents::Spirit::Properties\fP &properties)"
+.br
+.RI "获取缩放后的精灵大小/尺寸 "
+.ti -1c
+.RI "static \fBSize\fP \fBspiritScaledSize\fP (const \fBComponents::Spirit\fP &spirit, const float scaled)"
+.br
+.RI "获取缩放后的精灵大小/尺寸 "
+.in -1c
+.SH "详细描述"
+.PP 
+算法库 
+
+存储图形相关的算法实现，为渲染提供计算支持 
+.SH "成员函数说明"
+.PP 
+.SS "SColor Algorithm::hexToRGBA (const std::string & hex)\fR [static]\fP"
+
+.PP
+十六进制转换 RGBA 
+.PP
+\fB参数\fP
+.RS 4
+\fIhex\fP 十六进制颜色 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+得到转换后的 RGBA 值 
+.PP
+.nf
+Color color1 = Algorithm::hexToRGBA("#C0C0C0C0"); // RGBA(192, 192, 192, 192)
+Color color2 = Algorithm::hexToRGBA("#FF00FF");   // RGBA(255, 0, 255, 255)
+
+.fi
+.PP
+ 
+.RE
+.PP
+
+.SS "std::vector< \fBVector2\fP > EasyEngine::Algorithm::midCircleF (const \fBVector2\fP & point, uint32_t radius)\fR [static]\fP"
+
+.PP
+中心圆算法 
+.PP
+\fB参数\fP
+.RS 4
+\fIpoint\fP 圆点中心 
+.br
+\fIradius\fP 圆的半径 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回一个用于存储所有可绘制点的坐标数组
+.RE
+.PP
+通过判断圆的中点与理想圆的位置关系以确定像素点，得到一个近似的圆形。 
+.PP
+\fB注解\fP
+.RS 4
+若用于绘图事件，性能会有所影响！ 
+.RE
+.PP
+
+.SS "std::string Algorithm::rgbaToHex (const SColor & color, bool add_alpha = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+RGBA 转换十六进制 
+.PP
+\fB参数\fP
+.RS 4
+\fIcolor\fP RGBA 颜色 
+.br
+\fIadd_alpha\fP 同时转换 Alpha 通道（默认不转换） 
+.PP
+.nf
+Color color(192, 192, 192, 255);
+rgbaToHex(color);        // #C0C0C0
+rgbaToHex(color, true);  // #C0C0C0FF
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+得到转换后的十六进制值 
+.RE
+.PP
+
+.SS "\fBVector2\fP Algorithm::spiritScaledPosition (const \fBComponents::Spirit::Properties\fP & properties)\fR [static]\fP"
+
+.PP
+获取某个精灵经过缩放后所在的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIproperties\fP 精灵绘制属性 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回缩放后的精灵所在位置（左上角坐标） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Properties 
+.RE
+.PP
+
+.SS "\fBVector2\fP Algorithm::spiritScaledPosition (const \fBVector2\fP & position, const float scaled, const \fBVector2\fP & scaled_position)\fR [static]\fP"
+
+.PP
+获取某个精灵经过缩放后所在的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIposition\fP 原精灵所在位置 
+.br
+\fIscaled\fP 缩放倍数 
+.br
+\fIscaled_position\fP 缩放中心点 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回缩放后的精灵所在位置（左上角坐标） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Properties 
+.RE
+.PP
+
+.SS "\fBSize\fP Algorithm::spiritScaledSize (const \fBComponents::Spirit\fP & spirit, const \fBComponents::Spirit::Properties\fP & properties)\fR [static]\fP"
+
+.PP
+获取缩放后的精灵大小/尺寸 
+.PP
+\fB参数\fP
+.RS 4
+\fIspirit\fP 指定精灵 
+.br
+\fIproperties\fP 精灵绘制属性 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回缩放后的大小 
+.RE
+.PP
+
+.SS "\fBSize\fP Algorithm::spiritScaledSize (const \fBComponents::Spirit\fP & spirit, const float scaled)\fR [static]\fP"
+
+.PP
+获取缩放后的精灵大小/尺寸 
+.PP
+\fB参数\fP
+.RS 4
+\fIspirit\fP 指定精灵 
+.br
+\fIscaled\fP 缩放倍数 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回缩放后的精灵大小 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

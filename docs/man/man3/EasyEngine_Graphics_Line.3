@@ -1,0 +1,53 @@
+.TH "EasyEngine::Graphics::Line" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Graphics::Line \- 线段  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Basic\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBLine\fP (float x1, float y1, float x2, float y2, uint8_t width=1, SColor color=StdColor::Black)"
+.br
+.ti -1c
+.RI "\fBLine\fP (\fBVector2\fP start, \fBVector2\fP end, uint8_t width=1, SColor color=StdColor::Black)"
+.br
+.ti -1c
+.RI "\fBLine\fP (float x1, float y1, float x2, float y2, uint8_t width=1, uint8_t r=0, uint8_t g=0, uint8_t b=0, uint8_t a=255)"
+.br
+.ti -1c
+.RI "\fBLine\fP (float x1, float y1, float x2, float y2, uint8_t width, const std::string &hex_color='#000000')"
+.br
+.ti -1c
+.RI "\fBLine\fP (\fBVector2\fP start, \fBVector2\fP end, uint8_t width, const std::string &hex_color='#000000')"
+.br
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP \fBstart\fP"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBend\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBwidth\fP"
+.br
+.ti -1c
+.RI "SColor \fBcolor\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+线段 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

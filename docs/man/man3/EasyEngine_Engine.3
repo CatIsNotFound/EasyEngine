@@ -1,0 +1,730 @@
+.TH "EasyEngine::Engine" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Engine \- 引擎类  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP (const std::string &title, uint32_t width=800, uint32_t height=600)"
+.br
+.RI "定义窗口并初始化引擎资源 "
+.ti -1c
+.RI "int \fBexec\fP ()"
+.br
+.RI "事件循环，保证引擎持续运作 "
+.ti -1c
+.RI "bool \fBshow\fP (SWindowID window_id=_main_window_id)"
+.br
+.RI "显示指定窗口 "
+.ti -1c
+.RI "int \fBshowAll\fP ()"
+.br
+.RI "显示所有窗口 "
+.ti -1c
+.RI "bool \fBhide\fP (SWindowID window_id=_main_window_id)"
+.br
+.RI "隐藏指定窗口 "
+.ti -1c
+.RI "bool \fBresize\fP (int width, int height, SWindowID window_id=_main_window_id)"
+.br
+.RI "重新调整窗口大小 "
+.ti -1c
+.RI "bool \fBmove\fP (int x, int y, SWindowID window_id=_main_window_id)"
+.br
+.RI "移动指定窗口位置 "
+.ti -1c
+.RI "bool \fBsetGeometry\fP (int x, int y, int width, int height, SWindowID window_id=_main_window_id)"
+.br
+.RI "设置指定窗口的位置、大小 "
+.ti -1c
+.RI "bool \fBsetResizable\fP (bool resizeable, SWindowID window_id=_main_window_id)"
+.br
+.RI "是否可调节窗口大小 "
+.ti -1c
+.RI "bool \fBsetBorderlessWindow\fP (bool enabled, SWindowID window_id=_main_window_id)"
+.br
+.RI "设置窗口为无边框窗口 "
+.ti -1c
+.RI "bool \fBsetFullScreen\fP (bool enabled, SWindowID window_id=_main_window_id)"
+.br
+.RI "设置指定窗口是否为全屏 "
+.ti -1c
+.RI "bool \fBsetWindowTitle\fP (const std::string &title, SWindowID window_id=_main_window_id)"
+.br
+.RI "修改窗口标题 "
+.ti -1c
+.RI "std::string \fBwindowTitle\fP (SWindowID window_id)"
+.br
+.RI "获取指定窗口的标题 "
+.ti -1c
+.RI "uint32_t \fBnewWindow\fP (const std::string &title, uint32_t width=800, uint32_t height=600)"
+.br
+.RI "新建一个子窗口 "
+.ti -1c
+.RI "bool \fBremoveWindow\fP (SWindowID window_id)"
+.br
+.RI "移除一个窗口 "
+.ti -1c
+.RI "const \fBWindow\fP * \fBwindow\fP (SWindowID window_id=_main_window_id)"
+.br
+.RI "获得指定 ID 的窗口 "
+.ti -1c
+.RI "std::vector< uint32_t > \fBwindowIDList\fP ()"
+.br
+.RI "获取所有可用的窗口 ID "
+.ti -1c
+.RI "uint32_t \fBwindowCount\fP () const"
+.br
+.RI "获取窗口总个数 "
+.ti -1c
+.RI "void \fBinstallEventHandler\fP (std::function< bool(SEvent)> event_handler)"
+.br
+.RI "安装自定义事件处理器 "
+.ti -1c
+.RI "\fBPainter\fP * \fBpainter\fP (SWindowID window_id=_main_window_id)"
+.br
+.RI "获取指定窗口的渲染器 "
+.ti -1c
+.RI "void \fBsetFPS\fP (uint32_t \fBfps\fP)"
+.br
+.RI "设置最大限定帧数 "
+.ti -1c
+.RI "uint32_t \fBfps\fP ()"
+.br
+.RI "实时获取当前刷新的帧数 "
+.ti -1c
+.RI "void \fBsetFrameDropTolerance\fP (float ratio=1\&.5f)"
+.br
+.RI "设置丢帧检测的宽容度比例 "
+.ti -1c
+.RI "float \fBframeDropTolerance\fP () const"
+.br
+.RI "获取当前丢帧检测的宽容度比例 "
+.ti -1c
+.RI "void \fBsetFrameDropThreshold\fP (uint32_t count=3)"
+.br
+.RI "设置连续慢帧阈值 "
+.ti -1c
+.RI "uint32_t \fBframeDropThreshold\fP () const"
+.br
+.RI "获取当前连续慢帧阈值 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBPainter\fP"
+.br
+.ti -1c
+.RI "class \fBEventSystem\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+引擎类 
+
+控制所有游戏流程：初始化、渲染、运行、释放等 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Engine::Engine (const std::string & title, uint32_t width = \fR800\fP, uint32_t height = \fR600\fP)\fR [explicit]\fP"
+
+.PP
+定义窗口并初始化引擎资源 
+.PP
+\fB参数\fP
+.RS 4
+\fItitle\fP 窗口标题 
+.br
+\fIwidth\fP 窗口宽度（像素） 
+.br
+\fIheight\fP 窗口高度（像素） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否已初始化引擎 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "int EasyEngine::Engine::exec ()"
+
+.PP
+事件循环，保证引擎持续运作 
+.PP
+\fB注解\fP
+.RS 4
+必须调用此函数，否则引擎将会被自动释放 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Engine::fps ()"
+
+.PP
+实时获取当前刷新的帧数 即每秒渲染了多少画面 
+.PP
+\fB返回\fP
+.RS 4
+返回当前秒刷新的帧数 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetFPS\fP 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Engine::frameDropThreshold () const"
+
+.PP
+获取当前连续慢帧阈值 
+.PP
+\fB返回\fP
+.RS 4
+当前阈值 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetFrameDropThreshold\fP 
+
+.PP
+\fBsetFrameDropTolerance\fP 
+
+.PP
+\fBframeDropTolerance\fP 
+.RE
+.PP
+
+.SS "float EasyEngine::Engine::frameDropTolerance () const"
+
+.PP
+获取当前丢帧检测的宽容度比例 
+.PP
+\fB返回\fP
+.RS 4
+当前宽容度比例 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetFrameDropTolerance\fP 
+
+.PP
+\fBsetFrameDropThreshold\fP 
+
+.PP
+\fBframeDropThreshold\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::hide (SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+隐藏指定窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 窗口 ID （默认指定主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBshow\fP 
+
+.PP
+\fBshowAll\fP 
+
+.PP
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Engine::installEventHandler (std::function< bool(SEvent)> event_handler)"
+
+.PP
+安装自定义事件处理器 
+.PP
+\fB参数\fP
+.RS 4
+\fI_event_handler\fP 用于处理的事件处理器
+.RE
+.PP
+可使用函数指针、\fRstd::function\fP、语法糖等 
+.PP
+\fB注解\fP
+.RS 4
+需要特别注意： 
+
+.PP
+1\&. 指定的事件处理器必须以 \fRbool\fP 返回。当返回 true 表示持续运行，false 表示结束运行并释放引擎； 
+
+.PP
+2\&. 原有指定函数指针、 \fRstd::function\fP、语法糖等的事件处理器将被替换。 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::move (int x, int y, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+移动指定窗口位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 窗口在显示器的横坐标 
+.br
+\fIy\fP 窗口在显示器的纵坐标 
+.br
+\fIwindow_id\fP 窗口 ID（默认指定主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示已移动指定窗口 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Engine::newWindow (const std::string & title, uint32_t width = \fR800\fP, uint32_t height = \fR600\fP)"
+
+.PP
+新建一个子窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fItitle\fP 窗口标题 
+.br
+\fIwidth\fP 窗口宽度 
+.br
+\fIheight\fP 窗口高度 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回新打开的窗口 ID；若无法新建，则返回 0。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindow\fP 
+
+.PP
+\fBwindowIDList\fP 
+
+.PP
+\fBremoveWindow\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Painter\fP * EasyEngine::Engine::painter (SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+获取指定窗口的渲染器 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 指定窗口（默认为主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::removeWindow (SWindowID window_id)"
+
+.PP
+移除一个窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 窗口 ID 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindow\fP 
+
+.PP
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::resize (int width, int height, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+重新调整窗口大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 窗口宽度（按像素） 
+.br
+\fIheight\fP 窗口高度（按像素） 
+.br
+\fIwindow_id\fP 窗口 ID（默认指定主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示已调整窗口大小，否则为 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::setBorderlessWindow (bool enabled, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+设置窗口为无边框窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 是否允许 
+.br
+\fIwindow_id\fP 指定的窗口 ID（默认为主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Engine::setFPS (uint32_t fps)"
+
+.PP
+设置最大限定帧数 
+.PP
+\fB参数\fP
+.RS 4
+\fIfps\fP 固定帧率，即每秒持续刷新多少画面 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBfps\fP 
+
+.PP
+\fBframeDropTolerance\fP 
+
+.PP
+\fBframeDropThreshold\fP 
+
+.PP
+\fBsetFrameDropTolerance\fP 
+
+.PP
+\fBsetFrameDropThreshold\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Engine::setFrameDropThreshold (uint32_t count = \fR3\fP)"
+
+.PP
+设置连续慢帧阈值 
+.PP
+\fB参数\fP
+.RS 4
+\fIcount\fP 连续多少帧慢帧后触发丢帧，默认3帧 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetFrameDropTolerance\fP 
+
+.PP
+\fBframeDropTolerance\fP 
+
+.PP
+\fBframeDropThreshold\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Engine::setFrameDropTolerance (float ratio = \fR1\&.5f\fP)"
+
+.PP
+设置丢帧检测的宽容度比例 
+.PP
+\fB参数\fP
+.RS 4
+\fIratio\fP 丢帧触发比例，默认1\&.5表示超过目标帧时长1\&.5倍时开始检测 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetFrameDropThreshold\fP 
+
+.PP
+\fBframeDropTolerance\fP 
+
+.PP
+\fBframeDropThreshold\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::setFullScreen (bool enabled, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+设置指定窗口是否为全屏 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 允许窗口是否全屏 
+.br
+\fIwindow_id\fP 指定窗口 ID（默认主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::setGeometry (int x, int y, int width, int height, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+设置指定窗口的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定窗口位置（横坐标） 
+.br
+\fIy\fP 指定窗口位置（纵坐标） 
+.br
+\fIwidth\fP 指定窗口宽度 
+.br
+\fIheight\fP 指定窗口高度 
+.br
+\fIwindow_id\fP 窗口 ID（默认指定主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示是否生效 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::setResizable (bool resizeable, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+是否可调节窗口大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIresizeable\fP 设置指定窗口是否可以缩放 
+.br
+\fIwindow_id\fP 窗口 ID （默认为主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::setWindowTitle (const std::string & title, SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+修改窗口标题 
+.PP
+\fB参数\fP
+.RS 4
+\fItitle\fP 新的窗口标题名称 
+.br
+\fIwindow_id\fP 指定窗口 ID（默认主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowTitle\fP 
+
+.PP
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Engine::show (SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+显示指定窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 窗口 ID （默认指定主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示成功，若找不到窗口 ID 等则返回 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBshowAll\fP 
+
+.PP
+\fBhide\fP 
+
+.PP
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "int EasyEngine::Engine::showAll ()"
+
+.PP
+显示所有窗口 
+.PP
+\fB返回\fP
+.RS 4
+若成功则返回 0，失败将返回失败的窗口个数 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBshow\fP 
+
+.PP
+\fBhide\fP 
+.RE
+.PP
+
+.SS "const \fBEasyEngine::Window\fP * EasyEngine::Engine::window (SWindowID window_id = \fR_main_window_id\fP)"
+
+.PP
+获得指定 ID 的窗口 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 窗口 ID（默认为主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回得到的窗口，若找不到窗口 ID 则返回空定义 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+
+.PP
+\fBwindowCount\fP 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Engine::windowCount () const"
+
+.PP
+获取窗口总个数 
+.PP
+\fB返回\fP
+.RS 4
+返回窗口个数 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "std::vector< uint32_t > EasyEngine::Engine::windowIDList ()"
+
+.PP
+获取所有可用的窗口 ID 
+.PP
+\fB返回\fP
+.RS 4
+返回一个存储窗口 ID 的列表，通常第一个为主窗口 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBwindow\fP 
+
+.PP
+\fBwindowCount\fP 
+.RE
+.PP
+
+.SS "std::string EasyEngine::Engine::windowTitle (SWindowID window_id)"
+
+.PP
+获取指定窗口的标题 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow_id\fP 指定窗口 ID（默认主窗口） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回窗口标题 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetWindowTitle\fP 
+
+.PP
+\fBwindowIDList\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

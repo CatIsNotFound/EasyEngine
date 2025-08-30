@@ -1,0 +1,258 @@
+.TH "EasyEngine::Painter" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Painter \- 图形绘制器  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBPainter\fP (\fBEasyEngine::Window\fP *\fBwindow\fP)"
+.br
+.RI "指定窗口以获取渲染器 "
+.ti -1c
+.RI "const \fBWindow\fP * \fBwindow\fP () const"
+.br
+.RI "获取当前绘制的窗口 "
+.ti -1c
+.RI "void \fBsetThickness\fP (uint16_t value)"
+.br
+.RI "设置绘制时的粗细程度 "
+.ti -1c
+.RI "uint16_t \fBthickness\fP () const"
+.br
+.RI "获取绘制时的粗细程度 "
+.ti -1c
+.RI "void \fBinstallPaintEvent\fP (std::function< void(\fBPainter\fP &)> function)"
+.br
+.RI "安装自定义绘图事件 "
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.RI "渲染/刷新画面 "
+.ti -1c
+.RI "void \fBfillBackColor\fP (const SColor &color)"
+.br
+.RI "填充背景颜色 "
+.ti -1c
+.RI "void \fBdrawPoint\fP (const \fBGraphics::Point\fP &point)"
+.br
+.RI "绘制点 "
+.ti -1c
+.RI "void \fBdrawLine\fP (const \fBGraphics::Line\fP &line)"
+.br
+.RI "绘制线段 "
+.ti -1c
+.RI "void \fBdrawRectangle\fP (const \fBGraphics::Rectangle\fP &rect)"
+.br
+.RI "绘制矩形 "
+.ti -1c
+.RI "void \fBdrawEllipse\fP (const \fBGraphics::Ellipse\fP &ellipse)"
+.br
+.RI "绘制椭圆 "
+.ti -1c
+.RI "void \fBdrawSpirit\fP (const \fBComponents::Spirit\fP &spirit, const \fBVector2\fP &pos)"
+.br
+.RI "绘制精灵 "
+.ti -1c
+.RI "void \fBdrawSpirit\fP (const \fBComponents::Spirit\fP &spirit, const \fBComponents::Spirit::Properties\fP &properties)"
+.br
+.RI "根据精灵属性绘制精灵 "
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.RI "清空所有绘制命令 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBComponents::Spirit\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+图形绘制器 
+
+针对单个窗口使用图形绘制器，决定了如何绘制画面 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Painter::Painter (\fBEasyEngine::Window\fP * window)\fR [explicit]\fP"
+
+.PP
+指定窗口以获取渲染器 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow\fP 指定的窗口 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::Painter::drawEllipse (const \fBGraphics::Ellipse\fP & ellipse)"
+
+.PP
+绘制椭圆 
+.PP
+\fB参数\fP
+.RS 4
+\fIellipse\fP 椭圆 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawLine (const \fBGraphics::Line\fP & line)"
+
+.PP
+绘制线段 
+.PP
+\fB参数\fP
+.RS 4
+\fIline\fP 线段 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawPoint (const \fBGraphics::Point\fP & point)"
+
+.PP
+绘制点 
+.PP
+\fB参数\fP
+.RS 4
+\fIpoint\fP 点 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawRectangle (const \fBGraphics::Rectangle\fP & rect)"
+
+.PP
+绘制矩形 
+.PP
+\fB参数\fP
+.RS 4
+\fIrect\fP 矩形 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawSpirit (const \fBComponents::Spirit\fP & spirit, const \fBComponents::Spirit::Properties\fP & properties)"
+
+.PP
+根据精灵属性绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIspirit\fP 指定精灵 
+.br
+\fIproperties\fP 精灵属性 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Spirit 
+
+.PP
+Properties 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawSpirit (const \fBComponents::Spirit\fP & spirit, const \fBVector2\fP & pos)"
+
+.PP
+绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIspirit\fP 精灵 
+.br
+\fIpos\fP 绘制位置 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Spirit 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::fillBackColor (const SColor & color)"
+
+.PP
+填充背景颜色 
+.PP
+\fB参数\fP
+.RS 4
+\fIcolor\fP 指定颜色 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBStdColor\fP 
+
+.PP
+hexToRGBA 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::installPaintEvent (std::function< void(\fBPainter\fP &)> function)"
+
+.PP
+安装自定义绘图事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIfunction\fP 自定义绘图函数 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::setThickness (uint16_t value)"
+
+.PP
+设置绘制时的粗细程度 
+.PP
+\fB参数\fP
+.RS 4
+\fIvalue\fP 新的粗细值，值越小越细
+.RE
+.PP
+\fB注解\fP
+.RS 4
+决定了绘制点、线段、边框时的粗细程度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBthickness\fP 
+.RE
+.PP
+
+.SS "uint16_t EasyEngine::Painter::thickness () const"
+
+.PP
+获取绘制时的粗细程度 
+.PP
+\fB返回\fP
+.RS 4
+返回当前粗细值 
+.RE
+.PP
+
+.SS "const \fBEasyEngine::Window\fP * EasyEngine::Painter::window () const"
+
+.PP
+获取当前绘制的窗口 
+.PP
+\fB返回\fP
+.RS 4
+返回绘制窗口 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

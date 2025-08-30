@@ -1,0 +1,89 @@
+.TH "EasyEngine::Components::Collider" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Collider
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBCollider\fP ()"
+.br
+.RI "创建碰撞器 "
+.ti -1c
+.RI "\fBCollider\fP (SFRect rect)"
+.br
+.RI "创建碰撞器（相对位置下） "
+.ti -1c
+.RI "\fBCollider\fP (float x, float y, float width, float height)"
+.br
+.RI "创建碰撞器（相对位置下） "
+.ti -1c
+.RI "bool \fBcheck\fP (const \fBCollider\fP &collider)"
+.br
+.RI "检查此碰撞器是否与其它碰撞器碰撞 "
+.ti -1c
+.RI "SFRect \fBbounds\fP () const"
+.br
+.RI "获取碰撞器的位置、大小 "
+.in -1c
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Collider::Collider (SFRect rect)"
+
+.PP
+创建碰撞器（相对位置下） 
+.PP
+\fB参数\fP
+.RS 4
+\fIrect\fP 矩形碰撞器 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Collider::Collider (float x, float y, float width, float height)"
+
+.PP
+创建碰撞器（相对位置下） 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 所在位置 x 轴 
+.br
+\fIy\fP 所在位置 y 轴 
+.br
+\fIwidth\fP 碰撞器的宽度 
+.br
+\fIheight\fP 碰撞器的高度 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "bool EasyEngine::Components::Collider::check (const \fBCollider\fP & collider)"
+
+.PP
+检查此碰撞器是否与其它碰撞器碰撞 
+.PP
+\fB参数\fP
+.RS 4
+\fIcollider\fP 指定碰撞器（除自己以外） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示已与其它碰撞器碰撞，其反之 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBbounds\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

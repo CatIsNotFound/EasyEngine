@@ -1,0 +1,59 @@
+.TH "EasyEngine::Graphics::Rectangle" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Graphics::Rectangle \- 矩形  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Basic\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBRectangle\fP (\fBVector2\fP pos, \fBSize\fP size, SColor foreground=StdColor::Black, bool bordered_mode=true, bool filled_mode=false, SColor background=StdColor::Black)"
+.br
+.ti -1c
+.RI "\fBRectangle\fP (float x, float y, float width, float height, SColor foreground=StdColor::Black, bool bordered_mode=true, bool filled_mode=false, SColor background=StdColor::Black)"
+.br
+.ti -1c
+.RI "\fBRectangle\fP (float x, float y, uint32_t width, uint32_t height, uint8_t fore_r, uint8_t fore_g, uint8_t fore_b, uint8_t fore_a=255, bool bordered_mode=true, bool filled_mode=false, uint8_t back_r=0, uint8_t back_g=0, uint8_t back_b=0, uint8_t back_a=255)"
+.br
+.ti -1c
+.RI "\fBRectangle\fP (\fBVector2\fP pos, \fBSize\fP size, const std::string &foreground='#000000', bool bordered_mode=true, bool filled_mode=false, const std::string &background='#000000')"
+.br
+.ti -1c
+.RI "\fBRectangle\fP (float x, float y, float width, float height, const std::string &foreground='#000000', bool bordered_mode=true, bool filled_mode=false, const std::string &background='#000000')"
+.br
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP \fBpos\fP"
+.br
+.ti -1c
+.RI "\fBSize\fP \fBsize\fP"
+.br
+.ti -1c
+.RI "bool \fBbordered_mode\fP"
+.br
+.ti -1c
+.RI "bool \fBfilled_mode\fP"
+.br
+.ti -1c
+.RI "SColor \fBfore_color\fP"
+.br
+.ti -1c
+.RI "SColor \fBback_color\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+矩形 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

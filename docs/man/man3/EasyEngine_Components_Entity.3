@@ -1,0 +1,199 @@
+.TH "EasyEngine::Components::Entity" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Entity
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBEntity\fP (const std::string &\fBname\fP)"
+.br
+.RI "创建一个游戏实体 "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
+.br
+.RI "设置实体名称 "
+.ti -1c
+.RI "std::string \fBname\fP () const"
+.br
+.RI "获取实体名称 "
+.ti -1c
+.RI "void \fBsetPosition\fP (\fBVector2\fP pos)"
+.br
+.RI "设置实体在窗口中所在的位置 "
+.ti -1c
+.RI "void \fBsetPosition\fP (float x, float y)"
+.br
+.RI "设置实体在窗口中所在的位置 "
+.ti -1c
+.RI "void \fBsetCenterPosition\fP (\fBVector2\fP pos)"
+.br
+.RI "设置实体的中心点 "
+.ti -1c
+.RI "void \fBsetCenterPosition\fP (float x, float y)"
+.br
+.RI "设置实体的中心点 "
+.ti -1c
+.RI "\fBVector2\fP \fBposition\fP () const"
+.br
+.RI "获取对象位于窗口的坐标 "
+.ti -1c
+.RI "\fBVector2\fP \fBcenterPosition\fP () const"
+.br
+.RI "获取对象的中心点 "
+.ti -1c
+.RI "void \fBsetColliderEnabled\fP (const bool enabled)"
+.br
+.RI "设置碰撞器开关 "
+.ti -1c
+.RI "bool \fBisColliderEnabled\fP () const"
+.br
+.RI "碰撞器是否开启 "
+.ti -1c
+.RI "bool \fBisCollision\fP (const \fBEntity\fP &entity)"
+.br
+.RI "检查实体是否与其它实体碰撞 "
+.in -1c
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Entity::Entity (const std::string & name)\fR [explicit]\fP"
+
+.PP
+创建一个游戏实体 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定实体名称 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "bool EasyEngine::Components::Entity::isColliderEnabled () const"
+
+.PP
+碰撞器是否开启 
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRtrue\fP 表示已开启碰撞器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetColliderEnabled\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Entity::isCollision (const \fBEntity\fP & entity)"
+
+.PP
+检查实体是否与其它实体碰撞 
+.PP
+\fB参数\fP
+.RS 4
+\fIentity\fP 指定实体 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否碰撞 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+使用前，须先开启碰撞器功能才能使用，否则无论如何都会返回为 false 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBisColliderEnabled\fP 
+
+.PP
+\fBsetColliderEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setCenterPosition (float x, float y)"
+
+.PP
+设置实体的中心点 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setCenterPosition (\fBVector2\fP pos)"
+
+.PP
+设置实体的中心点 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setColliderEnabled (const bool enabled)"
+
+.PP
+设置碰撞器开关 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 是否启动碰撞器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBisColliderEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setName (const std::string & name)"
+
+.PP
+设置实体名称 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 新的实体名称 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setPosition (float x, float y)"
+
+.PP
+设置实体在窗口中所在的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setPosition (\fBVector2\fP pos)"
+
+.PP
+设置实体在窗口中所在的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

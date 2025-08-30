@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::AudioSystem类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_audio_system.html','','class_easy_engine_1_1_audio_system-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::AudioSystem类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>音频系统  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:Audio" id="r_Audio"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_easy_engine_1_1_audio_system_1_1_audio.html">Audio</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">音频属性  <a href="struct_easy_engine_1_1_audio_system_1_1_audio.html#details">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a8c3af66d87725e6a5e051c843854f8d0" id="r_a8c3af66d87725e6a5e051c843854f8d0"><td class="memItemLeft" align="right" valign="top"><a id="a8c3af66d87725e6a5e051c843854f8d0" name="a8c3af66d87725e6a5e051c843854f8d0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>AudioSystem</b> (<a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> &amp;)=delete</td></tr>
+<tr class="memitem:a72df17b8f3b6cbf7fec11bf79decec59" id="r_a72df17b8f3b6cbf7fec11bf79decec59"><td class="memItemLeft" align="right" valign="top"><a id="a72df17b8f3b6cbf7fec11bf79decec59" name="a72df17b8f3b6cbf7fec11bf79decec59"></a>
+<a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> &amp;)=delete</td></tr>
+<tr class="memitem:a546eb2d560dd16a0f5aeae9c3dd70c2a" id="r_a546eb2d560dd16a0f5aeae9c3dd70c2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a546eb2d560dd16a0f5aeae9c3dd70c2a">init</a> ()</td></tr>
+<tr class="memdesc:a546eb2d560dd16a0f5aeae9c3dd70c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载音频系统  <br /></td></tr>
+<tr class="memitem:ad080e98f84ff50354cbcf9fe4cb8dc36" id="r_ad080e98f84ff50354cbcf9fe4cb8dc36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad080e98f84ff50354cbcf9fe4cb8dc36">setAudioSpec</a> (const SAudioSpec &amp;spec)</td></tr>
+<tr class="memdesc:ad080e98f84ff50354cbcf9fe4cb8dc36"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置音频格式属性  <br /></td></tr>
+<tr class="memitem:a069f80cac8b5c3b738f82bfbada7e9b2" id="r_a069f80cac8b5c3b738f82bfbada7e9b2"><td class="memItemLeft" align="right" valign="top">const SAudioSpec &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a069f80cac8b5c3b738f82bfbada7e9b2">audioSpec</a> () const</td></tr>
+<tr class="memdesc:a069f80cac8b5c3b738f82bfbada7e9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取音频格式  <br /></td></tr>
+<tr class="memitem:a853de9afec877d9ec367f5ea9ded0b05" id="r_a853de9afec877d9ec367f5ea9ded0b05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a853de9afec877d9ec367f5ea9ded0b05">setBGMVolume</a> (float volume)</td></tr>
+<tr class="memdesc:a853de9afec877d9ec367f5ea9ded0b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置背景音乐音量  <br /></td></tr>
+<tr class="memitem:a54f487b522a996f962d236b883a6088e" id="r_a54f487b522a996f962d236b883a6088e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54f487b522a996f962d236b883a6088e">bgmVolume</a> () const</td></tr>
+<tr class="memdesc:a54f487b522a996f962d236b883a6088e"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前背景音乐音量  <br /></td></tr>
+<tr class="memitem:ab77b8d1042ffb6e740815cd542e84c9b" id="r_ab77b8d1042ffb6e740815cd542e84c9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab77b8d1042ffb6e740815cd542e84c9b">setSFXVolume</a> (float volume)</td></tr>
+<tr class="memdesc:ab77b8d1042ffb6e740815cd542e84c9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置音效音量  <br /></td></tr>
+<tr class="memitem:a4f855ebd0297c3cfe4d8fb3ee1752a77" id="r_a4f855ebd0297c3cfe4d8fb3ee1752a77"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f855ebd0297c3cfe4d8fb3ee1752a77">sfxVolume</a> () const</td></tr>
+<tr class="memdesc:a4f855ebd0297c3cfe4d8fb3ee1752a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前音效音量  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a37ddc25670fbe8e26e6a0787a8432738" id="r_a37ddc25670fbe8e26e6a0787a8432738"><td class="memItemLeft" align="right" valign="top"><a id="a37ddc25670fbe8e26e6a0787a8432738" name="a37ddc25670fbe8e26e6a0787a8432738"></a>
+static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>音频系统 </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a069f80cac8b5c3b738f82bfbada7e9b2" name="a069f80cac8b5c3b738f82bfbada7e9b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069f80cac8b5c3b738f82bfbada7e9b2">&#9670;&#160;</a></span>audioSpec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const SAudioSpec &amp; EasyEngine::AudioSystem::audioSpec </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取音频格式 </p>
+<dl class="section return"><dt>返回</dt><dd>返回完整的音频格式 </dd></dl>
+
+</div>
+</div>
+<a id="a54f487b522a996f962d236b883a6088e" name="a54f487b522a996f962d236b883a6088e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54f487b522a996f962d236b883a6088e">&#9670;&#160;</a></span>bgmVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float EasyEngine::AudioSystem::bgmVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前背景音乐音量 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a853de9afec877d9ec367f5ea9ded0b05" title="设置背景音乐音量">setBGMVolume</a> </dd></dl>
+
+</div>
+</div>
+<a id="a546eb2d560dd16a0f5aeae9c3dd70c2a" name="a546eb2d560dd16a0f5aeae9c3dd70c2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a546eb2d560dd16a0f5aeae9c3dd70c2a">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::AudioSystem::init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载音频系统 </p>
+<p>仅限使用于当音频系统未能成功启动的情况下使用 </p>
+
+</div>
+</div>
+<a id="ad080e98f84ff50354cbcf9fe4cb8dc36" name="ad080e98f84ff50354cbcf9fe4cb8dc36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad080e98f84ff50354cbcf9fe4cb8dc36">&#9670;&#160;</a></span>setAudioSpec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::AudioSystem::setAudioSpec </td>
+          <td>(</td>
+          <td class="paramtype">const SAudioSpec &amp;</td>          <td class="paramname"><span class="paramname"><em>spec</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="_core_8h.html#a2fb175ec576ac67821e6c3fe9e742aed">StdAudioSpec::Stereo</a></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置音频格式属性 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">spec</td><td>指定的音频格式属性 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>推荐使用 <a class="el" href="namespace_std_audio_spec.html" title="标准音频格式">StdAudioSpec</a> 命名空间选择音频配置！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a069f80cac8b5c3b738f82bfbada7e9b2" title="获取音频格式">audioSpec</a> </dd></dl>
+
+</div>
+</div>
+<a id="a853de9afec877d9ec367f5ea9ded0b05" name="a853de9afec877d9ec367f5ea9ded0b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853de9afec877d9ec367f5ea9ded0b05">&#9670;&#160;</a></span>setBGMVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::AudioSystem::setBGMVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置背景音乐音量 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a54f487b522a996f962d236b883a6088e" title="获取当前背景音乐音量">bgmVolume</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab77b8d1042ffb6e740815cd542e84c9b" name="ab77b8d1042ffb6e740815cd542e84c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab77b8d1042ffb6e740815cd542e84c9b">&#9670;&#160;</a></span>setSFXVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::AudioSystem::setSFXVolume </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>volume</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置音效音量 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a4f855ebd0297c3cfe4d8fb3ee1752a77" title="获取当前音效音量">sfxVolume</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4f855ebd0297c3cfe4d8fb3ee1752a77" name="a4f855ebd0297c3cfe4d8fb3ee1752a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f855ebd0297c3cfe4d8fb3ee1752a77">&#9670;&#160;</a></span>sfxVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float EasyEngine::AudioSystem::sfxVolume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前音效音量 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab77b8d1042ffb6e740815cd542e84c9b" title="设置音效音量">setSFXVolume</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_core_8h_source.html">Core.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Core.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="class_easy_engine_1_1_audio_system.html">AudioSystem</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

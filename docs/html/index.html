@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: Easy Engine 游戏引擎文档</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('index.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Easy Engine 游戏引擎文档 </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_mainpage"></a></p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+项目概述</h1>
+<p>Easy Engine 是一个基于 SDL3 图形引擎库二次封装的开源游戏引擎，专为简化游戏开发流程而设计。它提供了现代化的 C++23 接口，将复杂的 SDL3 操作封装成直观易用的 API，让开发者能够专注于游戏逻辑而非底层图形编程。</p>
+<p>引擎采用模块化设计，包含核心引擎管理、图形渲染、组件系统、算法库等多个模块，为 2D 游戏开发提供了完整的解决方案。无论是开发简单的 2D 游戏，还是构建复杂的图形应用，Easy Engine 都能提供强大的支持。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+主要特性</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+🎮 核心引擎功能</h2>
+<ul>
+<li>**多窗口管理**：支持创建和管理多个独立窗口</li>
+<li>**事件驱动架构**：完整的事件处理系统，支持键盘、鼠标、窗口事件</li>
+<li>**帧率控制**：精确的帧率管理，支持动态调整帧率限制</li>
+<li>**资源管理**：自动化的纹理、音频资源加载和管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+🎨 图形渲染系统</h2>
+<ul>
+<li>**基本图形绘制**：<ul>
+<li>点、线、矩形、椭圆等基础图形</li>
+<li>支持填充和描边模式</li>
+<li>透明度和颜色混合</li>
+</ul>
+</li>
+<li>**精灵系统**：<ul>
+<li>纹理加载和管理</li>
+<li>精灵裁剪和缩放</li>
+<li>旋转和翻转（水平/垂直）</li>
+<li>颜色通道调整</li>
+</ul>
+</li>
+<li>**高级渲染**：<ul>
+<li>批量渲染优化</li>
+<li>动态粒子系统</li>
+<li>实时性能监控</li>
+</ul>
+</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+🧩 组件化架构</h2>
+<ul>
+<li>**实体系统**：基于实体-组件模式的游戏对象管理</li>
+<li>**精灵组件**：支持动画和静态精灵</li>
+<li>**碰撞检测**：内置碰撞体组件和碰撞检测算法</li>
+<li>**动画系统**：帧动画和过渡动画支持</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+📐 数学和算法库</h2>
+<ul>
+<li>**几何算法**：<ul>
+<li>中心圆算法生成</li>
+<li>向量数学运算</li>
+<li>碰撞检测算法</li>
+</ul>
+</li>
+<li>**颜色处理**：<ul>
+<li>RGBA/十六进制颜色转换</li>
+<li>颜色插值和渐变</li>
+</ul>
+</li>
+<li>**性能优化**：高效的数学计算和内存管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+🔧 开发工具</h2>
+<ul>
+<li>**调试支持**：<ul>
+<li>实时性能监控面板</li>
+<li>帧率统计和丢帧检测</li>
+<li>详细的日志系统</li>
+</ul>
+</li>
+<li>**热重载**：运行时参数调整（帧率、窗口大小等）</li>
+<li>**跨平台**：基于 SDL3 的跨平台兼容性</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+技术架构</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+模块结构</h2>
+<div class="fragment"><div class="line">EasyEngine/</div>
+<div class="line">├── Core/           # 引擎核心（窗口、事件、渲染管理）</div>
+<div class="line">├── Components/     # 游戏组件（精灵、实体、碰撞体）</div>
+<div class="line">├── Basic/         # 基础数据结构（图形、数学、颜色）</div>
+<div class="line">├── Algorithm/     # 算法库（几何、数学、工具）</div>
+<div class="line">├── Resources/     # 资源管理（纹理、音频、字体）</div>
+<div class="line">└── Utils/         # 工具类和辅助函数</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+核心类层次</h2>
+<ul>
+<li>**Engine**：主引擎类，管理整个游戏生命周期</li>
+<li>**Window**：窗口管理，支持多窗口操作</li>
+<li>**Painter**：图形绘制器，提供所有绘图接口</li>
+<li>**Entity**：游戏实体基类</li>
+<li>**Spirit**：精灵类，管理纹理和渲染属性</li>
+<li>**Collider**：碰撞体组件，处理碰撞检测</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+快速开始</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+最小示例</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_core_8h.html">src/Core.h</a>&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_easy_engine.html">EasyEngine</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    <span class="comment">// 创建引擎实例</span></div>
+<div class="line">    <a class="code hl_class" href="class_easy_engine_1_1_engine.html">Engine</a> engine(<span class="stringliteral">&quot;我的游戏&quot;</span>, 800, 600);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// 设置事件处理器</span></div>
+<div class="line">    engine.installEventHandler([&amp;engine](SDL_Event event) {</div>
+<div class="line">        <span class="keywordflow">if</span> (event.type == SDL_QUIT) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">    });</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// 设置渲染回调</span></div>
+<div class="line">    engine.painter()-&gt;installPaintEvent([&amp;](<a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a>&amp; painter) {</div>
+<div class="line">        painter.<a class="code hl_function" href="class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef">fillBackColor</a>(SColor(50, 50, 80, 255));</div>
+<div class="line">        </div>
+<div class="line">        <span class="comment">// 绘制一个红色矩形</span></div>
+<div class="line">        <a class="code hl_struct" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> rect(100, 100, 200, 150, SColor(255, 0, 0, 255));</div>
+<div class="line">        rect.filled_mode = <span class="keyword">true</span>;</div>
+<div class="line">        painter.<a class="code hl_function" href="class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea">drawRectangle</a>(rect);</div>
+<div class="line">    });</div>
+<div class="line">    </div>
+<div class="line">    engine.show();</div>
+<div class="line">    <span class="keywordflow">return</span> engine.exec();</div>
+<div class="line">}</div>
+<div class="ttc" id="a_core_8h_html"><div class="ttname"><a href="_core_8h.html">Core.h</a></div><div class="ttdoc">引擎内核</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_engine_html"><div class="ttname"><a href="class_easy_engine_1_1_engine.html">EasyEngine::Engine</a></div><div class="ttdoc">引擎类</div><div class="ttdef"><b>定义</b> Core.h:59</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_painter_html"><div class="ttname"><a href="class_easy_engine_1_1_painter.html">EasyEngine::Painter</a></div><div class="ttdoc">图形绘制器</div><div class="ttdef"><b>定义</b> Core.h:314</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_painter_html_a66f911e0a810c1a1eafeaf3d4a9300ef"><div class="ttname"><a href="class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef">EasyEngine::Painter::fillBackColor</a></div><div class="ttdeci">void fillBackColor(const SColor &amp;color)</div><div class="ttdoc">填充背景颜色</div><div class="ttdef"><b>定义</b> Core.cpp:446</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_painter_html_a91e81a20096402f0c6be1d3275ca45ea"><div class="ttname"><a href="class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea">EasyEngine::Painter::drawRectangle</a></div><div class="ttdeci">void drawRectangle(const Graphics::Rectangle &amp;rect)</div><div class="ttdoc">绘制矩形</div><div class="ttdef"><b>定义</b> Core.cpp:458</div></div>
+<div class="ttc" id="anamespace_easy_engine_html"><div class="ttname"><a href="namespace_easy_engine.html">EasyEngine</a></div><div class="ttdoc">引擎</div><div class="ttdef"><b>定义</b> Algorithm.h:19</div></div>
+<div class="ttc" id="astruct_easy_engine_1_1_graphics_1_1_rectangle_html"><div class="ttname"><a href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">EasyEngine::Graphics::Rectangle</a></div><div class="ttdoc">矩形</div><div class="ttdef"><b>定义</b> Basic.h:218</div></div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+高级功能示例</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+精灵动画</h3>
+<div class="fragment"><div class="line"><span class="comment">// 创建精灵</span></div>
+<div class="line">Spirit player(<span class="stringliteral">&quot;player&quot;</span>, <span class="stringliteral">&quot;assets/player.png&quot;</span>, renderer);</div>
+<div class="line">player.setPosition(<a class="code hl_struct" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(400, 300));</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 在渲染循环中</span></div>
+<div class="line">engine.painter()-&gt;installPaintEvent([&amp;](<a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a>&amp; painter) {</div>
+<div class="line">    <span class="comment">// 绘制精灵</span></div>
+<div class="line">    player.draw(<a class="code hl_struct" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(400, 300), &amp;painter);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// 添加旋转效果</span></div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">float</span> rotation = 0;</div>
+<div class="line">    rotation += 1.0f;</div>
+<div class="line">    player.draw(<a class="code hl_struct" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(400, 300), rotation, <a class="code hl_struct" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(32, 32), </div>
+<div class="line">                FlipMode::None, &amp;painter);</div>
+<div class="line">});</div>
+<div class="ttc" id="astruct_easy_engine_1_1_vector2_html"><div class="ttname"><a href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a></div><div class="ttdoc">向量坐标</div><div class="ttdef"><b>定义</b> Basic.h:144</div></div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+碰撞检测</h3>
+<div class="fragment"><div class="line">Entity player(<span class="stringliteral">&quot;player&quot;</span>);</div>
+<div class="line">Entity enemy(<span class="stringliteral">&quot;enemy&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 在更新循环中检查碰撞</span></div>
+<div class="line"><span class="keywordflow">if</span> (player.isCollision(enemy)) {</div>
+<div class="line">    <span class="comment">// 处理碰撞逻辑</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+性能监控</h3>
+<div class="fragment"><div class="line"><span class="comment">// 启用帧率显示</span></div>
+<div class="line">engine.setFPS(60);</div>
+<div class="line">engine.setFrameDropTolerance(1.5f);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 实时显示性能数据</span></div>
+<div class="line">engine.painter()-&gt;installPaintEvent([&amp;](<a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a>&amp; painter) {</div>
+<div class="line">    <span class="keywordtype">char</span> fpsText[64];</div>
+<div class="line">    sprintf(fpsText, <span class="stringliteral">&quot;FPS: %u&quot;</span>, engine.fps());</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// 绘制性能面板</span></div>
+<div class="line">    <a class="code hl_struct" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> panel(10, 10, 200, 80, SColor(0, 0, 0, 128));</div>
+<div class="line">    panel.filled_mode = <span class="keyword">true</span>;</div>
+<div class="line">    painter.<a class="code hl_function" href="class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea">drawRectangle</a>(panel);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// 这里可以添加文字渲染</span></div>
+<div class="line">});</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+构建和部署</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+系统要求</h2>
+<ul>
+<li>**编译器**：支持 C++23 的现代编译器</li>
+<li>**依赖库**：<ul>
+<li>SDL3 (图形和窗口管理)</li>
+<li>SDL3_image (图像加载)</li>
+<li>SDL3_ttf (字体渲染)</li>
+<li>SDL3_mixer (音频播放)</li>
+<li>fmt (格式化库)</li>
+</ul>
+</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+构建命令</h2>
+<div class="fragment"><div class="line"># 配置项目</div>
+<div class="line">cmake -B build</div>
+<div class="line"> </div>
+<div class="line"># 构建项目</div>
+<div class="line">cmake --build build</div>
+<div class="line"> </div>
+<div class="line"># 运行示例</div>
+<div class="line">./build/EasyEngine</div>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+开发环境配置</h2>
+<p>项目已配置好 CLion/Visual Studio 的 CMake 支持，可直接导入构建。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+版本信息</h1>
+<ul>
+<li>**当前版本**：0.1.1-beta</li>
+<li>**API 状态**：稳定开发中</li>
+<li>**兼容性**：Windows/Linux/macOS (通过 SDL3)</li>
+<li>**许可证**：开源项目</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+贡献和支持</h1>
+<p>Easy Engine 是一个持续开发中的项目，欢迎开发者参与贡献。项目采用模块化设计，便于扩展和维护。</p>
+<p>如需技术支持或功能建议，请通过项目文档中的联系方式获取帮助。 </p>
+</div></div><!-- PageDoc -->
+<a href="doxygen_crawl.html"></a>
+</div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

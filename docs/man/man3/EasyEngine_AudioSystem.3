@@ -1,0 +1,163 @@
+.TH "EasyEngine::AudioSystem" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::AudioSystem \- 音频系统  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "struct \fBAudio\fP"
+.br
+.RI "音频属性 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBAudioSystem\fP (\fBAudioSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBAudioSystem\fP & \fBoperator=\fP (\fBAudioSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "bool \fBinitSystem\fP ()"
+.br
+.RI "加载音频系统 "
+.ti -1c
+.RI "void \fBsetAudioSpec\fP (const SAudioSpec &spec)"
+.br
+.RI "设置音频格式属性 "
+.ti -1c
+.RI "const SAudioSpec & \fBaudioSpec\fP () const"
+.br
+.RI "获取音频格式 "
+.ti -1c
+.RI "void \fBsetBGMVolume\fP (float volume)"
+.br
+.RI "设置背景音乐音量 "
+.ti -1c
+.RI "float \fBbgmVolume\fP () const"
+.br
+.RI "获取当前背景音乐音量 "
+.ti -1c
+.RI "void \fBsetSFXVolume\fP (float volume)"
+.br
+.RI "设置音效音量 "
+.ti -1c
+.RI "float \fBsfxVolume\fP () const"
+.br
+.RI "获取当前音效音量 "
+.in -1c
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static \fBAudioSystem\fP * \fBinstance\fP ()"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+音频系统 
+.SH "成员函数说明"
+.PP 
+.SS "const SAudioSpec & EasyEngine::AudioSystem::audioSpec () const"
+
+.PP
+获取音频格式 
+.PP
+\fB返回\fP
+.RS 4
+返回完整的音频格式 
+.RE
+.PP
+
+.SS "float EasyEngine::AudioSystem::bgmVolume () const"
+
+.PP
+获取当前背景音乐音量 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetBGMVolume\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::AudioSystem::initSystem ()"
+
+.PP
+加载音频系统 仅限使用于当音频系统未能成功启动的情况下使用 
+.SS "void EasyEngine::AudioSystem::setAudioSpec (const SAudioSpec & spec = \fR\fBStdAudioSpec::Stereo\fP\fP)"
+
+.PP
+设置音频格式属性 
+.PP
+\fB参数\fP
+.RS 4
+\fIspec\fP 指定的音频格式属性 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+推荐使用 \fBStdAudioSpec\fP 命名空间选择音频配置！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaudioSpec\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::setBGMVolume (float volume)"
+
+.PP
+设置背景音乐音量 
+.PP
+\fB参数\fP
+.RS 4
+\fIvolume\fP 指定音量（按 0\&.0 ~ 1\&.0 表示音量百分比） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBbgmVolume\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::setSFXVolume (float volume)"
+
+.PP
+设置音效音量 
+.PP
+\fB参数\fP
+.RS 4
+\fIvolume\fP 指定音量（按 0\&.0 ~ 1\&.0 表示音量百分比） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsfxVolume\fP 
+.RE
+.PP
+
+.SS "float EasyEngine::AudioSystem::sfxVolume () const"
+
+.PP
+获取当前音效音量 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetSFXVolume\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.
