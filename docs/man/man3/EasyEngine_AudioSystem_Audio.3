@@ -36,6 +36,24 @@ EasyEngine::AudioSystem::Audio \- 音频属性
 .RI "bool \fBis_stream\fP {false}"
 .br
 .RI "是否为流音频 "
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   MIX_Track * \fBtrack\fP {nullptr}"
+.br
+.ti -1c
+.RI "   uint64_t \fBposition\fP"
+.br
+.RI "当前播放位置 "
+.ti -1c
+.RI "   uint64_t \fBduration\fP"
+.br
+.RI "该音频下的总时长 "
+.ti -1c
+.RI "} \fBStream\fP"
+.br
+.RI "针对流音频的属性 "
 .in -1c
 .SH "详细描述"
 .PP 

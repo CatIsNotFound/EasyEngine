@@ -27,9 +27,13 @@ EasyEngine::AudioSystem \- 音频系统
 .RI "\fBAudioSystem\fP & \fBoperator=\fP (\fBAudioSystem\fP &)=delete"
 .br
 .ti -1c
-.RI "bool \fBinitSystem\fP ()"
+.RI "bool \fBinit\fP ()"
 .br
-.RI "加载音频系统 "
+.RI "初始化音频系统 "
+.ti -1c
+.RI "void \fBunload\fP ()"
+.br
+.RI "卸载音频系统 "
 .ti -1c
 .RI "void \fBsetAudioSpec\fP (const SAudioSpec &spec)"
 .br
@@ -54,12 +58,71 @@ EasyEngine::AudioSystem \- 音频系统
 .RI "float \fBsfxVolume\fP () const"
 .br
 .RI "获取当前音效音量 "
+.ti -1c
+.RI "int16_t \fBloadBGM\fP (const \fBEasyEngine::BGM\fP &bgm)"
+.br
+.RI "载入背景音乐 "
+.ti -1c
+.RI "int16_t \fBloadSFX\fP (const \fBSFX\fP &sfx)"
+.br
+.RI "载入音效 "
+.ti -1c
+.RI "bool \fBplayBGM\fP (uint8_t channel, bool loop=false)"
+.br
+.RI "播放背景音 "
+.ti -1c
+.RI "bool \fBplaySFX\fP (uint8_t channel)"
+.br
+.RI "播放音效 "
+.ti -1c
+.RI "void \fBstopBGM\fP (uint8_t channel, bool pause, int64_t fade_out_duration=0)"
+.br
+.RI "立刻暂停/停止播放指定通道的 \fBBGM\fP "
+.ti -1c
+.RI "void \fBstopSFX\fP (uint8_t channel)"
+.br
+.RI "立刻停止播放指定通道的 \fBSFX\fP "
+.ti -1c
+.RI "void \fBstopAllBGM\fP ()"
+.br
+.RI "立刻停止播放所有通道的背景音 "
+.ti -1c
+.RI "void \fBstopAllSFX\fP ()"
+.br
+.RI "立刻停止播放所有通道的音效 "
+.ti -1c
+.RI "void \fBunloadBGM\fP (uint8_t channel)"
+.br
+.RI "卸载背景音，移除播放源路径 "
+.ti -1c
+.RI "void \fBunloadSFX\fP (uint8_t channel)"
+.br
+.RI "卸载音效，移除播放源路径 "
+.ti -1c
+.RI "void \fBunloadAllChannel\fP ()"
+.br
+.RI "卸载所有的音频 "
+.ti -1c
+.RI "const \fBAudio\fP & \fBbgmChannel\fP (uint8_t channel)"
+.br
+.RI "从背景音通道中获取指定通道的音频 "
+.ti -1c
+.RI "const \fBAudio\fP & \fBsfxChannel\fP (uint8_t channel)"
+.br
+.RI "从音效通道中获取指定通道的音频 "
 .in -1c
 .SS "静态 Public 成员函数"
 
 .in +1c
 .ti -1c
 .RI "static \fBAudioSystem\fP * \fBinstance\fP ()"
+.br
+.in -1c
+.SS "Protected 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBupdateBGMChannel\fP ()"
 .br
 .in -1c
 .SH "详细描述"
@@ -78,6 +141,27 @@ EasyEngine::AudioSystem \- 音频系统
 .RE
 .PP
 
+.SS "const \fBEasyEngine::AudioSystem::Audio\fP & EasyEngine::AudioSystem::bgmChannel (uint8_t channel)"
+
+.PP
+从背景音通道中获取指定通道的音频 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道 (范围：0 ~ 15) 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回该通道下的音频属性 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBAudio\fP 
+.RE
+.PP
+
 .SS "float EasyEngine::AudioSystem::bgmVolume () const"
 
 .PP
@@ -89,10 +173,143 @@ EasyEngine::AudioSystem \- 音频系统
 .RE
 .PP
 
-.SS "bool EasyEngine::AudioSystem::initSystem ()"
+.SS "bool EasyEngine::AudioSystem::init ()"
 
 .PP
-加载音频系统 仅限使用于当音频系统未能成功启动的情况下使用 
+初始化音频系统 
+.PP
+\fB注解\fP
+.RS 4
+必须执行，否则无法正常使用音频 
+.RE
+.PP
+
+.SS "int16_t EasyEngine::AudioSystem::loadBGM (const \fBEasyEngine::BGM\fP & bgm)"
+
+.PP
+载入背景音乐 
+.PP
+\fB参数\fP
+.RS 4
+\fIbgm\fP 指定 \fBBGM\fP 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回播放的通道，加载失败时返回 -1
+.RE
+.PP
+将会自动从现有的空闲通道中播放，若无空闲通道，则强占最先加入的通道。 
+.PP
+\fB参见\fP
+.RS 4
+\fBplayBGM\fP 
+
+.PP
+\fBstopBGM\fP 
+
+.PP
+\fBstopAllBGM\fP 
+
+.PP
+\fBunloadBGM\fP 
+.RE
+.PP
+
+.SS "int16_t EasyEngine::AudioSystem::loadSFX (const \fBSFX\fP & sfx)"
+
+.PP
+载入音效 
+.PP
+\fB参数\fP
+.RS 4
+\fIsfx\fP 指定 \fBSFX\fP 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回播放的通道，加载失败时返回 -1
+.RE
+.PP
+将会自动从现有的空闲通道中播放，若无空闲通道，则强占最先加入的通道。 
+.PP
+\fB参见\fP
+.RS 4
+\fBplaySFX\fP 
+
+.PP
+\fBstopSFX\fP 
+
+.PP
+\fBstopAllSFX\fP 
+
+.PP
+\fBunloadSFX\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::AudioSystem::playBGM (uint8_t channel, bool loop = \fRfalse\fP)"
+
+.PP
+播放背景音 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道 
+.br
+\fIloop\fP 是否循环播放（默认不循环） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功播放背景音 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadBGM\fP 
+
+.PP
+\fBstopBGM\fP 
+
+.PP
+\fBstopAllBGM\fP 
+
+.PP
+\fBunloadBGM\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::AudioSystem::playSFX (uint8_t channel)"
+
+.PP
+播放音效 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功播放音效 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadSFX\fP 
+
+.PP
+\fBstopSFX\fP 
+
+.PP
+\fBstopAllSFX\fP 
+
+.PP
+\fBunloadSFX\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::AudioSystem::setAudioSpec (const SAudioSpec & spec = \fR\fBStdAudioSpec::Stereo\fP\fP)"
 
 .PP
@@ -122,6 +339,14 @@ EasyEngine::AudioSystem \- 音频系统
 \fB参数\fP
 .RS 4
 \fIvolume\fP 指定音量（按 0\&.0 ~ 1\&.0 表示音量百分比） 
+.PP
+.nf
+// 75% volume of BGM
+AudioSystem::instance()\->setBGMVolume(0\&.75f);
+
+.fi
+.PP
+ 
 .RE
 .PP
 \fB参见\fP
@@ -146,6 +371,27 @@ EasyEngine::AudioSystem \- 音频系统
 .RE
 .PP
 
+.SS "const \fBEasyEngine::AudioSystem::Audio\fP & EasyEngine::AudioSystem::sfxChannel (uint8_t channel)"
+
+.PP
+从音效通道中获取指定通道的音频 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道 (范围：0 ~ 255) 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回该通道下的音频属性 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBAudio\fP 
+.RE
+.PP
+
 .SS "float EasyEngine::AudioSystem::sfxVolume () const"
 
 .PP
@@ -154,6 +400,168 @@ EasyEngine::AudioSystem \- 音频系统
 \fB参见\fP
 .RS 4
 \fBsetSFXVolume\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::stopAllBGM ()"
+
+.PP
+立刻停止播放所有通道的背景音 
+.PP
+\fB参见\fP
+.RS 4
+\fBloadBGM\fP 
+
+.PP
+\fBplayBGM\fP 
+
+.PP
+\fBstopBGM\fP 
+
+.PP
+\fBunloadBGM\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::stopAllSFX ()"
+
+.PP
+立刻停止播放所有通道的音效 
+.PP
+\fB参见\fP
+.RS 4
+\fBloadSFX\fP 
+
+.PP
+\fBplaySFX\fP 
+
+.PP
+\fBstopSFX\fP 
+
+.PP
+\fBunloadSFX\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::stopBGM (uint8_t channel, bool pause, int64_t fade_out_duration = \fR0\fP)"
+
+.PP
+立刻暂停/停止播放指定通道的 \fBBGM\fP 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道（范围：0 ~ 15） 
+.br
+\fIpause\fP 是否选择暂停（否则将停止） 
+.br
+\fIfade_out_duration\fP 设定淡出音量持续时长（单位：ms） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadBGM\fP 
+
+.PP
+\fBplayBGM\fP 
+
+.PP
+\fBstopAllBGM\fP 
+
+.PP
+\fBunloadBGM\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::stopSFX (uint8_t channel)"
+
+.PP
+立刻停止播放指定通道的 \fBSFX\fP 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道（范围：0 ~ 255） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadSFX\fP 
+
+.PP
+\fBplaySFX\fP 
+
+.PP
+\fBstopAllSFX\fP 
+
+.PP
+\fBunloadSFX\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::unload ()"
+
+.PP
+卸载音频系统 
+.PP
+\fB注解\fP
+.RS 4
+必须执行，否则将无法正常完整卸载 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::unloadAllChannel ()"
+
+.PP
+卸载所有的音频 对于卸载音频系统非常有用 
+.SS "void EasyEngine::AudioSystem::unloadBGM (uint8_t channel)"
+
+.PP
+卸载背景音，移除播放源路径 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道（范围：0 ~ 15） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadBGM\fP 
+
+.PP
+\fBplayBGM\fP 
+
+.PP
+\fBstopBGM\fP 
+
+.PP
+\fBstopAllBGM\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::AudioSystem::unloadSFX (uint8_t channel)"
+
+.PP
+卸载音效，移除播放源路径 
+.PP
+\fB参数\fP
+.RS 4
+\fIchannel\fP 指定通道 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadSFX\fP 
+
+.PP
+\fBplaySFX\fP 
+
+.PP
+\fBstopSFX\fP 
+
+.PP
+\fBstopAllSFX\fP 
+
+.PP
+\fBunloadSFX\fP 
 .RE
 .PP
 

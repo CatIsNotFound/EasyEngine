@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['low_0',['Low',['../_core_8h.html#a7422fab4d0815fd77910384afa7bf347',1,'EasyEngine::StdAudioSpec']]]
+  ['is_5fstream_0',['is_stream',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875',1,'EasyEngine::AudioSystem::Audio']]]
 ];

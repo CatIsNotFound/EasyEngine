@@ -9,7 +9,10 @@ var struct_easy_engine_1_1_audio_system_1_1_audio =
       [ "Failed", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea791d2550c8d1f303096f4beca1df8b92", null ]
     ] ],
     [ "audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a2d0d27614d757b87f4f9ee7e5490a3e7", null ],
+    [ "duration", "struct_easy_engine_1_1_audio_system_1_1_audio.html#ad6f34097aacf061fa8d13cfd0873140d", null ],
     [ "is_stream", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875", null ],
+    [ "position", "struct_easy_engine_1_1_audio_system_1_1_audio.html#ae5046e0f191221ff9f49518dbdb16a38", null ],
     [ "status", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b5cece6de025632c02c43e44c0f2d2e", null ],
+    [ "Stream", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a632b9ab74ea16c0a24269fc8d1b2812d", null ],
     [ "url", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a5d4e547b5051a37ebc0e06bb9e62a475", null ]
 ];

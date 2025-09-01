@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['position_0',['position',['../struct_easy_engine_1_1_components_1_1_spirit_1_1_properties.html#a919962e2cf2104da113e1b0bd34c059f',1,'EasyEngine::Components::Spirit::Properties']]]
+  ['mono_0',['Mono',['../_core_8h.html#ab1f6dda9edb960b2a9d75cda1161c71d',1,'EasyEngine::StdAudioSpec']]]
 ];

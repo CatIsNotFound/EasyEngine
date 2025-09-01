@@ -86,7 +86,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_algorithm_8h.html",
-"namespace_std_color.html"
+"index.html#autotoc_md14"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

@@ -4,6 +4,8 @@ var _core_8h =
     [ "EasyEngine::Engine", "class_easy_engine_1_1_engine.html", "class_easy_engine_1_1_engine" ],
     [ "EasyEngine::Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
     [ "EasyEngine::EventSystem", "class_easy_engine_1_1_event_system.html", null ],
+    [ "EasyEngine::BGM", "class_easy_engine_1_1_b_g_m.html", "class_easy_engine_1_1_b_g_m" ],
+    [ "EasyEngine::SFX", "class_easy_engine_1_1_s_f_x.html", null ],
     [ "EasyEngine::AudioSystem", "class_easy_engine_1_1_audio_system.html", "class_easy_engine_1_1_audio_system" ],
     [ "EasyEngine::AudioSystem::Audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html", "struct_easy_engine_1_1_audio_system_1_1_audio" ],
     [ "EasyEngine::StdAudioSpec::HIFI", "_core_8h.html#a17ee9965ef595c675d8056c37b23b7d0", null ],

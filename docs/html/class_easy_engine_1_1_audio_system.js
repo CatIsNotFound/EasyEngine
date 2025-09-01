@@ -2,10 +2,24 @@ var class_easy_engine_1_1_audio_system =
 [
     [ "Audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html", "struct_easy_engine_1_1_audio_system_1_1_audio" ],
     [ "audioSpec", "class_easy_engine_1_1_audio_system.html#a069f80cac8b5c3b738f82bfbada7e9b2", null ],
+    [ "bgmChannel", "class_easy_engine_1_1_audio_system.html#a8a2a2bd25db729d63a6e20d56f00dc85", null ],
     [ "bgmVolume", "class_easy_engine_1_1_audio_system.html#a54f487b522a996f962d236b883a6088e", null ],
-    [ "initSystem", "class_easy_engine_1_1_audio_system.html#a546eb2d560dd16a0f5aeae9c3dd70c2a", null ],
+    [ "init", "class_easy_engine_1_1_audio_system.html#a057ad850a7fb93d929c0ffbe394224c1", null ],
+    [ "loadBGM", "class_easy_engine_1_1_audio_system.html#aaf16956e09653c1f3b9b1f4a63ca8f41", null ],
+    [ "loadSFX", "class_easy_engine_1_1_audio_system.html#a3d0c6edeea7125fe0ce9166f5dc87e6d", null ],
+    [ "playBGM", "class_easy_engine_1_1_audio_system.html#a2d69a9c04585c70747857cb76f34dc72", null ],
+    [ "playSFX", "class_easy_engine_1_1_audio_system.html#a2e3211688bfa5b2187a90a2d959e044f", null ],
     [ "setAudioSpec", "class_easy_engine_1_1_audio_system.html#ad080e98f84ff50354cbcf9fe4cb8dc36", null ],
     [ "setBGMVolume", "class_easy_engine_1_1_audio_system.html#a853de9afec877d9ec367f5ea9ded0b05", null ],
     [ "setSFXVolume", "class_easy_engine_1_1_audio_system.html#ab77b8d1042ffb6e740815cd542e84c9b", null ],
-    [ "sfxVolume", "class_easy_engine_1_1_audio_system.html#a4f855ebd0297c3cfe4d8fb3ee1752a77", null ]
+    [ "sfxChannel", "class_easy_engine_1_1_audio_system.html#a6b3323005b9207907c7a750caed850c5", null ],
+    [ "sfxVolume", "class_easy_engine_1_1_audio_system.html#a4f855ebd0297c3cfe4d8fb3ee1752a77", null ],
+    [ "stopAllBGM", "class_easy_engine_1_1_audio_system.html#a39e6e9ebe9dff3dfae35ac611c64e367", null ],
+    [ "stopAllSFX", "class_easy_engine_1_1_audio_system.html#a3cf759a3c3325e05ba0d7fdef50f58ba", null ],
+    [ "stopBGM", "class_easy_engine_1_1_audio_system.html#a99fb3d351ee3864b5f1e836d2cd90c5b", null ],
+    [ "stopSFX", "class_easy_engine_1_1_audio_system.html#a28ddc018d60c5866c7640214400d3053", null ],
+    [ "unload", "class_easy_engine_1_1_audio_system.html#a81b7aef121bd5df668cfe0be2d29dae5", null ],
+    [ "unloadAllChannel", "class_easy_engine_1_1_audio_system.html#a9027e9446ca0797f82ac15f80f318813", null ],
+    [ "unloadBGM", "class_easy_engine_1_1_audio_system.html#a50091941d1f325400f95f222dc678df3", null ],
+    [ "unloadSFX", "class_easy_engine_1_1_audio_system.html#a0686e0fbf415e51b2ee7af9dc673cf17", null ]
 ];

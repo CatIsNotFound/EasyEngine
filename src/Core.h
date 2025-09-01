@@ -517,13 +517,13 @@ namespace EasyEngine {
 
         /**
          * @brief 播放 BGM
-         * @param loop 是否循环播放（默认按当前设置）
+         * @param loop 是否循环播放（默认循环）
          * @see stop
          * @see paused
          * @see isPlayed
          * @see isLoop
          */
-        void play(bool loop = _is_loop);
+        void play(bool loop = true);
         /**
          * @brief 停止播放 BGM
          * @see play
@@ -561,11 +561,13 @@ namespace EasyEngine {
          * @return
          */
         uint64_t position() const;
+    protected:
+        void reload();
     private:
-        MIX_Track* _track;
         std::string _path;
         uint8_t _channel;
         bool _is_loop{false};
+        bool _is_load{false};
         uint64_t _pos{};
         friend class AudioSystem;
     };
@@ -592,6 +594,12 @@ namespace EasyEngine {
          * @note 必须执行，否则无法正常使用音频
          */
         bool init();
+        /**
+         * @brief 卸载音频系统
+         *
+         * @note 必须执行，否则将无法正常完整卸载
+         */
+        void unload();
 
         /**
          * @struct Audio
@@ -628,19 +636,21 @@ namespace EasyEngine {
             /// 是否为流音频
             bool is_stream{false};
             /// 针对流音频的属性
-            union {
+            struct {
+                MIX_Track* track{nullptr};
                 /// 当前播放位置
-                uint64_t position;
+                uint64_t position{0};
                 /// 该音频下的总时长
-                uint64_t duration;
+                uint64_t duration{0};
             } Stream;
         };
 
         /**
          * @brief 设置音频格式属性
          * @param spec 指定的音频格式属性
-         * @note 推荐使用 StdAudioSpec 命名空间选择音频配置！
+         * @note 这取决于当前的音频设备是否支持此音频格式，否则即使设置，也是无效
          * @see audioSpec
+         * @see StdAudioSpec
          */
         void setAudioSpec(const SAudioSpec& spec);
         /**
@@ -651,6 +661,10 @@ namespace EasyEngine {
         /**
          * @brief 设置背景音乐音量
          * @param volume 指定音量（按 0.0 ~ 1.0 表示音量百分比）
+         * @code
+         * // 75% volume of BGM
+         * AudioSystem::instance()->setBGMVolume(0.75f);
+         * @endcode
          * @see bgmVolume
          */
         void setBGMVolume(float volume);
@@ -662,6 +676,10 @@ namespace EasyEngine {
         /**
          * @brief 设置音效音量
          * @param volume 指定音量（按 0.0 ~ 1.0 表示音量百分比）
+         * * @code
+         * // 75% volume of SFX
+         * AudioSystem::instance()->setSFXVolume(0.75f);
+         * @endcode
          * @see sfxVolume
          */
         void setSFXVolume(float volume);
@@ -719,12 +737,13 @@ namespace EasyEngine {
          * @brief 立刻暂停/停止播放指定通道的 BGM
          * @param channel 指定通道（范围：0 ~ 15）
          * @param pause  是否选择暂停（否则将停止）
+         * @param fade_out_duration 设定淡出音量持续时长，按帧
          * @see loadBGM
          * @see playBGM
          * @see stopAllBGM
          * @see unloadBGM
          */
-        void stopBGM(uint8_t channel, bool pause = true);
+        void stopBGM(uint8_t channel, bool pause, int64_t fade_out_duration = 0);
         /**
          * @brief 立刻停止播放指定通道的 SFX
          * @param channel 指定通道（范围：0 ~ 255）
@@ -770,6 +789,12 @@ namespace EasyEngine {
          */
         void unloadSFX(uint8_t channel);
         /**
+         * @brief 卸载所有的音频
+         *
+         * 对于卸载音频系统非常有用
+         */
+        void unloadAllChannel();
+        /**
          * @brief 从背景音通道中获取指定通道的音频
          * @param channel 指定通道 (范围：0 ~ 15)
          * @return 返回该通道下的音频属性
@@ -783,6 +808,9 @@ namespace EasyEngine {
          * @see Audio
          */
         const Audio& sfxChannel(uint8_t channel);
+
+    protected:
+        void updateBGMChannel();
 
     private:
         static std::unique_ptr<AudioSystem> _instance;
@@ -816,7 +844,7 @@ namespace EasyEngine {
         /// 音频格式（高级别）
         constexpr SAudioSpec High = {SDL_AUDIO_S16, 2, 48000};
         /// 音频格式（Hi-fi 高音质）
-        constexpr SAudioSpec HIFI = {SDL_AUDIO_S32, 2, 96000};
+        constexpr SAudioSpec HIFI = {SDL_AUDIO_S16, 2, 96000};
     }
 }
 

@@ -7,5 +7,6 @@ var searchData=
   ['drawpoint_4',['drawPoint',['../class_easy_engine_1_1_painter.html#a5f5c5ded78dbf9c92861128d6d9e6a4f',1,'EasyEngine::Painter']]],
   ['drawrectangle_5',['drawRectangle',['../class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea',1,'EasyEngine::Painter']]],
   ['drawspirit_6',['drawSpirit',['../class_easy_engine_1_1_painter.html#acb907d684b2a9fb968999f7396df0f8e',1,'EasyEngine::Painter::drawSpirit(const Components::Spirit &amp;spirit, const Vector2 &amp;pos)'],['../class_easy_engine_1_1_painter.html#af86f27bd754455c8242db6747777d7da',1,'EasyEngine::Painter::drawSpirit(const Components::Spirit &amp;spirit, const Components::Spirit::Properties &amp;properties)']]],
-  ['durationinframe_7',['durationInFrame',['../class_easy_engine_1_1_components_1_1_animator.html#ae14edab2550360e760163ca37a32a3b9',1,'EasyEngine::Components::Animator']]]
+  ['duration_7',['duration',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#ad6f34097aacf061fa8d13cfd0873140d',1,'EasyEngine::AudioSystem::Audio']]],
+  ['durationinframe_8',['durationInFrame',['../class_easy_engine_1_1_components_1_1_animator.html#ae14edab2550360e760163ca37a32a3b9',1,'EasyEngine::Components::Animator']]]
 ];

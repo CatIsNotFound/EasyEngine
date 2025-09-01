@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['name_0',['name',['../class_easy_engine_1_1_components_1_1_spirit.html#a9b90ad9ea7ffc8b62302d1538f3ec66a',1,'EasyEngine::Components::Spirit::name()'],['../class_easy_engine_1_1_components_1_1_entity.html#a1b1db701b402de1c41caa261b0c4cfbc',1,'EasyEngine::Components::Entity::name()']]],
-  ['newwindow_1',['newWindow',['../class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3',1,'EasyEngine::Engine']]]
+  ['midcirclef_0',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
+  ['move_1',['move',['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine']]]
 ];

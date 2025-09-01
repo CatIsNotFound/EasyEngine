@@ -16,7 +16,7 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
         SDL_Quit();
         throw std::runtime_error("Runtime Error: Initializing window failed!\n");
     }
-
+    AudioSystem::instance()->init();
 }
 
 int EasyEngine::Engine::exec() {
@@ -240,7 +240,7 @@ int EasyEngine::Engine::run() {
             _is_running = _event_system->handler(); // 高频事件处理
             last_event_time = now;
         }
-        
+
         // 渲染循环，根据 FPS 动态调整渲染频率
         bool should_render = false;
         if (_fps > 0) {
@@ -253,7 +253,7 @@ int EasyEngine::Engine::run() {
             // 无限制帧率 - 每帧都渲染
             should_render = true;
         }
-        
+
         if (should_render && _is_running) {
             // 渲染前更新阈值
             if (_fps > 0) {
@@ -262,12 +262,12 @@ int EasyEngine::Engine::run() {
             } else {
                 max_frame_duration = performance_freq / 40;
             }
-            
+
             uint64_t render_start = SDL_GetPerformanceCounter();
-            
+
             {
                 std::lock_guard<std::mutex> lock(_mutex);
-                
+
                 // 检查丢帧
                 bool should_skip_frame = false;
                 if (consecutive_slow_frames >= max_consecutive_slow_frames) {
@@ -275,28 +275,28 @@ int EasyEngine::Engine::run() {
                     consecutive_slow_frames = 0;
                     SDL_Log("[DROP] Frame skipped due to slow rendering");
                 }
-                
+
                 if (!should_skip_frame) {
                     if (_window_count == 1) {
                         _renderer_list.begin()->second->update();
                     } else if (_window_count > 1) {
-                        for (auto& _renderer : _renderer_list) {
+                        for (auto &_renderer: _renderer_list) {
                             _renderer.second->update();
                         }
                     }
                 }
             }
-            
+
             // 丢帧检测
             uint64_t render_end = SDL_GetPerformanceCounter();
             uint64_t render_duration = render_end - render_start;
-            
+
             if (render_duration > max_frame_duration) {
                 consecutive_slow_frames++;
             } else {
                 consecutive_slow_frames = 0;
             }
-            
+
             // FPS统计
             frames_in_a_second++;
             if (now - latest_fps_check >= performance_freq) {
@@ -305,7 +305,7 @@ int EasyEngine::Engine::run() {
                 frames_in_a_second = 0;
             }
         }
-        
+
         // 防止CPU占用过高
         if (!should_render) {
             SDL_DelayNS(1000000ULL); // 1ms睡眠
@@ -315,6 +315,7 @@ int EasyEngine::Engine::run() {
 }
 
 void EasyEngine::Engine::cleanUp() {
+    AudioSystem::instance()->unload();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);
@@ -595,6 +596,7 @@ EasyEngine::EventSystem::~EventSystem() = default;
 bool EasyEngine::EventSystem::handler() {
     static SEvent ev;
     static bool ret = true;
+
     if (SDL_PollEvent(&ev)) {
         if (ev.window.type == SDL_EVENT_QUIT) {
             return false;
@@ -606,6 +608,67 @@ bool EasyEngine::EventSystem::handler() {
     return ret;
 }
 
+EasyEngine::BGM::BGM() {}
+
+EasyEngine::BGM::~BGM() {}
+
+EasyEngine::BGM::BGM(const std::string &path) : _path(path) {
+    auto ret = AudioSystem::instance()->loadBGM(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
+}
+
+void EasyEngine::BGM::setPath(const std::string &path) {
+    _path = path;
+    auto ret = AudioSystem::instance()->loadBGM(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
+}
+
+const std::string &EasyEngine::BGM::path() const {
+    return _path;
+}
+
+void EasyEngine::BGM::play(bool loop) {
+    if (_is_load) {
+        _is_loop = loop;
+        reload();
+        AudioSystem::instance()->playBGM(_channel, loop);
+    }
+}
+
+void EasyEngine::BGM::stop() {
+    if (_is_load)
+        AudioSystem::instance()->stopBGM(_channel, false, 100);
+}
+
+void EasyEngine::BGM::pause() {
+    if (_is_load)
+        AudioSystem::instance()->stopBGM(_channel, true);
+}
+
+bool EasyEngine::BGM::isPlayed() const {
+    return AudioSystem::instance()->bgmChannel(_channel).status == AudioSystem::Audio::Playing;
+}
+
+bool EasyEngine::BGM::isLoop() const {
+    return _is_loop;
+}
+
+uint64_t EasyEngine::BGM::position() const {
+    return 0;
+}
+
+void EasyEngine::BGM::reload() {
+    if (AudioSystem::instance()->bgmChannel(_channel).url != _path) {
+        auto ret = AudioSystem::instance()->loadBGM(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    }
+}
+
 EasyEngine::AudioSystem::AudioSystem() {
     if (!MIX_Init()) {
         SDL_Log("[ERROR] Failed to load audio system! Code: %s", SDL_GetError());
@@ -615,9 +678,6 @@ EasyEngine::AudioSystem::AudioSystem() {
 }
 
 EasyEngine::AudioSystem::~AudioSystem() {
-    if (_is_loaded) {
-        if (_bgm_mixer) MIX_DestroyMixer(_bgm_mixer);
-    }
     if (_is_init) MIX_Quit();
 }
 
@@ -635,8 +695,8 @@ bool EasyEngine::AudioSystem::init() {
     }
     if (!_is_loaded) {
         _audio_spec = StdAudioSpec::Stereo;
-        _bgm_mixer = MIX_CreateMixer(&_audio_spec);
-        _sfx_mixer = MIX_CreateMixer(&_audio_spec);
+        _bgm_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
+        _sfx_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
         if (!_bgm_mixer) {
             _audio_spec = StdAudioSpec::Mono;
             _bgm_mixer = MIX_CreateMixer(&_audio_spec);
@@ -658,13 +718,21 @@ bool EasyEngine::AudioSystem::init() {
     return _is_loaded;
 }
 
+void EasyEngine::AudioSystem::unload() {
+    if (_is_loaded) {
+        unloadAllChannel();
+        if (_bgm_mixer) MIX_DestroyMixer(_bgm_mixer);
+        if (_sfx_mixer) MIX_DestroyMixer(_sfx_mixer);
+    }
+}
+
 void EasyEngine::AudioSystem::setAudioSpec(const SAudioSpec &spec = StdAudioSpec::Stereo) {
     if ((spec.freq == _audio_spec.freq) && (spec.channels == _audio_spec.channels)
                                         && (spec.format == _audio_spec.format))   return;
     MIX_DestroyMixer(_bgm_mixer);
     MIX_DestroyMixer(_sfx_mixer);
-    _bgm_mixer = MIX_CreateMixer(&spec);
-    _sfx_mixer = MIX_CreateMixer(&spec);
+    _bgm_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
+    _sfx_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
     if (_bgm_mixer && _sfx_mixer) {
         _audio_spec.format = spec.format;
         _audio_spec.freq = spec.freq;
@@ -682,7 +750,7 @@ const SAudioSpec& EasyEngine::AudioSystem::audioSpec() const {
 }
 
 void EasyEngine::AudioSystem::setBGMVolume(float volume) {
-    _bgm_volume = volume;
+    if (volume >= 0 && volume <= 20.01f) _bgm_volume = volume;
     MIX_SetMasterGain(_bgm_mixer, _bgm_volume);
 }
 
@@ -703,18 +771,23 @@ int16_t EasyEngine::AudioSystem::loadBGM(const EasyEngine::BGM &bgm) {
     uint8_t ret = 0;
     bool _f = false;
     for (auto& ch : _bgm_channels) {
-        if (ch.status == Audio::Unload) {
+        if (ch.status == Audio::Unload || ch.status == Audio::Failed) {
+            if (ch.status == Audio::Failed) {
+                unloadBGM(ret);
+            }
             ch.status = Audio::Loading;
-            ch.audio = MIX_LoadAudio(_bgm_mixer, bgm.path().data(), true);
+            ch.audio = MIX_LoadAudio(_bgm_mixer, bgm.path().data(), false);
             if (!ch.audio) {
-                SDL_Log("[ERROR] Failed to load BGM: %s\nCode: %s", bgm.path().data(), SDL_GetError());
+                SDL_Log("[ERROR] Failed to load BGM: %s\n        Code: %s", bgm.path().data(), SDL_GetError());
                 ch.status = Audio::Failed;
                 return -1;
             }
             ch.status = Audio::Loaded;
+            ch.url = bgm.path();
             ch.is_stream = true;
-            ch.Stream.duration = MIX_GetAudioDuration(ch.audio);
             ch.Stream.position = 0;
+            ch.Stream.duration = 0;
+
             _bgm_played_list.push_back(ret);
             _f = true;
             break;
@@ -726,7 +799,7 @@ int16_t EasyEngine::AudioSystem::loadBGM(const EasyEngine::BGM &bgm) {
         _bgm_played_list.pop_front();
         _bgm_played_list.push_back(ch);
         unloadBGM(ch);
-
+        ret = loadBGM(bgm);
     }
     return ret;
 }
@@ -736,15 +809,58 @@ int16_t EasyEngine::AudioSystem::loadSFX(const SFX &sfx) {
 }
 
 bool EasyEngine::AudioSystem::playBGM(uint8_t channel, bool loop) {
-    return false;
+    if (_bgm_channels[channel].status == Audio::Loaded) {
+        _bgm_channels[channel].Stream.track = MIX_CreateTrack(_bgm_mixer);
+        if (!_bgm_channels[channel].Stream.track) {
+            SDL_Log("[ERROR] Failed to init the track! \n        Code: %s", SDL_GetError());
+            _bgm_channels[channel].status = Audio::Failed;
+            return false;
+        }
+        bool _played = MIX_SetTrackAudio(_bgm_channels[channel].Stream.track, _bgm_channels[channel].audio);
+        if (!_played) {
+            SDL_Log("[ERROR] Can't played the bgm: %s, \n        Code: %s", 
+                    _bgm_channels[channel].url.c_str(), SDL_GetError());
+            _bgm_channels[channel].status = Audio::Failed;
+            return false;
+        }
+    }
+
+    SDL_PropertiesID id = 1;
+    SDL_SetNumberProperty(id, MIX_PROP_PLAY_LOOPS_NUMBER, (loop ? -1 : 0));
+    if (_bgm_channels[channel].status == Audio::Loaded &&
+        !MIX_PlayTrack(_bgm_channels[channel].Stream.track, id)) {
+        SDL_Log("[ERROR] Can't played the bgm: %s, \n        Code: %s",
+                _bgm_channels[channel].url.c_str(), SDL_GetError());
+        _bgm_channels[channel].status = Audio::Failed;
+        return false;
+    }
+    if (_bgm_channels[channel].status == Audio::Paused && !MIX_ResumeTrack(_bgm_channels[channel].Stream.track)) {
+        SDL_Log("[ERROR] Can't played the bgm: %s, \n        Code: %s",
+                _bgm_channels[channel].url.c_str(), SDL_GetError());
+        _bgm_channels[channel].status = Audio::Failed;
+        return false;
+    }
+    _bgm_channels[channel].Stream.duration = MIX_AudioFramesToMS(
+            _bgm_channels[channel].audio, MIX_GetAudioDuration(_bgm_channels[channel].audio)
+    );
+    _bgm_channels[channel].status = Audio::Playing;
+    return true;
 }
 
 bool EasyEngine::AudioSystem::playSFX(uint8_t channel) {
     return false;
 }
 
-void EasyEngine::AudioSystem::stopBGM(uint8_t channel, bool pause) {
-
+void EasyEngine::AudioSystem::stopBGM(uint8_t channel, bool pause, int64_t fade_out_duration) {
+    if (_bgm_channels[channel].status == Audio::Playing) {
+        if (pause) {
+            MIX_PauseTrack(_bgm_channels[channel].Stream.track);
+            _bgm_channels[channel].status = Audio::Paused;
+        } else {
+            MIX_StopTrack(_bgm_channels[channel].Stream.track, fade_out_duration);
+            _bgm_channels[channel].status = Audio::Loaded;
+        }
+    }
 }
 
 void EasyEngine::AudioSystem::stopSFX(uint8_t channel) {
@@ -752,25 +868,54 @@ void EasyEngine::AudioSystem::stopSFX(uint8_t channel) {
 }
 
 void EasyEngine::AudioSystem::stopAllBGM() {
-
+    for (uint8_t ch = 0; ch < 16; ++ch) {
+        stopBGM(ch, false);
+    }
 }
 
 void EasyEngine::AudioSystem::stopAllSFX() {
-
-}
-
-const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::bgmChannel(uint8_t channel) {
-    return <#initializer#>;
-}
-
-const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::sfxChannel(uint8_t channel) {
-    return <#initializer#>;
+    for (uint16_t ch = 0; ch <= 255; ++ch) {
+        stopSFX(ch);
+    }
 }
 
 void EasyEngine::AudioSystem::unloadBGM(uint8_t channel) {
-
+    if (channel > 15) return;
+    if (_bgm_channels[channel].status == Audio::Playing) stopBGM(channel, false, 0);
+    MIX_DestroyTrack(_bgm_channels[channel].Stream.track);
+    MIX_DestroyAudio(_bgm_channels[channel].audio);
+    _bgm_channels[channel].url.clear();
+    _bgm_channels[channel].status = Audio::Unload;
 }
 
 void EasyEngine::AudioSystem::unloadSFX(uint8_t channel) {
 
 }
+
+void EasyEngine::AudioSystem::unloadAllChannel() {
+    for (uint16_t ch = 0; ch <= 255; ++ch) {
+        if (ch < 16) unloadBGM(ch);
+        unloadSFX(ch);
+    }
+}
+
+const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::bgmChannel(uint8_t channel) {
+    if (channel <= 15)
+        return _bgm_channels[channel];
+    else
+        return _bgm_channels[15];
+}
+
+const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::sfxChannel(uint8_t channel) {
+    return _sfx_channels[channel];
+}
+
+void EasyEngine::AudioSystem::updateBGMChannel() {
+//    for (auto& ch : _bgm_channels) {
+//        if (ch.status == Audio::Playing) {
+//            MIX_
+//        }
+//    }
+}
+
+

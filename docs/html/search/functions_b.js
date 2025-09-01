@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['removeframe_0',['removeFrame',['../class_easy_engine_1_1_components_1_1_animator.html#a9b0eb0c9d9ba6d07fa8fd4ad7edfa23c',1,'EasyEngine::Components::Animator']]],
-  ['removewindow_1',['removeWindow',['../class_easy_engine_1_1_engine.html#a39e133ec46d32e1d1d2243d975ebff09',1,'EasyEngine::Engine']]],
-  ['renderer_2',['renderer',['../class_easy_engine_1_1_components_1_1_spirit.html#a91389790db18226272994531edf801e9',1,'EasyEngine::Components::Spirit']]],
-  ['replaceframe_3',['replaceFrame',['../class_easy_engine_1_1_components_1_1_animator.html#aba8d5c31ac6477b5a5c17544978d0154',1,'EasyEngine::Components::Animator']]],
-  ['reset_4',['reset',['../struct_easy_engine_1_1_vector2.html#af63bdb1dbc67e277ac0cfb53594bd488',1,'EasyEngine::Vector2::reset()'],['../struct_easy_engine_1_1_size.html#a379511bae66bc15816a852889b669e8a',1,'EasyEngine::Size::reset()']]],
-  ['resize_5',['resize',['../class_easy_engine_1_1_components_1_1_spirit.html#a1eb40aae54b4e45a058a59c89502ad83',1,'EasyEngine::Components::Spirit::resize()'],['../class_easy_engine_1_1_engine.html#aa4576d3dc3e9da3fa9515a4a2378c7e3',1,'EasyEngine::Engine::resize()']]],
-  ['rgbatohex_6',['rgbaToHex',['../class_easy_engine_1_1_algorithm.html#a17f4c019aa282000dd83553a17315710',1,'EasyEngine::Algorithm']]]
+  ['painter_0',['Painter',['../class_easy_engine_1_1_painter.html#ac730bf88a55fcdaa0612cb8412bd0361',1,'EasyEngine::Painter']]],
+  ['painter_1',['painter',['../class_easy_engine_1_1_engine.html#acb4e2107e5c31d729dbae944e503bdb0',1,'EasyEngine::Engine']]],
+  ['path_2',['path',['../class_easy_engine_1_1_components_1_1_spirit.html#a34e3d39e1abbd8610ff1f23f02671096',1,'EasyEngine::Components::Spirit::path()'],['../class_easy_engine_1_1_b_g_m.html#ab465a105830db648d5ea06d748f2b8da',1,'EasyEngine::BGM::path() const']]],
+  ['pause_3',['pause',['../class_easy_engine_1_1_b_g_m.html#ae71746b2dcc8a1e1fae95e3671cd8df2',1,'EasyEngine::BGM']]],
+  ['play_4',['play',['../class_easy_engine_1_1_components_1_1_animator.html#a7c6f25c64735a2cee6fb11bd3b676d37',1,'EasyEngine::Components::Animator::play()'],['../class_easy_engine_1_1_b_g_m.html#a00cc38563767016db91d0236d1043506',1,'EasyEngine::BGM::play()']]],
+  ['playbgm_5',['playBGM',['../class_easy_engine_1_1_audio_system.html#a2d69a9c04585c70747857cb76f34dc72',1,'EasyEngine::AudioSystem']]],
+  ['playloop_6',['playLoop',['../class_easy_engine_1_1_components_1_1_animator.html#a90cfe17005a2e8d85b25692237427eaf',1,'EasyEngine::Components::Animator']]],
+  ['playsfx_7',['playSFX',['../class_easy_engine_1_1_audio_system.html#a2e3211688bfa5b2187a90a2d959e044f',1,'EasyEngine::AudioSystem']]],
+  ['position_8',['position',['../class_easy_engine_1_1_components_1_1_entity.html#a69e9fc37eab2a5069da417a328b981ab',1,'EasyEngine::Components::Entity::position()'],['../class_easy_engine_1_1_b_g_m.html#ab732b14e96addf2802e947f48b1c4e52',1,'EasyEngine::BGM::position()']]]
 ];

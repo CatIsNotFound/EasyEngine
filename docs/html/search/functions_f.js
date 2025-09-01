@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['window_0',['window',['../class_easy_engine_1_1_engine.html#a8490688cb2669d39df068a0055082149',1,'EasyEngine::Engine::window()'],['../class_easy_engine_1_1_painter.html#aeddd595104c1e29e6cc4c7aa347f12c7',1,'EasyEngine::Painter::window()']]],
-  ['windowcount_1',['windowCount',['../class_easy_engine_1_1_engine.html#a39b495dcb4ce33bb5fab76824b853e77',1,'EasyEngine::Engine']]],
-  ['windowidlist_2',['windowIDList',['../class_easy_engine_1_1_engine.html#afa2ab8a04166fbc0fed19a91e6ff3b75',1,'EasyEngine::Engine']]],
-  ['windowtitle_3',['windowTitle',['../class_easy_engine_1_1_engine.html#a282de1155b05980b1edddc8d0b6bc4ed',1,'EasyEngine::Engine']]]
+  ['unload_0',['unload',['../class_easy_engine_1_1_audio_system.html#a81b7aef121bd5df668cfe0be2d29dae5',1,'EasyEngine::AudioSystem']]],
+  ['unloadallchannel_1',['unloadAllChannel',['../class_easy_engine_1_1_audio_system.html#a9027e9446ca0797f82ac15f80f318813',1,'EasyEngine::AudioSystem']]],
+  ['unloadbgm_2',['unloadBGM',['../class_easy_engine_1_1_audio_system.html#a50091941d1f325400f95f222dc678df3',1,'EasyEngine::AudioSystem']]],
+  ['unloadsfx_3',['unloadSFX',['../class_easy_engine_1_1_audio_system.html#a0686e0fbf415e51b2ee7af9dc673cf17',1,'EasyEngine::AudioSystem']]],
+  ['update_4',['update',['../class_easy_engine_1_1_painter.html#a72a32c99fd098857822c9d1009e43b24',1,'EasyEngine::Painter']]]
 ];

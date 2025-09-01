@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['midcirclef_0',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
-  ['move_1',['move',['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine']]]
+  ['loadbgm_0',['loadBGM',['../class_easy_engine_1_1_audio_system.html#aaf16956e09653c1f3b9b1f4a63ca8f41',1,'EasyEngine::AudioSystem']]],
+  ['loadsfx_1',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a3d0c6edeea7125fe0ce9166f5dc87e6d',1,'EasyEngine::AudioSystem']]]
 ];
