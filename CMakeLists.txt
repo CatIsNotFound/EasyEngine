@@ -42,7 +42,6 @@ add_executable(EasyEngine main.cpp.old
         src/Resources.cpp
         src/Resources.h
         main.cpp
-
 )
 
 target_link_libraries(EasyEngine PRIVATE

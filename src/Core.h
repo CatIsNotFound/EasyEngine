@@ -295,6 +295,7 @@ namespace EasyEngine {
 
         std::mutex _mutex;
         bool _is_running{false};
+        static bool _is_stopped;
         uint32_t _window_count{0};
         uint32_t _fps{0};
         uint32_t _real_fps{0};
@@ -492,91 +493,6 @@ namespace EasyEngine {
     };
 
     /**
-     * @class BGM
-     * @brief 背景音乐
-     */
-    class BGM {
-    public:
-        explicit BGM();
-        ~BGM();
-        /**
-         * @brief 创建指定路径下的 BGM
-         * @param path 指定有效路径
-         */
-        BGM(const std::string &path);
-        /**
-         * @brief 设置 BGM 播放源路径
-         * @param path 指定路径
-         */
-        void setPath(const std::string &path);
-        /**
-         * @brief 获取该 BGM 下的播放源路径
-         *
-         */
-        const std::string& path() const;
-
-        /**
-         * @brief 播放 BGM
-         * @param loop 是否循环播放（默认循环）
-         * @see stop
-         * @see paused
-         * @see isPlayed
-         * @see isLoop
-         */
-        void play(bool loop = true);
-        /**
-         * @brief 停止播放 BGM
-         * @see play
-         * @see paused
-         * @see isPlayed
-         * @see isLoop
-         */
-        void stop();
-        /**
-         * @brief 暂停播放当前 BGM
-         * @see play
-         * @see stop
-         * @see isPlayed
-         * @see isLoop
-         */
-        void pause();
-        /**
-         * @brief 当前是否正在播放 BGM
-         * @see play
-         * @see stop
-         * @see paused
-         * @see isLoop
-         */
-        bool isPlayed() const;
-        /**
-         * @brief 当前是否正在循环播放 BGM
-         * @see stop
-         * @see paused
-         * @see isPlayed
-         * @see isLoop
-         */
-        bool isLoop() const;
-        /**
-         * @brief 获取播放进度
-         * @return
-         */
-        uint64_t position() const;
-    protected:
-        void reload();
-    private:
-        std::string _path;
-        uint8_t _channel;
-        bool _is_loop{false};
-        bool _is_load{false};
-        uint64_t _pos{};
-        friend class AudioSystem;
-    };
-
-    class SFX {
-
-    };
-
-    /**
      * @class AudioSystem
      * @brief 音频系统
      */
@@ -699,7 +615,7 @@ namespace EasyEngine {
          * @see stopAllBGM
          * @see unloadBGM
          */
-        int16_t loadBGM(const EasyEngine::BGM &bgm);
+        int16_t loadBGM(const Components::BGM &bgm);
         /**
          * @brief 载入音效
          * @param sfx  指定 SFX
@@ -711,7 +627,7 @@ namespace EasyEngine {
          * @see stopAllSFX
          * @see unloadSFX
          */
-        int16_t loadSFX(const SFX &sfx);
+        int16_t loadSFX(const Components::SFX &sfx);
         /**
          * @brief 播放背景音
          * @param channel 指定通道
@@ -808,9 +724,6 @@ namespace EasyEngine {
          * @see Audio
          */
         const Audio& sfxChannel(uint8_t channel);
-
-    protected:
-        void updateBGMChannel();
 
     private:
         static std::unique_ptr<AudioSystem> _instance;

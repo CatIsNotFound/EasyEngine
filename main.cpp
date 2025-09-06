@@ -3,7 +3,7 @@
 
 using namespace EasyEngine;
 using namespace Components;
-#define MFPS 30
+#define MFPS 60
 bool is_rotated = false;
 bool is_high_fps = false;
 double rotate_degree = 0.0;
@@ -14,10 +14,10 @@ int main() {
     engine.setFPS(MFPS);
     engine.show();
     BGM bgm("assets/sound.wav");
-
+    SFX sfx("assets/sound.oga");
     Spirit spirit("Demo", "assets/demo.png", engine.window()->renderer);
-    Graphics::Rectangle rect;
-    engine.painter()->installPaintEvent([&spirit, &engine, &rect, &bgm](Painter& painter) {
+//    Graphics::Rectangle rect;
+    engine.painter()->installPaintEvent([&spirit, &engine, &bgm](Painter& painter) {
         painter.fillBackColor(StdColor::DarkBlue);
         static double rotate = 0.0;
         if (is_rotated) rotate_degree = (rotate_degree >= 360.0 ? 0.0 : rotate_degree + 1.0);
@@ -38,15 +38,13 @@ int main() {
 //        rect.size = Algorithm::spiritScaledSize(spirit, properties.scaled);
 //        rect.fore_color = Algorithm::hexToRGBA("#9080EF");
 //        painter.drawRectangle(rect);
-        auto pos = MIX_GetTrackPlaybackPosition(AudioSystem::instance()->bgmChannel(0).Stream.track);
-        auto r_pos = MIX_AudioFramesToMS(AudioSystem::instance()->bgmChannel(0).audio, pos);
+
         auto vol = static_cast<int>(AudioSystem::instance()->bgmVolume() * 100);
         auto du = AudioSystem::instance()->bgmChannel(0).Stream.duration;
-        char title[128] = "";
-        sprintf(title, "测试 Spirit FPS: %d, Pos: %lld/%lld, Vol: %d%%", engine.fps(), r_pos, du, vol);
-        engine.setWindowTitle(title);
+        engine.setWindowTitle(fmt::format("测试 FPS: {}, {}/{}, Vol:{}%", engine.fps(), bgm.position(), du, vol));
+
     });
-    engine.installEventHandler([&engine, &bgm](SEvent event) -> bool {
+    engine.installEventHandler([&engine, &bgm, &sfx](SEvent event) -> bool {
         if (event.button.down && event.button.button == 1) {
             is_rotated = !is_rotated;
             if (is_rotated) {
@@ -63,6 +61,7 @@ int main() {
         if (event.button.down && event.button.button == 3) {
             is_high_fps = !is_high_fps;
             engine.setFPS(is_high_fps ? 144 : MFPS);
+            sfx.play();
         }
         if (event.key.down && event.key.key == SDLK_R) {
             AudioSystem::instance()->setBGMVolume(0.0f);

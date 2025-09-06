@@ -32,6 +32,130 @@ namespace EasyEngine {
      */
     namespace Components {
         /**
+         * @class BGM
+         * @brief 背景音乐
+         */
+        class BGM {
+        public:
+            explicit BGM();
+            ~BGM();
+            /**
+             * @brief 创建指定路径下的 BGM
+             * @param path 指定有效路径
+             */
+            BGM(const std::string &path);
+            /**
+             * @brief 设置 BGM 播放源路径
+             * @param path 指定路径
+             */
+            void setPath(const std::string &path);
+            /**
+             * @brief 获取该 BGM 下的播放源路径
+             *
+             */
+            const std::string& path() const;
+
+            /**
+             * @brief 播放 BGM
+             * @param loop 是否循环播放（默认循环）
+             * @see stop
+             * @see paused
+             * @see isPlayed
+             * @see isLoop
+             */
+            void play(bool loop = true);
+            /**
+             * @brief 停止播放 BGM
+             * @see play
+             * @see paused
+             * @see isPlayed
+             * @see isLoop
+             */
+            void stop();
+            /**
+             * @brief 暂停播放当前 BGM
+             * @see play
+             * @see stop
+             * @see isPlayed
+             * @see isLoop
+             */
+            void pause();
+            /**
+             * @brief 当前是否正在播放 BGM
+             * @see play
+             * @see stop
+             * @see paused
+             * @see isLoop
+             */
+            bool isPlayed() const;
+            /**
+             * @brief 当前是否正在循环播放 BGM
+             * @see stop
+             * @see paused
+             * @see isPlayed
+             * @see isLoop
+             */
+            bool isLoop() const;
+            /**
+             * @brief 获取播放进度
+             *
+             * @return 返回一个以毫秒单位的播放时长
+             */
+            int64_t position() const;
+        protected:
+            void reload();
+        private:
+            std::string _path;
+            uint8_t _channel;
+            bool _is_loop{false};
+            bool _is_load{false};
+            uint64_t _pos{};
+            friend class AudioSystem;
+        };
+
+        class SFX {
+        public:
+            explicit SFX();
+            ~SFX();
+            /**
+             * @brief 创建指定路径的 SFX
+             * @param path 指定音频路径
+             */
+            SFX(const std::string& path);
+            /**
+             * @brief 设置指定源路径
+             * @param path 指定音频源路径
+             */
+            void setPath(const std::string& path);
+            /**
+             * @brief 获取当前音频源路径
+             */
+            const std::string& path() const;
+            /**
+             * @brief 播放 SFX
+             */
+            void play();
+            /**
+             * @brief 立即停止播放 SFX
+             */
+            void stop();
+            /**
+             * @brief 获取当前音频是否正在循环播放
+             */
+            bool isLoop() const;
+
+        protected:
+            void reload();
+
+        private:
+            std::string _path;
+            uint8_t _channel;
+            bool _is_loop{false};
+            bool _is_load{false};
+            friend class AudioSystem;
+        };
+
+        /**
          * @class Spirit
          * @brief 精灵
          *

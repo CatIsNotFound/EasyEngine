@@ -1,6 +1,116 @@
 
 #include "Components.h"
 
+EasyEngine::Components::BGM::BGM() {}
+
+EasyEngine::Components::BGM::~BGM() {}
+
+EasyEngine::Components::BGM::BGM(const std::string &path) : _path(path) {
+    auto ret = AudioSystem::instance()->loadBGM(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
+}
+
+void EasyEngine::Components::BGM::setPath(const std::string &path) {
+    _path = path;
+    auto ret = AudioSystem::instance()->loadBGM(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
+}
+
+const std::string &EasyEngine::Components::BGM::path() const {
+    return _path;
+}
+
+void EasyEngine::Components::BGM::play(bool loop) {
+    if (_is_load) {
+        _is_loop = loop;
+        reload();
+        AudioSystem::instance()->playBGM(_channel, loop);
+    }
+}
+
+void EasyEngine::Components::BGM::stop() {
+    if (_is_load)
+        AudioSystem::instance()->stopBGM(_channel, false, 100);
+}
+
+void EasyEngine::Components::BGM::pause() {
+    if (_is_load)
+        AudioSystem::instance()->stopBGM(_channel, true);
+}
+
+bool EasyEngine::Components::BGM::isPlayed() const {
+    return AudioSystem::instance()->bgmChannel(_channel).status == AudioSystem::Audio::Playing;
+}
+
+bool EasyEngine::Components::BGM::isLoop() const {
+    return _is_loop;
+}
+
+int64_t EasyEngine::Components::BGM::position() const {
+    auto _ms = MIX_AudioFramesToMS(AudioSystem::instance()->bgmChannel(_channel).audio,
+                                   MIX_GetTrackPlaybackPosition(AudioSystem::instance()->bgmChannel(_channel).Stream.track));
+    if (AudioSystem::instance()->bgmChannel(_channel).status == AudioSystem::Audio::Loaded) return 0;
+    return _ms;
+}
+
+void EasyEngine::Components::BGM::reload() {
+    if (AudioSystem::instance()->bgmChannel(_channel).url != _path) {
+        auto ret = AudioSystem::instance()->loadBGM(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    }
+}
+
+EasyEngine::Components::SFX::SFX() {}
+
+EasyEngine::Components::SFX::~SFX() {}
+
+EasyEngine::Components::SFX::SFX(const std::string &path) {
+    _path = path;
+    auto ret = AudioSystem::instance()->loadSFX(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+}
+
+void EasyEngine::Components::SFX::setPath(const std::string &path) {
+    _path = path;
+    auto ret = AudioSystem::instance()->loadSFX(*this);
+    _is_load = (ret != -1);
+    _channel = static_cast<uint8_t>(ret);
+}
+
+const std::string &EasyEngine::Components::SFX::path() const {
+    return _path;
+}
+
+void EasyEngine::Components::SFX::play() {
+    if (_is_load) {
+        reload();
+        AudioSystem::instance()->playSFX(_channel);
+    }
+}
+
+void EasyEngine::Components::SFX::stop() {
+    if (_is_load)
+        AudioSystem::instance()->stopSFX(_channel);
+}
+
+bool EasyEngine::Components::SFX::isLoop() const {
+    return _is_loop;
+}
+
+void EasyEngine::Components::SFX::reload() {
+    if (AudioSystem::instance()->sfxChannel(_channel).url != _path) {
+        auto ret = AudioSystem::instance()->loadSFX(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    }
+}
+
 
 EasyEngine::Components::Spirit::Spirit(const std::string &name, SRenderer *renderer)
     : _name(name), _renderer(renderer), _size(0, 0) {
