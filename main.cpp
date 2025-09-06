@@ -13,7 +13,7 @@ int main() {
     engine.setResizable(true);
     engine.setFPS(MFPS);
     engine.show();
-    BGM bgm("assets/sound.wav");
+    BGM bgm("assets/peace.wav");
     SFX sfx("assets/sound.oga");
     Spirit spirit("Demo", "assets/demo.png", engine.window()->renderer);
 //    Graphics::Rectangle rect;

@@ -28,7 +28,7 @@ set(SDL3_GFX_LIB
         libs/sdl3_gfx/SDL3_rotozoom.h
 )
 
-add_executable(EasyEngine main.cpp.old
+add_executable(EasyEngine
         ${SDL3_GFX_LIB}
         src/Core.cpp
         src/Core.h
