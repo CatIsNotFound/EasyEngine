@@ -79,19 +79,19 @@ namespace EasyEngine {
 
         /**
          * @brief 获取缩放后的精灵大小/尺寸
-         * @param spirit        指定精灵
+         * @param sprite        指定精灵
          * @param properties    精灵绘制属性
          * @return 返回缩放后的大小
          */
-        static Size spiritScaledSize(const Components::Sprite &spirit,
+        static Size spriteScaledSize(const Components::Sprite &sprite,
                                      const Components::Sprite::Properties &properties);
         /**
          * @brief 获取缩放后的精灵大小/尺寸
-         * @param spirit    指定精灵
+         * @param sprite    指定精灵
          * @param scaled    缩放倍数
          * @return 返回缩放后的精灵大小
          */
-        static Size spiritScaledSize(const Components::Sprite &spirit,
+        static Size spriteScaledSize(const Components::Sprite &sprite,
                                      const float scaled);
     };
 

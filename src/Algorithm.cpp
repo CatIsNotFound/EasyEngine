@@ -87,11 +87,11 @@ Vector2 Algorithm::spiritScaledPosition(const Vector2 &position, const float sca
     return Vector2(_new_global_left_top_pos.x, _new_global_left_top_pos.y);
 }
 
-Size Algorithm::spiritScaledSize(const Components::Sprite &spirit, const Components::Sprite::Properties &properties) {
-    return Size(spirit.size().width * properties.scaled, spirit.size().height * properties.scaled);
+Size Algorithm::spriteScaledSize(const Components::Sprite &sprite, const Components::Sprite::Properties &properties) {
+    return Size(sprite.size().width * properties.scaled, sprite.size().height * properties.scaled);
 }
 
-Size Algorithm::spiritScaledSize(const Components::Sprite &spirit, const float scaled) {
-    return Size(spirit.size().width * scaled, spirit.size().height * scaled);
+Size Algorithm::spriteScaledSize(const Components::Sprite &sprite, const float scaled) {
+    return Size(sprite.size().width * scaled, sprite.size().height * scaled);
 }
 

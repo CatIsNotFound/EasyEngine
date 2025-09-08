@@ -242,7 +242,7 @@ int EasyEngine::Engine::run() {
             last_event_time = now;
         }
         // 决定是否渲染画面
-        if (_is_stopped) continue;
+        if (_is_allowed_stop_render && _is_stopped) continue;
         // 渲染循环，根据 FPS 动态调整渲染频率
         bool should_render = false;
         if (_fps > 0) {
@@ -411,7 +411,11 @@ uint32_t EasyEngine::Engine::frameDropThreshold() const {
 }
 
 void EasyEngine::Engine::setBackgroundRenderingEnabled(bool enabled) {
-    _is_allowed_stop_render = enabled;
+    _is_allowed_stop_render = !enabled;
+}
+
+bool EasyEngine::Engine::backgroundRenderingEnabled() const {
+    return _is_allowed_stop_render;
 }
 
 EasyEngine::Painter::Painter(EasyEngine::Window* window) : _window(window), paint_function(nullptr), _thickness(1) {}
@@ -471,7 +475,19 @@ void EasyEngine::Painter::drawEllipse(const EasyEngine::Graphics::Ellipse &ellip
 }
 
 void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite, const Vector2 &pos) {
-    command_list.emplace_back(std::make_unique<SpriteCMD>(sprite, pos));
+    auto spriteCMD = new SpriteCMD(sprite, pos);
+    spriteCMD->_pos = pos + sprite.properties()->position;
+    spriteCMD->_is_clip = sprite.properties()->clip_mode;
+    spriteCMD->_clip_pos = sprite.properties()->clip_pos;
+    spriteCMD->_clip_size = sprite.properties()->clip_size;
+    spriteCMD->_rotate = sprite.properties()->rotate;
+    spriteCMD->_rotate_center = sprite.properties()->rotate_center;
+    spriteCMD->_scaled = sprite.properties()->scaled;
+    spriteCMD->_scaled_center = sprite.properties()->scaled_center;
+    spriteCMD->_flip_mode = (sprite.properties()->flip_mode == Components::Sprite::FlipMode::None ? SDL_FLIP_NONE :
+                             (sprite.properties()->flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
+    spriteCMD->_color_alpha = sprite.properties()->color_alpha;
+    command_list.emplace_back(std::unique_ptr<SpriteCMD>(spriteCMD));
 }
 
 void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite,
@@ -592,7 +608,8 @@ void EasyEngine::Painter::FillCMD::exec(SRenderer *renderer, uint32_t) {
 
 void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
     SDL_SetTextureColorMod(_sprite, _color_alpha.r, _color_alpha.g, _color_alpha.b);
-    SDL_SetTextureAlphaMod(_sprite, _color_alpha.a);
+//    SDL_SetTextureAlphaMod(_sprite, _color_alpha.a);
+    if (_color_reversed) SDL_SetTextureBlendMode(_sprite, SDL_BLENDMODE_MOD);
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
     Vector2 newPos((_pos.x - _global_center_pos.x) * _scaled + _global_center_pos.x,
                    (_pos.y - _global_center_pos.y) * _scaled + _global_center_pos.y);

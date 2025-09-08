@@ -3,7 +3,7 @@
 
 using namespace EasyEngine;
 using namespace Components;
-#define MFPS 60
+#define MFPS 40
 bool is_rotated = false;
 bool is_high_fps = false;
 bool is_focused = false;
@@ -13,20 +13,54 @@ int main() {
     engine.setGeometry(200, 200, 1024, 800);
     engine.setResizable(true);
     engine.setFPS(MFPS);
+    engine.setBackgroundRenderingEnabled(true);
     engine.show();
     BGM bgm("assets/peace.wav");
     SFX sfx("assets/sound.oga");
     Sprite spirit("Demo", "assets/demo.png", engine.window()->renderer);
     spirit.properties()->rotate_center = Vector2(spirit.size().width / 2, spirit.size().height / 2);
     spirit.properties()->scaled_center = Vector2(spirit.size().width / 2, spirit.size().height / 2);
-    engine.painter()->installPaintEvent([&spirit, &engine, &bgm](Painter& painter) {
+    spirit.properties()->color_alpha = {217, 189, 32, 255};
+
+    Sprite gear1("gear1", "assets/gear.png", engine.window()->renderer),
+           gear2("gear2", "assets/gear.png", engine.window()->renderer);
+    SpriteGroup gear_group;
+    gear_group.add(gear1);
+    gear_group.add(gear2);
+    gear_group.add(gear1);
+    gear_group.add(gear2);
+    gear_group.indexOf(1)->setPath("assets/EasyEngine_Icon.png");
+    gear_group.indexOf(1)->setName("Icon");
+    gear_group.propertiesOf(2)->scaled = 0.15f;
+    gear_group.propertiesOf(3)->scaled = 0.05f;
+    gear_group.propertiesOf(0)->scaled = 0.70f;
+    gear_group.propertiesOf(1)->scaled = 0.5f;
+    gear_group.propertiesOf(0)->position = {0, 0};
+    gear_group.propertiesOf(1)->position = {95, 95};
+    gear_group.propertiesOf(0)->rotate_center = {gear_group.indexOf(0)->size().width / 2,
+                                                 gear_group.indexOf(0)->size().height / 2};
+    gear_group.propertiesOf(1)->rotate_center = {gear_group.indexOf(1)->size().width / 2,
+                                                 gear_group.indexOf(1)->size().height / 2};
+    gear_group.propertiesOf(0)->color_alpha = StdColor::Gray;
+    gear_group.propertiesOf(gear_group.indexAt("gear1"))->color_alpha = StdColor::DeepPink;
+    SpriteGroup copied(std::move(gear_group));
+    copied.remove(3);
+    copied.remove(2);
+    engine.painter()->installPaintEvent([&spirit, &gear_group, &copied, &engine, &bgm](Painter& painter) {
         painter.fillBackColor(is_focused ? StdColor::DarkBlue : StdColor::DarkGray);
         static double rotate = 0.0;
         if (is_rotated) rotate_degree = (rotate_degree >= 360.0 ? 0.0 : rotate_degree + 1.0);
         Vector2 position = {static_cast<float>(engine.window()->geometry.width / 2 - spirit.size().width / 2),
                             static_cast<float>(engine.window()->geometry.height / 2 - spirit.size().height / 2)};
         spirit.properties()->rotate = rotate_degree;
+        spirit.properties()->rotate_center = Vector2(spirit.size().width / 2, spirit.size().height / 2);
         spirit.draw(position, &painter);
+        gear_group.propertiesOf(0)->rotate = 360 - rotate_degree;
+        gear_group.propertiesOf(1)->rotate = rotate_degree + 18;
+        gear_group.draw({100, 100}, &painter);
+        copied.propertiesOf(0)->rotate = rotate_degree;
+        copied.propertiesOf(1)->rotate = 360 - rotate_degree - 18;
+        copied.draw({100, 400}, &painter);
         auto vol = static_cast<int>(AudioSystem::instance()->bgmVolume() * 100);
         auto du = AudioSystem::instance()->bgmChannel(0).Stream.duration;
         engine.setWindowTitle(fmt::format("测试 FPS: {}, {}/{}, Vol:{}%", engine.fps(), bgm.position(), du, vol));
@@ -69,10 +103,10 @@ int main() {
         }
         if (event.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             is_focused = true;
-            if (is_rotated) bgm.play();
+            if (engine.backgroundRenderingEnabled() && is_rotated) bgm.play();
         } else if (event.window.type == SDL_EVENT_WINDOW_FOCUS_LOST) {
             is_focused = false;
-            bgm.pause();
+            if (engine.backgroundRenderingEnabled()) bgm.pause();
         }
         return true;
     });

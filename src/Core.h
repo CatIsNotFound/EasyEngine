@@ -284,8 +284,14 @@ namespace EasyEngine {
          *
          * 当窗口处于非活动状态下，根据 enabled 决定是否仍然渲染画面。
          * 这对于低性能设备而言，启用后能节省性能。
+         * @see backgroundRenderingEnabled
          */
         void setBackgroundRenderingEnabled(bool enabled);
+        /**
+         * @brief 获取当前是否允许后台渲染画面
+         * @see setBackgroundRenderingEnabled
+         */
+        bool backgroundRenderingEnabled() const;
 
     private:
         Engine() = delete;
@@ -467,6 +473,7 @@ namespace EasyEngine {
             Vector2 _scaled_center;
             float _scaled{1.0f};
             SColor _color_alpha{255, 255, 255, 255};
+            bool _color_reversed{false};
             SDL_FlipMode _flip_mode{SDL_FLIP_NONE};
             explicit SpriteCMD(const Components::Sprite& sprite, const Vector2& pos = Vector2(0, 0))
                 : _sprite(sprite.spirit()), _size(sprite.size()), _pos(pos),
@@ -476,8 +483,9 @@ namespace EasyEngine {
             SpriteCMD(const Components::Sprite& sprite, const Vector2& pos,
                       const Components::Sprite::Properties& properties)
                       : _sprite(sprite.spirit()), _size(sprite.size().width, sprite.size().height),
-                        _pos(pos + properties.position), _scaled(properties.scaled),
-                        _clip_size(properties.clip_size), _rotate(properties.rotate), _is_clip(properties.clip_mode) {
+                        _pos(pos + properties.position), _rotate(properties.rotate), _rotate_center(properties.rotate_center),
+                        _scaled(properties.scaled), _scaled_center(properties.scaled_center),
+                        _clip_size(properties.clip_size), _is_clip(properties.clip_mode) {
                 if (_is_clip)
                     _flip_mode = (properties.flip_mode == Components::Sprite::FlipMode::HFlip) ? SDL_FLIP_HORIZONTAL :
                         ((properties.flip_mode == Components::Sprite::FlipMode::VFlip) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);

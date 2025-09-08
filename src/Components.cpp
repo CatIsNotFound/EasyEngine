@@ -1,6 +1,8 @@
 
 #include "Components.h"
 
+#include <memory>
+
 EasyEngine::Components::BGM::BGM() {}
 
 EasyEngine::Components::BGM::~BGM() {}
@@ -265,8 +267,8 @@ STexture *EasyEngine::Components::Sprite::spirit() const {
 }
 
 void EasyEngine::Components::Sprite::draw(const Vector2 &pos, Painter *painter) const {
-    Vector2 new_pos = pos + _properties->position;
-    painter->drawSprite(*this, new_pos);
+    painter->drawSprite(*this, pos);
+
 }
 
 void
@@ -320,3 +322,158 @@ void EasyEngine::Components::Sprite::draw(EasyEngine::Painter *painter) const {
 }
 
 
+EasyEngine::Components::SpriteGroup::SpriteGroup(const EasyEngine::Components::SpriteGroup &&group) {
+    uint32_t _idx = 0;
+    for (auto& sprite : group._sprites) {
+        _sprites.push_back(std::make_shared<Sprite>(sprite->name(), *sprite.get()));
+        auto dst_properties = _sprites.back()->properties();
+        auto src_properties = group._sprites.at(_idx++)->properties();
+        dst_properties->position = src_properties->position;
+        dst_properties->color_alpha = src_properties->color_alpha;
+        dst_properties->scaled = src_properties->scaled;
+        dst_properties->scaled_center = src_properties->scaled_center;
+        dst_properties->rotate = src_properties->rotate;
+        dst_properties->rotate_center = src_properties->rotate_center;
+        dst_properties->clip_mode = src_properties->clip_mode;
+        dst_properties->clip_pos = src_properties->clip_pos;
+        dst_properties->clip_size = src_properties->clip_size;
+    }
+}
+
+void EasyEngine::Components::SpriteGroup::add(const EasyEngine::Components::Sprite &sprite) {
+    _sprites.push_back(std::make_shared<Sprite>(sprite.name(), sprite));
+}
+
+void EasyEngine::Components::SpriteGroup::insert(uint32_t index, const EasyEngine::Components::Sprite &sprite) {
+    _sprites.insert(_sprites.begin() + index,
+                    std::make_shared<Sprite>(sprite.name(), sprite));
+}
+
+void EasyEngine::Components::SpriteGroup::remove(const std::string &name) {
+    _sprites.erase(_sprites.begin() + indexAt(name));
+}
+
+void EasyEngine::Components::SpriteGroup::remove(uint32_t index) {
+    _sprites.erase(_sprites.begin() + index);
+}
+
+void EasyEngine::Components::SpriteGroup::swap(uint32_t index1, uint32_t index2) {
+    Sprite* t = _sprites.at(index1).get();
+    _sprites.at(index1).reset(_sprites.at(index2).get());
+    _sprites.at(index2).reset(t);
+}
+
+void EasyEngine::Components::SpriteGroup::swap(const std::string &sprite1, const std::string &sprite2) {
+    Sprite* t = _sprites.at(indexAt(sprite1)).get();
+    _sprites.at(indexAt(sprite1)).reset(_sprites.at(indexAt(sprite2)).get());
+    _sprites.at(indexAt(sprite2)).reset(t);
+}
+
+void EasyEngine::Components::SpriteGroup::swap(uint32_t index, const std::string &name) {
+    Sprite* t = _sprites.at(index).get();
+    _sprites.at(index).reset(_sprites.at(indexAt(name)).get());
+    _sprites.at(indexAt(name)).reset(t);
+}
+
+uint32_t EasyEngine::Components::SpriteGroup::indexAt(const std::string &name, uint32_t start) {
+    for (uint32_t _idx = 0; _idx < _sprites.size(); ++_idx) {
+        if (_sprites[_idx]->name() == name) return _idx;
+    }
+    return UINT32_MAX;
+}
+
+uint32_t EasyEngine::Components::SpriteGroup::lastIndexAt(const std::string &name, uint32_t start) {
+    for (uint32_t _idx = 0; _idx < _sprites.size(); ++_idx) {
+        if (_sprites[_sprites.size() - _idx - 1]->name() == name) return _idx;
+    }
+    return UINT32_MAX;
+}
+
+EasyEngine::Components::Sprite *EasyEngine::Components::SpriteGroup::indexOf(uint32_t index) {
+    return _sprites.at(index).get();
+}
+
+EasyEngine::Components::Sprite *EasyEngine::Components::SpriteGroup::nameOf(const std::string &name) {
+    return _sprites.at(indexAt(name)).get();
+}
+
+EasyEngine::Components::Sprite::Properties *EasyEngine::Components::SpriteGroup::propertiesOf(uint32_t index) {
+    return _sprites.at(index)->properties();
+}
+
+EasyEngine::Components::Sprite::Properties *EasyEngine::Components::SpriteGroup::propertiesOf(const std::string &name) {
+    return _sprites.at(indexAt(name))->properties();
+}
+
+void EasyEngine::Components::SpriteGroup::draw(const Vector2 &pos, Painter *painter) {
+    for (auto& sprite : _sprites) {
+        sprite->draw(pos, painter);
+    }
+}
+
+uint32_t EasyEngine::Components::SpriteGroup::count() const {
+    return _sprites.size();
+}
+
+EasyEngine::Components::Animation::Animation(const std::string &name) : _name(name) {}
+
+EasyEngine::Components::Animation::Animation(const std::string &name, const std::vector<Sprite> &sprite_list,
+                                             uint64_t duration_per_frame) : _name(name) {
+    for (auto& sprite : sprite_list) {
+        _animations.push_back({std::make_unique<Sprite>(sprite.name(), sprite), duration_per_frame});
+    }
+}
+
+void EasyEngine::Components::Animation::addFrame(const EasyEngine::Components::Sprite &sprite, uint64_t duration) {
+    _animations.push_back({std::make_unique<Sprite>(sprite.name(), sprite), duration});
+}
+
+void EasyEngine::Components::Animation::insertFrame(const EasyEngine::Components::Sprite &sprite, uint64_t duration,
+                                                    const size_t frame) {
+    _animations.insert(_animations.begin() + frame,
+                       {std::make_unique<Sprite>(sprite.name(), sprite), duration});
+}
+
+void EasyEngine::Components::Animation::replaceFrame(const EasyEngine::Components::Sprite &spirit, const size_t frame) {
+
+}
+
+void EasyEngine::Components::Animation::removeFrame(const size_t frame) {
+
+}
+
+void EasyEngine::Components::Animation::clearFrames() {
+
+}
+
+size_t EasyEngine::Components::Animation::framesCount() const {
+    return _animations.size();
+}
+
+uint64_t EasyEngine::Components::Animation::durationInFrame(const size_t frame) {
+    return _animations.at(frame).duration;
+}
+
+EasyEngine::Components::Sprite *EasyEngine::Components::Animation::spirit(const size_t frame) const {
+    return _animations.at(frame).sprite.get();
+}
+
+void EasyEngine::Components::Animation::play() {
+
+}
+
+void EasyEngine::Components::Animation::stop() {
+
+}
+
+void EasyEngine::Components::Animation::playLoop() {
+
+}
+
+bool EasyEngine::Components::Animation::isPlayedAnimation() const {
+    return _is_played;
+}
+
+size_t EasyEngine::Components::Animation::frame() const {
+    return _cur_frame;
+}

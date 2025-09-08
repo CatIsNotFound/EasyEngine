@@ -390,7 +390,9 @@ namespace EasyEngine {
          */
         class SpriteGroup {
         public:
-            explicit SpriteGroup();
+            explicit SpriteGroup() = default;
+            SpriteGroup(const SpriteGroup& group) = default;
+            SpriteGroup(const SpriteGroup&& group);
             /**
              * @brief 添加精灵
              * @param sprite 指定精灵
@@ -450,40 +452,76 @@ namespace EasyEngine {
              * @brief 获取指定索引的精灵
              * @param index 指定索引
              * @see indexAt
+             * @see nameOf
+             * @see propertiesOf
              */
-            Sprite& indexOf(uint32_t index);
+            Sprite * indexOf(uint32_t index);
+            /**
+             * @brief 获取指定名称的精灵
+             * @param name 指定名称
+             * @see indexAt
+             * @see indexOf
+             * @see propertiesOf
+             */
+            Sprite * nameOf(const std::string& name);
+            /**
+             * @brief 根据指定索引获取精灵对应的属性
+             * @param index 指定索引
+             * @see indexAt
+             * @see indexOf
+             */
+            Sprite::Properties* propertiesOf(uint32_t index);
+            /**
+             * @brief 根据精灵名称获取精灵对应的属性
+             * @param name 指定精灵名称
+             * @see indexAt
+             * @see indexOf
+             */
+            Sprite::Properties* propertiesOf(const std::string& name);
+            /**
+             * @brief 指定绘图器并绘制精灵组
+             * @param pos 指定绘制的位置
+             * @param painter 指定绘图器
+             */
+            void draw(const Vector2 &pos, Painter *painter);
+            /**
+             * @brief 获取当前精灵组合的精灵总个数
+             *
+             */
+            uint32_t count() const;
+
         private:
-            std::vector<Sprite> _sprites;
+            std::vector<std::shared_ptr<Sprite>> _sprites;
         };
 
-        class Animator {
+        class Animation {
         public:
             /**
-             * @brief 创建动画器
-             * @param name 动画器别名
+             * @brief 创建动画
+             * @param name 动画别名
              */
-            explicit Animator(const std::string& name);
+            explicit Animation(const std::string& name);
             /**
-             * @brief 创建动画器
-             * @param name 动画器别名
-             * @param spirit_list 精灵列表
+             * @brief 创建动画
+             * @param name 动画别名
+             * @param sprite_list 精灵列表
              * @param duration_per_frame 每帧的持续时间（单位：毫秒），默认 50 毫秒
              */
-            Animator(const std::string& name, const std::vector<Sprite>& spirit_list,
-                     uint64_t duration_per_frame = 50);
+            Animation(const std::string& name, const std::vector<Sprite>& sprite_list,
+                      uint64_t duration_per_frame = 50);
             /**
              * @brief 将精灵图像加入到帧
-             * @param spirit 指定精灵
+             * @param sprite 指定精灵
              * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
              */
-            void addFrame(const Sprite& spirit, uint64_t duration = 50);
+            void addFrame(const Sprite& sprite, uint64_t duration = 50);
             /**
              * @brief 将精灵图像插入到指定帧
-             * @param spirit 指定精灵
+             * @param sprite 指定精灵
              * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
              * @param frame 指定帧数，默认为第 0 帧
              */
-            void insertFrame(const Sprite& spirit, uint64_t duration = 50, const size_t frame = 0);
+            void insertFrame(const Sprite& sprite, uint64_t duration = 50, const size_t frame = 0);
             /**
              * @brief 在指定帧下替换精灵图像
              * @param spirit 新的精灵图像
@@ -554,7 +592,19 @@ namespace EasyEngine {
             size_t frame() const;
 
         private:
-            std::map<std::shared_ptr<Sprite>, uint64_t> _animations;
+            /**
+             * @struct Frame
+             * @brief 动画帧
+             * 
+             * 每帧动画包含的精灵、帧持续时间
+             */
+            struct Frame {
+                /// 精灵
+                std::unique_ptr<Sprite> sprite;
+                /// 帧持续时间
+                uint64_t duration;
+            };
+            std::vector<Frame> _animations;
             std::string _name;
             bool _is_played{false};
             bool _is_loop{false};
@@ -664,7 +714,7 @@ namespace EasyEngine {
             bool isCollision(const Entity& entity);
         private:
             Vector2 _pos, _center;
-            std::map<std::string, Animator> _animators;
+            std::map<std::string, Animation> _animators;
             Collider _collider;
             std::string _obj_name;
             bool _is_collider{false};
