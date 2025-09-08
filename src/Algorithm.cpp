@@ -71,7 +71,7 @@ EasyEngine::Algorithm::midCircleF(const Vector2 &point, uint32_t radius) {
     return ret;
 }
 
-Vector2 Algorithm::spiritScaledPosition(const Components::Spirit::Properties &properties) {
+Vector2 Algorithm::spiritScaledPosition(const Components::Sprite::Properties &properties) {
     Vector2 _pos = properties.position, _scaled_center = properties.scaled_center;
     float _scaled = properties.scaled;
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
@@ -87,11 +87,11 @@ Vector2 Algorithm::spiritScaledPosition(const Vector2 &position, const float sca
     return Vector2(_new_global_left_top_pos.x, _new_global_left_top_pos.y);
 }
 
-Size Algorithm::spiritScaledSize(const Components::Spirit &spirit, const Components::Spirit::Properties &properties) {
+Size Algorithm::spiritScaledSize(const Components::Sprite &spirit, const Components::Sprite::Properties &properties) {
     return Size(spirit.size().width * properties.scaled, spirit.size().height * properties.scaled);
 }
 
-Size Algorithm::spiritScaledSize(const Components::Spirit &spirit, const float scaled) {
+Size Algorithm::spiritScaledSize(const Components::Sprite &spirit, const float scaled) {
     return Size(spirit.size().width * scaled, spirit.size().height * scaled);
 }
 

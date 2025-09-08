@@ -64,7 +64,7 @@ namespace EasyEngine {
          * @return 返回缩放后的精灵所在位置（左上角坐标）
          * @see Properties
          */
-        static Vector2 spiritScaledPosition(const Components::Spirit::Properties &properties);
+        static Vector2 spiritScaledPosition(const Components::Sprite::Properties &properties);
 
         /**
          * @brief 获取某个精灵经过缩放后所在的位置
@@ -83,15 +83,15 @@ namespace EasyEngine {
          * @param properties    精灵绘制属性
          * @return 返回缩放后的大小
          */
-        static Size spiritScaledSize(const Components::Spirit &spirit,
-                                     const Components::Spirit::Properties &properties);
+        static Size spiritScaledSize(const Components::Sprite &spirit,
+                                     const Components::Sprite::Properties &properties);
         /**
          * @brief 获取缩放后的精灵大小/尺寸
          * @param spirit    指定精灵
          * @param scaled    缩放倍数
          * @return 返回缩放后的精灵大小
          */
-        static Size spiritScaledSize(const Components::Spirit &spirit,
+        static Size spiritScaledSize(const Components::Sprite &spirit,
                                      const float scaled);
     };
 

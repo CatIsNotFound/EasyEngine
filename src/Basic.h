@@ -151,6 +151,20 @@ namespace EasyEngine {
          * @param y
          */
         void reset(float x, float y);
+        Vector2 operator+(const Vector2& v) const { return {this->x + v.x, this->y + v.y}; }
+        Vector2 operator-(const Vector2& v) const { return {this->x - v.x, this->y - v.y}; }
+        Vector2 operator*(const Vector2& v) const { return {this->x * v.x, this->y * v.y}; }
+        Vector2 operator/(const Vector2& v) const { return {this->x / v.x, this->y / v.y}; }
+        void operator+=(const Vector2& v) { this->x += v.x; this->y += v.y; }
+        void operator-=(const Vector2& v) { this->x -= v.x; this->y -= v.y; }
+        void operator*=(const Vector2& v) { this->x *= v.x; this->y *= v.y; }
+        void operator/=(const Vector2& v) { this->x /= v.x; this->y /= v.y; }
+        bool operator==(const Vector2& v) const {
+            return ((this->x != v.x) ? false : ((this->y != v.y) ? false : true));
+        }
+        bool operator!=(const Vector2& v) const {
+            return ((this->x != v.x) ? true : ((this->y != v.y) ? true : false));
+        }
     };
 
     /**
@@ -161,6 +175,7 @@ namespace EasyEngine {
      */
     struct Size {
         float width, height;
+        explicit Size() : width(0.0f), height(0.0f) {}
         Size(float width, float height);
         /**
          * @brief 重新设置新的尺寸
@@ -168,8 +183,21 @@ namespace EasyEngine {
          * @param height
          */
         void reset(float width, float height);
+        Size operator+(const Size& s) const { return {this->width + s.width, this->height + s.height}; }
+        Size operator-(const Size& s) const { return {this->width - s.width, this->height - s.height}; }
+        Size operator*(const Size& s) const { return {this->width * s.width, this->height * s.height}; }
+        Size operator/(const Size& s) const { return {this->width / s.width, this->height / s.height}; }
+        void operator+=(const Size& s) { this->width += s.width; this->height += s.height; }
+        void operator-=(const Size& s) { this->width -= s.width; this->height -= s.height; }
+        void operator*=(const Size& s) { this->width *= s.width; this->height *= s.height; }
+        void operator/=(const Size& s) { this->width /= s.width; this->height /= s.height; }
+        bool operator==(const Size& s) const {
+            return (this->width != s.width) ? false : ((this->height != this->height) ? false : true);
+        }
+        bool operator!=(const Size& s) const {
+            return (this->width != s.width) ? true : ((this->height != this->height) ? true : false);
+        }
     };
-
     /**
      * @namespace Graphics
      * @brief 基本图形
@@ -266,8 +294,6 @@ namespace EasyEngine {
                     bool bordered_mode = true, bool filled_mode = false, SColor background = StdColor::Black)
                     : pos(x, y), area(width, height), fore_color(foreground), bordered_mode(bordered_mode),
                       filled_mode(filled_mode), back_color(background) {}
-
-
         };
     }
 }

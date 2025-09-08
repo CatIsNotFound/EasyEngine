@@ -278,6 +278,14 @@ namespace EasyEngine {
          */
         uint32_t frameDropThreshold() const;
 
+        /**
+         * @brief 设置是否允许在后台渲染画面
+         * @param enabled 启用/禁用
+         *
+         * 当窗口处于非活动状态下，根据 enabled 决定是否仍然渲染画面。
+         * 这对于低性能设备而言，启用后能节省性能。
+         */
+        void setBackgroundRenderingEnabled(bool enabled);
 
     private:
         Engine() = delete;
@@ -296,6 +304,7 @@ namespace EasyEngine {
         std::mutex _mutex;
         bool _is_running{false};
         static bool _is_stopped;
+        bool _is_allowed_stop_render{false};
         uint32_t _window_count{0};
         uint32_t _fps{0};
         uint32_t _real_fps{0};
@@ -376,20 +385,23 @@ namespace EasyEngine {
         void drawEllipse(const Graphics::Ellipse& ellipse);
         /**
          * @brief 绘制精灵
-         * @param spirit 精灵
+         * @param sprite 精灵
          * @param pos    绘制位置
          * @see Spirit
          */
-        void drawSpirit(const Components::Spirit &spirit, const Vector2 &pos);
+        void drawSprite(const Components::Sprite &sprite, const Vector2 &pos);
         /**
          * @brief 根据精灵属性绘制精灵
-         * @param spirit 指定精灵
+         * @param sprite 指定精灵
          * @param properties 精灵属性
          * @see Spirit
          * @see Properties
          */
-        void drawSpirit(const Components::Spirit &spirit,
-                        const Components::Spirit::Properties &properties);
+        void drawSprite(const Components::Sprite &sprite,
+                        const Components::Sprite::Properties &properties);
+
+        void drawSprite(const Components::Sprite &sprite,
+                        const Components::Sprite::Properties *properties);
 
         /**
          * @brief 清空所有绘制命令
@@ -445,8 +457,8 @@ namespace EasyEngine {
                 { Command::graphics = Command::Types::Fill; }
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
-        struct SpiritCMD : Command {
-            STexture* _spirit;
+        struct SpriteCMD : Command {
+            STexture* _sprite;
             Vector2 _pos, _clip_pos;
             Size _size, _clip_size;
             bool _is_clip{false};
@@ -456,17 +468,26 @@ namespace EasyEngine {
             float _scaled{1.0f};
             SColor _color_alpha{255, 255, 255, 255};
             SDL_FlipMode _flip_mode{SDL_FLIP_NONE};
-            explicit SpiritCMD(const Components::Spirit& spirit, const Vector2& pos = Vector2(0, 0))
-                : _spirit(spirit.spirit()), _size(spirit.size()), _pos(pos),
+            explicit SpriteCMD(const Components::Sprite& sprite, const Vector2& pos = Vector2(0, 0))
+                : _sprite(sprite.spirit()), _size(sprite.size()), _pos(pos),
                   _rotate_center(0, 0), _scaled_center(0, 0),
                   _clip_pos(0, 0), _clip_size(0, 0)
                 { Command::graphics = Command::Types::Spirit; }
+            SpriteCMD(const Components::Sprite& sprite, const Vector2& pos,
+                      const Components::Sprite::Properties& properties)
+                      : _sprite(sprite.spirit()), _size(sprite.size().width, sprite.size().height),
+                        _pos(pos + properties.position), _scaled(properties.scaled),
+                        _clip_size(properties.clip_size), _rotate(properties.rotate), _is_clip(properties.clip_mode) {
+                if (_is_clip)
+                    _flip_mode = (properties.flip_mode == Components::Sprite::FlipMode::HFlip) ? SDL_FLIP_HORIZONTAL :
+                        ((properties.flip_mode == Components::Sprite::FlipMode::VFlip) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);
+            }
             void exec(SRenderer *renderer, uint32_t) override;
         };
         std::vector<std::unique_ptr<Command>> command_list;
         std::function<void(Painter&)> paint_function;
         uint32_t _thickness;
-        friend class Components::Spirit;
+        friend class Components::Sprite;
     };
 
     /**

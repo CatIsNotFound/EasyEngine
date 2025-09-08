@@ -136,6 +136,11 @@ namespace EasyEngine {
              */
             void play();
             /**
+             * @brief 播放 SFX（循环播放）
+             * @param delay 设定间隔（设定毫秒数）
+             */
+            void play(uint32_t delay);
+            /**
              * @brief 立即停止播放 SFX
              */
             void stop();
@@ -143,6 +148,7 @@ namespace EasyEngine {
              * @brief 获取当前音频是否正在循环播放
              */
             bool isLoop() const;
+
 
         protected:
             void reload();
@@ -156,25 +162,25 @@ namespace EasyEngine {
         };
 
         /**
-         * @class Spirit
+         * @class Sprite
          * @brief 精灵
          *
          * 用于存储精灵（即纹理）以及如何绘制精灵
          */
-        class Spirit {
+        class Sprite {
         public:
             /**
              * @brief 创建一个精灵，无精灵纹理
              * @param name 精灵别名
              * @param renderer 使用的渲染器
              */
-            explicit Spirit(const std::string& name, SRenderer* renderer);
+            explicit Sprite(const std::string& name, SRenderer* renderer);
             /**
              * @brief 克隆已有的精灵
              * @param name   精灵别名
              * @param spirit 指定精灵
              */
-            Spirit(const std::string& name, const Spirit& spirit);
+            Sprite(const std::string& name, const Sprite& spirit);
             /**
              * @brief 克隆并裁剪已有的精灵
              * @param name  精灵别名
@@ -182,7 +188,7 @@ namespace EasyEngine {
              * @param clip_pos 裁剪位置（相对坐标）
              * @param clip_size 裁剪大小
              */
-            Spirit(const std::string& name, const Spirit& spirit,
+            Sprite(const std::string& name, const Sprite& spirit,
                    const Vector2& clip_pos, const Size& clip_size);
             /**
              * @brief 创建一个精灵
@@ -190,7 +196,7 @@ namespace EasyEngine {
              * @param path 精灵纹理路径
              * @param renderer 使用的渲染器
              */
-            Spirit(const std::string& name, const std::string& path, SRenderer* renderer);
+            Sprite(const std::string& name, const std::string& path, SRenderer* renderer);
             /**
              * @brief 创建一个精灵并裁剪
              * @param name 精灵别名
@@ -199,9 +205,9 @@ namespace EasyEngine {
              * @param clip_size 裁剪大小
              * @param renderer 使用的渲染器
              */
-            Spirit(const std::string& name, const std::string& path,
+            Sprite(const std::string& name, const std::string& path,
                    const Vector2& clip_pos, const Size& clip_size, SRenderer* renderer);
-            ~Spirit();
+            ~Sprite();
             /**
              * @brief 设置精灵别名
              * @param new_name 新的精灵别名
@@ -344,9 +350,13 @@ namespace EasyEngine {
                 /// 裁剪尺寸、裁剪大小
                 Size clip_size{0, 0};
             };
-
             /**
-             * @brief 通过精灵绘制属性进行详细绘制
+             * @brief 获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制
+             * @see draw
+             */
+            Properties* properties() const;
+            /**
+             * @brief 通过指定的精灵绘制属性进行详细绘制
              *
              * 适合用于需要同时满足多种效果的情况下使用。
              * @param properties 绘制精灵属性
@@ -354,15 +364,96 @@ namespace EasyEngine {
              * @see Properties
              * @see Painter
              */
-            void draw(const EasyEngine::Components::Spirit::Properties &properties, Painter *painter) const;
+            void draw(const EasyEngine::Components::Sprite::Properties &properties, Painter *painter) const;
+            /**
+             * @brief 使用精灵自己的绘制属性进行绘制
+             * @param painter 指定绘图器
+             * @see properties
+             */
+            void draw(Painter* painter) const;
 
         private:
             SSurface* _surface;
             STexture* _texture;
             SRenderer* _renderer;
+            std::unique_ptr<Properties> _properties;
             std::string _name;
             std::string _path;
             Size _size;
+        };
+
+        /**
+         * @class SpriteGroup
+         * @brief 精灵组合
+         *
+         * 由多个精灵组合而成的组合，用于绘制比较复杂的多精灵组合体
+         */
+        class SpriteGroup {
+        public:
+            explicit SpriteGroup();
+            /**
+             * @brief 添加精灵
+             * @param sprite 指定精灵
+             */
+            void add(const Sprite& sprite);
+            /**
+             * @brief 在指定位置上插入精灵
+             * @param index 指定位置
+             * @param sprite 指定精灵
+             */
+            void insert(uint32_t index, const Sprite& sprite);
+            /**
+             * @brief 移除指定名称的精灵
+             * @param name 指定的精灵名称
+             */
+            void remove(const std::string &name);
+            /**
+             * @brief 移除指定位置的精灵
+             * @param index 指定位置
+             */
+            void remove(uint32_t index = 0);
+            /**
+             * @brief 交换精灵位置
+             * @param index1 第一个精灵所在索引
+             * @param index2 第二个精灵所在索引
+             */
+            void swap(uint32_t index1, uint32_t index2);
+            /**
+             * @brief 交换精灵位置
+             * @param sprite1 第一个精灵名称
+             * @param sprite2 第二个精灵名称
+             */
+            void swap(const std::string& sprite1, const std::string& sprite2);
+            /**
+             * @brief 交换精灵位置
+             * @param index 第一个精灵所在索引
+             * @param name 第二个精灵的指定名称
+             */
+            void swap(uint32_t index, const std::string& name);
+            /**
+             * @brief 获取精灵所在索引
+             * @param name 精灵名称
+             * @param start 从哪个位置开始
+             * @see lastIndexAt
+             * @see sprite
+             */
+            uint32_t indexAt(const std::string& name, uint32_t start = 0);
+            /**
+             * @brief 获取精灵所在索引
+             * @param name 精灵名称
+             * @param start 从最后第几个位置开始
+             * @see indexAt
+             * @see sprite
+             */
+            uint32_t lastIndexAt(const std::string& name, uint32_t start = 0);
+            /**
+             * @brief 获取指定索引的精灵
+             * @param index 指定索引
+             * @see indexAt
+             */
+            Sprite& indexOf(uint32_t index);
+        private:
+            std::vector<Sprite> _sprites;
         };
 
         class Animator {
@@ -378,27 +469,27 @@ namespace EasyEngine {
              * @param spirit_list 精灵列表
              * @param duration_per_frame 每帧的持续时间（单位：毫秒），默认 50 毫秒
              */
-            Animator(const std::string& name, const std::vector<Spirit>& spirit_list,
+            Animator(const std::string& name, const std::vector<Sprite>& spirit_list,
                      uint64_t duration_per_frame = 50);
             /**
              * @brief 将精灵图像加入到帧
              * @param spirit 指定精灵
              * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
              */
-            void addFrame(const Spirit& spirit, uint64_t duration = 50);
+            void addFrame(const Sprite& spirit, uint64_t duration = 50);
             /**
              * @brief 将精灵图像插入到指定帧
              * @param spirit 指定精灵
              * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
              * @param frame 指定帧数，默认为第 0 帧
              */
-            void insertFrame(const Spirit& spirit, uint64_t duration = 50, const size_t frame = 0);
+            void insertFrame(const Sprite& spirit, uint64_t duration = 50, const size_t frame = 0);
             /**
              * @brief 在指定帧下替换精灵图像
              * @param spirit 新的精灵图像
              * @param frame 指定帧数
              */
-            void replaceFrame(const Spirit& spirit, const size_t frame = 0);
+            void replaceFrame(const Sprite& spirit, const size_t frame = 0);
             /**
              * @brief 移除指定帧对应的图像
              * @param frame 指定帧数，默认为第 0 帧
@@ -424,7 +515,7 @@ namespace EasyEngine {
              * @see removeFrame
              * @see replaceFrame
              */
-            Spirit* spirit(const size_t frame = 0) const;
+            Sprite* spirit(const size_t frame = 0) const;
             /**
              * @brief 播放动画
              * @see playLoop
@@ -463,7 +554,7 @@ namespace EasyEngine {
             size_t frame() const;
 
         private:
-            std::map<std::shared_ptr<Spirit>, uint64_t> _animations;
+            std::map<std::shared_ptr<Sprite>, uint64_t> _animations;
             std::string _name;
             bool _is_played{false};
             bool _is_loop{false};

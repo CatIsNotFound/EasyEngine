@@ -94,6 +94,14 @@ void EasyEngine::Components::SFX::play() {
     }
 }
 
+void EasyEngine::Components::SFX::play(uint32_t delay) {
+    if (_is_load) {
+        reload();
+        // TODO: 循环播放 SFX（通过事件系统不断调用）
+
+    }
+}
+
 void EasyEngine::Components::SFX::stop() {
     if (_is_load)
         AudioSystem::instance()->stopSFX(_channel);
@@ -112,7 +120,8 @@ void EasyEngine::Components::SFX::reload() {
 }
 
 
-EasyEngine::Components::Spirit::Spirit(const std::string &name, SRenderer *renderer)
+
+EasyEngine::Components::Sprite::Sprite(const std::string &name, SRenderer *renderer)
     : _name(name), _renderer(renderer), _size(0, 0) {
     if (!_renderer) {
         SDL_Log("[ERROR] Current renderer is not valid!");
@@ -120,9 +129,10 @@ EasyEngine::Components::Spirit::Spirit(const std::string &name, SRenderer *rende
     }
     _surface = SDL_CreateSurface(0, 0, SDL_PIXELFORMAT_RGBA64);
     _texture = SDL_CreateTextureFromSurface(renderer, _surface);
+    _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Spirit::Spirit(const std::string &name, const EasyEngine::Components::Spirit &spirit)
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit)
     : _name(name), _renderer(spirit._renderer), _size(spirit._size) {
     if (!_renderer) {
         SDL_Log("[ERROR] Current renderer is not valid!");
@@ -130,9 +140,10 @@ EasyEngine::Components::Spirit::Spirit(const std::string &name, const EasyEngine
     }
     _surface = SDL_DuplicateSurface(spirit._surface);
     _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Spirit::Spirit(const std::string &name, const EasyEngine::Components::Spirit &spirit,
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit,
                                        const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size)
     : _name(name), _renderer(spirit._renderer), _size(spirit._size) {
     if (!_renderer) {
@@ -148,9 +159,10 @@ EasyEngine::Components::Spirit::Spirit(const std::string &name, const EasyEngine
     );
     SDL_SetSurfaceClipRect(_surface, &_rect);
     _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Spirit::Spirit(const std::string &name, const std::string &path, SRenderer *renderer)
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &path, SRenderer *renderer)
     : _name(name), _path(path), _renderer(renderer), _size(0, 0) {
     if (!_renderer) {
         SDL_Log("[ERROR] Current renderer is not valid!");
@@ -161,11 +173,12 @@ EasyEngine::Components::Spirit::Spirit(const std::string &name, const std::strin
         SDL_Log("[ERROR] Can't load image file: %s\nps: Try to use `Spirit::setPath()`.", path.data());
         return;
     }
+    _properties = std::make_unique<Properties>();
     _size.reset(_surface->w, _surface->h);
     _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
 }
 
-EasyEngine::Components::Spirit::Spirit(const std::string &name, const std::string &path,
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &path,
                                        const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size,
                                        SRenderer *renderer)
     : _name(name), _path(path), _renderer(renderer), _size(0, 0) {
@@ -187,22 +200,23 @@ EasyEngine::Components::Spirit::Spirit(const std::string &name, const std::strin
     SDL_SetSurfaceClipRect(_surface, &_rect);
     _size.reset(_surface->w, _surface->h);
     _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Spirit::~Spirit() {
+EasyEngine::Components::Sprite::~Sprite() {
     if (_texture) SDL_DestroyTexture(_texture);
     if (_surface) SDL_DestroySurface(_surface);
 }
 
-void EasyEngine::Components::Spirit::setName(const std::string &new_name) {
+void EasyEngine::Components::Sprite::setName(const std::string &new_name) {
     _name = new_name;
 }
 
-std::string EasyEngine::Components::Spirit::name() const {
+std::string EasyEngine::Components::Sprite::name() const {
     return _name;
 }
 
-bool EasyEngine::Components::Spirit::setPath(const std::string &new_path) {
+bool EasyEngine::Components::Sprite::setPath(const std::string &new_path) {
     _path = new_path;
     if (_texture) SDL_DestroyTexture(_texture);
     if (_surface) SDL_DestroySurface(_surface);
@@ -215,18 +229,18 @@ bool EasyEngine::Components::Spirit::setPath(const std::string &new_path) {
     return true;
 }
 
-std::string EasyEngine::Components::Spirit::path() const {
+std::string EasyEngine::Components::Sprite::path() const {
     return _path;
 }
 
-bool EasyEngine::Components::Spirit::isValid(const std::string &path) const {
+bool EasyEngine::Components::Sprite::isValid(const std::string &path) const {
     if (!_renderer) return false;
     if (!_surface) return false;
     if (!_texture) return false;
     return true;
 }
 
-void EasyEngine::Components::Spirit::setRenderer(SRenderer *renderer) {
+void EasyEngine::Components::Sprite::setRenderer(SRenderer *renderer) {
     if (!_renderer) {
         SDL_Log("[ERROR] The specified renderer is not valid!");
         return;
@@ -234,66 +248,75 @@ void EasyEngine::Components::Spirit::setRenderer(SRenderer *renderer) {
     _renderer = renderer;
 }
 
-const SRenderer *EasyEngine::Components::Spirit::renderer() const {
+const SRenderer *EasyEngine::Components::Sprite::renderer() const {
     return _renderer;
 }
 
-void EasyEngine::Components::Spirit::resize(float width, float height) {
+void EasyEngine::Components::Sprite::resize(float width, float height) {
     _size.reset(width, height);
 }
 
-EasyEngine::Size EasyEngine::Components::Spirit::size() const {
+EasyEngine::Size EasyEngine::Components::Sprite::size() const {
     return _size;
 }
 
-STexture *EasyEngine::Components::Spirit::spirit() const {
+STexture *EasyEngine::Components::Sprite::spirit() const {
     return _texture;
 }
 
-void EasyEngine::Components::Spirit::draw(const Vector2 &pos, Painter *painter) const {
-    painter->drawSpirit(*this, pos);
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos, Painter *painter) const {
+    Vector2 new_pos = pos + _properties->position;
+    painter->drawSprite(*this, new_pos);
 }
 
 void
-EasyEngine::Components::Spirit::draw(const Vector2 &pos, float scaled, Painter *painter, const Vector2 &center) const {
+EasyEngine::Components::Sprite::draw(const Vector2 &pos, float scaled, Painter *painter, const Vector2 &center) const {
     Properties properties;
     properties.position = pos;
     properties.scaled = scaled;
     properties.scaled_center = center;
-    painter->drawSpirit(*this, properties);
+    painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Spirit::draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size,
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size,
                                           Painter *painter) const {
     Properties properties;
     properties.position = pos;
     properties.clip_pos = clip_pos;
     properties.clip_size = clip_size;
-    painter->drawSpirit(*this, properties);
+    painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Spirit::draw(const Vector2 &pos, double rotate, Painter *painter, const FlipMode &flipMode,
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos, double rotate, Painter *painter, const FlipMode &flipMode,
                                           const Vector2 &rotate_center) const {
     Properties properties;
     properties.position = pos;
     properties.rotate = rotate;
     properties.flip_mode = flipMode;
     properties.rotate_center = rotate_center;
-    painter->drawSpirit(*this, properties);
+    painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Spirit::draw(const EasyEngine::Vector2 &pos, const SColor &color_alpha,
+void EasyEngine::Components::Sprite::draw(const EasyEngine::Vector2 &pos, const SColor &color_alpha,
                                           Painter *painter) const {
     Properties properties;
     properties.position = pos;
     properties.color_alpha = color_alpha;
-    painter->drawSpirit(*this, properties);
+    painter->drawSprite(*this, properties);
 }
 
 void
-EasyEngine::Components::Spirit::draw(const EasyEngine::Components::Spirit::Properties &properties,
+EasyEngine::Components::Sprite::draw(const EasyEngine::Components::Sprite::Properties &properties,
                                      Painter *painter) const {
-    painter->drawSpirit(*this, properties);
+    painter->drawSprite(*this, properties);
+}
+
+EasyEngine::Components::Sprite::Properties *EasyEngine::Components::Sprite::properties() const {
+    return _properties.get();
+}
+
+void EasyEngine::Components::Sprite::draw(EasyEngine::Painter *painter) const {
+    painter->drawSprite(*this, _properties.get());
 }
 
 

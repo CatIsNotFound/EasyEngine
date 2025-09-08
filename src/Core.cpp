@@ -235,12 +235,13 @@ int EasyEngine::Engine::run() {
 
     while (_is_running) {
         const uint64_t now = SDL_GetPerformanceCounter();
-        
+
         // 事件处理循环，每隔 1ms 处理一次
         if (now - last_event_time >= event_interval) {
             _is_running = _event_system->handler(); // 高频事件处理
             last_event_time = now;
         }
+        // 决定是否渲染画面
         if (_is_stopped) continue;
         // 渲染循环，根据 FPS 动态调整渲染频率
         bool should_render = false;
@@ -409,6 +410,10 @@ uint32_t EasyEngine::Engine::frameDropThreshold() const {
     return max_consecutive_slow_frames;
 }
 
+void EasyEngine::Engine::setBackgroundRenderingEnabled(bool enabled) {
+    _is_allowed_stop_render = enabled;
+}
+
 EasyEngine::Painter::Painter(EasyEngine::Window* window) : _window(window), paint_function(nullptr), _thickness(1) {}
 
 EasyEngine::Painter::~Painter() = default;
@@ -465,13 +470,13 @@ void EasyEngine::Painter::drawEllipse(const EasyEngine::Graphics::Ellipse &ellip
     command_list.emplace_back(std::make_unique<EllipseCMD>(ellipse));
 }
 
-void EasyEngine::Painter::drawSpirit(const Components::Spirit &spirit, const Vector2 &pos) {
-    command_list.emplace_back(std::make_unique<SpiritCMD>(spirit, pos));
+void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite, const Vector2 &pos) {
+    command_list.emplace_back(std::make_unique<SpriteCMD>(sprite, pos));
 }
 
-void EasyEngine::Painter::drawSpirit(const EasyEngine::Components::Spirit &spirit,
-                                     const EasyEngine::Components::Spirit::Properties &properties) {
-    auto spiritCmd = new SpiritCMD(spirit, properties.position);
+void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite,
+                                     const Components::Sprite::Properties &properties) {
+    auto spiritCmd = new SpriteCMD(sprite, properties.position);
     spiritCmd->_is_clip = properties.clip_mode;
     spiritCmd->_clip_pos = properties.clip_pos;
     spiritCmd->_clip_size = properties.clip_size;
@@ -479,10 +484,26 @@ void EasyEngine::Painter::drawSpirit(const EasyEngine::Components::Spirit &spiri
     spiritCmd->_rotate_center = properties.rotate_center;
     spiritCmd->_scaled = properties.scaled;
     spiritCmd->_scaled_center = properties.scaled_center;
-    spiritCmd->_flip_mode = (properties.flip_mode == Components::Spirit::FlipMode::None ? SDL_FLIP_NONE :
-            (properties.flip_mode == Components::Spirit::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
+    spiritCmd->_flip_mode = (properties.flip_mode == Components::Sprite::FlipMode::None ? SDL_FLIP_NONE :
+                             (properties.flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
     spiritCmd->_color_alpha = properties.color_alpha;
-    command_list.emplace_back(std::unique_ptr<SpiritCMD>(spiritCmd));
+    command_list.emplace_back(std::unique_ptr<SpriteCMD>(spiritCmd));
+}
+
+void EasyEngine::Painter::drawSprite(const EasyEngine::Components::Sprite &sprite,
+                                     const EasyEngine::Components::Sprite::Properties *properties) {
+    auto spiritCmd = new SpriteCMD(sprite, properties->position);
+    spiritCmd->_is_clip = properties->clip_mode;
+    spiritCmd->_clip_pos = properties->clip_pos;
+    spiritCmd->_clip_size = properties->clip_size;
+    spiritCmd->_rotate = properties->rotate;
+    spiritCmd->_rotate_center = properties->rotate_center;
+    spiritCmd->_scaled = properties->scaled;
+    spiritCmd->_scaled_center = properties->scaled_center;
+    spiritCmd->_flip_mode = (properties->flip_mode == Components::Sprite::FlipMode::None ? SDL_FLIP_NONE :
+            (properties->flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
+    spiritCmd->_color_alpha = properties->color_alpha;
+    command_list.emplace_back(std::unique_ptr<SpriteCMD>(spiritCmd));
 }
 
 void EasyEngine::Painter::clear() {
@@ -569,9 +590,9 @@ void EasyEngine::Painter::FillCMD::exec(SRenderer *renderer, uint32_t) {
     SDL_RenderClear(renderer);
 }
 
-void EasyEngine::Painter::SpiritCMD::exec(SRenderer *renderer, uint32_t) {
-    SDL_SetTextureColorMod(_spirit, _color_alpha.r, _color_alpha.g, _color_alpha.b);
-    SDL_SetTextureAlphaMod(_spirit, _color_alpha.a);
+void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
+    SDL_SetTextureColorMod(_sprite, _color_alpha.r, _color_alpha.g, _color_alpha.b);
+    SDL_SetTextureAlphaMod(_sprite, _color_alpha.a);
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
     Vector2 newPos((_pos.x - _global_center_pos.x) * _scaled + _global_center_pos.x,
                    (_pos.y - _global_center_pos.y) * _scaled + _global_center_pos.y);
@@ -581,10 +602,10 @@ void EasyEngine::Painter::SpiritCMD::exec(SRenderer *renderer, uint32_t) {
 
     if (_is_clip) {
         SDL_FRect _tmp = {_clip_pos.x, _clip_pos.y, _clip_size.width, _clip_size.height};
-        SDL_RenderTextureRotated(renderer, _spirit, &_tmp, &_dst,
+        SDL_RenderTextureRotated(renderer, _sprite, &_tmp, &_dst,
                                  _rotate, &center, _flip_mode);
     } else {
-        SDL_RenderTextureRotated(renderer, _spirit, nullptr, &_dst,
+        SDL_RenderTextureRotated(renderer, _sprite, nullptr, &_dst,
                                  _rotate, &center, _flip_mode);
     }
 }
@@ -602,10 +623,10 @@ bool EasyEngine::EventSystem::handler() {
         if (ev.window.type == SDL_EVENT_QUIT) {
             return false;
         }
-        if (ev.window.type == SDL_EVENT_WINDOW_MINIMIZED) {
+        if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_LOST) {
             Engine::_is_stopped = true;
 
-        } else {
+        } else if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             Engine::_is_stopped = false;
         }
         if (_my_event_handler) {
@@ -799,6 +820,7 @@ bool EasyEngine::AudioSystem::playBGM(uint8_t channel, bool loop) {
             _bgm_channels[channel].status = Audio::Failed;
             return false;
         }
+        MIX_SetTrackStereo(_bgm_channels[channel].Stream.track, NULL);
     }
 
     SDL_PropertiesID id = 1;
@@ -864,9 +886,7 @@ void EasyEngine::AudioSystem::stopBGM(uint8_t channel, bool pause, int64_t fade_
 }
 
 void EasyEngine::AudioSystem::stopSFX(uint8_t channel) {
-    if (_sfx_channels[channel].status == Audio::Playing) {
-        MIX_StopTrack(_sfx_channels[channel].Stream.track, 0);
-    }
+    MIX_StopTrack(_sfx_channels[channel].Stream.track, 0);
 }
 
 void EasyEngine::AudioSystem::stopAllBGM() {
@@ -883,7 +903,7 @@ void EasyEngine::AudioSystem::stopAllSFX() {
 
 void EasyEngine::AudioSystem::unloadBGM(uint8_t channel) {
     if (channel > 15) return;
-    if (_bgm_channels[channel].status == Audio::Playing) stopBGM(channel, false, 0);
+    stopBGM(channel, false, 0);
     MIX_DestroyTrack(_bgm_channels[channel].Stream.track);
     MIX_DestroyAudio(_bgm_channels[channel].audio);
     _bgm_channels[channel].url.clear();
@@ -891,7 +911,7 @@ void EasyEngine::AudioSystem::unloadBGM(uint8_t channel) {
 }
 
 void EasyEngine::AudioSystem::unloadSFX(uint8_t channel) {
-    if (_sfx_channels[channel].status == Audio::Playing) stopSFX(channel);
+    stopSFX(channel);
     MIX_DestroyTrack(_sfx_channels[channel].Stream.track);
     MIX_DestroyAudio(_sfx_channels[channel].audio);
     _sfx_channels[channel].url.clear();
