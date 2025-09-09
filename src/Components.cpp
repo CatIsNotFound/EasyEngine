@@ -121,7 +121,75 @@ void EasyEngine::Components::SFX::reload() {
     }
 }
 
+EasyEngine::Components::Timer::Timer() : _delay(0) {}
 
+EasyEngine::Components::Timer::~Timer() {
+    stop();
+}
+
+EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function<void()> &function) 
+    : _delay(delay), _timer_function(function) {
+}
+
+void EasyEngine::Components::Timer::setDelay(uint64_t delay) {
+    _delay = delay;
+}
+
+void EasyEngine::Components::Timer::installTimerEvent(const std::function<void()> &function) {
+    _timer_function = function;
+}
+
+void EasyEngine::Components::Timer::stop() {
+    _enabled = false;
+}
+
+void EasyEngine::Components::Timer::start(bool loop) {
+    if (!_enabled) {
+        _enabled = true;
+        _loop = loop;
+        _start_time = _currentTimeMs();
+        SDL_Log("Start");
+    }
+}
+
+bool EasyEngine::Components::Timer::enabled() const {
+    return _enabled;
+}
+
+bool EasyEngine::Components::Timer::loop() const {
+    return _loop;
+}
+
+uint64_t EasyEngine::Components::Timer::_timestamp() const {
+    return _start_time;
+}
+
+uint64_t EasyEngine::Components::Timer::delay() const {
+    return _delay;
+}
+
+uint64_t EasyEngine::Components::Timer::_currentTimeMs() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::steady_clock::now().time_since_epoch()
+    ).count();
+}
+
+void EasyEngine::Components::Timer::update() {
+    if (!_enabled || !_timer_function) return;
+    
+    uint64_t current_time = _currentTimeMs();
+    uint64_t elapsed = current_time - _start_time;
+    if (elapsed >= _delay) {
+        try {
+            _timer_function();
+        } catch (const std::exception& e) {
+            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, 
+                        "Timer callback exception: %s", e.what());
+        }
+        if (_loop) _start_time = current_time;
+        else _enabled = false;
+    }
+}
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, SRenderer *renderer)
     : _name(name), _renderer(renderer), _size(0, 0) {
@@ -340,7 +408,7 @@ EasyEngine::Components::SpriteGroup::SpriteGroup(const EasyEngine::Components::S
     }
 }
 
-void EasyEngine::Components::SpriteGroup::add(const EasyEngine::Components::Sprite &sprite) {
+void EasyEngine::Components::SpriteGroup::append(const Sprite &sprite) {
     _sprites.push_back(std::make_shared<Sprite>(sprite.name(), sprite));
 }
 
@@ -357,22 +425,20 @@ void EasyEngine::Components::SpriteGroup::remove(uint32_t index) {
     _sprites.erase(_sprites.begin() + index);
 }
 
+void EasyEngine::Components::SpriteGroup::replace(uint32_t index, const EasyEngine::Components::Sprite &sprite) {
+    _sprites.at(index).reset(new Sprite(sprite.name(), sprite));
+}
+
 void EasyEngine::Components::SpriteGroup::swap(uint32_t index1, uint32_t index2) {
-    Sprite* t = _sprites.at(index1).get();
-    _sprites.at(index1).reset(_sprites.at(index2).get());
-    _sprites.at(index2).reset(t);
+    std::swap(_sprites.at(index1), _sprites.at(index2));
 }
 
 void EasyEngine::Components::SpriteGroup::swap(const std::string &sprite1, const std::string &sprite2) {
-    Sprite* t = _sprites.at(indexAt(sprite1)).get();
-    _sprites.at(indexAt(sprite1)).reset(_sprites.at(indexAt(sprite2)).get());
-    _sprites.at(indexAt(sprite2)).reset(t);
+    std::swap(_sprites.at(indexAt(sprite1)), _sprites.at(indexAt(sprite2)));
 }
 
 void EasyEngine::Components::SpriteGroup::swap(uint32_t index, const std::string &name) {
-    Sprite* t = _sprites.at(index).get();
-    _sprites.at(index).reset(_sprites.at(indexAt(name)).get());
-    _sprites.at(indexAt(name)).reset(t);
+    std::swap(_sprites.at(index), _sprites.at(indexAt(name)));
 }
 
 uint32_t EasyEngine::Components::SpriteGroup::indexAt(const std::string &name, uint32_t start) {
@@ -434,16 +500,18 @@ void EasyEngine::Components::Animation::insertFrame(const EasyEngine::Components
                        {std::make_unique<Sprite>(sprite.name(), sprite), duration});
 }
 
-void EasyEngine::Components::Animation::replaceFrame(const EasyEngine::Components::Sprite &spirit, const size_t frame) {
-
+void EasyEngine::Components::Animation::replaceFrame(const EasyEngine::Components::Sprite &sprite, const size_t frame) {
+    _animations.at(frame).sprite.reset();
+    _animations.at(frame).sprite = std::make_unique<Sprite>(sprite.name(), sprite);
+    _animations.at(frame).duration = frame;
 }
 
 void EasyEngine::Components::Animation::removeFrame(const size_t frame) {
-
+    _animations.erase(_animations.begin() + frame);
 }
 
 void EasyEngine::Components::Animation::clearFrames() {
-
+    _animations.clear();
 }
 
 size_t EasyEngine::Components::Animation::framesCount() const {
@@ -477,3 +545,4 @@ bool EasyEngine::Components::Animation::isPlayedAnimation() const {
 size_t EasyEngine::Components::Animation::frame() const {
     return _cur_frame;
 }
+

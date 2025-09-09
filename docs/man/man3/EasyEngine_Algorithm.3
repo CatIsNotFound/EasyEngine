@@ -25,7 +25,7 @@ EasyEngine::Algorithm \- 算法库
 .br
 .RI "中心圆算法 "
 .ti -1c
-.RI "static \fBVector2\fP \fBspiritScaledPosition\fP (const \fBComponents::Spirit::Properties\fP &properties)"
+.RI "static \fBVector2\fP \fBspiritScaledPosition\fP (const \fBComponents::Sprite::Properties\fP &properties)"
 .br
 .RI "获取某个精灵经过缩放后所在的位置 "
 .ti -1c
@@ -33,11 +33,11 @@ EasyEngine::Algorithm \- 算法库
 .br
 .RI "获取某个精灵经过缩放后所在的位置 "
 .ti -1c
-.RI "static \fBSize\fP \fBspiritScaledSize\fP (const \fBComponents::Spirit\fP &spirit, const \fBComponents::Spirit::Properties\fP &properties)"
+.RI "static \fBSize\fP \fBspriteScaledSize\fP (const \fBComponents::Sprite\fP &sprite, const \fBComponents::Sprite::Properties\fP &properties)"
 .br
 .RI "获取缩放后的精灵大小/尺寸 "
 .ti -1c
-.RI "static \fBSize\fP \fBspiritScaledSize\fP (const \fBComponents::Spirit\fP &spirit, const float scaled)"
+.RI "static \fBSize\fP \fBspriteScaledSize\fP (const \fBComponents::Sprite\fP &sprite, const float scaled)"
 .br
 .RI "获取缩放后的精灵大小/尺寸 "
 .in -1c
@@ -124,7 +124,7 @@ rgbaToHex(color, true);  // #C0C0C0FF
 .RE
 .PP
 
-.SS "\fBVector2\fP Algorithm::spiritScaledPosition (const \fBComponents::Spirit::Properties\fP & properties)\fR [static]\fP"
+.SS "\fBVector2\fP Algorithm::spiritScaledPosition (const \fBComponents::Sprite::Properties\fP & properties)\fR [static]\fP"
 
 .PP
 获取某个精灵经过缩放后所在的位置 
@@ -170,14 +170,14 @@ Properties
 .RE
 .PP
 
-.SS "\fBSize\fP Algorithm::spiritScaledSize (const \fBComponents::Spirit\fP & spirit, const \fBComponents::Spirit::Properties\fP & properties)\fR [static]\fP"
+.SS "\fBSize\fP Algorithm::spriteScaledSize (const \fBComponents::Sprite\fP & sprite, const \fBComponents::Sprite::Properties\fP & properties)\fR [static]\fP"
 
 .PP
 获取缩放后的精灵大小/尺寸 
 .PP
 \fB参数\fP
 .RS 4
-\fIspirit\fP 指定精灵 
+\fIsprite\fP 指定精灵 
 .br
 \fIproperties\fP 精灵绘制属性 
 .RE
@@ -188,14 +188,14 @@ Properties
 .RE
 .PP
 
-.SS "\fBSize\fP Algorithm::spriteScaledSize (const \fBComponents::Spirit\fP & spirit, const float scaled)\fR [static]\fP"
+.SS "\fBSize\fP Algorithm::spriteScaledSize (const \fBComponents::Sprite\fP & sprite, const float scaled)\fR [static]\fP"
 
 .PP
 获取缩放后的精灵大小/尺寸 
 .PP
 \fB参数\fP
 .RS 4
-\fIspirit\fP 指定精灵 
+\fIsprite\fP 指定精灵 
 .br
 \fIscaled\fP 缩放倍数 
 .RE

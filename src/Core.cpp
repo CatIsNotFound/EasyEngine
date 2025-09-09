@@ -7,6 +7,7 @@ SDL_WindowID EasyEngine::Engine::_main_window_id = 0;
 bool EasyEngine::Engine::_is_stopped = false;
 std::function<bool(SEvent)> EasyEngine::EventSystem::_my_event_handler = nullptr;
 std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nullptr;
+std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
 
 EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t height) {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
@@ -238,7 +239,7 @@ int EasyEngine::Engine::run() {
 
         // 事件处理循环，每隔 1ms 处理一次
         if (now - last_event_time >= event_interval) {
-            _is_running = _event_system->handler(); // 高频事件处理
+            _is_running = EventSystem::global()->handler(); // 高频事件处理
             last_event_time = now;
         }
         // 决定是否渲染画面
@@ -627,10 +628,14 @@ void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
     }
 }
 
-EasyEngine::EventSystem::EventSystem() = default;
-
-
 EasyEngine::EventSystem::~EventSystem() = default;
+
+EasyEngine::EventSystem *EasyEngine::EventSystem::global() {
+    if (!_instance) {
+        _instance = std::make_unique<EventSystem>();
+    }
+    return _instance.get();
+}
 
 bool EasyEngine::EventSystem::handler() {
     static SEvent ev;
@@ -646,6 +651,7 @@ bool EasyEngine::EventSystem::handler() {
         } else if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             Engine::_is_stopped = false;
         }
+
         if (_my_event_handler) {
             ret = _my_event_handler(ev);
         }

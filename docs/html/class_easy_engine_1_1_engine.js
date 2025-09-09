@@ -1,6 +1,7 @@
 var class_easy_engine_1_1_engine =
 [
     [ "Engine", "class_easy_engine_1_1_engine.html#a21aaab8bbbf9faf626b71c0f28ed9b14", null ],
+    [ "backgroundRenderingEnabled", "class_easy_engine_1_1_engine.html#aa5da80de6a48a60f7147dcc06ea21c15", null ],
     [ "exec", "class_easy_engine_1_1_engine.html#ad2530b5fbbea2ad182c83461d3f5c149", null ],
     [ "fps", "class_easy_engine_1_1_engine.html#a3bca3b3709d0757cc3ece1c58cd1d610", null ],
     [ "frameDropThreshold", "class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a", null ],
@@ -12,6 +13,7 @@ var class_easy_engine_1_1_engine =
     [ "painter", "class_easy_engine_1_1_engine.html#acb4e2107e5c31d729dbae944e503bdb0", null ],
     [ "removeWindow", "class_easy_engine_1_1_engine.html#a39e133ec46d32e1d1d2243d975ebff09", null ],
     [ "resize", "class_easy_engine_1_1_engine.html#aa4576d3dc3e9da3fa9515a4a2378c7e3", null ],
+    [ "setBackgroundRenderingEnabled", "class_easy_engine_1_1_engine.html#abb6395331592ec93e04d81608b3301e8", null ],
     [ "setBorderlessWindow", "class_easy_engine_1_1_engine.html#a421839d4befc2c37d16f9956116ddbbe", null ],
     [ "setFPS", "class_easy_engine_1_1_engine.html#a5ccc24ade1d3b3d3755f3cadba98fbf1", null ],
     [ "setFrameDropThreshold", "class_easy_engine_1_1_engine.html#a8b1d629b195d5b9e2976864c671fc76d", null ],

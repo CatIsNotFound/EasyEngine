@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['构建命令_0',['构建命令',['../index.html#autotoc_md19',1,'']]],
-  ['构建和部署_1',['构建和部署',['../index.html#autotoc_md17',1,'']]],
-  ['构建项目_2',['构建项目',['../D:/Coding/EasyEngine/README.md#autotoc_md61',1,'']]]
+  ['最佳实践_0',['5. 最佳实践',['../md_quickstart.html#autotoc_md42',1,'']]],
+  ['最小示例代码_1',['最小示例代码',['../D:/Coding/EasyEngine/README.md#autotoc_md62',1,'']]],
+  ['最小示例_2',['最小示例',['../index.html#autotoc_md12',1,'']]]
 ];

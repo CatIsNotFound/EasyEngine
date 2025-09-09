@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['debian_0',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
-  ['draw_1',['draw',['../class_easy_engine_1_1_components_1_1_spirit.html#a882624de17edd244779fef13017582e4',1,'EasyEngine::Components::Spirit::draw(const Vector2 &amp;pos, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_spirit.html#abffd6772b19ae69e52f75caee232db34',1,'EasyEngine::Components::Spirit::draw(const Vector2 &amp;pos, float scaled, Painter *painter, const Vector2 &amp;center=Vector2(0, 0)) const'],['../class_easy_engine_1_1_components_1_1_spirit.html#ac64168798cc05d7c7b11a8b024c92d1d',1,'EasyEngine::Components::Spirit::draw(const Vector2 &amp;pos, const Vector2 &amp;clip_pos, const Size &amp;clip_size, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_spirit.html#a8a3653764d523abf4d2174e5c48849df',1,'EasyEngine::Components::Spirit::draw(const Vector2 &amp;pos, double rotate, Painter *painter, const FlipMode &amp;flipMode=FlipMode::None, const Vector2 &amp;rotate_center={0, 0}) const'],['../class_easy_engine_1_1_components_1_1_spirit.html#a3fb79cd34206a0e4ad2c9e8a450c60a9',1,'EasyEngine::Components::Spirit::draw(const Vector2 &amp;pos, const SColor &amp;color_alpha, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_spirit.html#aa0d00e9b2d1df22bc05cc3b126fe48ba',1,'EasyEngine::Components::Spirit::draw(const EasyEngine::Components::Spirit::Properties &amp;properties, Painter *painter) const']]],
-  ['drawellipse_2',['drawEllipse',['../class_easy_engine_1_1_painter.html#a6ed21bfc6ee3adce6dfdedb66a54f4f5',1,'EasyEngine::Painter']]],
-  ['drawline_3',['drawLine',['../class_easy_engine_1_1_painter.html#ae8414f521292cd5d0a4d3f3396d9e93d',1,'EasyEngine::Painter']]],
-  ['drawpoint_4',['drawPoint',['../class_easy_engine_1_1_painter.html#a5f5c5ded78dbf9c92861128d6d9e6a4f',1,'EasyEngine::Painter']]],
-  ['drawrectangle_5',['drawRectangle',['../class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea',1,'EasyEngine::Painter']]],
-  ['drawspirit_6',['drawSpirit',['../class_easy_engine_1_1_painter.html#acb907d684b2a9fb968999f7396df0f8e',1,'EasyEngine::Painter::drawSpirit(const Components::Spirit &amp;spirit, const Vector2 &amp;pos)'],['../class_easy_engine_1_1_painter.html#af86f27bd754455c8242db6747777d7da',1,'EasyEngine::Painter::drawSpirit(const Components::Spirit &amp;spirit, const Components::Spirit::Properties &amp;properties)']]],
-  ['duration_7',['duration',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#ad6f34097aacf061fa8d13cfd0873140d',1,'EasyEngine::AudioSystem::Audio']]],
-  ['durationinframe_8',['durationInFrame',['../class_easy_engine_1_1_components_1_1_animator.html#ae14edab2550360e760163ca37a32a3b9',1,'EasyEngine::Components::Animator']]]
+  ['centerposition_0',['centerPosition',['../class_easy_engine_1_1_components_1_1_entity.html#a0a50bc96eb34d4e5a354be5c1308e6a3',1,'EasyEngine::Components::Entity']]],
+  ['check_1',['check',['../class_easy_engine_1_1_components_1_1_collider.html#a2e775e3a6b73b19809daf62b4f582362',1,'EasyEngine::Components::Collider']]],
+  ['clear_2',['clear',['../class_easy_engine_1_1_painter.html#a19dc2cb2aa21472456916c6cf80a8a38',1,'EasyEngine::Painter']]],
+  ['clearframes_3',['clearFrames',['../class_easy_engine_1_1_components_1_1_animation.html#abc8705828a052f552e2058f02e1b7548',1,'EasyEngine::Components::Animation']]],
+  ['clip_5fmode_4',['clip_mode',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#aef00bc1a90ee946e1af1b3e8341c6f01',1,'EasyEngine::Components::Sprite::Properties']]],
+  ['clip_5fpos_5',['clip_pos',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#a3ca1ff54683d7dcd1cdca956dd6398e8',1,'EasyEngine::Components::Sprite::Properties']]],
+  ['clip_5fsize_6',['clip_size',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#afb0ef78f42a071b7c229f876e8998c9b',1,'EasyEngine::Components::Sprite::Properties']]],
+  ['cmakelists_20txt_7',['2.2 CMakeLists.txt',['../md_quickstart.html#autotoc_md32',1,'']]],
+  ['collider_8',['Collider',['../class_easy_engine_1_1_components_1_1_collider.html',1,'EasyEngine::Components::Collider'],['../class_easy_engine_1_1_components_1_1_collider.html#aa4ff20db36679935a526af815d639ccf',1,'EasyEngine::Components::Collider::Collider()'],['../class_easy_engine_1_1_components_1_1_collider.html#ac9a8088f2e11d6306378daee959c8457',1,'EasyEngine::Components::Collider::Collider(SFRect rect)'],['../class_easy_engine_1_1_components_1_1_collider.html#ace041576cbeab3eebdd4f2e141427742',1,'EasyEngine::Components::Collider::Collider(float x, float y, float width, float height)']]],
+  ['color_5falpha_9',['color_alpha',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#ad6613bc385ed54bf4ac3b93da766c16d',1,'EasyEngine::Components::Sprite::Properties']]],
+  ['components_10',['Components',['../namespace_components.html',1,'']]],
+  ['components_2eh_11',['Components.h',['../_components_8h.html',1,'']]],
+  ['core_2eh_12',['Core.h',['../_core_8h.html',1,'']]],
+  ['count_13',['count',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a8e5e1805282a2063d33da0c9188d7eea',1,'EasyEngine::Components::SpriteGroup']]]
 ];

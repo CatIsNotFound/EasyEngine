@@ -1,0 +1,860 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Components::Sprite类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_components_1_1_sprite.html','','class_easy_engine_1_1_components_1_1_sprite-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Components::Sprite类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>精灵  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_components_8h_source.html">Components.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:Properties" id="r_Properties"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">Properties</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制属性（仅用于 Spirit 绘制）  <a href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#details">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aca83ba48be69794f23e337b95c67d3a5" id="r_aca83ba48be69794f23e337b95c67d3a5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca83ba48be69794f23e337b95c67d3a5">FlipMode</a> { <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd">HFlip</a>
+, <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7">VFlip</a>
+ }</td></tr>
+<tr class="memdesc:aca83ba48be69794f23e337b95c67d3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">翻转模式  <a href="#aca83ba48be69794f23e337b95c67d3a5">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aab2bba8fa8ba366f7d715894ecba7e7b" id="r_aab2bba8fa8ba366f7d715894ecba7e7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab2bba8fa8ba366f7d715894ecba7e7b">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, SRenderer *<a class="el" href="#abc18b974547e08c704e3995623dc0dad">renderer</a>)</td></tr>
+<tr class="memdesc:aab2bba8fa8ba366f7d715894ecba7e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个精灵，无精灵纹理  <br /></td></tr>
+<tr class="memitem:a91f04b8c2c6df6aeec4564e4701677a8" id="r_a91f04b8c2c6df6aeec4564e4701677a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91f04b8c2c6df6aeec4564e4701677a8">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;<a class="el" href="#a8ee07edccb6987426caa9287a64319d5">spirit</a>)</td></tr>
+<tr class="memdesc:a91f04b8c2c6df6aeec4564e4701677a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">克隆已有的精灵  <br /></td></tr>
+<tr class="memitem:a64eea868a997cb7c1e04e32edf80f2ce" id="r_a64eea868a997cb7c1e04e32edf80f2ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64eea868a997cb7c1e04e32edf80f2ce">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;<a class="el" href="#a8ee07edccb6987426caa9287a64319d5">spirit</a>, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;clip_pos, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;clip_size)</td></tr>
+<tr class="memdesc:a64eea868a997cb7c1e04e32edf80f2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">克隆并裁剪已有的精灵  <br /></td></tr>
+<tr class="memitem:ac1ccb6d80543a268dbfa252ce7c9eb58" id="r_ac1ccb6d80543a268dbfa252ce7c9eb58"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1ccb6d80543a268dbfa252ce7c9eb58">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, const std::string &amp;<a class="el" href="#a9cf3d638885c70a06ddab390915b7c05">path</a>, SRenderer *<a class="el" href="#abc18b974547e08c704e3995623dc0dad">renderer</a>)</td></tr>
+<tr class="memdesc:ac1ccb6d80543a268dbfa252ce7c9eb58"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个精灵  <br /></td></tr>
+<tr class="memitem:a8d4c72ac09a20e6cb0c90dd2fcec9dd5" id="r_a8d4c72ac09a20e6cb0c90dd2fcec9dd5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d4c72ac09a20e6cb0c90dd2fcec9dd5">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, const std::string &amp;<a class="el" href="#a9cf3d638885c70a06ddab390915b7c05">path</a>, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;clip_pos, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;clip_size, SRenderer *<a class="el" href="#abc18b974547e08c704e3995623dc0dad">renderer</a>)</td></tr>
+<tr class="memdesc:a8d4c72ac09a20e6cb0c90dd2fcec9dd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个精灵并裁剪  <br /></td></tr>
+<tr class="memitem:a21c3811e2e781b5966e05e733bc103ef" id="r_a21c3811e2e781b5966e05e733bc103ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21c3811e2e781b5966e05e733bc103ef">setName</a> (const std::string &amp;new_name)</td></tr>
+<tr class="memdesc:a21c3811e2e781b5966e05e733bc103ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置精灵别名  <br /></td></tr>
+<tr class="memitem:af26c8980014a6062bf0ff83b1712eb15" id="r_af26c8980014a6062bf0ff83b1712eb15"><td class="memItemLeft" align="right" valign="top"><a id="af26c8980014a6062bf0ff83b1712eb15" name="af26c8980014a6062bf0ff83b1712eb15"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
+<tr class="memdesc:af26c8980014a6062bf0ff83b1712eb15"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取精灵别名 <br /></td></tr>
+<tr class="memitem:a6f59447d30387a9786098f3f74ecda6d" id="r_a6f59447d30387a9786098f3f74ecda6d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f59447d30387a9786098f3f74ecda6d">setPath</a> (const std::string &amp;new_path)</td></tr>
+<tr class="memdesc:a6f59447d30387a9786098f3f74ecda6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置精灵纹理路径  <br /></td></tr>
+<tr class="memitem:a9cf3d638885c70a06ddab390915b7c05" id="r_a9cf3d638885c70a06ddab390915b7c05"><td class="memItemLeft" align="right" valign="top"><a id="a9cf3d638885c70a06ddab390915b7c05" name="a9cf3d638885c70a06ddab390915b7c05"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>path</b> () const</td></tr>
+<tr class="memdesc:a9cf3d638885c70a06ddab390915b7c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取精灵纹理路径 <br /></td></tr>
+<tr class="memitem:a5636cdfc4954970009c0a7a13aecb852" id="r_a5636cdfc4954970009c0a7a13aecb852"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5636cdfc4954970009c0a7a13aecb852">isValid</a> (const std::string &amp;<a class="el" href="#a9cf3d638885c70a06ddab390915b7c05">path</a>) const</td></tr>
+<tr class="memdesc:a5636cdfc4954970009c0a7a13aecb852"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查精灵纹理路径是否有效  <br /></td></tr>
+<tr class="memitem:a66d5d11d20433bada9667323ebcf4e6e" id="r_a66d5d11d20433bada9667323ebcf4e6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66d5d11d20433bada9667323ebcf4e6e">setRenderer</a> (SRenderer *<a class="el" href="#abc18b974547e08c704e3995623dc0dad">renderer</a>)</td></tr>
+<tr class="memdesc:a66d5d11d20433bada9667323ebcf4e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置渲染器  <br /></td></tr>
+<tr class="memitem:abc18b974547e08c704e3995623dc0dad" id="r_abc18b974547e08c704e3995623dc0dad"><td class="memItemLeft" align="right" valign="top"><a id="abc18b974547e08c704e3995623dc0dad" name="abc18b974547e08c704e3995623dc0dad"></a>
+const SRenderer *&#160;</td><td class="memItemRight" valign="bottom"><b>renderer</b> () const</td></tr>
+<tr class="memdesc:abc18b974547e08c704e3995623dc0dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前使用的渲染器 <br /></td></tr>
+<tr class="memitem:ae98e5921e456bec28e23af1257697005" id="r_ae98e5921e456bec28e23af1257697005"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae98e5921e456bec28e23af1257697005">resize</a> (float width, float height)</td></tr>
+<tr class="memdesc:ae98e5921e456bec28e23af1257697005"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整精灵纹理的尺寸  <br /></td></tr>
+<tr class="memitem:a37587046608c596cf0fdf922d7fa6478" id="r_a37587046608c596cf0fdf922d7fa6478"><td class="memItemLeft" align="right" valign="top"><a id="a37587046608c596cf0fdf922d7fa6478" name="a37587046608c596cf0fdf922d7fa6478"></a>
+<a class="el" href="struct_easy_engine_1_1_size.html">Size</a>&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
+<tr class="memdesc:a37587046608c596cf0fdf922d7fa6478"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前精灵纹理的尺寸 <br /></td></tr>
+<tr class="memitem:a8ee07edccb6987426caa9287a64319d5" id="r_a8ee07edccb6987426caa9287a64319d5"><td class="memItemLeft" align="right" valign="top"><a id="a8ee07edccb6987426caa9287a64319d5" name="a8ee07edccb6987426caa9287a64319d5"></a>
+STexture *&#160;</td><td class="memItemRight" valign="bottom"><b>spirit</b> () const</td></tr>
+<tr class="memdesc:a8ee07edccb6987426caa9287a64319d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取精灵纹理 <br /></td></tr>
+<tr class="memitem:a7e15ce7098b6ccf20bade064f520a7d0" id="r_a7e15ce7098b6ccf20bade064f520a7d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e15ce7098b6ccf20bade064f520a7d0">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter) const</td></tr>
+<tr class="memdesc:a7e15ce7098b6ccf20bade064f520a7d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置上绘制精灵  <br /></td></tr>
+<tr class="memitem:ae5bf0c381c4950a24f236c13c4706bc0" id="r_ae5bf0c381c4950a24f236c13c4706bc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5bf0c381c4950a24f236c13c4706bc0">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, float scaled, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;center=<a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(0, 0)) const</td></tr>
+<tr class="memdesc:ae5bf0c381c4950a24f236c13c4706bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置下绘制临时指定大小的精灵  <br /></td></tr>
+<tr class="memitem:a22ff383faee1e718682879ab7b38c356" id="r_a22ff383faee1e718682879ab7b38c356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22ff383faee1e718682879ab7b38c356">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;clip_pos, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;clip_size, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter) const</td></tr>
+<tr class="memdesc:a22ff383faee1e718682879ab7b38c356"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置下临时裁剪并绘制精灵  <br /></td></tr>
+<tr class="memitem:afece268f1f7937373b51d252b7d52b1a" id="r_afece268f1f7937373b51d252b7d52b1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afece268f1f7937373b51d252b7d52b1a">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, double rotate, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter, const <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5">FlipMode</a> &amp;flipMode=<a class="el" href="#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754">FlipMode::None</a>, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;rotate_center={0, 0}) const</td></tr>
+<tr class="memdesc:afece268f1f7937373b51d252b7d52b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置下临时旋转、翻转并绘制精灵  <br /></td></tr>
+<tr class="memitem:a844d1c3804f5bde5f6aceeefa30c80a8" id="r_a844d1c3804f5bde5f6aceeefa30c80a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a844d1c3804f5bde5f6aceeefa30c80a8">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, const SColor &amp;color_alpha, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter) const</td></tr>
+<tr class="memdesc:a844d1c3804f5bde5f6aceeefa30c80a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置下，使用颜色通道绘制精灵  <br /></td></tr>
+<tr class="memitem:a9e3f65ae13b00a04f03e91c89f17397d" id="r_a9e3f65ae13b00a04f03e91c89f17397d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">Properties</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e3f65ae13b00a04f03e91c89f17397d">properties</a> () const</td></tr>
+<tr class="memdesc:a9e3f65ae13b00a04f03e91c89f17397d"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制  <br /></td></tr>
+<tr class="memitem:a7757f67b4415db65d9c31528c8a4529b" id="r_a7757f67b4415db65d9c31528c8a4529b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7757f67b4415db65d9c31528c8a4529b">draw</a> (const <a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">EasyEngine::Components::Sprite::Properties</a> &amp;<a class="el" href="#a9e3f65ae13b00a04f03e91c89f17397d">properties</a>, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter) const</td></tr>
+<tr class="memdesc:a7757f67b4415db65d9c31528c8a4529b"><td class="mdescLeft">&#160;</td><td class="mdescRight">通过指定的精灵绘制属性进行详细绘制  <br /></td></tr>
+<tr class="memitem:ac7da25363608f0efb1f7771613ae406c" id="r_ac7da25363608f0efb1f7771613ae406c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7da25363608f0efb1f7771613ae406c">draw</a> (<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter) const</td></tr>
+<tr class="memdesc:ac7da25363608f0efb1f7771613ae406c"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用精灵自己的绘制属性进行绘制  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>精灵 </p>
+<p>用于存储精灵（即纹理）以及如何绘制精灵 </p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">成员枚举类型说明</h2>
+<a id="aca83ba48be69794f23e337b95c67d3a5" name="aca83ba48be69794f23e337b95c67d3a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca83ba48be69794f23e337b95c67d3a5">&#9670;&#160;</a></span>FlipMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5">EasyEngine::Components::Sprite::FlipMode</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>翻转模式 </p>
+<p>实现简单的水平、垂直镜像翻转，主要用于 Spirit 的绘制 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a7e15ce7098b6ccf20bade064f520a7d0" title="在指定位置上绘制精灵">draw</a> </dd>
+<dd>
+<a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html" title="绘制属性（仅用于 Spirit 绘制）">Properties</a> </dd></dl>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754" name="aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"><p>无 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd" name="aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd"></a>HFlip&#160;</td><td class="fielddoc"><p>水平翻转 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7" name="aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7"></a>VFlip&#160;</td><td class="fielddoc"><p>垂直翻转 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="aab2bba8fa8ba366f7d715894ecba7e7b" name="aab2bba8fa8ba366f7d715894ecba7e7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2bba8fa8ba366f7d715894ecba7e7b">&#9670;&#160;</a></span>Sprite() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SRenderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建一个精灵，无精灵纹理 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>精灵别名 </td></tr>
+    <tr><td class="paramname">renderer</td><td>使用的渲染器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a91f04b8c2c6df6aeec4564e4701677a8" name="a91f04b8c2c6df6aeec4564e4701677a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91f04b8c2c6df6aeec4564e4701677a8">&#9670;&#160;</a></span>Sprite() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>spirit</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>克隆已有的精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>精灵别名 </td></tr>
+    <tr><td class="paramname">spirit</td><td>指定精灵 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64eea868a997cb7c1e04e32edf80f2ce" name="a64eea868a997cb7c1e04e32edf80f2ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64eea868a997cb7c1e04e32edf80f2ce">&#9670;&#160;</a></span>Sprite() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>spirit</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>克隆并裁剪已有的精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>精灵别名 </td></tr>
+    <tr><td class="paramname">spirit</td><td>指定精灵 </td></tr>
+    <tr><td class="paramname">clip_pos</td><td>裁剪位置（相对坐标） </td></tr>
+    <tr><td class="paramname">clip_size</td><td>裁剪大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac1ccb6d80543a268dbfa252ce7c9eb58" name="ac1ccb6d80543a268dbfa252ce7c9eb58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ccb6d80543a268dbfa252ce7c9eb58">&#9670;&#160;</a></span>Sprite() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SRenderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建一个精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>精灵别名 </td></tr>
+    <tr><td class="paramname">path</td><td>精灵纹理路径 </td></tr>
+    <tr><td class="paramname">renderer</td><td>使用的渲染器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d4c72ac09a20e6cb0c90dd2fcec9dd5" name="a8d4c72ac09a20e6cb0c90dd2fcec9dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d4c72ac09a20e6cb0c90dd2fcec9dd5">&#9670;&#160;</a></span>Sprite() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Sprite::Sprite </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SRenderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建一个精灵并裁剪 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>精灵别名 </td></tr>
+    <tr><td class="paramname">path</td><td>精灵纹理路径 </td></tr>
+    <tr><td class="paramname">clip_pos</td><td>裁剪位置（相对坐标） </td></tr>
+    <tr><td class="paramname">clip_size</td><td>裁剪大小 </td></tr>
+    <tr><td class="paramname">renderer</td><td>使用的渲染器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a7757f67b4415db65d9c31528c8a4529b" name="a7757f67b4415db65d9c31528c8a4529b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7757f67b4415db65d9c31528c8a4529b">&#9670;&#160;</a></span>draw() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">EasyEngine::Components::Sprite::Properties</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>properties</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>通过指定的精灵绘制属性进行详细绘制 </p>
+<p>适合用于需要同时满足多种效果的情况下使用。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">properties</td><td>绘制精灵属性 </td></tr>
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html" title="绘制属性（仅用于 Spirit 绘制）">Properties</a> </dd>
+<dd>
+<a class="el" href="class_easy_engine_1_1_painter.html" title="图形绘制器">Painter</a> </dd></dl>
+
+</div>
+</div>
+<a id="a844d1c3804f5bde5f6aceeefa30c80a8" name="a844d1c3804f5bde5f6aceeefa30c80a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a844d1c3804f5bde5f6aceeefa30c80a8">&#9670;&#160;</a></span>draw() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SColor &amp;</td>          <td class="paramname"><span class="paramname"><em>color_alpha</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置下，使用颜色通道绘制精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定位置 </td></tr>
+    <tr><td class="paramname">color_alpha</td><td>颜色通道（或透明通道） </td></tr>
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="namespace_std_color.html" title="预定义标准颜色（81 色）">StdColor</a> </dd>
+<dd>
+hexToRGBA </dd>
+<dd>
+<a class="el" href="class_easy_engine_1_1_painter.html" title="图形绘制器">Painter</a> </dd></dl>
+
+</div>
+</div>
+<a id="a22ff383faee1e718682879ab7b38c356" name="a22ff383faee1e718682879ab7b38c356"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ff383faee1e718682879ab7b38c356">&#9670;&#160;</a></span>draw() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置下临时裁剪并绘制精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定绘制坐标 </td></tr>
+    <tr><td class="paramname">clip_pos</td><td>裁剪坐标（相对坐标） </td></tr>
+    <tr><td class="paramname">clip_size</td><td>裁剪大小（相对大小） </td></tr>
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afece268f1f7937373b51d252b7d52b1a" name="afece268f1f7937373b51d252b7d52b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afece268f1f7937373b51d252b7d52b1a">&#9670;&#160;</a></span>draw() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>rotate</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#aca83ba48be69794f23e337b95c67d3a5">FlipMode</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>flipMode</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754">FlipMode::None</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rotate_center</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{0,&#160;0}</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置下临时旋转、翻转并绘制精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定绘制坐标 </td></tr>
+    <tr><td class="paramname">rotate</td><td>旋转角度 </td></tr>
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+    <tr><td class="paramname">flipMode</td><td>翻转方式（默认为无翻转） </td></tr>
+    <tr><td class="paramname">rotate_center</td><td>旋转中心点（默认为左上坐标） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae5bf0c381c4950a24f236c13c4706bc0" name="ae5bf0c381c4950a24f236c13c4706bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5bf0c381c4950a24f236c13c4706bc0">&#9670;&#160;</a></span>draw() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>scaled</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>center</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(0,&#160;0)</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置下绘制临时指定大小的精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定绘制坐标 </td></tr>
+    <tr><td class="paramname">scaled</td><td>缩放范围 </td></tr>
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+    <tr><td class="paramname">center</td><td>缩放中心点（默认为左上角） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7e15ce7098b6ccf20bade064f520a7d0" name="a7e15ce7098b6ccf20bade064f520a7d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e15ce7098b6ccf20bade064f520a7d0">&#9670;&#160;</a></span>draw() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置上绘制精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定绘制坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd>painter </dd></dl>
+
+</div>
+</div>
+<a id="ac7da25363608f0efb1f7771613ae406c" name="ac7da25363608f0efb1f7771613ae406c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7da25363608f0efb1f7771613ae406c">&#9670;&#160;</a></span>draw() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::draw </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">EasyEngine::Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>使用精灵自己的绘制属性进行绘制 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a9e3f65ae13b00a04f03e91c89f17397d" title="获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制">properties</a> </dd></dl>
+
+</div>
+</div>
+<a id="a5636cdfc4954970009c0a7a13aecb852" name="a5636cdfc4954970009c0a7a13aecb852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5636cdfc4954970009c0a7a13aecb852">&#9670;&#160;</a></span>isValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Sprite::isValid </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检查精灵纹理路径是否有效 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>指定路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 true 表示路径有效 </dd></dl>
+
+</div>
+</div>
+<a id="a9e3f65ae13b00a04f03e91c89f17397d" name="a9e3f65ae13b00a04f03e91c89f17397d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e3f65ae13b00a04f03e91c89f17397d">&#9670;&#160;</a></span>properties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">EasyEngine::Components::Sprite::Properties</a> * EasyEngine::Components::Sprite::properties </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a7e15ce7098b6ccf20bade064f520a7d0" title="在指定位置上绘制精灵">draw</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae98e5921e456bec28e23af1257697005" name="ae98e5921e456bec28e23af1257697005"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98e5921e456bec28e23af1257697005">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::resize </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整精灵纹理的尺寸 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>新的宽度 </td></tr>
+    <tr><td class="paramname">height</td><td>新的高度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a21c3811e2e781b5966e05e733bc103ef" name="a21c3811e2e781b5966e05e733bc103ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21c3811e2e781b5966e05e733bc103ef">&#9670;&#160;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>new_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置精灵别名 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_name</td><td>新的精灵别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6f59447d30387a9786098f3f74ecda6d" name="a6f59447d30387a9786098f3f74ecda6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f59447d30387a9786098f3f74ecda6d">&#9670;&#160;</a></span>setPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Sprite::setPath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>new_path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置精灵纹理路径 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_path</td><td>指定图片路径，支持绝对路径或相对路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a66d5d11d20433bada9667323ebcf4e6e" name="a66d5d11d20433bada9667323ebcf4e6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66d5d11d20433bada9667323ebcf4e6e">&#9670;&#160;</a></span>setRenderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::setRenderer </td>
+          <td>(</td>
+          <td class="paramtype">SRenderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置渲染器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>指定新的渲染器 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_components_8h_source.html">Components.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Components.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><b>Components</b></li><li class="navelem"><a href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

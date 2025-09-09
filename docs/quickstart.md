@@ -21,7 +21,7 @@ vcpkg install sdl3 sdl3-image sdl3-ttf sdl3-mixer fmt
 
 #### Linux (Ubuntu/Debian)
 ```bash
-sudo apt update
+sudo apt _update
 sudo apt install libsdl3-dev libsdl3-image-dev libsdl3-ttf-dev libsdl3-mixer-dev libfmt-dev
 ```
 
@@ -286,7 +286,7 @@ private:
     
 public:
     void initialize();
-    void update(float deltaTime);
+    void _update(float deltaTime);
     void render();
     void handleInput();
 };

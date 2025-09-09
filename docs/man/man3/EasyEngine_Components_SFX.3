@@ -1,0 +1,101 @@
+.TH "EasyEngine::Components::SFX" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::SFX \- 音效  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBSFX\fP (const std::string &\fBpath\fP)"
+.br
+.RI "创建指定路径的 \fBSFX\fP "
+.ti -1c
+.RI "void \fBsetPath\fP (const std::string &\fBpath\fP)"
+.br
+.RI "设置指定源路径 "
+.ti -1c
+.RI "const std::string & \fBpath\fP () const"
+.br
+.RI "获取当前音频源路径 "
+.ti -1c
+.RI "void \fBplay\fP ()"
+.br
+.RI "播放 \fBSFX\fP "
+.ti -1c
+.RI "void \fBplay\fP (uint32_t delay)"
+.br
+.RI "播放 SFX（循环播放） "
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.RI "立即停止播放 \fBSFX\fP "
+.ti -1c
+.RI "bool \fBisLoop\fP () const"
+.br
+.RI "获取当前音频是否正在循环播放 "
+.in -1c
+.SS "Protected 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBreload\fP ()"
+.br
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBAudioSystem\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+音效 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::SFX::SFX (const std::string & path)"
+
+.PP
+创建指定路径的 \fBSFX\fP 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定音频路径 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::Components::SFX::play (uint32_t delay)"
+
+.PP
+播放 SFX（循环播放） 
+.PP
+\fB参数\fP
+.RS 4
+\fIdelay\fP 设定间隔（设定毫秒数） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SFX::setPath (const std::string & path)"
+
+.PP
+设置指定源路径 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定音频源路径 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

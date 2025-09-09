@@ -59,11 +59,11 @@ EasyEngine::AudioSystem \- 音频系统
 .br
 .RI "获取当前音效音量 "
 .ti -1c
-.RI "int16_t \fBloadBGM\fP (const \fBEasyEngine::BGM\fP &bgm)"
+.RI "int16_t \fBloadBGM\fP (const \fBComponents::BGM\fP &bgm)"
 .br
 .RI "载入背景音乐 "
 .ti -1c
-.RI "int16_t \fBloadSFX\fP (const \fBSFX\fP &sfx)"
+.RI "int16_t \fBloadSFX\fP (const \fBComponents::SFX\fP &sfx)"
 .br
 .RI "载入音效 "
 .ti -1c
@@ -77,11 +77,11 @@ EasyEngine::AudioSystem \- 音频系统
 .ti -1c
 .RI "void \fBstopBGM\fP (uint8_t channel, bool pause, int64_t fade_out_duration=0)"
 .br
-.RI "立刻暂停/停止播放指定通道的 \fBBGM\fP "
+.RI "立刻暂停/停止播放指定通道的 BGM "
 .ti -1c
 .RI "void \fBstopSFX\fP (uint8_t channel)"
 .br
-.RI "立刻停止播放指定通道的 \fBSFX\fP "
+.RI "立刻停止播放指定通道的 SFX "
 .ti -1c
 .RI "void \fBstopAllBGM\fP ()"
 .br
@@ -116,13 +116,6 @@ EasyEngine::AudioSystem \- 音频系统
 .in +1c
 .ti -1c
 .RI "static \fBAudioSystem\fP * \fBinstance\fP ()"
-.br
-.in -1c
-.SS "Protected 成员函数"
-
-.in +1c
-.ti -1c
-.RI "void \fBupdateBGMChannel\fP ()"
 .br
 .in -1c
 .SH "详细描述"
@@ -184,14 +177,14 @@ EasyEngine::AudioSystem \- 音频系统
 .RE
 .PP
 
-.SS "int16_t EasyEngine::AudioSystem::loadBGM (const \fBEasyEngine::BGM\fP & bgm)"
+.SS "int16_t EasyEngine::AudioSystem::loadBGM (const \fBComponents::BGM\fP & bgm)"
 
 .PP
 载入背景音乐 
 .PP
 \fB参数\fP
 .RS 4
-\fIbgm\fP 指定 \fBBGM\fP 
+\fIbgm\fP 指定 BGM 
 .RE
 .PP
 \fB返回\fP
@@ -216,14 +209,14 @@ EasyEngine::AudioSystem \- 音频系统
 .RE
 .PP
 
-.SS "int16_t EasyEngine::AudioSystem::loadSFX (const \fBSFX\fP & sfx)"
+.SS "int16_t EasyEngine::AudioSystem::loadSFX (const \fBComponents::SFX\fP & sfx)"
 
 .PP
 载入音效 
 .PP
 \fB参数\fP
 .RS 4
-\fIsfx\fP 指定 \fBSFX\fP 
+\fIsfx\fP 指定 SFX 
 .RE
 .PP
 \fB返回\fP
@@ -322,12 +315,15 @@ EasyEngine::AudioSystem \- 音频系统
 .PP
 \fB注解\fP
 .RS 4
-推荐使用 \fBStdAudioSpec\fP 命名空间选择音频配置！ 
+这取决于当前的音频设备是否支持此音频格式，否则即使设置，也是无效 
 .RE
 .PP
 \fB参见\fP
 .RS 4
 \fBaudioSpec\fP 
+
+.PP
+\fBStdAudioSpec\fP 
 .RE
 .PP
 
@@ -362,7 +358,16 @@ AudioSystem::instance()\->setBGMVolume(0\&.75f);
 .PP
 \fB参数\fP
 .RS 4
-\fIvolume\fP 指定音量（按 0\&.0 ~ 1\&.0 表示音量百分比） 
+\fIvolume\fP 指定音量（按 0\&.0 ~ 1\&.0 表示音量百分比）
+.IP "\(bu" 2
+.PP
+.nf
+// 75% volume of SFX
+AudioSystem::instance()\->setSFXVolume(0\&.75f);
+.fi
+.PP
+ 
+.PP
 .RE
 .PP
 \fB参见\fP
@@ -446,7 +451,7 @@ AudioSystem::instance()\->setBGMVolume(0\&.75f);
 .SS "void EasyEngine::AudioSystem::stopBGM (uint8_t channel, bool pause, int64_t fade_out_duration = \fR0\fP)"
 
 .PP
-立刻暂停/停止播放指定通道的 \fBBGM\fP 
+立刻暂停/停止播放指定通道的 BGM 
 .PP
 \fB参数\fP
 .RS 4
@@ -454,7 +459,7 @@ AudioSystem::instance()\->setBGMVolume(0\&.75f);
 .br
 \fIpause\fP 是否选择暂停（否则将停止） 
 .br
-\fIfade_out_duration\fP 设定淡出音量持续时长（单位：ms） 
+\fIfade_out_duration\fP 设定淡出音量持续时长，按帧 
 .RE
 .PP
 \fB参见\fP
@@ -475,7 +480,7 @@ AudioSystem::instance()\->setBGMVolume(0\&.75f);
 .SS "void EasyEngine::AudioSystem::stopSFX (uint8_t channel)"
 
 .PP
-立刻停止播放指定通道的 \fBSFX\fP 
+立刻停止播放指定通道的 SFX 
 .PP
 \fB参数\fP
 .RS 4

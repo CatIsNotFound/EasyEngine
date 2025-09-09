@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['init_0',['init',['../class_easy_engine_1_1_audio_system.html#a057ad850a7fb93d929c0ffbe394224c1',1,'EasyEngine::AudioSystem']]],
-  ['insertframe_1',['insertFrame',['../class_easy_engine_1_1_components_1_1_animator.html#aaba47e2c0298e1f801db2636033e5ca7',1,'EasyEngine::Components::Animator']]],
-  ['installeventhandler_2',['installEventHandler',['../class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779',1,'EasyEngine::Engine']]],
-  ['installpaintevent_3',['installPaintEvent',['../class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4',1,'EasyEngine::Painter']]],
-  ['is_5fstream_4',['is_stream',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875',1,'EasyEngine::AudioSystem::Audio']]],
-  ['iscolliderenabled_5',['isColliderEnabled',['../class_easy_engine_1_1_components_1_1_entity.html#afb4bb047d3353602717dcc8010489b03',1,'EasyEngine::Components::Entity']]],
-  ['iscollision_6',['isCollision',['../class_easy_engine_1_1_components_1_1_entity.html#a2943c38a28d4cf2a48918b44bed5cdf1',1,'EasyEngine::Components::Entity']]],
-  ['isloop_7',['isLoop',['../class_easy_engine_1_1_b_g_m.html#aabd9fb7403b7d280d2d12268af446486',1,'EasyEngine::BGM']]],
-  ['isplayed_8',['isPlayed',['../class_easy_engine_1_1_b_g_m.html#a3044d50bd0250ca8603b71c912343b37',1,'EasyEngine::BGM']]],
-  ['isplayedanimation_9',['isPlayedAnimation',['../class_easy_engine_1_1_components_1_1_animator.html#a6cf0fbd4216d5c4cf087a4e85314975f',1,'EasyEngine::Components::Animator']]],
-  ['isvalid_10',['isValid',['../class_easy_engine_1_1_components_1_1_spirit.html#ae48da22e7806a419313b57aead1d448a',1,'EasyEngine::Components::Spirit']]]
+  ['handler_0',['handler',['../class_easy_engine_1_1_event_system.html#ad51c16da26aae7f2c05d5661a1229935',1,'EasyEngine::EventSystem']]],
+  ['hextorgba_1',['hexToRGBA',['../class_easy_engine_1_1_algorithm.html#a1190222e9f894a806c370ed5032a87ce',1,'EasyEngine::Algorithm']]],
+  ['hflip_2',['HFlip',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd',1,'EasyEngine::Components::Sprite']]],
+  ['hide_3',['hide',['../class_easy_engine_1_1_engine.html#ac9bc753dcc986c09052ba67e8ccb4ab7',1,'EasyEngine::Engine']]],
+  ['hifi_4',['HIFI',['../_core_8h.html#a17ee9965ef595c675d8056c37b23b7d0',1,'EasyEngine::StdAudioSpec']]],
+  ['high_5',['High',['../_core_8h.html#a5d47f8f201407131964751966d5f1f36',1,'EasyEngine::StdAudioSpec']]],
+  ['homebrew_6',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]]
 ];

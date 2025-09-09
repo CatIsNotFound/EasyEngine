@@ -1,0 +1,150 @@
+.TH "EasyEngine::Components::Timer" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Timer \- 定时器  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBTimer\fP (uint64_t \fBdelay\fP, const std::function< void()> &function)"
+.br
+.RI "创建定时器 "
+.ti -1c
+.RI "void \fBsetDelay\fP (uint64_t \fBdelay\fP)"
+.br
+.RI "设定定时器触发延迟 "
+.ti -1c
+.RI "void \fBinstallTimerEvent\fP (const std::function< void()> &function)"
+.br
+.RI "安装或替换定时器触发事件 "
+.ti -1c
+.RI "void \fBstart\fP (bool \fBloop\fP=false)"
+.br
+.RI "启用定时器 "
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.RI "禁用定时器 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "返回是否启用计时器 "
+.ti -1c
+.RI "bool \fBloop\fP () const"
+.br
+.RI "返回是否正在循环使用计时器 "
+.ti -1c
+.RI "uint64_t \fB_timestamp\fP () const"
+.br
+.RI "获取当前时间戳 "
+.ti -1c
+.RI "uint64_t \fBdelay\fP () const"
+.br
+.RI "获取触发延迟时长 "
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.RI "更新定时器状态（需要在主循环中调用） "
+.in -1c
+.SH "详细描述"
+.PP 
+定时器 
+
+用于设置延迟或定时的工具 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Timer::Timer (uint64_t delay, const std::function< void()> & function)"
+
+.PP
+创建定时器 
+.PP
+\fB参数\fP
+.RS 4
+\fIdelay\fP 设定触发延迟（毫秒） 
+.br
+\fIfunction\fP 触发事件 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "uint64_t EasyEngine::Components::Timer::delay () const"
+
+.PP
+获取触发延迟时长 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetDelay\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Timer::installTimerEvent (const std::function< void()> & function)"
+
+.PP
+安装或替换定时器触发事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIfunction\fP 指定触发事件 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Timer::setDelay (uint64_t delay)"
+
+.PP
+设定定时器触发延迟 
+.PP
+\fB参数\fP
+.RS 4
+\fIdelay\fP 指定延迟（毫秒） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Timer::start (bool loop = \fRfalse\fP)"
+
+.PP
+启用定时器 
+.PP
+\fB参数\fP
+.RS 4
+\fIloop\fP 是否循环启用定时器（之前的事件触发后将再次启用） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstop\fP 
+
+.PP
+\fBenabled\fP 
+
+.PP
+\fBloop\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Timer::stop ()"
+
+.PP
+禁用定时器 
+.PP
+\fB参见\fP
+.RS 4
+\fBstart\fP 
+
+.PP
+\fBenabled\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

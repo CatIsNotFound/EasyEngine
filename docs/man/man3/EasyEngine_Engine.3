@@ -116,6 +116,14 @@ EasyEngine::Engine \- 引擎类
 .RI "uint32_t \fBframeDropThreshold\fP () const"
 .br
 .RI "获取当前连续慢帧阈值 "
+.ti -1c
+.RI "void \fBsetBackgroundRenderingEnabled\fP (bool enabled)"
+.br
+.RI "设置是否允许在后台渲染画面 "
+.ti -1c
+.RI "bool \fBbackgroundRenderingEnabled\fP () const"
+.br
+.RI "获取当前是否允许后台渲染画面 "
 .in -1c
 .SS "友元"
 
@@ -156,6 +164,17 @@ EasyEngine::Engine \- 引擎类
 
 .SH "成员函数说明"
 .PP 
+.SS "bool EasyEngine::Engine::backgroundRenderingEnabled () const"
+
+.PP
+获取当前是否允许后台渲染画面 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetBackgroundRenderingEnabled\fP 
+.RE
+.PP
+
 .SS "int EasyEngine::Engine::exec ()"
 
 .PP
@@ -401,6 +420,24 @@ EasyEngine::Engine \- 引擎类
 \fB参见\fP
 .RS 4
 \fBwindowIDList\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Engine::setBackgroundRenderingEnabled (bool enabled)"
+
+.PP
+设置是否允许在后台渲染画面 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 启用/禁用
+.RE
+.PP
+当窗口处于非活动状态下，根据 enabled 决定是否仍然渲染画面。 这对于低性能设备而言，启用后能节省性能。 
+.PP
+\fB参见\fP
+.RS 4
+\fBbackgroundRenderingEnabled\fP 
 .RE
 .PP
 

@@ -9,9 +9,23 @@ EasyEngine::EventSystem \- 事件系统
 .PP
 .PP
 \fR#include <Core\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBEventSystem\fP (const \fBEventSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBEventSystem\fP \fBoperator=\fP (const \fBEventSystem\fP &)=delete"
+.br
+.in -1c
 .SS "静态 Public 成员函数"
 
 .in +1c
+.ti -1c
+.RI "static \fBEventSystem\fP * \fBglobal\fP ()"
+.br
+.RI "获取全局事件系统 "
 .ti -1c
 .RI "static bool \fBhandler\fP ()"
 .br

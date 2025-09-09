@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['loadbgm_0',['loadBGM',['../class_easy_engine_1_1_audio_system.html#aaf16956e09653c1f3b9b1f4a63ca8f41',1,'EasyEngine::AudioSystem']]],
-  ['loadsfx_1',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a3d0c6edeea7125fe0ce9166f5dc87e6d',1,'EasyEngine::AudioSystem']]]
+  ['handler_0',['handler',['../class_easy_engine_1_1_event_system.html#ad51c16da26aae7f2c05d5661a1229935',1,'EasyEngine::EventSystem']]],
+  ['hextorgba_1',['hexToRGBA',['../class_easy_engine_1_1_algorithm.html#a1190222e9f894a806c370ed5032a87ce',1,'EasyEngine::Algorithm']]],
+  ['hide_2',['hide',['../class_easy_engine_1_1_engine.html#ac9bc753dcc986c09052ba67e8ccb4ab7',1,'EasyEngine::Engine']]]
 ];

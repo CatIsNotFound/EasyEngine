@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['window_0',['window',['../class_easy_engine_1_1_engine.html#a8490688cb2669d39df068a0055082149',1,'EasyEngine::Engine::window()'],['../class_easy_engine_1_1_painter.html#aeddd595104c1e29e6cc4c7aa347f12c7',1,'EasyEngine::Painter::window()']]],
-  ['windowcount_1',['windowCount',['../class_easy_engine_1_1_engine.html#a39b495dcb4ce33bb5fab76824b853e77',1,'EasyEngine::Engine']]],
-  ['windowidlist_2',['windowIDList',['../class_easy_engine_1_1_engine.html#afa2ab8a04166fbc0fed19a91e6ff3b75',1,'EasyEngine::Engine']]],
-  ['windowtitle_3',['windowTitle',['../class_easy_engine_1_1_engine.html#a282de1155b05980b1edddc8d0b6bc4ed',1,'EasyEngine::Engine']]]
+  ['thickness_0',['thickness',['../class_easy_engine_1_1_painter.html#a0a2ccfbcc029ea582279f3220c153105',1,'EasyEngine::Painter']]],
+  ['timer_1',['Timer',['../class_easy_engine_1_1_components_1_1_timer.html#a3349518f8fc0be2a8f701df5ec66b1f9',1,'EasyEngine::Components::Timer']]]
 ];

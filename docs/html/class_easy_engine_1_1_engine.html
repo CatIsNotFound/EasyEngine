@@ -174,6 +174,10 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a8b1d629b195d5b9e2976864c671fc76d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置连续慢帧阈值  <br /></td></tr>
 <tr class="memitem:ad6f36b53fbb659f1f79fa8a1be0f453a" id="r_ad6f36b53fbb659f1f79fa8a1be0f453a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6f36b53fbb659f1f79fa8a1be0f453a">frameDropThreshold</a> () const</td></tr>
 <tr class="memdesc:ad6f36b53fbb659f1f79fa8a1be0f453a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前连续慢帧阈值  <br /></td></tr>
+<tr class="memitem:abb6395331592ec93e04d81608b3301e8" id="r_abb6395331592ec93e04d81608b3301e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb6395331592ec93e04d81608b3301e8">setBackgroundRenderingEnabled</a> (bool enabled)</td></tr>
+<tr class="memdesc:abb6395331592ec93e04d81608b3301e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置是否允许在后台渲染画面  <br /></td></tr>
+<tr class="memitem:aa5da80de6a48a60f7147dcc06ea21c15" id="r_aa5da80de6a48a60f7147dcc06ea21c15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5da80de6a48a60f7147dcc06ea21c15">backgroundRenderingEnabled</a> () const</td></tr>
+<tr class="memdesc:aa5da80de6a48a60f7147dcc06ea21c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前是否允许后台渲染画面  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -232,6 +236,26 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="aa5da80de6a48a60f7147dcc06ea21c15" name="aa5da80de6a48a60f7147dcc06ea21c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5da80de6a48a60f7147dcc06ea21c15">&#9670;&#160;</a></span>backgroundRenderingEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Engine::backgroundRenderingEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前是否允许后台渲染画面 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abb6395331592ec93e04d81608b3301e8" title="设置是否允许在后台渲染画面">setBackgroundRenderingEnabled</a> </dd></dl>
+
+</div>
+</div>
 <a id="ad2530b5fbbea2ad182c83461d3f5c149" name="ad2530b5fbbea2ad182c83461d3f5c149"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2530b5fbbea2ad182c83461d3f5c149">&#9670;&#160;</a></span>exec()</h2>
 
@@ -555,6 +579,32 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回 true 表示已调整窗口大小，否则为 false </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="abb6395331592ec93e04d81608b3301e8" name="abb6395331592ec93e04d81608b3301e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb6395331592ec93e04d81608b3301e8">&#9670;&#160;</a></span>setBackgroundRenderingEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::setBackgroundRenderingEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置是否允许在后台渲染画面 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>启用/禁用</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>当窗口处于非活动状态下，根据 enabled 决定是否仍然渲染画面。 这对于低性能设备而言，启用后能节省性能。 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#aa5da80de6a48a60f7147dcc06ea21c15" title="获取当前是否允许后台渲染画面">backgroundRenderingEnabled</a> </dd></dl>
 
 </div>
 </div>

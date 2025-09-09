@@ -46,7 +46,6 @@ namespace EasyEngine {
     };
 
     class Painter;
-    class InputSystem;
     class EventSystem;
     class AudioSystem;
 
@@ -305,8 +304,6 @@ namespace EasyEngine {
         std::map<SWindowID, std::shared_ptr<Window>> _sdl_window_list;
         static SWindowID _main_window_id;
         std::map<SWindowID, std::unique_ptr<Painter>> _renderer_list;
-        std::unique_ptr<EventSystem> _event_system;
-
         std::mutex _mutex;
         bool _is_running{false};
         static bool _is_stopped;
@@ -506,7 +503,13 @@ namespace EasyEngine {
     class EventSystem {
         friend class Engine;
     public:
-        explicit EventSystem();
+        /**
+         * @brief 获取全局事件系统
+         */
+        static EventSystem* global();
+        explicit EventSystem() = default;
+        EventSystem(const EventSystem&) = delete;
+        EventSystem operator=(const EventSystem&) = delete;
         ~EventSystem();
         /**
          * @brief 事件处理器
@@ -519,6 +522,7 @@ namespace EasyEngine {
 
     private:
         static std::function<bool(SEvent)> _my_event_handler;
+        static std::unique_ptr<EventSystem> _instance;
     };
 
     /**

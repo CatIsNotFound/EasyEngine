@@ -23,7 +23,7 @@ using SRect = SDL_Rect;
 
 namespace EasyEngine {
     class Painter;
-
+    class EventSystem;
     /**
      * @namespace Components
      * @brief 组件库
@@ -113,6 +113,10 @@ namespace EasyEngine {
             friend class AudioSystem;
         };
 
+        /**
+         * @class SFX
+         * @brief 音效
+         */
         class SFX {
         public:
             explicit SFX();
@@ -159,6 +163,78 @@ namespace EasyEngine {
             bool _is_loop{false};
             bool _is_load{false};
             friend class AudioSystem;
+        };
+
+        /**
+         * @class Timer
+         * @brief 定时器
+         *
+         * 用于设置延迟或定时的工具
+         */
+        class Timer {
+        public:
+            explicit Timer();
+            ~Timer();
+            /**
+             * @brief 创建定时器
+             * @param delay     设定触发延迟（毫秒）
+             * @param function  触发事件
+             */
+            Timer(uint64_t delay, const std::function<void()>& function);
+            /**
+             * @brief 设定定时器触发延迟
+             * @param delay 指定延迟（毫秒）
+             */
+            void setDelay(uint64_t delay);
+            /**
+             * @brief 安装或替换定时器触发事件
+             * @param function 指定触发事件
+             */
+            void installTimerEvent(const std::function<void()>& function);
+            /**
+             * @brief 启用定时器
+             * @param loop 是否循环启用定时器（之前的事件触发后将再次启用）
+             * @see stop
+             * @see enabled
+             * @see loop
+             */
+            void start(bool loop = false);
+            /**
+             * @brief 禁用定时器
+             * @see start
+             * @see enabled
+             */
+            void stop();
+            /**
+             * @brief 返回是否启用计时器
+             */
+            bool enabled() const;
+            /**
+             * @brief 返回是否正在循环使用计时器
+             */
+            bool loop() const;
+
+            /**
+             * @brief 获取当前时间戳
+             */
+            uint64_t _timestamp() const;
+            /**
+             * @brief 获取触发延迟时长
+             * @see setDelay
+             */
+            uint64_t delay() const;
+            /**
+             * @brief 更新定时器状态（需要在主循环中调用）
+             */
+            void update();
+
+        private:
+            uint64_t _start_time{0};
+            uint64_t _delay{0};
+            bool _enabled{false};
+            bool _loop{false};
+            std::function<void()> _timer_function;
+            static uint64_t _currentTimeMs();
         };
 
         /**
@@ -397,7 +473,7 @@ namespace EasyEngine {
              * @brief 添加精灵
              * @param sprite 指定精灵
              */
-            void add(const Sprite& sprite);
+            void append(const Sprite &sprite);
             /**
              * @brief 在指定位置上插入精灵
              * @param index 指定位置
@@ -407,13 +483,28 @@ namespace EasyEngine {
             /**
              * @brief 移除指定名称的精灵
              * @param name 指定的精灵名称
+             * @see indexOf
+             * @see lastIndexOf
+             * @see nameOf
              */
             void remove(const std::string &name);
             /**
              * @brief 移除指定位置的精灵
              * @param index 指定位置
+             * @see indexAt
+             * @see indexOf
+             * @see lastIndexOf
              */
             void remove(uint32_t index = 0);
+            /**
+             * @brief 替换指定索引的精灵
+             * @param index 指定索引位置
+             * @param sprite 指定精灵
+             * @see indexAt
+             * @see indexOf
+             * @see lastIndexOf
+             */
+            void replace(uint32_t index, const Sprite& sprite);
             /**
              * @brief 交换精灵位置
              * @param index1 第一个精灵所在索引
@@ -452,6 +543,7 @@ namespace EasyEngine {
              * @brief 获取指定索引的精灵
              * @param index 指定索引
              * @see indexAt
+             * @see lastIndexOf
              * @see nameOf
              * @see propertiesOf
              */
@@ -524,10 +616,10 @@ namespace EasyEngine {
             void insertFrame(const Sprite& sprite, uint64_t duration = 50, const size_t frame = 0);
             /**
              * @brief 在指定帧下替换精灵图像
-             * @param spirit 新的精灵图像
+             * @param sprite 新的精灵图像
              * @param frame 指定帧数
              */
-            void replaceFrame(const Sprite& spirit, const size_t frame = 0);
+            void replaceFrame(const Sprite& sprite, const size_t frame = 0);
             /**
              * @brief 移除指定帧对应的图像
              * @param frame 指定帧数，默认为第 0 帧

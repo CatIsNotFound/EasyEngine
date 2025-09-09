@@ -13,6 +13,6 @@ var struct_easy_engine_1_1_audio_system_1_1_audio =
     [ "is_stream", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875", null ],
     [ "position", "struct_easy_engine_1_1_audio_system_1_1_audio.html#ae5046e0f191221ff9f49518dbdb16a38", null ],
     [ "status", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b5cece6de025632c02c43e44c0f2d2e", null ],
-    [ "Stream", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a632b9ab74ea16c0a24269fc8d1b2812d", null ],
+    [ "Stream", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a18a5ee4824f7b67776f34a3e0079cb1e", null ],
     [ "url", "struct_easy_engine_1_1_audio_system_1_1_audio.html#a5d4e547b5051a37ebc0e06bb9e62a475", null ]
 ];

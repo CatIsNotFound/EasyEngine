@@ -57,13 +57,16 @@ EasyEngine::Painter \- 图形绘制器
 .br
 .RI "绘制椭圆 "
 .ti -1c
-.RI "void \fBdrawSpirit\fP (const \fBComponents::Spirit\fP &spirit, const \fBVector2\fP &pos)"
+.RI "void \fBdrawSprite\fP (const \fBComponents::Sprite\fP &sprite, const \fBVector2\fP &pos)"
 .br
 .RI "绘制精灵 "
 .ti -1c
-.RI "void \fBdrawSpirit\fP (const \fBComponents::Spirit\fP &spirit, const \fBComponents::Spirit::Properties\fP &properties)"
+.RI "void \fBdrawSprite\fP (const \fBComponents::Sprite\fP &sprite, const \fBComponents::Sprite::Properties\fP &properties)"
 .br
 .RI "根据精灵属性绘制精灵 "
+.ti -1c
+.RI "void \fBdrawSprite\fP (const \fBComponents::Sprite\fP &sprite, const \fBComponents::Sprite::Properties\fP *properties)"
+.br
 .ti -1c
 .RI "void \fBclear\fP ()"
 .br
@@ -73,7 +76,7 @@ EasyEngine::Painter \- 图形绘制器
 
 .in +1c
 .ti -1c
-.RI "class \fBComponents::Spirit\fP"
+.RI "class \fBComponents::Sprite\fP"
 .br
 .in -1c
 .SH "详细描述"
@@ -140,14 +143,14 @@ EasyEngine::Painter \- 图形绘制器
 .RE
 .PP
 
-.SS "void EasyEngine::Painter::drawSpirit (const \fBComponents::Spirit\fP & spirit, const \fBComponents::Spirit::Properties\fP & properties)"
+.SS "void EasyEngine::Painter::drawSprite (const \fBComponents::Sprite\fP & sprite, const \fBComponents::Sprite::Properties\fP & properties)"
 
 .PP
 根据精灵属性绘制精灵 
 .PP
 \fB参数\fP
 .RS 4
-\fIspirit\fP 指定精灵 
+\fIsprite\fP 指定精灵 
 .br
 \fIproperties\fP 精灵属性 
 .RE
@@ -161,14 +164,14 @@ Properties
 .RE
 .PP
 
-.SS "void EasyEngine::Painter::drawSpirit (const \fBComponents::Spirit\fP & spirit, const \fBVector2\fP & pos)"
+.SS "void EasyEngine::Painter::drawSprite (const \fBComponents::Sprite\fP & sprite, const \fBVector2\fP & pos)"
 
 .PP
 绘制精灵 
 .PP
 \fB参数\fP
 .RS 4
-\fIspirit\fP 精灵 
+\fIsprite\fP 精灵 
 .br
 \fIpos\fP 绘制位置 
 .RE

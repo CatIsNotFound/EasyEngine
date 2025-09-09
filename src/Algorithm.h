@@ -93,6 +93,7 @@ namespace EasyEngine {
          */
         static Size spriteScaledSize(const Components::Sprite &sprite,
                                      const float scaled);
+
     };
 
 }

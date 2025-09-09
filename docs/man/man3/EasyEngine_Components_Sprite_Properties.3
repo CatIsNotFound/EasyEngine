@@ -1,0 +1,88 @@
+.TH "EasyEngine::Components::Sprite::Properties" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Sprite::Properties \- 绘制属性（仅用于 Spirit 绘制）  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP \fBposition\fP {0, 0}"
+.br
+.RI "精灵所属位置 "
+.ti -1c
+.RI "\fBVector2\fP \fBscaled_center\fP {0, 0}"
+.br
+.RI "缩放中心点 "
+.ti -1c
+.RI "float \fBscaled\fP {1\&.0f}"
+.br
+.RI "缩放倍数 "
+.ti -1c
+.RI "SColor \fBcolor_alpha\fP {255, 255, 255, 255}"
+.br
+.RI "渲染颜色通道（可调整 Alpha 透明通道） "
+.ti -1c
+.RI "double \fBrotate\fP {0\&.0}"
+.br
+.RI "旋转角度 "
+.ti -1c
+.RI "\fBVector2\fP \fBrotate_center\fP {0, 0}"
+.br
+.RI "旋转中心点 "
+.ti -1c
+.RI "\fBFlipMode\fP \fBflip_mode\fP {\fBFlipMode::None\fP}"
+.br
+.RI "翻转模式 "
+.ti -1c
+.RI "bool \fBclip_mode\fP {false}"
+.br
+.RI "裁剪模式（是否允许裁剪） "
+.ti -1c
+.RI "\fBVector2\fP \fBclip_pos\fP {0, 0}"
+.br
+.RI "裁剪位置 "
+.ti -1c
+.RI "\fBSize\fP \fBclip_size\fP {0, 0}"
+.br
+.RI "裁剪尺寸、裁剪大小 "
+.in -1c
+.SH "详细描述"
+.PP 
+绘制属性（仅用于 Spirit 绘制） 
+
+针对多种绘制属性，一次性绘制具有多种属性的精灵
+
+.PP
+\fB参见\fP
+.RS 4
+\fBdraw\fP 
+.RE
+.PP
+
+.SH "类成员变量说明"
+.PP 
+.SS "SColor EasyEngine::Components::Sprite::Properties::color_alpha {255, 255, 255, 255}"
+
+.PP
+渲染颜色通道（可调整 Alpha 透明通道） 
+.PP
+\fB参见\fP
+.RS 4
+\fBStdColor\fP 
+
+.PP
+hexToRGBA 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

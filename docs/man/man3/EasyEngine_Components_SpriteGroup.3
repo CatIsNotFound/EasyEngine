@@ -1,0 +1,367 @@
+.TH "EasyEngine::Components::SpriteGroup" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::SpriteGroup \- 精灵组合  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &group)=default"
+.br
+.ti -1c
+.RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &&group)"
+.br
+.ti -1c
+.RI "void \fBappend\fP (const \fBSprite\fP &sprite)"
+.br
+.RI "添加精灵 "
+.ti -1c
+.RI "void \fBinsert\fP (uint32_t index, const \fBSprite\fP &sprite)"
+.br
+.RI "在指定位置上插入精灵 "
+.ti -1c
+.RI "void \fBremove\fP (const std::string &name)"
+.br
+.RI "移除指定名称的精灵 "
+.ti -1c
+.RI "void \fBremove\fP (uint32_t index=0)"
+.br
+.RI "移除指定位置的精灵 "
+.ti -1c
+.RI "void \fBreplace\fP (uint32_t index, const \fBSprite\fP &sprite)"
+.br
+.RI "替换指定索引的精灵 "
+.ti -1c
+.RI "void \fBswap\fP (uint32_t index1, uint32_t index2)"
+.br
+.RI "交换精灵位置 "
+.ti -1c
+.RI "void \fBswap\fP (const std::string &sprite1, const std::string &sprite2)"
+.br
+.RI "交换精灵位置 "
+.ti -1c
+.RI "void \fBswap\fP (uint32_t index, const std::string &name)"
+.br
+.RI "交换精灵位置 "
+.ti -1c
+.RI "uint32_t \fBindexAt\fP (const std::string &name, uint32_t start=0)"
+.br
+.RI "获取精灵所在索引 "
+.ti -1c
+.RI "uint32_t \fBlastIndexAt\fP (const std::string &name, uint32_t start=0)"
+.br
+.RI "获取精灵所在索引 "
+.ti -1c
+.RI "\fBSprite\fP * \fBindexOf\fP (uint32_t index)"
+.br
+.RI "获取指定索引的精灵 "
+.ti -1c
+.RI "\fBSprite\fP * \fBnameOf\fP (const std::string &name)"
+.br
+.RI "获取指定名称的精灵 "
+.ti -1c
+.RI "\fBSprite::Properties\fP * \fBpropertiesOf\fP (uint32_t index)"
+.br
+.RI "根据指定索引获取精灵对应的属性 "
+.ti -1c
+.RI "\fBSprite::Properties\fP * \fBpropertiesOf\fP (const std::string &name)"
+.br
+.RI "根据精灵名称获取精灵对应的属性 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, \fBPainter\fP *painter)"
+.br
+.RI "指定绘图器并绘制精灵组 "
+.ti -1c
+.RI "uint32_t \fBcount\fP () const"
+.br
+.RI "获取当前精灵组合的精灵总个数 "
+.in -1c
+.SH "详细描述"
+.PP 
+精灵组合 
+
+由多个精灵组合而成的组合，用于绘制比较复杂的多精灵组合体 
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::Components::SpriteGroup::append (const \fBSprite\fP & sprite)"
+
+.PP
+添加精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIsprite\fP 指定精灵 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::draw (const \fBVector2\fP & pos, \fBPainter\fP * painter)"
+
+.PP
+指定绘图器并绘制精灵组 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定绘制的位置 
+.br
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Components::SpriteGroup::indexAt (const std::string & name, uint32_t start = \fR0\fP)"
+
+.PP
+获取精灵所在索引 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵名称 
+.br
+\fIstart\fP 从哪个位置开始 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBlastIndexAt\fP 
+
+.PP
+sprite 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::SpriteGroup::indexOf (uint32_t index)"
+
+.PP
+获取指定索引的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定索引 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+lastIndexOf 
+
+.PP
+\fBnameOf\fP 
+
+.PP
+\fBpropertiesOf\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::insert (uint32_t index, const \fBSprite\fP & sprite)"
+
+.PP
+在指定位置上插入精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定位置 
+.br
+\fIsprite\fP 指定精灵 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Components::SpriteGroup::lastIndexAt (const std::string & name, uint32_t start = \fR0\fP)"
+
+.PP
+获取精灵所在索引 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵名称 
+.br
+\fIstart\fP 从最后第几个位置开始 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+sprite 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::SpriteGroup::nameOf (const std::string & name)"
+
+.PP
+获取指定名称的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定名称 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+\fBindexOf\fP 
+
+.PP
+\fBpropertiesOf\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Components::Sprite::Properties\fP * EasyEngine::Components::SpriteGroup::propertiesOf (const std::string & name)"
+
+.PP
+根据精灵名称获取精灵对应的属性 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定精灵名称 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+\fBindexOf\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Components::Sprite::Properties\fP * EasyEngine::Components::SpriteGroup::propertiesOf (uint32_t index)"
+
+.PP
+根据指定索引获取精灵对应的属性 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定索引 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+\fBindexOf\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::remove (const std::string & name)"
+
+.PP
+移除指定名称的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定的精灵名称 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+lastIndexOf 
+
+.PP
+\fBnameOf\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::remove (uint32_t index = \fR0\fP)"
+
+.PP
+移除指定位置的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定位置 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+\fBindexOf\fP 
+
+.PP
+lastIndexOf 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::replace (uint32_t index, const \fBSprite\fP & sprite)"
+
+.PP
+替换指定索引的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定索引位置 
+.br
+\fIsprite\fP 指定精灵 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexAt\fP 
+
+.PP
+\fBindexOf\fP 
+
+.PP
+lastIndexOf 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::swap (const std::string & sprite1, const std::string & sprite2)"
+
+.PP
+交换精灵位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIsprite1\fP 第一个精灵名称 
+.br
+\fIsprite2\fP 第二个精灵名称 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::swap (uint32_t index, const std::string & name)"
+
+.PP
+交换精灵位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 第一个精灵所在索引 
+.br
+\fIname\fP 第二个精灵的指定名称 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::swap (uint32_t index1, uint32_t index2)"
+
+.PP
+交换精灵位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex1\fP 第一个精灵所在索引 
+.br
+\fIindex2\fP 第二个精灵所在索引 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

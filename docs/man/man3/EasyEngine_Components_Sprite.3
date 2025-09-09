@@ -1,0 +1,446 @@
+.TH "EasyEngine::Components::Sprite" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Sprite \- 精灵  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "struct \fBProperties\fP"
+.br
+.RI "绘制属性（仅用于 Spirit 绘制） "
+.in -1c
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBFlipMode\fP { \fBNone\fP, \fBHFlip\fP, \fBVFlip\fP }"
+.br
+.RI "翻转模式 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, SRenderer *\fBrenderer\fP)"
+.br
+.RI "创建一个精灵，无精灵纹理 "
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP)"
+.br
+.RI "克隆已有的精灵 "
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size)"
+.br
+.RI "克隆并裁剪已有的精灵 "
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const std::string &\fBpath\fP, SRenderer *\fBrenderer\fP)"
+.br
+.RI "创建一个精灵 "
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const std::string &\fBpath\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size, SRenderer *\fBrenderer\fP)"
+.br
+.RI "创建一个精灵并裁剪 "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &new_name)"
+.br
+.RI "设置精灵别名 "
+.ti -1c
+.RI "std::string \fBname\fP () const"
+.br
+.RI "获取精灵别名 "
+.ti -1c
+.RI "bool \fBsetPath\fP (const std::string &new_path)"
+.br
+.RI "设置精灵纹理路径 "
+.ti -1c
+.RI "std::string \fBpath\fP () const"
+.br
+.RI "获取精灵纹理路径 "
+.ti -1c
+.RI "bool \fBisValid\fP (const std::string &\fBpath\fP) const"
+.br
+.RI "检查精灵纹理路径是否有效 "
+.ti -1c
+.RI "void \fBsetRenderer\fP (SRenderer *\fBrenderer\fP)"
+.br
+.RI "设置渲染器 "
+.ti -1c
+.RI "const SRenderer * \fBrenderer\fP () const"
+.br
+.RI "获取当前使用的渲染器 "
+.ti -1c
+.RI "void \fBresize\fP (float width, float height)"
+.br
+.RI "重新调整精灵纹理的尺寸 "
+.ti -1c
+.RI "\fBSize\fP \fBsize\fP () const"
+.br
+.RI "获取当前精灵纹理的尺寸 "
+.ti -1c
+.RI "STexture * \fBspirit\fP () const"
+.br
+.RI "获取精灵纹理 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, \fBPainter\fP *painter) const"
+.br
+.RI "在指定位置上绘制精灵 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, float scaled, \fBPainter\fP *painter, const \fBVector2\fP &center=\fBVector2\fP(0, 0)) const"
+.br
+.RI "在指定位置下绘制临时指定大小的精灵 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size, \fBPainter\fP *painter) const"
+.br
+.RI "在指定位置下临时裁剪并绘制精灵 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, double rotate, \fBPainter\fP *painter, const \fBFlipMode\fP &flipMode=\fBFlipMode::None\fP, const \fBVector2\fP &rotate_center={0, 0}) const"
+.br
+.RI "在指定位置下临时旋转、翻转并绘制精灵 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos, const SColor &color_alpha, \fBPainter\fP *painter) const"
+.br
+.RI "在指定位置下，使用颜色通道绘制精灵 "
+.ti -1c
+.RI "\fBProperties\fP * \fBproperties\fP () const"
+.br
+.RI "获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBEasyEngine::Components::Sprite::Properties\fP &\fBproperties\fP, \fBPainter\fP *painter) const"
+.br
+.RI "通过指定的精灵绘制属性进行详细绘制 "
+.ti -1c
+.RI "void \fBdraw\fP (\fBPainter\fP *painter) const"
+.br
+.RI "使用精灵自己的绘制属性进行绘制 "
+.in -1c
+.SH "详细描述"
+.PP 
+精灵 
+
+用于存储精灵（即纹理）以及如何绘制精灵 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum class \fBEasyEngine::Components::Sprite::FlipMode\fP\fR [strong]\fP"
+
+.PP
+翻转模式 实现简单的水平、垂直镜像翻转，主要用于 Spirit 的绘制 
+.PP
+\fB参见\fP
+.RS 4
+\fBdraw\fP 
+
+.PP
+\fBProperties\fP 
+.RE
+.PP
+
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BINone \fP
+无 
+.TP
+\f(BIHFlip \fP
+水平翻转 
+.TP
+\f(BIVFlip \fP
+垂直翻转 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, SRenderer * renderer)\fR [explicit]\fP"
+
+.PP
+创建一个精灵，无精灵纹理 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIrenderer\fP 使用的渲染器 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & spirit)"
+
+.PP
+克隆已有的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIspirit\fP 指定精灵 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & spirit, const \fBVector2\fP & clip_pos, const \fBSize\fP & clip_size)"
+
+.PP
+克隆并裁剪已有的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIspirit\fP 指定精灵 
+.br
+\fIclip_pos\fP 裁剪位置（相对坐标） 
+.br
+\fIclip_size\fP 裁剪大小 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const std::string & path, SRenderer * renderer)"
+
+.PP
+创建一个精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIpath\fP 精灵纹理路径 
+.br
+\fIrenderer\fP 使用的渲染器 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const std::string & path, const \fBVector2\fP & clip_pos, const \fBSize\fP & clip_size, SRenderer * renderer)"
+
+.PP
+创建一个精灵并裁剪 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIpath\fP 精灵纹理路径 
+.br
+\fIclip_pos\fP 裁剪位置（相对坐标） 
+.br
+\fIclip_size\fP 裁剪大小 
+.br
+\fIrenderer\fP 使用的渲染器 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::Components::Sprite::draw (const \fBEasyEngine::Components::Sprite::Properties\fP & properties, \fBPainter\fP * painter) const"
+
+.PP
+通过指定的精灵绘制属性进行详细绘制 适合用于需要同时满足多种效果的情况下使用。 
+.PP
+\fB参数\fP
+.RS 4
+\fIproperties\fP 绘制精灵属性 
+.br
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBProperties\fP 
+
+.PP
+\fBPainter\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (const \fBVector2\fP & pos, const SColor & color_alpha, \fBPainter\fP * painter) const"
+
+.PP
+在指定位置下，使用颜色通道绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定位置 
+.br
+\fIcolor_alpha\fP 颜色通道（或透明通道） 
+.br
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBStdColor\fP 
+
+.PP
+hexToRGBA 
+
+.PP
+\fBPainter\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (const \fBVector2\fP & pos, const \fBVector2\fP & clip_pos, const \fBSize\fP & clip_size, \fBPainter\fP * painter) const"
+
+.PP
+在指定位置下临时裁剪并绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定绘制坐标 
+.br
+\fIclip_pos\fP 裁剪坐标（相对坐标） 
+.br
+\fIclip_size\fP 裁剪大小（相对大小） 
+.br
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (const \fBVector2\fP & pos, double rotate, \fBPainter\fP * painter, const \fBFlipMode\fP & flipMode = \fR\fBFlipMode::None\fP\fP, const \fBVector2\fP & rotate_center = \fR{0, 0}\fP) const"
+
+.PP
+在指定位置下临时旋转、翻转并绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定绘制坐标 
+.br
+\fIrotate\fP 旋转角度 
+.br
+\fIpainter\fP 指定绘图器 
+.br
+\fIflipMode\fP 翻转方式（默认为无翻转） 
+.br
+\fIrotate_center\fP 旋转中心点（默认为左上坐标） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (const \fBVector2\fP & pos, float scaled, \fBPainter\fP * painter, const \fBVector2\fP & center = \fR\fBVector2\fP(0, 0)\fP) const"
+
+.PP
+在指定位置下绘制临时指定大小的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定绘制坐标 
+.br
+\fIscaled\fP 缩放范围 
+.br
+\fIpainter\fP 指定绘图器 
+.br
+\fIcenter\fP 缩放中心点（默认为左上角） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (const \fBVector2\fP & pos, \fBPainter\fP * painter) const"
+
+.PP
+在指定位置上绘制精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定绘制坐标 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+painter 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::draw (\fBEasyEngine::Painter\fP * painter) const"
+
+.PP
+使用精灵自己的绘制属性进行绘制 
+.PP
+\fB参数\fP
+.RS 4
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBproperties\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Sprite::isValid (const std::string & path) const"
+
+.PP
+检查精灵纹理路径是否有效 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定路径 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 true 表示路径有效 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Components::Sprite::Properties\fP * EasyEngine::Components::Sprite::properties () const"
+
+.PP
+获取当前精灵的绘制属性，可通过 draw(Painter*) 函数使用当前属性进行绘制 
+.PP
+\fB参见\fP
+.RS 4
+\fBdraw\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::resize (float width, float height)"
+
+.PP
+重新调整精灵纹理的尺寸 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 新的宽度 
+.br
+\fIheight\fP 新的高度 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::setName (const std::string & new_name)"
+
+.PP
+设置精灵别名 
+.PP
+\fB参数\fP
+.RS 4
+\fInew_name\fP 新的精灵别名 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Sprite::setPath (const std::string & new_path)"
+
+.PP
+设置精灵纹理路径 
+.PP
+\fB参数\fP
+.RS 4
+\fInew_path\fP 指定图片路径，支持绝对路径或相对路径 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::setRenderer (SRenderer * renderer)"
+
+.PP
+设置渲染器 
+.PP
+\fB参数\fP
+.RS 4
+\fIrenderer\fP 指定新的渲染器 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

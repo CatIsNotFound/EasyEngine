@@ -37,17 +37,17 @@ EasyEngine::AudioSystem::Audio \- 音频属性
 .br
 .RI "是否为流音频 "
 .ti -1c
-.RI "union {"
+.RI "struct {"
 .br
 .ti -1c
 .RI "   MIX_Track * \fBtrack\fP {nullptr}"
 .br
 .ti -1c
-.RI "   uint64_t \fBposition\fP"
+.RI "   uint64_t \fBposition\fP {0}"
 .br
 .RI "当前播放位置 "
 .ti -1c
-.RI "   uint64_t \fBduration\fP"
+.RI "   uint64_t \fBduration\fP {0}"
 .br
 .RI "该音频下的总时长 "
 .ti -1c
