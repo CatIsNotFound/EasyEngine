@@ -14,7 +14,7 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
         throw std::runtime_error("Runtime Error: Initialized Engine failed!\n");
     }
     if (!init(title.c_str(), width, height, &_main_window_id)) {
-        SDL_Log("ERROR: Initializing window failed!\n");
+        SDL_Log("[ERROR] Initializing window failed!\n");
         SDL_Quit();
         throw std::runtime_error("Runtime Error: Initializing window failed!\n");
     }
@@ -34,12 +34,12 @@ EasyEngine::Engine::~Engine() {
 
 bool EasyEngine::Engine::show(SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_ShowWindow(_sdl_window_list.at(window_id)->window);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be showed! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be showed! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
@@ -49,7 +49,7 @@ int EasyEngine::Engine::showAll() {
     for (auto& _win : _sdl_window_list) {
         bool _ok = SDL_ShowWindow(_win.second->window);
         if (!_ok) {
-            SDL_Log("ERROR: wID %u can't be showed! Code: %s\n", _win.first, SDL_GetError());
+            SDL_Log("[ERROR] wID %u can't be showed! Code: %s\n", _win.first, SDL_GetError());
             _ret += 1;
         }
     }
@@ -58,24 +58,24 @@ int EasyEngine::Engine::showAll() {
 
 bool EasyEngine::Engine::hide(SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_HideWindow(_sdl_window_list.at(window_id)->window);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be hidden! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be hidden! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
 
 bool EasyEngine::Engine::resize(int width, int height, SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found!\n", window_id);
+        SDL_Log("[ERROR] wID %u is not found!\n", window_id);
         return false;
     }
     auto _ok = SDL_SetWindowSize(_sdl_window_list[window_id]->window, width, height);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't resized the window! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't resized the window! Code: %s\n", window_id, SDL_GetError());
     } else {
         _sdl_window_list[window_id]->geometry.resize(width, height);
     }
@@ -84,12 +84,12 @@ bool EasyEngine::Engine::resize(int width, int height, SWindowID window_id) {
 
 bool EasyEngine::Engine::move(int x, int y, SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found!\n", window_id);
+        SDL_Log("[ERROR] wID %u is not found!\n", window_id);
         return false;
     }
     auto _ok = SDL_SetWindowPosition(_sdl_window_list[window_id]->window, x, y);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't moved the window! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't moved the window! Code: %s\n", window_id, SDL_GetError());
     } else {
         _sdl_window_list[window_id]->geometry.setPosition(x, y);
     }
@@ -98,19 +98,19 @@ bool EasyEngine::Engine::move(int x, int y, SWindowID window_id) {
 
 bool EasyEngine::Engine::setGeometry(int x, int y, int width, int height, SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found!\n", window_id);
+        SDL_Log("[ERROR] wID %u is not found!\n", window_id);
         return false;
     }
     auto _ok = SDL_SetWindowPosition(_sdl_window_list[window_id]->window, x, y);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't moved the window! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't moved the window! Code: %s\n", window_id, SDL_GetError());
         return false;
     } else {
         _sdl_window_list[window_id]->geometry.setPosition(x, y);
     }
     _ok = SDL_SetWindowSize(_sdl_window_list[window_id]->window, width, height);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't resized the window! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't resized the window! Code: %s\n", window_id, SDL_GetError());
     } else {
         _sdl_window_list[window_id]->geometry.resize(width, height);
     }
@@ -119,56 +119,56 @@ bool EasyEngine::Engine::setGeometry(int x, int y, int width, int height, SWindo
 
 bool EasyEngine::Engine::setResizable(bool resizeable, SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_SetWindowResizable(_sdl_window_list.at(window_id)->window, resizeable);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be set resizable! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be set resizable! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
 
 bool EasyEngine::Engine::setBorderlessWindow(bool enabled, SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_SetWindowBordered(_sdl_window_list.at(window_id)->window, !enabled);
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be set bordered! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be set bordered! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
 
 bool EasyEngine::Engine::setFullScreen(bool enabled, SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_SetWindowFullscreen(_sdl_window_list.at(window_id)->window, enabled);
 
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be set full-screened! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be set full-screened! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
 
 bool EasyEngine::Engine::setWindowTitle(const std::string& title, SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
     bool _ok = SDL_SetWindowTitle(_sdl_window_list.at(window_id)->window, title.c_str());
     if (!_ok) {
-        SDL_Log("ERROR: wID %u can't be set window title! Code: %s\n", window_id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u can't be set window title! Code: %s\n", window_id, SDL_GetError());
     }
     return _ok;
 }
 
 std::string EasyEngine::Engine::windowTitle(SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found! \n", window_id);
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return {};
     }
     std::string ret = SDL_GetWindowTitle(_sdl_window_list.at(window_id)->window);
@@ -179,13 +179,13 @@ bool EasyEngine::Engine::init(const char *title, uint32_t width, uint32_t height
     SDL_Window* _sdl_window = SDL_CreateWindow(title, width, height, SDL_WINDOW_HIDDEN);
 
     if (!_sdl_window) {
-        SDL_Log("ERROR: Create window failed! Code: %s\n", SDL_GetError());
+        SDL_Log("[ERROR] Create window failed! Code: %s\n", SDL_GetError());
         return false;
     }
     SDL_WindowID id = SDL_GetWindowID(_sdl_window);
     SRenderer* _sdl_renderer = SDL_CreateRenderer(_sdl_window, nullptr);
     if (!_sdl_renderer) {
-        SDL_Log("ERROR: wID %u created failed! Code: %s\n", id, SDL_GetError());
+        SDL_Log("[ERROR] wID %u created failed! Code: %s\n", id, SDL_GetError());
         SDL_DestroyWindow(_sdl_window);
         return false;
     }
@@ -194,13 +194,12 @@ bool EasyEngine::Engine::init(const char *title, uint32_t width, uint32_t height
     _renderer_list[id] = std::make_unique<Painter>(_sdl_window_list[id].get());
     if (wID) *wID = id;
     _window_count++;
-    SDL_Log("INFO: wID %u is created!\n", id);
     return true;
 }
 
 bool EasyEngine::Engine::unload(SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
-        SDL_Log("ERROR: wID %u is not found!\n", window_id);
+        SDL_Log("[ERROR] wID %u is not found!\n", window_id);
         return false;
     }
     if (_renderer_list.at(window_id)) {
@@ -209,7 +208,6 @@ bool EasyEngine::Engine::unload(SDL_WindowID window_id) {
     SDL_DestroyRenderer(_sdl_window_list[window_id]->renderer);
     SDL_DestroyWindow(_sdl_window_list[window_id]->window);
     _sdl_window_list.erase(window_id);
-    SDL_Log("INFO: wID %u is removed!\n", window_id);
     _window_count--;
     _main_window_id = (_sdl_window_list.empty() ? 0 : _sdl_window_list.begin()->first);
     return true;
@@ -321,6 +319,7 @@ int EasyEngine::Engine::run() {
 
 void EasyEngine::Engine::cleanUp() {
     AudioSystem::instance()->unload();
+    EventSystem::global()->clearTimer();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);
@@ -630,7 +629,7 @@ void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
     }
 }
 
-EasyEngine::EventSystem::~EventSystem() = default;
+EasyEngine::EventSystem::~EventSystem() {};
 
 EasyEngine::EventSystem *EasyEngine::EventSystem::global() {
     if (!_instance) {
@@ -653,12 +652,53 @@ bool EasyEngine::EventSystem::handler() {
         } else if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             Engine::_is_stopped = false;
         }
-
         if (_my_event_handler) {
             ret = _my_event_handler(ev);
         }
     }
+    for (auto& _timer : _timer_list) {
+        _timer.second->update();
+    }
     return ret;
+}
+
+uint64_t EasyEngine::EventSystem::addTimer(EasyEngine::Components::Timer *timer) {
+    if (!timer) {
+        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "[ERROR] The specified timer is not valid!");
+        return UINT64_MAX;
+    }
+    
+    auto it = std::find_if(_timer_list.begin(), _timer_list.end(),
+        [timer](const auto& pair) {
+            return timer == pair.second.get();
+        });
+    
+    if (it != _timer_list.end()) {
+        return it->first;
+    }
+    
+    _timer_list[++_timer_id] = std::unique_ptr<Components::Timer>(timer);
+    return _timer_id;
+}
+
+void EasyEngine::EventSystem::replaceTimer(uint64_t id, EasyEngine::Components::Timer *timer) {
+    if (!timer) {
+        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "[ERROR] The specified timer is not valid!");
+        return;
+    }
+    _timer_list[id].reset(timer);
+}
+
+void EasyEngine::EventSystem::removeTimer(uint64_t id) {
+    if (!_timer_list.contains(id)) {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[ERROR] The Specified timer ID is not exist!");
+        return;
+    }
+    _timer_list.erase(id);
+}
+
+void EasyEngine::EventSystem::clearTimer() {
+    _timer_list.clear();
 }
 
 EasyEngine::AudioSystem::AudioSystem() {
@@ -901,7 +941,7 @@ bool EasyEngine::AudioSystem::playSFX(uint8_t channel) {
 }
 
 void EasyEngine::AudioSystem::stopBGM(uint8_t channel, bool pause, int64_t fade_out_duration) {
-    if (pause && _bgm_channels[channel].status == Audio::Playing) {
+    if (pause) {
         MIX_PauseTrack(_bgm_channels[channel].Stream.track);
         _bgm_channels[channel].status = Audio::Paused;
     } else {

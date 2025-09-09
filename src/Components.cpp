@@ -11,7 +11,6 @@ EasyEngine::Components::BGM::BGM(const std::string &path) : _path(path) {
     auto ret = AudioSystem::instance()->loadBGM(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
-    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
 }
 
 void EasyEngine::Components::BGM::setPath(const std::string &path) {
@@ -19,7 +18,6 @@ void EasyEngine::Components::BGM::setPath(const std::string &path) {
     auto ret = AudioSystem::instance()->loadBGM(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
-    SDL_Log("%s: CH %d", (_is_load ? "Yes" : "No"), _channel);
 }
 
 const std::string &EasyEngine::Components::BGM::path() const {
@@ -99,14 +97,21 @@ void EasyEngine::Components::SFX::play() {
 void EasyEngine::Components::SFX::play(uint32_t delay) {
     if (_is_load) {
         reload();
-        // TODO: 循环播放 SFX（通过事件系统不断调用）
-
+        play();
+        if (!_timer) {
+            _timer = new Timer(delay, [this](){
+                play();
+            });
+        }
+        _timer->start(true);
     }
 }
 
 void EasyEngine::Components::SFX::stop() {
-    if (_is_load)
+    if (_is_load) {
+        if (_timer) _timer->stop();
         AudioSystem::instance()->stopSFX(_channel);
+    }
 }
 
 bool EasyEngine::Components::SFX::isLoop() const {
@@ -123,9 +128,7 @@ void EasyEngine::Components::SFX::reload() {
 
 EasyEngine::Components::Timer::Timer() : _delay(0) {}
 
-EasyEngine::Components::Timer::~Timer() {
-    stop();
-}
+EasyEngine::Components::Timer::~Timer() {}
 
 EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function<void()> &function) 
     : _delay(delay), _timer_function(function) {
@@ -148,7 +151,7 @@ void EasyEngine::Components::Timer::start(bool loop) {
         _enabled = true;
         _loop = loop;
         _start_time = _currentTimeMs();
-        SDL_Log("Start");
+        _id = EventSystem::global()->addTimer(this);
     }
 }
 
@@ -158,10 +161,6 @@ bool EasyEngine::Components::Timer::enabled() const {
 
 bool EasyEngine::Components::Timer::loop() const {
     return _loop;
-}
-
-uint64_t EasyEngine::Components::Timer::_timestamp() const {
-    return _start_time;
 }
 
 uint64_t EasyEngine::Components::Timer::delay() const {
@@ -176,18 +175,20 @@ uint64_t EasyEngine::Components::Timer::_currentTimeMs() {
 
 void EasyEngine::Components::Timer::update() {
     if (!_enabled || !_timer_function) return;
-    
+
     uint64_t current_time = _currentTimeMs();
     uint64_t elapsed = current_time - _start_time;
     if (elapsed >= _delay) {
         try {
             _timer_function();
-        } catch (const std::exception& e) {
-            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, 
-                        "Timer callback exception: %s", e.what());
+        } catch (const std::exception &e) {
+            SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
+                         "[ERROR] Failed to called timer function! Code: %s", e.what());
         }
         if (_loop) _start_time = current_time;
-        else _enabled = false;
+        else {
+            _enabled = false;
+        }
     }
 }
 
@@ -336,7 +337,6 @@ STexture *EasyEngine::Components::Sprite::spirit() const {
 
 void EasyEngine::Components::Sprite::draw(const Vector2 &pos, Painter *painter) const {
     painter->drawSprite(*this, pos);
-
 }
 
 void
@@ -491,19 +491,23 @@ EasyEngine::Components::Animation::Animation(const std::string &name, const std:
 }
 
 void EasyEngine::Components::Animation::addFrame(const EasyEngine::Components::Sprite &sprite, uint64_t duration) {
-    _animations.push_back({std::make_unique<Sprite>(sprite.name(), sprite), duration});
+    _animations.push_back({std::make_unique<Sprite>(sprite.name(), sprite)});
+    _animations.back().duration = duration;
 }
 
 void EasyEngine::Components::Animation::insertFrame(const EasyEngine::Components::Sprite &sprite, uint64_t duration,
                                                     const size_t frame) {
     _animations.insert(_animations.begin() + frame,
-                       {std::make_unique<Sprite>(sprite.name(), sprite), duration});
+                       {std::make_unique<Sprite>(sprite.name(), sprite)});
+    _animations[frame].duration = duration;
 }
 
-void EasyEngine::Components::Animation::replaceFrame(const EasyEngine::Components::Sprite &sprite, const size_t frame) {
+void EasyEngine::Components::Animation::replaceFrame(const EasyEngine::Components::Sprite &sprite, const size_t frame,
+                                                     const uint64_t duration) {
     _animations.at(frame).sprite.reset();
     _animations.at(frame).sprite = std::make_unique<Sprite>(sprite.name(), sprite);
-    _animations.at(frame).duration = frame;
+    SDL_Log("D1 %llu D2 %llu", _animations.at(frame).duration, duration);
+    _animations.at(frame).duration = duration;
 }
 
 void EasyEngine::Components::Animation::removeFrame(const size_t frame) {
@@ -522,27 +526,42 @@ uint64_t EasyEngine::Components::Animation::durationInFrame(const size_t frame) 
     return _animations.at(frame).duration;
 }
 
-EasyEngine::Components::Sprite *EasyEngine::Components::Animation::spirit(const size_t frame) const {
+EasyEngine::Components::Sprite *EasyEngine::Components::Animation::sprite(const size_t frame) const {
     return _animations.at(frame).sprite.get();
 }
 
-void EasyEngine::Components::Animation::play() {
+void EasyEngine::Components::Animation::draw(const EasyEngine::Vector2 &position, EasyEngine::Painter* painter) {
+    _animations[_cur_frame].sprite->draw(position, painter);
+}
 
+void EasyEngine::Components::Animation::play(bool loop) {
+    if (!_frame_changer) {
+        _frame_changer = new Timer();
+        _frame_changer->setDelay(_animations.front().duration);
+        _frame_changer->installTimerEvent([this]{
+            _frame_changer->setDelay(_animations[_cur_frame].duration);
+            if (_cur_frame >= framesCount() - 1) {
+                _cur_frame = 0;
+                if (!_is_loop) stop();
+            } else _cur_frame += 1;
+        });
+    }
+    if (!_frame_changer->enabled()) {
+        _cur_frame = 0;
+        _frame_changer->start(true);
+        _is_loop = loop;
+    }
 }
 
 void EasyEngine::Components::Animation::stop() {
-
-}
-
-void EasyEngine::Components::Animation::playLoop() {
-
+    if (_frame_changer) _frame_changer->stop();
 }
 
 bool EasyEngine::Components::Animation::isPlayedAnimation() const {
-    return _is_played;
+    return (!_frame_changer ? false : _frame_changer->enabled());
 }
 
-size_t EasyEngine::Components::Animation::frame() const {
-    return _cur_frame;
+EasyEngine::Components::Sprite * EasyEngine::Components::Animation::frame(size_t frame) const {
+    return _animations[frame].sprite.get();
 }
 

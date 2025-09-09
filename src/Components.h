@@ -31,6 +31,7 @@ namespace EasyEngine {
      * 包含所有游戏引擎所相关的组件库
      */
     namespace Components {
+        class Timer;
         /**
          * @class BGM
          * @brief 背景音乐
@@ -162,6 +163,7 @@ namespace EasyEngine {
             uint8_t _channel;
             bool _is_loop{false};
             bool _is_load{false};
+            Timer* _timer{nullptr};
             friend class AudioSystem;
         };
 
@@ -170,15 +172,21 @@ namespace EasyEngine {
          * @brief 定时器
          *
          * 用于设置延迟或定时的工具
+         * @note 此组件只能使用指针的形式创建！
          */
         class Timer {
         public:
+            /**
+             * @brief 创建定时器
+             * @note 这里只能使用指针的形式创建！
+             */
             explicit Timer();
             ~Timer();
             /**
              * @brief 创建定时器
              * @param delay     设定触发延迟（毫秒）
              * @param function  触发事件
+             * @note 这里只能使用指针的形式创建！
              */
             Timer(uint64_t delay, const std::function<void()>& function);
             /**
@@ -215,10 +223,6 @@ namespace EasyEngine {
             bool loop() const;
 
             /**
-             * @brief 获取当前时间戳
-             */
-            uint64_t _timestamp() const;
-            /**
              * @brief 获取触发延迟时长
              * @see setDelay
              */
@@ -231,6 +235,7 @@ namespace EasyEngine {
         private:
             uint64_t _start_time{0};
             uint64_t _delay{0};
+            uint64_t _id{0};
             bool _enabled{false};
             bool _loop{false};
             std::function<void()> _timer_function;
@@ -587,6 +592,7 @@ namespace EasyEngine {
         };
 
         class Animation {
+            struct Frame;
         public:
             /**
              * @brief 创建动画
@@ -605,21 +611,27 @@ namespace EasyEngine {
              * @brief 将精灵图像加入到帧
              * @param sprite 指定精灵
              * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
+             * @see insertFrame
+             * @see replaceFrame
              */
             void addFrame(const Sprite& sprite, uint64_t duration = 50);
             /**
              * @brief 将精灵图像插入到指定帧
              * @param sprite 指定精灵
-             * @param duration 帧持续时间（单位：毫秒），默认 50 毫秒
+             * @param duration 帧持续时间（毫秒），默认 50 毫秒
              * @param frame 指定帧数，默认为第 0 帧
+             * @see addFrame
+             * @see replaceFrame
              */
             void insertFrame(const Sprite& sprite, uint64_t duration = 50, const size_t frame = 0);
             /**
              * @brief 在指定帧下替换精灵图像
              * @param sprite 新的精灵图像
              * @param frame 指定帧数
+             * @param duration 设定持续时间（毫秒）
              */
-            void replaceFrame(const Sprite& sprite, const size_t frame = 0);
+            void replaceFrame(const EasyEngine::Components::Sprite &sprite, const size_t frame,
+                              const uint64_t duration);
             /**
              * @brief 移除指定帧对应的图像
              * @param frame 指定帧数，默认为第 0 帧
@@ -645,15 +657,27 @@ namespace EasyEngine {
              * @see removeFrame
              * @see replaceFrame
              */
-            Sprite* spirit(const size_t frame = 0) const;
+            Sprite* sprite(const size_t frame = 0) const;
+            /**
+             * @brief 绘制动画
+             * @param position 指定绘制的位置
+             * @param painter 指定绘制的绘制器
+             * @note 必须执行，否则将无法在窗口上显示动画
+             * @see play
+             * @see stop
+             */
+            void draw(const Vector2& position, Painter* painter);
             /**
              * @brief 播放动画
+             * @param loop     是否循环播放动画（默认循环播放）
+             * @note 欲显示绘制动画，需在绘图事件中调用 `draw()` 函数！
+             * @see draw
              * @see playLoop
              * @see stop
              * @see frame
              * @see isPlayedAnimation
              */
-            void play();
+            void play(bool loop = true);
             /**
              * @brief 停止动画
              * @see play
@@ -661,13 +685,7 @@ namespace EasyEngine {
              * @see isPlayedAnimation
              */
             void stop();
-            /**
-             * @brief 循环播放动画
-             * @see stop
-             * @see frame
-             * @see isPlayedAnimation
-             */
-            void playLoop();
+
             /**
              * @brief 获取当前动画是否在播放
              * @see play
@@ -676,12 +694,13 @@ namespace EasyEngine {
              */
             bool isPlayedAnimation() const;
             /**
-             * @brief 获取当前正在播放第几帧
+             * @brief 获取指定帧下的精灵
+             * @param frame 指定帧数
              * @see play
              * @see stop
              * @see isPlayedAnimation
              */
-            size_t frame() const;
+            Sprite * frame(size_t frame) const;
 
         private:
             /**
@@ -698,9 +717,9 @@ namespace EasyEngine {
             };
             std::vector<Frame> _animations;
             std::string _name;
-            bool _is_played{false};
+            uint64_t _cur_frame{0};
             bool _is_loop{false};
-            size_t _cur_frame{0};
+            Timer* _frame_changer{nullptr};
         };
 
         class Collider {

@@ -518,11 +518,36 @@ namespace EasyEngine {
          *
          * @return 返回 true 将持续处理事件，false 将结束处理事件
          */
-        static bool handler();
+        bool handler();
+        /**
+         * @brief 添加定时器事件
+         * @param timer 指定定时器
+         * @see replaceTimer
+         * @see removeTimer
+         * @return 返回定时器 ID
+         */
+        uint64_t addTimer(EasyEngine::Components::Timer *timer);
+        /**
+         * @brief 替换定时器事件
+         * @param id 指定定时器 ID
+         * @param timer 新的定时器
+         */
+        void replaceTimer(uint64_t id, EasyEngine::Components::Timer *timer);
+        /**
+         * @brief 移除定时器事件
+         * @see clearTimer
+         */
+        void removeTimer(uint64_t id);
+        /**
+         * @brief 清空所有定时器事件
+         */
+        void clearTimer();
 
     private:
         static std::function<bool(SEvent)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
+        std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
+        uint64_t _timer_id;
     };
 
     /**
