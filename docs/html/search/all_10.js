@@ -1,10 +1,18 @@
 var searchData=
 [
-  ['handler_0',['handler',['../class_easy_engine_1_1_event_system.html#ad51c16da26aae7f2c05d5661a1229935',1,'EasyEngine::EventSystem']]],
-  ['hextorgba_1',['hexToRGBA',['../class_easy_engine_1_1_algorithm.html#a1190222e9f894a806c370ed5032a87ce',1,'EasyEngine::Algorithm']]],
-  ['hflip_2',['HFlip',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd',1,'EasyEngine::Components::Sprite']]],
-  ['hide_3',['hide',['../class_easy_engine_1_1_engine.html#ac9bc753dcc986c09052ba67e8ccb4ab7',1,'EasyEngine::Engine']]],
-  ['hifi_4',['HIFI',['../_core_8h.html#a17ee9965ef595c675d8056c37b23b7d0',1,'EasyEngine::StdAudioSpec']]],
-  ['high_5',['High',['../_core_8h.html#a5d47f8f201407131964751966d5f1f36',1,'EasyEngine::StdAudioSpec']]],
-  ['homebrew_6',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]]
+  ['indexat_0',['indexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#aba8cda570b757f3ed24294c5bbbf69b3',1,'EasyEngine::Components::SpriteGroup']]],
+  ['indexof_1',['indexOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a1a08c6b14cbee91a7cf4023275d08355',1,'EasyEngine::Components::SpriteGroup']]],
+  ['init_2',['init',['../class_easy_engine_1_1_audio_system.html#a057ad850a7fb93d929c0ffbe394224c1',1,'EasyEngine::AudioSystem']]],
+  ['insert_3',['insert',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a6190140c50d5bc9a67ff906c79272a43',1,'EasyEngine::Components::SpriteGroup']]],
+  ['insertframe_4',['insertFrame',['../class_easy_engine_1_1_components_1_1_animation.html#aa43d91154f62c92783ba78e07eabebd2',1,'EasyEngine::Components::Animation']]],
+  ['installeventhandler_5',['installEventHandler',['../class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779',1,'EasyEngine::Engine']]],
+  ['installpaintevent_6',['installPaintEvent',['../class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4',1,'EasyEngine::Painter']]],
+  ['installtimerevent_7',['installTimerEvent',['../class_easy_engine_1_1_components_1_1_timer.html#a10d5b0a4dcc07fe2b2e542bc4f3b4bac',1,'EasyEngine::Components::Timer']]],
+  ['is_5fstream_8',['is_stream',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875',1,'EasyEngine::AudioSystem::Audio']]],
+  ['iscolliderenabled_9',['isColliderEnabled',['../class_easy_engine_1_1_components_1_1_entity.html#afb4bb047d3353602717dcc8010489b03',1,'EasyEngine::Components::Entity']]],
+  ['iscollision_10',['isCollision',['../class_easy_engine_1_1_components_1_1_entity.html#a2943c38a28d4cf2a48918b44bed5cdf1',1,'EasyEngine::Components::Entity']]],
+  ['isloop_11',['isLoop',['../class_easy_engine_1_1_components_1_1_b_g_m.html#acf4d23bb78c262b023e3817f5c37ce55',1,'EasyEngine::Components::BGM::isLoop()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#a8e084d6269b5a6c774ad38595fa2911f',1,'EasyEngine::Components::SFX::isLoop()']]],
+  ['isplayed_12',['isPlayed',['../class_easy_engine_1_1_components_1_1_b_g_m.html#af37922d6ebf555313aefc432cc497f50',1,'EasyEngine::Components::BGM']]],
+  ['isplayedanimation_13',['isPlayedAnimation',['../class_easy_engine_1_1_components_1_1_animation.html#a6ea3ecbd6701337d2248654eca85908c',1,'EasyEngine::Components::Animation']]],
+  ['isvalid_14',['isValid',['../class_easy_engine_1_1_components_1_1_sprite.html#a5636cdfc4954970009c0a7a13aecb852',1,'EasyEngine::Components::Sprite']]]
 ];

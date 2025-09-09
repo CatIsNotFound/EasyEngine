@@ -18,19 +18,19 @@ EasyEngine::Components::Animation
 .br
 .RI "创建动画 "
 .ti -1c
-.RI "void \fBaddFrame\fP (const \fBSprite\fP &sprite, uint64_t duration=50)"
+.RI "void \fBaddFrame\fP (const \fBSprite\fP &\fBsprite\fP, uint64_t duration=50)"
 .br
 .RI "将精灵图像加入到帧 "
 .ti -1c
-.RI "void \fBinsertFrame\fP (const \fBSprite\fP &sprite, uint64_t duration=50, const size_t \fBframe\fP=0)"
+.RI "void \fBinsertFrame\fP (const \fBSprite\fP &\fBsprite\fP, uint64_t duration=50, const size_t frame=0)"
 .br
 .RI "将精灵图像插入到指定帧 "
 .ti -1c
-.RI "void \fBreplaceFrame\fP (const \fBSprite\fP &sprite, const size_t \fBframe\fP=0)"
+.RI "void \fBreplaceFrame\fP (const \fBEasyEngine::Components::Sprite\fP &\fBsprite\fP, const size_t frame, const uint64_t duration)"
 .br
 .RI "在指定帧下替换精灵图像 "
 .ti -1c
-.RI "void \fBremoveFrame\fP (const size_t \fBframe\fP=0)"
+.RI "void \fBremoveFrame\fP (const size_t frame=0)"
 .br
 .RI "移除指定帧对应的图像 "
 .ti -1c
@@ -42,15 +42,19 @@ EasyEngine::Components::Animation
 .br
 .RI "获取该动画下的总帧数 "
 .ti -1c
-.RI "uint64_t \fBdurationInFrame\fP (const size_t \fBframe\fP=0)"
+.RI "uint64_t \fBdurationInFrame\fP (const size_t frame=0)"
 .br
 .RI "获取当前帧的持续时间（单位：毫秒） "
 .ti -1c
-.RI "\fBSprite\fP * \fBspirit\fP (const size_t \fBframe\fP=0) const"
+.RI "\fBSprite\fP * \fBsprite\fP (const size_t frame=0) const"
 .br
 .RI "获取指定帧数下的精灵 "
 .ti -1c
-.RI "void \fBplay\fP ()"
+.RI "void \fBdraw\fP (const \fBVector2\fP &position, \fBPainter\fP *painter)"
+.br
+.RI "绘制动画 "
+.ti -1c
+.RI "void \fBplay\fP (bool loop=true)"
 .br
 .RI "播放动画 "
 .ti -1c
@@ -58,17 +62,9 @@ EasyEngine::Components::Animation
 .br
 .RI "停止动画 "
 .ti -1c
-.RI "void \fBplayLoop\fP ()"
-.br
-.RI "循环播放动画 "
-.ti -1c
 .RI "bool \fBisPlayedAnimation\fP () const"
 .br
 .RI "获取当前动画是否在播放 "
-.ti -1c
-.RI "size_t \fBframe\fP () const"
-.br
-.RI "获取当前正在播放第几帧 "
 .in -1c
 .SH "构造及析构函数说明"
 .PP 
@@ -112,6 +108,40 @@ EasyEngine::Components::Animation
 \fIduration\fP 帧持续时间（单位：毫秒），默认 50 毫秒 
 .RE
 .PP
+\fB参见\fP
+.RS 4
+\fBinsertFrame\fP 
+
+.PP
+\fBreplaceFrame\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Animation::draw (const \fBVector2\fP & position, \fBEasyEngine::Painter\fP * painter)"
+
+.PP
+绘制动画 
+.PP
+\fB参数\fP
+.RS 4
+\fIposition\fP 指定绘制的位置 
+.br
+\fIpainter\fP 指定绘制的绘制器 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+必须执行，否则将无法在窗口上显示动画 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBplay\fP 
+
+.PP
+\fBstop\fP 
+.RE
+.PP
 
 .SS "uint64_t EasyEngine::Components::Animation::durationInFrame (const size_t frame = \fR0\fP)"
 
@@ -124,23 +154,6 @@ EasyEngine::Components::Animation
 .RE
 .PP
 
-.SS "size_t EasyEngine::Components::Animation::frame () const"
-
-.PP
-获取当前正在播放第几帧 
-.PP
-\fB参见\fP
-.RS 4
-\fBplay\fP 
-
-.PP
-\fBstop\fP 
-
-.PP
-\fBisPlayedAnimation\fP 
-.RE
-.PP
-
 .SS "void EasyEngine::Components::Animation::insertFrame (const \fBSprite\fP & sprite, uint64_t duration = \fR50\fP, const size_t frame = \fR0\fP)"
 
 .PP
@@ -150,9 +163,17 @@ EasyEngine::Components::Animation
 .RS 4
 \fIsprite\fP 指定精灵 
 .br
-\fIduration\fP 帧持续时间（单位：毫秒），默认 50 毫秒 
+\fIduration\fP 帧持续时间（毫秒），默认 50 毫秒 
 .br
 \fIframe\fP 指定帧数，默认为第 0 帧 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddFrame\fP 
+
+.PP
+\fBreplaceFrame\fP 
 .RE
 .PP
 
@@ -169,41 +190,37 @@ EasyEngine::Components::Animation
 \fBstop\fP 
 
 .PP
-\fBframe\fP 
+frame 
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::play ()"
+.SS "void EasyEngine::Components::Animation::play (bool loop = \fRtrue\fP)"
 
 .PP
 播放动画 
 .PP
-\fB参见\fP
+\fB参数\fP
 .RS 4
-\fBplayLoop\fP 
-
-.PP
-\fBstop\fP 
-
-.PP
-\fBframe\fP 
-
-.PP
-\fBisPlayedAnimation\fP 
+\fIloop\fP 是否循环播放动画（默认循环播放） 
 .RE
 .PP
-
-.SS "void EasyEngine::Components::Animation::playLoop ()"
-
-.PP
-循环播放动画 
+\fB注解\fP
+.RS 4
+欲显示绘制动画，需在绘图事件中调用 \fR\fBdraw()\fP\fP 函数！ 
+.RE
 .PP
 \fB参见\fP
 .RS 4
+\fBdraw\fP 
+
+.PP
+playLoop 
+
+.PP
 \fBstop\fP 
 
 .PP
-\fBframe\fP 
+frame 
 
 .PP
 \fBisPlayedAnimation\fP 
@@ -221,7 +238,7 @@ EasyEngine::Components::Animation
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::replaceFrame (const \fBSprite\fP & sprite, const size_t frame = \fR0\fP)"
+.SS "void EasyEngine::Components::Animation::replaceFrame (const \fBEasyEngine::Components::Sprite\fP & sprite, const size_t frame, const uint64_t duration)"
 
 .PP
 在指定帧下替换精灵图像 
@@ -231,10 +248,12 @@ EasyEngine::Components::Animation
 \fIsprite\fP 新的精灵图像 
 .br
 \fIframe\fP 指定帧数 
+.br
+\fIduration\fP 设定持续时间（毫秒） 
 .RE
 .PP
 
-.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::Animation::spirit (const size_t frame = \fR0\fP) const"
+.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::Animation::sprite (const size_t frame = \fR0\fP) const"
 
 .PP
 获取指定帧数下的精灵 
@@ -264,7 +283,7 @@ EasyEngine::Components::Animation
 \fBplay\fP 
 
 .PP
-\fBframe\fP 
+frame 
 
 .PP
 \fBisPlayedAnimation\fP 

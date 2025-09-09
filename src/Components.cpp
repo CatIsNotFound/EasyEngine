@@ -128,7 +128,7 @@ void EasyEngine::Components::SFX::reload() {
 
 EasyEngine::Components::Timer::Timer() : _delay(0) {}
 
-EasyEngine::Components::Timer::~Timer() {}
+EasyEngine::Components::Timer::~Timer() { stop(); };
 
 EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function<void()> &function) 
     : _delay(delay), _timer_function(function) {
@@ -559,9 +559,5 @@ void EasyEngine::Components::Animation::stop() {
 
 bool EasyEngine::Components::Animation::isPlayedAnimation() const {
     return (!_frame_changer ? false : _frame_changer->enabled());
-}
-
-EasyEngine::Components::Sprite * EasyEngine::Components::Animation::frame(size_t frame) const {
-    return _animations[frame].sprite.get();
 }
 

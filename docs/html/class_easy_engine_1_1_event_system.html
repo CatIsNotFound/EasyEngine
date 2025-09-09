@@ -126,14 +126,23 @@ Public 成员函数</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b> (const <a class="el" href="class_easy_engine_1_1_event_system.html">EventSystem</a> &amp;)=delete</td></tr>
 <tr class="memitem:afbee59ee0995d6d9b276e70cf9a41e21" id="r_afbee59ee0995d6d9b276e70cf9a41e21"><td class="memItemLeft" align="right" valign="top"><a id="afbee59ee0995d6d9b276e70cf9a41e21" name="afbee59ee0995d6d9b276e70cf9a41e21"></a>
 <a class="el" href="class_easy_engine_1_1_event_system.html">EventSystem</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_easy_engine_1_1_event_system.html">EventSystem</a> &amp;)=delete</td></tr>
+<tr class="memitem:ad51c16da26aae7f2c05d5661a1229935" id="r_ad51c16da26aae7f2c05d5661a1229935"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad51c16da26aae7f2c05d5661a1229935">handler</a> ()</td></tr>
+<tr class="memdesc:ad51c16da26aae7f2c05d5661a1229935"><td class="mdescLeft">&#160;</td><td class="mdescRight">事件处理器  <br /></td></tr>
+<tr class="memitem:a7bbdf8411a08169f33436bf40d086b01" id="r_a7bbdf8411a08169f33436bf40d086b01"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bbdf8411a08169f33436bf40d086b01">addTimer</a> (<a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">EasyEngine::Components::Timer</a> *timer)</td></tr>
+<tr class="memdesc:a7bbdf8411a08169f33436bf40d086b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加定时器事件  <br /></td></tr>
+<tr class="memitem:abb9809cacfda2007ca242a9a24ed2f5d" id="r_abb9809cacfda2007ca242a9a24ed2f5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb9809cacfda2007ca242a9a24ed2f5d">replaceTimer</a> (uint64_t id, <a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">EasyEngine::Components::Timer</a> *timer)</td></tr>
+<tr class="memdesc:abb9809cacfda2007ca242a9a24ed2f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">替换定时器事件  <br /></td></tr>
+<tr class="memitem:a77abf88f8d54746681b898a50e1dafc3" id="r_a77abf88f8d54746681b898a50e1dafc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77abf88f8d54746681b898a50e1dafc3">removeTimer</a> (uint64_t id)</td></tr>
+<tr class="memdesc:a77abf88f8d54746681b898a50e1dafc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除定时器事件  <br /></td></tr>
+<tr class="memitem:a81485710f7070c50bd5f9e144c1427a1" id="r_a81485710f7070c50bd5f9e144c1427a1"><td class="memItemLeft" align="right" valign="top"><a id="a81485710f7070c50bd5f9e144c1427a1" name="a81485710f7070c50bd5f9e144c1427a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearTimer</b> ()</td></tr>
+<tr class="memdesc:a81485710f7070c50bd5f9e144c1427a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空所有定时器事件 <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:a2e8a01d5b6523a3e93f16cdfd556e0b8" id="r_a2e8a01d5b6523a3e93f16cdfd556e0b8"><td class="memItemLeft" align="right" valign="top"><a id="a2e8a01d5b6523a3e93f16cdfd556e0b8" name="a2e8a01d5b6523a3e93f16cdfd556e0b8"></a>
 static <a class="el" href="class_easy_engine_1_1_event_system.html">EventSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>global</b> ()</td></tr>
 <tr class="memdesc:a2e8a01d5b6523a3e93f16cdfd556e0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取全局事件系统 <br /></td></tr>
-<tr class="memitem:ad51c16da26aae7f2c05d5661a1229935" id="r_ad51c16da26aae7f2c05d5661a1229935"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad51c16da26aae7f2c05d5661a1229935">handler</a> ()</td></tr>
-<tr class="memdesc:ad51c16da26aae7f2c05d5661a1229935"><td class="mdescLeft">&#160;</td><td class="mdescRight">事件处理器  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -143,14 +152,40 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Engine</b></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>事件系统 </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a7bbdf8411a08169f33436bf40d086b01" name="a7bbdf8411a08169f33436bf40d086b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bbdf8411a08169f33436bf40d086b01">&#9670;&#160;</a></span>addTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t EasyEngine::EventSystem::addTimer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">EasyEngine::Components::Timer</a> *</td>          <td class="paramname"><span class="paramname"><em>timer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加定时器事件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>指定定时器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abb9809cacfda2007ca242a9a24ed2f5d" title="替换定时器事件">replaceTimer</a> </dd>
+<dd>
+<a class="el" href="#a77abf88f8d54746681b898a50e1dafc3" title="移除定时器事件">removeTimer</a> </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>返回定时器 ID </dd></dl>
+
+</div>
+</div>
 <a id="ad51c16da26aae7f2c05d5661a1229935" name="ad51c16da26aae7f2c05d5661a1229935"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad51c16da26aae7f2c05d5661a1229935">&#9670;&#160;</a></span>handler()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool EasyEngine::EventSystem::handler </td>
@@ -159,16 +194,61 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Engine</b></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>事件处理器 </p>
 <p>所有事件都将被管理与处理</p>
 <dl class="section return"><dt>返回</dt><dd>返回 true 将持续处理事件，false 将结束处理事件 </dd></dl>
+
+</div>
+</div>
+<a id="a77abf88f8d54746681b898a50e1dafc3" name="a77abf88f8d54746681b898a50e1dafc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77abf88f8d54746681b898a50e1dafc3">&#9670;&#160;</a></span>removeTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::EventSystem::removeTimer </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移除定时器事件 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a81485710f7070c50bd5f9e144c1427a1" title="清空所有定时器事件">clearTimer</a> </dd></dl>
+
+</div>
+</div>
+<a id="abb9809cacfda2007ca242a9a24ed2f5d" name="abb9809cacfda2007ca242a9a24ed2f5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb9809cacfda2007ca242a9a24ed2f5d">&#9670;&#160;</a></span>replaceTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::EventSystem::replaceTimer </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">EasyEngine::Components::Timer</a> *</td>          <td class="paramname"><span class="paramname"><em>timer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>替换定时器事件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>指定定时器 ID </td></tr>
+    <tr><td class="paramname">timer</td><td>新的定时器 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

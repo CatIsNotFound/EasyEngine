@@ -13,6 +13,10 @@ EasyEngine::Components::Timer \- 定时器
 
 .in +1c
 .ti -1c
+.RI "\fBTimer\fP ()"
+.br
+.RI "创建定时器 "
+.ti -1c
 .RI "\fBTimer\fP (uint64_t \fBdelay\fP, const std::function< void()> &function)"
 .br
 .RI "创建定时器 "
@@ -41,25 +45,50 @@ EasyEngine::Components::Timer \- 定时器
 .br
 .RI "返回是否正在循环使用计时器 "
 .ti -1c
-.RI "uint64_t \fB_timestamp\fP () const"
-.br
-.RI "获取当前时间戳 "
-.ti -1c
 .RI "uint64_t \fBdelay\fP () const"
 .br
 .RI "获取触发延迟时长 "
 .ti -1c
 .RI "void \fBupdate\fP ()"
 .br
-.RI "更新定时器状态（需要在主循环中调用） "
+.RI "更新定时器状态（无需手动调用） "
 .in -1c
 .SH "详细描述"
 .PP 
 定时器 
 
 用于设置延迟或定时的工具 
+.PP
+\fB注解\fP
+.RS 4
+此组件只能使用指针的形式创建！ 
+.RE
+.PP
+
 .SH "构造及析构函数说明"
 .PP 
+.SS "EasyEngine::Components::Timer::Timer ()\fR [explicit]\fP"
+
+.PP
+创建定时器 
+.PP
+\fB注解\fP
+.RS 4
+这里只能使用指针的形式创建！ 
+.PP
+.nf
+Timer* timer = new Timer();
+timer\->setDelay(1000);   // 1000ms = 1sec
+timer\->installTimerEvent(your_function);
+timer\->start();
+// delete timer; // 调用 start() 函数后，不能释放此指针！
+
+.fi
+.PP
+ 
+.RE
+.PP
+
 .SS "EasyEngine::Components::Timer::Timer (uint64_t delay, const std::function< void()> & function)"
 
 .PP
@@ -70,6 +99,11 @@ EasyEngine::Components::Timer \- 定时器
 \fIdelay\fP 设定触发延迟（毫秒） 
 .br
 \fIfunction\fP 触发事件 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+这里只能使用指针的形式创建！ 
 .RE
 .PP
 

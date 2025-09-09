@@ -10,7 +10,6 @@ int main() {
     engine.setFPS(12);
     engine.setResizable(true);
     engine.show();
-    std::vector<Sprite> loading;
     Sprite load1("load1", "assets/load1.png", engine.painter()->window()->renderer),
             load2("load2", "assets/load2.png", engine.painter()->window()->renderer),
             load3("load3", "assets/load3.png", engine.painter()->window()->renderer),

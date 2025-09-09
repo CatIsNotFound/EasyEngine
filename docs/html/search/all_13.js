@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['macos_20使用_20homebrew_0',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]],
-  ['midcirclef_1',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
-  ['mono_2',['Mono',['../_core_8h.html#ab1f6dda9edb960b2a9d75cda1161c71d',1,'EasyEngine::StdAudioSpec']]],
-  ['move_3',['move',['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine']]]
+  ['name_0',['name',['../class_easy_engine_1_1_components_1_1_sprite.html#af26c8980014a6062bf0ff83b1712eb15',1,'EasyEngine::Components::Sprite::name()'],['../class_easy_engine_1_1_components_1_1_entity.html#a1b1db701b402de1c41caa261b0c4cfbc',1,'EasyEngine::Components::Entity::name()']]],
+  ['nameof_1',['nameOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#ade78778b798f090a6bf6f5a3341879d1',1,'EasyEngine::Components::SpriteGroup']]],
+  ['newwindow_2',['newWindow',['../class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3',1,'EasyEngine::Engine']]],
+  ['none_3',['None',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754',1,'EasyEngine::Components::Sprite']]]
 ];

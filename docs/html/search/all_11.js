@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['indexat_0',['indexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#aba8cda570b757f3ed24294c5bbbf69b3',1,'EasyEngine::Components::SpriteGroup']]],
-  ['indexof_1',['indexOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a1a08c6b14cbee91a7cf4023275d08355',1,'EasyEngine::Components::SpriteGroup']]],
-  ['init_2',['init',['../class_easy_engine_1_1_audio_system.html#a057ad850a7fb93d929c0ffbe394224c1',1,'EasyEngine::AudioSystem']]],
-  ['insert_3',['insert',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a6190140c50d5bc9a67ff906c79272a43',1,'EasyEngine::Components::SpriteGroup']]],
-  ['insertframe_4',['insertFrame',['../class_easy_engine_1_1_components_1_1_animation.html#aa43d91154f62c92783ba78e07eabebd2',1,'EasyEngine::Components::Animation']]],
-  ['installeventhandler_5',['installEventHandler',['../class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779',1,'EasyEngine::Engine']]],
-  ['installpaintevent_6',['installPaintEvent',['../class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4',1,'EasyEngine::Painter']]],
-  ['installtimerevent_7',['installTimerEvent',['../class_easy_engine_1_1_components_1_1_timer.html#a10d5b0a4dcc07fe2b2e542bc4f3b4bac',1,'EasyEngine::Components::Timer']]],
-  ['is_5fstream_8',['is_stream',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a6b7c368f4e82a4f92e5e22aaaa053875',1,'EasyEngine::AudioSystem::Audio']]],
-  ['iscolliderenabled_9',['isColliderEnabled',['../class_easy_engine_1_1_components_1_1_entity.html#afb4bb047d3353602717dcc8010489b03',1,'EasyEngine::Components::Entity']]],
-  ['iscollision_10',['isCollision',['../class_easy_engine_1_1_components_1_1_entity.html#a2943c38a28d4cf2a48918b44bed5cdf1',1,'EasyEngine::Components::Entity']]],
-  ['isloop_11',['isLoop',['../class_easy_engine_1_1_components_1_1_b_g_m.html#acf4d23bb78c262b023e3817f5c37ce55',1,'EasyEngine::Components::BGM::isLoop()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#a8e084d6269b5a6c774ad38595fa2911f',1,'EasyEngine::Components::SFX::isLoop()']]],
-  ['isplayed_12',['isPlayed',['../class_easy_engine_1_1_components_1_1_b_g_m.html#af37922d6ebf555313aefc432cc497f50',1,'EasyEngine::Components::BGM']]],
-  ['isplayedanimation_13',['isPlayedAnimation',['../class_easy_engine_1_1_components_1_1_animation.html#a6ea3ecbd6701337d2248654eca85908c',1,'EasyEngine::Components::Animation']]],
-  ['isvalid_14',['isValid',['../class_easy_engine_1_1_components_1_1_sprite.html#a5636cdfc4954970009c0a7a13aecb852',1,'EasyEngine::Components::Sprite']]]
+  ['lastindexat_0',['lastIndexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a5da2a1284697323caab1220e70daf1f1',1,'EasyEngine::Components::SpriteGroup']]],
+  ['line_1',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]],
+  ['linux_20ubuntu_20debian_2',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
+  ['loadbgm_3',['loadBGM',['../class_easy_engine_1_1_audio_system.html#a55ddf913f2926b60a7ee974511b16d69',1,'EasyEngine::AudioSystem']]],
+  ['loaded_4',['Loaded',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea556a75fc5a15d4006e10a0961252213c',1,'EasyEngine::AudioSystem::Audio']]],
+  ['loading_5',['Loading',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ead56836f7417639aaa93e417c37994597',1,'EasyEngine::AudioSystem::Audio']]],
+  ['loadsfx_6',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a2eee89a3825c9b43bd21e280eeb3ae3f',1,'EasyEngine::AudioSystem']]],
+  ['loop_7',['loop',['../class_easy_engine_1_1_components_1_1_timer.html#a4de5c9dae77b0d69902a799d17da6a40',1,'EasyEngine::Components::Timer']]],
+  ['low_8',['Low',['../_core_8h.html#a7422fab4d0815fd77910384afa7bf347',1,'EasyEngine::StdAudioSpec']]]
 ];

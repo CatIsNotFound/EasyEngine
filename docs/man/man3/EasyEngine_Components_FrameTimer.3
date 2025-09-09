@@ -1,0 +1,58 @@
+.TH "EasyEngine::Components::FrameTimer" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::FrameTimer \- 计帧器  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBFrameTimer\fP (uint64_t delay, const std::function< void()> &function)"
+.br
+.ti -1c
+.RI "void \fBsetDelay\fP (uint64_t delay)"
+.br
+.ti -1c
+.RI "uint64_t \fBdelay\fP () const"
+.br
+.ti -1c
+.RI "void \fBinstallTimerEvent\fP (const std::function< void()> &function)"
+.br
+.ti -1c
+.RI "void \fBstart\fP (bool loop=false)"
+.br
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.ti -1c
+.RI "bool \fBloop\fP () const"
+.br
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+计帧器 
+
+
+.PP
+\fB参见\fP
+.RS 4
+\fBTimer\fP
+.RE
+.PP
+与计时器不同的是，计帧器采用帧数的方式来计算 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

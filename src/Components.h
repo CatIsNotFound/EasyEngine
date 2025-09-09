@@ -179,6 +179,13 @@ namespace EasyEngine {
             /**
              * @brief 创建定时器
              * @note 这里只能使用指针的形式创建！
+             * @code
+             * Timer* timer = new Timer();
+             * timer->setDelay(1000);   // 1000ms = 1sec
+             * timer->installTimerEvent(your_function);
+             * timer->start();
+             * // delete timer; // 调用 start() 函数后，不能释放此指针！
+             * @endcode
              */
             explicit Timer();
             ~Timer();
@@ -228,7 +235,7 @@ namespace EasyEngine {
              */
             uint64_t delay() const;
             /**
-             * @brief 更新定时器状态（需要在主循环中调用）
+             * @brief 更新定时器状态（无需手动调用）
              */
             void update();
 
@@ -240,6 +247,38 @@ namespace EasyEngine {
             bool _loop{false};
             std::function<void()> _timer_function;
             static uint64_t _currentTimeMs();
+        };
+
+        /**
+         * @class FrameTimer
+         * @brief 计帧器
+         *
+         * @see Timer
+         *
+         * 与计时器不同的是，计帧器采用帧数的方式来计算
+         */
+        class FrameTimer {
+        public:
+            explicit FrameTimer();
+            ~FrameTimer();
+
+            FrameTimer(uint64_t delay, const std::function<void()>& function);
+            void setDelay(uint64_t delay);
+            uint64_t delay() const;
+            void installTimerEvent(const std::function<void()>& function);
+            void start(bool loop = false);
+            void stop();
+            bool enabled() const;
+            bool loop() const;
+            void update();
+        private:
+            uint64_t _start_time{0};
+            uint64_t _delay{0};
+            uint64_t _id{0};
+            bool _enabled{false};
+            bool _loop{false};
+            std::function<void()> _timer_function;
+            static uint64_t _currentTimeFrame();
         };
 
         /**
@@ -693,14 +732,6 @@ namespace EasyEngine {
              * @see frame
              */
             bool isPlayedAnimation() const;
-            /**
-             * @brief 获取指定帧下的精灵
-             * @param frame 指定帧数
-             * @see play
-             * @see stop
-             * @see isPlayedAnimation
-             */
-            Sprite * frame(size_t frame) const;
 
         private:
             /**

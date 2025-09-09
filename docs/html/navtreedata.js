@@ -70,7 +70,7 @@ var NAVTREE =
       [ "类列表", "annotated.html", "annotated_dup" ],
       [ "类索引", "classes.html", null ],
       [ "类成员", "functions.html", [
-        [ "全部", "functions.html", null ],
+        [ "全部", "functions.html", "functions_dup" ],
         [ "函数", "functions_func.html", null ],
         [ "变量", "functions_vars.html", null ],
         [ "枚举", "functions_enum.html", null ],
@@ -86,7 +86,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_algorithm_8h.html",
-"class_easy_engine_1_1_painter.html#ae8414f521292cd5d0a4d3f3396d9e93d"
+"class_easy_engine_1_1_painter.html#a72a32c99fd098857822c9d1009e43b24"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

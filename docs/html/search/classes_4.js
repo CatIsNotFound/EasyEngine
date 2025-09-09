@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['geometry_0',['Geometry',['../struct_easy_engine_1_1_geometry.html',1,'EasyEngine']]]
+  ['frametimer_0',['FrameTimer',['../class_easy_engine_1_1_components_1_1_frame_timer.html',1,'EasyEngine::Components']]]
 ];
