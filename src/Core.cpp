@@ -230,10 +230,9 @@ int EasyEngine::Engine::run() {
     
     // 丢帧检测变量
     uint64_t consecutive_slow_frames = 0;
-    
+    uint64_t dropped_frames = 0;
     // 渲染循环状态
     bool render_needed = true;
-
     while (_is_running) {
         const uint64_t now = SDL_GetPerformanceCounter();
 
@@ -276,7 +275,8 @@ int EasyEngine::Engine::run() {
                 if (consecutive_slow_frames >= max_consecutive_slow_frames) {
                     should_skip_frame = true;
                     consecutive_slow_frames = 0;
-                    SDL_Log("[DROP] Frame skipped due to slow rendering");
+                    dropped_frames += 1;
+                    // SDL_Log("[DROP] Frame skipped due to slow rendering");
                 }
 
                 if (!should_skip_frame) {
@@ -306,6 +306,8 @@ int EasyEngine::Engine::run() {
                 _real_fps = frames_in_a_second;
                 latest_fps_check = now;
                 frames_in_a_second = 0;
+                if (dropped_frames) SDL_Log("[WARNING] Frame skipped due to slow rendering! count: %d", dropped_frames);
+                dropped_frames = 0;
             }
         }
 

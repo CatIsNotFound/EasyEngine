@@ -1,0 +1,3 @@
+/home/debian/文档/git/EasyEngine/build/CMakeFiles/EasyEngine.dir
+/home/debian/文档/git/EasyEngine/build/CMakeFiles/edit_cache.dir
+/home/debian/文档/git/EasyEngine/build/CMakeFiles/rebuild_cache.dir

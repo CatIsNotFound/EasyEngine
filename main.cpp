@@ -10,25 +10,24 @@ bool is_focused = false;
 double rotate_degree = 0.0;
 int main() {
     Engine engine("测试 Spirit FPS: 0");
-    engine.setGeometry(200, 200, 1024, 800);
+    engine.setGeometry(0, 0, 800, 600);
     engine.setResizable(true);
     engine.setFPS(MFPS);
-    engine.setBackgroundRenderingEnabled(true);
+    engine.setBackgroundRenderingEnabled(false);
     engine.show();
-    BGM bgm("assets/peace.wav");
+    BGM bgm("assets/bgm.mp3");
     SFX sfx("assets/sound.oga");
     Sprite spirit("Demo", "assets/demo.png", engine.window()->renderer);
     spirit.properties()->rotate_center = Vector2(spirit.size().width / 2, spirit.size().height / 2);
     spirit.properties()->scaled_center = Vector2(spirit.size().width / 2, spirit.size().height / 2);
-    spirit.properties()->color_alpha = {217, 189, 32, 255};
 
     Sprite gear1("gear1", "assets/gear.png", engine.window()->renderer),
            gear2("gear2", "assets/gear.png", engine.window()->renderer);
     SpriteGroup gear_group;
-    gear_group.add(gear1);
-    gear_group.add(gear2);
-    gear_group.add(gear1);
-    gear_group.add(gear2);
+    gear_group.append(gear1);
+    gear_group.append(gear2);
+    gear_group.append(gear1);
+    gear_group.append(gear2);
     gear_group.indexOf(1)->setPath("assets/EasyEngine_Icon.png");
     gear_group.indexOf(1)->setName("Icon");
     gear_group.propertiesOf(2)->scaled = 0.15f;
