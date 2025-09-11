@@ -1,3 +1,0 @@
-D:\CMake\bin\cmake.exe -E rm -f CMakeFiles\EasyEngine.dir/objects.a
-D:\JetBrains\CLion\bin\mingw\bin\ar.exe qc CMakeFiles\EasyEngine.dir/objects.a @CMakeFiles\EasyEngine.dir\objects1.rsp
-D:\JetBrains\CLion\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\EasyEngine.dir/objects.a -Wl,--no-whole-archive -o EasyEngine.exe -Wl,--out-implib,libEasyEngine.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\EasyEngine.dir\linkLibs.rsp
