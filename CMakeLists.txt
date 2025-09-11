@@ -2,11 +2,19 @@ cmake_minimum_required(VERSION 3.31)
 project(EasyEngine)
 
 set(CMAKE_CXX_STANDARD 23)
-list(APPEND CMAKE_PREFIX_PATH "D:/CPPLibs/SDL_GIT")
-list(APPEND CMAKE_PREFIX_PATH "D:/CPPLibs/SDL3_image")
-list(APPEND CMAKE_PREFIX_PATH "D:/CPPLibs/SDL3_ttf")
-list(APPEND CMAKE_PREFIX_PATH "D:/CPPLibs/SDL3_mixer")
-list(APPEND CMAKE_PREFIX_PATH "D:/CPPLibs/FMT")
+
+set(SDL_DIR "D:/CPPLibs/SDL_GIT")
+set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image/x86_64-w64-mingw32")
+set(SDL_TTF_DIR "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
+set(SDL_MIXER_DIR "D:/CPPLibs/SDL3_mixer")
+set(FMT_DIR "D:/CPPLibs/FMT")
+
+list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_IMAGE_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
+#set(FFMPEG_DIR "D:/CPPLibs/ffmpeg")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -44,6 +52,9 @@ add_executable(EasyEngine
         main.cpp
 )
 
+#include_directories(${FFMPEG_DIR}/include)
+#link_directories(${FFMPEG_DIR}/lib)
+
 target_link_libraries(EasyEngine PRIVATE
         SDL3::SDL3
         SDL3_image::SDL3_image
@@ -51,3 +62,13 @@ target_link_libraries(EasyEngine PRIVATE
         SDL3_mixer::SDL3_mixer
         fmt::fmt
 )
+
+if (WIN32)
+add_custom_command(TARGET EasyEngine POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin ${CMAKE_BINARY_DIR}
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_TTF_DIR}/bin ${CMAKE_BINARY_DIR}
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}
+#        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets
+)
+endif()

@@ -21,6 +21,8 @@ using SEvent        = SDL_Event;
 using SWinEvent     = SDL_WindowEvent;
 using SWindow       = SDL_Window;
 using SWindowID     = SDL_WindowID;
+using SCursor       = SDL_Cursor;
+using SStdCursor    = SDL_SystemCursor;
 using SAudioSpec    = SDL_AudioSpec;
 
 
@@ -43,6 +45,119 @@ namespace EasyEngine {
         SRenderer* renderer;
         /// 窗口大小、尺寸
         Geometry geometry;
+    };
+
+    /**
+     * @class Cursor
+     * @brief 鼠标光标
+     *
+     */
+    class Cursor {
+        explicit Cursor();
+        static std::unique_ptr<Cursor> _instance;
+    public:
+        /**
+         * @enum StdCursor
+         * @brief 标准鼠标光标样式
+         *
+         * 获取系统下当前使用的鼠标光标
+         */
+        enum StdCursor {
+            Default             = 0x0,
+            Normal              = 0x0,
+            Edit                = 0x1,
+            Wait                = 0x2,
+            Crosshair           = 0x3,
+            Busy                = 0x4,
+            Resize_NWSE         = 0x5,
+            Resize_NESW         = 0x6,
+            Resize_Horizontal   = 0x7,
+            Resize_EW           = 0x7,
+            Resize_Vertical     = 0x8,
+            Resize_NS           = 0x8,
+            Move                = 0x9,
+            Not_Allowed         = 0xA,
+            Forbbiden           = 0xA,
+            Hand                = 0xB,
+            Pointer             = 0xB,
+            Resize_NW           = 0xC,
+            Resize_N            = 0xD,
+            Resize_NE           = 0xE,
+            Resize_E            = 0xF,
+            Resize_SE           = 0x10,
+            Resize_S            = 0x11,
+            Resize_SW           = 0x12,
+            Resize_W            = 0x13,
+            Count               = 0x14,
+            Custom              = 0x15
+        };
+
+    public:
+        ~Cursor();
+        /**
+         * @brief 获取鼠标光标全局
+         */
+        static Cursor* global();
+        /**
+         * @brief 获取鼠标光标在显示器中所在的位置
+         * @return 返回全局坐标
+         * @see position
+         * @see move
+         */
+        Vector2 globalPosition() const;
+        /**
+         * @brief 获取鼠标光标在指定窗口下的位置
+         * @param window 指定一个窗口
+         * @return 返回鼠标光标相对指定窗口下的位置
+         * @see globalPosition
+         * @see move
+         */
+        Vector2 position(const Window* window);
+        /**
+         * @brief 移动鼠标光标至指定位置
+         * @param pos 指定位置
+         * @param window 指定窗口
+         * @note 若不指定 window 参数，将默认以全局显示器屏幕为主。
+         * @see position
+         * @see globalPosition
+         */
+        void move(const Vector2& pos, const Window* window = nullptr);
+        /**
+         * @brief 移动光标至指定位置
+         * @param x 指定横坐标
+         * @param y 指定纵坐标
+         * @param window 指定窗口
+         * @note 若不指定 window 参数，将默认以全局显示器屏幕为主。
+         * @see position
+         * @see globalPosition
+         */
+        void move(float x, float y, const Window* window = nullptr);
+        /**
+         * @brief 设置鼠标光标
+         * @param cursor 指定光标
+         * @code
+         * Cursor::global()->setCursor(Cursor::Hand); // Changed the cursor
+         * @endcode
+         */
+        void setCursor(const StdCursor& cursor);
+        /**
+         * @brief 设置自定义鼠标光标
+         * @param path 指定路径下加载鼠标光标
+         * @param hot_x 中心点横坐标
+         * @param hot_y 中心点纵坐标
+         */
+        void setCursor(const std::string &path, int hot_x, int hot_y);
+        /**
+         * @brief 获取当前鼠标光标样式
+         *
+         */
+        StdCursor cursor() const;
+        void unload();
+
+    private:
+        StdCursor _std_cursor{Default};
+        SCursor* _cursor{nullptr};
+        SSurface* _surface{nullptr};
     };
 
     class Painter;
@@ -291,6 +406,13 @@ namespace EasyEngine {
          * @see setBackgroundRenderingEnabled
          */
         bool backgroundRenderingEnabled() const;
+        /**
+         * @brief 设置清理引擎资源事件
+         * @param function 自定清理函数
+         *
+         * 仅在引擎释放期间执行！
+         */
+        void installCleanUpEvent(const std::function<void()>& function);
 
     private:
         Engine() = delete;
@@ -305,6 +427,7 @@ namespace EasyEngine {
         static SWindowID _main_window_id;
         std::map<SWindowID, std::unique_ptr<Painter>> _renderer_list;
         std::mutex _mutex;
+        std::function<void()> _clean_up_function;
         bool _is_running{false};
         static bool _is_stopped;
         bool _is_allowed_stop_render{false};
@@ -531,6 +654,7 @@ namespace EasyEngine {
          * @brief 替换定时器事件
          * @param id 指定定时器 ID
          * @param timer 新的定时器
+         * @note 原先被替换的定时器将被释放
          */
         void replaceTimer(uint64_t id, EasyEngine::Components::Timer *timer);
         /**
@@ -539,15 +663,50 @@ namespace EasyEngine {
          */
         void removeTimer(uint64_t id);
         /**
+         * @brief 移除定时器事件
+         * @param timer 指定定时器
+         */
+        void removeTimer(EasyEngine::Components::Timer *timer);
+        /**
          * @brief 清空所有定时器事件
          */
         void clearTimer();
+        /**
+         * @brief 添加触发器
+         * @param trigger 指定触发器
+         * @return 返回触发器 ID
+         * @see replaceTrigger
+         * @see removeTrigger
+         */
+        uint64_t addTrigger(EasyEngine::Components::Trigger* trigger);
+        /**
+         * @brief 替换触发器
+         * @param id        触发器 ID
+         * @param trigger   指定触发器
+         * @note 原先被替换的触发器将被释放！
+         * @see addTrigger
+         */
+        void replaceTrigger(uint64_t id, EasyEngine::Components::Trigger* trigger);
+        /**
+         * @brief 移除触发器
+         * @param id 指定触发器 ID
+         * @note 原有的触发器将被释放
+         * @see addTrigger
+         * @see replaceTrigger
+         */
+        void removeTrigger(uint64_t id);
+        /**
+         * @brief 清空触发器
+         */
+        void clearTrigger();
 
     private:
         static std::function<bool(SEvent)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
         std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
-        uint64_t _timer_id;
+        std::map<uint64_t, std::unique_ptr<Components::Trigger>> _trigger_list;
+        uint64_t _timer_id{0};
+        uint64_t _trigger_id{0};
     };
 
     /**
@@ -561,7 +720,10 @@ namespace EasyEngine {
         ~AudioSystem();
         AudioSystem(AudioSystem&) = delete;
         AudioSystem& operator=(AudioSystem&) = delete;
-        static AudioSystem* instance();
+        /**
+         * @brief 获取全局音频系统
+         */
+        static AudioSystem* global();
         /**
          * @brief 初始化音频系统
          *
@@ -637,7 +799,7 @@ namespace EasyEngine {
          * @param volume 指定音量（按 0.0 ~ 1.0 表示音量百分比）
          * @code
          * // 75% volume of BGM
-         * AudioSystem::instance()->setBGMVolume(0.75f);
+         * AudioSystem::global()->setBGMVolume(0.75f);
          * @endcode
          * @see bgmVolume
          */
@@ -652,7 +814,7 @@ namespace EasyEngine {
          * @param volume 指定音量（按 0.0 ~ 1.0 表示音量百分比）
          * * @code
          * // 75% volume of SFX
-         * AudioSystem::instance()->setSFXVolume(0.75f);
+         * AudioSystem::global()->setSFXVolume(0.75f);
          * @endcode
          * @see sfxVolume
          */

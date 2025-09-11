@@ -177,7 +177,7 @@ Public 成员函数</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
 <tr class="memitem:a37ddc25670fbe8e26e6a0787a8432738" id="r_a37ddc25670fbe8e26e6a0787a8432738"><td class="memItemLeft" align="right" valign="top"><a id="a37ddc25670fbe8e26e6a0787a8432738" name="a37ddc25670fbe8e26e6a0787a8432738"></a>
-static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>instance</b> ()</td></tr>
+static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>global</b> ()</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>音频系统 </p>
@@ -454,7 +454,7 @@ static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem<
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比） <div class="fragment"><div class="line"><span class="comment">// 75% volume of BGM</span></div>
-<div class="line">AudioSystem::instance()-&gt;setBGMVolume(0.75f);</div>
+<div class="line">AudioSystem::global()-&gt;setBGMVolume(0.75f);</div>
 </div><!-- fragment --> </td></tr>
   </table>
   </dd>
@@ -483,7 +483,7 @@ static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem<
   <table class="params">
     <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比）<ul>
 <li><div class="fragment"><div class="line"><span class="comment">// 75% volume of SFX</span></div>
-<div class="line">AudioSystem::instance()-&gt;setSFXVolume(0.75f);</div>
+<div class="line">AudioSystem::global()-&gt;setSFXVolume(0.75f);</div>
 </div><!-- fragment --> </li>
 </ul>
 </td></tr>

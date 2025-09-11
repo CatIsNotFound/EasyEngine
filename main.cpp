@@ -4,60 +4,74 @@
 using namespace EasyEngine;
 using namespace Components;
 
+uint8_t group = 0;
+bool is_fulled = false;
 int main() {
-    Engine engine("测试动画", 1024, 800);
-    engine.setBackgroundRenderingEnabled(false);
-    engine.setFPS(12);
+    Engine engine("...", 1024, 800);
+    engine.setBackgroundRenderingEnabled(true);
+    engine.setFPS(30);
     engine.setResizable(true);
     engine.show();
-    Sprite load1("load1", "assets/load1.png", engine.painter()->window()->renderer),
-            load2("load2", "assets/load2.png", engine.painter()->window()->renderer),
-            load3("load3", "assets/load3.png", engine.painter()->window()->renderer),
-            load4("load4", "assets/load4.png", engine.painter()->window()->renderer),
-            load5("load5", "assets/load5.png", engine.painter()->window()->renderer);
-    Animation load_ani("loading");
-    load_ani.addFrame(load1, DURATITON);
-    load_ani.addFrame(load2, DURATITON);
-    load_ani.addFrame(load4, DURATITON);
-    load_ani.addFrame(load4, DURATITON);
-    load_ani.addFrame(load5, DURATITON);
-    load_ani.addFrame(load5, DURATITON);
-    load_ani.addFrame(load5, DURATITON);
-    load_ani.addFrame(load4, DURATITON);
-    load_ani.addFrame(load3, DURATITON);
-    load_ani.addFrame(load1, DURATITON);
-    load_ani.addFrame(load1, DURATITON);
-    load_ani.removeFrame(5);
-    load_ani.removeFrame(4);
-    load_ani.removeFrame(10);
-    load_ani.insertFrame(load3, DURATITON, 2);
-    load_ani.removeFrame(3);
-    load_ani.replaceFrame(load2, 7, DURATITON);
-    for (uint64_t i = 0; i < load_ani.framesCount(); ++i) {
-        fmt::println("Frame {}: {} {}ms", i, load_ani.sprite(i)->name(), load_ani.durationInFrame(i));
+    Cursor::global()->setCursor(Cursor::Forbbiden);
+    AudioSystem::global()->setAudioSpec(StdAudioSpec::Low);
+    BGM bgm("assets/output/output.mp3");
+    uint64_t st = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+    std::vector<Sprite*> sprites;
+    for (int i = 0; i < 500; ++i) {
+        sprites.push_back(new Sprite(fmt::format("F{}", i), fmt::format("assets/output/output_{:0>4}.png", i + 1),
+                                     engine.window()->renderer));
+        engine.setWindowTitle(fmt::format("Loading: {}/500", i));
     }
+    Animation ani("ani", sprites,33);
+    ani.play(true, 0);
+    bgm.play(false);
+    uint64_t ed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+    fmt::println("用时：{}ms", ed - st);
 
-    engine.painter()->installPaintEvent([&load1, &load_ani](Painter& painter) {
-        painter.fillBackColor({64, 64, 64, 255});
-        load_ani.draw({100, 100}, &painter);
+    auto trigger = new Trigger();
+    trigger->setCondition([&ani]() {
+        return ani.timer()->count() > 0;
+    });
+    trigger->setEvent([&ani, &engine](){
+        if (ani.playedCount() > 0) {
+            group = (group == 13 ? 0 : group + 1);
+            ani.clearPlayedCount();
+        }
+        ani.timer()->clearCount();
+        ani.sprite(ani.currentFrame())->setPath(
+                fmt::format("assets/output/output_{:0>4}.png", 500 * group + ani.currentFrame() + 1));
+    });
+    trigger->setEnabled(true);
+//    auto timer = new Timer(1000, []{ fmt::println("Triggered!"); });
+//    timer->start(false);
+
+    engine.painter()->installPaintEvent([&ani, &engine](Painter& painter) {
+        painter.fillBackColor(StdColor::Black);
+        ani.draw({painter.window()->geometry.width / 2 - ani.sprite()->size().width / 2,
+                  painter.window()->geometry.height / 2 - ani.sprite()->size().height / 2}, &painter);
+        engine.setWindowTitle(fmt::format("测试动画 Frame: {}/{}", ani.currentFrame(), ani.framesCount()));
     });
 
-    engine.installEventHandler([&load_ani](const SEvent& ev) {
-        if (ev.button.down && ev.button.button == 1) {
-            if (load_ani.isPlayedAnimation()) {
-                load_ani.stop();
-            } else {
-                load_ani.play(false);
+    engine.installEventHandler([&ani, &bgm, &engine](const SEvent& ev) {
+        if (ev.button.type == SDL_EVENT_MOUSE_BUTTON_UP && ev.button.button == 1) {
+            if (ani.isPlayedAnimation()) {
+                ani.stop();
+                bgm.pause();
             }
-        } else if (ev.button.down && ev.button.button == 3) {
-            if (load_ani.isPlayedAnimation()) {
-                load_ani.stop();
-            } else {
-                load_ani.play();
+            else {
+                ani.play(true, ani.currentFrame());
+                bgm.play(false);
             }
+        }
+        if (ev.button.clicks == 2 && ev.button.type == SDL_EVENT_MOUSE_BUTTON_UP && ev.button.button == 3) {
+            is_fulled = !is_fulled;
+            engine.setFullScreen(is_fulled);
         }
 
         return true;
+    });
+    engine.installCleanUpEvent([]{
+        fmt::println("Clean up.");
     });
     return engine.exec();
 }

@@ -20,6 +20,7 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_mixer/SDL_mixer.h>
 #include <fmt/core.h>
+
 #include "libs/sdl3_gfx/SDL3_framerate.h"
 #include "libs/sdl3_gfx/SDL3_gfxPrimitives.h"
 #include "libs/sdl3_gfx/SDL3_gfxPrimitives_font.h"
@@ -33,12 +34,13 @@
 #include <array>
 #include <deque>
 #include <map>
+#include <tuple>
 #include <unordered_map>
 #include <functional>
 #include <thread>
 #include <mutex>
 #include <stdexcept>
 #include <cmath>
-
+#include <algorithm>
 
 #endif //EASYENGINE_PREINCLUDE_H

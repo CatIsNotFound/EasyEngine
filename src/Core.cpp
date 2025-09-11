@@ -8,6 +8,78 @@ bool EasyEngine::Engine::_is_stopped = false;
 std::function<bool(SEvent)> EasyEngine::EventSystem::_my_event_handler = nullptr;
 std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
+std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
+
+EasyEngine::Cursor::Cursor() {
+    _cursor = SDL_CreateSystemCursor(SStdCursor(0));
+    SDL_SetCursor(_cursor);
+}
+
+EasyEngine::Cursor::~Cursor() = default;
+
+EasyEngine::Cursor *EasyEngine::Cursor::global() {
+    if (!_instance) {
+        _instance = std::unique_ptr<Cursor>(new Cursor());
+    }
+    return _instance.get();
+}
+
+EasyEngine::Vector2 EasyEngine::Cursor::globalPosition() const {
+    Vector2 temp_pos;
+    SDL_GetGlobalMouseState(&temp_pos.x, &temp_pos.y);
+    return temp_pos;
+}
+
+EasyEngine::Vector2 EasyEngine::Cursor::position(const EasyEngine::Window *window) {
+    Vector2 temp_pos;
+    SDL_GetMouseState(&temp_pos.x, &temp_pos.y);
+    return temp_pos;
+}
+
+void EasyEngine::Cursor::move(const EasyEngine::Vector2 &pos, const EasyEngine::Window *window) {
+
+}
+
+void EasyEngine::Cursor::move(float x, float y, const EasyEngine::Window *window) {
+
+}
+
+void EasyEngine::Cursor::setCursor(const EasyEngine::Cursor::StdCursor &cursor) {
+    _std_cursor = cursor;
+    SDL_DestroyCursor(_cursor);
+    if (_surface) {
+        SDL_DestroySurface(_surface);
+        _surface = nullptr;
+    }
+    _cursor = SDL_CreateSystemCursor(SStdCursor(_std_cursor));
+    SDL_SetCursor(_cursor);
+}
+
+void EasyEngine::Cursor::setCursor(const std::string &path, int hot_x, int hot_y) {
+    SSurface *temp = IMG_Load(path.data());
+    if (!temp) {
+        SDL_Log("[ERROR] Can't load image while setting cursor: %s", path.data());
+        return;
+    }
+    SDL_DestroyCursor(_cursor);
+    if (_surface) {
+        SDL_DestroySurface(_surface);
+    }
+    _surface = temp;
+    _std_cursor = Custom;
+    _cursor = SDL_CreateColorCursor(_surface, hot_x, hot_y);
+    SDL_SetCursor(_cursor);
+}
+
+EasyEngine::Cursor::StdCursor EasyEngine::Cursor::cursor() const {
+    return _std_cursor;
+}
+
+void EasyEngine::Cursor::unload() {
+    SDL_DestroyCursor(_cursor);
+    if (_surface) SDL_DestroySurface(_surface);
+}
+
 
 EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t height) {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
@@ -18,7 +90,8 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
         SDL_Quit();
         throw std::runtime_error("Runtime Error: Initializing window failed!\n");
     }
-    AudioSystem::instance()->init();
+    AudioSystem::global()->init();
+    Cursor::global();
 }
 
 int EasyEngine::Engine::exec() {
@@ -318,8 +391,11 @@ int EasyEngine::Engine::run() {
 }
 
 void EasyEngine::Engine::cleanUp() {
-    AudioSystem::instance()->unload();
+    if (_clean_up_function) _clean_up_function();
     EventSystem::global()->clearTimer();
+    EventSystem::global()->clearTrigger();
+    AudioSystem::global()->unload();
+    Cursor::global()->unload();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);
@@ -418,6 +494,10 @@ void EasyEngine::Engine::setBackgroundRenderingEnabled(bool enabled) {
 
 bool EasyEngine::Engine::backgroundRenderingEnabled() const {
     return _is_allowed_stop_render;
+}
+
+void EasyEngine::Engine::installCleanUpEvent(const std::function<void()> &function) {
+    _clean_up_function = function;
 }
 
 EasyEngine::Painter::Painter(EasyEngine::Window* window) : _window(window), paint_function(nullptr), _thickness(1) {}
@@ -659,12 +739,15 @@ bool EasyEngine::EventSystem::handler() {
     for (auto& _timer : _timer_list) {
         _timer.second->update();
     }
+    for (auto& _trigger : _trigger_list) {
+        _trigger.second->update();
+    }
     return ret;
 }
 
 uint64_t EasyEngine::EventSystem::addTimer(EasyEngine::Components::Timer *timer) {
     if (!timer) {
-        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "[ERROR] The specified timer is not valid!");
+        SDL_Log("[ERROR] The specified timer is not valid!");
         return UINT64_MAX;
     }
     
@@ -683,7 +766,7 @@ uint64_t EasyEngine::EventSystem::addTimer(EasyEngine::Components::Timer *timer)
 
 void EasyEngine::EventSystem::replaceTimer(uint64_t id, EasyEngine::Components::Timer *timer) {
     if (!timer) {
-        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "[ERROR] The specified timer is not valid!");
+        SDL_Log("[ERROR] The specified timer is not valid!");
         return;
     }
     _timer_list[id].reset(timer);
@@ -691,14 +774,68 @@ void EasyEngine::EventSystem::replaceTimer(uint64_t id, EasyEngine::Components::
 
 void EasyEngine::EventSystem::removeTimer(uint64_t id) {
     if (!_timer_list.contains(id)) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "[ERROR] The Specified timer ID is not exist!");
+        SDL_Log("[ERROR] The Specified timer ID is not exist!");
         return;
     }
     _timer_list.erase(id);
 }
 
+void EasyEngine::EventSystem::removeTimer(EasyEngine::Components::Timer *timer) {
+    auto iter = std::find_if(_timer_list.begin(), _timer_list.end(),
+                 [timer](const auto& pair) {
+                     return timer == pair.second.get();
+                 });
+    if (iter != _timer_list.end()) {
+        _timer_list.erase(iter);
+    }
+}
+
 void EasyEngine::EventSystem::clearTimer() {
     _timer_list.clear();
+}
+
+uint64_t EasyEngine::EventSystem::addTrigger(EasyEngine::Components::Trigger *trigger) {
+    if (!trigger) {
+        SDL_Log("[ERROR] The specified trigger is not valid!");
+        return UINT64_MAX;
+    }
+
+    auto it = std::find_if(_trigger_list.begin(), _trigger_list.end(),
+                           [trigger](const auto& pair) {
+                               return trigger == pair.second.get();
+                           });
+
+    if (it != _trigger_list.end()) {
+        return it->first;
+    }
+
+    _trigger_list[++_trigger_id] = std::unique_ptr<Components::Trigger>(trigger);
+    return _trigger_id;
+}
+
+void EasyEngine::EventSystem::replaceTrigger(uint64_t id, EasyEngine::Components::Trigger *trigger) {
+    if (!trigger) {
+        SDL_Log("[ERROR] The specified trigger is not valid!");
+        return;
+    }
+    _trigger_list[id].reset(trigger);
+}
+
+void EasyEngine::EventSystem::removeTrigger(uint64_t id) {
+    if (!_trigger_list.contains(id)) {
+        SDL_Log("[ERROR] The Specified trigger ID is not exist!");
+        return;
+    }
+    delete _trigger_list.at(id).get();
+    _trigger_list.at(id).reset(nullptr);
+    _trigger_list.erase(id);
+}
+
+void EasyEngine::EventSystem::clearTrigger() {
+//    for (auto& _trigger : _trigger_list) {
+//        delete _trigger.second.get();
+//        // _trigger.second.reset(nullptr);
+//    }
 }
 
 EasyEngine::AudioSystem::AudioSystem() {
@@ -713,7 +850,7 @@ EasyEngine::AudioSystem::~AudioSystem() {
     if (_is_init) MIX_Quit();
 }
 
-EasyEngine::AudioSystem *EasyEngine::AudioSystem::instance() {
+EasyEngine::AudioSystem *EasyEngine::AudioSystem::global() {
     if (!_instance) {
         _instance = std::unique_ptr<AudioSystem>(new AudioSystem());
     }
@@ -885,7 +1022,6 @@ bool EasyEngine::AudioSystem::playBGM(uint8_t channel, bool loop) {
             _bgm_channels[channel].status = Audio::Failed;
             return false;
         }
-        MIX_SetTrackStereo(_bgm_channels[channel].Stream.track, NULL);
     }
 
     SDL_PropertiesID id = 1;

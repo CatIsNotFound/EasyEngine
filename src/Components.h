@@ -19,7 +19,6 @@ using SSurface = SDL_Surface;
 using STexture = SDL_Texture;
 using SRenderer = SDL_Renderer;
 using SFRect = SDL_FRect;
-using SRect = SDL_Rect;
 
 namespace EasyEngine {
     class Painter;
@@ -167,6 +166,13 @@ namespace EasyEngine {
             friend class AudioSystem;
         };
 
+        class Video {
+        public:
+
+        private:
+
+        };
+
         /**
          * @class Timer
          * @brief 定时器
@@ -182,10 +188,13 @@ namespace EasyEngine {
              * @code
              * Timer* timer = new Timer();
              * timer->setDelay(1000);   // 1000ms = 1sec
-             * timer->installTimerEvent(your_function);
+             * timer->setEvent(your_function);
              * timer->start();
              * // delete timer; // 调用 start() 函数后，不能释放此指针！
              * @endcode
+             * @see setDelay
+             * @see setEvent
+             * @see start
              */
             explicit Timer();
             ~Timer();
@@ -194,24 +203,30 @@ namespace EasyEngine {
              * @param delay     设定触发延迟（毫秒）
              * @param function  触发事件
              * @note 这里只能使用指针的形式创建！
+             * @see start
              */
             Timer(uint64_t delay, const std::function<void()>& function);
             /**
              * @brief 设定定时器触发延迟
              * @param delay 指定延迟（毫秒）
+             * @see setEvent
+             * @see start
              */
             void setDelay(uint64_t delay);
             /**
-             * @brief 安装或替换定时器触发事件
+             * @brief 设置或替换定时器触发事件
              * @param function 指定触发事件
+             * @see setDelay
+             * @see start
              */
-            void installTimerEvent(const std::function<void()>& function);
+            void setEvent(const std::function<void()>& function);
             /**
              * @brief 启用定时器
              * @param loop 是否循环启用定时器（之前的事件触发后将再次启用）
              * @see stop
              * @see enabled
              * @see loop
+             * @see count
              */
             void start(bool loop = false);
             /**
@@ -238,6 +253,16 @@ namespace EasyEngine {
              * @brief 更新定时器状态（无需手动调用）
              */
             void update();
+            /**
+             * @brief 获取触发定时器的总次数
+             * @see clearCount
+             */
+            size_t count() const;
+            /**
+             * @brief 清零定时器触发总次数
+             * @see count
+             */
+            void clearCount();
 
         private:
             uint64_t _start_time{0};
@@ -246,39 +271,52 @@ namespace EasyEngine {
             bool _enabled{false};
             bool _loop{false};
             std::function<void()> _timer_function;
+            size_t _triggered_count{0};
             static uint64_t _currentTimeMs();
         };
 
         /**
-         * @class FrameTimer
-         * @brief 计帧器
+         * @class Trigger
+         * @brief 触发器
          *
-         * @see Timer
-         *
-         * 与计时器不同的是，计帧器采用帧数的方式来计算
+         * 用于触发待执行的事件
+         * @note 此组件只能以指针的形式使用
          */
-        class FrameTimer {
+        class Trigger {
         public:
-            explicit FrameTimer();
-            ~FrameTimer();
-
-            FrameTimer(uint64_t delay, const std::function<void()>& function);
-            void setDelay(uint64_t delay);
-            uint64_t delay() const;
-            void installTimerEvent(const std::function<void()>& function);
-            void start(bool loop = false);
-            void stop();
+            explicit Trigger();
+            ~Trigger();
+            /**
+             * @brief 设置触发条件
+             * @param condition 触发条件函数
+             */
+            void setCondition(const std::function<bool()>& condition);
+            /**
+             * @brief 设置触发后执行的事件
+             * @param function 执行事件函数
+             */
+            void setEvent(const std::function<void()>& function);
+            /**
+             * @brief 设置启用/禁用触发器
+             * @param enabled 是否启用触发器
+             * @see enabled
+             */
+            void setEnabled(bool enabled);
+            /**
+             * @brief 是否已启用触发器
+             * @return 返回触发器是否已安装于事件系统中
+             * @see setEnabled
+             */
             bool enabled() const;
-            bool loop() const;
+            /**
+             * @brief 更新触发器状态（无需手动执行）
+             */
             void update();
         private:
-            uint64_t _start_time{0};
-            uint64_t _delay{0};
-            uint64_t _id{0};
+            std::function<bool()> _condition;
+            std::function<void()> _event;
             bool _enabled{false};
-            bool _loop{false};
-            std::function<void()> _timer_function;
-            static uint64_t _currentTimeFrame();
+            uint64_t _id{0};
         };
 
         /**
@@ -630,6 +668,12 @@ namespace EasyEngine {
             std::vector<std::shared_ptr<Sprite>> _sprites;
         };
 
+        /**
+         * @class Animation
+         * @brief 动画
+         *
+         * 由帧组成的精灵动画
+         */
         class Animation {
             struct Frame;
         public:
@@ -644,8 +688,9 @@ namespace EasyEngine {
              * @param sprite_list 精灵列表
              * @param duration_per_frame 每帧的持续时间（单位：毫秒），默认 50 毫秒
              */
-            Animation(const std::string& name, const std::vector<Sprite>& sprite_list,
+            Animation(const std::string& name, const std::vector<Sprite *> &sprite_list,
                       uint64_t duration_per_frame = 50);
+            ~Animation();
             /**
              * @brief 将精灵图像加入到帧
              * @param sprite 指定精灵
@@ -708,15 +753,16 @@ namespace EasyEngine {
             void draw(const Vector2& position, Painter* painter);
             /**
              * @brief 播放动画
-             * @param loop     是否循环播放动画（默认循环播放）
+             * @param loop          是否循环播放动画（默认循环播放）
+             * @param start_frame   从哪一帧开始播放（默认从头开始）
              * @note 欲显示绘制动画，需在绘图事件中调用 `draw()` 函数！
              * @see draw
              * @see playLoop
              * @see stop
-             * @see frame
+             * @see currentFrame
              * @see isPlayedAnimation
              */
-            void play(bool loop = true);
+            void play(bool loop = true, size_t start_frame = 0);
             /**
              * @brief 停止动画
              * @see play
@@ -732,7 +778,27 @@ namespace EasyEngine {
              * @see frame
              */
             bool isPlayedAnimation() const;
-
+            /**
+             * @brief 获取当前正在绘制的帧数
+             *
+             */
+            size_t currentFrame() const;
+            /**
+             * @brief 获取当前完整播放动画的总次数
+             *
+             * 当动画完整播放一次后计数
+             * @see clearPlayedCount
+             */
+            size_t playedCount() const;
+            /**
+             * @brief 清零完整播放动画次数
+             * @see playedCount
+             */
+            void clearPlayedCount();
+            /**
+             * @brief 获取当前使用的定时器
+             */
+            Timer * timer();
         private:
             /**
              * @struct Frame
@@ -748,8 +814,9 @@ namespace EasyEngine {
             };
             std::vector<Frame> _animations;
             std::string _name;
-            uint64_t _cur_frame{0};
+            size_t _cur_frame{0};
             bool _is_loop{false};
+            size_t _played{0};
             Timer* _frame_changer{nullptr};
         };
 

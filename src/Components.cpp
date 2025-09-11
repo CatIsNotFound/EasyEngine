@@ -8,14 +8,14 @@ EasyEngine::Components::BGM::BGM() {}
 EasyEngine::Components::BGM::~BGM() {}
 
 EasyEngine::Components::BGM::BGM(const std::string &path) : _path(path) {
-    auto ret = AudioSystem::instance()->loadBGM(*this);
+    auto ret = AudioSystem::global()->loadBGM(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
 }
 
 void EasyEngine::Components::BGM::setPath(const std::string &path) {
     _path = path;
-    auto ret = AudioSystem::instance()->loadBGM(*this);
+    auto ret = AudioSystem::global()->loadBGM(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
 }
@@ -28,22 +28,22 @@ void EasyEngine::Components::BGM::play(bool loop) {
     if (_is_load) {
         _is_loop = loop;
         reload();
-        AudioSystem::instance()->playBGM(_channel, loop);
+        AudioSystem::global()->playBGM(_channel, loop);
     }
 }
 
 void EasyEngine::Components::BGM::stop() {
     if (_is_load)
-        AudioSystem::instance()->stopBGM(_channel, false, 100);
+        AudioSystem::global()->stopBGM(_channel, false, 100);
 }
 
 void EasyEngine::Components::BGM::pause() {
     if (_is_load)
-        AudioSystem::instance()->stopBGM(_channel, true);
+        AudioSystem::global()->stopBGM(_channel, true);
 }
 
 bool EasyEngine::Components::BGM::isPlayed() const {
-    return AudioSystem::instance()->bgmChannel(_channel).status == AudioSystem::Audio::Playing;
+    return AudioSystem::global()->bgmChannel(_channel).status == AudioSystem::Audio::Playing;
 }
 
 bool EasyEngine::Components::BGM::isLoop() const {
@@ -51,15 +51,15 @@ bool EasyEngine::Components::BGM::isLoop() const {
 }
 
 int64_t EasyEngine::Components::BGM::position() const {
-    auto _ms = MIX_AudioFramesToMS(AudioSystem::instance()->bgmChannel(_channel).audio,
-                                   MIX_GetTrackPlaybackPosition(AudioSystem::instance()->bgmChannel(_channel).Stream.track));
-    if (AudioSystem::instance()->bgmChannel(_channel).status == AudioSystem::Audio::Loaded) return 0;
+    auto _ms = MIX_AudioFramesToMS(AudioSystem::global()->bgmChannel(_channel).audio,
+                                   MIX_GetTrackPlaybackPosition(AudioSystem::global()->bgmChannel(_channel).Stream.track));
+    if (AudioSystem::global()->bgmChannel(_channel).status == AudioSystem::Audio::Loaded) return 0;
     return _ms;
 }
 
 void EasyEngine::Components::BGM::reload() {
-    if (AudioSystem::instance()->bgmChannel(_channel).url != _path) {
-        auto ret = AudioSystem::instance()->loadBGM(*this);
+    if (AudioSystem::global()->bgmChannel(_channel).url != _path) {
+        auto ret = AudioSystem::global()->loadBGM(*this);
         _is_load = (ret != -1);
         _channel = static_cast<uint8_t>(ret);
     }
@@ -71,14 +71,14 @@ EasyEngine::Components::SFX::~SFX() {}
 
 EasyEngine::Components::SFX::SFX(const std::string &path) {
     _path = path;
-    auto ret = AudioSystem::instance()->loadSFX(*this);
+    auto ret = AudioSystem::global()->loadSFX(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
 }
 
 void EasyEngine::Components::SFX::setPath(const std::string &path) {
     _path = path;
-    auto ret = AudioSystem::instance()->loadSFX(*this);
+    auto ret = AudioSystem::global()->loadSFX(*this);
     _is_load = (ret != -1);
     _channel = static_cast<uint8_t>(ret);
 }
@@ -90,7 +90,7 @@ const std::string &EasyEngine::Components::SFX::path() const {
 void EasyEngine::Components::SFX::play() {
     if (_is_load) {
         reload();
-        AudioSystem::instance()->playSFX(_channel);
+        AudioSystem::global()->playSFX(_channel);
     }
 }
 
@@ -110,7 +110,7 @@ void EasyEngine::Components::SFX::play(uint32_t delay) {
 void EasyEngine::Components::SFX::stop() {
     if (_is_load) {
         if (_timer) _timer->stop();
-        AudioSystem::instance()->stopSFX(_channel);
+        AudioSystem::global()->stopSFX(_channel);
     }
 }
 
@@ -119,8 +119,8 @@ bool EasyEngine::Components::SFX::isLoop() const {
 }
 
 void EasyEngine::Components::SFX::reload() {
-    if (AudioSystem::instance()->sfxChannel(_channel).url != _path) {
-        auto ret = AudioSystem::instance()->loadSFX(*this);
+    if (AudioSystem::global()->sfxChannel(_channel).url != _path) {
+        auto ret = AudioSystem::global()->loadSFX(*this);
         _is_load = (ret != -1);
         _channel = static_cast<uint8_t>(ret);
     }
@@ -128,9 +128,9 @@ void EasyEngine::Components::SFX::reload() {
 
 EasyEngine::Components::Timer::Timer() : _delay(0) {}
 
-EasyEngine::Components::Timer::~Timer() { stop(); };
+EasyEngine::Components::Timer::~Timer() {}
 
-EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function<void()> &function) 
+EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function<void()> &function)
     : _delay(delay), _timer_function(function) {
 }
 
@@ -138,7 +138,7 @@ void EasyEngine::Components::Timer::setDelay(uint64_t delay) {
     _delay = delay;
 }
 
-void EasyEngine::Components::Timer::installTimerEvent(const std::function<void()> &function) {
+void EasyEngine::Components::Timer::setEvent(const std::function<void()> &function) {
     _timer_function = function;
 }
 
@@ -181,6 +181,7 @@ void EasyEngine::Components::Timer::update() {
     if (elapsed >= _delay) {
         try {
             _timer_function();
+            _triggered_count += 1;
         } catch (const std::exception &e) {
             SDL_LogError(SDL_LOG_CATEGORY_APPLICATION,
                          "[ERROR] Failed to called timer function! Code: %s", e.what());
@@ -191,6 +192,44 @@ void EasyEngine::Components::Timer::update() {
         }
     }
 }
+
+size_t EasyEngine::Components::Timer::count() const {
+    return _triggered_count;
+}
+
+void EasyEngine::Components::Timer::clearCount() {
+    _triggered_count = 0;
+}
+
+EasyEngine::Components::Trigger::Trigger() : _condition(nullptr), _event(nullptr) {}
+
+EasyEngine::Components::Trigger::~Trigger() {}
+
+void EasyEngine::Components::Trigger::setCondition(const std::function<bool()> &condition) {
+    _condition = condition;
+}
+
+void EasyEngine::Components::Trigger::setEvent(const std::function<void()> &function) {
+    _event = function;
+}
+
+void EasyEngine::Components::Trigger::setEnabled(bool enabled) {
+    _enabled = enabled;
+    if (enabled) {
+        _id = EventSystem::global()->addTrigger(this);
+    }
+}
+
+bool EasyEngine::Components::Trigger::enabled() const {
+    return _enabled;
+}
+
+void EasyEngine::Components::Trigger::update() {
+    if (_enabled && _condition()) {
+        _event();
+    }
+}
+
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, SRenderer *renderer)
     : _name(name), _renderer(renderer), _size(0, 0) {
@@ -483,10 +522,17 @@ uint32_t EasyEngine::Components::SpriteGroup::count() const {
 
 EasyEngine::Components::Animation::Animation(const std::string &name) : _name(name) {}
 
-EasyEngine::Components::Animation::Animation(const std::string &name, const std::vector<Sprite> &sprite_list,
+EasyEngine::Components::Animation::Animation(const std::string &name, const std::vector<Sprite *> &sprite_list,
                                              uint64_t duration_per_frame) : _name(name) {
     for (auto& sprite : sprite_list) {
-        _animations.push_back({std::make_unique<Sprite>(sprite.name(), sprite), duration_per_frame});
+        _animations.push_back({std::unique_ptr<Sprite>(sprite), duration_per_frame});
+    }
+}
+
+EasyEngine::Components::Animation::~Animation() {
+    if (_frame_changer) {
+        EventSystem::global()->removeTimer(_frame_changer);
+        _frame_changer = nullptr;
     }
 }
 
@@ -531,23 +577,28 @@ EasyEngine::Components::Sprite *EasyEngine::Components::Animation::sprite(const 
 }
 
 void EasyEngine::Components::Animation::draw(const EasyEngine::Vector2 &position, EasyEngine::Painter* painter) {
-    _animations[_cur_frame].sprite->draw(position, painter);
+    try {
+        _animations.at(_cur_frame).sprite->draw(position, painter);
+    } catch (const std::exception& e) {
+        SDL_Log("Error for frame %llu", _cur_frame);
+    }
 }
 
-void EasyEngine::Components::Animation::play(bool loop) {
+void EasyEngine::Components::Animation::play(bool loop, size_t start_frame) {
     if (!_frame_changer) {
         _frame_changer = new Timer();
         _frame_changer->setDelay(_animations.front().duration);
-        _frame_changer->installTimerEvent([this]{
+        _frame_changer->setEvent([this] {
             _frame_changer->setDelay(_animations[_cur_frame].duration);
             if (_cur_frame >= framesCount() - 1) {
                 _cur_frame = 0;
+                _played += 1;
                 if (!_is_loop) stop();
             } else _cur_frame += 1;
         });
     }
     if (!_frame_changer->enabled()) {
-        _cur_frame = 0;
+        _cur_frame = start_frame;
         _frame_changer->start(true);
         _is_loop = loop;
     }
@@ -559,5 +610,21 @@ void EasyEngine::Components::Animation::stop() {
 
 bool EasyEngine::Components::Animation::isPlayedAnimation() const {
     return (!_frame_changer ? false : _frame_changer->enabled());
+}
+
+size_t EasyEngine::Components::Animation::currentFrame() const {
+    return _cur_frame;
+}
+
+size_t EasyEngine::Components::Animation::playedCount() const {
+    return _played;
+}
+
+void EasyEngine::Components::Animation::clearPlayedCount() {
+    _played = 0;
+}
+
+EasyEngine::Components::Timer * EasyEngine::Components::Animation::timer() {
+    return (_frame_changer ? _frame_changer : nullptr);
 }
 
