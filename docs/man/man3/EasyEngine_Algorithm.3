@@ -40,6 +40,22 @@ EasyEngine::Algorithm \- 算法库
 .RI "static \fBSize\fP \fBspriteScaledSize\fP (const \fBComponents::Sprite\fP &sprite, const float scaled)"
 .br
 .RI "获取缩放后的精灵大小/尺寸 "
+.ti -1c
+.RI "static int8_t \fBcomparePosRect\fP (const \fBVector2\fP &pos, const \fBGraphics::Rectangle\fP &rectangle)"
+.br
+.RI "判断点与矩形的位置关系 "
+.ti -1c
+.RI "static int8_t \fBcomparePosEllipse\fP (const \fBVector2\fP &pos, const \fBGraphics::Ellipse\fP &ellipse)"
+.br
+.RI "判断点与椭圆的位置关系 "
+.ti -1c
+.RI "static int8_t \fBcompareRect\fP (const \fBGraphics::Rectangle\fP &rect1, const \fBGraphics::Rectangle\fP &rect2)"
+.br
+.RI "判断矩形与矩形之间的位置关系 "
+.ti -1c
+.RI "static int8_t \fBcompareEllipse\fP (const \fBGraphics::Ellipse\fP &ellipse1, const \fBGraphics::Ellipse\fP &ellipse2)"
+.br
+.RI "判断椭圆与椭圆之间的位置关系 "
 .in -1c
 .SH "详细描述"
 .PP 
@@ -48,6 +64,107 @@ EasyEngine::Algorithm \- 算法库
 存储图形相关的算法实现，为渲染提供计算支持 
 .SH "成员函数说明"
 .PP 
+.SS "int8_t Algorithm::compareEllipse (const \fBGraphics::Ellipse\fP & ellipse1, const \fBGraphics::Ellipse\fP & ellipse2)\fR [static]\fP"
+
+.PP
+判断椭圆与椭圆之间的位置关系 
+.PP
+\fB参数\fP
+.RS 4
+\fIellipse1\fP 指定第一个椭圆 
+.br
+\fIellipse2\fP 指定第二个椭圆 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回一个值以表示不同的位置关系 
+.RE
+.PP
+
+.SS "int8_t Algorithm::comparePosEllipse (const \fBVector2\fP & pos, const \fBGraphics::Ellipse\fP & ellipse)\fR [static]\fP"
+
+.PP
+判断点与椭圆的位置关系 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定的点所在的坐标 
+.br
+\fIellipse\fP 指定的椭圆 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回一个值以表示不同的位置关系 
+.RE
+.PP
+\fB返回值\fP
+.RS 4
+\fI-1\fP 表示点与矩形完全分离； 
+.br
+\fI0\fP 表示点正好在矩形上； 
+.br
+\fI1\fP 表示点在矩形内部。 
+.RE
+.PP
+
+.SS "int8_t Algorithm::comparePosRect (const \fBVector2\fP & pos, const \fBGraphics::Rectangle\fP & rectangle)\fR [static]\fP"
+
+.PP
+判断点与矩形的位置关系 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定的点所在的坐标 
+.br
+\fIrectangle\fP 指定的矩形 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回一个值以表示不同的位置关系 
+.RE
+.PP
+\fB返回值\fP
+.RS 4
+\fI-1\fP 表示点与矩形完全分离； 
+.br
+\fI0\fP 表示点正好在矩形上； 
+.br
+\fI1\fP 表示点在矩形内部。 
+.RE
+.PP
+
+.SS "int8_t Algorithm::compareRect (const \fBGraphics::Rectangle\fP & rect1, const \fBGraphics::Rectangle\fP & rect2)\fR [static]\fP"
+
+.PP
+判断矩形与矩形之间的位置关系 
+.PP
+\fB参数\fP
+.RS 4
+\fIrect1\fP 指定第一个矩形 
+.br
+\fIrect2\fP 指定第二个矩形 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回一个值以表示不同的位置关系 
+.RE
+.PP
+\fB返回值\fP
+.RS 4
+\fI-1\fP 表示两个矩形完全分离 
+.br
+\fI0\fP 表示两个矩形属于相交关系 
+.br
+\fI1\fP 表示 \fRrect2\fP 包含 \fRrect1\fP 
+.br
+\fI2\fP 表示 \fRrect1\fP 包含 \fRrect2\fP 
+.RE
+.PP
+
 .SS "SColor Algorithm::hexToRGBA (const std::string & hex)\fR [static]\fP"
 
 .PP

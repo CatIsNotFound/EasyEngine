@@ -30,18 +30,41 @@ EasyEngine::Vector2 EasyEngine::Cursor::globalPosition() const {
     return temp_pos;
 }
 
-EasyEngine::Vector2 EasyEngine::Cursor::position(const EasyEngine::Window *window) {
+EasyEngine::Vector2 EasyEngine::Cursor::position() {
     Vector2 temp_pos;
     SDL_GetMouseState(&temp_pos.x, &temp_pos.y);
     return temp_pos;
 }
 
 void EasyEngine::Cursor::move(const EasyEngine::Vector2 &pos, const EasyEngine::Window *window) {
-
+    if (window) {
+        SDL_WarpMouseInWindow(window->window, pos.x, pos.y);
+    } else {
+        SDL_WarpMouseGlobal(pos.x, pos.y);
+    }
 }
 
 void EasyEngine::Cursor::move(float x, float y, const EasyEngine::Window *window) {
+    if (window) {
+        SDL_WarpMouseInWindow(window->window, x, y);
+    } else {
+        SDL_WarpMouseGlobal(x, y);
+    }
+}
 
+void EasyEngine::Cursor::moveToCenter(const EasyEngine::Window *window) {
+    Vector2 pos;
+    if (window) {
+        int w, h;
+        SDL_GetWindowSize(window->window, &w, &h);
+        pos.reset((float)w / 2, (float)h / 2);
+        SDL_WarpMouseInWindow(window->window, pos.x, pos.y);
+    } else {
+        SDL_Rect rect;
+        SDL_GetDisplayBounds(SDL_GetPrimaryDisplay(), &rect);
+        pos.reset((float)rect.w / 2, (float)rect.h / 2);
+        SDL_WarpMouseGlobal(pos.x, pos.y);
+    }
 }
 
 void EasyEngine::Cursor::setCursor(const EasyEngine::Cursor::StdCursor &cursor) {
@@ -73,6 +96,19 @@ void EasyEngine::Cursor::setCursor(const std::string &path, int hot_x, int hot_y
 
 EasyEngine::Cursor::StdCursor EasyEngine::Cursor::cursor() const {
     return _std_cursor;
+}
+
+void EasyEngine::Cursor::setVisible(bool visible) {
+    _visible = visible;
+    if (_visible) {
+        SDL_ShowCursor();
+    } else {
+        SDL_HideCursor();
+    }
+}
+
+bool EasyEngine::Cursor::visible() const {
+    return _visible;
 }
 
 void EasyEngine::Cursor::unload() {
@@ -214,15 +250,20 @@ bool EasyEngine::Engine::setBorderlessWindow(bool enabled, SDL_WindowID window_i
     return _ok;
 }
 
-bool EasyEngine::Engine::setFullScreen(bool enabled, SDL_WindowID window_id) {
+bool EasyEngine::Engine::setFullScreen(bool enabled, bool move_cursor_to_center, SDL_WindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
         SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
+    if (!move_cursor_to_center) _cursor_old_pos = Cursor::global()->globalPosition();
     bool _ok = SDL_SetWindowFullscreen(_sdl_window_list.at(window_id)->window, enabled);
-
     if (!_ok) {
         SDL_Log("[ERROR] wID %u can't be set full-screened! Code: %s\n", window_id, SDL_GetError());
+    }
+    if (move_cursor_to_center) {
+        Cursor::global()->moveToCenter((enabled ? window(window_id) : nullptr));
+    } else {
+        Cursor::global()->move(_cursor_old_pos, (enabled ? window(window_id) : nullptr));
     }
     return _ok;
 }
@@ -391,9 +432,9 @@ int EasyEngine::Engine::run() {
 }
 
 void EasyEngine::Engine::cleanUp() {
-    if (_clean_up_function) _clean_up_function();
     EventSystem::global()->clearTimer();
     EventSystem::global()->clearTrigger();
+    if (_clean_up_function) _clean_up_function();
     AudioSystem::global()->unload();
     Cursor::global()->unload();
     for (auto& _win : _sdl_window_list) {
@@ -455,7 +496,7 @@ void EasyEngine::Engine::setFPS(uint32_t fps) {
     }
 }
 
-uint32_t EasyEngine::Engine::fps() {
+uint32_t EasyEngine::Engine::fps() const {
     return _real_fps;
 }
 
@@ -567,7 +608,8 @@ void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite, const Vec
     spriteCMD->_scaled = sprite.properties()->scaled;
     spriteCMD->_scaled_center = sprite.properties()->scaled_center;
     spriteCMD->_flip_mode = (sprite.properties()->flip_mode == Components::Sprite::FlipMode::None ? SDL_FLIP_NONE :
-                             (sprite.properties()->flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
+                             (sprite.properties()->flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL
+                                                                                                : SDL_FLIP_HORIZONTAL));
     spriteCMD->_color_alpha = sprite.properties()->color_alpha;
     command_list.emplace_back(std::unique_ptr<SpriteCMD>(spriteCMD));
 }
@@ -583,7 +625,8 @@ void EasyEngine::Painter::drawSprite(const Components::Sprite &sprite,
     spiritCmd->_scaled = properties.scaled;
     spiritCmd->_scaled_center = properties.scaled_center;
     spiritCmd->_flip_mode = (properties.flip_mode == Components::Sprite::FlipMode::None ? SDL_FLIP_NONE :
-                             (properties.flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL : SDL_FLIP_HORIZONTAL));
+                             (properties.flip_mode == Components::Sprite::FlipMode::VFlip ? SDL_FLIP_VERTICAL
+                                                                                    : SDL_FLIP_HORIZONTAL));
     spiritCmd->_color_alpha = properties.color_alpha;
     command_list.emplace_back(std::unique_ptr<SpriteCMD>(spiritCmd));
 }
@@ -615,7 +658,6 @@ void EasyEngine::Painter::installPaintEvent(std::function<void(Painter&)> functi
 void EasyEngine::Painter::PointCMD::exec(SRenderer *renderer, uint32_t thickness) {
     if (thickness > 1) {
         filledCircleRGBA(renderer, pt.pos.x, pt.pos.y, thickness - 1, pt.color.r, pt.color.g, pt.color.b, pt.color.a);
-        // aacircleRGBA(renderer, pt.pos.x, pt.pos.y, thickness - 1, pt.color.r, pt.color.g, pt.color.b, pt.color.a);
     } else {
         SDL_SetRenderDrawColor(renderer, pt.color.r, pt.color.g, pt.color.b, pt.color.a);
         SDL_RenderPoint(renderer, pt.pos.x, pt.pos.y);
@@ -732,9 +774,14 @@ bool EasyEngine::EventSystem::handler() {
         } else if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             Engine::_is_stopped = false;
         }
+        Vector2 cursor_in_win_pos = Cursor::global()->position();
+        for (auto& _con : _control_list) {
+            _con.second->update(nullptr);
+        }
         if (_my_event_handler) {
             ret = _my_event_handler(ev);
         }
+
     }
     for (auto& _timer : _timer_list) {
         _timer.second->update();
@@ -769,7 +816,7 @@ void EasyEngine::EventSystem::replaceTimer(uint64_t id, EasyEngine::Components::
         SDL_Log("[ERROR] The specified timer is not valid!");
         return;
     }
-    _timer_list[id].reset(timer);
+    if (_timer_list.contains(id)) _timer_list[id].reset(timer);
 }
 
 void EasyEngine::EventSystem::removeTimer(uint64_t id) {
@@ -777,7 +824,7 @@ void EasyEngine::EventSystem::removeTimer(uint64_t id) {
         SDL_Log("[ERROR] The Specified timer ID is not exist!");
         return;
     }
-    _timer_list.erase(id);
+    if (_timer_list.contains(id)) _timer_list.erase(id);
 }
 
 void EasyEngine::EventSystem::removeTimer(EasyEngine::Components::Timer *timer) {
@@ -799,16 +846,13 @@ uint64_t EasyEngine::EventSystem::addTrigger(EasyEngine::Components::Trigger *tr
         SDL_Log("[ERROR] The specified trigger is not valid!");
         return UINT64_MAX;
     }
-
     auto it = std::find_if(_trigger_list.begin(), _trigger_list.end(),
                            [trigger](const auto& pair) {
                                return trigger == pair.second.get();
                            });
-
     if (it != _trigger_list.end()) {
         return it->first;
     }
-
     _trigger_list[++_trigger_id] = std::unique_ptr<Components::Trigger>(trigger);
     return _trigger_id;
 }
@@ -818,7 +862,7 @@ void EasyEngine::EventSystem::replaceTrigger(uint64_t id, EasyEngine::Components
         SDL_Log("[ERROR] The specified trigger is not valid!");
         return;
     }
-    _trigger_list[id].reset(trigger);
+    if (_trigger_list.contains(id)) _trigger_list[id].reset(trigger);
 }
 
 void EasyEngine::EventSystem::removeTrigger(uint64_t id) {
@@ -826,19 +870,48 @@ void EasyEngine::EventSystem::removeTrigger(uint64_t id) {
         SDL_Log("[ERROR] The Specified trigger ID is not exist!");
         return;
     }
-    delete _trigger_list.at(id).get();
-    _trigger_list.at(id).reset(nullptr);
-    _trigger_list.erase(id);
+    if (_trigger_list.contains(id)) _trigger_list.erase(id);
 }
 
 void EasyEngine::EventSystem::clearTrigger() {
-//    for (auto& _trigger : _trigger_list) {
-//        delete _trigger.second.get();
-//        // _trigger.second.reset(nullptr);
-//    }
+    _trigger_list.clear();
 }
 
-EasyEngine::AudioSystem::AudioSystem() {
+uint64_t EasyEngine::EventSystem::addControl(EasyEngine::Components::Control *control) {
+    if (!control) {
+        SDL_Log("[ERROR] The specified control is not valid!");
+        return UINT64_MAX;
+    }
+    auto it = std::find_if(_control_list.begin(), _control_list.end(),
+                           [control](const auto& pair) {
+                               return control == pair.second;
+                           });
+    if (it != _control_list.end()) {
+        return it->first;
+    }
+    _control_list[++_control_id] = control;
+    return _control_id;
+}
+
+void EasyEngine::EventSystem::replaceControl(uint64_t id, EasyEngine::Components::Control *control) {
+    if (!control) {
+        SDL_Log("[ERROR] The specified control is not valid!");
+        return;
+    }
+    if (_control_list.contains(id)) _control_list[id] = control;
+}
+
+void EasyEngine::EventSystem::removeControl(uint64_t id) {
+    if (_control_list.contains(id)) {
+        _control_list.erase(id);
+    }
+}
+
+void EasyEngine::EventSystem::clearControls() {
+    _control_list.clear();
+}
+
+EasyEngine::AudioSystem::AudioSystem() : _audio_spec(StdAudioSpec::Stereo), _bgm_mixer(nullptr), _sfx_mixer(nullptr) {
     if (!MIX_Init()) {
         SDL_Log("[ERROR] Failed to load audio system! Code: %s", SDL_GetError());
         return;
@@ -863,12 +936,11 @@ bool EasyEngine::AudioSystem::init() {
         return false;
     }
     if (!_is_loaded) {
-        _audio_spec = StdAudioSpec::Stereo;
         _bgm_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
         _sfx_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
         if (!_bgm_mixer) {
             _audio_spec = StdAudioSpec::Mono;
-            _bgm_mixer = MIX_CreateMixer(&_audio_spec);
+            _bgm_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
             if (!_bgm_mixer) {
                 SDL_Log("[ERROR] Failed to load audio system! Code: %s", SDL_GetError());
                 return false;
@@ -876,7 +948,7 @@ bool EasyEngine::AudioSystem::init() {
         }
         if (!_sfx_mixer) {
             _audio_spec = StdAudioSpec::Mono;
-            _sfx_mixer = MIX_CreateMixer(&_audio_spec);
+            _sfx_mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &_audio_spec);
             if (!_sfx_mixer) {
                 SDL_Log("[ERROR] Failed to load audio system! Code: %s", SDL_GetError());
                 return false;

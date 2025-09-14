@@ -1,6 +1,7 @@
 var _core_8h =
 [
     [ "EasyEngine::Window", "class_easy_engine_1_1_window.html", "class_easy_engine_1_1_window" ],
+    [ "EasyEngine::Cursor", "class_easy_engine_1_1_cursor.html", "class_easy_engine_1_1_cursor" ],
     [ "EasyEngine::Engine", "class_easy_engine_1_1_engine.html", "class_easy_engine_1_1_engine" ],
     [ "EasyEngine::Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
     [ "EasyEngine::EventSystem", "class_easy_engine_1_1_event_system.html", "class_easy_engine_1_1_event_system" ],

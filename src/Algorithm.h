@@ -94,6 +94,46 @@ namespace EasyEngine {
         static Size spriteScaledSize(const Components::Sprite &sprite,
                                      const float scaled);
 
+        /**
+         * @brief 判断点与矩形的位置关系
+         * @param pos       指定的点所在的坐标
+         * @param rectangle 指定的矩形
+         * @return 返回一个值以表示不同的位置关系
+         * @retval -1 表示点与矩形完全分离；
+         * @retval 0  表示点正好在矩形上；
+         * @retval 1  表示点在矩形内部。
+         */
+        static int8_t comparePosRect(const Vector2 &pos, const Graphics::Rectangle &rectangle);
+        /**
+         * @brief 判断点与椭圆的位置关系
+         * @param pos       指定的点所在的坐标
+         * @param ellipse   指定的椭圆
+         * @return 返回一个值以表示不同的位置关系
+         * @retval -1 表示点与矩形完全分离；
+         * @retval 0  表示点正好在矩形上；
+         * @retval 1  表示点在矩形内部。
+         */
+        static int8_t comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
+        /**
+         * @brief 判断矩形与矩形之间的位置关系
+         * @param rect1 指定第一个矩形
+         * @param rect2 指定第二个矩形
+         * @return 返回一个值以表示不同的位置关系
+         * @retval -1 表示两个矩形完全分离
+         * @retval 0  表示两个矩形属于相交关系
+         * @retval 1  表示 `rect2` 包含 `rect1`
+         * @retval 2  表示 `rect1` 包含 `rect2`
+         */
+        static int8_t compareRect(const Graphics::Rectangle &rect1, const Graphics::Rectangle &rect2);
+        /**
+         * @brief 判断椭圆与椭圆之间的位置关系
+         * @param ellipse1 指定第一个椭圆
+         * @param ellipse2 指定第二个椭圆
+         * @return 返回一个值以表示不同的位置关系
+         * @retval -1 表示两个椭圆完全分离
+         * @retval 0  表示两个椭圆
+         */
+        static int8_t compareEllipse(const Graphics::Ellipse &ellipse1, const Graphics::Ellipse &ellipse2);
     };
 
 }

@@ -1,8 +1,17 @@
 var class_easy_engine_1_1_event_system =
 [
+    [ "addControl", "class_easy_engine_1_1_event_system.html#afc8aec6f5a65c44bb4d2f8e200d22db9", null ],
     [ "addTimer", "class_easy_engine_1_1_event_system.html#a7bbdf8411a08169f33436bf40d086b01", null ],
+    [ "addTrigger", "class_easy_engine_1_1_event_system.html#af5a255c8fbc9986fcead636942a3a1e8", null ],
+    [ "clearControls", "class_easy_engine_1_1_event_system.html#a919f07e7e8edf784458d56bdd759d07b", null ],
     [ "clearTimer", "class_easy_engine_1_1_event_system.html#a81485710f7070c50bd5f9e144c1427a1", null ],
+    [ "clearTrigger", "class_easy_engine_1_1_event_system.html#afc6cb6be998ddc1efdd53791be354ef5", null ],
     [ "handler", "class_easy_engine_1_1_event_system.html#ad51c16da26aae7f2c05d5661a1229935", null ],
+    [ "removeControl", "class_easy_engine_1_1_event_system.html#ae032623554fd311ec78d8fda94829519", null ],
+    [ "removeTimer", "class_easy_engine_1_1_event_system.html#ad2abefd62f627ac0b9076c3540de2a77", null ],
     [ "removeTimer", "class_easy_engine_1_1_event_system.html#a77abf88f8d54746681b898a50e1dafc3", null ],
-    [ "replaceTimer", "class_easy_engine_1_1_event_system.html#abb9809cacfda2007ca242a9a24ed2f5d", null ]
+    [ "removeTrigger", "class_easy_engine_1_1_event_system.html#aba9d2342b1c295fba024b59c06ad0f8c", null ],
+    [ "replaceControl", "class_easy_engine_1_1_event_system.html#ae84d4a57a24a0e8eeb3e298ff001f109", null ],
+    [ "replaceTimer", "class_easy_engine_1_1_event_system.html#abb9809cacfda2007ca242a9a24ed2f5d", null ],
+    [ "replaceTrigger", "class_easy_engine_1_1_event_system.html#aaf492f5fe57c619b028649df1133cbc0", null ]
 ];

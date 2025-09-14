@@ -23,6 +23,7 @@ using SFRect = SDL_FRect;
 namespace EasyEngine {
     class Painter;
     class EventSystem;
+    class AudioSystem;
     /**
      * @namespace Components
      * @brief 组件库
@@ -177,10 +178,11 @@ namespace EasyEngine {
          * @class Timer
          * @brief 定时器
          *
-         * 用于设置延迟或定时的工具
-         * @note 此组件只能使用指针的形式创建！
+         * 用于定时触发事件的组件
+         * @note 此组件只能以指针的形式使用
          */
         class Timer {
+            friend class EventSystem;
         public:
             /**
              * @brief 创建定时器
@@ -283,6 +285,7 @@ namespace EasyEngine {
          * @note 此组件只能以指针的形式使用
          */
         class Trigger {
+            friend class EventSystem;
         public:
             explicit Trigger();
             ~Trigger();
@@ -312,6 +315,14 @@ namespace EasyEngine {
              * @brief 更新触发器状态（无需手动执行）
              */
             void update();
+            /**
+             * @brief 获取当前的触发条件函数
+             */
+            std::function<bool()>& condition();
+            /**
+             * @brief 获取当前的触发后执行函数
+             */
+            std::function<void()>& event();
         private:
             std::function<bool()> _condition;
             std::function<void()> _event;
@@ -927,6 +938,292 @@ namespace EasyEngine {
             Collider _collider;
             std::string _obj_name;
             bool _is_collider{false};
+        };
+
+        /**
+         * @class Control
+         * @brief 控件
+         *
+         * 适用于 UI 界面的操作控件
+         */
+        class Control {
+            friend class EventSystem;
+        public:
+            /**
+             * @enum Status
+             * @brief 控件状态
+             */
+            enum class Status {
+                /// 默认
+                Default,
+                /// 活动
+                Active,
+                /// 鼠标经过
+                Hovered,
+                /// 鼠标按下
+                Pressed,
+                /// 禁用
+                Disabled
+            };
+            /**
+             * @enum Event
+             * @brief 控件触发事件
+             *
+             * 罗列了可能的触发事件
+             */
+            enum class Event {
+                /// 加载事件
+                Loaded,
+                /// 卸载事件
+                Unload,
+                /// 获取焦点事件
+                GetFocus,
+                /// 失去焦点事件
+                LostFocus,
+                /// 鼠标单击事件
+                Clicked,
+                /// 鼠标双击事件
+                DblClicked,
+                /// 鼠标按下事件
+                MouseDown,
+                /// 鼠标松开事件
+                MouseUp,
+                /// 鼠标经过控件事件
+                MouseHover,
+                /// 按键盘事件
+                KeyPressed,
+                /// 键盘按下事件
+                KeyDown,
+                /// 键盘松开事件
+                KeyUp
+            };
+            /**
+             * @brief 创建控件
+             * @param name 创建时需给定名称
+             */
+            explicit Control(const std::string& name);
+            /**
+             * @brief 完全克隆已有的控件
+             * @param name  创建时需给定名称
+             * @param control 原有的控件
+             */
+            Control(const std::string& name, const Control& control);
+            ~Control();
+
+            /**
+             * @brief 设定一个控件名称
+             * @param name 控件名称
+             */
+            void setName(const std::string& name);
+            /**
+             * @brief 获取该控件的名称
+             */
+            const std::string& name() const;
+            /**
+             * @brief 设定控件指定状态
+             * @param status 选择任一状态
+             * @param sprite 在当前状态下绘制成什么精灵
+             * @see status
+             * @see removeStatus
+             */
+            void setStatus(const EasyEngine::Components::Control::Status &status, Sprite *sprite);
+            /**
+             * @brief 设定控件指定状态
+             * @param status 选择任一状态
+             * @param sprite_group 在当前状态下绘制什么精灵组
+             * @see status
+             * @see removeStatus
+             */
+            void setStatus(const EasyEngine::Components::Control::Status &status, SpriteGroup *sprite_group);
+            /**
+             * @brief 设定控件指定状态
+             * @param status 选择任一状态
+             * @param sprite 在当前状态下绘制成什么精灵动画
+             * @see status
+             * @see removeStatus
+             */
+            void setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation);
+            /**
+             * @brief 移除指定的控件状态
+             * @param status 选择任一状态以移除
+             * @see status
+             */
+            void removeStatus(const enum Status& status);
+
+            /**
+             * @brief 获取当前指定状态下的精灵、组、动画
+             * @param status 选择任一状态
+             * @return 返回当前状态下的精灵、组、动画
+             * @note 目前支持的类：Sprite、SpriteGroup、Animation
+             * @note 如果无法确定当前状态下使用的类，请使用 getTypeid() 以获取该状态下使用的类。
+             * @see setStatus
+             * @see removeStatus
+             * @see getTypeid
+             */
+            template<class Type>
+            Type* status(const enum Status& status) const;
+            /**
+             * @brief 获取当前指定状态下的类型
+             * @param status 指定控件的状态
+             * @return 返回类型名称，若没有当前状态，将返回空字符串
+             * @retval Sprite
+             * @retval SpriteGroup
+             * @retval Animation
+             * @retval Unknown
+             * @see status
+             */
+            std::string getTypename(const enum Status& status) const;
+
+            /**
+             * @brief 指定某一事件设定触发函数（即：触发器）
+             * @param event     指定事件
+             * @param function  触发函数
+             * @see event
+             * @see removeEvent
+             * @see Trigger
+             */
+            void setEvent(const enum Event& event, const std::function<void()>& function);
+            /**
+             * @brief 指定某一事件设定触发函数（即：触发器）
+             * @param event     指定事件
+             * @param condition 触发条件（额外条件）
+             * @param function  触发函数
+             * @see event
+             * @see removeEvent
+             * @see Trigger
+             */
+            void setEvent(const enum Event& event, const std::function<bool()>& condition,
+                          const std::function<void()>& function);
+            /**
+             * @brief 移除指定事件下的触发器
+             * @param event 指定事件
+             * @see event
+             * @see setEvent
+             */
+            void removeEvent(const enum Event& event);
+
+            /**
+             * @brief 设定该控件是否可用
+             * @param enabled 设定控件是否能被使用
+             */
+            void setEnabled(bool enabled);
+            /**
+             * @brief 获取当前控件是否可用
+             *
+             */
+            bool enabled() const;
+            /**
+             * @brief 设置当前控件为活动状态
+             * @see setInactive
+             */
+            void setActive();
+            /**
+             * @brief 设置当前控件为非活动状态
+             * @see setActive
+             */
+            void setInactive();
+
+            /**
+             * @brief 移动控件的位置
+             * @param pos 指定位置
+             * @see position
+             */
+            void move(const Vector2& pos);
+            /**
+             * @brief 移动控件的位置
+             * @param x 指定横坐标
+             * @param y 指定纵坐标
+             * @see position
+             */
+            void move(float x, float y);
+            /**
+             * @brief 获取当前控件所在的位置
+             * @see move
+             * @see setGeometry
+             */
+            Vector2 position() const;
+            /**
+             * @brief 重新调整控件的大小
+             * @param size 新的控件大小
+             * @see size
+             */
+            void resize(const Size& size);
+            /**
+             * @brief 重新调整控件的大小
+             * @param width 新的控件宽度
+             * @param height 新的控件高度
+             * @see size
+             */
+            void resize(float width, float height);
+            /**
+             * @brief 获取当前控件的大小
+             * @see resize
+             * @see setGeometry
+             */
+            Size size() const;
+            /**
+             * @brief 设定控件的位置、大小
+             * @param pos   指定控件所处的位置
+             * @param size  指定控件的大小
+             * @see position
+             * @see size
+             */
+            void setGeometry(const Vector2& pos, const Size& size);
+            /**
+             * @brief 设定控件的位置、大小
+             * @param x         指定控件所处位置的横坐标
+             * @param y         指定控件所处位置的纵坐标
+             * @param width     指定控件的宽度
+             * @param height    指定控件的高度
+             * @see position
+             * @see size
+             */
+            void setGeometry(float x, float y, float width, float height);
+            /**
+             * @brief 设定热区的位置、大小
+             * @param pos   指定热区位置（相对坐标）
+             * @param size  指定热区大小
+             * @see hotArea
+             */
+            void setGeometryForHotArea(const Vector2& pos, const Size& size);
+            /**
+             * @brief 设定热区的位置、大小
+             * @param x         指定热区位置（相对坐标）横坐标
+             * @param y         指定热区位置（相对坐标）纵坐标
+             * @param width     指定热区的宽度
+             * @param height    指定热区的高度
+             * @see hotArea
+             */
+            void setGeometryForHotArea(float x, float y, float width, float height);
+            /**
+             * @brief 获取热区
+             * @see setGeometryForHotArea
+             */
+            const Graphics::Rectangle& hotArea() const;
+            /**
+             * @brief 更新控件状态（无需手动调用）
+             */
+            void update(Painter *painter);
+        private:
+            std::string _name;
+            struct Container {
+                explicit Container() : type_id(0), self() {}
+                uint8_t type_id; // 按照 Self 的顺序表示（从 1 开始）
+                union Self {
+                    explicit Self() {}
+                    ~Self() {}
+                    std::shared_ptr<Sprite> sprite;
+                    std::shared_ptr<SpriteGroup> sprite_group;
+                    std::shared_ptr<Animation> animation;
+                };
+                Self self;
+            };
+            std::map<Status, std::unique_ptr<Container>> _container_list;
+            std::map<Event, std::unique_ptr<Trigger>> _trigger_list;
+            Status _status{Status::Default};
+            Vector2 _position;
+            Size _size;
+            Graphics::Rectangle _hot_area;
         };
     }
 }

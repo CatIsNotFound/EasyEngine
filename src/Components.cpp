@@ -139,7 +139,7 @@ void EasyEngine::Components::Timer::setDelay(uint64_t delay) {
 }
 
 void EasyEngine::Components::Timer::setEvent(const std::function<void()> &function) {
-    _timer_function = function;
+    _timer_function = std::move(function);
 }
 
 void EasyEngine::Components::Timer::stop() {
@@ -206,11 +206,11 @@ EasyEngine::Components::Trigger::Trigger() : _condition(nullptr), _event(nullptr
 EasyEngine::Components::Trigger::~Trigger() {}
 
 void EasyEngine::Components::Trigger::setCondition(const std::function<bool()> &condition) {
-    _condition = condition;
+    _condition = std::move(condition);
 }
 
 void EasyEngine::Components::Trigger::setEvent(const std::function<void()> &function) {
-    _event = function;
+    _event = std::move(function);
 }
 
 void EasyEngine::Components::Trigger::setEnabled(bool enabled) {
@@ -228,6 +228,14 @@ void EasyEngine::Components::Trigger::update() {
     if (_enabled && _condition()) {
         _event();
     }
+}
+
+std::function<bool()> &EasyEngine::Components::Trigger::condition() {
+    return _condition;
+}
+
+std::function<void()> &EasyEngine::Components::Trigger::event() {
+    return _event;
 }
 
 
@@ -522,17 +530,18 @@ uint32_t EasyEngine::Components::SpriteGroup::count() const {
 
 EasyEngine::Components::Animation::Animation(const std::string &name) : _name(name) {}
 
-EasyEngine::Components::Animation::Animation(const std::string &name, const std::vector<Sprite *> &sprite_list,
+EasyEngine::Components::Animation::Animation(const std::string &name,
+                                             const std::vector<Sprite *> &sprite_list,
                                              uint64_t duration_per_frame) : _name(name) {
     for (auto& sprite : sprite_list) {
-        _animations.push_back({std::unique_ptr<Sprite>(sprite), duration_per_frame});
+        _animations.push_back({std::unique_ptr<Sprite>(sprite),
+                duration_per_frame});
     }
 }
 
 EasyEngine::Components::Animation::~Animation() {
     if (_frame_changer) {
         EventSystem::global()->removeTimer(_frame_changer);
-        _frame_changer = nullptr;
     }
 }
 
@@ -628,3 +637,205 @@ EasyEngine::Components::Timer * EasyEngine::Components::Animation::timer() {
     return (_frame_changer ? _frame_changer : nullptr);
 }
 
+EasyEngine::Components::Control::Control(const std::string &name) : _name(name) {}
+
+EasyEngine::Components::Control::Control(const std::string &name, const EasyEngine::Components::Control &control) {
+    _name = name;
+    _position = control._position;
+    _size = control._size;
+    _hot_area = control._hot_area;
+    _status = control._status;
+
+    for (auto& _con : control._container_list) {
+        auto container = new Container();
+        container->type_id = _con.second->type_id;
+        if (container->type_id == 1) {
+            container->self.sprite = _con.second->self.sprite;
+        } else if (container->type_id == 2) {
+            container->self.sprite_group = _con.second->self.sprite_group;
+        } else if (container->type_id == 3) {
+            container->self.animation = _con.second->self.animation;
+        }
+        _container_list.emplace(_con.first, std::unique_ptr<Container>(container));
+    }
+    for (auto& _tri : control._trigger_list) {
+        auto trigger = new Trigger();
+        trigger->setCondition(_tri.second->condition());
+        trigger->setEvent(_tri.second->event());
+        trigger->setEnabled(false);
+        _trigger_list.emplace(_tri.first, std::unique_ptr<Trigger>(trigger));
+    }
+}
+
+EasyEngine::Components::Control::~Control() {}
+
+void EasyEngine::Components::Control::setName(const std::string &name) {
+    _name = name;
+}
+
+const std::string &EasyEngine::Components::Control::name() const {
+    return _name;
+}
+
+void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Sprite *sprite) {
+    auto new_con = new Container();
+    new_con->type_id = 1;
+    new_con->self.sprite = std::shared_ptr<Sprite>(sprite);
+    _container_list[status] = std::unique_ptr<Container>(new_con);
+}
+
+void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, SpriteGroup *sprite_group) {
+    auto new_con = new Container();
+    new_con->type_id = 2;
+    new_con->self.sprite_group = std::shared_ptr<SpriteGroup>(sprite_group);
+    _container_list[status] = std::unique_ptr<Container>(new_con);
+}
+
+void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation) {
+    auto new_con = new Container();
+    new_con->type_id = 3;
+    new_con->self.animation = std::shared_ptr<Animation>(animation);
+    _container_list[status] = std::unique_ptr<Container>(new_con);
+}
+
+void EasyEngine::Components::Control::removeStatus(const EasyEngine::Components::Control::Status &status) {
+    if (_container_list.contains(status)) {
+        _container_list.erase(status);
+    }
+}
+
+template<class Type>
+Type *EasyEngine::Components::Control::status(const EasyEngine::Components::Control::Status &status) const {
+    if (!_container_list.contains(status)) {
+        SDL_Log("[ERROR] Status %d not found in Control '%s'", static_cast<int>(status), _name.c_str());
+        return nullptr;
+    }
+    auto _con = _container_list.at(status).get();
+    if constexpr (std::is_same_v<Type, Sprite>) {
+        if (_con->type_id == 1) return _con->self.sprite.get();
+    } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
+        if (_con->type_id == 2) return _con->self.sprite_group.get();
+    } else if constexpr (std::is_same_v<Type, Animation>) {
+        if (_con->type_id == 3) return _con->self.animation.get();
+    } else {
+        static_assert(std::is_same_v<Type, Sprite> || 
+                     std::is_same_v<Type, SpriteGroup> || 
+                     std::is_same_v<Type, Animation>,
+                     "[ERROR] Unsupported type for Control::status()");
+    }
+    SDL_Log("[ERROR] Type mismatch in Control '%s'!\n"
+            "%7s PS: Try to use Control::getTypename() to view the type!",
+            _name.c_str(), " ");
+    return nullptr;
+}
+
+std::string EasyEngine::Components::Control::getTypename(
+        const enum EasyEngine::Components::Control::Status &status) const {
+    if (!_container_list.contains(status)) return "";
+    if (_container_list.at(status)->type_id == 1) return "Sprite";
+    if (_container_list.at(status)->type_id == 2) return "SpriteGroup";
+    if (_container_list.at(status)->type_id == 3) return "Animation";
+    return "Unknown";
+}
+
+void EasyEngine::Components::Control::setEvent(const EasyEngine::Components::Control::Event &event, const std::function<void()> &function) {
+    auto trigger = new Trigger();
+    trigger->setEvent(function);
+    trigger->setCondition([]{ return true; });
+    _trigger_list.emplace(event, std::unique_ptr<Trigger>(trigger));
+}
+
+void EasyEngine::Components::Control::setEvent(const EasyEngine::Components::Control::Event &event, const std::function<bool()> &condition,
+                       const std::function<void()> &function) {
+    auto trigger = new Trigger();
+    trigger->setEvent(function);
+    trigger->setCondition(condition);
+    trigger->setEnabled(false);
+    _trigger_list.emplace(event, std::unique_ptr<Trigger>(trigger));
+}
+
+void EasyEngine::Components::Control::removeEvent(const EasyEngine::Components::Control::Event &event) {
+    if (_trigger_list.contains(event)) _trigger_list.erase(event);
+}
+
+void EasyEngine::Components::Control::setEnabled(bool enabled) {
+    _status = (enabled ? Status::Default : Status::Disabled);
+}
+
+bool EasyEngine::Components::Control::enabled() const {
+    return _status != Status::Disabled;
+}
+
+void EasyEngine::Components::Control::setActive() {
+    _status = Status::Active;
+}
+
+void EasyEngine::Components::Control::setInactive() {
+    _status = Status::Default;
+}
+
+void EasyEngine::Components::Control::move(const Vector2 &pos) {
+    _position = pos;
+}
+
+void EasyEngine::Components::Control::move(float x, float y) {
+    _position.reset(x, y);
+}
+
+EasyEngine::Vector2 EasyEngine::Components::Control::position() const {
+    return _position;
+}
+
+void EasyEngine::Components::Control::resize(const Size &size) {
+    _size = size;
+}
+
+void EasyEngine::Components::Control::resize(float width, float height) {
+    _size.reset(width, height);
+}
+
+EasyEngine::Size EasyEngine::Components::Control::size() const {
+    return _size;
+}
+
+void EasyEngine::Components::Control::setGeometry(const Vector2 &pos, const Size &size) {
+    _position = pos; _size = size;
+}
+
+void EasyEngine::Components::Control::setGeometry(float x, float y, float width, float height) {
+    _position.reset(x, y);
+    _size.reset(width, height);
+}
+
+void EasyEngine::Components::Control::setGeometryForHotArea(const Vector2 &pos, const Size &size) {
+    _hot_area.pos = pos;
+    _hot_area.size = size;
+}
+
+void EasyEngine::Components::Control::setGeometryForHotArea(float x, float y, float width, float height) {
+    _hot_area.pos.reset(x, y);
+    _hot_area.size.reset(width, height);
+}
+
+const EasyEngine::Graphics::Rectangle & EasyEngine::Components::Control::hotArea() const {
+    return _hot_area;
+}
+
+void EasyEngine::Components::Control::update(Painter *painter) {
+    if (!_container_list.contains(_status)) {
+        if (_container_list[Status::Default]->type_id == 1) {
+            status<Sprite>(Status::Default)->draw(_position, painter);
+        } else if (_container_list[Status::Default]->type_id == 2) {
+            status<SpriteGroup>(Status::Default)->draw(_position, painter);
+        } else if (_container_list[Status::Default]->type_id == 3) {
+            status<Animation>(Status::Default)->draw(_position, painter);
+        }
+    } else if (_container_list[_status]->type_id == 1) {
+        status<Sprite>(_status)->draw(_position, painter);
+    } else if (_container_list[_status]->type_id == 2) {
+        status<SpriteGroup>(_status)->draw(_position, painter);
+    } else if (_container_list[_status]->type_id == 3) {
+        status<Animation>(_status)->draw(_position, painter);
+    }
+
+}

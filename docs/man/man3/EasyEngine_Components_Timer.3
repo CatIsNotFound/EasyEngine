@@ -25,9 +25,9 @@ EasyEngine::Components::Timer \- 定时器
 .br
 .RI "设定定时器触发延迟 "
 .ti -1c
-.RI "void \fBinstallTimerEvent\fP (const std::function< void()> &function)"
+.RI "void \fBsetEvent\fP (const std::function< void()> &function)"
 .br
-.RI "安装或替换定时器触发事件 "
+.RI "设置或替换定时器触发事件 "
 .ti -1c
 .RI "void \fBstart\fP (bool \fBloop\fP=false)"
 .br
@@ -52,16 +52,31 @@ EasyEngine::Components::Timer \- 定时器
 .RI "void \fBupdate\fP ()"
 .br
 .RI "更新定时器状态（无需手动调用） "
+.ti -1c
+.RI "size_t \fBcount\fP () const"
+.br
+.RI "获取触发定时器的总次数 "
+.ti -1c
+.RI "void \fBclearCount\fP ()"
+.br
+.RI "清零定时器触发总次数 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBEventSystem\fP"
+.br
 .in -1c
 .SH "详细描述"
 .PP 
 定时器 
 
-用于设置延迟或定时的工具 
+用于定时触发事件的组件 
 .PP
 \fB注解\fP
 .RS 4
-此组件只能使用指针的形式创建！ 
+此组件只能以指针的形式使用 
 .RE
 .PP
 
@@ -79,13 +94,24 @@ EasyEngine::Components::Timer \- 定时器
 .nf
 Timer* timer = new Timer();
 timer\->setDelay(1000);   // 1000ms = 1sec
-timer\->installTimerEvent(your_function);
+timer\->setEvent(your_function);
 timer\->start();
 // delete timer; // 调用 start() 函数后，不能释放此指针！
 
 .fi
 .PP
  
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetDelay\fP 
+
+.PP
+\fBsetEvent\fP 
+
+.PP
+\fBstart\fP 
 .RE
 .PP
 
@@ -106,9 +132,36 @@ timer\->start();
 这里只能使用指针的形式创建！ 
 .RE
 .PP
+\fB参见\fP
+.RS 4
+\fBstart\fP 
+.RE
+.PP
 
 .SH "成员函数说明"
 .PP 
+.SS "void EasyEngine::Components::Timer::clearCount ()"
+
+.PP
+清零定时器触发总次数 
+.PP
+\fB参见\fP
+.RS 4
+\fBcount\fP 
+.RE
+.PP
+
+.SS "size_t EasyEngine::Components::Timer::count () const"
+
+.PP
+获取触发定时器的总次数 
+.PP
+\fB参见\fP
+.RS 4
+\fBclearCount\fP 
+.RE
+.PP
+
 .SS "uint64_t EasyEngine::Components::Timer::delay () const"
 
 .PP
@@ -120,17 +173,6 @@ timer\->start();
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Timer::installTimerEvent (const std::function< void()> & function)"
-
-.PP
-安装或替换定时器触发事件 
-.PP
-\fB参数\fP
-.RS 4
-\fIfunction\fP 指定触发事件 
-.RE
-.PP
-
 .SS "void EasyEngine::Components::Timer::setDelay (uint64_t delay)"
 
 .PP
@@ -139,6 +181,33 @@ timer\->start();
 \fB参数\fP
 .RS 4
 \fIdelay\fP 指定延迟（毫秒） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetEvent\fP 
+
+.PP
+\fBstart\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Timer::setEvent (const std::function< void()> & function)"
+
+.PP
+设置或替换定时器触发事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIfunction\fP 指定触发事件 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetDelay\fP 
+
+.PP
+\fBstart\fP 
 .RE
 .PP
 
@@ -161,6 +230,9 @@ timer\->start();
 
 .PP
 \fBloop\fP 
+
+.PP
+\fBcount\fP 
 .RE
 .PP
 

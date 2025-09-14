@@ -115,8 +115,9 @@ EasyEngine::AudioSystem \- 音频系统
 
 .in +1c
 .ti -1c
-.RI "static \fBAudioSystem\fP * \fBinstance\fP ()"
+.RI "static \fBAudioSystem\fP * \fBglobal\fP ()"
 .br
+.RI "获取全局音频系统 "
 .in -1c
 .SH "详细描述"
 .PP 
@@ -338,7 +339,7 @@ EasyEngine::AudioSystem \- 音频系统
 .PP
 .nf
 // 75% volume of BGM
-AudioSystem::instance()\->setBGMVolume(0\&.75f);
+AudioSystem::global()\->setBGMVolume(0\&.75f);
 
 .fi
 .PP
@@ -363,7 +364,7 @@ AudioSystem::instance()\->setBGMVolume(0\&.75f);
 .PP
 .nf
 // 75% volume of SFX
-AudioSystem::instance()\->setSFXVolume(0\&.75f);
+AudioSystem::global()\->setSFXVolume(0\&.75f);
 .fi
 .PP
  

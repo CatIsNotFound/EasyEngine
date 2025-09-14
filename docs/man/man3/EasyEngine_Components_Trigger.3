@@ -1,0 +1,122 @@
+.TH "EasyEngine::Components::Trigger" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Trigger \- 触发器  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetCondition\fP (const std::function< bool()> &\fBcondition\fP)"
+.br
+.RI "设置触发条件 "
+.ti -1c
+.RI "void \fBsetEvent\fP (const std::function< void()> &function)"
+.br
+.RI "设置触发后执行的事件 "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool \fBenabled\fP)"
+.br
+.RI "设置启用/禁用触发器 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "是否已启用触发器 "
+.ti -1c
+.RI "void \fBupdate\fP ()"
+.br
+.RI "更新触发器状态（无需手动执行） "
+.ti -1c
+.RI "std::function< bool()> & \fBcondition\fP ()"
+.br
+.RI "获取当前的触发条件函数 "
+.ti -1c
+.RI "std::function< void()> & \fBevent\fP ()"
+.br
+.RI "获取当前的触发后执行函数 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBEventSystem\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+触发器 
+
+用于触发待执行的事件 
+.PP
+\fB注解\fP
+.RS 4
+此组件只能以指针的形式使用 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "bool EasyEngine::Components::Trigger::enabled () const"
+
+.PP
+是否已启用触发器 
+.PP
+\fB返回\fP
+.RS 4
+返回触发器是否已安装于事件系统中 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Trigger::setCondition (const std::function< bool()> & condition)"
+
+.PP
+设置触发条件 
+.PP
+\fB参数\fP
+.RS 4
+\fIcondition\fP 触发条件函数 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Trigger::setEnabled (bool enabled)"
+
+.PP
+设置启用/禁用触发器 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 是否启用触发器 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBenabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Trigger::setEvent (const std::function< void()> & function)"
+
+.PP
+设置触发后执行的事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIfunction\fP 执行事件函数 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

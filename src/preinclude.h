@@ -37,6 +37,7 @@
 #include <tuple>
 #include <unordered_map>
 #include <functional>
+#include <typeindex>
 #include <thread>
 #include <mutex>
 #include <stdexcept>

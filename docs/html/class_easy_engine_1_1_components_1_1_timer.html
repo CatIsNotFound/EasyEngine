@@ -128,8 +128,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a3349518f8fc0be2a8f701df5ec66b1f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建定时器  <br /></td></tr>
 <tr class="memitem:a5a199accf7d371b05568e7f0d40a3d95" id="r_a5a199accf7d371b05568e7f0d40a3d95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a199accf7d371b05568e7f0d40a3d95">setDelay</a> (uint64_t <a class="el" href="#ac05686d936249808d493e1183f61902e">delay</a>)</td></tr>
 <tr class="memdesc:a5a199accf7d371b05568e7f0d40a3d95"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定定时器触发延迟  <br /></td></tr>
-<tr class="memitem:a10d5b0a4dcc07fe2b2e542bc4f3b4bac" id="r_a10d5b0a4dcc07fe2b2e542bc4f3b4bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d5b0a4dcc07fe2b2e542bc4f3b4bac">setEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
-<tr class="memdesc:a10d5b0a4dcc07fe2b2e542bc4f3b4bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装或替换定时器触发事件  <br /></td></tr>
+<tr class="memitem:a0814b9ee4996164e9dbcac0cac47a444" id="r_a0814b9ee4996164e9dbcac0cac47a444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0814b9ee4996164e9dbcac0cac47a444">setEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
+<tr class="memdesc:a0814b9ee4996164e9dbcac0cac47a444"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置或替换定时器触发事件  <br /></td></tr>
 <tr class="memitem:abb4214d6e0a12e6179d80fbca8b66368" id="r_abb4214d6e0a12e6179d80fbca8b66368"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb4214d6e0a12e6179d80fbca8b66368">start</a> (bool <a class="el" href="#a4de5c9dae77b0d69902a799d17da6a40">loop</a>=false)</td></tr>
 <tr class="memdesc:abb4214d6e0a12e6179d80fbca8b66368"><td class="mdescLeft">&#160;</td><td class="mdescRight">启用定时器  <br /></td></tr>
 <tr class="memitem:aadb706c2aea35e1057b833eb75b63f70" id="r_aadb706c2aea35e1057b833eb75b63f70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadb706c2aea35e1057b833eb75b63f70">stop</a> ()</td></tr>
@@ -145,10 +145,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>loop</b> () const</td
 <tr class="memitem:a3bf56a0003c56017aa62bca6e4c60cab" id="r_a3bf56a0003c56017aa62bca6e4c60cab"><td class="memItemLeft" align="right" valign="top"><a id="a3bf56a0003c56017aa62bca6e4c60cab" name="a3bf56a0003c56017aa62bca6e4c60cab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
 <tr class="memdesc:a3bf56a0003c56017aa62bca6e4c60cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新定时器状态（无需手动调用） <br /></td></tr>
+<tr class="memitem:a6bef2152198ffdfb8b8a59b662852062" id="r_a6bef2152198ffdfb8b8a59b662852062"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bef2152198ffdfb8b8a59b662852062">count</a> () const</td></tr>
+<tr class="memdesc:a6bef2152198ffdfb8b8a59b662852062"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取触发定时器的总次数  <br /></td></tr>
+<tr class="memitem:a4ecfd4b2b878b50a4a40c0f3f2229a09" id="r_a4ecfd4b2b878b50a4a40c0f3f2229a09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ecfd4b2b878b50a4a40c0f3f2229a09">clearCount</a> ()</td></tr>
+<tr class="memdesc:a4ecfd4b2b878b50a4a40c0f3f2229a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">清零定时器触发总次数  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a9daac1e9f186a9341e2a138d426f9867" id="r_a9daac1e9f186a9341e2a138d426f9867"><td class="memItemLeft" align="right" valign="top"><a id="a9daac1e9f186a9341e2a138d426f9867" name="a9daac1e9f186a9341e2a138d426f9867"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>定时器 </p>
-<p>用于设置延迟或定时的工具 </p><dl class="section note"><dt>注解</dt><dd>此组件只能使用指针的形式创建！ </dd></dl>
+<p>用于定时触发事件的组件 </p><dl class="section note"><dt>注解</dt><dd>此组件只能以指针的形式使用 </dd></dl>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="aad1678dce72369236e66807546b14714" name="aad1678dce72369236e66807546b14714"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad1678dce72369236e66807546b14714">&#9670;&#160;</a></span>Timer() <span class="overload">[1/2]</span></h2>
@@ -176,14 +185,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 <p>创建定时器 </p>
 <dl class="section note"><dt>注解</dt><dd>这里只能使用指针的形式创建！ <div class="fragment"><div class="line"><a class="code hl_function" href="#aad1678dce72369236e66807546b14714">Timer</a>* timer = <span class="keyword">new</span> <a class="code hl_function" href="#aad1678dce72369236e66807546b14714">Timer</a>();</div>
 <div class="line">timer-&gt;<a class="code hl_function" href="#a5a199accf7d371b05568e7f0d40a3d95">setDelay</a>(1000);   <span class="comment">// 1000ms = 1sec</span></div>
-<div class="line">timer-&gt;<a class="code hl_function" href="#a10d5b0a4dcc07fe2b2e542bc4f3b4bac">setEvent</a>(your_function);</div>
+<div class="line">timer-&gt;<a class="code hl_function" href="#a0814b9ee4996164e9dbcac0cac47a444">setEvent</a>(your_function);</div>
 <div class="line">timer-&gt;<a class="code hl_function" href="#abb4214d6e0a12e6179d80fbca8b66368">start</a>();</div>
 <div class="line"><span class="comment">// delete timer; // 调用 start() 函数后，不能释放此指针！</span></div>
-<div class="ttc" id="aclass_easy_engine_1_1_components_1_1_timer_html_a10d5b0a4dcc07fe2b2e542bc4f3b4bac"><div class="ttname"><a href="#a10d5b0a4dcc07fe2b2e542bc4f3b4bac">EasyEngine::Components::Timer::setEvent</a></div><div class="ttdeci">void setEvent(const std::function&lt; void()&gt; &amp;function)</div><div class="ttdoc">安装或替换定时器触发事件</div><div class="ttdef"><b>定义</b> Components.cpp:141</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_components_1_1_timer_html_a0814b9ee4996164e9dbcac0cac47a444"><div class="ttname"><a href="#a0814b9ee4996164e9dbcac0cac47a444">EasyEngine::Components::Timer::setEvent</a></div><div class="ttdeci">void setEvent(const std::function&lt; void()&gt; &amp;function)</div><div class="ttdoc">设置或替换定时器触发事件</div><div class="ttdef"><b>定义</b> Components.cpp:141</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_components_1_1_timer_html_a5a199accf7d371b05568e7f0d40a3d95"><div class="ttname"><a href="#a5a199accf7d371b05568e7f0d40a3d95">EasyEngine::Components::Timer::setDelay</a></div><div class="ttdeci">void setDelay(uint64_t delay)</div><div class="ttdoc">设定定时器触发延迟</div><div class="ttdef"><b>定义</b> Components.cpp:137</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_components_1_1_timer_html_aad1678dce72369236e66807546b14714"><div class="ttname"><a href="#aad1678dce72369236e66807546b14714">EasyEngine::Components::Timer::Timer</a></div><div class="ttdeci">Timer()</div><div class="ttdoc">创建定时器</div><div class="ttdef"><b>定义</b> Components.cpp:129</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_components_1_1_timer_html_abb4214d6e0a12e6179d80fbca8b66368"><div class="ttname"><a href="#abb4214d6e0a12e6179d80fbca8b66368">EasyEngine::Components::Timer::start</a></div><div class="ttdeci">void start(bool loop=false)</div><div class="ttdoc">启用定时器</div><div class="ttdef"><b>定义</b> Components.cpp:149</div></div>
 </div><!-- fragment --> </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a5a199accf7d371b05568e7f0d40a3d95" title="设定定时器触发延迟">setDelay</a> </dd>
+<dd>
+<a class="el" href="#a0814b9ee4996164e9dbcac0cac47a444" title="设置或替换定时器触发事件">setEvent</a> </dd>
+<dd>
+<a class="el" href="#abb4214d6e0a12e6179d80fbca8b66368" title="启用定时器">start</a> </dd></dl>
 
 </div>
 </div>
@@ -215,10 +229,51 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
   </dd>
 </dl>
 <dl class="section note"><dt>注解</dt><dd>这里只能使用指针的形式创建！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abb4214d6e0a12e6179d80fbca8b66368" title="启用定时器">start</a> </dd></dl>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a4ecfd4b2b878b50a4a40c0f3f2229a09" name="a4ecfd4b2b878b50a4a40c0f3f2229a09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ecfd4b2b878b50a4a40c0f3f2229a09">&#9670;&#160;</a></span>clearCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Timer::clearCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清零定时器触发总次数 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a6bef2152198ffdfb8b8a59b662852062" title="获取触发定时器的总次数">count</a> </dd></dl>
+
+</div>
+</div>
+<a id="a6bef2152198ffdfb8b8a59b662852062" name="a6bef2152198ffdfb8b8a59b662852062"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bef2152198ffdfb8b8a59b662852062">&#9670;&#160;</a></span>count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t EasyEngine::Components::Timer::count </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取触发定时器的总次数 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a4ecfd4b2b878b50a4a40c0f3f2229a09" title="清零定时器触发总次数">clearCount</a> </dd></dl>
+
+</div>
+</div>
 <a id="ac05686d936249808d493e1183f61902e" name="ac05686d936249808d493e1183f61902e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac05686d936249808d493e1183f61902e">&#9670;&#160;</a></span>delay()</h2>
 
@@ -236,31 +291,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 
 <p>获取触发延迟时长 </p>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#a5a199accf7d371b05568e7f0d40a3d95" title="设定定时器触发延迟">setDelay</a> </dd></dl>
-
-</div>
-</div>
-<a id="a10d5b0a4dcc07fe2b2e542bc4f3b4bac" name="a10d5b0a4dcc07fe2b2e542bc4f3b4bac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10d5b0a4dcc07fe2b2e542bc4f3b4bac">&#9670;&#160;</a></span>setEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EasyEngine::Components::Timer::setEvent </td>
-          <td>(</td>
-          <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>安装或替换定时器触发事件 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">function</td><td>指定触发事件 </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -286,6 +316,37 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a0814b9ee4996164e9dbcac0cac47a444" title="设置或替换定时器触发事件">setEvent</a> </dd>
+<dd>
+<a class="el" href="#abb4214d6e0a12e6179d80fbca8b66368" title="启用定时器">start</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0814b9ee4996164e9dbcac0cac47a444" name="a0814b9ee4996164e9dbcac0cac47a444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0814b9ee4996164e9dbcac0cac47a444">&#9670;&#160;</a></span>setEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Timer::setEvent </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置或替换定时器触发事件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">function</td><td>指定触发事件 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a5a199accf7d371b05568e7f0d40a3d95" title="设定定时器触发延迟">setDelay</a> </dd>
+<dd>
+<a class="el" href="#abb4214d6e0a12e6179d80fbca8b66368" title="启用定时器">start</a> </dd></dl>
 
 </div>
 </div>
@@ -315,7 +376,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 <dd>
 <a class="el" href="#afc5094393367f756190b183c8efa8311" title="返回是否启用计时器">enabled</a> </dd>
 <dd>
-<a class="el" href="#a4de5c9dae77b0d69902a799d17da6a40" title="返回是否正在循环使用计时器">loop</a> </dd></dl>
+<a class="el" href="#a4de5c9dae77b0d69902a799d17da6a40" title="返回是否正在循环使用计时器">loop</a> </dd>
+<dd>
+<a class="el" href="#a6bef2152198ffdfb8b8a59b662852062" title="获取触发定时器的总次数">count</a> </dd></dl>
 
 </div>
 </div>

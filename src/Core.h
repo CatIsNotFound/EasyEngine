@@ -15,7 +15,6 @@
 
 #include "Algorithm.h"
 #include "Components.h"
-#include "Resources.h"
 
 using SEvent        = SDL_Event;
 using SWinEvent     = SDL_WindowEvent;
@@ -63,27 +62,27 @@ namespace EasyEngine {
          * 获取系统下当前使用的鼠标光标
          */
         enum StdCursor {
-            Default             = 0x0,
-            Normal              = 0x0,
-            Edit                = 0x1,
-            Wait                = 0x2,
-            Crosshair           = 0x3,
-            Busy                = 0x4,
-            Resize_NWSE         = 0x5,
-            Resize_NESW         = 0x6,
-            Resize_Horizontal   = 0x7,
-            Resize_EW           = 0x7,
-            Resize_Vertical     = 0x8,
-            Resize_NS           = 0x8,
-            Move                = 0x9,
-            Not_Allowed         = 0xA,
-            Forbbiden           = 0xA,
-            Hand                = 0xB,
-            Pointer             = 0xB,
-            Resize_NW           = 0xC,
-            Resize_N            = 0xD,
-            Resize_NE           = 0xE,
-            Resize_E            = 0xF,
+            Default             = 0x00,
+            Normal              = 0x00,
+            Edit                = 0x01,
+            Wait                = 0x02,
+            Crosshair           = 0x03,
+            Busy                = 0x04,
+            Resize_NWSE         = 0x05,
+            Resize_NESW         = 0x06,
+            Resize_Horizontal   = 0x07,
+            Resize_EW           = 0x07,
+            Resize_Vertical     = 0x08,
+            Resize_NS           = 0x08,
+            Move                = 0x09,
+            Not_Allowed         = 0x0a,
+            Forbbiden           = 0x0a,
+            Hand                = 0x0b,
+            Pointer             = 0x0b,
+            Resize_NW           = 0x0c,
+            Resize_N            = 0x0d,
+            Resize_NE           = 0x0e,
+            Resize_E            = 0x0f,
             Resize_SE           = 0x10,
             Resize_S            = 0x11,
             Resize_SW           = 0x12,
@@ -106,13 +105,12 @@ namespace EasyEngine {
          */
         Vector2 globalPosition() const;
         /**
-         * @brief 获取鼠标光标在指定窗口下的位置
-         * @param window 指定一个窗口
-         * @return 返回鼠标光标相对指定窗口下的位置
+         * @brief 获取鼠标光标在获得焦点的窗口下的位置
+         * @return 返回鼠标光标相对获得焦点窗口下的位置
          * @see globalPosition
          * @see move
          */
-        Vector2 position(const Window* window);
+        EasyEngine::Vector2 position();
         /**
          * @brief 移动鼠标光标至指定位置
          * @param pos 指定位置
@@ -133,11 +131,18 @@ namespace EasyEngine {
          */
         void move(float x, float y, const Window* window = nullptr);
         /**
+         * @brief 将鼠标光标移动至画面中心点
+         * @param window 指定窗口
+         * @note 若不设置 window 参数，将默认以全局显示器屏幕为主
+         */
+        void moveToCenter(const Window* window = nullptr);
+        /**
          * @brief 设置鼠标光标
          * @param cursor 指定光标
          * @code
          * Cursor::global()->setCursor(Cursor::Hand); // Changed the cursor
          * @endcode
+         * @see StdCursor
          */
         void setCursor(const StdCursor& cursor);
         /**
@@ -152,17 +157,27 @@ namespace EasyEngine {
          *
          */
         StdCursor cursor() const;
+        /**
+         * @brief 显示/隐藏鼠标光标
+         * @param visible 决定是否显示鼠标光标
+         * @see visible
+         */
+        void setVisible(bool visible);
+        /**
+         * @brief 获取当前鼠标光标是否显示
+         * @see setVisible
+         */
+        bool visible() const;
         void unload();
 
     private:
         StdCursor _std_cursor{Default};
         SCursor* _cursor{nullptr};
         SSurface* _surface{nullptr};
+        bool _visible{true};
     };
 
     class Painter;
-    class EventSystem;
-    class AudioSystem;
 
     /**
      * @class Engine
@@ -257,12 +272,13 @@ namespace EasyEngine {
         bool setBorderlessWindow(bool enabled, SWindowID window_id = _main_window_id);
         /**
          * @brief 设置指定窗口是否为全屏
-         * @param enabled 允许窗口是否全屏
-         * @param window_id 指定窗口 ID（默认主窗口）
+         * @param enabled               允许窗口是否全屏
+         * @param move_cursor_to_center 是否将鼠标光标移动到中心
+         * @param window_id             指定窗口 ID（默认主窗口）
          * @return 返回 true 表示成功，若找不到窗口 ID 等返回 false
          * @see windowIDList
          */
-        bool setFullScreen(bool enabled, SWindowID window_id = _main_window_id);
+        bool setFullScreen(bool enabled, bool move_cursor_to_center, SDL_WindowID window_id = _main_window_id);
         /**
          * @brief 修改窗口标题
          * @param title  新的窗口标题名称
@@ -354,7 +370,7 @@ namespace EasyEngine {
          * @return 返回当前秒刷新的帧数
          * @see setFPS
          */
-        uint32_t fps();
+        uint32_t fps() const;
         
         /**
          * @brief 设置丢帧检测的宽容度比例
@@ -437,6 +453,7 @@ namespace EasyEngine {
         uint64_t max_frame_duration{0};
         uint64_t max_consecutive_slow_frames{3};
         uint64_t target_frame_duration{0};
+        Vector2 _cursor_old_pos{};
         friend class Painter;
         friend class EventSystem;
     };
@@ -699,14 +716,42 @@ namespace EasyEngine {
          * @brief 清空触发器
          */
         void clearTrigger();
-
+        /**
+         * @brief 添加控件
+         * @param control 指定控件
+         * @return 返回控件 ID
+         * @see replaceControl
+         * @see removeControl
+         */
+        uint64_t addControl(Components::Control* control);
+        /**
+         * @brief 替换控件
+         * @param id        指定控件 ID
+         * @param control   指定新的控件
+         * @see addControl
+         */
+        void replaceControl(uint64_t id, Components::Control* control);
+        /**
+         * @brief 移除指定控件
+         * @param id    指定控件 ID
+         * @see addControl
+         * @see replaceControl
+         * @see clearControls
+         */
+        void removeControl(uint64_t id);
+        /**
+         * @brief 清空所有控件
+         */
+        void clearControls();
     private:
         static std::function<bool(SEvent)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
         std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
         std::map<uint64_t, std::unique_ptr<Components::Trigger>> _trigger_list;
+        std::map<uint64_t, Components::Control*> _control_list;
         uint64_t _timer_id{0};
         uint64_t _trigger_id{0};
+        uint64_t _control_id{0};
     };
 
     /**

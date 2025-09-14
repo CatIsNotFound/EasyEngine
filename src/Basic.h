@@ -296,6 +296,8 @@ namespace EasyEngine {
                       filled_mode(filled_mode), back_color(background) {}
         };
     }
+    class EventSystem;
+
 }
 
 #endif //EASYENGINE_BASIC_H

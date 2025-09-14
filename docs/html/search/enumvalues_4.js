@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['paused_0',['Paused',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea60d0ab67060832288ed498c2d9c8d16f',1,'EasyEngine::AudioSystem::Audio']]],
-  ['playing_1',['Playing',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740eacdda4861e54fb6e605d8d7a575807b3c',1,'EasyEngine::AudioSystem::Audio']]]
+  ['getfocus_0',['GetFocus',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e',1,'EasyEngine::Components::Control']]]
 ];

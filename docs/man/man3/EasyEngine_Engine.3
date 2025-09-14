@@ -53,7 +53,7 @@ EasyEngine::Engine \- 引擎类
 .br
 .RI "设置窗口为无边框窗口 "
 .ti -1c
-.RI "bool \fBsetFullScreen\fP (bool enabled, SWindowID window_id=_main_window_id)"
+.RI "bool \fBsetFullScreen\fP (bool enabled, bool move_cursor_to_center, SDL_WindowID window_id=_main_window_id)"
 .br
 .RI "设置指定窗口是否为全屏 "
 .ti -1c
@@ -124,6 +124,10 @@ EasyEngine::Engine \- 引擎类
 .RI "bool \fBbackgroundRenderingEnabled\fP () const"
 .br
 .RI "获取当前是否允许后台渲染画面 "
+.ti -1c
+.RI "void \fBinstallCleanUpEvent\fP (const std::function< void()> &function)"
+.br
+.RI "设置清理引擎资源事件 "
 .in -1c
 .SS "友元"
 
@@ -273,6 +277,17 @@ EasyEngine::Engine \- 引擎类
 .RE
 .PP
 
+.SS "void EasyEngine::Engine::installCleanUpEvent (const std::function< void()> & function)"
+
+.PP
+设置清理引擎资源事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIfunction\fP 自定清理函数
+.RE
+.PP
+仅在引擎释放期间执行！ 
 .SS "void EasyEngine::Engine::installEventHandler (std::function< bool(SEvent)> event_handler)"
 
 .PP
@@ -536,7 +551,7 @@ EasyEngine::Engine \- 引擎类
 .RE
 .PP
 
-.SS "bool EasyEngine::Engine::setFullScreen (bool enabled, SWindowID window_id = \fR_main_window_id\fP)"
+.SS "bool EasyEngine::Engine::setFullScreen (bool enabled, bool move_cursor_to_center, SDL_WindowID window_id = \fR_main_window_id\fP)"
 
 .PP
 设置指定窗口是否为全屏 
@@ -544,6 +559,8 @@ EasyEngine::Engine \- 引擎类
 \fB参数\fP
 .RS 4
 \fIenabled\fP 允许窗口是否全屏 
+.br
+\fImove_cursor_to_center\fP 是否将鼠标光标移动到中心 
 .br
 \fIwindow_id\fP 指定窗口 ID（默认主窗口） 
 .RE

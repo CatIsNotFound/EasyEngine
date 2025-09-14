@@ -7,6 +7,5 @@ var searchData=
   ['fps_4',['fps',['../class_easy_engine_1_1_engine.html#a3bca3b3709d0757cc3ece1c58cd1d610',1,'EasyEngine::Engine']]],
   ['framedropthreshold_5',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
   ['framedroptolerance_6',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
-  ['framescount_7',['framesCount',['../class_easy_engine_1_1_components_1_1_animation.html#a9d9279872e6834b79e210bdd1dea0a8e',1,'EasyEngine::Components::Animation']]],
-  ['frametimer_8',['FrameTimer',['../class_easy_engine_1_1_components_1_1_frame_timer.html',1,'EasyEngine::Components']]]
+  ['framescount_7',['framesCount',['../class_easy_engine_1_1_components_1_1_animation.html#a9d9279872e6834b79e210bdd1dea0a8e',1,'EasyEngine::Components::Animation']]]
 ];

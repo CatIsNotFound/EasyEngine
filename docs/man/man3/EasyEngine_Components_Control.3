@@ -1,0 +1,705 @@
+.TH "EasyEngine::Components::Control" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Control \- 控件  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBStatus\fP { \fBDefault\fP, \fBActive\fP, \fBHovered\fP, \fBPressed\fP, \fBDisabled\fP }"
+.br
+.RI "控件状态 "
+.ti -1c
+.RI "enum class \fBEvent\fP { \fBLoaded\fP, \fBUnload\fP, \fBGetFocus\fP, \fBLostFocus\fP, \fBClicked\fP, \fBDblClicked\fP, \fBMouseDown\fP, \fBMouseUp\fP, \fBMouseHover\fP, \fBKeyPressed\fP, \fBKeyDown\fP, \fBKeyUp\fP }"
+.br
+.RI "控件触发事件 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBControl\fP (const std::string &\fBname\fP)"
+.br
+.RI "创建控件 "
+.ti -1c
+.RI "\fBControl\fP (const std::string &\fBname\fP, const \fBControl\fP &control)"
+.br
+.RI "完全克隆已有的控件 "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
+.br
+.RI "设定一个控件名称 "
+.ti -1c
+.RI "const std::string & \fBname\fP () const"
+.br
+.RI "获取该控件的名称 "
+.ti -1c
+.RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBSprite\fP *sprite)"
+.br
+.RI "设定控件指定状态 "
+.ti -1c
+.RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBSpriteGroup\fP *sprite_group)"
+.br
+.RI "设定控件指定状态 "
+.ti -1c
+.RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBAnimation\fP *animation)"
+.br
+.RI "设定控件指定状态 "
+.ti -1c
+.RI "void \fBremoveStatus\fP (const enum \fBStatus\fP &\fBstatus\fP)"
+.br
+.RI "移除指定的控件状态 "
+.ti -1c
+.RI "template<class Type> Type * \fBstatus\fP (const enum \fBStatus\fP &status) const"
+.br
+.RI "获取当前指定状态下的精灵、组、动画 "
+.ti -1c
+.RI "std::string \fBgetTypename\fP (const enum \fBStatus\fP &\fBstatus\fP) const"
+.br
+.RI "获取当前指定状态下的类型 "
+.ti -1c
+.RI "void \fBsetEvent\fP (const enum \fBEvent\fP &event, const std::function< void()> &function)"
+.br
+.RI "指定某一事件设定触发函数（即：触发器） "
+.ti -1c
+.RI "void \fBsetEvent\fP (const enum \fBEvent\fP &event, const std::function< bool()> &condition, const std::function< void()> &function)"
+.br
+.RI "指定某一事件设定触发函数（即：触发器） "
+.ti -1c
+.RI "void \fBremoveEvent\fP (const enum \fBEvent\fP &event)"
+.br
+.RI "移除指定事件下的触发器 "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool \fBenabled\fP)"
+.br
+.RI "设定该控件是否可用 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "获取当前控件是否可用 "
+.ti -1c
+.RI "void \fBsetActive\fP ()"
+.br
+.RI "设置当前控件为活动状态 "
+.ti -1c
+.RI "void \fBsetInactive\fP ()"
+.br
+.RI "设置当前控件为非活动状态 "
+.ti -1c
+.RI "void \fBmove\fP (const \fBVector2\fP &pos)"
+.br
+.RI "移动控件的位置 "
+.ti -1c
+.RI "void \fBmove\fP (float x, float y)"
+.br
+.RI "移动控件的位置 "
+.ti -1c
+.RI "\fBVector2\fP \fBposition\fP () const"
+.br
+.RI "获取当前控件所在的位置 "
+.ti -1c
+.RI "void \fBresize\fP (const \fBSize\fP &\fBsize\fP)"
+.br
+.RI "重新调整控件的大小 "
+.ti -1c
+.RI "void \fBresize\fP (float width, float height)"
+.br
+.RI "重新调整控件的大小 "
+.ti -1c
+.RI "\fBSize\fP \fBsize\fP () const"
+.br
+.RI "获取当前控件的大小 "
+.ti -1c
+.RI "void \fBsetGeometry\fP (const \fBVector2\fP &pos, const \fBSize\fP &\fBsize\fP)"
+.br
+.RI "设定控件的位置、大小 "
+.ti -1c
+.RI "void \fBsetGeometry\fP (float x, float y, float width, float height)"
+.br
+.RI "设定控件的位置、大小 "
+.ti -1c
+.RI "void \fBsetGeometryForHotArea\fP (const \fBVector2\fP &pos, const \fBSize\fP &\fBsize\fP)"
+.br
+.RI "设定热区的位置、大小 "
+.ti -1c
+.RI "void \fBsetGeometryForHotArea\fP (float x, float y, float width, float height)"
+.br
+.RI "设定热区的位置、大小 "
+.ti -1c
+.RI "const \fBGraphics::Rectangle\fP & \fBhotArea\fP () const"
+.br
+.RI "获取热区 "
+.ti -1c
+.RI "template<class Type> Type * \fBstatus\fP (const \fBEasyEngine::Components::Control::Status\fP &status) const"
+.br
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBEventSystem\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+控件 
+
+适用于 UI 界面的操作控件 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum class \fBEasyEngine::Components::Control::Event\fP\fR [strong]\fP"
+
+.PP
+控件触发事件 罗列了可能的触发事件 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BILoaded \fP
+加载事件 
+.TP
+\f(BIUnload \fP
+卸载事件 
+.TP
+\f(BIGetFocus \fP
+获取焦点事件 
+.TP
+\f(BILostFocus \fP
+失去焦点事件 
+.TP
+\f(BIClicked \fP
+鼠标单击事件 
+.TP
+\f(BIDblClicked \fP
+鼠标双击事件 
+.TP
+\f(BIMouseDown \fP
+鼠标按下事件 
+.TP
+\f(BIMouseUp \fP
+鼠标松开事件 
+.TP
+\f(BIMouseHover \fP
+鼠标经过控件事件 
+.TP
+\f(BIKeyPressed \fP
+按键盘事件 
+.TP
+\f(BIKeyDown \fP
+键盘按下事件 
+.TP
+\f(BIKeyUp \fP
+键盘松开事件 
+.SS "enum class \fBEasyEngine::Components::Control::Status\fP\fR [strong]\fP"
+
+.PP
+控件状态 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIDefault \fP
+默认 
+.TP
+\f(BIActive \fP
+活动 
+.TP
+\f(BIHovered \fP
+鼠标经过 
+.TP
+\f(BIPressed \fP
+鼠标按下 
+.TP
+\f(BIDisabled \fP
+禁用 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Control::Control (const std::string & name)\fR [explicit]\fP"
+
+.PP
+创建控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 创建时需给定名称 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Control::Control (const std::string & name, const \fBControl\fP & control)"
+
+.PP
+完全克隆已有的控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 创建时需给定名称 
+.br
+\fIcontrol\fP 原有的控件 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "std::string EasyEngine::Components::Control::getTypename (const enum \fBStatus\fP & status) const"
+
+.PP
+获取当前指定状态下的类型 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 指定控件的状态 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回类型名称，若没有当前状态，将返回空字符串 
+.RE
+.PP
+\fB返回值\fP
+.RS 4
+\fI\fBSprite\fP\fP 
+.br
+\fI\fBSpriteGroup\fP\fP 
+.br
+\fI\fBAnimation\fP\fP 
+.br
+\fIUnknown\fP 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+.RE
+.PP
+
+.SS "const \fBEasyEngine::Graphics::Rectangle\fP & EasyEngine::Components::Control::hotArea () const"
+
+.PP
+获取热区 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetGeometryForHotArea\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::move (const \fBVector2\fP & pos)"
+
+.PP
+移动控件的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定位置 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::move (float x, float y)"
+
+.PP
+移动控件的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定横坐标 
+.br
+\fIy\fP 指定纵坐标 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Vector2\fP EasyEngine::Components::Control::position () const"
+
+.PP
+获取当前控件所在的位置 
+.PP
+\fB参见\fP
+.RS 4
+\fBmove\fP 
+
+.PP
+\fBsetGeometry\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::removeEvent (const enum \fBEvent\fP & event)"
+
+.PP
+移除指定事件下的触发器 
+.PP
+\fB参数\fP
+.RS 4
+\fIevent\fP 指定事件 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+event 
+
+.PP
+\fBsetEvent\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::removeStatus (const enum \fBStatus\fP & status)"
+
+.PP
+移除指定的控件状态 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态以移除 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::resize (const \fBSize\fP & size)"
+
+.PP
+重新调整控件的大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIsize\fP 新的控件大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::resize (float width, float height)"
+
+.PP
+重新调整控件的大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 新的控件宽度 
+.br
+\fIheight\fP 新的控件高度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setActive ()"
+
+.PP
+设置当前控件为活动状态 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetInactive\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setEnabled (bool enabled)"
+
+.PP
+设定该控件是否可用 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 设定控件是否能被使用 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setEvent (const enum \fBEvent\fP & event, const std::function< bool()> & condition, const std::function< void()> & function)"
+
+.PP
+指定某一事件设定触发函数（即：触发器） 
+.PP
+\fB参数\fP
+.RS 4
+\fIevent\fP 指定事件 
+.br
+\fIcondition\fP 触发条件（额外条件） 
+.br
+\fIfunction\fP 触发函数 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+event 
+
+.PP
+\fBremoveEvent\fP 
+
+.PP
+\fBTrigger\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setEvent (const enum \fBEvent\fP & event, const std::function< void()> & function)"
+
+.PP
+指定某一事件设定触发函数（即：触发器） 
+.PP
+\fB参数\fP
+.RS 4
+\fIevent\fP 指定事件 
+.br
+\fIfunction\fP 触发函数 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+event 
+
+.PP
+\fBremoveEvent\fP 
+
+.PP
+\fBTrigger\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setGeometry (const \fBVector2\fP & pos, const \fBSize\fP & size)"
+
+.PP
+设定控件的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定控件所处的位置 
+.br
+\fIsize\fP 指定控件的大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+
+.PP
+\fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setGeometry (float x, float y, float width, float height)"
+
+.PP
+设定控件的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定控件所处位置的横坐标 
+.br
+\fIy\fP 指定控件所处位置的纵坐标 
+.br
+\fIwidth\fP 指定控件的宽度 
+.br
+\fIheight\fP 指定控件的高度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+
+.PP
+\fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setGeometryForHotArea (const \fBVector2\fP & pos, const \fBSize\fP & size)"
+
+.PP
+设定热区的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定热区位置（相对坐标） 
+.br
+\fIsize\fP 指定热区大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBhotArea\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setGeometryForHotArea (float x, float y, float width, float height)"
+
+.PP
+设定热区的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定热区位置（相对坐标）横坐标 
+.br
+\fIy\fP 指定热区位置（相对坐标）纵坐标 
+.br
+\fIwidth\fP 指定热区的宽度 
+.br
+\fIheight\fP 指定热区的高度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBhotArea\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setInactive ()"
+
+.PP
+设置当前控件为非活动状态 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetActive\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setName (const std::string & name)"
+
+.PP
+设定一个控件名称 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 控件名称 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setStatus (const \fBEasyEngine::Components::Control::Status\fP & status, \fBAnimation\fP * animation)"
+
+.PP
+设定控件指定状态 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态 
+.br
+\fIsprite\fP 在当前状态下绘制成什么精灵动画 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+
+.PP
+\fBremoveStatus\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setStatus (const \fBEasyEngine::Components::Control::Status\fP & status, \fBSprite\fP * sprite)"
+
+.PP
+设定控件指定状态 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态 
+.br
+\fIsprite\fP 在当前状态下绘制成什么精灵 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+
+.PP
+\fBremoveStatus\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Control::setStatus (const \fBEasyEngine::Components::Control::Status\fP & status, \fBSpriteGroup\fP * sprite_group)"
+
+.PP
+设定控件指定状态 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态 
+.br
+\fIsprite_group\fP 在当前状态下绘制什么精灵组 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+
+.PP
+\fBremoveStatus\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Size\fP EasyEngine::Components::Control::size () const"
+
+.PP
+获取当前控件的大小 
+.PP
+\fB参见\fP
+.RS 4
+\fBresize\fP 
+
+.PP
+\fBsetGeometry\fP 
+.RE
+.PP
+
+.SS "template<class Type> Type * EasyEngine::Components::Control::status (const enum \fBStatus\fP & status) const"
+
+.PP
+获取当前指定状态下的精灵、组、动画 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回当前状态下的精灵、组、动画 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+目前支持的类：Sprite、SpriteGroup、Animation 
+
+.PP
+如果无法确定当前状态下使用的类，请使用 getTypeid() 以获取该状态下使用的类。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetStatus\fP 
+
+.PP
+\fBremoveStatus\fP 
+
+.PP
+getTypeid 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

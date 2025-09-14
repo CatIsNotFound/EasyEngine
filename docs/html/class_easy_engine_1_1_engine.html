@@ -142,8 +142,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a6106d33771e370822b38cf8f85ce2a75"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否可调节窗口大小  <br /></td></tr>
 <tr class="memitem:a421839d4befc2c37d16f9956116ddbbe" id="r_a421839d4befc2c37d16f9956116ddbbe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421839d4befc2c37d16f9956116ddbbe">setBorderlessWindow</a> (bool enabled, SWindowID window_id=_main_window_id)</td></tr>
 <tr class="memdesc:a421839d4befc2c37d16f9956116ddbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置窗口为无边框窗口  <br /></td></tr>
-<tr class="memitem:af65c9c61af634b87585ff4ea0052c1a0" id="r_af65c9c61af634b87585ff4ea0052c1a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af65c9c61af634b87585ff4ea0052c1a0">setFullScreen</a> (bool enabled, SWindowID window_id=_main_window_id)</td></tr>
-<tr class="memdesc:af65c9c61af634b87585ff4ea0052c1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置指定窗口是否为全屏  <br /></td></tr>
+<tr class="memitem:a397683cb8672e7a21f1c72138742c09c" id="r_a397683cb8672e7a21f1c72138742c09c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a397683cb8672e7a21f1c72138742c09c">setFullScreen</a> (bool enabled, bool move_cursor_to_center, SDL_WindowID window_id=_main_window_id)</td></tr>
+<tr class="memdesc:a397683cb8672e7a21f1c72138742c09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置指定窗口是否为全屏  <br /></td></tr>
 <tr class="memitem:aad213c3ad36ac11e6b457d5fde128d1e" id="r_aad213c3ad36ac11e6b457d5fde128d1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad213c3ad36ac11e6b457d5fde128d1e">setWindowTitle</a> (const std::string &amp;title, SWindowID window_id=_main_window_id)</td></tr>
 <tr class="memdesc:aad213c3ad36ac11e6b457d5fde128d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改窗口标题  <br /></td></tr>
 <tr class="memitem:a282de1155b05980b1edddc8d0b6bc4ed" id="r_a282de1155b05980b1edddc8d0b6bc4ed"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a282de1155b05980b1edddc8d0b6bc4ed">windowTitle</a> (SWindowID window_id)</td></tr>
@@ -178,6 +178,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:abb6395331592ec93e04d81608b3301e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置是否允许在后台渲染画面  <br /></td></tr>
 <tr class="memitem:aa5da80de6a48a60f7147dcc06ea21c15" id="r_aa5da80de6a48a60f7147dcc06ea21c15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5da80de6a48a60f7147dcc06ea21c15">backgroundRenderingEnabled</a> () const</td></tr>
 <tr class="memdesc:aa5da80de6a48a60f7147dcc06ea21c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前是否允许后台渲染画面  <br /></td></tr>
+<tr class="memitem:aeb5e1cab414d8fbac80096960ed481ee" id="r_aeb5e1cab414d8fbac80096960ed481ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb5e1cab414d8fbac80096960ed481ee">installCleanUpEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
+<tr class="memdesc:aeb5e1cab414d8fbac80096960ed481ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置清理引擎资源事件  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -375,6 +377,32 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 <a class="el" href="#a1b9cbccfbfbdc0540e2541108b32f717" title="显示所有窗口">showAll</a> </dd>
 <dd>
 <a class="el" href="#afa2ab8a04166fbc0fed19a91e6ff3b75" title="获取所有可用的窗口 ID">windowIDList</a> </dd></dl>
+
+</div>
+</div>
+<a id="aeb5e1cab414d8fbac80096960ed481ee" name="aeb5e1cab414d8fbac80096960ed481ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb5e1cab414d8fbac80096960ed481ee">&#9670;&#160;</a></span>installCleanUpEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Engine::installCleanUpEvent </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置清理引擎资源事件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">function</td><td>自定清理函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>仅在引擎释放期间执行！ </p>
 
 </div>
 </div>
@@ -734,8 +762,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 
 </div>
 </div>
-<a id="af65c9c61af634b87585ff4ea0052c1a0" name="af65c9c61af634b87585ff4ea0052c1a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af65c9c61af634b87585ff4ea0052c1a0">&#9670;&#160;</a></span>setFullScreen()</h2>
+<a id="a397683cb8672e7a21f1c72138742c09c" name="a397683cb8672e7a21f1c72138742c09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a397683cb8672e7a21f1c72138742c09c">&#9670;&#160;</a></span>setFullScreen()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,7 +776,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SWindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>move_cursor_to_center</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_WindowID</td>          <td class="paramname"><span class="paramname"><em>window_id</em></span><span class="paramdefsep"> = </span><span class="paramdefval">_main_window_id</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -757,6 +790,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">enabled</td><td>允许窗口是否全屏 </td></tr>
+    <tr><td class="paramname">move_cursor_to_center</td><td>是否将鼠标光标移动到中心 </td></tr>
     <tr><td class="paramname">window_id</td><td>指定窗口 ID（默认主窗口） </td></tr>
   </table>
   </dd>

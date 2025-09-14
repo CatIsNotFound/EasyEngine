@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-EasyEngine::Components::Animation
+EasyEngine::Components::Animation \- 动画  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <Components\&.h>\fP
 .SS "Public 成员函数"
 
 .in +1c
@@ -14,7 +17,7 @@ EasyEngine::Components::Animation
 .br
 .RI "创建动画 "
 .ti -1c
-.RI "\fBAnimation\fP (const std::string &name, const std::vector< \fBSprite\fP > &sprite_list, uint64_t duration_per_frame=50)"
+.RI "\fBAnimation\fP (const std::string &name, const std::vector< \fBSprite\fP * > &sprite_list, uint64_t duration_per_frame=50)"
 .br
 .RI "创建动画 "
 .ti -1c
@@ -54,7 +57,7 @@ EasyEngine::Components::Animation
 .br
 .RI "绘制动画 "
 .ti -1c
-.RI "void \fBplay\fP (bool loop=true)"
+.RI "void \fBplay\fP (bool loop=true, size_t start_frame=0)"
 .br
 .RI "播放动画 "
 .ti -1c
@@ -65,7 +68,28 @@ EasyEngine::Components::Animation
 .RI "bool \fBisPlayedAnimation\fP () const"
 .br
 .RI "获取当前动画是否在播放 "
+.ti -1c
+.RI "size_t \fBcurrentFrame\fP () const"
+.br
+.RI "获取当前正在绘制的帧数 "
+.ti -1c
+.RI "size_t \fBplayedCount\fP () const"
+.br
+.RI "获取当前完整播放动画的总次数 "
+.ti -1c
+.RI "void \fBclearPlayedCount\fP ()"
+.br
+.RI "清零完整播放动画次数 "
+.ti -1c
+.RI "\fBTimer\fP * \fBtimer\fP ()"
+.br
+.RI "获取当前使用的定时器 "
 .in -1c
+.SH "详细描述"
+.PP 
+动画 
+
+由帧组成的精灵动画 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Components::Animation::Animation (const std::string & name)\fR [explicit]\fP"
@@ -79,7 +103,7 @@ EasyEngine::Components::Animation
 .RE
 .PP
 
-.SS "EasyEngine::Components::Animation::Animation (const std::string & name, const std::vector< \fBSprite\fP > & sprite_list, uint64_t duration_per_frame = \fR50\fP)"
+.SS "EasyEngine::Components::Animation::Animation (const std::string & name, const std::vector< \fBSprite\fP * > & sprite_list, uint64_t duration_per_frame = \fR50\fP)"
 
 .PP
 创建动画 
@@ -114,6 +138,17 @@ EasyEngine::Components::Animation
 
 .PP
 \fBreplaceFrame\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Animation::clearPlayedCount ()"
+
+.PP
+清零完整播放动画次数 
+.PP
+\fB参见\fP
+.RS 4
+\fBplayedCount\fP 
 .RE
 .PP
 
@@ -194,7 +229,7 @@ frame
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::play (bool loop = \fRtrue\fP)"
+.SS "void EasyEngine::Components::Animation::play (bool loop = \fRtrue\fP, size_t start_frame = \fR0\fP)"
 
 .PP
 播放动画 
@@ -202,6 +237,8 @@ frame
 \fB参数\fP
 .RS 4
 \fIloop\fP 是否循环播放动画（默认循环播放） 
+.br
+\fIstart_frame\fP 从哪一帧开始播放（默认从头开始） 
 .RE
 .PP
 \fB注解\fP
@@ -220,10 +257,21 @@ playLoop
 \fBstop\fP 
 
 .PP
-frame 
+\fBcurrentFrame\fP 
 
 .PP
 \fBisPlayedAnimation\fP 
+.RE
+.PP
+
+.SS "size_t EasyEngine::Components::Animation::playedCount () const"
+
+.PP
+获取当前完整播放动画的总次数 当动画完整播放一次后计数 
+.PP
+\fB参见\fP
+.RS 4
+\fBclearPlayedCount\fP 
 .RE
 .PP
 

@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['name_0',['name',['../class_easy_engine_1_1_components_1_1_sprite.html#af26c8980014a6062bf0ff83b1712eb15',1,'EasyEngine::Components::Sprite::name()'],['../class_easy_engine_1_1_components_1_1_entity.html#a1b1db701b402de1c41caa261b0c4cfbc',1,'EasyEngine::Components::Entity::name()']]],
-  ['nameof_1',['nameOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#ade78778b798f090a6bf6f5a3341879d1',1,'EasyEngine::Components::SpriteGroup']]],
-  ['newwindow_2',['newWindow',['../class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3',1,'EasyEngine::Engine']]],
-  ['none_3',['None',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754',1,'EasyEngine::Components::Sprite']]]
+  ['macos_20使用_20homebrew_0',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]],
+  ['midcirclef_1',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
+  ['mono_2',['Mono',['../_core_8h.html#ab1f6dda9edb960b2a9d75cda1161c71d',1,'EasyEngine::StdAudioSpec']]],
+  ['mousedown_3',['MouseDown',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d',1,'EasyEngine::Components::Control']]],
+  ['mousehover_4',['MouseHover',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0',1,'EasyEngine::Components::Control']]],
+  ['mouseup_5',['MouseUp',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031',1,'EasyEngine::Components::Control']]],
+  ['move_6',['move',['../class_easy_engine_1_1_components_1_1_control.html#a1f1aea5c4332e5b8891a2e79f5dacabf',1,'EasyEngine::Components::Control::move(const Vector2 &amp;pos)'],['../class_easy_engine_1_1_components_1_1_control.html#a8d241b15df25d0025e235e44f70c4b3d',1,'EasyEngine::Components::Control::move(float x, float y)'],['../class_easy_engine_1_1_cursor.html#a87ecdb70644635d5aef9cf2192a4bd4b',1,'EasyEngine::Cursor::move(const Vector2 &amp;pos, const Window *window=nullptr)'],['../class_easy_engine_1_1_cursor.html#a189cba39845419555d421adbace00165',1,'EasyEngine::Cursor::move(float x, float y, const Window *window=nullptr)'],['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine::move()']]],
+  ['movetocenter_7',['moveToCenter',['../class_easy_engine_1_1_cursor.html#ad54e73d425b2f28a050ff73360cacb29',1,'EasyEngine::Cursor']]]
 ];

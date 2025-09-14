@@ -1,0 +1,262 @@
+.TH "EasyEngine::Cursor" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Cursor \- 鼠标光标  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum \fBStdCursor\fP { \fBDefault\fP = 0x00, \fBNormal\fP = 0x00, \fBEdit\fP = 0x01, \fBWait\fP = 0x02, \fBCrosshair\fP = 0x03, \fBBusy\fP = 0x04, \fBResize_NWSE\fP = 0x05, \fBResize_NESW\fP = 0x06, \fBResize_Horizontal\fP = 0x07, \fBResize_EW\fP = 0x07, \fBResize_Vertical\fP = 0x08, \fBResize_NS\fP = 0x08, \fBMove\fP = 0x09, \fBNot_Allowed\fP = 0x0a, \fBForbbiden\fP = 0x0a, \fBHand\fP = 0x0b, \fBPointer\fP = 0x0b, \fBResize_NW\fP = 0x0c, \fBResize_N\fP = 0x0d, \fBResize_NE\fP = 0x0e, \fBResize_E\fP = 0x0f, \fBResize_SE\fP = 0x10, \fBResize_S\fP = 0x11, \fBResize_SW\fP = 0x12, \fBResize_W\fP = 0x13, \fBCount\fP = 0x14, \fBCustom\fP = 0x15 }"
+.br
+.RI "标准鼠标光标样式 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP \fBglobalPosition\fP () const"
+.br
+.RI "获取鼠标光标在显示器中所在的位置 "
+.ti -1c
+.RI "\fBEasyEngine::Vector2\fP \fBposition\fP ()"
+.br
+.RI "获取鼠标光标在获得焦点的窗口下的位置 "
+.ti -1c
+.RI "void \fBmove\fP (const \fBVector2\fP &pos, const \fBWindow\fP *window=nullptr)"
+.br
+.RI "移动鼠标光标至指定位置 "
+.ti -1c
+.RI "void \fBmove\fP (float x, float y, const \fBWindow\fP *window=nullptr)"
+.br
+.RI "移动光标至指定位置 "
+.ti -1c
+.RI "void \fBmoveToCenter\fP (const \fBWindow\fP *window=nullptr)"
+.br
+.RI "将鼠标光标移动至画面中心点 "
+.ti -1c
+.RI "void \fBsetCursor\fP (const \fBStdCursor\fP &\fBcursor\fP)"
+.br
+.RI "设置鼠标光标 "
+.ti -1c
+.RI "void \fBsetCursor\fP (const std::string &path, int hot_x, int hot_y)"
+.br
+.RI "设置自定义鼠标光标 "
+.ti -1c
+.RI "\fBStdCursor\fP \fBcursor\fP () const"
+.br
+.RI "获取当前鼠标光标样式 "
+.ti -1c
+.RI "void \fBsetVisible\fP (bool \fBvisible\fP)"
+.br
+.RI "显示/隐藏鼠标光标 "
+.ti -1c
+.RI "bool \fBvisible\fP () const"
+.br
+.RI "获取当前鼠标光标是否显示 "
+.ti -1c
+.RI "void \fBunload\fP ()"
+.br
+.in -1c
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static \fBCursor\fP * \fBglobal\fP ()"
+.br
+.RI "获取鼠标光标全局 "
+.in -1c
+.SH "详细描述"
+.PP 
+鼠标光标 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum \fBEasyEngine::Cursor::StdCursor\fP"
+
+.PP
+标准鼠标光标样式 获取系统下当前使用的鼠标光标 
+.SH "成员函数说明"
+.PP 
+.SS "\fBEasyEngine::Vector2\fP EasyEngine::Cursor::globalPosition () const"
+
+.PP
+获取鼠标光标在显示器中所在的位置 
+.PP
+\fB返回\fP
+.RS 4
+返回全局坐标 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+
+.PP
+\fBmove\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::move (const \fBVector2\fP & pos, const \fBWindow\fP * window = \fRnullptr\fP)"
+
+.PP
+移动鼠标光标至指定位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定位置 
+.br
+\fIwindow\fP 指定窗口 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不指定 window 参数，将默认以全局显示器屏幕为主。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+
+.PP
+\fBglobalPosition\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::move (float x, float y, const \fBWindow\fP * window = \fRnullptr\fP)"
+
+.PP
+移动光标至指定位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定横坐标 
+.br
+\fIy\fP 指定纵坐标 
+.br
+\fIwindow\fP 指定窗口 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不指定 window 参数，将默认以全局显示器屏幕为主。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBposition\fP 
+
+.PP
+\fBglobalPosition\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::moveToCenter (const \fBWindow\fP * window = \fRnullptr\fP)"
+
+.PP
+将鼠标光标移动至画面中心点 
+.PP
+\fB参数\fP
+.RS 4
+\fIwindow\fP 指定窗口 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不设置 window 参数，将默认以全局显示器屏幕为主 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Vector2\fP EasyEngine::Cursor::position ()"
+
+.PP
+获取鼠标光标在获得焦点的窗口下的位置 
+.PP
+\fB返回\fP
+.RS 4
+返回鼠标光标相对获得焦点窗口下的位置 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBglobalPosition\fP 
+
+.PP
+\fBmove\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::setCursor (const std::string & path, int hot_x, int hot_y)"
+
+.PP
+设置自定义鼠标光标 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定路径下加载鼠标光标 
+.br
+\fIhot_x\fP 中心点横坐标 
+.br
+\fIhot_y\fP 中心点纵坐标 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::setCursor (const \fBStdCursor\fP & cursor)"
+
+.PP
+设置鼠标光标 
+.PP
+\fB参数\fP
+.RS 4
+\fIcursor\fP 指定光标 
+.PP
+.nf
+Cursor::global()\->setCursor(Cursor::Hand); // Changed the cursor
+
+.fi
+.PP
+ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBStdCursor\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::setVisible (bool visible)"
+
+.PP
+显示/隐藏鼠标光标 
+.PP
+\fB参数\fP
+.RS 4
+\fIvisible\fP 决定是否显示鼠标光标 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBvisible\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Cursor::visible () const"
+
+.PP
+获取当前鼠标光标是否显示 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetVisible\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

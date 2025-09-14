@@ -114,13 +114,18 @@ $(function() {
   <div class="headertitle"><div class="title">EasyEngine::Components::Animation类 参考</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>动画  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_components_8h_source.html">Components.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a894d1ea77b9c64fe8cfebc322ced2a85" id="r_a894d1ea77b9c64fe8cfebc322ced2a85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a894d1ea77b9c64fe8cfebc322ced2a85">Animation</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:a894d1ea77b9c64fe8cfebc322ced2a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建动画  <br /></td></tr>
-<tr class="memitem:af95f01aab87072a88a5db1c3d01c5b45" id="r_af95f01aab87072a88a5db1c3d01c5b45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95f01aab87072a88a5db1c3d01c5b45">Animation</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &gt; &amp;sprite_list, uint64_t duration_per_frame=50)</td></tr>
-<tr class="memdesc:af95f01aab87072a88a5db1c3d01c5b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建动画  <br /></td></tr>
+<tr class="memitem:ab8d8c9ace0755f3376445ddc1309acf3" id="r_ab8d8c9ace0755f3376445ddc1309acf3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8d8c9ace0755f3376445ddc1309acf3">Animation</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)</td></tr>
+<tr class="memdesc:ab8d8c9ace0755f3376445ddc1309acf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建动画  <br /></td></tr>
 <tr class="memitem:a44e2db6fefef13bcf51dd97b38d6a2ef" id="r_a44e2db6fefef13bcf51dd97b38d6a2ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44e2db6fefef13bcf51dd97b38d6a2ef">addFrame</a> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;<a class="el" href="#a9161611709a49d63fbf5aeec350ecc90">sprite</a>, uint64_t duration=50)</td></tr>
 <tr class="memdesc:a44e2db6fefef13bcf51dd97b38d6a2ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">将精灵图像加入到帧  <br /></td></tr>
 <tr class="memitem:aa43d91154f62c92783ba78e07eabebd2" id="r_aa43d91154f62c92783ba78e07eabebd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa43d91154f62c92783ba78e07eabebd2">insertFrame</a> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;<a class="el" href="#a9161611709a49d63fbf5aeec350ecc90">sprite</a>, uint64_t duration=50, const size_t frame=0)</td></tr>
@@ -141,14 +146,27 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
 <tr class="memdesc:a9161611709a49d63fbf5aeec350ecc90"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定帧数下的精灵  <br /></td></tr>
 <tr class="memitem:a2f6281ebbdce583a867681f5e141f305" id="r_a2f6281ebbdce583a867681f5e141f305"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f6281ebbdce583a867681f5e141f305">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;position, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
 <tr class="memdesc:a2f6281ebbdce583a867681f5e141f305"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制动画  <br /></td></tr>
-<tr class="memitem:ab291f73fdd0a40e6d2805e1d4be191bb" id="r_ab291f73fdd0a40e6d2805e1d4be191bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab291f73fdd0a40e6d2805e1d4be191bb">play</a> (bool loop=true)</td></tr>
-<tr class="memdesc:ab291f73fdd0a40e6d2805e1d4be191bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">播放动画  <br /></td></tr>
+<tr class="memitem:ad997acb70b36492e63118985ec167bfe" id="r_ad997acb70b36492e63118985ec167bfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad997acb70b36492e63118985ec167bfe">play</a> (bool loop=true, size_t start_frame=0)</td></tr>
+<tr class="memdesc:ad997acb70b36492e63118985ec167bfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">播放动画  <br /></td></tr>
 <tr class="memitem:a4126b36e29c9c1e1ca01a45c06b2b838" id="r_a4126b36e29c9c1e1ca01a45c06b2b838"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4126b36e29c9c1e1ca01a45c06b2b838">stop</a> ()</td></tr>
 <tr class="memdesc:a4126b36e29c9c1e1ca01a45c06b2b838"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止动画  <br /></td></tr>
 <tr class="memitem:a6ea3ecbd6701337d2248654eca85908c" id="r_a6ea3ecbd6701337d2248654eca85908c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ea3ecbd6701337d2248654eca85908c">isPlayedAnimation</a> () const</td></tr>
 <tr class="memdesc:a6ea3ecbd6701337d2248654eca85908c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前动画是否在播放  <br /></td></tr>
+<tr class="memitem:ad4ee84f43408755ee4f9d41b76c4d130" id="r_ad4ee84f43408755ee4f9d41b76c4d130"><td class="memItemLeft" align="right" valign="top"><a id="ad4ee84f43408755ee4f9d41b76c4d130" name="ad4ee84f43408755ee4f9d41b76c4d130"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>currentFrame</b> () const</td></tr>
+<tr class="memdesc:ad4ee84f43408755ee4f9d41b76c4d130"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前正在绘制的帧数 <br /></td></tr>
+<tr class="memitem:a1fbf8b7da0a766636c76e127e285c41c" id="r_a1fbf8b7da0a766636c76e127e285c41c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fbf8b7da0a766636c76e127e285c41c">playedCount</a> () const</td></tr>
+<tr class="memdesc:a1fbf8b7da0a766636c76e127e285c41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前完整播放动画的总次数  <br /></td></tr>
+<tr class="memitem:ab2b577e41730beb43f01e0dd14f86c7f" id="r_ab2b577e41730beb43f01e0dd14f86c7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2b577e41730beb43f01e0dd14f86c7f">clearPlayedCount</a> ()</td></tr>
+<tr class="memdesc:ab2b577e41730beb43f01e0dd14f86c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">清零完整播放动画次数  <br /></td></tr>
+<tr class="memitem:a186bd71648842a8ab67b427ed0929c18" id="r_a186bd71648842a8ab67b427ed0929c18"><td class="memItemLeft" align="right" valign="top"><a id="a186bd71648842a8ab67b427ed0929c18" name="a186bd71648842a8ab67b427ed0929c18"></a>
+<a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">Timer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b> ()</td></tr>
+<tr class="memdesc:a186bd71648842a8ab67b427ed0929c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前使用的定时器 <br /></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>动画 </p>
+<p>由帧组成的精灵动画 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="a894d1ea77b9c64fe8cfebc322ced2a85" name="a894d1ea77b9c64fe8cfebc322ced2a85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a894d1ea77b9c64fe8cfebc322ced2a85">&#9670;&#160;</a></span>Animation() <span class="overload">[1/2]</span></h2>
 
@@ -182,8 +200,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
 
 </div>
 </div>
-<a id="af95f01aab87072a88a5db1c3d01c5b45" name="af95f01aab87072a88a5db1c3d01c5b45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af95f01aab87072a88a5db1c3d01c5b45">&#9670;&#160;</a></span>Animation() <span class="overload">[2/2]</span></h2>
+<a id="ab8d8c9ace0755f3376445ddc1309acf3" name="ab8d8c9ace0755f3376445ddc1309acf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8d8c9ace0755f3376445ddc1309acf3">&#9670;&#160;</a></span>Animation() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,7 +214,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sprite_list</em></span>, </td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sprite_list</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -252,6 +270,26 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
 
 </div>
 </div>
+<a id="ab2b577e41730beb43f01e0dd14f86c7f" name="ab2b577e41730beb43f01e0dd14f86c7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b577e41730beb43f01e0dd14f86c7f">&#9670;&#160;</a></span>clearPlayedCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Animation::clearPlayedCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清零完整播放动画次数 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a1fbf8b7da0a766636c76e127e285c41c" title="获取当前完整播放动画的总次数">playedCount</a> </dd></dl>
+
+</div>
+</div>
 <a id="a2f6281ebbdce583a867681f5e141f305" name="a2f6281ebbdce583a867681f5e141f305"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f6281ebbdce583a867681f5e141f305">&#9670;&#160;</a></span>draw()</h2>
 
@@ -280,7 +318,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
   </dd>
 </dl>
 <dl class="section note"><dt>注解</dt><dd>必须执行，否则将无法在窗口上显示动画 </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab291f73fdd0a40e6d2805e1d4be191bb" title="播放动画">play</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad997acb70b36492e63118985ec167bfe" title="播放动画">play</a> </dd>
 <dd>
 <a class="el" href="#a4126b36e29c9c1e1ca01a45c06b2b838" title="停止动画">stop</a> </dd></dl>
 
@@ -366,7 +404,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () 
 </div><div class="memdoc">
 
 <p>获取当前动画是否在播放 </p>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab291f73fdd0a40e6d2805e1d4be191bb" title="播放动画">play</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad997acb70b36492e63118985ec167bfe" title="播放动画">play</a> </dd>
 <dd>
 <a class="el" href="#a4126b36e29c9c1e1ca01a45c06b2b838" title="停止动画">stop</a> </dd>
 <dd>
@@ -374,8 +412,8 @@ frame </dd></dl>
 
 </div>
 </div>
-<a id="ab291f73fdd0a40e6d2805e1d4be191bb" name="ab291f73fdd0a40e6d2805e1d4be191bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab291f73fdd0a40e6d2805e1d4be191bb">&#9670;&#160;</a></span>play()</h2>
+<a id="ad997acb70b36492e63118985ec167bfe" name="ad997acb70b36492e63118985ec167bfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad997acb70b36492e63118985ec167bfe">&#9670;&#160;</a></span>play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -383,8 +421,12 @@ frame </dd></dl>
         <tr>
           <td class="memname">void EasyEngine::Components::Animation::play </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>loop</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>loop</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>start_frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -393,6 +435,7 @@ frame </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">loop</td><td>是否循环播放动画（默认循环播放） </td></tr>
+    <tr><td class="paramname">start_frame</td><td>从哪一帧开始播放（默认从头开始） </td></tr>
   </table>
   </dd>
 </dl>
@@ -403,9 +446,29 @@ playLoop </dd>
 <dd>
 <a class="el" href="#a4126b36e29c9c1e1ca01a45c06b2b838" title="停止动画">stop</a> </dd>
 <dd>
-frame </dd>
+<a class="el" href="#ad4ee84f43408755ee4f9d41b76c4d130" title="获取当前正在绘制的帧数">currentFrame</a> </dd>
 <dd>
 <a class="el" href="#a6ea3ecbd6701337d2248654eca85908c" title="获取当前动画是否在播放">isPlayedAnimation</a> </dd></dl>
+
+</div>
+</div>
+<a id="a1fbf8b7da0a766636c76e127e285c41c" name="a1fbf8b7da0a766636c76e127e285c41c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fbf8b7da0a766636c76e127e285c41c">&#9670;&#160;</a></span>playedCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t EasyEngine::Components::Animation::playedCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前完整播放动画的总次数 </p>
+<p>当动画完整播放一次后计数 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab2b577e41730beb43f01e0dd14f86c7f" title="清零完整播放动画次数">clearPlayedCount</a> </dd></dl>
 
 </div>
 </div>
@@ -512,7 +575,7 @@ frame </dd>
 </div><div class="memdoc">
 
 <p>停止动画 </p>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab291f73fdd0a40e6d2805e1d4be191bb" title="播放动画">play</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad997acb70b36492e63118985ec167bfe" title="播放动画">play</a> </dd>
 <dd>
 frame </dd>
 <dd>

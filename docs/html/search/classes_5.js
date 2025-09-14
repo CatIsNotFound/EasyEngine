@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['geometry_0',['Geometry',['../struct_easy_engine_1_1_geometry.html',1,'EasyEngine']]]
+  ['line_0',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]]
 ];

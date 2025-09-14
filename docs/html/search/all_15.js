@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['q_3a_20如何处理不同分辨率？_0',['Q: 如何处理不同分辨率？',['../md_quickstart.html#autotoc_md49',1,'']]],
-  ['q_3a_20如何处理窗口大小变化？_1',['Q: 如何处理窗口大小变化？',['../md_quickstart.html#autotoc_md47',1,'']]],
-  ['q_3a_20如何添加音效？_2',['Q: 如何添加音效？',['../md_quickstart.html#autotoc_md48',1,'']]]
+  ['painter_0',['Painter',['../class_easy_engine_1_1_painter.html',1,'EasyEngine::Painter'],['../class_easy_engine_1_1_painter.html#ac730bf88a55fcdaa0612cb8412bd0361',1,'EasyEngine::Painter::Painter()']]],
+  ['painter_1',['painter',['../class_easy_engine_1_1_engine.html#acb4e2107e5c31d729dbae944e503bdb0',1,'EasyEngine::Engine']]],
+  ['path_2',['path',['../class_easy_engine_1_1_components_1_1_b_g_m.html#a04768c3197c66f52f1d616d38b41612e',1,'EasyEngine::Components::BGM::path()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#a4a944b5717bc571d005327cea3652803',1,'EasyEngine::Components::SFX::path()'],['../class_easy_engine_1_1_components_1_1_sprite.html#a9cf3d638885c70a06ddab390915b7c05',1,'EasyEngine::Components::Sprite::path()']]],
+  ['pause_3',['pause',['../class_easy_engine_1_1_components_1_1_b_g_m.html#a2f8364ff03e03646c23eb53d88e2e135',1,'EasyEngine::Components::BGM']]],
+  ['paused_4',['Paused',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea60d0ab67060832288ed498c2d9c8d16f',1,'EasyEngine::AudioSystem::Audio']]],
+  ['play_5',['play',['../class_easy_engine_1_1_components_1_1_b_g_m.html#ad7695847144f9b22395357809cf8c2fc',1,'EasyEngine::Components::BGM::play()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#aaa667d1968a24b893350a809acd1d9c6',1,'EasyEngine::Components::SFX::play()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#abd7a30a4179bcba57fe9eced55308922',1,'EasyEngine::Components::SFX::play(uint32_t delay)'],['../class_easy_engine_1_1_components_1_1_animation.html#ad997acb70b36492e63118985ec167bfe',1,'EasyEngine::Components::Animation::play()']]],
+  ['playbgm_6',['playBGM',['../class_easy_engine_1_1_audio_system.html#a2d69a9c04585c70747857cb76f34dc72',1,'EasyEngine::AudioSystem']]],
+  ['playedcount_7',['playedCount',['../class_easy_engine_1_1_components_1_1_animation.html#a1fbf8b7da0a766636c76e127e285c41c',1,'EasyEngine::Components::Animation']]],
+  ['playing_8',['Playing',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740eacdda4861e54fb6e605d8d7a575807b3c',1,'EasyEngine::AudioSystem::Audio']]],
+  ['playsfx_9',['playSFX',['../class_easy_engine_1_1_audio_system.html#a2e3211688bfa5b2187a90a2d959e044f',1,'EasyEngine::AudioSystem']]],
+  ['playstatus_10',['PlayStatus',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740e',1,'EasyEngine::AudioSystem::Audio']]],
+  ['point_11',['Point',['../struct_easy_engine_1_1_graphics_1_1_point.html',1,'EasyEngine::Graphics']]],
+  ['position_12',['position',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#ae8e625dddfa6cda4b647efa246a2595f',1,'EasyEngine::Components::Sprite::Properties::position'],['../struct_easy_engine_1_1_audio_system_1_1_audio.html#ae5046e0f191221ff9f49518dbdb16a38',1,'EasyEngine::AudioSystem::Audio::position'],['../class_easy_engine_1_1_components_1_1_b_g_m.html#a8f5e8ad1709afa3b2f1916427e7186d4',1,'EasyEngine::Components::BGM::position()'],['../class_easy_engine_1_1_components_1_1_entity.html#a69e9fc37eab2a5069da417a328b981ab',1,'EasyEngine::Components::Entity::position()'],['../class_easy_engine_1_1_components_1_1_control.html#a491bd6a22a9fba1f4e7e2d6115792109',1,'EasyEngine::Components::Control::position()'],['../class_easy_engine_1_1_cursor.html#abdfe65c037a665575a93fe945ca672cc',1,'EasyEngine::Cursor::position()']]],
+  ['preinclude_2eh_13',['preinclude.h',['../preinclude_8h.html',1,'']]],
+  ['pressed_14',['Pressed',['../class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fad78a68f6a85421ae121c2cb5b73a1040',1,'EasyEngine::Components::Control']]],
+  ['properties_15',['Properties',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html',1,'EasyEngine::Components::Sprite']]],
+  ['properties_16',['properties',['../class_easy_engine_1_1_components_1_1_sprite.html#a9e3f65ae13b00a04f03e91c89f17397d',1,'EasyEngine::Components::Sprite']]],
+  ['propertiesof_17',['propertiesOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a019a389dc57bcfc97487b6dd45463349',1,'EasyEngine::Components::SpriteGroup::propertiesOf(uint32_t index)'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#a594b8a609873e5b3d4698f18f8e45b3c',1,'EasyEngine::Components::SpriteGroup::propertiesOf(const std::string &amp;name)']]]
 ];

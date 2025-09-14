@@ -35,9 +35,45 @@ EasyEngine::EventSystem \- 事件系统
 .br
 .RI "移除定时器事件 "
 .ti -1c
+.RI "void \fBremoveTimer\fP (\fBEasyEngine::Components::Timer\fP *timer)"
+.br
+.RI "移除定时器事件 "
+.ti -1c
 .RI "void \fBclearTimer\fP ()"
 .br
 .RI "清空所有定时器事件 "
+.ti -1c
+.RI "uint64_t \fBaddTrigger\fP (\fBEasyEngine::Components::Trigger\fP *trigger)"
+.br
+.RI "添加触发器 "
+.ti -1c
+.RI "void \fBreplaceTrigger\fP (uint64_t id, \fBEasyEngine::Components::Trigger\fP *trigger)"
+.br
+.RI "替换触发器 "
+.ti -1c
+.RI "void \fBremoveTrigger\fP (uint64_t id)"
+.br
+.RI "移除触发器 "
+.ti -1c
+.RI "void \fBclearTrigger\fP ()"
+.br
+.RI "清空触发器 "
+.ti -1c
+.RI "uint64_t \fBaddControl\fP (\fBComponents::Control\fP *control)"
+.br
+.RI "添加控件 "
+.ti -1c
+.RI "void \fBreplaceControl\fP (uint64_t id, \fBComponents::Control\fP *control)"
+.br
+.RI "替换控件 "
+.ti -1c
+.RI "void \fBremoveControl\fP (uint64_t id)"
+.br
+.RI "移除指定控件 "
+.ti -1c
+.RI "void \fBclearControls\fP ()"
+.br
+.RI "清空所有控件 "
 .in -1c
 .SS "静态 Public 成员函数"
 
@@ -59,6 +95,30 @@ EasyEngine::EventSystem \- 事件系统
 事件系统 
 .SH "成员函数说明"
 .PP 
+.SS "uint64_t EasyEngine::EventSystem::addControl (\fBComponents::Control\fP * control)"
+
+.PP
+添加控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIcontrol\fP 指定控件 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回控件 ID 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBreplaceControl\fP 
+
+.PP
+\fBremoveControl\fP 
+.RE
+.PP
+
 .SS "uint64_t EasyEngine::EventSystem::addTimer (\fBEasyEngine::Components::Timer\fP * timer)"
 
 .PP
@@ -83,6 +143,30 @@ EasyEngine::EventSystem \- 事件系统
 .RE
 .PP
 
+.SS "uint64_t EasyEngine::EventSystem::addTrigger (\fBEasyEngine::Components::Trigger\fP * trigger)"
+
+.PP
+添加触发器 
+.PP
+\fB参数\fP
+.RS 4
+\fItrigger\fP 指定触发器 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回触发器 ID 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBreplaceTrigger\fP 
+
+.PP
+\fBremoveTrigger\fP 
+.RE
+.PP
+
 .SS "bool EasyEngine::EventSystem::handler ()"
 
 .PP
@@ -92,6 +176,39 @@ EasyEngine::EventSystem \- 事件系统
 \fB返回\fP
 .RS 4
 返回 true 将持续处理事件，false 将结束处理事件 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::removeControl (uint64_t id)"
+
+.PP
+移除指定控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIid\fP 指定控件 ID 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddControl\fP 
+
+.PP
+\fBreplaceControl\fP 
+
+.PP
+\fBclearControls\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::removeTimer (\fBEasyEngine::Components::Timer\fP * timer)"
+
+.PP
+移除定时器事件 
+.PP
+\fB参数\fP
+.RS 4
+\fItimer\fP 指定定时器 
 .RE
 .PP
 
@@ -106,6 +223,48 @@ EasyEngine::EventSystem \- 事件系统
 .RE
 .PP
 
+.SS "void EasyEngine::EventSystem::removeTrigger (uint64_t id)"
+
+.PP
+移除触发器 
+.PP
+\fB参数\fP
+.RS 4
+\fIid\fP 指定触发器 ID 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+原有的触发器将被释放 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddTrigger\fP 
+
+.PP
+\fBreplaceTrigger\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::replaceControl (uint64_t id, \fBComponents::Control\fP * control)"
+
+.PP
+替换控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIid\fP 指定控件 ID 
+.br
+\fIcontrol\fP 指定新的控件 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddControl\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::EventSystem::replaceTimer (uint64_t id, \fBEasyEngine::Components::Timer\fP * timer)"
 
 .PP
@@ -116,6 +275,34 @@ EasyEngine::EventSystem \- 事件系统
 \fIid\fP 指定定时器 ID 
 .br
 \fItimer\fP 新的定时器 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+原先被替换的定时器将被释放 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::replaceTrigger (uint64_t id, \fBEasyEngine::Components::Trigger\fP * trigger)"
+
+.PP
+替换触发器 
+.PP
+\fB参数\fP
+.RS 4
+\fIid\fP 触发器 ID 
+.br
+\fItrigger\fP 指定触发器 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+原先被替换的触发器将被释放！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddTrigger\fP 
 .RE
 .PP
 

@@ -1,0 +1,495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Cursor类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_cursor.html','','class_easy_engine_1_1_cursor-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Cursor类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>鼠标光标  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aea464aae862924ae930638e3fe3a6b89" id="r_aea464aae862924ae930638e3fe3a6b89"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> { <br />
+&#160;&#160;<b>Default</b> = 0x00
+, <b>Normal</b> = 0x00
+, <b>Edit</b> = 0x01
+, <b>Wait</b> = 0x02
+, <br />
+&#160;&#160;<b>Crosshair</b> = 0x03
+, <b>Busy</b> = 0x04
+, <b>Resize_NWSE</b> = 0x05
+, <b>Resize_NESW</b> = 0x06
+, <br />
+&#160;&#160;<b>Resize_Horizontal</b> = 0x07
+, <b>Resize_EW</b> = 0x07
+, <b>Resize_Vertical</b> = 0x08
+, <b>Resize_NS</b> = 0x08
+, <br />
+&#160;&#160;<b>Move</b> = 0x09
+, <b>Not_Allowed</b> = 0x0a
+, <b>Forbbiden</b> = 0x0a
+, <b>Hand</b> = 0x0b
+, <br />
+&#160;&#160;<b>Pointer</b> = 0x0b
+, <b>Resize_NW</b> = 0x0c
+, <b>Resize_N</b> = 0x0d
+, <b>Resize_NE</b> = 0x0e
+, <br />
+&#160;&#160;<b>Resize_E</b> = 0x0f
+, <b>Resize_SE</b> = 0x10
+, <b>Resize_S</b> = 0x11
+, <b>Resize_SW</b> = 0x12
+, <br />
+&#160;&#160;<b>Resize_W</b> = 0x13
+, <b>Count</b> = 0x14
+, <b>Custom</b> = 0x15
+<br />
+ }</td></tr>
+<tr class="memdesc:aea464aae862924ae930638e3fe3a6b89"><td class="mdescLeft">&#160;</td><td class="mdescRight">标准鼠标光标样式  <a href="#aea464aae862924ae930638e3fe3a6b89">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac8e30a7bdecccedf53697b25318d6949" id="r_ac8e30a7bdecccedf53697b25318d6949"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8e30a7bdecccedf53697b25318d6949">globalPosition</a> () const</td></tr>
+<tr class="memdesc:ac8e30a7bdecccedf53697b25318d6949"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取鼠标光标在显示器中所在的位置  <br /></td></tr>
+<tr class="memitem:abdfe65c037a665575a93fe945ca672cc" id="r_abdfe65c037a665575a93fe945ca672cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdfe65c037a665575a93fe945ca672cc">position</a> ()</td></tr>
+<tr class="memdesc:abdfe65c037a665575a93fe945ca672cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取鼠标光标在获得焦点的窗口下的位置  <br /></td></tr>
+<tr class="memitem:a87ecdb70644635d5aef9cf2192a4bd4b" id="r_a87ecdb70644635d5aef9cf2192a4bd4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ecdb70644635d5aef9cf2192a4bd4b">move</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *window=nullptr)</td></tr>
+<tr class="memdesc:a87ecdb70644635d5aef9cf2192a4bd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动鼠标光标至指定位置  <br /></td></tr>
+<tr class="memitem:a189cba39845419555d421adbace00165" id="r_a189cba39845419555d421adbace00165"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a189cba39845419555d421adbace00165">move</a> (float x, float y, const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *window=nullptr)</td></tr>
+<tr class="memdesc:a189cba39845419555d421adbace00165"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动光标至指定位置  <br /></td></tr>
+<tr class="memitem:ad54e73d425b2f28a050ff73360cacb29" id="r_ad54e73d425b2f28a050ff73360cacb29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad54e73d425b2f28a050ff73360cacb29">moveToCenter</a> (const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *window=nullptr)</td></tr>
+<tr class="memdesc:ad54e73d425b2f28a050ff73360cacb29"><td class="mdescLeft">&#160;</td><td class="mdescRight">将鼠标光标移动至画面中心点  <br /></td></tr>
+<tr class="memitem:a6fc24aff2495412b988daa919b8fd414" id="r_a6fc24aff2495412b988daa919b8fd414"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fc24aff2495412b988daa919b8fd414">setCursor</a> (const <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> &amp;<a class="el" href="#a712c15a8f7ced9cda7554b00a67fce7c">cursor</a>)</td></tr>
+<tr class="memdesc:a6fc24aff2495412b988daa919b8fd414"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置鼠标光标  <br /></td></tr>
+<tr class="memitem:acaebd3ef8b39f38d666a7c64cc13d40c" id="r_acaebd3ef8b39f38d666a7c64cc13d40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaebd3ef8b39f38d666a7c64cc13d40c">setCursor</a> (const std::string &amp;path, int hot_x, int hot_y)</td></tr>
+<tr class="memdesc:acaebd3ef8b39f38d666a7c64cc13d40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自定义鼠标光标  <br /></td></tr>
+<tr class="memitem:a712c15a8f7ced9cda7554b00a67fce7c" id="r_a712c15a8f7ced9cda7554b00a67fce7c"><td class="memItemLeft" align="right" valign="top"><a id="a712c15a8f7ced9cda7554b00a67fce7c" name="a712c15a8f7ced9cda7554b00a67fce7c"></a>
+<a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cursor</b> () const</td></tr>
+<tr class="memdesc:a712c15a8f7ced9cda7554b00a67fce7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前鼠标光标样式 <br /></td></tr>
+<tr class="memitem:acbe7d6205ac1aa610cc922e08e3d38ef" id="r_acbe7d6205ac1aa610cc922e08e3d38ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acbe7d6205ac1aa610cc922e08e3d38ef">setVisible</a> (bool <a class="el" href="#a28db5fd1eae293282e864c5a235300b8">visible</a>)</td></tr>
+<tr class="memdesc:acbe7d6205ac1aa610cc922e08e3d38ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示/隐藏鼠标光标  <br /></td></tr>
+<tr class="memitem:a28db5fd1eae293282e864c5a235300b8" id="r_a28db5fd1eae293282e864c5a235300b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28db5fd1eae293282e864c5a235300b8">visible</a> () const</td></tr>
+<tr class="memdesc:a28db5fd1eae293282e864c5a235300b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前鼠标光标是否显示  <br /></td></tr>
+<tr class="memitem:a8b1288f086353ba9b38fc0ae6891822e" id="r_a8b1288f086353ba9b38fc0ae6891822e"><td class="memItemLeft" align="right" valign="top"><a id="a8b1288f086353ba9b38fc0ae6891822e" name="a8b1288f086353ba9b38fc0ae6891822e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>unload</b> ()</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:af0709cecb0ac2483b1e8621d4b381846" id="r_af0709cecb0ac2483b1e8621d4b381846"><td class="memItemLeft" align="right" valign="top"><a id="af0709cecb0ac2483b1e8621d4b381846" name="af0709cecb0ac2483b1e8621d4b381846"></a>
+static <a class="el" href="class_easy_engine_1_1_cursor.html">Cursor</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>global</b> ()</td></tr>
+<tr class="memdesc:af0709cecb0ac2483b1e8621d4b381846"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取鼠标光标全局 <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>鼠标光标 </p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">成员枚举类型说明</h2>
+<a id="aea464aae862924ae930638e3fe3a6b89" name="aea464aae862924ae930638e3fe3a6b89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea464aae862924ae930638e3fe3a6b89">&#9670;&#160;</a></span>StdCursor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">EasyEngine::Cursor::StdCursor</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>标准鼠标光标样式 </p>
+<p>获取系统下当前使用的鼠标光标 </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="ac8e30a7bdecccedf53697b25318d6949" name="ac8e30a7bdecccedf53697b25318d6949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e30a7bdecccedf53697b25318d6949">&#9670;&#160;</a></span>globalPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a> EasyEngine::Cursor::globalPosition </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取鼠标光标在显示器中所在的位置 </p>
+<dl class="section return"><dt>返回</dt><dd>返回全局坐标 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abdfe65c037a665575a93fe945ca672cc" title="获取鼠标光标在获得焦点的窗口下的位置">position</a> </dd>
+<dd>
+<a class="el" href="#a87ecdb70644635d5aef9cf2192a4bd4b" title="移动鼠标光标至指定位置">move</a> </dd></dl>
+
+</div>
+</div>
+<a id="a87ecdb70644635d5aef9cf2192a4bd4b" name="a87ecdb70644635d5aef9cf2192a4bd4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87ecdb70644635d5aef9cf2192a4bd4b">&#9670;&#160;</a></span>move() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::move </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>window</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动鼠标光标至指定位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定位置 </td></tr>
+    <tr><td class="paramname">window</td><td>指定窗口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>若不指定 window 参数，将默认以全局显示器屏幕为主。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abdfe65c037a665575a93fe945ca672cc" title="获取鼠标光标在获得焦点的窗口下的位置">position</a> </dd>
+<dd>
+<a class="el" href="#ac8e30a7bdecccedf53697b25318d6949" title="获取鼠标光标在显示器中所在的位置">globalPosition</a> </dd></dl>
+
+</div>
+</div>
+<a id="a189cba39845419555d421adbace00165" name="a189cba39845419555d421adbace00165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a189cba39845419555d421adbace00165">&#9670;&#160;</a></span>move() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::move </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>window</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动光标至指定位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>指定横坐标 </td></tr>
+    <tr><td class="paramname">y</td><td>指定纵坐标 </td></tr>
+    <tr><td class="paramname">window</td><td>指定窗口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>若不指定 window 参数，将默认以全局显示器屏幕为主。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#abdfe65c037a665575a93fe945ca672cc" title="获取鼠标光标在获得焦点的窗口下的位置">position</a> </dd>
+<dd>
+<a class="el" href="#ac8e30a7bdecccedf53697b25318d6949" title="获取鼠标光标在显示器中所在的位置">globalPosition</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad54e73d425b2f28a050ff73360cacb29" name="ad54e73d425b2f28a050ff73360cacb29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad54e73d425b2f28a050ff73360cacb29">&#9670;&#160;</a></span>moveToCenter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::moveToCenter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_window.html">Window</a> *</td>          <td class="paramname"><span class="paramname"><em>window</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将鼠标光标移动至画面中心点 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>指定窗口 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>若不设置 window 参数，将默认以全局显示器屏幕为主 </dd></dl>
+
+</div>
+</div>
+<a id="abdfe65c037a665575a93fe945ca672cc" name="abdfe65c037a665575a93fe945ca672cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdfe65c037a665575a93fe945ca672cc">&#9670;&#160;</a></span>position()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a> EasyEngine::Cursor::position </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取鼠标光标在获得焦点的窗口下的位置 </p>
+<dl class="section return"><dt>返回</dt><dd>返回鼠标光标相对获得焦点窗口下的位置 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ac8e30a7bdecccedf53697b25318d6949" title="获取鼠标光标在显示器中所在的位置">globalPosition</a> </dd>
+<dd>
+<a class="el" href="#a87ecdb70644635d5aef9cf2192a4bd4b" title="移动鼠标光标至指定位置">move</a> </dd></dl>
+
+</div>
+</div>
+<a id="acaebd3ef8b39f38d666a7c64cc13d40c" name="acaebd3ef8b39f38d666a7c64cc13d40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaebd3ef8b39f38d666a7c64cc13d40c">&#9670;&#160;</a></span>setCursor() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::setCursor </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>hot_x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>hot_y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置自定义鼠标光标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>指定路径下加载鼠标光标 </td></tr>
+    <tr><td class="paramname">hot_x</td><td>中心点横坐标 </td></tr>
+    <tr><td class="paramname">hot_y</td><td>中心点纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fc24aff2495412b988daa919b8fd414" name="a6fc24aff2495412b988daa919b8fd414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fc24aff2495412b988daa919b8fd414">&#9670;&#160;</a></span>setCursor() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::setCursor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>cursor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置鼠标光标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor</td><td>指定光标 <div class="fragment"><div class="line"><a class="code hl_function" href="#af0709cecb0ac2483b1e8621d4b381846">Cursor::global</a>()-&gt;<a class="code hl_function" href="#a6fc24aff2495412b988daa919b8fd414">setCursor</a>(Cursor::Hand); <span class="comment">// Changed the cursor</span></div>
+<div class="ttc" id="aclass_easy_engine_1_1_cursor_html_a6fc24aff2495412b988daa919b8fd414"><div class="ttname"><a href="#a6fc24aff2495412b988daa919b8fd414">EasyEngine::Cursor::setCursor</a></div><div class="ttdeci">void setCursor(const StdCursor &amp;cursor)</div><div class="ttdoc">设置鼠标光标</div><div class="ttdef"><b>定义</b> Core.cpp:70</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_cursor_html_af0709cecb0ac2483b1e8621d4b381846"><div class="ttname"><a href="#af0709cecb0ac2483b1e8621d4b381846">EasyEngine::Cursor::global</a></div><div class="ttdeci">static Cursor * global()</div><div class="ttdoc">获取鼠标光标全局</div><div class="ttdef"><b>定义</b> Core.cpp:20</div></div>
+</div><!-- fragment --> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aea464aae862924ae930638e3fe3a6b89" title="标准鼠标光标样式">StdCursor</a> </dd></dl>
+
+</div>
+</div>
+<a id="acbe7d6205ac1aa610cc922e08e3d38ef" name="acbe7d6205ac1aa610cc922e08e3d38ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe7d6205ac1aa610cc922e08e3d38ef">&#9670;&#160;</a></span>setVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::setVisible </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>visible</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>显示/隐藏鼠标光标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">visible</td><td>决定是否显示鼠标光标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a28db5fd1eae293282e864c5a235300b8" title="获取当前鼠标光标是否显示">visible</a> </dd></dl>
+
+</div>
+</div>
+<a id="a28db5fd1eae293282e864c5a235300b8" name="a28db5fd1eae293282e864c5a235300b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28db5fd1eae293282e864c5a235300b8">&#9670;&#160;</a></span>visible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Cursor::visible </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前鼠标光标是否显示 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#acbe7d6205ac1aa610cc922e08e3d38ef" title="显示/隐藏鼠标光标">setVisible</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_core_8h_source.html">Core.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Core.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="class_easy_engine_1_1_cursor.html">Cursor</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>
