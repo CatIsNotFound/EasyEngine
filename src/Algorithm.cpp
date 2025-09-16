@@ -77,22 +77,24 @@ Vector2 Algorithm::spiritScaledPosition(const Components::Sprite::Properties &pr
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
     Vector2 _new_global_left_top_pos((_pos.x - _global_center_pos.x) * _scaled + _global_center_pos.x,
                                      (_pos.y - _global_center_pos.y) * _scaled + _global_center_pos.y);
-    return {_new_global_left_top_pos.x, _new_global_left_top_pos.y};
+    return _new_global_left_top_pos;
 }
 
 Vector2 Algorithm::spiritScaledPosition(const Vector2 &position, const float scaled, const Vector2 &scaled_position) {
-    Vector2 _global_center_pos(position.x + scaled_position.x, position.y + scaled_position.y);
-    Vector2 _new_global_left_top_pos((position.x - _global_center_pos.x) * scaled + _global_center_pos.x,
-                                     (position.y - _global_center_pos.y) * scaled + _global_center_pos.y);
-    return {_new_global_left_top_pos.x, _new_global_left_top_pos.y};
+//    Vector2 _global_center_pos(position.x + scaled_position.x, position.y + scaled_position.y);
+    Vector2 _global_center_pos = position + scaled_position;
+//    Vector2 _new_global_left_top_pos((position.x - _global_center_pos.x) * scaled + _global_center_pos.x,
+//                                     (position.y - _global_center_pos.y) * scaled + _global_center_pos.y);
+    Vector2 _new_global_left_top_pos = (position - _global_center_pos) * scaled + _global_center_pos;
+    return _new_global_left_top_pos;
 }
 
 Size Algorithm::spriteScaledSize(const Components::Sprite &sprite, const Components::Sprite::Properties &properties) {
-    return {sprite.size().width * properties.scaled, sprite.size().height * properties.scaled};
+    return sprite.size() * properties.scaled;
 }
 
 Size Algorithm::spriteScaledSize(const Components::Sprite &sprite, const float scaled) {
-    return {sprite.size().width * scaled, sprite.size().height * scaled};
+    return sprite.size() * scaled;
 }
 
 int8_t Algorithm::comparePosRect(const Vector2 &pos, const Graphics::Rectangle &rectangle) {
@@ -100,33 +102,33 @@ int8_t Algorithm::comparePosRect(const Vector2 &pos, const Graphics::Rectangle &
           minY = rectangle.pos.y,
           maxX = rectangle.size.width + rectangle.pos.x,
           maxY = rectangle.size.height + rectangle.pos.y;
-    if (pos.x > maxX || pos.x < minX || pos.y > maxY || pos.y < minY) return -1;
-    if ((pos.x == minX || pos.x == maxX) && (pos.y >= minY && pos.y <= maxY)) {
-        return 0;
+    const float EPSILON = 1e-6f;
+    if (pos.x > maxX + EPSILON || pos.x < minX - EPSILON || 
+        pos.y > maxY + EPSILON || pos.y < minY - EPSILON) {
+        return -1;
     }
-    if ((pos.y == minY || pos.y == maxY) && (pos.x >= minX && pos.x <= maxX)) {
+
+    bool onLeftEdge = std::abs(pos.x - minX) <= EPSILON;
+    bool onRightEdge = std::abs(pos.x - maxX) <= EPSILON;
+    bool onTopEdge = std::abs(pos.y - minY) <= EPSILON;
+    bool onBottomEdge = std::abs(pos.y - maxY) <= EPSILON;    
+    if ((onLeftEdge || onRightEdge || onTopEdge || onBottomEdge) && 
+        pos.x >= minX - EPSILON && pos.x <= maxX + EPSILON && 
+        pos.y >= minY - EPSILON && pos.y <= maxY + EPSILON) {
         return 0;
     }
     return 1;
 }
 
-int8_t Algorithm::comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse) {
-    float rx = ellipse.area.width / 2.0f;
-    float ry = ellipse.area.height / 2.0f;
-    if (rx <= 0.0f || ry <= 0.0f) {
-        return -1;
-    }
-    float dx = pos.x - ellipse.pos.x;
-    float dy = pos.y - ellipse.pos.y;
-    float distance = (dx * dx) / (rx * rx) + (dy * dy) / (ry * ry);
-    // 使用 epsilon 处理浮点数精度问题
-    const float EPSILON = 1e-6f;
-    if (distance < 1.0f - EPSILON)
-        return 1;
-    else if (abs(distance - 1.0f) <= EPSILON)
-        return 0;
-    else
-        return -1;
+int Algorithm::comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse) {
+    Vector2 pt = pos - ellipse.pos;
+    float a = ellipse.area.width * 0.5f;
+    float b = ellipse.area.height * 0.5f;
+
+    // 椭圆方程: (x/a)^2 + (y/b)^2 <= 1
+    float value = (pt.x * pt.x) / (a * a) +
+                  (pt.y * pt.y) / (b * b);
+    return static_cast<int>(value);
 }
 
 int8_t Algorithm::compareRect(const Graphics::Rectangle &rect1, const Graphics::Rectangle &rect2) {
@@ -140,6 +142,62 @@ int8_t Algorithm::compareRect(const Graphics::Rectangle &rect1, const Graphics::
 }
 
 int8_t Algorithm::compareEllipse(const Graphics::Ellipse &ellipse1, const Graphics::Ellipse &ellipse2) {
+    // 快速计算中心距离平方，避免开方
+    Vector2 centerDiff = ellipse1.pos - ellipse2.pos;
+    float distanceSq = centerDiff.x * centerDiff.x + centerDiff.y * centerDiff.y;
+
+    // 获取半轴长度
+    float a1 = ellipse1.area.width * 0.5f;
+    float b1 = ellipse1.area.height * 0.5f;
+    float a2 = ellipse2.area.width * 0.5f;
+    float b2 = ellipse2.area.height * 0.5f;
+
+    // 快速分离判断：使用最大可能距离
+    float maxDistance = (a1 + a2) * (a1 + a2) + (b1 + b2) * (b1 + b2);
+    if (distanceSq > maxDistance) {
+        return -1;
+    }
+
+    // 快速包含判断：检查中心点是否在对方椭圆内
+    bool center1InEllipse2 = comparePosEllipse(ellipse1.pos, ellipse2) <= 1;
+    bool center2InEllipse1 = comparePosEllipse(ellipse2.pos, ellipse1) <= 1;
+
+    // 如果一个中心在另一个椭圆内，且椭圆大小差异明显，则判断为包含
+    if (center1InEllipse2 && center2InEllipse1) {
+        // 两个中心互相在对方椭圆内，比较大小
+        float area1 = a1 * b1;
+        float area2 = a2 * b2;
+        return area1 > area2 ? 2 : 1;
+    } else if (center1InEllipse2) {
+        // 快速检查椭圆1是否完全在椭圆2内
+        if (isEllipseInsideEllipse(ellipse1, ellipse2)) {
+            return 1;
+        }
+    } else if (center2InEllipse1) {
+        // 快速检查椭圆2是否完全在椭圆1内
+        if (isEllipseInsideEllipse(ellipse2, ellipse1)) {
+            return 2;
+        }
+    }
+    // 相交或相切
     return 0;
+}
+
+bool Algorithm::isEllipseInsideEllipse(const Graphics::Ellipse &inner, const Graphics::Ellipse &outer) {
+    // 检查内椭圆的四个端点是否都在外椭圆内
+    float a_in = inner.area.width * 0.5f;
+    float b_in = inner.area.height * 0.5f;
+    Vector2 points[4] = {
+            {inner.pos.x + a_in, inner.pos.y},
+            {inner.pos.x - a_in, inner.pos.y},
+            {inner.pos.x, inner.pos.y + b_in},
+            {inner.pos.x, inner.pos.y - b_in}
+    };
+    for (auto& point : points) {
+        if (comparePosEllipse(point, outer) > 1) {
+            return false;
+        }
+    }
+    return true;
 }
 

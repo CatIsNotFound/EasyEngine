@@ -154,16 +154,32 @@ namespace EasyEngine {
         Vector2 operator+(const Vector2& v) const { return {this->x + v.x, this->y + v.y}; }
         Vector2 operator-(const Vector2& v) const { return {this->x - v.x, this->y - v.y}; }
         Vector2 operator*(const Vector2& v) const { return {this->x * v.x, this->y * v.y}; }
+        Vector2 operator*(float v) const { return {this->x * v, this->y * v}; };
         Vector2 operator/(const Vector2& v) const { return {this->x / v.x, this->y / v.y}; }
+        Vector2 operator/(float v) const { return (v != 0) ? Vector2(this->x / v, this->y / v) : *this; }
         void operator+=(const Vector2& v) { this->x += v.x; this->y += v.y; }
         void operator-=(const Vector2& v) { this->x -= v.x; this->y -= v.y; }
         void operator*=(const Vector2& v) { this->x *= v.x; this->y *= v.y; }
+        void operator*=(float v) { this->x *= v; this->y *= v; }
         void operator/=(const Vector2& v) { this->x /= v.x; this->y /= v.y; }
+        void operator/=(float v) { if (v == 0) return; this->x /= v; this->y /= v; }
         bool operator==(const Vector2& v) const {
             return ((this->x != v.x) ? false : ((this->y != v.y) ? false : true));
         }
         bool operator!=(const Vector2& v) const {
             return ((this->x != v.x) ? true : ((this->y != v.y) ? true : false));
+        }
+        bool operator>(const Vector2& v) const {
+            return (this->x > v.x && this->y > v.y);
+        }
+        bool operator>=(const Vector2& v) const {
+            return (this->x >= v.x && this->y >= v.y);
+        }
+        bool operator<(const Vector2& v) const {
+            return (this->x < v.x && this->y < v.y);
+        }
+        bool operator<=(const Vector2& v) const {
+            return (this->x <= v.x && this->y <= v.y);
         }
     };
 
@@ -186,18 +202,60 @@ namespace EasyEngine {
         Size operator+(const Size& s) const { return {this->width + s.width, this->height + s.height}; }
         Size operator-(const Size& s) const { return {this->width - s.width, this->height - s.height}; }
         Size operator*(const Size& s) const { return {this->width * s.width, this->height * s.height}; }
+        Size operator*(float v) const { return {this->width * v, this->height * v}; }
         Size operator/(const Size& s) const { return {this->width / s.width, this->height / s.height}; }
+        Size operator/(float v) const { return (v == 0) ? *this : Size(this->width / v, this->height / v); }
         void operator+=(const Size& s) { this->width += s.width; this->height += s.height; }
         void operator-=(const Size& s) { this->width -= s.width; this->height -= s.height; }
         void operator*=(const Size& s) { this->width *= s.width; this->height *= s.height; }
+        void operator*=(float v) { this->width *= v; this->height *= v; }
         void operator/=(const Size& s) { this->width /= s.width; this->height /= s.height; }
+        void operator/=(float v) { if (v == 0) return; this->width /= v; this->height /= v; }
         bool operator==(const Size& s) const {
             return (this->width != s.width) ? false : ((this->height != this->height) ? false : true);
         }
         bool operator!=(const Size& s) const {
             return (this->width != s.width) ? true : ((this->height != this->height) ? true : false);
         }
+        bool operator>(const Size& s) const {
+            return (this->width > s.width && this->height > s.height);
+        }
+        bool operator>=(const Size& s) const {
+            return (this->width >= s.width && this->height >= s.height);
+        }
+        bool operator<(const Size& s) const {
+            return (this->width < s.width && this->height < s.height);
+        }
+        bool operator<=(const Size& s) const {
+            return (this->width <= s.width && this->height <= s.height);
+        }
     };
+
+    /**
+     * @struct GeometryF
+     * @brief 位置、大小
+     *
+     * 针对于 Vector2 和 Size 组成，用于调整位置、大小
+     */
+    struct GeometryF {
+        Vector2 pos;
+        Size size;
+        void reset(const Vector2& pos, const Size& size) {
+            this->pos.x = pos.x;
+            this->pos.y = pos.y;
+            this->size.width = size.width;
+            this->size.height = size.height;
+        }
+        void resetPos(const Vector2& pos) {
+            this->pos.x = pos.x;
+            this->pos.y = pos.y;
+        }
+        void resetSize(const Size& size) {
+            this->size.width = size.width;
+            this->size.height = size.height;
+        }
+    };
+
     /**
      * @namespace Graphics
      * @brief 基本图形

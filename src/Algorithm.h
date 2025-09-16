@@ -109,11 +109,11 @@ namespace EasyEngine {
          * @param pos       指定的点所在的坐标
          * @param ellipse   指定的椭圆
          * @return 返回一个值以表示不同的位置关系
-         * @retval -1 表示点与矩形完全分离；
-         * @retval 0  表示点正好在矩形上；
-         * @retval 1  表示点在矩形内部。
+         * @retval > 1 表示点与椭圆完全分离；
+         * @retval = 1  表示点正好在椭圆上；
+         * @retval < 1  表示点在椭圆内部。
          */
-        static int8_t comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
+        static int comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
         /**
          * @brief 判断矩形与矩形之间的位置关系
          * @param rect1 指定第一个矩形
@@ -131,9 +131,20 @@ namespace EasyEngine {
          * @param ellipse2 指定第二个椭圆
          * @return 返回一个值以表示不同的位置关系
          * @retval -1 表示两个椭圆完全分离
-         * @retval 0  表示两个椭圆
+         * @retval 0  表示两个椭圆属于相切或相交
+         * @retval 1  表示 `ellipse2` 包含 `ellipse1`
+         * @retval 2  表示 `ellipse1` 包含 `ellipse2`
          */
         static int8_t compareEllipse(const Graphics::Ellipse &ellipse1, const Graphics::Ellipse &ellipse2);
+
+    private:
+        /**
+         * @brief 判断两椭圆是否包含
+         * @param inner 指定内部椭圆
+         * @param outer 指定外部椭圆
+         * @return 返回外部椭圆是否包含内部椭圆
+         */
+        static bool isEllipseInsideEllipse(const Graphics::Ellipse &inner, const Graphics::Ellipse &outer);
     };
 
 }

@@ -43,5 +43,6 @@
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
+#include <chrono>
 
 #endif //EASYENGINE_PREINCLUDE_H

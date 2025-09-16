@@ -314,7 +314,11 @@ namespace EasyEngine {
             /**
              * @brief 更新触发器状态（无需手动执行）
              */
-            void update();
+            void __update();
+            /**
+             * @brief 手动触发触发器
+             */
+            void trigger();
             /**
              * @brief 获取当前的触发条件函数
              */
@@ -563,6 +567,24 @@ namespace EasyEngine {
             SpriteGroup(const SpriteGroup& group) = default;
             SpriteGroup(const SpriteGroup&& group);
             /**
+             * @brief 重新调整整体精灵组合大小
+             * @param width  新的宽度
+             * @param height 新的高度
+             * @see size
+             */
+            void resize(float width, float height);
+            /**
+             * @brief 重新调整整体精灵组合大小
+             * @param size  给定新的大小
+             * @see size
+             */
+            void resize(const Size& size);
+            /**
+             * @brief 获取当前精灵组合的整体大小
+             * @see resize
+             */
+            EasyEngine::Size size() const;
+            /**
              * @brief 添加精灵
              * @param sprite 指定精灵
              */
@@ -709,7 +731,7 @@ namespace EasyEngine {
              * @see insertFrame
              * @see replaceFrame
              */
-            void addFrame(const Sprite& sprite, uint64_t duration = 50);
+            void addFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration = 50);
             /**
              * @brief 将精灵图像插入到指定帧
              * @param sprite 指定精灵
@@ -718,14 +740,14 @@ namespace EasyEngine {
              * @see addFrame
              * @see replaceFrame
              */
-            void insertFrame(const Sprite& sprite, uint64_t duration = 50, const size_t frame = 0);
+            void insertFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration = 50, const size_t frame = 0);
             /**
              * @brief 在指定帧下替换精灵图像
              * @param sprite 新的精灵图像
              * @param frame 指定帧数
              * @param duration 设定持续时间（毫秒）
              */
-            void replaceFrame(const EasyEngine::Components::Sprite &sprite, const size_t frame,
+            void replaceFrame(EasyEngine::Components::Sprite *sprite, const size_t frame,
                               const uint64_t duration);
             /**
              * @brief 移除指定帧对应的图像
@@ -819,7 +841,7 @@ namespace EasyEngine {
              */
             struct Frame {
                 /// 精灵
-                std::unique_ptr<Sprite> sprite;
+                Sprite* sprite;
                 /// 帧持续时间
                 uint64_t duration;
             };
@@ -832,6 +854,22 @@ namespace EasyEngine {
         };
 
         class Collider {
+            /**
+             * @union Container
+             * @brief 碰撞器容器
+             *
+             * 用于选择使用哪种形状的碰撞器
+             */
+            struct Container {
+                uint8_t mode{0};
+                union Shape {
+                    /// 矩形 1
+                    Graphics::Rectangle rectangle;
+                    /// 椭圆 2
+                    Graphics::Ellipse ellipse;
+                };
+                Shape shape{};
+            };
         public:
             /**
              * @brief 创建碰撞器
@@ -841,28 +879,48 @@ namespace EasyEngine {
              * @brief 创建碰撞器（相对位置下）
              * @param rect 矩形碰撞器
              */
-            Collider(SFRect rect);
+            Collider(const Graphics::Rectangle& rect);
+            /**
+             * @brief 创建碰撞器
+             * @param ellipse 椭圆碰撞器
+             */
+            Collider(const Graphics::Ellipse& ellipse);
             /**
              * @brief 创建碰撞器（相对位置下）
              * @param x       所在位置 x 轴
              * @param y       所在位置 y 轴
              * @param width   碰撞器的宽度
              * @param height  碰撞器的高度
+             * @param shape_mode 碰撞器形状（1 = 矩形，2 = 椭圆）
              */
-            Collider(float x, float y, float width, float height);
+            Collider(float x, float y, float width, float height, uint8_t shape_mode);
             /**
-             * @brief 检查此碰撞器是否与其它碰撞器碰撞
+             * @brief 检查此碰撞器是否与其它碰撞器存在碰撞？
              * @param collider  指定碰撞器（除自己以外）
-             * @return 返回 true 表示已与其它碰撞器碰撞，其反之
+             * @return 根据不同的形状返回不同的值，具体见 `compareRect` 与 `compareEllipse`；当两个碰撞器形状不同时，返回 0（不支持）
+             * @see compareRect
+             * @see compareEllipse
              * @see bounds
              */
-            bool check(const Collider& collider);
+            uint8_t check(const EasyEngine::Components::Collider &collider) const;
             /**
              * @brief 获取碰撞器的位置、大小
              */
-            SFRect bounds() const;
+            const GeometryF & bounds() const;
+            /**
+             * @brief 设置是否允许启用碰撞器
+             * @param v 碰撞器开关
+             */
+            void setEnabled(bool v);
+            /**
+             * @brief 获取碰撞器是否正在启用
+             * @see setEnabled
+             */
+            bool enabled() const;
         private:
-            SFRect* rect;
+            Container _con;
+            bool _enabled;
+            GeometryF _geometry;
         };
 
         class Entity {
@@ -947,7 +1005,6 @@ namespace EasyEngine {
          * 适用于 UI 界面的操作控件
          */
         class Control {
-            friend class EventSystem;
         public:
             /**
              * @enum Status
@@ -972,14 +1029,20 @@ namespace EasyEngine {
              * 罗列了可能的触发事件
              */
             enum class Event {
-                /// 加载事件
-                Loaded,
-                /// 卸载事件
-                Unload,
+                /// 空，用于占位，不作任何触发
+                None,
                 /// 获取焦点事件
-                GetFocus,
+                GetFocus = 0x10,
                 /// 失去焦点事件
                 LostFocus,
+                /// 控件重新调整大小事件
+                Resized,
+                /// 控件移动事件
+                Moved,
+                /// 控件移动、重新调整大小同时改变事件
+                MovedResized,
+                /// 控件可用改变事件
+                EnabledChange,
                 /// 鼠标单击事件
                 Clicked,
                 /// 鼠标双击事件
@@ -990,6 +1053,8 @@ namespace EasyEngine {
                 MouseUp,
                 /// 鼠标经过控件事件
                 MouseHover,
+                /// 鼠标离开控件事件
+                MouseLeave,
                 /// 按键盘事件
                 KeyPressed,
                 /// 键盘按下事件
@@ -1002,6 +1067,12 @@ namespace EasyEngine {
              * @param name 创建时需给定名称
              */
             explicit Control(const std::string& name);
+            /**
+             * @brief 指定一个精灵并创建控件
+             * @param name  创建时需给定名称
+             * @param sprite 指定的精灵（作为裁剪精灵）
+             */
+            Control(const std::string& name, const Sprite&& sprite);
             /**
              * @brief 完全克隆已有的控件
              * @param name  创建时需给定名称
@@ -1044,6 +1115,14 @@ namespace EasyEngine {
              */
             void setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation);
             /**
+             * @brief 设定控件指定状态
+             * @param status 选择任一状态
+             * @param clip_sprite 在当前状态下定义裁剪精灵
+             * @see status
+             * @see removeStatus
+             */
+            void setStatus(const Status &status, const GeometryF& clip_sprite);
+            /**
              * @brief 移除指定的控件状态
              * @param status 选择任一状态以移除
              * @see status
@@ -1054,11 +1133,11 @@ namespace EasyEngine {
              * @brief 获取当前指定状态下的精灵、组、动画
              * @param status 选择任一状态
              * @return 返回当前状态下的精灵、组、动画
-             * @note 目前支持的类：Sprite、SpriteGroup、Animation
-             * @note 如果无法确定当前状态下使用的类，请使用 getTypeid() 以获取该状态下使用的类。
+             * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
+             * @note 如果无法确定当前状态下使用的类，请使用 getTypename() 以获取该状态下使用的类。
              * @see setStatus
              * @see removeStatus
-             * @see getTypeid
+             * @see getTypename
              */
             template<class Type>
             Type* status(const enum Status& status) const;
@@ -1122,6 +1201,10 @@ namespace EasyEngine {
              * @see setActive
              */
             void setInactive();
+            /**
+             * @brief 获取当前控件是否属于活动状态
+             */
+            bool active() const;
 
             /**
              * @brief 移动控件的位置
@@ -1204,24 +1287,44 @@ namespace EasyEngine {
              * @brief 更新控件状态（无需手动调用）
              */
             void update(Painter *painter);
+            void __updateStatus(const Status& status);
+            void __updateEvent(const Event& event);
+            Status __currentStatus() const;
+            Event __currentEvent() const;
         private:
             std::string _name;
+
+            /// @struct Container
+            /// @brief 存储控件的容器
             struct Container {
                 explicit Container() : type_id(0), self() {}
-                uint8_t type_id; // 按照 Self 的顺序表示（从 1 开始）
+                /// @brief 用于区分存储的类型
+                ///
+                /// 按照 Self 的顺序表示（从 1 开始）
+                uint8_t type_id;
+                /// @union Self
+                /// @brief 在容器中存储的指针或数据
                 union Self {
                     explicit Self() {}
                     ~Self() {}
+                    /// @brief 精灵 1
                     std::shared_ptr<Sprite> sprite;
+                    /// @brief 精灵组合 2
                     std::shared_ptr<SpriteGroup> sprite_group;
+                    /// @brief 动画 3
                     std::shared_ptr<Animation> animation;
+                    /// @brief 裁剪精灵 4
+                    GeometryF clip_sprite;
                 };
                 Self self;
             };
-            std::map<Status, std::unique_ptr<Container>> _container_list;
-            std::map<Event, std::unique_ptr<Trigger>> _trigger_list;
+            std::shared_ptr<Sprite> _def_sprite;
+            std::map<Status, std::shared_ptr<Container>> _container_list;
+            std::map<Event, std::shared_ptr<Trigger>> _trigger_list;
             Status _status{Status::Default};
-            Vector2 _position;
+            Event _event{Event::None};
+            bool _active{false};
+            Vector2 _position, _hot_position;
             Size _size;
             Graphics::Rectangle _hot_area;
         };

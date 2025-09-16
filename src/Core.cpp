@@ -732,7 +732,6 @@ void EasyEngine::Painter::FillCMD::exec(SRenderer *renderer, uint32_t) {
 
 void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
     SDL_SetTextureColorMod(_sprite, _color_alpha.r, _color_alpha.g, _color_alpha.b);
-//    SDL_SetTextureAlphaMod(_sprite, _color_alpha.a);
     if (_color_reversed) SDL_SetTextureBlendMode(_sprite, SDL_BLENDMODE_MOD);
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
     Vector2 newPos((_pos.x - _global_center_pos.x) * _scaled + _global_center_pos.x,
@@ -763,7 +762,6 @@ EasyEngine::EventSystem *EasyEngine::EventSystem::global() {
 bool EasyEngine::EventSystem::handler() {
     static SEvent ev;
     static bool ret = true;
-
     if (SDL_PollEvent(&ev)) {
         if (ev.window.type == SDL_EVENT_QUIT) {
             return false;
@@ -774,20 +772,84 @@ bool EasyEngine::EventSystem::handler() {
         } else if (ev.window.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
             Engine::_is_stopped = false;
         }
-        Vector2 cursor_in_win_pos = Cursor::global()->position();
-        for (auto& _con : _control_list) {
-            _con.second->update(nullptr);
+
+        Vector2 cursor_pos = Cursor::global()->position();
+        const uint64_t CLICK_DELAY = 500;
+        for (auto& _control : _control_list) {
+            auto _container = _control.second;
+            if (!_container->enabled()) continue;
+            if (_container->active() &&
+                (ev.key.key == SDLK_SPACE || ev.key.key == SDLK_RETURN || ev.key.key == SDLK_KP_ENTER)) {
+                static bool _is_key_down = false;
+                if (ev.key.down) {
+                    if (!_is_key_down) {
+                        _container->__updateEvent(Components::Control::Event::KeyDown);
+                        _container->__updateStatus(Components::Control::Status::Pressed);
+                        _is_key_down = true;
+                    }
+                } else {
+                    _is_key_down = false;
+                    _container->__updateEvent(Components::Control::Event::KeyUp);
+                    _container->__updateStatus(Components::Control::Status::Active);
+                }
+                continue;
+            }
+            // TODO: 如何处理鼠标的按下、松开、点击、双击事件，尽量不要和其它控件产生冲突！
+            bool is_cursor_on_control = Algorithm::comparePosRect(cursor_pos, _container->hotArea()) > -1;
+            static bool is_hovered_one = false;
+            static uint64_t last_click_time = 0, current_click_time = 0, click_count = 0;
+            static Vector2 old_cursor_pos = cursor_pos;
+            if (is_cursor_on_control) {
+                if (!is_hovered_one) {
+                    is_hovered_one = true;
+                    _container->__updateEvent(Components::Control::Event::MouseHover);
+                    _container->__updateStatus(Components::Control::Status::Hovered);
+                } else if (ev.button.down) {
+                    _container->__updateEvent(Components::Control::Event::MouseDown);
+                    _container->__updateStatus(Components::Control::Status::Pressed);
+                    old_cursor_pos = cursor_pos;
+                } else if (
+                    _container->__currentStatus() == Components::Control::Status::Pressed) {
+                    current_click_time = SDL_GetTicks();
+                    if (!last_click_time) {
+                        last_click_time = current_click_time;
+                        click_count += 1;
+                    } else if (current_click_time - last_click_time < CLICK_DELAY) {
+                        click_count += 1;
+                    } else {
+                        last_click_time = current_click_time;
+                        click_count = 1;
+                    }
+                    if (click_count == 1) {
+                        _container->__updateEvent(Components::Control::Event::Clicked);
+                    } else if (click_count == 2) {
+                        _container->__updateEvent(Components::Control::Event::DblClicked);
+                    } else {
+                        _container->__updateEvent(Components::Control::Event::MouseUp);
+                    }
+                    _container->__updateStatus(Components::Control::Status::Hovered);
+                }
+            } else if (_container->__currentStatus() == Components::Control::Status::Hovered) {
+                is_hovered_one = false;
+                _container->__updateEvent(Components::Control::Event::MouseLeave);
+                _container->__updateStatus(_container->active() ?
+                    Components::Control::Status::Active : Components::Control::Status::Default);
+            } else if (_container->__currentStatus() == Components::Control::Status::Pressed) {
+                is_hovered_one = false;
+                _container->__updateEvent(Components::Control::Event::MouseLeave);
+                _container->__updateStatus(_container->active() ?
+                                           Components::Control::Status::Active : Components::Control::Status::Default);
+            }
         }
         if (_my_event_handler) {
             ret = _my_event_handler(ev);
         }
-
     }
     for (auto& _timer : _timer_list) {
         _timer.second->update();
     }
     for (auto& _trigger : _trigger_list) {
-        _trigger.second->update();
+        _trigger.second->__update();
     }
     return ret;
 }
