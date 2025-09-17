@@ -877,6 +877,11 @@ namespace EasyEngine {
             Self self{};
         };
 
+        /**
+         * @class Collider
+         * @brief 碰撞器
+         *
+         */
         class Collider {
             /**
              * @union Container

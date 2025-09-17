@@ -1027,6 +1027,10 @@ int8_t EasyEngine::Components::Collider::check(const EasyEngine::Components::Col
         return Algorithm::compareRect(_con.shape.rectangle, collider._con.shape.rectangle);
     } else if (_con.mode == 2 && collider._con.mode == 2) {
         return Algorithm::compareEllipse(_con.shape.ellipse, collider._con.shape.ellipse);
+    } else if (_con.mode == 1 && collider._con.mode == 2) {
+        return Algorithm::compareRectEllipse(_con.shape.rectangle, collider._con.shape.ellipse);
+    } else if (_con.mode == 2 && collider._con.mode == 1) {
+        return Algorithm::compareRectEllipse(collider._con.shape.rectangle, _con.shape.ellipse);
     } else if (_con.mode != collider._con.mode) {
         SDL_Log("[WARNING] The specified collider is not match by the current collider!");
         return 0;

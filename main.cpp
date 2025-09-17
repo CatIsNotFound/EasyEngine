@@ -57,12 +57,31 @@ int main() {
             } else {
                 ellipse.back_color = StdColor::LightPink;
             }
-        } else {
-            mouse_rect_collider.moveBounds(cur_pos);
-            if (mouse_rect_collider.check(rect_collider) >= 0) {
+            auto ch2 = mouse_ellipse_collider.check(rect_collider);
+            if (ch2 > 0) {
                 rect.back_color = StdColor::DarkBlue;
+            } else if (ch2 == 0) {
+                rect.back_color = StdColor::MediumBlue;
             } else {
                 rect.back_color = StdColor::LightBlue;
+            }
+        } else {
+            mouse_rect_collider.moveBounds(cur_pos);
+            auto bh = mouse_rect_collider.check(rect_collider);
+            if (bh > 0) {
+                rect.back_color = StdColor::DarkBlue;
+            } else if (bh == 0) {
+                rect.back_color = StdColor::MediumBlue;
+            } else {
+                rect.back_color = StdColor::LightBlue;
+            }
+            auto bh2 = mouse_rect_collider.check(ellipse_collider);
+            if (bh2 > 0) {
+                ellipse.back_color = StdColor::DarkRed;
+            } else if (bh2 == 0) {
+                ellipse.back_color = StdColor::Tomato;
+            } else {
+                ellipse.back_color = StdColor::LightPink;
             }
         }
         engine.setWindowTitle(fmt::format("Cursor({},{})", cur_pos.x, cur_pos.y));

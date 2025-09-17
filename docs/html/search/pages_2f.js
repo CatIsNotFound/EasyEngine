@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['精灵动画_0',['精灵动画',['../index.html#autotoc_md14',1,'精灵动画'],['../md_quickstart.html#autotoc_md39',1,'4.1 精灵动画']]]
+  ['碰撞检测_0',['碰撞检测',['../index.html#autotoc_md15',1,'碰撞检测'],['../md_quickstart.html#autotoc_md40',1,'4.2 碰撞检测']]]
 ];

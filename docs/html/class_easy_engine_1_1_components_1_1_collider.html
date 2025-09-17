@@ -114,6 +114,11 @@ $(function() {
   <div class="headertitle"><div class="title">EasyEngine::Components::Collider类 参考</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>碰撞器  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_components_8h_source.html">Components.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
@@ -136,12 +141,22 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a0d9d884cc3c36c31bd2749eeee9079e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置碰撞器的位置、大小  <br /></td></tr>
 <tr class="memitem:a802b0e7b016f048165a29a887c935732" id="r_a802b0e7b016f048165a29a887c935732"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a802b0e7b016f048165a29a887c935732">setBoundsGeometry</a> (float x, float y, float width, float height)</td></tr>
 <tr class="memdesc:a802b0e7b016f048165a29a887c935732"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置碰撞器的大小、位置  <br /></td></tr>
+<tr class="memitem:aa850d301612e2f5ef1d1bf8632af3fa9" id="r_aa850d301612e2f5ef1d1bf8632af3fa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa850d301612e2f5ef1d1bf8632af3fa9">moveBounds</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;position)</td></tr>
+<tr class="memdesc:aa850d301612e2f5ef1d1bf8632af3fa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动碰撞器的位置  <br /></td></tr>
+<tr class="memitem:ae528795242e014f0a59353c1732a615d" id="r_ae528795242e014f0a59353c1732a615d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae528795242e014f0a59353c1732a615d">moveBounds</a> (float x, float y)</td></tr>
+<tr class="memdesc:ae528795242e014f0a59353c1732a615d"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动碰撞器的位置  <br /></td></tr>
+<tr class="memitem:a7a09505e10dc8c2dfd7152a91712cb7e" id="r_a7a09505e10dc8c2dfd7152a91712cb7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a09505e10dc8c2dfd7152a91712cb7e">resizeBounds</a> (const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size)</td></tr>
+<tr class="memdesc:a7a09505e10dc8c2dfd7152a91712cb7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整碰撞器的大小  <br /></td></tr>
+<tr class="memitem:a1e5a52668db1710786b9116575ca0dcc" id="r_a1e5a52668db1710786b9116575ca0dcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5a52668db1710786b9116575ca0dcc">resizeBounds</a> (float width, float height)</td></tr>
+<tr class="memdesc:a1e5a52668db1710786b9116575ca0dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整碰撞器的大小  <br /></td></tr>
 <tr class="memitem:ad343672817806bba0d5bd23323645685" id="r_ad343672817806bba0d5bd23323645685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad343672817806bba0d5bd23323645685">setEnabled</a> (bool v)</td></tr>
 <tr class="memdesc:ad343672817806bba0d5bd23323645685"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置是否允许启用碰撞器  <br /></td></tr>
 <tr class="memitem:a6235b60cefad5914d6be022957d372c9" id="r_a6235b60cefad5914d6be022957d372c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6235b60cefad5914d6be022957d372c9">enabled</a> () const</td></tr>
 <tr class="memdesc:a6235b60cefad5914d6be022957d372c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取碰撞器是否正在启用  <br /></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>碰撞器 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="aec7cbce24822e53018644fcb219d7d03" name="aec7cbce24822e53018644fcb219d7d03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec7cbce24822e53018644fcb219d7d03">&#9670;&#160;</a></span>Collider() <span class="overload">[1/3]</span></h2>
 
@@ -325,6 +340,128 @@ compareEllipse </dd>
 
 <p>获取碰撞器是否正在启用 </p>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad343672817806bba0d5bd23323645685" title="设置是否允许启用碰撞器">setEnabled</a> </dd></dl>
+
+</div>
+</div>
+<a id="aa850d301612e2f5ef1d1bf8632af3fa9" name="aa850d301612e2f5ef1d1bf8632af3fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa850d301612e2f5ef1d1bf8632af3fa9">&#9670;&#160;</a></span>moveBounds() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Collider::moveBounds </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动碰撞器的位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>指定新的位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a7a09505e10dc8c2dfd7152a91712cb7e" title="重新调整碰撞器的大小">resizeBounds</a> </dd>
+<dd>
+<a class="el" href="#a0dd5720d6230ffbfdc9439b90aa2b3a5" title="设置碰撞器的位置、大小">setBoundsGeometry</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae528795242e014f0a59353c1732a615d" name="ae528795242e014f0a59353c1732a615d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae528795242e014f0a59353c1732a615d">&#9670;&#160;</a></span>moveBounds() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Collider::moveBounds </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移动碰撞器的位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>指定位置横坐标 </td></tr>
+    <tr><td class="paramname">y</td><td>指定位置纵坐标 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a7a09505e10dc8c2dfd7152a91712cb7e" title="重新调整碰撞器的大小">resizeBounds</a> </dd>
+<dd>
+<a class="el" href="#a0dd5720d6230ffbfdc9439b90aa2b3a5" title="设置碰撞器的位置、大小">setBoundsGeometry</a> </dd></dl>
+
+</div>
+</div>
+<a id="a7a09505e10dc8c2dfd7152a91712cb7e" name="a7a09505e10dc8c2dfd7152a91712cb7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a09505e10dc8c2dfd7152a91712cb7e">&#9670;&#160;</a></span>resizeBounds() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Collider::resizeBounds </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整碰撞器的大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>指定新的大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aa850d301612e2f5ef1d1bf8632af3fa9" title="移动碰撞器的位置">moveBounds</a> </dd>
+<dd>
+<a class="el" href="#a0dd5720d6230ffbfdc9439b90aa2b3a5" title="设置碰撞器的位置、大小">setBoundsGeometry</a> </dd></dl>
+
+</div>
+</div>
+<a id="a1e5a52668db1710786b9116575ca0dcc" name="a1e5a52668db1710786b9116575ca0dcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5a52668db1710786b9116575ca0dcc">&#9670;&#160;</a></span>resizeBounds() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Collider::resizeBounds </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整碰撞器的大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>指定新的宽度 </td></tr>
+    <tr><td class="paramname">height</td><td>指定新的高度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aa850d301612e2f5ef1d1bf8632af3fa9" title="移动碰撞器的位置">moveBounds</a> </dd>
+<dd>
+<a class="el" href="#a0dd5720d6230ffbfdc9439b90aa2b3a5" title="设置碰撞器的位置、大小">setBoundsGeometry</a> </dd></dl>
 
 </div>
 </div>

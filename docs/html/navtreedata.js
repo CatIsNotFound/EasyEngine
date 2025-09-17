@@ -78,7 +78,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "文件", "files.html", [
-      [ "文件列表", "files.html", "files_dup" ]
+      [ "文件列表", "files.html", "files_dup" ],
+      [ "文件成员", "globals.html", [
+        [ "全部", "globals.html", null ],
+        [ "宏定义", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -86,8 +90,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_algorithm_8h.html",
-"class_easy_engine_1_1_cursor.html#a5d8fb90cc50a683c94b9661d31dbcdab",
-"functions_r.html"
+"class_easy_engine_1_1_components_1_1_trigger.html#ad89b741c15f1742e85335d727b05146b",
+"functions_func_v.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

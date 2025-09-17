@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🤝_20贡献指南_0',['🤝 贡献指南',['../D:/Coding/EasyEngine/README.md#autotoc_md66',1,'']]]
+  ['📦_20快速开始_0',['📦 快速开始',['../D:/Coding/EasyEngine/README.md#autotoc_md60',1,'']]]
 ];

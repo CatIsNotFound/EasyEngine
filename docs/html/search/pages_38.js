@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['高级功能示例_0',['高级功能示例',['../index.html#autotoc_md13',1,'']]]
+  ['资源管理_0',['5.1 资源管理',['../md_quickstart.html#autotoc_md43',1,'']]]
 ];

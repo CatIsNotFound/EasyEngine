@@ -144,6 +144,8 @@ $(function() {
 <tr class="memdesc:aa1bb1d7f718d7c8034e535cbc960cc40"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断矩形与矩形之间的位置关系  <br /></td></tr>
 <tr class="memitem:a32e8d9fa6fcd5a424fcfeb02f07dca9c" id="r_a32e8d9fa6fcd5a424fcfeb02f07dca9c"><td class="memItemLeft" align="right" valign="top">static int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32e8d9fa6fcd5a424fcfeb02f07dca9c">compareEllipse</a> (const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_ellipse.html">Graphics::Ellipse</a> &amp;ellipse1, const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_ellipse.html">Graphics::Ellipse</a> &amp;ellipse2)</td></tr>
 <tr class="memdesc:a32e8d9fa6fcd5a424fcfeb02f07dca9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断椭圆与椭圆之间的位置关系  <br /></td></tr>
+<tr class="memitem:a2b47bd7670ffe81bd77641a22c45e303" id="r_a2b47bd7670ffe81bd77641a22c45e303"><td class="memItemLeft" align="right" valign="top">static int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b47bd7670ffe81bd77641a22c45e303">compareRectEllipse</a> (const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> &amp;rect, const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_ellipse.html">Graphics::Ellipse</a> &amp;ellipse)</td></tr>
+<tr class="memdesc:a2b47bd7670ffe81bd77641a22c45e303"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断矩形与椭圆之间的位置关系  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>算法库 </p>
@@ -196,7 +198,7 @@ $(function() {
 </dl>
 <dl class="section note"><dt>注解</dt><dd>此函数对于近似的圆形效果更好。 </dd>
 <dd>
-对于椭圆，会随着宽和高的差的增加而更容易出现判断误差！ </dd></dl>
+对于椭圆，会随着宽高之差的增加而增加判断误差！ </dd></dl>
 
 </div>
 </div>
@@ -238,9 +240,9 @@ $(function() {
 <dl class="section return"><dt>返回</dt><dd>返回一个值以表示不同的位置关系 </dd></dl>
 <dl class="retval"><dt>返回值</dt><dd>
   <table class="retval">
-    <tr><td class="paramname">&gt;</td><td>1 表示点与椭圆完全分离； </td></tr>
-    <tr><td class="paramname">=</td><td>1 表示点正好在椭圆上； </td></tr>
-    <tr><td class="paramname">&lt;</td><td>1 表示点在椭圆内部。 </td></tr>
+    <tr><td class="paramname">-1</td><td>表示点与椭圆完全分离； </td></tr>
+    <tr><td class="paramname">0</td><td>表示点正好在椭圆上； </td></tr>
+    <tr><td class="paramname">1</td><td>表示点在椭圆内部。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -339,6 +341,57 @@ $(function() {
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a2b47bd7670ffe81bd77641a22c45e303" name="a2b47bd7670ffe81bd77641a22c45e303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b47bd7670ffe81bd77641a22c45e303">&#9670;&#160;</a></span>compareRectEllipse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int8_t Algorithm::compareRectEllipse </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rect</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_ellipse.html">Graphics::Ellipse</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ellipse</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>判断矩形与椭圆之间的位置关系 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rect</td><td>指定一个矩形 </td></tr>
+    <tr><td class="paramname">ellipse</td><td>指定一个椭圆 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回一个值以表示不同的位置关系 </dd></dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">-1</td><td>表示矩形和椭圆完全分离 </td></tr>
+    <tr><td class="paramname">0</td><td>表示矩形和椭圆属于相切或相交 </td></tr>
+    <tr><td class="paramname">1</td><td>表示矩形包含于椭圆 </td></tr>
+    <tr><td class="paramname">2</td><td>表示椭圆包含于矩形 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>指定椭圆时，选择近似的圆形效果更好！ </dd>
+<dd>
+对于椭圆，会随着宽高之差的增加而增加判断误差！ </dd></dl>
 
 </div>
 </div>

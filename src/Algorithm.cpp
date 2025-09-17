@@ -250,6 +250,96 @@ bool Algorithm::isEllipseInsideEllipse(const Graphics::Ellipse &inner, const Gra
 }
 
 int8_t Algorithm::compareRectEllipse(const Graphics::Rectangle &rect, const Graphics::Ellipse &ellipse) {
-    return 0;
+    // 快速检查矩形和椭圆是否完全分离
+    float rectLeft = rect.pos.x;
+    float rectRight = rect.pos.x + rect.size.width;
+    float rectTop = rect.pos.y;
+    float rectBottom = rect.pos.y + rect.size.height;
+    float ellipseLeft = ellipse.pos.x - ellipse.area.width * 0.5f;
+    float ellipseRight = ellipse.pos.x + ellipse.area.width * 0.5f;
+    float ellipseTop = ellipse.pos.y - ellipse.area.height * 0.5f;
+    float ellipseBottom = ellipse.pos.y + ellipse.area.height * 0.5f;
+    
+    // 如果包围盒不重叠，直接返回分离
+    if (rectRight < ellipseLeft || rectLeft > ellipseRight || 
+        rectBottom < ellipseTop || rectTop > ellipseBottom) {
+        return -1;
+    }
+    
+    // 检查矩形是否完全包含椭圆
+    bool ellipseFullyInRect = true;
+    float a = ellipse.area.width * 0.5f;
+    float b = ellipse.area.height * 0.5f;
+    
+    // 检查椭圆的关键点是否都在矩形内
+    Vector2 ellipsePoints[8] = {
+        {ellipse.pos.x + a, ellipse.pos.y},           // 右
+        {ellipse.pos.x - a, ellipse.pos.y},           // 左
+        {ellipse.pos.x, ellipse.pos.y + b},           // 上
+        {ellipse.pos.x, ellipse.pos.y - b},           // 下
+        {ellipse.pos.x + a * 0.7071f, ellipse.pos.y + b * 0.7071f},  // 右上
+        {ellipse.pos.x - a * 0.7071f, ellipse.pos.y + b * 0.7071f},  // 左上
+        {ellipse.pos.x + a * 0.7071f, ellipse.pos.y - b * 0.7071f},  // 右下
+        {ellipse.pos.x - a * 0.7071f, ellipse.pos.y - b * 0.7071f}   // 左下
+    };
+    
+    for (const auto& point : ellipsePoints) {
+        if (comparePosRect(point, rect) < 0) {
+            ellipseFullyInRect = false;
+            break;
+        }
+    }
+    
+    if (ellipseFullyInRect) {
+        return 2;  // 矩形包含椭圆
+    }
+    
+    // 检查椭圆是否完全包含矩形
+    bool rectFullyInEllipse = true;
+    Vector2 rectPoints[4] = {
+        {rectLeft, rectTop},        // 左上
+        {rectRight, rectTop},       // 右上
+        {rectRight, rectBottom},    // 右下
+        {rectLeft, rectBottom}      // 左下
+    };
+    
+    for (const auto& point : rectPoints) {
+        if (comparePosEllipse(point, ellipse) < 0) {
+            rectFullyInEllipse = false;
+            break;
+        }
+    }
+    
+    if (rectFullyInEllipse) {
+        return 1;  // 椭圆包含矩形
+    }
+    
+    // 检查是否有矩形顶点在椭圆内，或者椭圆关键点在矩形内
+    bool hasIntersection = false;
+    
+    // 检查矩形顶点是否在椭圆内
+    for (const auto& point : rectPoints) {
+        if (comparePosEllipse(point, ellipse) >= 0) {
+            hasIntersection = true;
+            break;
+        }
+    }
+    
+    // 如果没有找到，检查椭圆关键点是否在矩形内
+    if (!hasIntersection) {
+        for (const auto& point : ellipsePoints) {
+            if (comparePosRect(point, rect) >= 0) {
+                hasIntersection = true;
+                break;
+            }
+        }
+    }
+    
+    if (hasIntersection) {
+        return 0;  // 相交或相切
+    }
+    
+    // 如果以上都不满足，返回分离
+    return -1;
 }
 

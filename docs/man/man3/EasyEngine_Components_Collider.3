@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-EasyEngine::Components::Collider
+EasyEngine::Components::Collider \- 碰撞器  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <Components\&.h>\fP
 .SS "Public 成员函数"
 
 .in +1c
@@ -46,6 +49,22 @@ EasyEngine::Components::Collider
 .br
 .RI "设置碰撞器的大小、位置 "
 .ti -1c
+.RI "void \fBmoveBounds\fP (const \fBVector2\fP &position)"
+.br
+.RI "移动碰撞器的位置 "
+.ti -1c
+.RI "void \fBmoveBounds\fP (float x, float y)"
+.br
+.RI "移动碰撞器的位置 "
+.ti -1c
+.RI "void \fBresizeBounds\fP (const \fBSize\fP &size)"
+.br
+.RI "重新调整碰撞器的大小 "
+.ti -1c
+.RI "void \fBresizeBounds\fP (float width, float height)"
+.br
+.RI "重新调整碰撞器的大小 "
+.ti -1c
 .RI "void \fBsetEnabled\fP (bool v)"
 .br
 .RI "设置是否允许启用碰撞器 "
@@ -54,6 +73,9 @@ EasyEngine::Components::Collider
 .br
 .RI "获取碰撞器是否正在启用 "
 .in -1c
+.SH "详细描述"
+.PP 
+碰撞器 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Components::Collider::Collider (const \fBGraphics::Rectangle\fP & rect)\fR [explicit]\fP"
@@ -145,6 +167,86 @@ compareEllipse
 \fB参见\fP
 .RS 4
 \fBsetEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::moveBounds (const \fBVector2\fP & position)"
+
+.PP
+移动碰撞器的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIposition\fP 指定新的位置 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBresizeBounds\fP 
+
+.PP
+\fBsetBoundsGeometry\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::moveBounds (float x, float y)"
+
+.PP
+移动碰撞器的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定位置横坐标 
+.br
+\fIy\fP 指定位置纵坐标 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBresizeBounds\fP 
+
+.PP
+\fBsetBoundsGeometry\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::resizeBounds (const \fBSize\fP & size)"
+
+.PP
+重新调整碰撞器的大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIsize\fP 指定新的大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBmoveBounds\fP 
+
+.PP
+\fBsetBoundsGeometry\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::resizeBounds (float width, float height)"
+
+.PP
+重新调整碰撞器的大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 指定新的宽度 
+.br
+\fIheight\fP 指定新的高度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBmoveBounds\fP 
+
+.PP
+\fBsetBoundsGeometry\fP 
 .RE
 .PP
 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['贡献和支持_0',['贡献和支持',['../index.html#autotoc_md22',1,'']]],
-  ['贡献指南_1',['🤝 贡献指南',['../D:/Coding/EasyEngine/README.md#autotoc_md66',1,'']]]
+  ['组件化架构_0',['🧩 组件化架构',['../index.html#autotoc_md5',1,'']]],
+  ['组件系统（components）_1',['组件系统（Components）',['../D:/Coding/EasyEngine/README.md#autotoc_md71',1,'']]]
 ];
