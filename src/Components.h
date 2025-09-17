@@ -1065,6 +1065,25 @@ namespace EasyEngine {
              * @brief 获取实体碰撞器
              */
             Collider* collider() const;
+
+            /**
+             * @brief 获取实体本身
+             * @tparam Type 指定实体类型
+             * @return 返回对应类型的本体
+             * @note 可通过使用 typeInfo() 代替 Type 参数
+             * @see typeInfo
+             */
+            template<class Type>
+            Type* self() const;
+
+            /**
+             * @brief 获取当前实体的类型
+             * @return 返回一个类型信息，可用于 self() 上获取本体
+             * @note 对于未存放本体的游戏实体，将返回 void 类型
+             * @see self
+             */
+            const std::type_info & typeInfo() const;
+
         private:
             Vector2 _pos, _center_pos;
             std::unique_ptr<Collider> _collider;
@@ -1211,8 +1230,10 @@ namespace EasyEngine {
              * @return 返回当前状态下的精灵、组、动画
              * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
              * @note 如果无法确定当前状态下使用的类，请使用 getTypename() 以获取该状态下使用的类。
+             * @note 可直接使用 typeInfo() 代替 Type 参数。
              * @see setStatus
              * @see removeStatus
+             * @see typeInfo
              * @see getTypename
              */
             template<class Type>
@@ -1227,7 +1248,15 @@ namespace EasyEngine {
              * @retval Unknown
              * @see status
              */
-            std::string getTypename(const enum Status& status) const;
+            const char* getTypename(const enum Status &status) const;
+            /**
+             * @brief 获取其指定状态下的类型
+             * @note 对于指定状态下不存在的本体，将会返回 `void` 类型。
+             *
+             * 可搭配 status() 函数一起使用！
+             * @see status
+             */
+            const std::type_info& typeInfo(const enum Status &status) const;
 
             /**
              * @brief 指定某一事件设定触发函数（即：触发器）

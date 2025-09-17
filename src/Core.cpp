@@ -68,6 +68,7 @@ void EasyEngine::Cursor::moveToCenter(const EasyEngine::Window *window) {
 }
 
 void EasyEngine::Cursor::setCursor(const EasyEngine::Cursor::StdCursor &cursor) {
+    if (cursor == _std_cursor) return;
     if (_custom_cursor && _user_custom.contains(cursor)) {
         auto user_cursor = _user_custom.at(cursor);
         if (user_cursor.cursor) {
@@ -151,10 +152,11 @@ void EasyEngine::Cursor::unload() {
 
 EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t height) {
     SDL_Log("%s v%d.%d.%d-%s (Based by SDL %d.%d.%d)\n"
-            "For more information, see https://github.com/CatIsNotFound/EasyEngine.\n",
+            "For more information, see https://github.com/CatIsNotFound/EasyEngine.\n\n",
             EASYENGINE_NAME, EASYENGINE_MAJOR_VERSION, EASYENGINE_MINOR_VERSION, EASYENGINE_MACRO_VERSION,
             EASYENGINE_VERSION, SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
+        SDL_Log("[ERROR] Initializing Engine failed!\n");
         throw std::runtime_error("Runtime Error: Initialized Engine failed!\n");
     }
     if (!init(title.c_str(), width, height, &_main_window_id)) {
@@ -164,6 +166,7 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
     }
     AudioSystem::global()->init();
     Cursor::global();
+    SDL_Log("Enjoy! (*^_^*)\n\n");
 }
 
 int EasyEngine::Engine::exec() {

@@ -796,14 +796,23 @@ Type *EasyEngine::Components::Control::status(const EasyEngine::Components::Cont
     return nullptr;
 }
 
-std::string EasyEngine::Components::Control::getTypename(
-        const enum EasyEngine::Components::Control::Status &status) const {
+const char * EasyEngine::Components::Control::getTypename(
+        const enum Status &status) const {
     if (!_container_list.contains(status)) return "Undefined";
     if (_container_list.at(status)->type_id == 1) return "Sprite";
     if (_container_list.at(status)->type_id == 2) return "SpriteGroup";
     if (_container_list.at(status)->type_id == 3) return "Animation";
     if (_container_list.at(status)->type_id == 4) return "ClipSprite (GeometryF)";
     return "Unknown";
+}
+
+const std::type_info& EasyEngine::Components::Control::typeInfo(const enum Status &status) const {
+    if (!_container_list.contains(status)) return typeid(void);
+    if (_container_list.at(status)->type_id == 1) return typeid(Sprite);
+    if (_container_list.at(status)->type_id == 2) return typeid(SpriteGroup);
+    if (_container_list.at(status)->type_id == 3) return typeid(Animation);
+    if (_container_list.at(status)->type_id == 4) return typeid(GeometryF);
+    return typeid(void);
 }
 
 void EasyEngine::Components::Control::setEvent(const EasyEngine::Components::Control::Event &event, const std::function<void()> &function) {
@@ -1166,4 +1175,36 @@ EasyEngine::Vector2 EasyEngine::Components::Entity::centerPosition() const {
 
 EasyEngine::Components::Collider *EasyEngine::Components::Entity::collider() const {
     return _collider.get();
+}
+
+template<class Type>
+Type *EasyEngine::Components::Entity::self() const {
+    if constexpr (std::is_same_v<Type, Sprite>) {
+        if (_container.type_id == 1) return _container.self.sprite;
+    } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
+        if (_container.type_id == 2) return _container.self.sprite_group;
+    } else if constexpr (std::is_same_v<Type, Animation>) {
+        if (_container.type_id == 3) return _container.self.animation;
+    } else if constexpr (std::is_same_v<Type, GeometryF>) {
+        if (_container.type_id == 4) return &_container.self.clip_sprite;
+    } else {
+        static_assert(true, "[ERROR] Can't support the specified type!");
+    }
+    SDL_Log("[ERROR] The specified type is not match the current entity!\n"
+            "        p.s: Try to use typeInfo() instead.");
+    return nullptr;
+}
+
+const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
+    if (_container.type_id == 1) {
+        return typeid(Sprite);
+    } else if (_container.type_id == 2) {
+        return typeid(SpriteGroup);
+    } else if (_container.type_id == 3) {
+        return typeid(Animation);
+    } else if (_container.type_id == 4) {
+        return typeid(GeometryF);
+    } else {
+        return typeid(void);
+    }
 }
