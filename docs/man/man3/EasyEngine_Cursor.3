@@ -9,6 +9,14 @@ EasyEngine::Cursor \- 鼠标光标
 .PP
 .PP
 \fR#include <Core\&.h>\fP
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "struct \fBUserCustom\fP"
+.br
+.RI "用户自定义鼠标光标 "
+.in -1c
 .SS "Public 类型"
 
 .in +1c
@@ -46,6 +54,18 @@ EasyEngine::Cursor \- 鼠标光标
 .RI "设置鼠标光标 "
 .ti -1c
 .RI "void \fBsetCursor\fP (const std::string &path, int hot_x, int hot_y)"
+.br
+.RI "设置自定义鼠标光标 "
+.ti -1c
+.RI "void \fBsetUserCustomEnabled\fP (bool enabled)"
+.br
+.RI "是否允许使用自定义鼠标光标 "
+.ti -1c
+.RI "bool \fBuserCustomEnabled\fP () const"
+.br
+.RI "当前是否使用自定义鼠标光标 "
+.ti -1c
+.RI "void \fBsetCustomCursor\fP (const \fBStdCursor\fP &stdCursor, const std::string &path, const \fBUserCustom::HotPoint\fP &hot_point)"
 .br
 .RI "设置自定义鼠标光标 "
 .ti -1c
@@ -213,19 +233,64 @@ EasyEngine::Cursor \- 鼠标光标
 .PP
 \fB参数\fP
 .RS 4
-\fIcursor\fP 指定光标 
+\fIcursor\fP 指定光标类型 
 .PP
 .nf
-Cursor::global()\->setCursor(Cursor::Hand); // Changed the cursor
+Cursor::global()\->setCursor(Cursor::Hand);
 
 .fi
 .PP
  
 .RE
 .PP
+\fB注解\fP
+.RS 4
+对于已经开启自定义鼠标光标的情况，将会改变对应类型的自定义光标； 若指定对应的光标类型没有定义鼠标光标，则会使用系统对应的鼠标光标！ 
+.RE
+.PP
 \fB参见\fP
 .RS 4
+\fBcursor\fP 
+
+.PP
+\fBuserCustomEnabled\fP 
+
+.PP
 \fBStdCursor\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::setCustomCursor (const \fBStdCursor\fP & stdCursor, const std::string & path, const \fBUserCustom::HotPoint\fP & hot_point)"
+
+.PP
+设置自定义鼠标光标 
+.PP
+\fB参数\fP
+.RS 4
+\fIstdCursor\fP 指定标准鼠标类型 
+.br
+\fIpath\fP 指定本地路径 
+.br
+\fIhot_point\fP 指定热点 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetUserCustomEnabled\fP 
+
+.PP
+\fBuserCustomEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Cursor::setUserCustomEnabled (bool enabled)"
+
+.PP
+是否允许使用自定义鼠标光标 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 启用/禁用 
 .RE
 .PP
 

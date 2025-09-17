@@ -120,6 +120,11 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:UserCustom" id="r_UserCustom"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_easy_engine_1_1_cursor_1_1_user_custom.html">UserCustom</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">用户自定义鼠标光标  <a href="struct_easy_engine_1_1_cursor_1_1_user_custom.html#details">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public 类型</h2></td></tr>
 <tr class="memitem:aea464aae862924ae930638e3fe3a6b89" id="r_aea464aae862924ae930638e3fe3a6b89"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> { <br />
@@ -176,6 +181,13 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a6fc24aff2495412b988daa919b8fd414"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置鼠标光标  <br /></td></tr>
 <tr class="memitem:acaebd3ef8b39f38d666a7c64cc13d40c" id="r_acaebd3ef8b39f38d666a7c64cc13d40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaebd3ef8b39f38d666a7c64cc13d40c">setCursor</a> (const std::string &amp;path, int hot_x, int hot_y)</td></tr>
 <tr class="memdesc:acaebd3ef8b39f38d666a7c64cc13d40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自定义鼠标光标  <br /></td></tr>
+<tr class="memitem:aad0cfd2832a09474ce9f498e209d7d93" id="r_aad0cfd2832a09474ce9f498e209d7d93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad0cfd2832a09474ce9f498e209d7d93">setUserCustomEnabled</a> (bool enabled)</td></tr>
+<tr class="memdesc:aad0cfd2832a09474ce9f498e209d7d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否允许使用自定义鼠标光标  <br /></td></tr>
+<tr class="memitem:a5d8fb90cc50a683c94b9661d31dbcdab" id="r_a5d8fb90cc50a683c94b9661d31dbcdab"><td class="memItemLeft" align="right" valign="top"><a id="a5d8fb90cc50a683c94b9661d31dbcdab" name="a5d8fb90cc50a683c94b9661d31dbcdab"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>userCustomEnabled</b> () const</td></tr>
+<tr class="memdesc:a5d8fb90cc50a683c94b9661d31dbcdab"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前是否使用自定义鼠标光标 <br /></td></tr>
+<tr class="memitem:a935b9ff05c99286f1b3d86ad88ca8f55" id="r_a935b9ff05c99286f1b3d86ad88ca8f55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935b9ff05c99286f1b3d86ad88ca8f55">setCustomCursor</a> (const <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> &amp;stdCursor, const std::string &amp;path, const <a class="el" href="struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html">UserCustom::HotPoint</a> &amp;hot_point)</td></tr>
+<tr class="memdesc:a935b9ff05c99286f1b3d86ad88ca8f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自定义鼠标光标  <br /></td></tr>
 <tr class="memitem:a712c15a8f7ced9cda7554b00a67fce7c" id="r_a712c15a8f7ced9cda7554b00a67fce7c"><td class="memItemLeft" align="right" valign="top"><a id="a712c15a8f7ced9cda7554b00a67fce7c" name="a712c15a8f7ced9cda7554b00a67fce7c"></a>
 <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cursor</b> () const</td></tr>
 <tr class="memdesc:a712c15a8f7ced9cda7554b00a67fce7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前鼠标光标样式 <br /></td></tr>
@@ -413,14 +425,83 @@ static <a class="el" href="class_easy_engine_1_1_cursor.html">Cursor</a> *&#160;
 <p>设置鼠标光标 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cursor</td><td>指定光标 <div class="fragment"><div class="line"><a class="code hl_function" href="#af0709cecb0ac2483b1e8621d4b381846">Cursor::global</a>()-&gt;<a class="code hl_function" href="#a6fc24aff2495412b988daa919b8fd414">setCursor</a>(Cursor::Hand); <span class="comment">// Changed the cursor</span></div>
+    <tr><td class="paramname">cursor</td><td>指定光标类型 <div class="fragment"><div class="line"><a class="code hl_function" href="#af0709cecb0ac2483b1e8621d4b381846">Cursor::global</a>()-&gt;<a class="code hl_function" href="#a6fc24aff2495412b988daa919b8fd414">setCursor</a>(Cursor::Hand);</div>
 <div class="ttc" id="aclass_easy_engine_1_1_cursor_html_a6fc24aff2495412b988daa919b8fd414"><div class="ttname"><a href="#a6fc24aff2495412b988daa919b8fd414">EasyEngine::Cursor::setCursor</a></div><div class="ttdeci">void setCursor(const StdCursor &amp;cursor)</div><div class="ttdoc">设置鼠标光标</div><div class="ttdef"><b>定义</b> Core.cpp:70</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_cursor_html_af0709cecb0ac2483b1e8621d4b381846"><div class="ttname"><a href="#af0709cecb0ac2483b1e8621d4b381846">EasyEngine::Cursor::global</a></div><div class="ttdeci">static Cursor * global()</div><div class="ttdoc">获取鼠标光标全局</div><div class="ttdef"><b>定义</b> Core.cpp:20</div></div>
 </div><!-- fragment --> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aea464aae862924ae930638e3fe3a6b89" title="标准鼠标光标样式">StdCursor</a> </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>对于已经开启自定义鼠标光标的情况，将会改变对应类型的自定义光标； 若指定对应的光标类型没有定义鼠标光标，则会使用系统对应的鼠标光标！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a712c15a8f7ced9cda7554b00a67fce7c" title="获取当前鼠标光标样式">cursor</a> </dd>
+<dd>
+<a class="el" href="#a5d8fb90cc50a683c94b9661d31dbcdab" title="当前是否使用自定义鼠标光标">userCustomEnabled</a> </dd>
+<dd>
+<a class="el" href="#aea464aae862924ae930638e3fe3a6b89" title="标准鼠标光标样式">StdCursor</a> </dd></dl>
+
+</div>
+</div>
+<a id="a935b9ff05c99286f1b3d86ad88ca8f55" name="a935b9ff05c99286f1b3d86ad88ca8f55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a935b9ff05c99286f1b3d86ad88ca8f55">&#9670;&#160;</a></span>setCustomCursor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::setCustomCursor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#aea464aae862924ae930638e3fe3a6b89">StdCursor</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>stdCursor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html">UserCustom::HotPoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>hot_point</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置自定义鼠标光标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stdCursor</td><td>指定标准鼠标类型 </td></tr>
+    <tr><td class="paramname">path</td><td>指定本地路径 </td></tr>
+    <tr><td class="paramname">hot_point</td><td>指定热点 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aad0cfd2832a09474ce9f498e209d7d93" title="是否允许使用自定义鼠标光标">setUserCustomEnabled</a> </dd>
+<dd>
+<a class="el" href="#a5d8fb90cc50a683c94b9661d31dbcdab" title="当前是否使用自定义鼠标光标">userCustomEnabled</a> </dd></dl>
+
+</div>
+</div>
+<a id="aad0cfd2832a09474ce9f498e209d7d93" name="aad0cfd2832a09474ce9f498e209d7d93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0cfd2832a09474ce9f498e209d7d93">&#9670;&#160;</a></span>setUserCustomEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Cursor::setUserCustomEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>是否允许使用自定义鼠标光标 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>启用/禁用 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

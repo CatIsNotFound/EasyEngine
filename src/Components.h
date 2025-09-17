@@ -18,7 +18,6 @@
 using SSurface = SDL_Surface;
 using STexture = SDL_Texture;
 using SRenderer = SDL_Renderer;
-using SFRect = SDL_FRect;
 
 namespace EasyEngine {
     class Painter;
@@ -165,13 +164,6 @@ namespace EasyEngine {
             bool _is_load{false};
             Timer* _timer{nullptr};
             friend class AudioSystem;
-        };
-
-        class Video {
-        public:
-
-        private:
-
         };
 
         /**
@@ -853,6 +845,38 @@ namespace EasyEngine {
             Timer* _frame_changer{nullptr};
         };
 
+        /**
+         * @class Container
+         * @brief 存储容器
+         *
+         * 用于存储 Sprite, Animation, SpriteGroup, ClipSprite 等
+         */
+        class Container {
+            friend class Entity;
+            friend class Control;
+        private:
+            // explicit Container() : type_id(0), self() {}
+            /// @brief 用于区分存储的类型
+            ///
+            /// 按照 Self 的顺序表示（从 1 开始）
+            uint8_t type_id{0};
+            /// @union Self
+            /// @brief 在容器中存储的指针或数据
+            union Self {
+                explicit Self() {}
+                ~Self() {}
+                /// @brief 精灵 1
+                std::shared_ptr<Sprite> sprite;
+                /// @brief 精灵组合 2
+                std::shared_ptr<SpriteGroup> sprite_group;
+                /// @brief 动画 3
+                std::shared_ptr<Animation> animation;
+                /// @brief 裁剪精灵 4
+                GeometryF clip_sprite;
+            };
+            Self self{};
+        };
+
         class Collider {
             /**
              * @union Container
@@ -879,12 +903,12 @@ namespace EasyEngine {
              * @brief 创建碰撞器（相对位置下）
              * @param rect 矩形碰撞器
              */
-            Collider(const Graphics::Rectangle& rect);
+            explicit Collider(const Graphics::Rectangle& rect);
             /**
              * @brief 创建碰撞器
              * @param ellipse 椭圆碰撞器
              */
-            Collider(const Graphics::Ellipse& ellipse);
+            explicit Collider(const Graphics::Ellipse& ellipse);
             /**
              * @brief 创建碰撞器（相对位置下）
              * @param x       所在位置 x 轴
@@ -902,11 +926,63 @@ namespace EasyEngine {
              * @see compareEllipse
              * @see bounds
              */
-            uint8_t check(const EasyEngine::Components::Collider &collider) const;
+            int8_t check(const EasyEngine::Components::Collider &collider) const;
             /**
              * @brief 获取碰撞器的位置、大小
+             * @see setBoundsGeometry
              */
             const GeometryF & bounds() const;
+            /**
+             * @brief 设置碰撞器的位置、大小
+             * @param geometry 设定新的位置、大小
+             * @see bounds
+             */
+            void setBoundsGeometry(const GeometryF& geometry);
+            /**
+             * @brief 设置碰撞器的位置、大小
+             * @param position 设定新的位置
+             * @param size     设定新的大小
+             * @see bounds
+             */
+            void setBoundsGeometry(const Vector2& position, const Size& size);
+            /**
+             * @brief 设置碰撞器的大小、位置
+             * @param x         设定新的位置横坐标
+             * @param y         设定新的位置纵坐标
+             * @param width     设定新的宽度
+             * @param height    设定新的高度
+             */
+            void setBoundsGeometry(float x, float y, float width, float height);
+            /**
+             * @brief 移动碰撞器的位置
+             * @param position 指定新的位置
+             * @see resizeBounds
+             * @see setBoundsGeometry
+             */
+            void moveBounds(const Vector2& position);
+            /**
+             * @brief 移动碰撞器的位置
+             * @param x 指定位置横坐标
+             * @param y 指定位置纵坐标
+             * @see resizeBounds
+             * @see setBoundsGeometry
+             */
+            void moveBounds(float x, float y);
+            /**
+             * @brief 重新调整碰撞器的大小
+             * @param size 指定新的大小
+             * @see moveBounds
+             * @see setBoundsGeometry
+             */
+            void resizeBounds(const Size& size);
+            /**
+             * @brief 重新调整碰撞器的大小
+             * @param width   指定新的宽度
+             * @param height  指定新的高度
+             * @see moveBounds
+             * @see setBoundsGeometry
+             */
+            void resizeBounds(float width, float height);
             /**
              * @brief 设置是否允许启用碰撞器
              * @param v 碰撞器开关
@@ -923,13 +999,24 @@ namespace EasyEngine {
             GeometryF _geometry;
         };
 
+        /**
+         * @class Entity
+         * @brief 游戏实体
+         *
+         * 用于作为游戏中的实体
+         */
         class Entity {
+            friend class Container;
         public:
             /**
              * @brief 创建一个游戏实体
              * @param name 指定实体名称
              */
             explicit Entity(const std::string& name);
+            Entity(const std::string& name, const Sprite& sprite);
+            Entity(const std::string& name, const SpriteGroup& group);
+            Entity(const std::string& name, const Animation& animation);
+            Entity(const std::string& name, const Sprite& sprite, const GeometryF& clip);
             /**
              * @brief 设置实体名称
              * @param name 新的实体名称
@@ -970,32 +1057,15 @@ namespace EasyEngine {
              */
             Vector2 centerPosition() const;
             /**
-             * @brief 设置碰撞器开关
-             * @param enabled 是否启动碰撞器
-             * @see isColliderEnabled
+             * @brief 获取实体碰撞器
              */
-            void setColliderEnabled(const bool enabled);
-            /**
-             * @brief 碰撞器是否开启
-             * @return 返回 `true` 表示已开启碰撞器
-             * @see setColliderEnabled
-             */
-            bool isColliderEnabled() const;
-            /**
-             * @brief 检查实体是否与其它实体碰撞
-             * @param entity 指定实体
-             * @return 返回是否碰撞
-             * @note 使用前，须先开启碰撞器功能才能使用，否则无论如何都会返回为 false
-             * @see isColliderEnabled
-             * @see setColliderEnabled
-             */
-            bool isCollision(const Entity& entity);
+            Collider* collider() const;
         private:
-            Vector2 _pos, _center;
-            std::map<std::string, Animation> _animators;
-            Collider _collider;
+            Vector2 _pos, _center_pos;
+            std::unique_ptr<Collider> _collider;
             std::string _obj_name;
-            bool _is_collider{false};
+            Container _container;
+            std::unique_ptr<Sprite> _def_sprite;
         };
 
         /**
@@ -1005,6 +1075,7 @@ namespace EasyEngine {
          * 适用于 UI 界面的操作控件
          */
         class Control {
+            friend class Container;
         public:
             /**
              * @enum Status
@@ -1293,31 +1364,6 @@ namespace EasyEngine {
             Event __currentEvent() const;
         private:
             std::string _name;
-
-            /// @struct Container
-            /// @brief 存储控件的容器
-            struct Container {
-                explicit Container() : type_id(0), self() {}
-                /// @brief 用于区分存储的类型
-                ///
-                /// 按照 Self 的顺序表示（从 1 开始）
-                uint8_t type_id;
-                /// @union Self
-                /// @brief 在容器中存储的指针或数据
-                union Self {
-                    explicit Self() {}
-                    ~Self() {}
-                    /// @brief 精灵 1
-                    std::shared_ptr<Sprite> sprite;
-                    /// @brief 精灵组合 2
-                    std::shared_ptr<SpriteGroup> sprite_group;
-                    /// @brief 动画 3
-                    std::shared_ptr<Animation> animation;
-                    /// @brief 裁剪精灵 4
-                    GeometryF clip_sprite;
-                };
-                Self self;
-            };
             std::shared_ptr<Sprite> _def_sprite;
             std::map<Status, std::shared_ptr<Container>> _container_list;
             std::map<Event, std::shared_ptr<Trigger>> _trigger_list;

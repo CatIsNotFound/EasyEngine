@@ -24,11 +24,29 @@ using SCursor       = SDL_Cursor;
 using SStdCursor    = SDL_SystemCursor;
 using SAudioSpec    = SDL_AudioSpec;
 
+/// 主版本号
+#define EASYENGINE_MAJOR_VERSION 0
+/// 副版本号
+#define EASYENGINE_MINOR_VERSION 1
+/// 修订版本号
+#define EASYENGINE_MACRO_VERSION 1
+/// 版本类型
+#define EASYENGINE_VERSION "Beta"
+/// 项目名称
+#define EASYENGINE_NAME "EasyEngine"
 
+
+/**
+ * @namespace EasyEngine
+ * @brief 引擎
+ *
+ * 几乎包含所有引擎相关的类和命名空间。
+ * 通过使用 `using namespace EasyEngine;` 可直接使用引擎里的一切东西
+ */
 namespace EasyEngine {
     /**
      * @class Window
-     * @brief 窗口类
+     * @brief 窗口
      *
      * 绑定窗口、渲染器
      */
@@ -91,6 +109,31 @@ namespace EasyEngine {
             Custom              = 0x15
         };
 
+        /**
+         * @struct UserCustom
+         * @brief 用户自定义鼠标光标
+         */
+        struct UserCustom {
+
+            /**
+             * @struct HotPoint
+             * @brief 用于定义鼠标光标的热点坐标
+             */
+            struct HotPoint { int x, y; };
+            HotPoint hot_point;
+            std::shared_ptr<SSurface> cursor;
+            UserCustom(const HotPoint& hot_point, SSurface* cursor) {
+                this->hot_point.x = hot_point.x;
+                this->hot_point.y = hot_point.y;
+                this->cursor = std::shared_ptr<SSurface>(cursor);
+            }
+            UserCustom(const UserCustom& copy) {
+                hot_point.x = copy.hot_point.x;
+                hot_point.y = copy.hot_point.y;
+                cursor = copy.cursor;
+            }
+        };
+
     public:
         ~Cursor();
         /**
@@ -138,10 +181,14 @@ namespace EasyEngine {
         void moveToCenter(const Window* window = nullptr);
         /**
          * @brief 设置鼠标光标
-         * @param cursor 指定光标
+         * @param cursor 指定光标类型
          * @code
-         * Cursor::global()->setCursor(Cursor::Hand); // Changed the cursor
+         * Cursor::global()->setCursor(Cursor::Hand);
          * @endcode
+         * @note 对于已经开启自定义鼠标光标的情况，将会改变对应类型的自定义光标；
+         * 若指定对应的光标类型没有定义鼠标光标，则会使用系统对应的鼠标光标！
+         * @see cursor
+         * @see userCustomEnabled
          * @see StdCursor
          */
         void setCursor(const StdCursor& cursor);
@@ -152,6 +199,25 @@ namespace EasyEngine {
          * @param hot_y 中心点纵坐标
          */
         void setCursor(const std::string &path, int hot_x, int hot_y);
+        /**
+         * @brief 是否允许使用自定义鼠标光标
+         * @param enabled 启用/禁用
+         */
+        void setUserCustomEnabled(bool enabled);
+        /**
+         * @brief 当前是否使用自定义鼠标光标
+         *
+         */
+        bool userCustomEnabled() const;
+        /**
+         * @brief 设置自定义鼠标光标
+         * @param stdCursor 指定标准鼠标类型
+         * @param path      指定本地路径
+         * @param hot_point 指定热点
+         * @see setUserCustomEnabled
+         * @see userCustomEnabled
+         */
+        void setCustomCursor(const StdCursor& stdCursor, const std::string& path, const UserCustom::HotPoint& hot_point);
         /**
          * @brief 获取当前鼠标光标样式
          *
@@ -174,6 +240,8 @@ namespace EasyEngine {
         StdCursor _std_cursor{Default};
         SCursor* _cursor{nullptr};
         SSurface* _surface{nullptr};
+        bool _custom_cursor{false};
+        std::map<StdCursor, UserCustom> _user_custom;
         bool _visible{true};
     };
 
@@ -429,6 +497,10 @@ namespace EasyEngine {
          * 仅在引擎释放期间执行！
          */
         void installCleanUpEvent(const std::function<void()>& function);
+        /**
+         * @brief 获取当前显示器屏幕
+         */
+        Geometry screenGeometry();
 
     private:
         Engine() = delete;

@@ -109,9 +109,9 @@ namespace EasyEngine {
          * @param pos       指定的点所在的坐标
          * @param ellipse   指定的椭圆
          * @return 返回一个值以表示不同的位置关系
-         * @retval > 1 表示点与椭圆完全分离；
-         * @retval = 1  表示点正好在椭圆上；
-         * @retval < 1  表示点在椭圆内部。
+         * @retval -1  表示点与椭圆完全分离；
+         * @retval 0  表示点正好在椭圆上；
+         * @retval 1  表示点在椭圆内部。
          */
         static int comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
         /**
@@ -132,10 +132,25 @@ namespace EasyEngine {
          * @return 返回一个值以表示不同的位置关系
          * @retval -1 表示两个椭圆完全分离
          * @retval 0  表示两个椭圆属于相切或相交
-         * @retval 1  表示 `ellipse2` 包含 `ellipse1`
-         * @retval 2  表示 `ellipse1` 包含 `ellipse2`
+         * @retval 1  表示 `ellipse2` 的中心点包含 `ellipse1`
+         * @retval 2  表示 `ellipse1` 的中心点包含 `ellipse2`
+         * @note 此函数对于近似的圆形效果更好。
+         * @note 对于椭圆，会随着宽高之差的增加而增加判断误差！
          */
         static int8_t compareEllipse(const Graphics::Ellipse &ellipse1, const Graphics::Ellipse &ellipse2);
+        /**
+         * @brief 判断矩形与椭圆之间的位置关系
+         * @param rect      指定一个矩形
+         * @param ellipse   指定一个椭圆
+         * @return 返回一个值以表示不同的位置关系
+         * @retval -1 表示矩形和椭圆完全分离
+         * @retval 0  表示矩形和椭圆属于相切或相交
+         * @retval 1  表示矩形包含于椭圆
+         * @retval 2  表示椭圆包含于矩形
+         * @note 指定椭圆时，选择近似的圆形效果更好！
+         * @note 对于椭圆，会随着宽高之差的增加而增加判断误差！
+         */
+        static int8_t compareRectEllipse(const Graphics::Rectangle &rect, const Graphics::Ellipse &ellipse);
 
     private:
         /**

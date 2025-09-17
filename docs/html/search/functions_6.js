@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['gettypename_0',['getTypename',['../class_easy_engine_1_1_components_1_1_control.html#a18eeb0f55e28581d4acc5f803e65a03c',1,'EasyEngine::Components::Control']]],
-  ['global_1',['global',['../class_easy_engine_1_1_cursor.html#af0709cecb0ac2483b1e8621d4b381846',1,'EasyEngine::Cursor::global()'],['../class_easy_engine_1_1_event_system.html#a2e8a01d5b6523a3e93f16cdfd556e0b8',1,'EasyEngine::EventSystem::global()'],['../class_easy_engine_1_1_audio_system.html#af97d5e048491fb63ac5a446d26ab9853',1,'EasyEngine::AudioSystem::global()']]],
-  ['globalposition_2',['globalPosition',['../class_easy_engine_1_1_cursor.html#ac8e30a7bdecccedf53697b25318d6949',1,'EasyEngine::Cursor']]]
+  ['fillbackcolor_0',['fillBackColor',['../class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef',1,'EasyEngine::Painter']]],
+  ['fps_1',['fps',['../class_easy_engine_1_1_engine.html#a09ee3e3164410c88eed23aa142cc7f5b',1,'EasyEngine::Engine']]],
+  ['framedropthreshold_2',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
+  ['framedroptolerance_3',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
+  ['framescount_4',['framesCount',['../class_easy_engine_1_1_components_1_1_animation.html#a9d9279872e6834b79e210bdd1dea0a8e',1,'EasyEngine::Components::Animation']]]
 ];

@@ -1,5 +1,6 @@
 var class_easy_engine_1_1_cursor =
 [
+    [ "UserCustom", "struct_easy_engine_1_1_cursor_1_1_user_custom.html", "struct_easy_engine_1_1_cursor_1_1_user_custom" ],
     [ "StdCursor", "class_easy_engine_1_1_cursor.html#aea464aae862924ae930638e3fe3a6b89", [
       [ "Default", "class_easy_engine_1_1_cursor.html#aea464aae862924ae930638e3fe3a6b89a8ccbf3d28e4ff1fd5bc55f5c070fba88", null ],
       [ "Normal", "class_easy_engine_1_1_cursor.html#aea464aae862924ae930638e3fe3a6b89ade7f04b044bd1fc82dfe01d79ef36e52", null ],
@@ -37,6 +38,9 @@ var class_easy_engine_1_1_cursor =
     [ "position", "class_easy_engine_1_1_cursor.html#abdfe65c037a665575a93fe945ca672cc", null ],
     [ "setCursor", "class_easy_engine_1_1_cursor.html#acaebd3ef8b39f38d666a7c64cc13d40c", null ],
     [ "setCursor", "class_easy_engine_1_1_cursor.html#a6fc24aff2495412b988daa919b8fd414", null ],
+    [ "setCustomCursor", "class_easy_engine_1_1_cursor.html#a935b9ff05c99286f1b3d86ad88ca8f55", null ],
+    [ "setUserCustomEnabled", "class_easy_engine_1_1_cursor.html#aad0cfd2832a09474ce9f498e209d7d93", null ],
     [ "setVisible", "class_easy_engine_1_1_cursor.html#acbe7d6205ac1aa610cc922e08e3d38ef", null ],
+    [ "userCustomEnabled", "class_easy_engine_1_1_cursor.html#a5d8fb90cc50a683c94b9661d31dbcdab", null ],
     [ "visible", "class_easy_engine_1_1_cursor.html#a28db5fd1eae293282e864c5a235300b8", null ]
 ];

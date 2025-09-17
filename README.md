@@ -41,7 +41,7 @@ Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专�
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-repo/EasyEngine.git
+git clone https://github.com/CatIsNotFound/EasyEngine.git
 cd EasyEngine
 
 # 配置构建

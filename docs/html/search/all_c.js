@@ -1,17 +1,16 @@
 var searchData=
 [
-  ['easy_20engine_0',['Easy Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'']]],
-  ['easy_20engine_20快速入门指南_1',['Easy Engine 快速入门指南',['../md_quickstart.html',1,'']]],
-  ['easy_20engine_20游戏引擎文档_2',['Easy Engine 游戏引擎文档',['../index.html',1,'']]],
-  ['easyengine_3',['EasyEngine',['../namespace_easy_engine.html',1,'']]],
-  ['ellipse_4',['Ellipse',['../struct_easy_engine_1_1_graphics_1_1_ellipse.html',1,'EasyEngine::Graphics']]],
-  ['enabled_5',['enabled',['../class_easy_engine_1_1_components_1_1_timer.html#afc5094393367f756190b183c8efa8311',1,'EasyEngine::Components::Timer::enabled()'],['../class_easy_engine_1_1_components_1_1_trigger.html#ad89b741c15f1742e85335d727b05146b',1,'EasyEngine::Components::Trigger::enabled()'],['../class_easy_engine_1_1_components_1_1_control.html#a95872bba5aed3972d8e82479411ac9e1',1,'EasyEngine::Components::Control::enabled()']]],
-  ['engine_6',['Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'Easy Engine'],['../class_easy_engine_1_1_engine.html',1,'EasyEngine::Engine'],['../class_easy_engine_1_1_engine.html#a21aaab8bbbf9faf626b71c0f28ed9b14',1,'EasyEngine::Engine::Engine()']]],
-  ['engine_20快速入门指南_7',['Easy Engine 快速入门指南',['../md_quickstart.html',1,'']]],
-  ['engine_20游戏引擎文档_8',['Easy Engine 游戏引擎文档',['../index.html',1,'']]],
-  ['entity_9',['Entity',['../class_easy_engine_1_1_components_1_1_entity.html',1,'EasyEngine::Components::Entity'],['../class_easy_engine_1_1_components_1_1_entity.html#a9ba855cf89c90e5eccd5c70c045597c8',1,'EasyEngine::Components::Entity::Entity()']]],
-  ['event_10',['Event',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2',1,'EasyEngine::Components::Control']]],
-  ['event_11',['event',['../class_easy_engine_1_1_components_1_1_trigger.html#aa206447f4564b0b922a7e36fc3900439',1,'EasyEngine::Components::Trigger']]],
-  ['eventsystem_12',['EventSystem',['../class_easy_engine_1_1_event_system.html',1,'EasyEngine']]],
-  ['exec_13',['exec',['../class_easy_engine_1_1_engine.html#ad2530b5fbbea2ad182c83461d3f5c149',1,'EasyEngine::Engine']]]
+  ['dblclicked_0',['DblClicked',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd',1,'EasyEngine::Components::Control']]],
+  ['debian_1',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
+  ['default_2',['Default',['../class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fa7a1920d61156abc05a60135aefe8bc67',1,'EasyEngine::Components::Control']]],
+  ['delay_3',['delay',['../class_easy_engine_1_1_components_1_1_timer.html#ac05686d936249808d493e1183f61902e',1,'EasyEngine::Components::Timer']]],
+  ['disabled_4',['Disabled',['../class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fab9f5c797ebbf55adccdd8539a65a0241',1,'EasyEngine::Components::Control']]],
+  ['draw_5',['draw',['../class_easy_engine_1_1_components_1_1_sprite.html#a7e15ce7098b6ccf20bade064f520a7d0',1,'EasyEngine::Components::Sprite::draw(const Vector2 &amp;pos, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#ae5bf0c381c4950a24f236c13c4706bc0',1,'EasyEngine::Components::Sprite::draw(const Vector2 &amp;pos, float scaled, Painter *painter, const Vector2 &amp;center=Vector2(0, 0)) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#a22ff383faee1e718682879ab7b38c356',1,'EasyEngine::Components::Sprite::draw(const Vector2 &amp;pos, const Vector2 &amp;clip_pos, const Size &amp;clip_size, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#afece268f1f7937373b51d252b7d52b1a',1,'EasyEngine::Components::Sprite::draw(const Vector2 &amp;pos, double rotate, Painter *painter, const FlipMode &amp;flipMode=FlipMode::None, const Vector2 &amp;rotate_center={0, 0}) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#a844d1c3804f5bde5f6aceeefa30c80a8',1,'EasyEngine::Components::Sprite::draw(const Vector2 &amp;pos, const SColor &amp;color_alpha, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#a7757f67b4415db65d9c31528c8a4529b',1,'EasyEngine::Components::Sprite::draw(const EasyEngine::Components::Sprite::Properties &amp;properties, Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_sprite.html#ac7da25363608f0efb1f7771613ae406c',1,'EasyEngine::Components::Sprite::draw(Painter *painter) const'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#a0db121d0b332846ba72cb18b59452efc',1,'EasyEngine::Components::SpriteGroup::draw()'],['../class_easy_engine_1_1_components_1_1_animation.html#a2f6281ebbdce583a867681f5e141f305',1,'EasyEngine::Components::Animation::draw()']]],
+  ['drawellipse_6',['drawEllipse',['../class_easy_engine_1_1_painter.html#a6ed21bfc6ee3adce6dfdedb66a54f4f5',1,'EasyEngine::Painter']]],
+  ['drawline_7',['drawLine',['../class_easy_engine_1_1_painter.html#ae8414f521292cd5d0a4d3f3396d9e93d',1,'EasyEngine::Painter']]],
+  ['drawpoint_8',['drawPoint',['../class_easy_engine_1_1_painter.html#a5f5c5ded78dbf9c92861128d6d9e6a4f',1,'EasyEngine::Painter']]],
+  ['drawrectangle_9',['drawRectangle',['../class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea',1,'EasyEngine::Painter']]],
+  ['drawsprite_10',['drawSprite',['../class_easy_engine_1_1_painter.html#aff56973ec6cfdbacfeb300c2330a57c9',1,'EasyEngine::Painter::drawSprite(const Components::Sprite &amp;sprite, const Vector2 &amp;pos)'],['../class_easy_engine_1_1_painter.html#aa42ae115d2036c9efb553d91677f8ff7',1,'EasyEngine::Painter::drawSprite(const Components::Sprite &amp;sprite, const Components::Sprite::Properties &amp;properties)']]],
+  ['duration_11',['duration',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#ad6f34097aacf061fa8d13cfd0873140d',1,'EasyEngine::AudioSystem::Audio']]],
+  ['durationinframe_12',['durationInFrame',['../class_easy_engine_1_1_components_1_1_animation.html#a1a5a781b5c038b5273e7d1bae49d2900',1,'EasyEngine::Components::Animation']]]
 ];

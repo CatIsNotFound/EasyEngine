@@ -24,9 +24,6 @@ D:/Coding/EasyEngine/src/Components.h \- 组件库
 .br
 .RI "音效 "
 .ti -1c
-.RI "class \fBEasyEngine::Components::Video\fP"
-.br
-.ti -1c
 .RI "class \fBEasyEngine::Components::Timer\fP"
 .br
 .RI "定时器 "
@@ -51,18 +48,23 @@ D:/Coding/EasyEngine/src/Components.h \- 组件库
 .br
 .RI "动画 "
 .ti -1c
+.RI "class \fBEasyEngine::Components::Container\fP"
+.br
+.RI "存储容器 "
+.ti -1c
 .RI "class \fBEasyEngine::Components::Collider\fP"
+.br
+.ti -1c
+.RI "union \fBEasyEngine::Components::Collider::Container::Shape\fP"
 .br
 .ti -1c
 .RI "class \fBEasyEngine::Components::Entity\fP"
 .br
+.RI "游戏实体 "
 .ti -1c
 .RI "class \fBEasyEngine::Components::Control\fP"
 .br
 .RI "控件 "
-.ti -1c
-.RI "union \fBEasyEngine::Components::Control::Container::Self\fP"
-.br
 .in -1c
 .SS "命名空间"
 
@@ -87,9 +89,6 @@ D:/Coding/EasyEngine/src/Components.h \- 组件库
 .br
 .ti -1c
 .RI "using \fBSRenderer\fP = SDL_Renderer"
-.br
-.ti -1c
-.RI "using \fBSFRect\fP = SDL_FRect"
 .br
 .in -1c
 .SH "详细描述"

@@ -1,9 +1,17 @@
 var searchData=
 [
-  ['backgroundrenderingenabled_0',['backgroundRenderingEnabled',['../class_easy_engine_1_1_engine.html#aa5da80de6a48a60f7147dcc06ea21c15',1,'EasyEngine::Engine']]],
-  ['basic_2eh_1',['Basic.h',['../_basic_8h.html',1,'']]],
-  ['bgm_2',['BGM',['../class_easy_engine_1_1_components_1_1_b_g_m.html',1,'EasyEngine::Components::BGM'],['../class_easy_engine_1_1_components_1_1_b_g_m.html#a2e17bb58e6ea8d999fa6478b46d1c77f',1,'EasyEngine::Components::BGM::BGM()']]],
-  ['bgmchannel_3',['bgmChannel',['../class_easy_engine_1_1_audio_system.html#a8a2a2bd25db729d63a6e20d56f00dc85',1,'EasyEngine::AudioSystem']]],
-  ['bgmvolume_4',['bgmVolume',['../class_easy_engine_1_1_audio_system.html#a54f487b522a996f962d236b883a6088e',1,'EasyEngine::AudioSystem']]],
-  ['bounds_5',['bounds',['../class_easy_engine_1_1_components_1_1_collider.html#afe627366718e8cc9472f01bf388e3796',1,'EasyEngine::Components::Collider']]]
+  ['active_0',['Active',['../class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fa4d3d769b812b6faa6b76e1a8abaece2d',1,'EasyEngine::Components::Control']]],
+  ['active_1',['active',['../class_easy_engine_1_1_components_1_1_control.html#a1fca725bf499ed6310308a658dada073',1,'EasyEngine::Components::Control']]],
+  ['addcontrol_2',['addControl',['../class_easy_engine_1_1_event_system.html#afc8aec6f5a65c44bb4d2f8e200d22db9',1,'EasyEngine::EventSystem']]],
+  ['addframe_3',['addFrame',['../class_easy_engine_1_1_components_1_1_animation.html#a9fa2237fcb2d48bb169cd36aedd6e4a4',1,'EasyEngine::Components::Animation']]],
+  ['addtimer_4',['addTimer',['../class_easy_engine_1_1_event_system.html#a7bbdf8411a08169f33436bf40d086b01',1,'EasyEngine::EventSystem']]],
+  ['addtrigger_5',['addTrigger',['../class_easy_engine_1_1_event_system.html#af5a255c8fbc9986fcead636942a3a1e8',1,'EasyEngine::EventSystem']]],
+  ['algorithm_6',['Algorithm',['../class_easy_engine_1_1_algorithm.html',1,'EasyEngine']]],
+  ['algorithm_2eh_7',['Algorithm.h',['../_algorithm_8h.html',1,'']]],
+  ['animation_8',['Animation',['../class_easy_engine_1_1_components_1_1_animation.html',1,'EasyEngine::Components::Animation'],['../class_easy_engine_1_1_components_1_1_animation.html#a894d1ea77b9c64fe8cfebc322ced2a85',1,'EasyEngine::Components::Animation::Animation(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_animation.html#ab8d8c9ace0755f3376445ddc1309acf3',1,'EasyEngine::Components::Animation::Animation(const std::string &amp;name, const std::vector&lt; Sprite * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)']]],
+  ['append_9',['append',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a3de4a6b15e6f4ecdf546225e81f2703d',1,'EasyEngine::Components::SpriteGroup']]],
+  ['audio_10',['Audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html',1,'EasyEngine::AudioSystem']]],
+  ['audio_11',['audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a2d0d27614d757b87f4f9ee7e5490a3e7',1,'EasyEngine::AudioSystem::Audio']]],
+  ['audiospec_12',['audioSpec',['../class_easy_engine_1_1_audio_system.html#a069f80cac8b5c3b738f82bfbada7e9b2',1,'EasyEngine::AudioSystem']]],
+  ['audiosystem_13',['AudioSystem',['../class_easy_engine_1_1_audio_system.html',1,'EasyEngine']]]
 ];

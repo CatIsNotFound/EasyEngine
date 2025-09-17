@@ -45,7 +45,7 @@ EasyEngine::Algorithm \- 算法库
 .br
 .RI "判断点与矩形的位置关系 "
 .ti -1c
-.RI "static int8_t \fBcomparePosEllipse\fP (const \fBVector2\fP &pos, const \fBGraphics::Ellipse\fP &ellipse)"
+.RI "static int \fBcomparePosEllipse\fP (const \fBVector2\fP &pos, const \fBGraphics::Ellipse\fP &ellipse)"
 .br
 .RI "判断点与椭圆的位置关系 "
 .ti -1c
@@ -81,8 +81,27 @@ EasyEngine::Algorithm \- 算法库
 返回一个值以表示不同的位置关系 
 .RE
 .PP
+\fB返回值\fP
+.RS 4
+\fI-1\fP 表示两个椭圆完全分离 
+.br
+\fI0\fP 表示两个椭圆属于相切或相交 
+.br
+\fI1\fP 表示 \fRellipse2\fP 的中心点包含 \fRellipse1\fP 
+.br
+\fI2\fP 表示 \fRellipse1\fP 的中心点包含 \fRellipse2\fP 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+此函数对于近似的圆形效果更好。 
 
-.SS "int8_t Algorithm::comparePosEllipse (const \fBVector2\fP & pos, const \fBGraphics::Ellipse\fP & ellipse)\fR [static]\fP"
+.PP
+对于椭圆，会随着宽和高的差的增加而更容易出现判断误差！ 
+.RE
+.PP
+
+.SS "int Algorithm::comparePosEllipse (const \fBVector2\fP & pos, const \fBGraphics::Ellipse\fP & ellipse)\fR [static]\fP"
 
 .PP
 判断点与椭圆的位置关系 
@@ -101,11 +120,11 @@ EasyEngine::Algorithm \- 算法库
 .PP
 \fB返回值\fP
 .RS 4
-\fI-1\fP 表示点与矩形完全分离； 
+\fI>\fP 1 表示点与椭圆完全分离； 
 .br
-\fI0\fP 表示点正好在矩形上； 
+\fI=\fP 1 表示点正好在椭圆上； 
 .br
-\fI1\fP 表示点在矩形内部。 
+\fI<\fP 1 表示点在椭圆内部。 
 .RE
 .PP
 

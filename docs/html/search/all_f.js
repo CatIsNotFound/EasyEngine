@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['handler_0',['handler',['../class_easy_engine_1_1_event_system.html#ad51c16da26aae7f2c05d5661a1229935',1,'EasyEngine::EventSystem']]],
-  ['hextorgba_1',['hexToRGBA',['../class_easy_engine_1_1_algorithm.html#a1190222e9f894a806c370ed5032a87ce',1,'EasyEngine::Algorithm']]],
-  ['hflip_2',['HFlip',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a01725f7032dd7fc3bc68806a46628cdd',1,'EasyEngine::Components::Sprite']]],
-  ['hide_3',['hide',['../class_easy_engine_1_1_engine.html#ac9bc753dcc986c09052ba67e8ccb4ab7',1,'EasyEngine::Engine']]],
-  ['hifi_4',['HIFI',['../_core_8h.html#a17ee9965ef595c675d8056c37b23b7d0',1,'EasyEngine::StdAudioSpec']]],
-  ['high_5',['High',['../_core_8h.html#a5d47f8f201407131964751966d5f1f36',1,'EasyEngine::StdAudioSpec']]],
-  ['homebrew_6',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]],
-  ['hotarea_7',['hotArea',['../class_easy_engine_1_1_components_1_1_control.html#a1c7d268f271901a90d6f97b89b6df8dc',1,'EasyEngine::Components::Control']]],
-  ['hovered_8',['Hovered',['../class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fa3ef193e1ac8f2bc3d7226a29d6b09875',1,'EasyEngine::Components::Control']]]
+  ['geometry_0',['Geometry',['../struct_easy_engine_1_1_geometry.html',1,'EasyEngine']]],
+  ['geometry_1',['geometry',['../class_easy_engine_1_1_window.html#a57659cbb4d31426ce542c85448bcffb9',1,'EasyEngine::Window']]],
+  ['geometryf_2',['GeometryF',['../struct_easy_engine_1_1_geometry_f.html',1,'EasyEngine']]],
+  ['getfocus_3',['GetFocus',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e',1,'EasyEngine::Components::Control']]],
+  ['gettypename_4',['getTypename',['../class_easy_engine_1_1_components_1_1_control.html#a18eeb0f55e28581d4acc5f803e65a03c',1,'EasyEngine::Components::Control']]],
+  ['global_5',['global',['../class_easy_engine_1_1_cursor.html#af0709cecb0ac2483b1e8621d4b381846',1,'EasyEngine::Cursor::global()'],['../class_easy_engine_1_1_event_system.html#a2e8a01d5b6523a3e93f16cdfd556e0b8',1,'EasyEngine::EventSystem::global()'],['../class_easy_engine_1_1_audio_system.html#af97d5e048491fb63ac5a446d26ab9853',1,'EasyEngine::AudioSystem::global()']]],
+  ['globalposition_6',['globalPosition',['../class_easy_engine_1_1_cursor.html#ac8e30a7bdecccedf53697b25318d6949',1,'EasyEngine::Cursor']]],
+  ['graphics_7',['Graphics',['../namespace_graphics.html',1,'']]]
 ];

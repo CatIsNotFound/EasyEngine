@@ -97,7 +97,7 @@ EasyEngine::Engine \- 引擎类
 .br
 .RI "设置最大限定帧数 "
 .ti -1c
-.RI "uint32_t \fBfps\fP ()"
+.RI "uint32_t \fBfps\fP () const"
 .br
 .RI "实时获取当前刷新的帧数 "
 .ti -1c
@@ -128,6 +128,10 @@ EasyEngine::Engine \- 引擎类
 .RI "void \fBinstallCleanUpEvent\fP (const std::function< void()> &function)"
 .br
 .RI "设置清理引擎资源事件 "
+.ti -1c
+.RI "\fBGeometry\fP \fBscreenGeometry\fP ()"
+.br
+.RI "获取当前显示器屏幕 "
 .in -1c
 .SS "友元"
 
@@ -190,7 +194,7 @@ EasyEngine::Engine \- 引擎类
 .RE
 .PP
 
-.SS "uint32_t EasyEngine::Engine::fps ()"
+.SS "uint32_t EasyEngine::Engine::fps () const"
 
 .PP
 实时获取当前刷新的帧数 即每秒渲染了多少画面 

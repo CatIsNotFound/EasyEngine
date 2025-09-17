@@ -103,15 +103,15 @@ int8_t Algorithm::comparePosRect(const Vector2 &pos, const Graphics::Rectangle &
           maxX = rectangle.size.width + rectangle.pos.x,
           maxY = rectangle.size.height + rectangle.pos.y;
     const float EPSILON = 1e-6f;
-    if (pos.x > maxX + EPSILON || pos.x < minX - EPSILON || 
+    if (pos.x > maxX + EPSILON || pos.x < minX - EPSILON ||
         pos.y > maxY + EPSILON || pos.y < minY - EPSILON) {
         return -1;
     }
 
-    bool onLeftEdge = std::abs(pos.x - minX) <= EPSILON;
-    bool onRightEdge = std::abs(pos.x - maxX) <= EPSILON;
-    bool onTopEdge = std::abs(pos.y - minY) <= EPSILON;
-    bool onBottomEdge = std::abs(pos.y - maxY) <= EPSILON;    
+    bool onLeftEdge = fabsf(pos.x - minX) <= EPSILON;
+    bool onRightEdge = fabsf(pos.x - maxX) <= EPSILON;
+    bool onTopEdge = fabsf(pos.y - minY) <= EPSILON;
+    bool onBottomEdge = fabsf(pos.y - maxY) <= EPSILON;
     if ((onLeftEdge || onRightEdge || onTopEdge || onBottomEdge) && 
         pos.x >= minX - EPSILON && pos.x <= maxX + EPSILON && 
         pos.y >= minY - EPSILON && pos.y <= maxY + EPSILON) {
@@ -124,11 +124,17 @@ int Algorithm::comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &el
     Vector2 pt = pos - ellipse.pos;
     float a = ellipse.area.width * 0.5f;
     float b = ellipse.area.height * 0.5f;
-
+    const float EPISON = 1e-6f;
     // 椭圆方程: (x/a)^2 + (y/b)^2 <= 1
     float value = (pt.x * pt.x) / (a * a) +
                   (pt.y * pt.y) / (b * b);
-    return static_cast<int>(value);
+    if (value >= 1.0f - EPISON && value <= 1.0f + EPISON) {
+        return 0;
+    } else if (value >= 1.0f + EPISON) {
+        return -1;
+    } else {
+        return 1;
+    }
 }
 
 int8_t Algorithm::compareRect(const Graphics::Rectangle &rect1, const Graphics::Rectangle &rect2) {
@@ -147,20 +153,50 @@ int8_t Algorithm::compareEllipse(const Graphics::Ellipse &ellipse1, const Graphi
     float distanceSq = centerDiff.x * centerDiff.x + centerDiff.y * centerDiff.y;
 
     // 获取半轴长度
-    float a1 = ellipse1.area.width * 0.5f;
-    float b1 = ellipse1.area.height * 0.5f;
-    float a2 = ellipse2.area.width * 0.5f;
-    float b2 = ellipse2.area.height * 0.5f;
-
-    // 快速分离判断：使用最大可能距离
-    float maxDistance = (a1 + a2) * (a1 + a2) + (b1 + b2) * (b1 + b2);
-    if (distanceSq > maxDistance) {
+    float fa1 = ellipse1.area.width * 0.5f;
+    float fb1 = ellipse1.area.height * 0.5f;
+    float fa2 = ellipse2.area.width * 0.5f;
+    float fb2 = ellipse2.area.height * 0.5f;
+    // 区分长半轴，短半轴
+    float a1 = std::max(fa1, fb1);
+    float b1 = std::min(fa1, fb1);
+    float a2 = std::max(fa2, fb2);
+    float b2 = std::min(fa2, fb2);
+    // 使用包围盒，快速粗略判断
+    float left1 = ellipse1.pos.x - fa1;
+    float right1 = ellipse1.pos.x + fa1;
+    float bottom1 = ellipse1.pos.y - fb1;
+    float top1 = ellipse1.pos.y + fb1;
+    float left2 = ellipse2.pos.x - fa2;
+    float right2 = ellipse2.pos.x + fa2;
+    float bottom2 = ellipse2.pos.y - fb2;
+    float top2 = ellipse2.pos.y + fb2;
+    if ((right1 < left2) || (left1 > right2) || (top1 < bottom2) || (bottom1 > top2)) {
         return -1;
     }
 
+    // 快速分离判断：使用最大可能距离
+    float maxDistance = (a1 + a2) * (a1 + a2);
+    if (distanceSq > maxDistance) {
+        return -1;
+    }
+    // 使用 SAT 定理
+    constexpr float EPISON = 1e-6f;
+    std::vector<std::vector<bool>> axes = {{true, false}, {false, true}};
+    float r1, r2;
+    for (auto& axis : axes) {
+        r1 = axis[0] ? a1 : b1;
+        r2 = axis[0] ? a2 : b2;
+        float f = fabs(centerDiff.x * axis[0] + centerDiff.y * axis[1]);
+        if (f > r1 + r2) return -1;
+        if (fabs(f - (r1 + r2)) < EPISON) {
+            return -1;
+        }
+    }
+
     // 快速包含判断：检查中心点是否在对方椭圆内
-    bool center1InEllipse2 = comparePosEllipse(ellipse1.pos, ellipse2) <= 1;
-    bool center2InEllipse1 = comparePosEllipse(ellipse2.pos, ellipse1) <= 1;
+    bool center1InEllipse2 = comparePosEllipse(ellipse1.pos, ellipse2) >= 0;
+    bool center2InEllipse1 = comparePosEllipse(ellipse2.pos, ellipse1) >= 0;
 
     // 如果一个中心在另一个椭圆内，且椭圆大小差异明显，则判断为包含
     if (center1InEllipse2 && center2InEllipse1) {
@@ -184,20 +220,36 @@ int8_t Algorithm::compareEllipse(const Graphics::Ellipse &ellipse1, const Graphi
 }
 
 bool Algorithm::isEllipseInsideEllipse(const Graphics::Ellipse &inner, const Graphics::Ellipse &outer) {
-    // 检查内椭圆的四个端点是否都在外椭圆内
+    // 检查内椭圆的8个端点是否都在外椭圆内（增加对角线方向的检查点以提高准确性）
     float a_in = inner.area.width * 0.5f;
     float b_in = inner.area.height * 0.5f;
-    Vector2 points[4] = {
-            {inner.pos.x + a_in, inner.pos.y},
-            {inner.pos.x - a_in, inner.pos.y},
-            {inner.pos.x, inner.pos.y + b_in},
-            {inner.pos.x, inner.pos.y - b_in}
+    // 计算对角线方向的缩放因子（约为0.7071，即√2/2）
+    const float diagonalFactor = 0.7071f;
+    Vector2 points[8] = {
+            // 基本方向点
+            {inner.pos.x + a_in, inner.pos.y},         // 右
+            {inner.pos.x - a_in, inner.pos.y},         // 左
+            {inner.pos.x, inner.pos.y + b_in},         // 上
+            {inner.pos.x, inner.pos.y - b_in},         // 下
+            // 对角线方向点
+            {inner.pos.x + a_in * diagonalFactor, inner.pos.y + b_in * diagonalFactor},  // 右上
+            {inner.pos.x - a_in * diagonalFactor, inner.pos.y + b_in * diagonalFactor},  // 左上
+            {inner.pos.x + a_in * diagonalFactor, inner.pos.y - b_in * diagonalFactor},  // 右下
+            {inner.pos.x - a_in * diagonalFactor, inner.pos.y - b_in * diagonalFactor}   // 左下
     };
-    for (auto& point : points) {
-        if (comparePosEllipse(point, outer) > 1) {
-            return false;
+    bool ret = false;
+    std::ranges::all_of(std::ranges::begin(points), std::ranges::end(points),
+                        [&] (const Vector2& point) {
+        if (comparePosEllipse(point, outer) <= 0) {
+            return ret;
         }
-    }
-    return true;
+        ret = true;
+        return true;
+    });
+    return ret;
+}
+
+int8_t Algorithm::compareRectEllipse(const Graphics::Rectangle &rect, const Graphics::Ellipse &ellipse) {
+    return 0;
 }
 

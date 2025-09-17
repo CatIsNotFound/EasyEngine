@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../class_easy_engine_1_1_components_1_1_sprite.html#af26c8980014a6062bf0ff83b1712eb15',1,'EasyEngine::Components::Sprite::name()'],['../class_easy_engine_1_1_components_1_1_entity.html#a1b1db701b402de1c41caa261b0c4cfbc',1,'EasyEngine::Components::Entity::name()'],['../class_easy_engine_1_1_components_1_1_control.html#a333152092e35e8a4ba9766706290785d',1,'EasyEngine::Components::Control::name()']]],
-  ['nameof_1',['nameOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#ade78778b798f090a6bf6f5a3341879d1',1,'EasyEngine::Components::SpriteGroup']]],
-  ['newwindow_2',['newWindow',['../class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3',1,'EasyEngine::Engine']]]
+  ['midcirclef_0',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
+  ['move_1',['move',['../class_easy_engine_1_1_components_1_1_control.html#a1f1aea5c4332e5b8891a2e79f5dacabf',1,'EasyEngine::Components::Control::move(const Vector2 &amp;pos)'],['../class_easy_engine_1_1_components_1_1_control.html#a8d241b15df25d0025e235e44f70c4b3d',1,'EasyEngine::Components::Control::move(float x, float y)'],['../class_easy_engine_1_1_cursor.html#a87ecdb70644635d5aef9cf2192a4bd4b',1,'EasyEngine::Cursor::move(const Vector2 &amp;pos, const Window *window=nullptr)'],['../class_easy_engine_1_1_cursor.html#a189cba39845419555d421adbace00165',1,'EasyEngine::Cursor::move(float x, float y, const Window *window=nullptr)'],['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine::move()']]],
+  ['movetocenter_2',['moveToCenter',['../class_easy_engine_1_1_cursor.html#ad54e73d425b2f28a050ff73360cacb29',1,'EasyEngine::Cursor']]]
 ];

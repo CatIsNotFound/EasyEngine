@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-EasyEngine::Components::Entity
+EasyEngine::Components::Entity \- 游戏实体  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fR#include <Components\&.h>\fP
 .SS "Public 成员函数"
 
 .in +1c
@@ -13,6 +16,18 @@ EasyEngine::Components::Entity
 .RI "\fBEntity\fP (const std::string &\fBname\fP)"
 .br
 .RI "创建一个游戏实体 "
+.ti -1c
+.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBSprite\fP &sprite)"
+.br
+.ti -1c
+.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBSpriteGroup\fP &group)"
+.br
+.ti -1c
+.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBAnimation\fP &animation)"
+.br
+.ti -1c
+.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBSprite\fP &sprite, const \fBGeometryF\fP &clip)"
+.br
 .ti -1c
 .RI "void \fBsetName\fP (const std::string &\fBname\fP)"
 .br
@@ -46,18 +61,22 @@ EasyEngine::Components::Entity
 .br
 .RI "获取对象的中心点 "
 .ti -1c
-.RI "void \fBsetColliderEnabled\fP (const bool enabled)"
+.RI "\fBCollider\fP * \fBcollider\fP () const"
 .br
-.RI "设置碰撞器开关 "
-.ti -1c
-.RI "bool \fBisColliderEnabled\fP () const"
-.br
-.RI "碰撞器是否开启 "
-.ti -1c
-.RI "bool \fBisCollision\fP (const \fBEntity\fP &entity)"
-.br
-.RI "检查实体是否与其它实体碰撞 "
+.RI "获取实体碰撞器 "
 .in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBContainer\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+游戏实体 
+
+用于作为游戏中的实体 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Components::Entity::Entity (const std::string & name)\fR [explicit]\fP"
@@ -73,51 +92,6 @@ EasyEngine::Components::Entity
 
 .SH "成员函数说明"
 .PP 
-.SS "bool EasyEngine::Components::Entity::isColliderEnabled () const"
-
-.PP
-碰撞器是否开启 
-.PP
-\fB返回\fP
-.RS 4
-返回 \fRtrue\fP 表示已开启碰撞器 
-.RE
-.PP
-\fB参见\fP
-.RS 4
-\fBsetColliderEnabled\fP 
-.RE
-.PP
-
-.SS "bool EasyEngine::Components::Entity::isCollision (const \fBEntity\fP & entity)"
-
-.PP
-检查实体是否与其它实体碰撞 
-.PP
-\fB参数\fP
-.RS 4
-\fIentity\fP 指定实体 
-.RE
-.PP
-\fB返回\fP
-.RS 4
-返回是否碰撞 
-.RE
-.PP
-\fB注解\fP
-.RS 4
-使用前，须先开启碰撞器功能才能使用，否则无论如何都会返回为 false 
-.RE
-.PP
-\fB参见\fP
-.RS 4
-\fBisColliderEnabled\fP 
-
-.PP
-\fBsetColliderEnabled\fP 
-.RE
-.PP
-
 .SS "void EasyEngine::Components::Entity::setCenterPosition (float x, float y)"
 
 .PP
@@ -131,7 +105,7 @@ EasyEngine::Components::Entity
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Entity::setCenterPosition (\fBVector2\fP pos)"
+.SS "void EasyEngine::Components::Entity::setCenterPosition (\fBEasyEngine::Vector2\fP pos)"
 
 .PP
 设置实体的中心点 
@@ -139,22 +113,6 @@ EasyEngine::Components::Entity
 \fB参数\fP
 .RS 4
 \fIpos\fP 
-.RE
-.PP
-
-.SS "void EasyEngine::Components::Entity::setColliderEnabled (const bool enabled)"
-
-.PP
-设置碰撞器开关 
-.PP
-\fB参数\fP
-.RS 4
-\fIenabled\fP 是否启动碰撞器 
-.RE
-.PP
-\fB参见\fP
-.RS 4
-\fBisColliderEnabled\fP 
 .RE
 .PP
 
@@ -182,7 +140,7 @@ EasyEngine::Components::Entity
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Entity::setPosition (\fBVector2\fP pos)"
+.SS "void EasyEngine::Components::Entity::setPosition (\fBEasyEngine::Vector2\fP pos)"
 
 .PP
 设置实体在窗口中所在的位置 

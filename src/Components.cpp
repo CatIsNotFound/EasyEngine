@@ -691,7 +691,8 @@ EasyEngine::Components::Control::Control(const std::string &name, const EasyEngi
     _size = control._size;
     _hot_area = control._hot_area;
     _status = control._status;
-    _def_sprite = std::make_shared<Sprite>(fmt::format("{}_copy", control._def_sprite->name()), *control._def_sprite);
+    _def_sprite = std::make_shared<Sprite>(
+            fmt::format("{}_copy", control._def_sprite->name()), *control._def_sprite);
     _def_sprite->properties()->clip_mode = true;
     for (auto& _con : control._container_list) {
         auto container = std::make_shared<Container>();
@@ -1013,13 +1014,17 @@ EasyEngine::Components::Collider::Collider(float x, float y, float width, float 
     }
 }
 
-uint8_t EasyEngine::Components::Collider::check(const EasyEngine::Components::Collider &collider) const {
+int8_t EasyEngine::Components::Collider::check(const EasyEngine::Components::Collider &collider) const {
     if (!_enabled) {
         SDL_Log("[WARNING] The current collider is not be enabled!");
         return 0;
     }
+    if (!collider._enabled) {
+        SDL_Log("[WARNING] The specified collider is not be enabled!");
+        return 0;
+    }
     if (_con.mode == 1 && collider._con.mode == 1) {
-        return Algorithm::compareRect(_con.shape.rectangle, collider._con.shape.rectangle) > -1;
+        return Algorithm::compareRect(_con.shape.rectangle, collider._con.shape.rectangle);
     } else if (_con.mode == 2 && collider._con.mode == 2) {
         return Algorithm::compareEllipse(_con.shape.ellipse, collider._con.shape.ellipse);
     } else if (_con.mode != collider._con.mode) {
@@ -1033,10 +1038,128 @@ const EasyEngine::GeometryF& EasyEngine::Components::Collider::bounds() const {
     return _geometry;
 }
 
+void EasyEngine::Components::Collider::setBoundsGeometry(float x, float y, float width, float height) {
+    _geometry.reset(x, y, width, height);
+    if (_con.mode == 1) {
+        _con.shape.rectangle.pos.reset(x, y);
+        _con.shape.rectangle.size.reset(width, height);
+    } else if (_con.mode == 2) {
+        _con.shape.ellipse.pos.reset(x, y);
+        _con.shape.ellipse.area.reset(width, height);
+    }
+}
+
+void EasyEngine::Components::Collider::setBoundsGeometry(const EasyEngine::Vector2 &position,
+                                                         const EasyEngine::Size &size) {
+    setBoundsGeometry(position.x, position.y, size.width, size.height);
+}
+
+void EasyEngine::Components::Collider::setBoundsGeometry(const EasyEngine::GeometryF &geometry) {
+    setBoundsGeometry(geometry.pos.x, geometry.pos.y, geometry.size.width, geometry.size.height);
+}
+
+void EasyEngine::Components::Collider::moveBounds(const EasyEngine::Vector2 &position) {
+    moveBounds(position.x, position.y);
+}
+
+void EasyEngine::Components::Collider::moveBounds(float x, float y) {
+    _geometry.pos.x = x;
+    _geometry.pos.y = y;
+    if (_con.mode == 1) {
+        _con.shape.rectangle.pos.reset(x, y);
+    } else if (_con.mode == 2) {
+        _con.shape.ellipse.pos.reset(x, y);
+    }
+}
+
+void EasyEngine::Components::Collider::resizeBounds(const EasyEngine::Size &size) {
+    resizeBounds(size.width, size.height);
+}
+
+void EasyEngine::Components::Collider::resizeBounds(float width, float height) {
+    _geometry.size.width = width;
+    _geometry.size.height = height;
+    if (_con.mode == 1) {
+        _con.shape.rectangle.size.reset(width, height);
+    } else if (_con.mode == 2) {
+        _con.shape.ellipse.area.reset(width, height);
+    }
+}
+
 void EasyEngine::Components::Collider::setEnabled(bool v) {
     _enabled = v;
 }
 
 bool EasyEngine::Components::Collider::enabled() const {
     return _enabled;
+}
+
+EasyEngine::Components::Entity::Entity(const std::string &name) : _obj_name(name) {
+    _collider = std::make_unique<Collider>();
+}
+
+EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite)
+    : _obj_name(name) {
+    _collider = std::make_unique<Collider>();
+    _container.type_id = 1;
+    _container.self.sprite = std::make_shared<Sprite>(sprite.name(), sprite);
+}
+
+EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::SpriteGroup &group)
+    : _obj_name(name) {
+    _collider = std::make_unique<Collider>();
+    _container.type_id = 2;
+    _container.self.sprite_group = std::make_shared<SpriteGroup>(group);
+}
+
+EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Animation &animation)
+    : _obj_name(name) {
+    _collider = std::make_unique<Collider>();
+    _container.type_id = 3;
+    _container.self.animation = std::make_shared<Animation>(animation);
+}
+
+EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite,
+                                       const EasyEngine::GeometryF &clip)
+   : _obj_name(name) {
+    _collider = std::make_unique<Collider>();
+    _def_sprite = std::make_unique<Sprite>(sprite.name(), sprite);
+    _container.type_id = 4;
+    _container.self.clip_sprite = clip;
+}
+
+void EasyEngine::Components::Entity::setName(const std::string &name) {
+    _obj_name = name;
+}
+
+std::string EasyEngine::Components::Entity::name() const {
+    return _obj_name;
+}
+
+void EasyEngine::Components::Entity::setPosition(EasyEngine::Vector2 pos) {
+    _pos.reset(pos.x, pos.y);
+}
+
+void EasyEngine::Components::Entity::setPosition(float x, float y) {
+    _pos.reset(x, y);
+}
+
+void EasyEngine::Components::Entity::setCenterPosition(EasyEngine::Vector2 pos) {
+    _center_pos.reset(pos.x, pos.y);
+}
+
+void EasyEngine::Components::Entity::setCenterPosition(float x, float y) {
+    _center_pos.reset(x, y);
+}
+
+EasyEngine::Vector2 EasyEngine::Components::Entity::position() const {
+    return _pos;
+}
+
+EasyEngine::Vector2 EasyEngine::Components::Entity::centerPosition() const {
+    return _center_pos;
+}
+
+EasyEngine::Components::Collider *EasyEngine::Components::Entity::collider() const {
+    return _collider.get();
 }

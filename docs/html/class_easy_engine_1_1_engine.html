@@ -162,10 +162,10 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a2cbb7deffc1740da3c471a099f6ab779"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装自定义事件处理器  <br /></td></tr>
 <tr class="memitem:acb4e2107e5c31d729dbae944e503bdb0" id="r_acb4e2107e5c31d729dbae944e503bdb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4e2107e5c31d729dbae944e503bdb0">painter</a> (SWindowID window_id=_main_window_id)</td></tr>
 <tr class="memdesc:acb4e2107e5c31d729dbae944e503bdb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定窗口的渲染器  <br /></td></tr>
-<tr class="memitem:a5ccc24ade1d3b3d3755f3cadba98fbf1" id="r_a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ccc24ade1d3b3d3755f3cadba98fbf1">setFPS</a> (uint32_t <a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610">fps</a>)</td></tr>
+<tr class="memitem:a5ccc24ade1d3b3d3755f3cadba98fbf1" id="r_a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ccc24ade1d3b3d3755f3cadba98fbf1">setFPS</a> (uint32_t <a class="el" href="#a09ee3e3164410c88eed23aa142cc7f5b">fps</a>)</td></tr>
 <tr class="memdesc:a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置最大限定帧数  <br /></td></tr>
-<tr class="memitem:a3bca3b3709d0757cc3ece1c58cd1d610" id="r_a3bca3b3709d0757cc3ece1c58cd1d610"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610">fps</a> ()</td></tr>
-<tr class="memdesc:a3bca3b3709d0757cc3ece1c58cd1d610"><td class="mdescLeft">&#160;</td><td class="mdescRight">实时获取当前刷新的帧数  <br /></td></tr>
+<tr class="memitem:a09ee3e3164410c88eed23aa142cc7f5b" id="r_a09ee3e3164410c88eed23aa142cc7f5b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09ee3e3164410c88eed23aa142cc7f5b">fps</a> () const</td></tr>
+<tr class="memdesc:a09ee3e3164410c88eed23aa142cc7f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">实时获取当前刷新的帧数  <br /></td></tr>
 <tr class="memitem:a23c04fd8df861221b37a1b362e0451b4" id="r_a23c04fd8df861221b37a1b362e0451b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23c04fd8df861221b37a1b362e0451b4">setFrameDropTolerance</a> (float ratio=1.5f)</td></tr>
 <tr class="memdesc:a23c04fd8df861221b37a1b362e0451b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置丢帧检测的宽容度比例  <br /></td></tr>
 <tr class="memitem:ae6586519d2a9dc15ee517d00afd27664" id="r_ae6586519d2a9dc15ee517d00afd27664"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6586519d2a9dc15ee517d00afd27664">frameDropTolerance</a> () const</td></tr>
@@ -180,6 +180,9 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:aa5da80de6a48a60f7147dcc06ea21c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前是否允许后台渲染画面  <br /></td></tr>
 <tr class="memitem:aeb5e1cab414d8fbac80096960ed481ee" id="r_aeb5e1cab414d8fbac80096960ed481ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb5e1cab414d8fbac80096960ed481ee">installCleanUpEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
 <tr class="memdesc:aeb5e1cab414d8fbac80096960ed481ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置清理引擎资源事件  <br /></td></tr>
+<tr class="memitem:a832dfe1523acaa6e07ebc52d12ee3803" id="r_a832dfe1523acaa6e07ebc52d12ee3803"><td class="memItemLeft" align="right" valign="top"><a id="a832dfe1523acaa6e07ebc52d12ee3803" name="a832dfe1523acaa6e07ebc52d12ee3803"></a>
+<a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>screenGeometry</b> ()</td></tr>
+<tr class="memdesc:a832dfe1523acaa6e07ebc52d12ee3803"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前显示器屏幕 <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -278,8 +281,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 
 </div>
 </div>
-<a id="a3bca3b3709d0757cc3ece1c58cd1d610" name="a3bca3b3709d0757cc3ece1c58cd1d610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bca3b3709d0757cc3ece1c58cd1d610">&#9670;&#160;</a></span>fps()</h2>
+<a id="a09ee3e3164410c88eed23aa142cc7f5b" name="a09ee3e3164410c88eed23aa142cc7f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ee3e3164410c88eed23aa142cc7f5b">&#9670;&#160;</a></span>fps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,7 +291,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
           <td class="memname">uint32_t EasyEngine::Engine::fps </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -690,7 +693,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a3bca3b3709d0757cc3ece1c58cd1d610" title="实时获取当前刷新的帧数">fps</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a09ee3e3164410c88eed23aa142cc7f5b" title="实时获取当前刷新的帧数">fps</a> </dd>
 <dd>
 <a class="el" href="#ae6586519d2a9dc15ee517d00afd27664" title="获取当前丢帧检测的宽容度比例">frameDropTolerance</a> </dd>
 <dd>

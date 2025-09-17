@@ -16,13 +16,6 @@
 #include "preinclude.h"
 using SColor = SDL_Color;
 
-/**
- * @namespace EasyEngine
- * @brief 引擎
- *
- * 几乎包含所有引擎相关的类和命名空间。
- * 通过使用 `using namespace EasyEngine;` 可直接使用引擎里的一切东西
- */
 namespace EasyEngine {
     /**
      * @namespace StdColor
@@ -245,6 +238,12 @@ namespace EasyEngine {
             this->pos.y = pos.y;
             this->size.width = size.width;
             this->size.height = size.height;
+        }
+        void reset(float x, float y, float width, float height) {
+            this->pos.x = x;
+            this->pos.y = y;
+            this->size.width = width;
+            this->size.height = height;
         }
         void resetPos(const Vector2& pos) {
             this->pos.x = pos.x;

@@ -1,0 +1,46 @@
+.TH "EasyEngine::Cursor::UserCustom" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Cursor::UserCustom \- 用户自定义鼠标光标  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "struct \fBHotPoint\fP"
+.br
+.RI "用于定义鼠标光标的热点坐标 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBUserCustom\fP (const \fBHotPoint\fP &hot_point, SSurface *cursor)"
+.br
+.ti -1c
+.RI "\fBUserCustom\fP (const \fBUserCustom\fP &copy)"
+.br
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "\fBHotPoint\fP \fBhot_point\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< SSurface > \fBcursor\fP"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+用户自定义鼠标光标 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

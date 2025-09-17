@@ -114,11 +114,24 @@ $(function() {
   <div class="headertitle"><div class="title">EasyEngine::Components::Entity类 参考</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>游戏实体  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_components_8h_source.html">Components.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a9ba855cf89c90e5eccd5c70c045597c8" id="r_a9ba855cf89c90e5eccd5c70c045597c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ba855cf89c90e5eccd5c70c045597c8">Entity</a> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>)</td></tr>
 <tr class="memdesc:a9ba855cf89c90e5eccd5c70c045597c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个游戏实体  <br /></td></tr>
+<tr class="memitem:a2dc32189f27ef8fb36b03e1579f5027b" id="r_a2dc32189f27ef8fb36b03e1579f5027b"><td class="memItemLeft" align="right" valign="top"><a id="a2dc32189f27ef8fb36b03e1579f5027b" name="a2dc32189f27ef8fb36b03e1579f5027b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;sprite)</td></tr>
+<tr class="memitem:a5a7b74234760c846f3909bdfb2a3b948" id="r_a5a7b74234760c846f3909bdfb2a3b948"><td class="memItemLeft" align="right" valign="top"><a id="a5a7b74234760c846f3909bdfb2a3b948" name="a5a7b74234760c846f3909bdfb2a3b948"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> &amp;group)</td></tr>
+<tr class="memitem:ac343e3484ed17aceb2941f22b84fec0e" id="r_ac343e3484ed17aceb2941f22b84fec0e"><td class="memItemLeft" align="right" valign="top"><a id="ac343e3484ed17aceb2941f22b84fec0e" name="ac343e3484ed17aceb2941f22b84fec0e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Animation</a> &amp;animation)</td></tr>
+<tr class="memitem:ab49c31a43ba8e27de1129a391cb5f48c" id="r_ab49c31a43ba8e27de1129a391cb5f48c"><td class="memItemLeft" align="right" valign="top"><a id="ab49c31a43ba8e27de1129a391cb5f48c" name="ab49c31a43ba8e27de1129a391cb5f48c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Entity</b> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;sprite, const <a class="el" href="struct_easy_engine_1_1_geometry_f.html">GeometryF</a> &amp;clip)</td></tr>
 <tr class="memitem:a04f928a6fa9baba0e15b46d23be3be68" id="r_a04f928a6fa9baba0e15b46d23be3be68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04f928a6fa9baba0e15b46d23be3be68">setName</a> (const std::string &amp;<a class="el" href="#a1b1db701b402de1c41caa261b0c4cfbc">name</a>)</td></tr>
 <tr class="memdesc:a04f928a6fa9baba0e15b46d23be3be68"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置实体名称  <br /></td></tr>
 <tr class="memitem:a1b1db701b402de1c41caa261b0c4cfbc" id="r_a1b1db701b402de1c41caa261b0c4cfbc"><td class="memItemLeft" align="right" valign="top"><a id="a1b1db701b402de1c41caa261b0c4cfbc" name="a1b1db701b402de1c41caa261b0c4cfbc"></a>
@@ -132,20 +145,25 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
 <tr class="memdesc:ae90a7229896408e8389b857e605578cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置实体的中心点  <br /></td></tr>
 <tr class="memitem:a4fc2ee2c8cc06bb982e025eaf5bb5bcf" id="r_a4fc2ee2c8cc06bb982e025eaf5bb5bcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc2ee2c8cc06bb982e025eaf5bb5bcf">setCenterPosition</a> (float x, float y)</td></tr>
 <tr class="memdesc:a4fc2ee2c8cc06bb982e025eaf5bb5bcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置实体的中心点  <br /></td></tr>
-<tr class="memitem:a69e9fc37eab2a5069da417a328b981ab" id="r_a69e9fc37eab2a5069da417a328b981ab"><td class="memItemLeft" align="right" valign="top"><a id="a69e9fc37eab2a5069da417a328b981ab" name="a69e9fc37eab2a5069da417a328b981ab"></a>
+<tr class="memitem:a52c9aa6a3563b8836393432d86842252" id="r_a52c9aa6a3563b8836393432d86842252"><td class="memItemLeft" align="right" valign="top"><a id="a52c9aa6a3563b8836393432d86842252" name="a52c9aa6a3563b8836393432d86842252"></a>
 <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>position</b> () const</td></tr>
-<tr class="memdesc:a69e9fc37eab2a5069da417a328b981ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取对象位于窗口的坐标 <br /></td></tr>
-<tr class="memitem:a0a50bc96eb34d4e5a354be5c1308e6a3" id="r_a0a50bc96eb34d4e5a354be5c1308e6a3"><td class="memItemLeft" align="right" valign="top"><a id="a0a50bc96eb34d4e5a354be5c1308e6a3" name="a0a50bc96eb34d4e5a354be5c1308e6a3"></a>
+<tr class="memdesc:a52c9aa6a3563b8836393432d86842252"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取对象位于窗口的坐标 <br /></td></tr>
+<tr class="memitem:acdd8c1886bd1a074dbddf16fe845220c" id="r_acdd8c1886bd1a074dbddf16fe845220c"><td class="memItemLeft" align="right" valign="top"><a id="acdd8c1886bd1a074dbddf16fe845220c" name="acdd8c1886bd1a074dbddf16fe845220c"></a>
 <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>centerPosition</b> () const</td></tr>
-<tr class="memdesc:a0a50bc96eb34d4e5a354be5c1308e6a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取对象的中心点 <br /></td></tr>
-<tr class="memitem:a7730e9516e7448c55e37201b9ab19233" id="r_a7730e9516e7448c55e37201b9ab19233"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7730e9516e7448c55e37201b9ab19233">setColliderEnabled</a> (const bool enabled)</td></tr>
-<tr class="memdesc:a7730e9516e7448c55e37201b9ab19233"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置碰撞器开关  <br /></td></tr>
-<tr class="memitem:afb4bb047d3353602717dcc8010489b03" id="r_afb4bb047d3353602717dcc8010489b03"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb4bb047d3353602717dcc8010489b03">isColliderEnabled</a> () const</td></tr>
-<tr class="memdesc:afb4bb047d3353602717dcc8010489b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">碰撞器是否开启  <br /></td></tr>
-<tr class="memitem:a2943c38a28d4cf2a48918b44bed5cdf1" id="r_a2943c38a28d4cf2a48918b44bed5cdf1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2943c38a28d4cf2a48918b44bed5cdf1">isCollision</a> (const <a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> &amp;entity)</td></tr>
-<tr class="memdesc:a2943c38a28d4cf2a48918b44bed5cdf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查实体是否与其它实体碰撞  <br /></td></tr>
+<tr class="memdesc:acdd8c1886bd1a074dbddf16fe845220c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取对象的中心点 <br /></td></tr>
+<tr class="memitem:a245999bd0d432d7d15fd14bf055428d3" id="r_a245999bd0d432d7d15fd14bf055428d3"><td class="memItemLeft" align="right" valign="top"><a id="a245999bd0d432d7d15fd14bf055428d3" name="a245999bd0d432d7d15fd14bf055428d3"></a>
+<a class="el" href="class_easy_engine_1_1_components_1_1_collider.html">Collider</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>collider</b> () const</td></tr>
+<tr class="memdesc:a245999bd0d432d7d15fd14bf055428d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取实体碰撞器 <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:aee29d97f7e87f0263024133085c28e3d" id="r_aee29d97f7e87f0263024133085c28e3d"><td class="memItemLeft" align="right" valign="top"><a id="aee29d97f7e87f0263024133085c28e3d" name="aee29d97f7e87f0263024133085c28e3d"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>游戏实体 </p>
+<p>用于作为游戏中的实体 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="a9ba855cf89c90e5eccd5c70c045597c8" name="a9ba855cf89c90e5eccd5c70c045597c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ba855cf89c90e5eccd5c70c045597c8">&#9670;&#160;</a></span>Entity()</h2>
 
@@ -180,57 +198,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
-<a id="afb4bb047d3353602717dcc8010489b03" name="afb4bb047d3353602717dcc8010489b03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb4bb047d3353602717dcc8010489b03">&#9670;&#160;</a></span>isColliderEnabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool EasyEngine::Components::Entity::isColliderEnabled </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>碰撞器是否开启 </p>
-<dl class="section return"><dt>返回</dt><dd>返回 <span class="tt">true</span> 表示已开启碰撞器 </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a7730e9516e7448c55e37201b9ab19233" title="设置碰撞器开关">setColliderEnabled</a> </dd></dl>
-
-</div>
-</div>
-<a id="a2943c38a28d4cf2a48918b44bed5cdf1" name="a2943c38a28d4cf2a48918b44bed5cdf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2943c38a28d4cf2a48918b44bed5cdf1">&#9670;&#160;</a></span>isCollision()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool EasyEngine::Components::Entity::isCollision </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>entity</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>检查实体是否与其它实体碰撞 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entity</td><td>指定实体 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>返回</dt><dd>返回是否碰撞 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>使用前，须先开启碰撞器功能才能使用，否则无论如何都会返回为 false </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afb4bb047d3353602717dcc8010489b03" title="碰撞器是否开启">isColliderEnabled</a> </dd>
-<dd>
-<a class="el" href="#a7730e9516e7448c55e37201b9ab19233" title="设置碰撞器开关">setColliderEnabled</a> </dd></dl>
-
-</div>
-</div>
 <a id="a4fc2ee2c8cc06bb982e025eaf5bb5bcf" name="a4fc2ee2c8cc06bb982e025eaf5bb5bcf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fc2ee2c8cc06bb982e025eaf5bb5bcf">&#9670;&#160;</a></span>setCenterPosition() <span class="overload">[1/2]</span></h2>
 
@@ -270,7 +237,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
         <tr>
           <td class="memname">void EasyEngine::Components::Entity::setCenterPosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -283,32 +250,6 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a7730e9516e7448c55e37201b9ab19233" name="a7730e9516e7448c55e37201b9ab19233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7730e9516e7448c55e37201b9ab19233">&#9670;&#160;</a></span>setColliderEnabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void EasyEngine::Components::Entity::setColliderEnabled </td>
-          <td>(</td>
-          <td class="paramtype">const bool</td>          <td class="paramname"><span class="paramname"><em>enabled</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>设置碰撞器开关 </p>
-<dl class="params"><dt>参数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">enabled</td><td>是否启动碰撞器 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#afb4bb047d3353602717dcc8010489b03" title="碰撞器是否开启">isColliderEnabled</a> </dd></dl>
 
 </div>
 </div>
@@ -376,7 +317,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
         <tr>
           <td class="memname">void EasyEngine::Components::Entity::setPosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -394,6 +335,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li>D:/Coding/EasyEngine/src/<a class="el" href="_components_8h_source.html">Components.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Components.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

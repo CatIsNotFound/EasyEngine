@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['flip_5fmode_0',['flip_mode',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#a2f97caa34eb94cd03f7ce305c563f3e9',1,'EasyEngine::Components::Sprite::Properties']]]
+  ['ellipse_0',['ellipse',['../union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape.html#a63d1e5fe875f08810593bfe6eec40e3a',1,'EasyEngine::Components::Collider::Container::Shape']]]
 ];

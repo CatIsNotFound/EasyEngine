@@ -21,15 +21,15 @@ EasyEngine::Components::Animation \- 动画
 .br
 .RI "创建动画 "
 .ti -1c
-.RI "void \fBaddFrame\fP (const \fBSprite\fP &\fBsprite\fP, uint64_t duration=50)"
+.RI "void \fBaddFrame\fP (\fBEasyEngine::Components::Sprite\fP *\fBsprite\fP, uint64_t duration=50)"
 .br
 .RI "将精灵图像加入到帧 "
 .ti -1c
-.RI "void \fBinsertFrame\fP (const \fBSprite\fP &\fBsprite\fP, uint64_t duration=50, const size_t frame=0)"
+.RI "void \fBinsertFrame\fP (\fBEasyEngine::Components::Sprite\fP *\fBsprite\fP, uint64_t duration=50, const size_t frame=0)"
 .br
 .RI "将精灵图像插入到指定帧 "
 .ti -1c
-.RI "void \fBreplaceFrame\fP (const \fBEasyEngine::Components::Sprite\fP &\fBsprite\fP, const size_t frame, const uint64_t duration)"
+.RI "void \fBreplaceFrame\fP (\fBEasyEngine::Components::Sprite\fP *\fBsprite\fP, const size_t frame, const uint64_t duration)"
 .br
 .RI "在指定帧下替换精灵图像 "
 .ti -1c
@@ -120,7 +120,7 @@ EasyEngine::Components::Animation \- 动画
 
 .SH "成员函数说明"
 .PP 
-.SS "void EasyEngine::Components::Animation::addFrame (const \fBSprite\fP & sprite, uint64_t duration = \fR50\fP)"
+.SS "void EasyEngine::Components::Animation::addFrame (\fBEasyEngine::Components::Sprite\fP * sprite, uint64_t duration = \fR50\fP)"
 
 .PP
 将精灵图像加入到帧 
@@ -189,7 +189,7 @@ EasyEngine::Components::Animation \- 动画
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::insertFrame (const \fBSprite\fP & sprite, uint64_t duration = \fR50\fP, const size_t frame = \fR0\fP)"
+.SS "void EasyEngine::Components::Animation::insertFrame (\fBEasyEngine::Components::Sprite\fP * sprite, uint64_t duration = \fR50\fP, const size_t frame = \fR0\fP)"
 
 .PP
 将精灵图像插入到指定帧 
@@ -286,7 +286,7 @@ playLoop
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::replaceFrame (const \fBEasyEngine::Components::Sprite\fP & sprite, const size_t frame, const uint64_t duration)"
+.SS "void EasyEngine::Components::Animation::replaceFrame (\fBEasyEngine::Components::Sprite\fP * sprite, const size_t frame, const uint64_t duration)"
 
 .PP
 在指定帧下替换精灵图像 

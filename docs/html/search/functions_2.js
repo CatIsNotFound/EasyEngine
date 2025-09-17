@@ -1,22 +1,8 @@
 var searchData=
 [
-  ['centerposition_0',['centerPosition',['../class_easy_engine_1_1_components_1_1_entity.html#a0a50bc96eb34d4e5a354be5c1308e6a3',1,'EasyEngine::Components::Entity']]],
-  ['check_1',['check',['../class_easy_engine_1_1_components_1_1_collider.html#a2e775e3a6b73b19809daf62b4f582362',1,'EasyEngine::Components::Collider']]],
-  ['clear_2',['clear',['../class_easy_engine_1_1_painter.html#a19dc2cb2aa21472456916c6cf80a8a38',1,'EasyEngine::Painter']]],
-  ['clearcontrols_3',['clearControls',['../class_easy_engine_1_1_event_system.html#a919f07e7e8edf784458d56bdd759d07b',1,'EasyEngine::EventSystem']]],
-  ['clearcount_4',['clearCount',['../class_easy_engine_1_1_components_1_1_timer.html#a4ecfd4b2b878b50a4a40c0f3f2229a09',1,'EasyEngine::Components::Timer']]],
-  ['clearframes_5',['clearFrames',['../class_easy_engine_1_1_components_1_1_animation.html#abc8705828a052f552e2058f02e1b7548',1,'EasyEngine::Components::Animation']]],
-  ['clearplayedcount_6',['clearPlayedCount',['../class_easy_engine_1_1_components_1_1_animation.html#ab2b577e41730beb43f01e0dd14f86c7f',1,'EasyEngine::Components::Animation']]],
-  ['cleartimer_7',['clearTimer',['../class_easy_engine_1_1_event_system.html#a81485710f7070c50bd5f9e144c1427a1',1,'EasyEngine::EventSystem']]],
-  ['cleartrigger_8',['clearTrigger',['../class_easy_engine_1_1_event_system.html#afc6cb6be998ddc1efdd53791be354ef5',1,'EasyEngine::EventSystem']]],
-  ['collider_9',['Collider',['../class_easy_engine_1_1_components_1_1_collider.html#aa4ff20db36679935a526af815d639ccf',1,'EasyEngine::Components::Collider::Collider()'],['../class_easy_engine_1_1_components_1_1_collider.html#ac9a8088f2e11d6306378daee959c8457',1,'EasyEngine::Components::Collider::Collider(SFRect rect)'],['../class_easy_engine_1_1_components_1_1_collider.html#ace041576cbeab3eebdd4f2e141427742',1,'EasyEngine::Components::Collider::Collider(float x, float y, float width, float height)']]],
-  ['compareellipse_10',['compareEllipse',['../class_easy_engine_1_1_algorithm.html#a32e8d9fa6fcd5a424fcfeb02f07dca9c',1,'EasyEngine::Algorithm']]],
-  ['compareposellipse_11',['comparePosEllipse',['../class_easy_engine_1_1_algorithm.html#a8ea32a64434c616aa0c3d76def110d32',1,'EasyEngine::Algorithm']]],
-  ['compareposrect_12',['comparePosRect',['../class_easy_engine_1_1_algorithm.html#ab757cd160ee27defed5048e94469346c',1,'EasyEngine::Algorithm']]],
-  ['comparerect_13',['compareRect',['../class_easy_engine_1_1_algorithm.html#aa1bb1d7f718d7c8034e535cbc960cc40',1,'EasyEngine::Algorithm']]],
-  ['condition_14',['condition',['../class_easy_engine_1_1_components_1_1_trigger.html#a2325306a16dd133b1a65a20f4eb99ff6',1,'EasyEngine::Components::Trigger']]],
-  ['control_15',['Control',['../class_easy_engine_1_1_components_1_1_control.html#a524df2f541fd3b8a9f5c48c627ae790e',1,'EasyEngine::Components::Control::Control(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_control.html#ac005ba0a4a794fa3c3a390398b85d594',1,'EasyEngine::Components::Control::Control(const std::string &amp;name, const Control &amp;control)']]],
-  ['count_16',['count',['../class_easy_engine_1_1_components_1_1_timer.html#a6bef2152198ffdfb8b8a59b662852062',1,'EasyEngine::Components::Timer::count()'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#a8e5e1805282a2063d33da0c9188d7eea',1,'EasyEngine::Components::SpriteGroup::count()']]],
-  ['currentframe_17',['currentFrame',['../class_easy_engine_1_1_components_1_1_animation.html#ad4ee84f43408755ee4f9d41b76c4d130',1,'EasyEngine::Components::Animation']]],
-  ['cursor_18',['cursor',['../class_easy_engine_1_1_cursor.html#a712c15a8f7ced9cda7554b00a67fce7c',1,'EasyEngine::Cursor']]]
+  ['backgroundrenderingenabled_0',['backgroundRenderingEnabled',['../class_easy_engine_1_1_engine.html#aa5da80de6a48a60f7147dcc06ea21c15',1,'EasyEngine::Engine']]],
+  ['bgm_1',['BGM',['../class_easy_engine_1_1_components_1_1_b_g_m.html#a2e17bb58e6ea8d999fa6478b46d1c77f',1,'EasyEngine::Components::BGM']]],
+  ['bgmchannel_2',['bgmChannel',['../class_easy_engine_1_1_audio_system.html#a8a2a2bd25db729d63a6e20d56f00dc85',1,'EasyEngine::AudioSystem']]],
+  ['bgmvolume_3',['bgmVolume',['../class_easy_engine_1_1_audio_system.html#a54f487b522a996f962d236b883a6088e',1,'EasyEngine::AudioSystem']]],
+  ['bounds_4',['bounds',['../class_easy_engine_1_1_components_1_1_collider.html#af0d5a4a6aaeab562c1db27abc88db717',1,'EasyEngine::Components::Collider']]]
 ];

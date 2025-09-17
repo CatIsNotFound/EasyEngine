@@ -68,6 +68,16 @@ void EasyEngine::Cursor::moveToCenter(const EasyEngine::Window *window) {
 }
 
 void EasyEngine::Cursor::setCursor(const EasyEngine::Cursor::StdCursor &cursor) {
+    if (_custom_cursor && _user_custom.contains(cursor)) {
+        auto user_cursor = _user_custom.at(cursor);
+        if (user_cursor.cursor) {
+            SDL_DestroyCursor(_cursor);
+            _cursor = SDL_CreateColorCursor(user_cursor.cursor.get(),
+                                            user_cursor.hot_point.x, user_cursor.hot_point.y);
+            SDL_SetCursor(_cursor);
+            return;
+        }
+    }
     _std_cursor = cursor;
     SDL_DestroyCursor(_cursor);
     if (_surface) {
@@ -94,6 +104,28 @@ void EasyEngine::Cursor::setCursor(const std::string &path, int hot_x, int hot_y
     SDL_SetCursor(_cursor);
 }
 
+void EasyEngine::Cursor::setUserCustomEnabled(bool enabled) {
+    _custom_cursor = enabled;
+}
+
+bool EasyEngine::Cursor::userCustomEnabled() const { return _custom_cursor; }
+
+void EasyEngine::Cursor::setCustomCursor(const EasyEngine::Cursor::StdCursor &stdCursor, const std::string &path,
+                                         const UserCustom::HotPoint &hot_point) {
+    auto new_cursor = IMG_Load(path.c_str());
+    if (!new_cursor) {
+        SDL_Log("[ERROR] Can't set custom cursor, because the current path \"%s\" is not valid!", path.c_str());
+        return;
+    }
+    if (_user_custom.contains(stdCursor)) {
+        if (_user_custom.at(stdCursor).cursor) SDL_DestroySurface(_user_custom.at(stdCursor).cursor.get());
+        _user_custom.at(stdCursor).cursor = std::unique_ptr<SDL_Surface>(new_cursor);
+        _user_custom.at(stdCursor).hot_point = hot_point;
+    } else {
+        _user_custom.emplace(stdCursor, UserCustom(hot_point, new_cursor));
+    }
+}
+
 EasyEngine::Cursor::StdCursor EasyEngine::Cursor::cursor() const {
     return _std_cursor;
 }
@@ -118,6 +150,10 @@ void EasyEngine::Cursor::unload() {
 
 
 EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t height) {
+    SDL_Log("%s v%d.%d.%d-%s (Based by SDL %d.%d.%d)\n"
+            "For more information, see https://github.com/CatIsNotFound/EasyEngine.\n",
+            EASYENGINE_NAME, EASYENGINE_MAJOR_VERSION, EASYENGINE_MINOR_VERSION, EASYENGINE_MACRO_VERSION,
+            EASYENGINE_VERSION, SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
         throw std::runtime_error("Runtime Error: Initialized Engine failed!\n");
     }
@@ -150,6 +186,12 @@ bool EasyEngine::Engine::show(SDL_WindowID window_id) {
     if (!_ok) {
         SDL_Log("[ERROR] wID %u can't be showed! Code: %s\n", window_id, SDL_GetError());
     }
+    SDL_GetWindowSize(_sdl_window_list.at(window_id)->window,
+                      &_sdl_window_list.at(window_id)->geometry.width,
+                      &_sdl_window_list.at(window_id)->geometry.height);
+    SDL_GetWindowPosition(_sdl_window_list.at(window_id)->window,
+                          &_sdl_window_list.at(window_id)->geometry.x,
+                          &_sdl_window_list.at(window_id)->geometry.y);
     return _ok;
 }
 
@@ -161,6 +203,12 @@ int EasyEngine::Engine::showAll() {
             SDL_Log("[ERROR] wID %u can't be showed! Code: %s\n", _win.first, SDL_GetError());
             _ret += 1;
         }
+        SDL_GetWindowSize(_win.second->window,
+                          &_win.second->geometry.width,
+                          &_win.second->geometry.height);
+        SDL_GetWindowPosition(_win.second->window,
+                              &_win.second->geometry.x,
+                              &_win.second->geometry.y);
     }
     return _ret;
 }
@@ -541,6 +589,13 @@ void EasyEngine::Engine::installCleanUpEvent(const std::function<void()> &functi
     _clean_up_function = function;
 }
 
+EasyEngine::Geometry EasyEngine::Engine::screenGeometry() {
+    SDL_Rect rect;
+    auto _primary_screen = SDL_GetPrimaryDisplay();
+    SDL_GetDisplayBounds(_primary_screen, &rect);
+    return Geometry(rect.x, rect.y, rect.w, rect.h);
+}
+
 EasyEngine::Painter::Painter(EasyEngine::Window* window) : _window(window), paint_function(nullptr), _thickness(1) {}
 
 EasyEngine::Painter::~Painter() = default;
@@ -562,12 +617,10 @@ void EasyEngine::Painter::paintEvent() {
 }
 
 void EasyEngine::Painter::update() {
-    static int x = 0, y = 0, w = 0, h = 0;
-    SDL_GetWindowSize(_window->window, &w, &h);
-    SDL_GetWindowPosition(_window->window, &x, &y);
-    _window->geometry.setGeometry(x, y, w, h);
-    SDL_Rect _win_rect(0, 0, w, h);
-    SDL_SetRenderClipRect(_window->renderer, &_win_rect);
+    SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
+    SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
+    SDL_Rect _win_rect(0, 0, _window->geometry.width, _window->geometry.height);
+    SDL_SetRenderViewport(_window->renderer, &_win_rect);
     SDL_SetRenderDrawBlendMode(_window->renderer, SDL_BLENDMODE_NONE);
     for (auto& cmd : command_list) {
         cmd->exec(_window->renderer, thickness());
@@ -794,7 +847,6 @@ bool EasyEngine::EventSystem::handler() {
                 }
                 continue;
             }
-            // TODO: 如何处理鼠标的按下、松开、点击、双击事件，尽量不要和其它控件产生冲突！
             bool is_cursor_on_control = Algorithm::comparePosRect(cursor_pos, _container->hotArea()) > -1;
             static bool is_hovered_one = false;
             static uint64_t last_click_time = 0, current_click_time = 0, click_count = 0;

@@ -14,25 +14,49 @@ EasyEngine::Components::Collider
 .br
 .RI "创建碰撞器 "
 .ti -1c
-.RI "\fBCollider\fP (SFRect rect)"
+.RI "\fBCollider\fP (const \fBGraphics::Rectangle\fP &rect)"
 .br
 .RI "创建碰撞器（相对位置下） "
 .ti -1c
-.RI "\fBCollider\fP (float x, float y, float width, float height)"
+.RI "\fBCollider\fP (const \fBGraphics::Ellipse\fP &ellipse)"
+.br
+.RI "创建碰撞器 "
+.ti -1c
+.RI "\fBCollider\fP (float x, float y, float width, float height, uint8_t shape_mode)"
 .br
 .RI "创建碰撞器（相对位置下） "
 .ti -1c
-.RI "bool \fBcheck\fP (const \fBCollider\fP &collider)"
+.RI "int8_t \fBcheck\fP (const \fBEasyEngine::Components::Collider\fP &collider) const"
 .br
-.RI "检查此碰撞器是否与其它碰撞器碰撞 "
+.RI "检查此碰撞器是否与其它碰撞器存在碰撞？ "
 .ti -1c
-.RI "SFRect \fBbounds\fP () const"
+.RI "const \fBGeometryF\fP & \fBbounds\fP () const"
 .br
 .RI "获取碰撞器的位置、大小 "
+.ti -1c
+.RI "void \fBsetBoundsGeometry\fP (const \fBGeometryF\fP &geometry)"
+.br
+.RI "设置碰撞器的位置、大小 "
+.ti -1c
+.RI "void \fBsetBoundsGeometry\fP (const \fBVector2\fP &position, const \fBSize\fP &size)"
+.br
+.RI "设置碰撞器的位置、大小 "
+.ti -1c
+.RI "void \fBsetBoundsGeometry\fP (float x, float y, float width, float height)"
+.br
+.RI "设置碰撞器的大小、位置 "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool v)"
+.br
+.RI "设置是否允许启用碰撞器 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "获取碰撞器是否正在启用 "
 .in -1c
 .SH "构造及析构函数说明"
 .PP 
-.SS "EasyEngine::Components::Collider::Collider (SFRect rect)"
+.SS "EasyEngine::Components::Collider::Collider (const \fBGraphics::Rectangle\fP & rect)\fR [explicit]\fP"
 
 .PP
 创建碰撞器（相对位置下） 
@@ -43,7 +67,18 @@ EasyEngine::Components::Collider
 .RE
 .PP
 
-.SS "EasyEngine::Components::Collider::Collider (float x, float y, float width, float height)"
+.SS "EasyEngine::Components::Collider::Collider (const \fBGraphics::Ellipse\fP & ellipse)\fR [explicit]\fP"
+
+.PP
+创建碰撞器 
+.PP
+\fB参数\fP
+.RS 4
+\fIellipse\fP 椭圆碰撞器 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Collider::Collider (float x, float y, float width, float height, uint8_t shape_mode)"
 
 .PP
 创建碰撞器（相对位置下） 
@@ -57,15 +92,28 @@ EasyEngine::Components::Collider
 \fIwidth\fP 碰撞器的宽度 
 .br
 \fIheight\fP 碰撞器的高度 
+.br
+\fIshape_mode\fP 碰撞器形状（1 = 矩形，2 = 椭圆） 
 .RE
 .PP
 
 .SH "成员函数说明"
 .PP 
-.SS "bool EasyEngine::Components::Collider::check (const \fBCollider\fP & collider)"
+.SS "const \fBEasyEngine::GeometryF\fP & EasyEngine::Components::Collider::bounds () const"
 
 .PP
-检查此碰撞器是否与其它碰撞器碰撞 
+获取碰撞器的位置、大小 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetBoundsGeometry\fP 
+.RE
+.PP
+
+.SS "int8_t EasyEngine::Components::Collider::check (const \fBEasyEngine::Components::Collider\fP & collider) const"
+
+.PP
+检查此碰撞器是否与其它碰撞器存在碰撞？ 
 .PP
 \fB参数\fP
 .RS 4
@@ -74,12 +122,91 @@ EasyEngine::Components::Collider
 .PP
 \fB返回\fP
 .RS 4
-返回 true 表示已与其它碰撞器碰撞，其反之 
+根据不同的形状返回不同的值，具体见 \fRcompareRect\fP 与 \fRcompareEllipse\fP；当两个碰撞器形状不同时，返回 0（不支持） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+compareRect 
+
+.PP
+compareEllipse 
+
+.PP
+\fBbounds\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Collider::enabled () const"
+
+.PP
+获取碰撞器是否正在启用 
+.PP
+\fB参见\fP
+.RS 4
+\fBsetEnabled\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::setBoundsGeometry (const \fBGeometryF\fP & geometry)"
+
+.PP
+设置碰撞器的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIgeometry\fP 设定新的位置、大小 
 .RE
 .PP
 \fB参见\fP
 .RS 4
 \fBbounds\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::setBoundsGeometry (const \fBVector2\fP & position, const \fBSize\fP & size)"
+
+.PP
+设置碰撞器的位置、大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIposition\fP 设定新的位置 
+.br
+\fIsize\fP 设定新的大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBbounds\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::setBoundsGeometry (float x, float y, float width, float height)"
+
+.PP
+设置碰撞器的大小、位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 设定新的位置横坐标 
+.br
+\fIy\fP 设定新的位置纵坐标 
+.br
+\fIwidth\fP 设定新的宽度 
+.br
+\fIheight\fP 设定新的高度 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Collider::setEnabled (bool v)"
+
+.PP
+设置是否允许启用碰撞器 
+.PP
+\fB参数\fP
+.RS 4
+\fIv\fP 碰撞器开关 
 .RE
 .PP
 

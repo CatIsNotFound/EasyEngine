@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vflip_0',['VFlip',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7',1,'EasyEngine::Components::Sprite']]]
+  ['resized_0',['Resized',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb',1,'EasyEngine::Components::Control']]]
 ];

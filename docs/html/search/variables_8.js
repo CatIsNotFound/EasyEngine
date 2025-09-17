@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mono_0',['Mono',['../_core_8h.html#ab1f6dda9edb960b2a9d75cda1161c71d',1,'EasyEngine::StdAudioSpec']]]
+  ['low_0',['Low',['../_core_8h.html#a7422fab4d0815fd77910384afa7bf347',1,'EasyEngine::StdAudioSpec']]]
 ];

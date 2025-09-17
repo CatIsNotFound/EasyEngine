@@ -126,6 +126,12 @@ Public 成员函数</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SpriteGroup</b> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> &amp;group)=default</td></tr>
 <tr class="memitem:ab4e1a334b5b8cf5d95ff717277284dd1" id="r_ab4e1a334b5b8cf5d95ff717277284dd1"><td class="memItemLeft" align="right" valign="top"><a id="ab4e1a334b5b8cf5d95ff717277284dd1" name="ab4e1a334b5b8cf5d95ff717277284dd1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SpriteGroup</b> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> &amp;&amp;group)</td></tr>
+<tr class="memitem:a533f7a54f8f97a81780609275d6519d8" id="r_a533f7a54f8f97a81780609275d6519d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a533f7a54f8f97a81780609275d6519d8">resize</a> (float width, float height)</td></tr>
+<tr class="memdesc:a533f7a54f8f97a81780609275d6519d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整整体精灵组合大小  <br /></td></tr>
+<tr class="memitem:a78ee8f2a42c46d07dfc8d8ebe3accd04" id="r_a78ee8f2a42c46d07dfc8d8ebe3accd04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78ee8f2a42c46d07dfc8d8ebe3accd04">resize</a> (const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;<a class="el" href="#af68ca81262ed6669ceebbe025cecc726">size</a>)</td></tr>
+<tr class="memdesc:a78ee8f2a42c46d07dfc8d8ebe3accd04"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整整体精灵组合大小  <br /></td></tr>
+<tr class="memitem:af68ca81262ed6669ceebbe025cecc726" id="r_af68ca81262ed6669ceebbe025cecc726"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_size.html">EasyEngine::Size</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af68ca81262ed6669ceebbe025cecc726">size</a> () const</td></tr>
+<tr class="memdesc:af68ca81262ed6669ceebbe025cecc726"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前精灵组合的整体大小  <br /></td></tr>
 <tr class="memitem:a3de4a6b15e6f4ecdf546225e81f2703d" id="r_a3de4a6b15e6f4ecdf546225e81f2703d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3de4a6b15e6f4ecdf546225e81f2703d">append</a> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;sprite)</td></tr>
 <tr class="memdesc:a3de4a6b15e6f4ecdf546225e81f2703d"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加精灵  <br /></td></tr>
 <tr class="memitem:a6190140c50d5bc9a67ff906c79272a43" id="r_a6190140c50d5bc9a67ff906c79272a43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6190140c50d5bc9a67ff906c79272a43">insert</a> (uint32_t index, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;sprite)</td></tr>
@@ -525,6 +531,83 @@ lastIndexOf </dd></dl>
 <a class="el" href="#a1a08c6b14cbee91a7cf4023275d08355" title="获取指定索引的精灵">indexOf</a> </dd>
 <dd>
 lastIndexOf </dd></dl>
+
+</div>
+</div>
+<a id="a78ee8f2a42c46d07dfc8d8ebe3accd04" name="a78ee8f2a42c46d07dfc8d8ebe3accd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78ee8f2a42c46d07dfc8d8ebe3accd04">&#9670;&#160;</a></span>resize() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::SpriteGroup::resize </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整整体精灵组合大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>给定新的大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#af68ca81262ed6669ceebbe025cecc726" title="获取当前精灵组合的整体大小">size</a> </dd></dl>
+
+</div>
+</div>
+<a id="a533f7a54f8f97a81780609275d6519d8" name="a533f7a54f8f97a81780609275d6519d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a533f7a54f8f97a81780609275d6519d8">&#9670;&#160;</a></span>resize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::SpriteGroup::resize </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整整体精灵组合大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>新的宽度 </td></tr>
+    <tr><td class="paramname">height</td><td>新的高度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#af68ca81262ed6669ceebbe025cecc726" title="获取当前精灵组合的整体大小">size</a> </dd></dl>
+
+</div>
+</div>
+<a id="af68ca81262ed6669ceebbe025cecc726" name="af68ca81262ed6669ceebbe025cecc726"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af68ca81262ed6669ceebbe025cecc726">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_size.html">EasyEngine::Size</a> EasyEngine::Components::SpriteGroup::size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前精灵组合的整体大小 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a533f7a54f8f97a81780609275d6519d8" title="重新调整整体精灵组合大小">resize</a> </dd></dl>
 
 </div>
 </div>

@@ -1,15 +1,19 @@
 var class_easy_engine_1_1_components_1_1_control =
 [
     [ "Event", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2", [
-      [ "Loaded", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a7381d487d18845b379422325c0a768d6", null ],
-      [ "Unload", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2aae11d3ee071e72953c90b02bff1a19cb", null ],
+      [ "None", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "GetFocus", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e", null ],
       [ "LostFocus", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994", null ],
+      [ "Resized", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb", null ],
+      [ "Moved", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a95bfdefaaf01553cbf21ccd942855c69", null ],
+      [ "MovedResized", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2ad380df121886fa409fe2fc4d1267be63", null ],
+      [ "EnabledChange", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a14bdf2ac59e6cf40b7dc615bfb2fb305", null ],
       [ "Clicked", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4", null ],
       [ "DblClicked", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd", null ],
       [ "MouseDown", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d", null ],
       [ "MouseUp", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031", null ],
       [ "MouseHover", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0", null ],
+      [ "MouseLeave", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2af5dd885bea15c13a9cee47dd66d74b0d", null ],
       [ "KeyPressed", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca", null ],
       [ "KeyDown", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354", null ],
       [ "KeyUp", "class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a", null ]
@@ -22,7 +26,9 @@ var class_easy_engine_1_1_components_1_1_control =
       [ "Disabled", "class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fab9f5c797ebbf55adccdd8539a65a0241", null ]
     ] ],
     [ "Control", "class_easy_engine_1_1_components_1_1_control.html#a524df2f541fd3b8a9f5c48c627ae790e", null ],
+    [ "Control", "class_easy_engine_1_1_components_1_1_control.html#ab2acc8e8b47f8bfc0f6a82a9c76d44cb", null ],
     [ "Control", "class_easy_engine_1_1_components_1_1_control.html#ac005ba0a4a794fa3c3a390398b85d594", null ],
+    [ "active", "class_easy_engine_1_1_components_1_1_control.html#a1fca725bf499ed6310308a658dada073", null ],
     [ "enabled", "class_easy_engine_1_1_components_1_1_control.html#a95872bba5aed3972d8e82479411ac9e1", null ],
     [ "getTypename", "class_easy_engine_1_1_components_1_1_control.html#a18eeb0f55e28581d4acc5f803e65a03c", null ],
     [ "hotArea", "class_easy_engine_1_1_components_1_1_control.html#a1c7d268f271901a90d6f97b89b6df8dc", null ],
@@ -47,6 +53,8 @@ var class_easy_engine_1_1_components_1_1_control =
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#ad1c8e151d2d206f8f06b53fa289d6b32", null ],
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#aaad67edf7b27afaabf728ba385943374", null ],
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#aec8c2d0dc60b1d2312038c8ef4349faa", null ],
+    [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#ac62a4fbfd8ec3910a0c8ba70936537b9", null ],
     [ "size", "class_easy_engine_1_1_components_1_1_control.html#ab4259dddc23b43a600b2fd79f9bfd4b0", null ],
-    [ "status", "class_easy_engine_1_1_components_1_1_control.html#a52b634d3e5084f7a757acea500267577", null ]
+    [ "status", "class_easy_engine_1_1_components_1_1_control.html#a52b634d3e5084f7a757acea500267577", null ],
+    [ "update", "class_easy_engine_1_1_components_1_1_control.html#aae9138e8e3c78f35be82bddce5d18a00", null ]
 ];

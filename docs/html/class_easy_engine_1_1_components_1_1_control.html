@@ -133,17 +133,22 @@ Public 类型</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a2524efa41469bb6335468b8382c5db9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">控件状态  <a href="#a2524efa41469bb6335468b8382c5db9f">更多...</a><br /></td></tr>
 <tr class="memitem:ac035e5c4aafa5612d619e295608403b2" id="r_ac035e5c4aafa5612d619e295608403b2"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a> { <br />
-&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2a7381d487d18845b379422325c0a768d6">Loaded</a>
-, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2aae11d3ee071e72953c90b02bff1a19cb">Unload</a>
-, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e">GetFocus</a>
+&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2a6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e">GetFocus</a> = 0x10
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994">LostFocus</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb">Resized</a>
 , <br />
-&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4">Clicked</a>
-, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd">DblClicked</a>
+&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2a95bfdefaaf01553cbf21ccd942855c69">Moved</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2ad380df121886fa409fe2fc4d1267be63">MovedResized</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a14bdf2ac59e6cf40b7dc615bfb2fb305">EnabledChange</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4">Clicked</a>
+, <br />
+&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd">DblClicked</a>
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d">MouseDown</a>
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031">MouseUp</a>
+, <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0">MouseHover</a>
 , <br />
-&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0">MouseHover</a>
+&#160;&#160;<a class="el" href="#ac035e5c4aafa5612d619e295608403b2af5dd885bea15c13a9cee47dd66d74b0d">MouseLeave</a>
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca">KeyPressed</a>
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354">KeyDown</a>
 , <a class="el" href="#ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a">KeyUp</a>
@@ -155,6 +160,8 @@ Public 类型</h2></td></tr>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a524df2f541fd3b8a9f5c48c627ae790e" id="r_a524df2f541fd3b8a9f5c48c627ae790e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a524df2f541fd3b8a9f5c48c627ae790e">Control</a> (const std::string &amp;<a class="el" href="#a333152092e35e8a4ba9766706290785d">name</a>)</td></tr>
 <tr class="memdesc:a524df2f541fd3b8a9f5c48c627ae790e"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建控件  <br /></td></tr>
+<tr class="memitem:ab2acc8e8b47f8bfc0f6a82a9c76d44cb" id="r_ab2acc8e8b47f8bfc0f6a82a9c76d44cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2acc8e8b47f8bfc0f6a82a9c76d44cb">Control</a> (const std::string &amp;<a class="el" href="#a333152092e35e8a4ba9766706290785d">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;&amp;sprite)</td></tr>
+<tr class="memdesc:ab2acc8e8b47f8bfc0f6a82a9c76d44cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定一个精灵并创建控件  <br /></td></tr>
 <tr class="memitem:ac005ba0a4a794fa3c3a390398b85d594" id="r_ac005ba0a4a794fa3c3a390398b85d594"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac005ba0a4a794fa3c3a390398b85d594">Control</a> (const std::string &amp;<a class="el" href="#a333152092e35e8a4ba9766706290785d">name</a>, const <a class="el" href="class_easy_engine_1_1_components_1_1_control.html">Control</a> &amp;control)</td></tr>
 <tr class="memdesc:ac005ba0a4a794fa3c3a390398b85d594"><td class="mdescLeft">&#160;</td><td class="mdescRight">完全克隆已有的控件  <br /></td></tr>
 <tr class="memitem:a4a5ce46a6697019c03d7df6391139b10" id="r_a4a5ce46a6697019c03d7df6391139b10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a5ce46a6697019c03d7df6391139b10">setName</a> (const std::string &amp;<a class="el" href="#a333152092e35e8a4ba9766706290785d">name</a>)</td></tr>
@@ -168,6 +175,8 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>na
 <tr class="memdesc:aec8c2d0dc60b1d2312038c8ef4349faa"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定控件指定状态  <br /></td></tr>
 <tr class="memitem:ad1c8e151d2d206f8f06b53fa289d6b32" id="r_ad1c8e151d2d206f8f06b53fa289d6b32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1c8e151d2d206f8f06b53fa289d6b32">setStatus</a> (const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">EasyEngine::Components::Control::Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>, <a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Animation</a> *animation)</td></tr>
 <tr class="memdesc:ad1c8e151d2d206f8f06b53fa289d6b32"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定控件指定状态  <br /></td></tr>
+<tr class="memitem:ac62a4fbfd8ec3910a0c8ba70936537b9" id="r_ac62a4fbfd8ec3910a0c8ba70936537b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62a4fbfd8ec3910a0c8ba70936537b9">setStatus</a> (const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>, const <a class="el" href="struct_easy_engine_1_1_geometry_f.html">GeometryF</a> &amp;clip_sprite)</td></tr>
+<tr class="memdesc:ac62a4fbfd8ec3910a0c8ba70936537b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定控件指定状态  <br /></td></tr>
 <tr class="memitem:a3ed49936ba26ad09ccc84fd4f2a54f43" id="r_a3ed49936ba26ad09ccc84fd4f2a54f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed49936ba26ad09ccc84fd4f2a54f43">removeStatus</a> (const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>)</td></tr>
 <tr class="memdesc:a3ed49936ba26ad09ccc84fd4f2a54f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除指定的控件状态  <br /></td></tr>
 <tr class="memitem:a52b634d3e5084f7a757acea500267577" id="r_a52b634d3e5084f7a757acea500267577"><td class="memTemplParams" colspan="2">template&lt;class Type&gt; </td></tr>
@@ -190,6 +199,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b> () const<
 <tr class="memdesc:a946efe7106d6afa6941bf49702df4cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置当前控件为活动状态  <br /></td></tr>
 <tr class="memitem:a1f8c0032799b8e3a83d904ac40500b86" id="r_a1f8c0032799b8e3a83d904ac40500b86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f8c0032799b8e3a83d904ac40500b86">setInactive</a> ()</td></tr>
 <tr class="memdesc:a1f8c0032799b8e3a83d904ac40500b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置当前控件为非活动状态  <br /></td></tr>
+<tr class="memitem:a1fca725bf499ed6310308a658dada073" id="r_a1fca725bf499ed6310308a658dada073"><td class="memItemLeft" align="right" valign="top"><a id="a1fca725bf499ed6310308a658dada073" name="a1fca725bf499ed6310308a658dada073"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>active</b> () const</td></tr>
+<tr class="memdesc:a1fca725bf499ed6310308a658dada073"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前控件是否属于活动状态 <br /></td></tr>
 <tr class="memitem:a1f1aea5c4332e5b8891a2e79f5dacabf" id="r_a1f1aea5c4332e5b8891a2e79f5dacabf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f1aea5c4332e5b8891a2e79f5dacabf">move</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos)</td></tr>
 <tr class="memdesc:a1f1aea5c4332e5b8891a2e79f5dacabf"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动控件的位置  <br /></td></tr>
 <tr class="memitem:a8d241b15df25d0025e235e44f70c4b3d" id="r_a8d241b15df25d0025e235e44f70c4b3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d241b15df25d0025e235e44f70c4b3d">move</a> (float x, float y)</td></tr>
@@ -212,14 +224,25 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>enabled</b> () const<
 <tr class="memdesc:a87a481e16758b503c1d67019dc3b260d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定热区的位置、大小  <br /></td></tr>
 <tr class="memitem:a1c7d268f271901a90d6f97b89b6df8dc" id="r_a1c7d268f271901a90d6f97b89b6df8dc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c7d268f271901a90d6f97b89b6df8dc">hotArea</a> () const</td></tr>
 <tr class="memdesc:a1c7d268f271901a90d6f97b89b6df8dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取热区  <br /></td></tr>
+<tr class="memitem:aae9138e8e3c78f35be82bddce5d18a00" id="r_aae9138e8e3c78f35be82bddce5d18a00"><td class="memItemLeft" align="right" valign="top"><a id="aae9138e8e3c78f35be82bddce5d18a00" name="aae9138e8e3c78f35be82bddce5d18a00"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
+<tr class="memdesc:aae9138e8e3c78f35be82bddce5d18a00"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新控件状态（无需手动调用） <br /></td></tr>
+<tr class="memitem:a3c1701cdeebf8f490805521732635288" id="r_a3c1701cdeebf8f490805521732635288"><td class="memItemLeft" align="right" valign="top"><a id="a3c1701cdeebf8f490805521732635288" name="a3c1701cdeebf8f490805521732635288"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>__updateStatus</b> (const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>)</td></tr>
+<tr class="memitem:a555e529c4c22830727825910c8ed7c8a" id="r_a555e529c4c22830727825910c8ed7c8a"><td class="memItemLeft" align="right" valign="top"><a id="a555e529c4c22830727825910c8ed7c8a" name="a555e529c4c22830727825910c8ed7c8a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>__updateEvent</b> (const <a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a> &amp;event)</td></tr>
+<tr class="memitem:aa8791399a0759a6f3c8170d8cf707b04" id="r_aa8791399a0759a6f3c8170d8cf707b04"><td class="memItemLeft" align="right" valign="top"><a id="aa8791399a0759a6f3c8170d8cf707b04" name="aa8791399a0759a6f3c8170d8cf707b04"></a>
+<a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__currentStatus</b> () const</td></tr>
+<tr class="memitem:afba6db8305f862ff74cfe80cde45edcc" id="r_afba6db8305f862ff74cfe80cde45edcc"><td class="memItemLeft" align="right" valign="top"><a id="afba6db8305f862ff74cfe80cde45edcc" name="afba6db8305f862ff74cfe80cde45edcc"></a>
+<a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__currentEvent</b> () const</td></tr>
 <tr class="memitem:a8773333ab309b07ca6b9e6752c2f66ab" id="r_a8773333ab309b07ca6b9e6752c2f66ab"><td class="memTemplParams" colspan="2"><a id="a8773333ab309b07ca6b9e6752c2f66ab" name="a8773333ab309b07ca6b9e6752c2f66ab"></a>
 template&lt;class Type&gt; </td></tr>
 <tr class="memitem:a8773333ab309b07ca6b9e6752c2f66ab template"><td class="memItemLeft" align="right" valign="top">Type *&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> (const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">EasyEngine::Components::Control::Status</a> &amp;status) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
-<tr class="memitem:a9daac1e9f186a9341e2a138d426f9867" id="r_a9daac1e9f186a9341e2a138d426f9867"><td class="memItemLeft" align="right" valign="top"><a id="a9daac1e9f186a9341e2a138d426f9867" name="a9daac1e9f186a9341e2a138d426f9867"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td></tr>
+<tr class="memitem:aee29d97f7e87f0263024133085c28e3d" id="r_aee29d97f7e87f0263024133085c28e3d"><td class="memItemLeft" align="right" valign="top"><a id="aee29d97f7e87f0263024133085c28e3d" name="aee29d97f7e87f0263024133085c28e3d"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>控件 </p>
@@ -248,29 +271,37 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 <p>控件触发事件 </p>
 <p>罗列了可能的触发事件 </p>
 <table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a7381d487d18845b379422325c0a768d6" name="ac035e5c4aafa5612d619e295608403b2a7381d487d18845b379422325c0a768d6"></a>Loaded&#160;</td><td class="fielddoc"><p>加载事件 </p>
+<tr><th colspan="3">枚举值</th></tr><tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a6adf97f83acf6453d4a6a4b1070f3754" name="ac035e5c4aafa5612d619e295608403b2a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>空，用于占位，不作任何触发 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2aae11d3ee071e72953c90b02bff1a19cb" name="ac035e5c4aafa5612d619e295608403b2aae11d3ee071e72953c90b02bff1a19cb"></a>Unload&#160;</td><td class="fielddoc"><p>卸载事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e" name="ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e"></a>GetFocus&#160;</td><td class="fieldinit">0x10&#160;</td><td class="fielddoc"><p>获取焦点事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e" name="ac035e5c4aafa5612d619e295608403b2a9ae14866bd8940b353c50700afdd640e"></a>GetFocus&#160;</td><td class="fielddoc"><p>获取焦点事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994" name="ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994"></a>LostFocus&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>失去焦点事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994" name="ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994"></a>LostFocus&#160;</td><td class="fielddoc"><p>失去焦点事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb" name="ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb"></a>Resized&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>控件重新调整大小事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4" name="ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4"></a>Clicked&#160;</td><td class="fielddoc"><p>鼠标单击事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a95bfdefaaf01553cbf21ccd942855c69" name="ac035e5c4aafa5612d619e295608403b2a95bfdefaaf01553cbf21ccd942855c69"></a>Moved&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>控件移动事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd" name="ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd"></a>DblClicked&#160;</td><td class="fielddoc"><p>鼠标双击事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2ad380df121886fa409fe2fc4d1267be63" name="ac035e5c4aafa5612d619e295608403b2ad380df121886fa409fe2fc4d1267be63"></a>MovedResized&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>控件移动、重新调整大小同时改变事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d" name="ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d"></a>MouseDown&#160;</td><td class="fielddoc"><p>鼠标按下事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a14bdf2ac59e6cf40b7dc615bfb2fb305" name="ac035e5c4aafa5612d619e295608403b2a14bdf2ac59e6cf40b7dc615bfb2fb305"></a>EnabledChange&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>控件可用改变事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031" name="ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031"></a>MouseUp&#160;</td><td class="fielddoc"><p>鼠标松开事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4" name="ac035e5c4aafa5612d619e295608403b2aaac77152dd6ab723d807092db6e0daf4"></a>Clicked&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标单击事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0" name="ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0"></a>MouseHover&#160;</td><td class="fielddoc"><p>鼠标经过控件事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd" name="ac035e5c4aafa5612d619e295608403b2a1fca23424f225aec5402b6abde960fdd"></a>DblClicked&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标双击事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca" name="ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca"></a>KeyPressed&#160;</td><td class="fielddoc"><p>按键盘事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d" name="ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d"></a>MouseDown&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标按下事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354" name="ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354"></a>KeyDown&#160;</td><td class="fielddoc"><p>键盘按下事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031" name="ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031"></a>MouseUp&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标松开事件 </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a" name="ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a"></a>KeyUp&#160;</td><td class="fielddoc"><p>键盘松开事件 </p>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0" name="ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0"></a>MouseHover&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标经过控件事件 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2af5dd885bea15c13a9cee47dd66d74b0d" name="ac035e5c4aafa5612d619e295608403b2af5dd885bea15c13a9cee47dd66d74b0d"></a>MouseLeave&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>鼠标离开控件事件 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca" name="ac035e5c4aafa5612d619e295608403b2ac17e6984c1e5a887a49831beadee6bca"></a>KeyPressed&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>按键盘事件 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354" name="ac035e5c4aafa5612d619e295608403b2acfd07bf1effd88bca04a12a087777354"></a>KeyDown&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>键盘按下事件 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a" name="ac035e5c4aafa5612d619e295608403b2a0f8baa14654b1f6ef00fed708c7f198a"></a>KeyUp&#160;</td><td class="fieldinit">&#160;</td><td class="fielddoc"><p>键盘松开事件 </p>
 </td></tr>
 </table>
 
@@ -314,7 +345,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 <a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="a524df2f541fd3b8a9f5c48c627ae790e" name="a524df2f541fd3b8a9f5c48c627ae790e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a524df2f541fd3b8a9f5c48c627ae790e">&#9670;&#160;</a></span>Control() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a524df2f541fd3b8a9f5c48c627ae790e">&#9670;&#160;</a></span>Control() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,8 +377,38 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 
 </div>
 </div>
+<a id="ab2acc8e8b47f8bfc0f6a82a9c76d44cb" name="ab2acc8e8b47f8bfc0f6a82a9c76d44cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2acc8e8b47f8bfc0f6a82a9c76d44cb">&#9670;&#160;</a></span>Control() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::Control::Control </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定一个精灵并创建控件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>创建时需给定名称 </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定的精灵（作为裁剪精灵） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac005ba0a4a794fa3c3a390398b85d594" name="ac005ba0a4a794fa3c3a390398b85d594"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac005ba0a4a794fa3c3a390398b85d594">&#9670;&#160;</a></span>Control() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac005ba0a4a794fa3c3a390398b85d594">&#9670;&#160;</a></span>Control() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -942,7 +1003,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 </div>
 <a id="ad1c8e151d2d206f8f06b53fa289d6b32" name="ad1c8e151d2d206f8f06b53fa289d6b32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1c8e151d2d206f8f06b53fa289d6b32">&#9670;&#160;</a></span>setStatus() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c8e151d2d206f8f06b53fa289d6b32">&#9670;&#160;</a></span>setStatus() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -975,7 +1036,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 </div>
 <a id="aaad67edf7b27afaabf728ba385943374" name="aaad67edf7b27afaabf728ba385943374"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaad67edf7b27afaabf728ba385943374">&#9670;&#160;</a></span>setStatus() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aaad67edf7b27afaabf728ba385943374">&#9670;&#160;</a></span>setStatus() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1008,7 +1069,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 </div>
 <a id="aec8c2d0dc60b1d2312038c8ef4349faa" name="aec8c2d0dc60b1d2312038c8ef4349faa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec8c2d0dc60b1d2312038c8ef4349faa">&#9670;&#160;</a></span>setStatus() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aec8c2d0dc60b1d2312038c8ef4349faa">&#9670;&#160;</a></span>setStatus() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1031,6 +1092,39 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
   <table class="params">
     <tr><td class="paramname">status</td><td>选择任一状态 </td></tr>
     <tr><td class="paramname">sprite_group</td><td>在当前状态下绘制什么精灵组 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a52b634d3e5084f7a757acea500267577" title="获取当前指定状态下的精灵、组、动画">status</a> </dd>
+<dd>
+<a class="el" href="#a3ed49936ba26ad09ccc84fd4f2a54f43" title="移除指定的控件状态">removeStatus</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac62a4fbfd8ec3910a0c8ba70936537b9" name="ac62a4fbfd8ec3910a0c8ba70936537b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a4fbfd8ec3910a0c8ba70936537b9">&#9670;&#160;</a></span>setStatus() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Control::setStatus </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry_f.html">GeometryF</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>clip_sprite</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设定控件指定状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>选择任一状态 </td></tr>
+    <tr><td class="paramname">clip_sprite</td><td>在当前状态下定义裁剪精灵 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1087,14 +1181,14 @@ template&lt;class Type&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回当前状态下的精灵、组、动画 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>目前支持的类：Sprite、SpriteGroup、Animation </dd>
+<dl class="section note"><dt>注解</dt><dd>目前支持的类：Sprite、SpriteGroup、Animation、GeometryF </dd>
 <dd>
-如果无法确定当前状态下使用的类，请使用 getTypeid() 以获取该状态下使用的类。 </dd></dl>
+如果无法确定当前状态下使用的类，请使用 <a class="el" href="#a18eeb0f55e28581d4acc5f803e65a03c" title="获取当前指定状态下的类型">getTypename()</a> 以获取该状态下使用的类。 </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#aaad67edf7b27afaabf728ba385943374" title="设定控件指定状态">setStatus</a> </dd>
 <dd>
 <a class="el" href="#a3ed49936ba26ad09ccc84fd4f2a54f43" title="移除指定的控件状态">removeStatus</a> </dd>
 <dd>
-getTypeid </dd></dl>
+<a class="el" href="#a18eeb0f55e28581d4acc5f803e65a03c" title="获取当前指定状态下的类型">getTypename</a> </dd></dl>
 
 </div>
 </div>

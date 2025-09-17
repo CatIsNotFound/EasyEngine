@@ -17,7 +17,7 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "控件状态 "
 .ti -1c
-.RI "enum class \fBEvent\fP { \fBLoaded\fP, \fBUnload\fP, \fBGetFocus\fP, \fBLostFocus\fP, \fBClicked\fP, \fBDblClicked\fP, \fBMouseDown\fP, \fBMouseUp\fP, \fBMouseHover\fP, \fBKeyPressed\fP, \fBKeyDown\fP, \fBKeyUp\fP }"
+.RI "enum class \fBEvent\fP { \fBNone\fP, \fBGetFocus\fP = 0x10, \fBLostFocus\fP, \fBResized\fP, \fBMoved\fP, \fBMovedResized\fP, \fBEnabledChange\fP, \fBClicked\fP, \fBDblClicked\fP, \fBMouseDown\fP, \fBMouseUp\fP, \fBMouseHover\fP, \fBMouseLeave\fP, \fBKeyPressed\fP, \fBKeyDown\fP, \fBKeyUp\fP }"
 .br
 .RI "控件触发事件 "
 .in -1c
@@ -28,6 +28,10 @@ EasyEngine::Components::Control \- 控件
 .RI "\fBControl\fP (const std::string &\fBname\fP)"
 .br
 .RI "创建控件 "
+.ti -1c
+.RI "\fBControl\fP (const std::string &\fBname\fP, const \fBSprite\fP &&sprite)"
+.br
+.RI "指定一个精灵并创建控件 "
 .ti -1c
 .RI "\fBControl\fP (const std::string &\fBname\fP, const \fBControl\fP &control)"
 .br
@@ -50,6 +54,10 @@ EasyEngine::Components::Control \- 控件
 .RI "设定控件指定状态 "
 .ti -1c
 .RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBAnimation\fP *animation)"
+.br
+.RI "设定控件指定状态 "
+.ti -1c
+.RI "void \fBsetStatus\fP (const \fBStatus\fP &\fBstatus\fP, const \fBGeometryF\fP &clip_sprite)"
 .br
 .RI "设定控件指定状态 "
 .ti -1c
@@ -92,6 +100,10 @@ EasyEngine::Components::Control \- 控件
 .RI "void \fBsetInactive\fP ()"
 .br
 .RI "设置当前控件为非活动状态 "
+.ti -1c
+.RI "bool \fBactive\fP () const"
+.br
+.RI "获取当前控件是否属于活动状态 "
 .ti -1c
 .RI "void \fBmove\fP (const \fBVector2\fP &pos)"
 .br
@@ -137,6 +149,22 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "获取热区 "
 .ti -1c
+.RI "void \fBupdate\fP (\fBPainter\fP *painter)"
+.br
+.RI "更新控件状态（无需手动调用） "
+.ti -1c
+.RI "void \fB__updateStatus\fP (const \fBStatus\fP &\fBstatus\fP)"
+.br
+.ti -1c
+.RI "void \fB__updateEvent\fP (const \fBEvent\fP &event)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fB__currentStatus\fP () const"
+.br
+.ti -1c
+.RI "\fBEvent\fP \fB__currentEvent\fP () const"
+.br
+.ti -1c
 .RI "template<class Type> Type * \fBstatus\fP (const \fBEasyEngine::Components::Control::Status\fP &status) const"
 .br
 .in -1c
@@ -144,7 +172,7 @@ EasyEngine::Components::Control \- 控件
 
 .in +1c
 .ti -1c
-.RI "class \fBEventSystem\fP"
+.RI "class \fBContainer\fP"
 .br
 .in -1c
 .SH "详细描述"
@@ -162,17 +190,26 @@ EasyEngine::Components::Control \- 控件
 \fB枚举值\fP
 .in +1c
 .TP
-\f(BILoaded \fP
-加载事件 
+\f(BINone \fP
+空，用于占位，不作任何触发 
 .TP
-\f(BIUnload \fP
-卸载事件 
-.TP
-\f(BIGetFocus \fP
+\f(BIGetFocus \fP(0x10)
 获取焦点事件 
 .TP
 \f(BILostFocus \fP
 失去焦点事件 
+.TP
+\f(BIResized \fP
+控件重新调整大小事件 
+.TP
+\f(BIMoved \fP
+控件移动事件 
+.TP
+\f(BIMovedResized \fP
+控件移动、重新调整大小同时改变事件 
+.TP
+\f(BIEnabledChange \fP
+控件可用改变事件 
 .TP
 \f(BIClicked \fP
 鼠标单击事件 
@@ -188,6 +225,9 @@ EasyEngine::Components::Control \- 控件
 .TP
 \f(BIMouseHover \fP
 鼠标经过控件事件 
+.TP
+\f(BIMouseLeave \fP
+鼠标离开控件事件 
 .TP
 \f(BIKeyPressed \fP
 按键盘事件 
@@ -229,6 +269,19 @@ EasyEngine::Components::Control \- 控件
 \fB参数\fP
 .RS 4
 \fIname\fP 创建时需给定名称 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Control::Control (const std::string & name, const \fBSprite\fP && sprite)"
+
+.PP
+指定一个精灵并创建控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 创建时需给定名称 
+.br
+\fIsprite\fP 指定的精灵（作为裁剪精灵） 
 .RE
 .PP
 
@@ -650,6 +703,27 @@ event
 .RE
 .PP
 
+.SS "void EasyEngine::Components::Control::setStatus (const \fBStatus\fP & status, const \fBGeometryF\fP & clip_sprite)"
+
+.PP
+设定控件指定状态 
+.PP
+\fB参数\fP
+.RS 4
+\fIstatus\fP 选择任一状态 
+.br
+\fIclip_sprite\fP 在当前状态下定义裁剪精灵 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
+
+.PP
+\fBremoveStatus\fP 
+.RE
+.PP
+
 .SS "\fBEasyEngine::Size\fP EasyEngine::Components::Control::size () const"
 
 .PP
@@ -681,10 +755,10 @@ event
 .PP
 \fB注解\fP
 .RS 4
-目前支持的类：Sprite、SpriteGroup、Animation 
+目前支持的类：Sprite、SpriteGroup、Animation、GeometryF 
 
 .PP
-如果无法确定当前状态下使用的类，请使用 getTypeid() 以获取该状态下使用的类。 
+如果无法确定当前状态下使用的类，请使用 \fBgetTypename()\fP 以获取该状态下使用的类。 
 .RE
 .PP
 \fB参见\fP
@@ -695,7 +769,7 @@ event
 \fBremoveStatus\fP 
 
 .PP
-getTypeid 
+\fBgetTypename\fP 
 .RE
 .PP
 

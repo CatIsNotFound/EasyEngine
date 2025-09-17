@@ -13,6 +13,9 @@ var class_easy_engine_1_1_components_1_1_sprite_group =
     [ "remove", "class_easy_engine_1_1_components_1_1_sprite_group.html#adad0a871642230fe5369053b55200fd6", null ],
     [ "remove", "class_easy_engine_1_1_components_1_1_sprite_group.html#ac3baf90c06bab7b55b29e5727637c9f6", null ],
     [ "replace", "class_easy_engine_1_1_components_1_1_sprite_group.html#ad675677ac97d5fbe90841de07a74dd2a", null ],
+    [ "resize", "class_easy_engine_1_1_components_1_1_sprite_group.html#a78ee8f2a42c46d07dfc8d8ebe3accd04", null ],
+    [ "resize", "class_easy_engine_1_1_components_1_1_sprite_group.html#a533f7a54f8f97a81780609275d6519d8", null ],
+    [ "size", "class_easy_engine_1_1_components_1_1_sprite_group.html#af68ca81262ed6669ceebbe025cecc726", null ],
     [ "swap", "class_easy_engine_1_1_components_1_1_sprite_group.html#af62465619133e3b465cf5be97eb54aad", null ],
     [ "swap", "class_easy_engine_1_1_components_1_1_sprite_group.html#ae60264b119320ee9adef6c71cab62e3b", null ],
     [ "swap", "class_easy_engine_1_1_components_1_1_sprite_group.html#a6bf4b8271d29132264e5be247505ae0d", null ]

@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['macos_20使用_20homebrew_0',['macOS (使用 Homebrew)',['../md_quickstart.html#autotoc_md29',1,'']]],
-  ['midcirclef_1',['midCircleF',['../class_easy_engine_1_1_algorithm.html#a66259a245058546b6b5fa9205344e274',1,'EasyEngine::Algorithm']]],
-  ['mono_2',['Mono',['../_core_8h.html#ab1f6dda9edb960b2a9d75cda1161c71d',1,'EasyEngine::StdAudioSpec']]],
-  ['mousedown_3',['MouseDown',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2abf90db242043990aa80fde01f233665d',1,'EasyEngine::Components::Control']]],
-  ['mousehover_4',['MouseHover',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a623f025e339b35b993e9a3ed2909a1c0',1,'EasyEngine::Components::Control']]],
-  ['mouseup_5',['MouseUp',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a5c55840fe2a83a886590c780f0aa7031',1,'EasyEngine::Components::Control']]],
-  ['move_6',['move',['../class_easy_engine_1_1_components_1_1_control.html#a1f1aea5c4332e5b8891a2e79f5dacabf',1,'EasyEngine::Components::Control::move(const Vector2 &amp;pos)'],['../class_easy_engine_1_1_components_1_1_control.html#a8d241b15df25d0025e235e44f70c4b3d',1,'EasyEngine::Components::Control::move(float x, float y)'],['../class_easy_engine_1_1_cursor.html#a87ecdb70644635d5aef9cf2192a4bd4b',1,'EasyEngine::Cursor::move(const Vector2 &amp;pos, const Window *window=nullptr)'],['../class_easy_engine_1_1_cursor.html#a189cba39845419555d421adbace00165',1,'EasyEngine::Cursor::move(float x, float y, const Window *window=nullptr)'],['../class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3',1,'EasyEngine::Engine::move()']]],
-  ['movetocenter_7',['moveToCenter',['../class_easy_engine_1_1_cursor.html#ad54e73d425b2f28a050ff73360cacb29',1,'EasyEngine::Cursor']]]
+  ['lastindexat_0',['lastIndexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a5da2a1284697323caab1220e70daf1f1',1,'EasyEngine::Components::SpriteGroup']]],
+  ['line_1',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]],
+  ['linux_20ubuntu_20debian_2',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
+  ['loadbgm_3',['loadBGM',['../class_easy_engine_1_1_audio_system.html#a55ddf913f2926b60a7ee974511b16d69',1,'EasyEngine::AudioSystem']]],
+  ['loaded_4',['Loaded',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea556a75fc5a15d4006e10a0961252213c',1,'EasyEngine::AudioSystem::Audio']]],
+  ['loading_5',['Loading',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ead56836f7417639aaa93e417c37994597',1,'EasyEngine::AudioSystem::Audio']]],
+  ['loadsfx_6',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a2eee89a3825c9b43bd21e280eeb3ae3f',1,'EasyEngine::AudioSystem']]],
+  ['loop_7',['loop',['../class_easy_engine_1_1_components_1_1_timer.html#a4de5c9dae77b0d69902a799d17da6a40',1,'EasyEngine::Components::Timer']]],
+  ['lostfocus_8',['LostFocus',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994',1,'EasyEngine::Components::Control']]],
+  ['low_9',['Low',['../_core_8h.html#a7422fab4d0815fd77910384afa7bf347',1,'EasyEngine::StdAudioSpec']]]
 ];

@@ -19,6 +19,18 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &&group)"
 .br
 .ti -1c
+.RI "void \fBresize\fP (float width, float height)"
+.br
+.RI "重新调整整体精灵组合大小 "
+.ti -1c
+.RI "void \fBresize\fP (const \fBSize\fP &\fBsize\fP)"
+.br
+.RI "重新调整整体精灵组合大小 "
+.ti -1c
+.RI "\fBEasyEngine::Size\fP \fBsize\fP () const"
+.br
+.RI "获取当前精灵组合的整体大小 "
+.ti -1c
 .RI "void \fBappend\fP (const \fBSprite\fP &sprite)"
 .br
 .RI "添加精灵 "
@@ -319,6 +331,51 @@ lastIndexOf
 
 .PP
 lastIndexOf 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::resize (const \fBSize\fP & size)"
+
+.PP
+重新调整整体精灵组合大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIsize\fP 给定新的大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::resize (float width, float height)"
+
+.PP
+重新调整整体精灵组合大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 新的宽度 
+.br
+\fIheight\fP 新的高度 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsize\fP 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Size\fP EasyEngine::Components::SpriteGroup::size () const"
+
+.PP
+获取当前精灵组合的整体大小 
+.PP
+\fB参见\fP
+.RS 4
+\fBresize\fP 
 .RE
 .PP
 
