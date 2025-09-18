@@ -8,8 +8,9 @@ var searchData=
   ['installcleanupevent_5',['installCleanUpEvent',['../class_easy_engine_1_1_engine.html#aeb5e1cab414d8fbac80096960ed481ee',1,'EasyEngine::Engine']]],
   ['installeventhandler_6',['installEventHandler',['../class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779',1,'EasyEngine::Engine']]],
   ['installpaintevent_7',['installPaintEvent',['../class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4',1,'EasyEngine::Painter']]],
-  ['isloop_8',['isLoop',['../class_easy_engine_1_1_components_1_1_b_g_m.html#acf4d23bb78c262b023e3817f5c37ce55',1,'EasyEngine::Components::BGM::isLoop()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#a8e084d6269b5a6c774ad38595fa2911f',1,'EasyEngine::Components::SFX::isLoop()']]],
-  ['isplayed_9',['isPlayed',['../class_easy_engine_1_1_components_1_1_b_g_m.html#af37922d6ebf555313aefc432cc497f50',1,'EasyEngine::Components::BGM']]],
-  ['isplayedanimation_10',['isPlayedAnimation',['../class_easy_engine_1_1_components_1_1_animation.html#a6ea3ecbd6701337d2248654eca85908c',1,'EasyEngine::Components::Animation']]],
-  ['isvalid_11',['isValid',['../class_easy_engine_1_1_components_1_1_sprite.html#a5636cdfc4954970009c0a7a13aecb852',1,'EasyEngine::Components::Sprite']]]
+  ['isequal_8',['isEqual',['../struct_easy_engine_1_1_vector2.html#a49da448e162c13d31ea7961ab6518d67',1,'EasyEngine::Vector2']]],
+  ['isloop_9',['isLoop',['../class_easy_engine_1_1_components_1_1_b_g_m.html#acf4d23bb78c262b023e3817f5c37ce55',1,'EasyEngine::Components::BGM::isLoop()'],['../class_easy_engine_1_1_components_1_1_s_f_x.html#a8e084d6269b5a6c774ad38595fa2911f',1,'EasyEngine::Components::SFX::isLoop()']]],
+  ['isplayed_10',['isPlayed',['../class_easy_engine_1_1_components_1_1_b_g_m.html#af37922d6ebf555313aefc432cc497f50',1,'EasyEngine::Components::BGM']]],
+  ['isplayedanimation_11',['isPlayedAnimation',['../class_easy_engine_1_1_components_1_1_animation.html#a6ea3ecbd6701337d2248654eca85908c',1,'EasyEngine::Components::Animation']]],
+  ['isvalid_12',['isValid',['../class_easy_engine_1_1_components_1_1_sprite.html#a5636cdfc4954970009c0a7a13aecb852',1,'EasyEngine::Components::Sprite::isValid()'],['../class_easy_engine_1_1_components_1_1_collider.html#a417c01005fcb5bbc9933a206a9fbf36a',1,'EasyEngine::Components::Collider::isValid()']]]
 ];

@@ -896,6 +896,8 @@ namespace EasyEngine {
                     Graphics::Rectangle rectangle;
                     /// 椭圆 2
                     Graphics::Ellipse ellipse;
+                    /// 圆点 3
+                    Graphics::Point point;
                 };
                 Shape shape{};
             };
@@ -915,18 +917,23 @@ namespace EasyEngine {
              */
             explicit Collider(const Graphics::Ellipse& ellipse);
             /**
+             * @brief 创建碰撞器
+             * @param point 圆点碰撞器
+             */
+            explicit Collider(const Graphics::Point& point);
+            /**
              * @brief 创建碰撞器（相对位置下）
              * @param x       所在位置 x 轴
              * @param y       所在位置 y 轴
              * @param width   碰撞器的宽度
              * @param height  碰撞器的高度
-             * @param shape_mode 碰撞器形状（1 = 矩形，2 = 椭圆）
+             * @param shape_mode 碰撞器形状（1 = 矩形，2 = 椭圆，3 = 圆点）
              */
             Collider(float x, float y, float width, float height, uint8_t shape_mode);
             /**
              * @brief 检查此碰撞器是否与其它碰撞器存在碰撞？
              * @param collider  指定碰撞器（除自己以外）
-             * @return 根据不同的形状返回不同的值，具体见 `compareRect` 与 `compareEllipse`；当两个碰撞器形状不同时，返回 0（不支持）
+             * @return `< 0` 表示未碰撞，`>= 0` 表示接触或已碰撞
              * @see compareRect
              * @see compareEllipse
              * @see bounds
@@ -998,6 +1005,54 @@ namespace EasyEngine {
              * @see setEnabled
              */
             bool enabled() const;
+            /**
+             * @brief 设置碰撞器本体并自动设置位置和大小
+             * @param rect 指定矩形
+             */
+            void setSelf(const Graphics::Rectangle& rect);
+            /**
+             * @brief 设置碰撞器本体并自动设置位置和大小
+             * @param ellipse 指定椭圆
+             */
+            void setSelf(const Graphics::Ellipse& ellipse);
+            /**
+             * @brief 设置碰撞体本体并自动设置位置和大小
+             * @param point 指定点
+             */
+            void setSelf(const Graphics::Point& point);
+            /**
+             * @brief 查看是否可用当前碰撞器？
+             * 
+             */
+            bool isValid() const;
+            /**
+             * @brief 获取碰撞器的形状类型
+             * @return const std::type_info& 碰撞器的形状类型
+             * @note 对于未定义的形状，返回 `std::type_info(typeid(void))`
+             */
+            const std::type_info& shapeType() const;
+
+            /**
+             * @brief 获取碰撞器的形状
+             * @tparam Shape 指定的形状
+             * @note 可支持的形状：Rectangle、Ellipse、Point
+             *
+             */
+            template<class Shape>
+            const Shape* shape() const {
+                static_assert(std::is_same_v<Shape, Graphics::Rectangle> ||
+                              std::is_same_v<Shape, Graphics::Ellipse> ||
+                              std::is_same_v<Shape, Graphics::Point>, "[ERROR] Unspported shape type!");
+                if constexpr (std::is_same_v<Shape, Graphics::Rectangle>) {
+                    if (_con.mode == 1) return &_con.shape.rectangle;
+                } else if constexpr (std::is_same_v<Shape, Graphics::Ellipse>) {
+                    if (_con.mode == 2) return &_con.shape.ellipse;
+                } else if constexpr (std::is_same_v<Shape, Graphics::Point>) {
+                    if (_con.mode == 3) return &_con.shape.point;
+                }
+                SDL_Log("[ERROR] The specified shape type is not match the current shape!");
+                return nullptr;
+            }
         private:
             Container _con;
             bool _enabled;
@@ -1031,6 +1086,24 @@ namespace EasyEngine {
              * @brief 获取实体名称
              */
             std::string name() const;
+            /**
+             * @brief 设置碰撞器本身形状
+             * @param rect 指定矩形
+             * @note 使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器
+             */
+            void setColliderSelf(const Graphics::Rectangle& rect);
+            /**
+             * @brief 设置碰撞器本身形状
+             * @param ellipse 指定椭圆
+             * @note 使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器
+             */
+            void setColliderSelf(const Graphics::Ellipse& ellipse);
+            /**
+             * @brief 设置碰撞器本身形状
+             * @param point 指定圆点
+             * @note 使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器
+             */
+            void setColliderSelf(const Graphics::Point& point);
             /**
              * @brief 设置实体在窗口中所在的位置
              * @param pos
@@ -1070,7 +1143,8 @@ namespace EasyEngine {
              * @brief 获取实体本身
              * @tparam Type 指定实体类型
              * @return 返回对应类型的本体
-             * @note 可通过使用 typeInfo() 代替 Type 参数
+             * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
+             * @note 可通过使用 typeInfo() 判断当前本体的类型
              * @see typeInfo
              */
             template<class Type>
@@ -1083,14 +1157,36 @@ namespace EasyEngine {
              * @see self
              */
             const std::type_info & typeInfo() const;
+            void update(Painter* painter) const;
 
         private:
             Vector2 _pos, _center_pos;
             std::unique_ptr<Collider> _collider;
             std::string _obj_name;
-            Container _container;
+            std::shared_ptr<Container> _container;
             std::unique_ptr<Sprite> _def_sprite;
         };
+
+        template<class Type>
+        Type *EasyEngine::Components::Entity::self() const {
+            if constexpr (std::is_same_v<Type, Sprite>) {
+                if (_container->type_id == 1) return _container->self.sprite.get();
+            } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
+                if (_container->type_id == 2) return _container->self.sprite_group.get();
+            } else if constexpr (std::is_same_v<Type, Animation>) {
+                if (_container->type_id == 3) return _container->self.animation.get();
+            } else if constexpr (std::is_same_v<Type, GeometryF>) {
+                if (_container->type_id == 4) return &_container->self.clip_sprite;
+            } else {
+                static_assert(std::is_same_v<Type, Sprite> ||
+                        std::is_same_v<Type, SpriteGroup> ||
+                        std::is_same_v<Type, Animation> ||
+                        std::is_same_v<Type, GeometryF>, "[ERROR] Can't support the specified type!");
+            }
+            SDL_Log("[ERROR] The specified type is not match the current entity!\n"
+                    "        p.s: Try to use typeInfo() instead.");
+            return nullptr;
+        }
 
         /**
          * @class Control
@@ -1226,11 +1322,11 @@ namespace EasyEngine {
 
             /**
              * @brief 获取当前指定状态下的精灵、组、动画
+             * @tparam Type 指定类型
              * @param status 选择任一状态
              * @return 返回当前状态下的精灵、组、动画
              * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
              * @note 如果无法确定当前状态下使用的类，请使用 getTypename() 以获取该状态下使用的类。
-             * @note 可直接使用 typeInfo() 代替 Type 参数。
              * @see setStatus
              * @see removeStatus
              * @see typeInfo

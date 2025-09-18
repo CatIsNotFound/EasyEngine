@@ -1011,6 +1011,12 @@ EasyEngine::Components::Collider::Collider(const EasyEngine::Graphics::Ellipse &
     _con.shape.ellipse = ellipse;
 }
 
+EasyEngine::Components::Collider::Collider(const EasyEngine::Graphics::Point &point) : _enabled(false) {
+    _geometry.reset(point.pos, {1, 1});
+    _con.mode = 3;
+    _con.shape.point = point;
+}
+
 EasyEngine::Components::Collider::Collider(float x, float y, float width, float height, uint8_t shape_mode) {
     _geometry.reset({x, y}, {width, height});
     _con.mode = shape_mode;
@@ -1020,6 +1026,8 @@ EasyEngine::Components::Collider::Collider(float x, float y, float width, float 
     } else if (shape_mode == 2) {
         _con.shape.ellipse.pos.reset(x, y);
         _con.shape.ellipse.area.reset(width, height);
+    } else if (shape_mode == 3) {
+        _con.shape.point.pos.reset(x, y);
     }
 }
 
@@ -1040,11 +1048,20 @@ int8_t EasyEngine::Components::Collider::check(const EasyEngine::Components::Col
         return Algorithm::compareRectEllipse(_con.shape.rectangle, collider._con.shape.ellipse);
     } else if (_con.mode == 2 && collider._con.mode == 1) {
         return Algorithm::compareRectEllipse(collider._con.shape.rectangle, _con.shape.ellipse);
-    } else if (_con.mode != collider._con.mode) {
+    } else if (_con.mode == 3 && collider._con.mode == 3) {
+        return static_cast<int8_t>(_con.shape.point.pos.isEqual(collider._con.shape.point.pos, 1)) - 1;
+    } else if (_con.mode == 3 && collider._con.mode == 1) {
+        return Algorithm::comparePosRect(_con.shape.point.pos, collider._con.shape.rectangle);
+    } else if (_con.mode == 1 && collider._con.mode == 3) {
+        return Algorithm::comparePosRect(collider._con.shape.point.pos, _con.shape.rectangle);
+    } else if (_con.mode == 3 && collider._con.mode == 2) {
+        return Algorithm::comparePosEllipse(_con.shape.point.pos, collider._con.shape.ellipse);
+    } else if (_con.mode == 2 && collider._con.mode == 3) {
+        return Algorithm::comparePosEllipse(collider._con.shape.point.pos, _con.shape.ellipse);
+    } else {
         SDL_Log("[WARNING] The specified collider is not match by the current collider!");
         return 0;
     }
-    return 0;
 }
 
 const EasyEngine::GeometryF& EasyEngine::Components::Collider::bounds() const {
@@ -1059,6 +1076,8 @@ void EasyEngine::Components::Collider::setBoundsGeometry(float x, float y, float
     } else if (_con.mode == 2) {
         _con.shape.ellipse.pos.reset(x, y);
         _con.shape.ellipse.area.reset(width, height);
+    } else if (_con.mode == 3) {
+        _con.shape.point.pos.reset(x, y);
     }
 }
 
@@ -1082,6 +1101,8 @@ void EasyEngine::Components::Collider::moveBounds(float x, float y) {
         _con.shape.rectangle.pos.reset(x, y);
     } else if (_con.mode == 2) {
         _con.shape.ellipse.pos.reset(x, y);
+    } else if (_con.mode == 3) {
+        _con.shape.point.pos.reset(x, y);
     }
 }
 
@@ -1107,38 +1128,80 @@ bool EasyEngine::Components::Collider::enabled() const {
     return _enabled;
 }
 
+void EasyEngine::Components::Collider::setSelf(const EasyEngine::Graphics::Rectangle &rect) {
+    _con.mode = 1;
+    _con.shape.rectangle = rect;
+    _geometry.reset(rect.pos, rect.size);
+
+}
+
+void EasyEngine::Components::Collider::setSelf(const EasyEngine::Graphics::Ellipse &ellipse) {
+    _con.mode = 2;
+    _con.shape.ellipse = ellipse;
+    Vector2 real_pos = {ellipse.pos.x + ellipse.area.width / 2, 
+                     ellipse.pos.y + ellipse.area.height / 2};
+    _geometry.reset(real_pos, ellipse.area);
+}
+
+void EasyEngine::Components::Collider::setSelf(const EasyEngine::Graphics::Point &point) {
+    _con.mode = 3;
+    _con.shape.point = point;
+    _geometry.reset(point.pos.x, point.pos.y, 1, 1);
+}
+
+bool EasyEngine::Components::Collider::isValid() const {
+    return _con.mode != 0;
+}
+
+const std::type_info& EasyEngine::Components::Collider::shapeType() const {
+    if (_con.mode == 1) {
+        return typeid(Graphics::Rectangle);
+    } else if (_con.mode == 2) {
+        return typeid(Graphics::Ellipse);
+    } else if (_con.mode == 3) {
+        return typeid(Graphics::Point);
+    } else {
+        return typeid(void);
+    }
+}
+
 EasyEngine::Components::Entity::Entity(const std::string &name) : _obj_name(name) {
     _collider = std::make_unique<Collider>();
+    _container = std::make_shared<Container>();
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container.type_id = 1;
-    _container.self.sprite = std::make_shared<Sprite>(sprite.name(), sprite);
+    _container = std::make_shared<Container>();
+    _container->type_id = 1;
+    _container->self.sprite = std::make_shared<Sprite>(sprite.name(), sprite);
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::SpriteGroup &group)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container.type_id = 2;
-    _container.self.sprite_group = std::make_shared<SpriteGroup>(group);
+    _container = std::make_shared<Container>();
+    _container->type_id = 2;
+    _container->self.sprite_group = std::make_shared<SpriteGroup>(group);
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Animation &animation)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container.type_id = 3;
-    _container.self.animation = std::make_shared<Animation>(animation);
+    _container = std::make_shared<Container>();
+    _container->type_id = 3;
+    _container->self.animation = std::make_shared<Animation>(animation);
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite,
                                        const EasyEngine::GeometryF &clip)
    : _obj_name(name) {
     _collider = std::make_unique<Collider>();
+    _container = std::make_shared<Container>();
     _def_sprite = std::make_unique<Sprite>(sprite.name(), sprite);
-    _container.type_id = 4;
-    _container.self.clip_sprite = clip;
+    _container->type_id = 4;
+    _container->self.clip_sprite = clip;
 }
 
 void EasyEngine::Components::Entity::setName(const std::string &name) {
@@ -1149,12 +1212,75 @@ std::string EasyEngine::Components::Entity::name() const {
     return _obj_name;
 }
 
+void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics::Rectangle& rect) {
+    _collider->setSelf(rect);
+    collider()->moveBounds(_pos);
+    Size real_size;
+    if (_container->type_id == 1) {
+        real_size = _container->self.sprite->size();
+    } else if (_container->type_id == 2) {
+        real_size = _container->self.sprite_group->size();
+    } else if (_container->type_id == 3) {
+        real_size = _container->self.animation->sprite()->size();
+    } else if (_container->type_id == 4 && _def_sprite) {
+        real_size = _def_sprite->size();
+    }
+    collider()->resizeBounds(real_size);
+    _center_pos.reset(real_size.width / 2, real_size.height / 2);
+    collider()->setEnabled(true);
+}
+
+void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics::Ellipse& ellipse) {
+    _collider->setSelf(ellipse);
+    Size real_size, mid_circle_size;
+    float min;
+    if (_container->type_id == 1) {
+        real_size = _container->self.sprite->size();
+    } else if (_container->type_id == 2) {
+        real_size = _container->self.sprite_group->size();
+    } else if (_container->type_id == 3) {
+        real_size = _container->self.animation->sprite()->size();
+    } else if (_container->type_id == 4 && _def_sprite) {
+        real_size = _def_sprite->size();
+    }
+    min = std::min(real_size.width, real_size.height);
+    collider()->resizeBounds({min, min});
+    _center_pos.reset(real_size.width / 2, real_size.height / 2);
+    collider()->moveBounds(_pos + _center_pos);
+    collider()->setEnabled(true);
+}
+
+void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics::Point& point) {
+    _collider->setSelf(point);
+    Size real_size;
+    if (_container->type_id == 1) {
+        real_size = _container->self.sprite->size();
+    } else if (_container->type_id == 2) {
+        real_size = _container->self.sprite_group->size();
+    } else if (_container->type_id == 3) {
+        real_size = _container->self.animation->sprite()->size();
+    } else if (_container->type_id == 4 && _def_sprite) {
+        real_size = _def_sprite->size();
+    }
+    Size ret_size = real_size / 2;
+    _center_pos.reset(ret_size.width, ret_size.height);
+    collider()->setBoundsGeometry(ret_size.width, ret_size.height, 1, 1);
+    collider()->setEnabled(true);
+}
+
 void EasyEngine::Components::Entity::setPosition(EasyEngine::Vector2 pos) {
-    _pos.reset(pos.x, pos.y);
+    setPosition(pos.x, pos.y);
 }
 
 void EasyEngine::Components::Entity::setPosition(float x, float y) {
     _pos.reset(x, y);
+    if (_collider->isValid()) {
+        if (_collider->shapeType() != typeid(Graphics::Rectangle)) {
+            _collider->moveBounds(x + _center_pos.x, y + _center_pos.y);
+        } else {
+            _collider->moveBounds(x, y);
+        }
+    }
 }
 
 void EasyEngine::Components::Entity::setCenterPosition(EasyEngine::Vector2 pos) {
@@ -1177,34 +1303,34 @@ EasyEngine::Components::Collider *EasyEngine::Components::Entity::collider() con
     return _collider.get();
 }
 
-template<class Type>
-Type *EasyEngine::Components::Entity::self() const {
-    if constexpr (std::is_same_v<Type, Sprite>) {
-        if (_container.type_id == 1) return _container.self.sprite;
-    } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
-        if (_container.type_id == 2) return _container.self.sprite_group;
-    } else if constexpr (std::is_same_v<Type, Animation>) {
-        if (_container.type_id == 3) return _container.self.animation;
-    } else if constexpr (std::is_same_v<Type, GeometryF>) {
-        if (_container.type_id == 4) return &_container.self.clip_sprite;
-    } else {
-        static_assert(true, "[ERROR] Can't support the specified type!");
-    }
-    SDL_Log("[ERROR] The specified type is not match the current entity!\n"
-            "        p.s: Try to use typeInfo() instead.");
-    return nullptr;
-}
+
 
 const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
-    if (_container.type_id == 1) {
+    if (_container->type_id == 1) {
         return typeid(Sprite);
-    } else if (_container.type_id == 2) {
+    } else if (_container->type_id == 2) {
         return typeid(SpriteGroup);
-    } else if (_container.type_id == 3) {
+    } else if (_container->type_id == 3) {
         return typeid(Animation);
-    } else if (_container.type_id == 4) {
+    } else if (_container->type_id == 4) {
         return typeid(GeometryF);
     } else {
         return typeid(void);
     }
 }
+
+void EasyEngine::Components::Entity::update(Painter *painter) const {
+    if (_container->type_id == 1) {
+        _container->self.sprite->draw(_pos, painter);
+    } else if (_container->type_id == 2) {
+        _container->self.sprite_group->draw(_pos, painter);
+    } else if (_container->type_id == 3) {
+        _container->self.animation->draw(_pos, painter);
+    } else if (_container->type_id == 4) {
+        if (_def_sprite) {
+            auto clip = _container->self.clip_sprite;
+            _def_sprite->draw(_pos, clip.pos, clip.size, painter);
+        }
+    }
+}
+

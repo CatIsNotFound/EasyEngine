@@ -113,7 +113,7 @@ namespace EasyEngine {
          * @retval 0  表示点正好在椭圆上；
          * @retval 1  表示点在椭圆内部。
          */
-        static int comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
+        static int8_t comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse);
         /**
          * @brief 判断矩形与矩形之间的位置关系
          * @param rect1 指定第一个矩形

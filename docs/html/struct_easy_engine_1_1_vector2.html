@@ -126,6 +126,8 @@ Public 成员函数</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Vector2</b> (float x, float y)</td></tr>
 <tr class="memitem:af63bdb1dbc67e277ac0cfb53594bd488" id="r_af63bdb1dbc67e277ac0cfb53594bd488"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af63bdb1dbc67e277ac0cfb53594bd488">reset</a> (float x, float y)</td></tr>
 <tr class="memdesc:af63bdb1dbc67e277ac0cfb53594bd488"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新设置新的向量  <br /></td></tr>
+<tr class="memitem:a44fb8c54c62b4b20b1743351756f2e22" id="r_a44fb8c54c62b4b20b1743351756f2e22"><td class="memItemLeft" align="right" valign="top"><a id="a44fb8c54c62b4b20b1743351756f2e22" name="a44fb8c54c62b4b20b1743351756f2e22"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;vector2)</td></tr>
 <tr class="memitem:a4c74904838ed7eab72288b4727ffb2af" id="r_a4c74904838ed7eab72288b4727ffb2af"><td class="memItemLeft" align="right" valign="top"><a id="a4c74904838ed7eab72288b4727ffb2af" name="a4c74904838ed7eab72288b4727ffb2af"></a>
 <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;v) const</td></tr>
 <tr class="memitem:af797009fa52f7fc5c5b908aedf191f3b" id="r_af797009fa52f7fc5c5b908aedf191f3b"><td class="memItemLeft" align="right" valign="top"><a id="af797009fa52f7fc5c5b908aedf191f3b" name="af797009fa52f7fc5c5b908aedf191f3b"></a>
@@ -162,6 +164,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (co
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;v) const</td></tr>
 <tr class="memitem:a7b529d93daa051f0e9e451f14af8eada" id="r_a7b529d93daa051f0e9e451f14af8eada"><td class="memItemLeft" align="right" valign="top"><a id="a7b529d93daa051f0e9e451f14af8eada" name="a7b529d93daa051f0e9e451f14af8eada"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;v) const</td></tr>
+<tr class="memitem:a49da448e162c13d31ea7961ab6518d67" id="r_a49da448e162c13d31ea7961ab6518d67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49da448e162c13d31ea7961ab6518d67">isEqual</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;v, const float EPISON=1e-6f) const</td></tr>
+<tr class="memdesc:a49da448e162c13d31ea7961ab6518d67"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断两个坐标位置是否大致相等  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
@@ -174,6 +178,51 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
 <div class="textblock"><p>向量坐标 </p>
 <p>用于指定某对象的位置 </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a49da448e162c13d31ea7961ab6518d67" name="a49da448e162c13d31ea7961ab6518d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49da448e162c13d31ea7961ab6518d67">&#9670;&#160;</a></span>isEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Vector2::isEqual </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>v</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>EPISON</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1e-6f</span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>判断两个坐标位置是否大致相等 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>指定另一个坐标 </td></tr>
+    <tr><td class="paramname">EPISON</td><td>允许的误差数 （默认 0.000001f 误差） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>返回值</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">true</td><td>表示相等 </td></tr>
+    <tr><td class="paramname">false</td><td>表示不相等 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af63bdb1dbc67e277ac0cfb53594bd488" name="af63bdb1dbc67e277ac0cfb53594bd488"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af63bdb1dbc67e277ac0cfb53594bd488">&#9670;&#160;</a></span>reset()</h2>
 

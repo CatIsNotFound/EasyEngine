@@ -120,7 +120,7 @@ int8_t Algorithm::comparePosRect(const Vector2 &pos, const Graphics::Rectangle &
     return 1;
 }
 
-int Algorithm::comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse) {
+int8_t Algorithm::comparePosEllipse(const Vector2 &pos, const Graphics::Ellipse &ellipse) {
     Vector2 pt = pos - ellipse.pos;
     float a = ellipse.area.width * 0.5f;
     float b = ellipse.area.height * 0.5f;

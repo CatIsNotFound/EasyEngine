@@ -144,6 +144,7 @@ namespace EasyEngine {
          * @param y
          */
         void reset(float x, float y);
+        void reset(const Vector2& vector2);
         Vector2 operator+(const Vector2& v) const { return {this->x + v.x, this->y + v.y}; }
         Vector2 operator-(const Vector2& v) const { return {this->x - v.x, this->y - v.y}; }
         Vector2 operator*(const Vector2& v) const { return {this->x * v.x, this->y * v.y}; }
@@ -174,6 +175,17 @@ namespace EasyEngine {
         bool operator<=(const Vector2& v) const {
             return (this->x <= v.x && this->y <= v.y);
         }
+        /**
+         * @brief 判断两个坐标位置是否大致相等
+         * @param v         指定另一个坐标
+         * @param EPISON    允许的误差数 （默认 0.000001f 误差）
+         * @retval true  表示相等
+         * @retval false 表示不相等
+         */
+        bool isEqual(const Vector2& v, const float EPISON = 1e-6f) const {
+            return ((this->x >= v.x - EPISON && this->x <= v.x + EPISON) &&
+                (this->y >= v.y - EPISON && this->y <= v.y + EPISON));
+        }
     };
 
     /**
@@ -192,6 +204,7 @@ namespace EasyEngine {
          * @param height
          */
         void reset(float width, float height);
+        void reset(const Size& size);
         Size operator+(const Size& s) const { return {this->width + s.width, this->height + s.height}; }
         Size operator-(const Size& s) const { return {this->width - s.width, this->height - s.height}; }
         Size operator*(const Size& s) const { return {this->width * s.width, this->height * s.height}; }

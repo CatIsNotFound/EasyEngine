@@ -237,7 +237,7 @@ namespace EasyEngine {
         void unload();
 
     private:
-        StdCursor _std_cursor{Default};
+        StdCursor _std_cursor{Custom};
         SCursor* _cursor{nullptr};
         SSurface* _surface{nullptr};
         bool _custom_cursor{false};

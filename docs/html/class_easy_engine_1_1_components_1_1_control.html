@@ -182,8 +182,10 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>na
 <tr class="memitem:a52b634d3e5084f7a757acea500267577" id="r_a52b634d3e5084f7a757acea500267577"><td class="memTemplParams" colspan="2">template&lt;class Type&gt; </td></tr>
 <tr class="memitem:a52b634d3e5084f7a757acea500267577 template"><td class="memItemLeft" align="right" valign="top">Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a> (const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;status) const</td></tr>
 <tr class="memdesc:a52b634d3e5084f7a757acea500267577"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前指定状态下的精灵、组、动画  <br /></td></tr>
-<tr class="memitem:a18eeb0f55e28581d4acc5f803e65a03c" id="r_a18eeb0f55e28581d4acc5f803e65a03c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18eeb0f55e28581d4acc5f803e65a03c">getTypename</a> (const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>) const</td></tr>
-<tr class="memdesc:a18eeb0f55e28581d4acc5f803e65a03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前指定状态下的类型  <br /></td></tr>
+<tr class="memitem:a9b920bf877b708cfd9b4f6d4e254833c" id="r_a9b920bf877b708cfd9b4f6d4e254833c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b920bf877b708cfd9b4f6d4e254833c">getTypename</a> (const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>) const</td></tr>
+<tr class="memdesc:a9b920bf877b708cfd9b4f6d4e254833c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前指定状态下的类型  <br /></td></tr>
+<tr class="memitem:a02d81b78aba53d317894b1ca2ce752fa" id="r_a02d81b78aba53d317894b1ca2ce752fa"><td class="memItemLeft" align="right" valign="top">const std::type_info &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d81b78aba53d317894b1ca2ce752fa">typeInfo</a> (const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;<a class="el" href="#a52b634d3e5084f7a757acea500267577">status</a>) const</td></tr>
+<tr class="memdesc:a02d81b78aba53d317894b1ca2ce752fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取其指定状态下的类型  <br /></td></tr>
 <tr class="memitem:abb0239eb95f4de5d0f93f281ea898859" id="r_abb0239eb95f4de5d0f93f281ea898859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb0239eb95f4de5d0f93f281ea898859">setEvent</a> (const enum <a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a> &amp;event, const std::function&lt; void()&gt; &amp;function)</td></tr>
 <tr class="memdesc:abb0239eb95f4de5d0f93f281ea898859"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定某一事件设定触发函数（即：触发器）  <br /></td></tr>
 <tr class="memitem:a4e519cd5dbdf346abdc18bd4b5b1fcd1" id="r_a4e519cd5dbdf346abdc18bd4b5b1fcd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e519cd5dbdf346abdc18bd4b5b1fcd1">setEvent</a> (const enum <a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a> &amp;event, const std::function&lt; bool()&gt; &amp;condition, const std::function&lt; void()&gt; &amp;function)</td></tr>
@@ -438,14 +440,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
-<a id="a18eeb0f55e28581d4acc5f803e65a03c" name="a18eeb0f55e28581d4acc5f803e65a03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18eeb0f55e28581d4acc5f803e65a03c">&#9670;&#160;</a></span>getTypename()</h2>
+<a id="a9b920bf877b708cfd9b4f6d4e254833c" name="a9b920bf877b708cfd9b4f6d4e254833c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b920bf877b708cfd9b4f6d4e254833c">&#9670;&#160;</a></span>getTypename()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string EasyEngine::Components::Control::getTypename </td>
+          <td class="memname">const char * EasyEngine::Components::Control::getTypename </td>
           <td>(</td>
           <td class="paramtype">const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
           <td> const</td>
@@ -1174,6 +1176,12 @@ template&lt;class Type&gt; </div>
 </div><div class="memdoc">
 
 <p>获取当前指定状态下的精灵、组、动画 </p>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>指定类型 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">status</td><td>选择任一状态 </td></tr>
@@ -1183,12 +1191,35 @@ template&lt;class Type&gt; </div>
 <dl class="section return"><dt>返回</dt><dd>返回当前状态下的精灵、组、动画 </dd></dl>
 <dl class="section note"><dt>注解</dt><dd>目前支持的类：Sprite、SpriteGroup、Animation、GeometryF </dd>
 <dd>
-如果无法确定当前状态下使用的类，请使用 <a class="el" href="#a18eeb0f55e28581d4acc5f803e65a03c" title="获取当前指定状态下的类型">getTypename()</a> 以获取该状态下使用的类。 </dd></dl>
+如果无法确定当前状态下使用的类，请使用 <a class="el" href="#a9b920bf877b708cfd9b4f6d4e254833c" title="获取当前指定状态下的类型">getTypename()</a> 以获取该状态下使用的类。 </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#aaad67edf7b27afaabf728ba385943374" title="设定控件指定状态">setStatus</a> </dd>
 <dd>
 <a class="el" href="#a3ed49936ba26ad09ccc84fd4f2a54f43" title="移除指定的控件状态">removeStatus</a> </dd>
 <dd>
-<a class="el" href="#a18eeb0f55e28581d4acc5f803e65a03c" title="获取当前指定状态下的类型">getTypename</a> </dd></dl>
+<a class="el" href="#a02d81b78aba53d317894b1ca2ce752fa" title="获取其指定状态下的类型">typeInfo</a> </dd>
+<dd>
+<a class="el" href="#a9b920bf877b708cfd9b4f6d4e254833c" title="获取当前指定状态下的类型">getTypename</a> </dd></dl>
+
+</div>
+</div>
+<a id="a02d81b78aba53d317894b1ca2ce752fa" name="a02d81b78aba53d317894b1ca2ce752fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02d81b78aba53d317894b1ca2ce752fa">&#9670;&#160;</a></span>typeInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::type_info &amp; EasyEngine::Components::Control::typeInfo </td>
+          <td>(</td>
+          <td class="paramtype">const enum <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>status</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取其指定状态下的类型 </p>
+<dl class="section note"><dt>注解</dt><dd>对于指定状态下不存在的本体，将会返回 <span class="tt">void</span> 类型。</dd></dl>
+<p>可搭配 <a class="el" href="#a52b634d3e5084f7a757acea500267577" title="获取当前指定状态下的精灵、组、动画">status()</a> 函数一起使用！ </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a52b634d3e5084f7a757acea500267577" title="获取当前指定状态下的精灵、组、动画">status</a> </dd></dl>
 
 </div>
 </div>

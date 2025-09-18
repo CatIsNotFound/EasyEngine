@@ -69,9 +69,13 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "获取当前指定状态下的精灵、组、动画 "
 .ti -1c
-.RI "std::string \fBgetTypename\fP (const enum \fBStatus\fP &\fBstatus\fP) const"
+.RI "const char * \fBgetTypename\fP (const enum \fBStatus\fP &\fBstatus\fP) const"
 .br
 .RI "获取当前指定状态下的类型 "
+.ti -1c
+.RI "const std::type_info & \fBtypeInfo\fP (const enum \fBStatus\fP &\fBstatus\fP) const"
+.br
+.RI "获取其指定状态下的类型 "
 .ti -1c
 .RI "void \fBsetEvent\fP (const enum \fBEvent\fP &event, const std::function< void()> &function)"
 .br
@@ -300,7 +304,7 @@ EasyEngine::Components::Control \- 控件
 
 .SH "成员函数说明"
 .PP 
-.SS "std::string EasyEngine::Components::Control::getTypename (const enum \fBStatus\fP & status) const"
+.SS "const char * EasyEngine::Components::Control::getTypename (const enum \fBStatus\fP & status) const"
 
 .PP
 获取当前指定状态下的类型 
@@ -743,6 +747,11 @@ event
 .PP
 获取当前指定状态下的精灵、组、动画 
 .PP
+\fB模板参数\fP
+.RS 4
+\fIType\fP 指定类型 
+.RE
+.PP
 \fB参数\fP
 .RS 4
 \fIstatus\fP 选择任一状态 
@@ -769,7 +778,28 @@ event
 \fBremoveStatus\fP 
 
 .PP
+\fBtypeInfo\fP 
+
+.PP
 \fBgetTypename\fP 
+.RE
+.PP
+
+.SS "const std::type_info & EasyEngine::Components::Control::typeInfo (const enum \fBStatus\fP & status) const"
+
+.PP
+获取其指定状态下的类型 
+.PP
+\fB注解\fP
+.RS 4
+对于指定状态下不存在的本体，将会返回 \fRvoid\fP 类型。
+.RE
+.PP
+可搭配 \fBstatus()\fP 函数一起使用！ 
+.PP
+\fB参见\fP
+.RS 4
+\fBstatus\fP 
 .RE
 .PP
 

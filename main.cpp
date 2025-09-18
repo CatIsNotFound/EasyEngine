@@ -4,100 +4,44 @@ using namespace EasyEngine;
 using namespace Components;
 
 int main() {
-    Engine engine("", 1024, 800);
+    Engine engine("Test Entity");
     engine.setResizable(true);
     engine.setFPS(60);
-    auto geometry = engine.screenGeometry();
-    engine.move(geometry.width / 2 - 1024 / 2, geometry.height / 2 - 800 / 2 - 100);
     engine.show();
-    Graphics::Rectangle rect(100, 100, 280, 280, StdColor::Black, false,
-                             true, StdColor::LightBlue);
-    Graphics::Ellipse ellipse(650, 500, 380, 380, StdColor::Black, false,
-                              true, StdColor::LightPink);
-    Graphics::Rectangle mouse_rect(0, 0, 100, 100, StdColor::Black, false,
-                                   true, {243, 233, 64, 64});
-    Graphics::Ellipse mouse_ellipse(0, 0, 100, 100, StdColor::Black, false,
-                                    true, {243, 233, 64, 164});
-    static bool trigger = false;
-    Collider rect_collider(rect), ellipse_collider(ellipse),
-             mouse_rect_collider(mouse_rect), mouse_ellipse_collider(mouse_ellipse);
-    rect_collider.setEnabled(true);
-    ellipse_collider.setEnabled(true);
-    mouse_rect_collider.setEnabled(true);
-    mouse_ellipse_collider.setEnabled(true);
+    Sprite sp_test("test", "assets/load1.png", engine.window()->renderer), sp_block("red", "assets/red.png", engine.window()->renderer);
+    Sprite sp_green("green", "assets/green.png", engine.window()->renderer);
+
+    Control con("con", std::move(sp_test));
+    Entity test("test", std::move(sp_test));
+    Entity block("red", sp_block);
+    Entity green("green", sp_test);
+    test.setPosition(100, 100);
+    test.collider()->setEnabled(true);
+    block.setPosition(200, 200);
+    block.setColliderSelf(Graphics::Rectangle());
+    block.collider()->setEnabled(true);
+    fmt::println("Test: {} {} {} {}", block.collider()->bounds().pos.x, block.collider()->bounds().pos.y, block.collider()->bounds().size.width, block.collider()->bounds().size.height);
+    green.setColliderSelf(Graphics::Ellipse());
+    Graphics::Ellipse show_box(0, 0, 0, 0, StdColor::Yellow);
+    auto self = block.self<Sprite>();
+    show_box.area.reset(self->size());
+    show_box.pos.reset(block.position() + block.centerPosition());
     engine.installEventHandler([&](SEvent ev) {
         auto cur_pos = Cursor::global()->position();
-        auto old_cur = Cursor::global()->cursor();
-        if (Algorithm::comparePosRect(cur_pos, rect) >= 0) {
-            if (old_cur != EasyEngine::Cursor::Hand) {
-                old_cur = EasyEngine::Cursor::Hand;
-                Cursor::global()->setCursor(Cursor::Hand);
-            }
-        } else if (Algorithm::comparePosEllipse(cur_pos, ellipse) >= 0) {
-            if (old_cur != EasyEngine::Cursor::Hand) {
-                old_cur = EasyEngine::Cursor::Hand;
-                Cursor::global()->setCursor(Cursor::Hand);
-            }
-        } else {
-            if (old_cur != EasyEngine::Cursor::Default) {
-                old_cur = EasyEngine::Cursor::Default;
-                Cursor::global()->setCursor(Cursor::Default);
-            }
+        green.setPosition(cur_pos - green.centerPosition());
+        if (green.collider()->check(*block.collider()) >= 0) {
+            block.setPosition((float)(rand() % 600), (float)(rand() % 400));
         }
-        if (ev.button.type == SDL_EVENT_MOUSE_BUTTON_DOWN && ev.button.button == SDL_BUTTON_LEFT) {
-            trigger = !trigger;
-        }
-        if (trigger) {
-            mouse_ellipse_collider.moveBounds(cur_pos);
-            auto ch = mouse_ellipse_collider.check(ellipse_collider);
-            if (ch > 0) {
-                ellipse.back_color = StdColor::DarkRed;
-            } else if (ch == 0) {
-                ellipse.back_color = StdColor::Tomato;
-            } else {
-                ellipse.back_color = StdColor::LightPink;
-            }
-            auto ch2 = mouse_ellipse_collider.check(rect_collider);
-            if (ch2 > 0) {
-                rect.back_color = StdColor::DarkBlue;
-            } else if (ch2 == 0) {
-                rect.back_color = StdColor::MediumBlue;
-            } else {
-                rect.back_color = StdColor::LightBlue;
-            }
-        } else {
-            mouse_rect_collider.moveBounds(cur_pos);
-            auto bh = mouse_rect_collider.check(rect_collider);
-            if (bh > 0) {
-                rect.back_color = StdColor::DarkBlue;
-            } else if (bh == 0) {
-                rect.back_color = StdColor::MediumBlue;
-            } else {
-                rect.back_color = StdColor::LightBlue;
-            }
-            auto bh2 = mouse_rect_collider.check(ellipse_collider);
-            if (bh2 > 0) {
-                ellipse.back_color = StdColor::DarkRed;
-            } else if (bh2 == 0) {
-                ellipse.back_color = StdColor::Tomato;
-            } else {
-                ellipse.back_color = StdColor::LightPink;
-            }
-        }
-        engine.setWindowTitle(fmt::format("Cursor({},{})", cur_pos.x, cur_pos.y));
         return true;
     });
     engine.painter()->installPaintEvent([&](Painter& painter) {
-        painter.fillBackColor(StdColor::White);
-        painter.drawRectangle(rect);
-        painter.drawEllipse(ellipse);
-        if (trigger) {
-            mouse_ellipse.pos = mouse_ellipse_collider.bounds().pos;
-            painter.drawEllipse(mouse_ellipse);
-        } else {
-            mouse_rect.pos = mouse_rect_collider.bounds().pos;
-            painter.drawRectangle(mouse_rect);
-        }
+        painter.fillBackColor(StdColor::Gray);
+        // test.update(&painter);
+        block.update(&painter);
+        green.update(&painter);
+        painter.setThickness(4);
+        painter.drawRectangle(*block.collider()->shape<Graphics::Rectangle>());
+        painter.drawEllipse(*green.collider()->shape<Graphics::Ellipse>());
     });
 
     return engine.exec();

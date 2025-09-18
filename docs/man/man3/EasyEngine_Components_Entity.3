@@ -37,6 +37,18 @@ EasyEngine::Components::Entity \- 游戏实体
 .br
 .RI "获取实体名称 "
 .ti -1c
+.RI "void \fBsetColliderSelf\fP (const \fBGraphics::Rectangle\fP &rect)"
+.br
+.RI "设置碰撞器本身形状 "
+.ti -1c
+.RI "void \fBsetColliderSelf\fP (const \fBGraphics::Ellipse\fP &ellipse)"
+.br
+.RI "设置碰撞器本身形状 "
+.ti -1c
+.RI "void \fBsetColliderSelf\fP (const \fBGraphics::Point\fP &point)"
+.br
+.RI "设置碰撞器本身形状 "
+.ti -1c
 .RI "void \fBsetPosition\fP (\fBVector2\fP pos)"
 .br
 .RI "设置实体在窗口中所在的位置 "
@@ -64,6 +76,17 @@ EasyEngine::Components::Entity \- 游戏实体
 .RI "\fBCollider\fP * \fBcollider\fP () const"
 .br
 .RI "获取实体碰撞器 "
+.ti -1c
+.RI "template<class Type> Type * \fBself\fP () const"
+.br
+.RI "获取实体本身 "
+.ti -1c
+.RI "const std::type_info & \fBtypeInfo\fP () const"
+.br
+.RI "获取当前实体的类型 "
+.ti -1c
+.RI "void \fBupdate\fP (\fBPainter\fP *painter) const"
+.br
 .in -1c
 .SS "友元"
 
@@ -92,6 +115,35 @@ EasyEngine::Components::Entity \- 游戏实体
 
 .SH "成员函数说明"
 .PP 
+.SS "template<class Type> Type * EasyEngine::Components::Entity::self () const"
+
+.PP
+获取实体本身 
+.PP
+\fB模板参数\fP
+.RS 4
+\fIType\fP 指定实体类型 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应类型的本体 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+目前支持的类：Sprite、SpriteGroup、Animation、GeometryF 
+
+.PP
+可通过使用 \fBtypeInfo()\fP 判断当前本体的类型 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBtypeInfo\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::Components::Entity::setCenterPosition (float x, float y)"
 
 .PP
@@ -113,6 +165,54 @@ EasyEngine::Components::Entity \- 游戏实体
 \fB参数\fP
 .RS 4
 \fIpos\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setColliderSelf (const \fBGraphics::Ellipse\fP & ellipse)"
+
+.PP
+设置碰撞器本身形状 
+.PP
+\fB参数\fP
+.RS 4
+\fIellipse\fP 指定椭圆 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setColliderSelf (const \fBGraphics::Point\fP & point)"
+
+.PP
+设置碰撞器本身形状 
+.PP
+\fB参数\fP
+.RS 4
+\fIpoint\fP 指定圆点 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Entity::setColliderSelf (const \fBGraphics::Rectangle\fP & rect)"
+
+.PP
+设置碰撞器本身形状 
+.PP
+\fB参数\fP
+.RS 4
+\fIrect\fP 指定矩形 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+使用此函数后将自动按照实体调整大小及位置并自动启用碰撞器 
 .RE
 .PP
 
@@ -148,6 +248,27 @@ EasyEngine::Components::Entity \- 游戏实体
 \fB参数\fP
 .RS 4
 \fIpos\fP 
+.RE
+.PP
+
+.SS "const std::type_info & EasyEngine::Components::Entity::typeInfo () const"
+
+.PP
+获取当前实体的类型 
+.PP
+\fB返回\fP
+.RS 4
+返回一个类型信息，可用于 \fBself()\fP 上获取本体 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+对于未存放本体的游戏实体，将返回 void 类型 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBself\fP 
 .RE
 .PP
 

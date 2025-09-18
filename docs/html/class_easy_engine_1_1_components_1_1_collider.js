@@ -3,10 +3,12 @@ var class_easy_engine_1_1_components_1_1_collider =
     [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html#aa4ff20db36679935a526af815d639ccf", null ],
     [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html#aec7cbce24822e53018644fcb219d7d03", null ],
     [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html#aa7bfdda7ac92e699ad6daac58135dc42", null ],
+    [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html#af765ba0bdfefce3cad9b7e58aec974c8", null ],
     [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html#ab8c26cbce9cbc0eef8edc958080fa44c", null ],
     [ "bounds", "class_easy_engine_1_1_components_1_1_collider.html#af0d5a4a6aaeab562c1db27abc88db717", null ],
     [ "check", "class_easy_engine_1_1_components_1_1_collider.html#a1bc07a38ec5ca1b1d5638c99d55688da", null ],
     [ "enabled", "class_easy_engine_1_1_components_1_1_collider.html#a6235b60cefad5914d6be022957d372c9", null ],
+    [ "isValid", "class_easy_engine_1_1_components_1_1_collider.html#a417c01005fcb5bbc9933a206a9fbf36a", null ],
     [ "moveBounds", "class_easy_engine_1_1_components_1_1_collider.html#aa850d301612e2f5ef1d1bf8632af3fa9", null ],
     [ "moveBounds", "class_easy_engine_1_1_components_1_1_collider.html#ae528795242e014f0a59353c1732a615d", null ],
     [ "resizeBounds", "class_easy_engine_1_1_components_1_1_collider.html#a7a09505e10dc8c2dfd7152a91712cb7e", null ],
@@ -14,5 +16,10 @@ var class_easy_engine_1_1_components_1_1_collider =
     [ "setBoundsGeometry", "class_easy_engine_1_1_components_1_1_collider.html#a0dd5720d6230ffbfdc9439b90aa2b3a5", null ],
     [ "setBoundsGeometry", "class_easy_engine_1_1_components_1_1_collider.html#a0d9d884cc3c36c31bd2749eeee9079e9", null ],
     [ "setBoundsGeometry", "class_easy_engine_1_1_components_1_1_collider.html#a802b0e7b016f048165a29a887c935732", null ],
-    [ "setEnabled", "class_easy_engine_1_1_components_1_1_collider.html#ad343672817806bba0d5bd23323645685", null ]
+    [ "setEnabled", "class_easy_engine_1_1_components_1_1_collider.html#ad343672817806bba0d5bd23323645685", null ],
+    [ "setSelf", "class_easy_engine_1_1_components_1_1_collider.html#ab0e26ff3d01a8ac22f7af1340bc40f34", null ],
+    [ "setSelf", "class_easy_engine_1_1_components_1_1_collider.html#a7e0df70b1f38944faf3b7ac5c6fb44c6", null ],
+    [ "setSelf", "class_easy_engine_1_1_components_1_1_collider.html#a92cf99bac4a3ddf2fc7777c7cecf663a", null ],
+    [ "shape", "class_easy_engine_1_1_components_1_1_collider.html#a185cedf0fd291d38208fd73ae4f8a7a3", null ],
+    [ "shapeType", "class_easy_engine_1_1_components_1_1_collider.html#aed283d523c9fe786aaab87b3209b36c1", null ]
 ];

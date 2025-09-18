@@ -32,12 +32,16 @@ namespace EasyEngine {
         this->y = y;
     }
 
+    void Vector2::reset(const EasyEngine::Vector2 &vector2) { reset(vector2.x, vector2.y); }
+
     Size::Size(float width, float height) : width(width), height(height) {}
 
     void Size::reset(float width, float height) {
         this->width = width;
         this->height = height;
     }
+
+    void Size::reset(const EasyEngine::Size &size) { reset(size.width, size.height); }
 
     Graphics::Point::Point(Vector2 pos, const std::string &hex_color) :
         pos(pos), color(Algorithm::hexToRGBA(hex_color)){}

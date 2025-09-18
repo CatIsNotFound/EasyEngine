@@ -68,16 +68,17 @@ void EasyEngine::Cursor::moveToCenter(const EasyEngine::Window *window) {
 }
 
 void EasyEngine::Cursor::setCursor(const EasyEngine::Cursor::StdCursor &cursor) {
-    if (cursor == _std_cursor) return;
+    if (this->cursor() == cursor) return;
     if (_custom_cursor && _user_custom.contains(cursor)) {
         auto user_cursor = _user_custom.at(cursor);
         if (user_cursor.cursor) {
             SDL_DestroyCursor(_cursor);
-            _cursor = SDL_CreateColorCursor(user_cursor.cursor.get(),
-                                            user_cursor.hot_point.x, user_cursor.hot_point.y);
-            SDL_SetCursor(_cursor);
-            return;
         }
+        _cursor = SDL_CreateColorCursor(user_cursor.cursor.get(),
+                                        user_cursor.hot_point.x, user_cursor.hot_point.y);
+        SDL_SetCursor(_cursor);
+        _std_cursor = cursor;
+        return;
     }
     _std_cursor = cursor;
     SDL_DestroyCursor(_cursor);
@@ -145,7 +146,7 @@ bool EasyEngine::Cursor::visible() const {
 }
 
 void EasyEngine::Cursor::unload() {
-    SDL_DestroyCursor(_cursor);
+    if (_cursor) SDL_DestroyCursor(_cursor);
     if (_surface) SDL_DestroySurface(_surface);
 }
 
@@ -439,7 +440,6 @@ int EasyEngine::Engine::run() {
                     should_skip_frame = true;
                     consecutive_slow_frames = 0;
                     dropped_frames += 1;
-                    // SDL_Log("[DROP] Frame skipped due to slow rendering");
                 }
 
                 if (!should_skip_frame) {
@@ -596,7 +596,7 @@ EasyEngine::Geometry EasyEngine::Engine::screenGeometry() {
     SDL_Rect rect;
     auto _primary_screen = SDL_GetPrimaryDisplay();
     SDL_GetDisplayBounds(_primary_screen, &rect);
-    return Geometry(rect.x, rect.y, rect.w, rect.h);
+    return {rect.x, rect.y, rect.w, rect.h};
 }
 
 EasyEngine::Painter::Painter(EasyEngine::Window* window) : _window(window), paint_function(nullptr), _thickness(1) {}
