@@ -1113,14 +1113,34 @@ namespace EasyEngine {
          */
         void unload();
 
-        void loadFont(const std::string& path, uint32_t font_size, );
+        /**
+         * @brief 加载字体到字体系统
+         * @param name      命名字体名称（便于后续管理）
+         * @param font      指定字体
+         * @see font
+         * @see unloadFont
+         */
+        void loadFont(const std::string& name, Components::Font* font);
+        /**
+         * @brief 从字体系统中卸载指定字体
+         * @param name 指定字体名称
+         * @see loadFont
+         * @see fontInfo
+         */
+        void unloadFont(const std::string& name);
+        /**
+         * @brief 从字体系统中获取字体信息
+         * @param name 指定字体名称
+         *
+         */
+        Components::Font* font(const std::string& name);
 
-        FontSystem() = delete;
         FontSystem(FontSystem&) = delete;
         FontSystem& operator=(const FontSystem&) = delete;
     private:
+        FontSystem() = default;
         static std::unique_ptr<FontSystem> _instance;
-
+        std::map<std::string, std::shared_ptr<Components::Font>> _font_info;
     };
 }
 

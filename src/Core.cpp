@@ -9,6 +9,7 @@ std::function<bool(SEvent)> EasyEngine::EventSystem::_my_event_handler = nullptr
 std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
+std::unique_ptr<EasyEngine::FontSystem> EasyEngine::FontSystem::_instance = nullptr;
 
 EasyEngine::Cursor::Cursor() {
     _cursor = SDL_CreateSystemCursor(SStdCursor(0));
@@ -167,6 +168,7 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
     }
     AudioSystem::global()->init();
     Cursor::global();
+    FontSystem::global()->init();
     SDL_Log("Enjoy! (*^_^*)\n\n");
 }
 
@@ -488,7 +490,7 @@ void EasyEngine::Engine::cleanUp() {
     if (_clean_up_function) _clean_up_function();
     AudioSystem::global()->unload();
     Cursor::global()->unload();
-
+    FontSystem::global()->unload();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);
@@ -1328,3 +1330,21 @@ const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::sfxChannel(uint8_
 }
 
 
+EasyEngine::FontSystem *EasyEngine::FontSystem::global() {
+    if (!_instance) {
+        _instance = std::unique_ptr<FontSystem>(new FontSystem());
+    }
+    return _instance.get();
+}
+
+void EasyEngine::FontSystem::init() {
+    if (!TTF_Init()) {
+        SDL_Log("[ERROR] Failed to initialized the font system!");
+    }
+}
+
+void EasyEngine::FontSystem::unload() {
+    if (!TTF_Init()) return;
+
+    TTF_Quit();
+}

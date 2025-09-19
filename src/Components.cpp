@@ -256,6 +256,18 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, SRenderer *rende
     _properties = std::make_unique<Properties>();
 }
 
+EasyEngine::Components::Sprite::Sprite(const std::string &name, SSurface *surface, SRenderer *renderer)
+    : _name(name), _renderer(renderer) {
+    if (!_renderer) {
+        SDL_Log("[ERROR] Current renderer is not valid!");
+        return;
+    }
+    _surface = surface;
+    _texture = SDL_CreateTextureFromSurface(renderer, _surface);
+    SDL_GetTextureSize(_texture, &_size.width, &_size.height);
+    _properties = std::make_unique<Properties>();
+}
+
 EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit)
     : _name(name), _renderer(spirit._renderer), _size(spirit._size) {
     if (!_renderer) {
@@ -1304,5 +1316,121 @@ void EasyEngine::Components::Entity::update(Painter *painter) const {
             _def_sprite->draw(_pos, clip.pos, clip.size, painter);
         }
     }
+}
+
+EasyEngine::Components::Font::Font(const std::string &path, float font_size)
+    : _font_size(font_size), _font_direction(LeftToRight), _font_outline(0), _font_style_flags(0) {
+    load(path, font_size);
+}
+
+bool EasyEngine::Components::Font::load(const std::string &path, float font_size) {
+    _font = TTF_OpenFont(path.c_str(), font_size);
+    if (!_font) {
+        SDL_Log("[ERROR] Can't load the specified font!\nException: %s", SDL_GetError());
+        return false;
+    }
+    return true;
+}
+
+void EasyEngine::Components::Font::unload() {
+    if (_font) {
+        TTF_CloseFont(_font);
+    }
+}
+
+void EasyEngine::Components::Font::setFontSize(float size) {
+    auto ret = TTF_SetFontSize(_font, size);
+    if (ret) _font_size = size;
+}
+
+float EasyEngine::Components::Font::fontSize() const {
+    return _font_size;
+}
+
+void EasyEngine::Components::Font::setStyle(uint32_t style) {
+    TTF_SetFontStyle(_font, style);
+    _font_style_flags = style;
+}
+
+void EasyEngine::Components::Font::setOutline(uint32_t value) {
+    _font_outline = value;
+}
+
+uint32_t EasyEngine::Components::Font::outline() const {
+    return _font_outline;
+}
+
+void EasyEngine::Components::Font::setOutlineColor(const SColor &color) {
+    _outline_color = color;
+}
+
+const SColor &EasyEngine::Components::Font::outlineColor() const {
+    return _outline_color;
+}
+
+void EasyEngine::Components::Font::setFontDirection(const EasyEngine::Font::Direction &direction) {
+    TTF_SetFontDirection(_font, TTF_Direction(direction));
+    _font_direction = direction;
+}
+
+const EasyEngine::Font::Direction &EasyEngine::Components::Font::fontDirection() const {
+    return _font_direction;
+}
+
+void EasyEngine::Components::Font::setFontColor(const SColor &color) {
+    _font_color = color;
+}
+
+const SColor &EasyEngine::Components::Font::fontColor() const {
+    return _font_color;
+}
+
+void EasyEngine::Components::Font::setFontHinting(uint32_t hinting) {
+    TTF_SetFontHinting(_font, static_cast<TTF_HintingFlags>(hinting));
+    _font_hinting = hinting;
+}
+
+void EasyEngine::Components::Font::setFontKerning(bool enabled) {
+    TTF_SetFontKerning(_font, enabled);
+    _font_kerning = enabled;
+}
+
+bool EasyEngine::Components::Font::fontKerning() const {
+    return _font_kerning;
+}
+
+void EasyEngine::Components::Font::setLineSpacing(uint32_t spacing) {
+    TTF_SetFontLineSkip(_font, spacing);
+    _line_spacing = spacing;
+}
+
+uint32_t EasyEngine::Components::Font::lineSpacing() const {
+    return _line_spacing;
+}
+
+EasyEngine::Sprite
+EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::Painter &painter) {
+    SSurface* surface;
+    if (_font_outline) {
+        auto filled_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
+        TTF_SetFontOutline(_font, _font_outline);
+        auto bordered_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _outline_color);
+        TTF_SetFontOutline(_font, 0);
+        int real_width = bordered_surface->w, real_height = bordered_surface->h;
+        surface = SDL_CreateSurface(real_width, real_height, bordered_surface->format);
+
+        SDL_FillSurfaceRect(surface, nullptr, SDL_MapSurfaceRGBA(surface, 0, 0, 0, 0));
+        SDL_BlitSurface(filled_surface, nullptr, surface, nullptr);
+        SDL_BlitSurface(bordered_surface, nullptr, surface, nullptr);
+
+        SDL_DestroySurface(filled_surface);
+        SDL_DestroySurface(bordered_surface);
+    } else {
+        surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
+        if (!surface) {
+            SDL_Log("[ERROR] Can't draw the current text!\nException: %s", SDL_GetError());
+        }
+    }
+    return {text, surface, painter.window()->renderer};
 }
 

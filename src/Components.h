@@ -337,6 +337,13 @@ namespace EasyEngine {
              */
             explicit Sprite(const std::string& name, SRenderer* renderer);
             /**
+             * @brief 创建一个精灵
+             * @param name      精灵别名
+             * @param surface   指定的图片
+             * @param renderer  使用的渲染器
+             */
+            Sprite(const std::string& name, SSurface* surface, SRenderer* renderer);
+            /**
              * @brief 克隆已有的精灵
              * @param name   精灵别名
              * @param spirit 指定精灵
@@ -1525,6 +1532,168 @@ namespace EasyEngine {
             Vector2 _position, _hot_position;
             Size _size;
             Graphics::Rectangle _hot_area;
+        };
+
+        /**
+         * @class Font
+         * @brief 字体
+         *
+         * 包含字体相关的信息
+         */
+        class Font {
+        public:
+            /**
+             * @enum Style
+             * @brief 字体样式
+             */
+            enum Style {
+                /// 常规样式
+                Regular = 0x0,
+                /// 粗体样式
+                Bold = 0x1,
+                /// 斜体样式
+                Italic = 0x2,
+                /// 下划线样式
+                Underline = 0x4,
+                /// 删除线样式
+                Strikethrough = 0x8
+            };
+            /**
+             * @enum Direction
+             * @brief 字体方向
+             */
+            enum Direction {
+                /// 从左到右
+                LeftToRight = 4,
+                /// 从右到左
+                RightToLeft,
+                /// 从上到下
+                TopToBottom,
+                /// 从下到上
+                BottomToTop
+            };
+            /**
+             * @enum 字体微调
+             */
+            enum Hinting {
+                Normal,
+                Light,
+                Mono,
+                None,
+                SubPixel
+            };
+        public:
+            /**
+             * @brief 创建并打开字体
+             * @param path      指定路径
+             * @param font_size 字体大小（按点为单位）
+             * @see load
+             */
+            explicit Font(const std::string& path, float font_size);
+            /**
+             * @brief 加载字体
+             * @param path      指定路径
+             * @param font_size 字体大小（按点为单位）
+             * @return 返回是否成功加载字体
+             */
+            bool load(const std::string& path, float font_size);
+            /**
+             * @brief 卸载字体
+             * @note 必须执行，否则将无法完全卸载字体！
+             */
+            void unload();
+            /**
+             * @brief 设置字体大小
+             * @param size 字体大小
+             */
+            void setFontSize(float size);
+            /**
+             * @brief 获取当前字体大小
+             */
+            float fontSize() const;
+            /**
+             * @brief 设置字体样式
+             * @param style 指定样式
+             */
+            void setStyle(uint32_t style);
+            /**
+             * @brief 设置字体描边
+             * @param value 设定值（0 = 无描边）
+             */
+            void setOutline(uint32_t value = 0);
+            /**
+             * @brief 获取字体描边值
+             * @return 返回描边值，0 表示无描边
+             */
+            uint32_t outline() const;
+            /**
+             * @brief 设置字体描边颜色
+             * @param color 指定描边颜色
+             */
+            void setOutlineColor(const SColor& color);
+            /**
+             * @brief 获取字体描边颜色
+             */
+            const SColor& outlineColor() const;
+            /**
+             * @brief 设置字体方向
+             * @param direction 指定字体方向
+             */
+            void setFontDirection(const Direction& direction);
+            /**
+             * @brief 获取字体方向
+             */
+            const Direction& fontDirection() const;
+            /**
+             * @brief 设置字体颜色
+             * @param color 指定颜色
+             */
+            void setFontColor(const SColor& color);
+            /**
+             * @brief 获取字体颜色
+             */
+            const SColor& fontColor() const;
+            /**
+             * @brief 设置字体微调
+             * @param hinting 指定的字体微调
+             */
+            void setFontHinting(uint32_t hinting);
+            /**
+             * @brief 设置是否允许字体间距
+             * @param enabled 允许/禁用字体间距
+             */
+            void setFontKerning(bool enabled);
+            /**
+             * @brief 获取当前字体下是否允许字体间距
+             */
+            bool fontKerning() const;
+            /**
+             * @brief 设置行间距
+             * @param spacing   间距值
+             */
+            void setLineSpacing(uint32_t spacing);
+            /**
+             * @brief  获取行间距
+             */
+            uint32_t lineSpacing() const;
+            /**
+             * @brief 文本转换精灵
+             * @param text 指定内容
+             */
+            Sprite textToSprite(const std::string &text, EasyEngine::Painter &painter);
+
+        private:
+            /// 字体指针
+            TTF_Font* _font;
+            float _font_size;
+            SColor _font_color;
+            uint32_t _font_style_flags;
+            uint32_t _font_outline;
+            SColor _outline_color;
+            Direction _font_direction;
+            uint32_t _font_hinting;
+            bool _font_kerning;
+            uint32_t _line_spacing;
         };
     }
 }
