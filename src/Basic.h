@@ -14,7 +14,18 @@
  */
 
 #include "preinclude.h"
-using SColor = SDL_Color;
+
+using SRenderer     = SDL_Renderer;
+using SSurface      = SDL_Surface;
+using STexture      = SDL_Texture;
+using SEvent        = SDL_Event;
+using SWinEvent     = SDL_WindowEvent;
+using SWindow       = SDL_Window;
+using SWindowID     = SDL_WindowID;
+using SColor        = SDL_Color;
+using SCursor       = SDL_Cursor;
+using SStdCursor    = SDL_SystemCursor;
+using SAudioSpec    = SDL_AudioSpec;
 
 namespace EasyEngine {
     /**

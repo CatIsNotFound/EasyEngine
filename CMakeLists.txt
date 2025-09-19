@@ -50,6 +50,9 @@ add_executable(EasyEngine
         src/Resources.cpp
         src/Resources.h
         main.cpp
+        src/Scene.cpp
+        src/Scene.h
+        main.cpp
 )
 
 #include_directories(${FFMPEG_DIR}/include)

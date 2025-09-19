@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hotpoint_0',['HotPoint',['../struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html',1,'EasyEngine::Cursor::UserCustom']]]
+  ['geometry_0',['Geometry',['../struct_easy_engine_1_1_geometry.html',1,'EasyEngine']]],
+  ['geometryf_1',['GeometryF',['../struct_easy_engine_1_1_geometry_f.html',1,'EasyEngine']]]
 ];

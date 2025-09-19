@@ -3,17 +3,220 @@
 #ifndef EASYENGINE_RESOURCES_H
 #define EASYENGINE_RESOURCES_H
 
+/**
+ * @file Resources.h
+ * @brief 资源管理
+ *
+ * 包含资源系统、文件系统的用于管理资源的主要模块
+ */
+
 #include "Basic.h"
 
 namespace EasyEngine {
     /**
-     * @class Resources
-     * @brief 游戏资源
+     * @class FileSystem
+     * @brief 文件系统
      *
-     * 包含游戏中所需要的素材
      */
-    class Resources {
+    class FileSystem {
+    public:
+        /**
+         * @brief 设置当前的目录
+         * @param main_directory 设定目录
+         */
+        static bool setCurrentPath(const std::string& main_directory);
+        /**
+         * @brief 获取当前的目录
+         *
+         */
+        static const std::string& currentPath();
+        /**
+         * @brief 指定文件是否存在
+         * @param path 指定文件路径
+         * @note 若指定相对目录，则会从主目录下遍历！
+         */
+        static bool isFile(const std::string& path);
+        /**
+         * @brief 指定一个目录是否存在？
+         * @param path 指定目录
+         * @note 若指定相对目录，则会从主目录下遍历！
+         */
+        static bool isDir(const std::string& path);
+        /**
+         * @brief 创建一个空目录
+         * @param path 指定新的空目录
+         * @param ignore_error 忽略目录存在的错误
+         * @param recursive_create 是否递归创建目录
+         * @return 返回是否成功创建一个空目录
+         */
+        static bool mkDir(const std::string& path, bool ignore_error = false, bool recursive_create = false);
+        /**
+         * @brief 删除指定的目录
+         * @param path             指定目录
+         * @param ignore_error     忽略目录存在的错误
+         * @param recursive_remove 递归删除此目录下的所有文件及目录
+         * @warning 请不要随意使用 recursive_remove 参数，如指定目录下包含重要文件，使用此参数后将一同删除！
+         */
+        static bool rmDir(const std::string& path, bool ignore_error = false, bool recursive_remove = false);
+        /**
+         * @brief 创建一个空白文件
+         * @param path                   指定文件路径
+         * @param auto_create_directory  是否自动创建目录（当目录不存在时递归创建）
+         * @param ignore_error           忽略存在的错误
+         *
+         */
+        static bool mkFile(const std::string &path, bool auto_create_directory = false, bool ignore_error = false);
+        /**
+         * @brief 删除指定的文件
+         * @param path          指定文件路径
+         * @param ignore_error  忽略文件存在的错误
+         */
+        static bool rmFile(const std::string& path, bool ignore_error = false);
+        /**
+         * @brief 写入内容到指定文件
+         * @param context       指定写入内容
+         * @param path          指定文件路径
+         * @param append_mode   是否使用追加写入
+         * @param ignore_error  忽略存在的错误
+         */
+        static bool writeFile(const std::string &context, const std::string &path,
+                              bool append_mode, bool ignore_error = false);
+        /**
+         * @brief 从指定文件中读取内容
+         * @param path          指定文件路径
+         * @param ignore_error  忽略存在的错误
+         * @param ok            用于检查当前是否存在错误
+         * @return 返回读取到的文件的所有内容
+         */
+        static std::string readFile(const std::string &path, bool ignore_error = false, bool *ok = nullptr);
 
+        /**
+         * @brief 写入二进制内容到指定文件
+         * @param path              指定输出文件路径
+         * @param append_mode       是否使用追加写入模式
+         * @param how2WriteFile     指定写入文件的方法
+         * @param ignore_error      忽略存在的错误
+         * @return 返回是否成功写入文件
+         */
+        static bool writeBinaryFile(const std::string& path, bool append_mode,
+                                    const std::function<void(std::ofstream& file)>& how2WriteFile,
+                                    bool ignore_error = false);
+
+        /**
+         * @brief 从指定文件中读取二进制内容
+         * @param path          指定文件路径
+         * @param how2ReadFile  指定读取文件的方法
+         * @param ignore_error  忽略存在的错误
+         * @return 返回是否成功读取二进制内容
+         */
+        static bool readBinaryFile(const std::string& path,
+                       const std::function<void(std::ifstream& file)>& how2ReadFile,
+                       bool ignore_error = false);
+        /**
+         * @brief 获取绝对路径
+         * @param path 指定路径
+         * @return 将返回完整的绝对路径
+         */
+        static const char * getAbsolutePath(const std::string& path);
+
+        FileSystem() = delete;
+        FileSystem(FileSystem&) = delete;
+        FileSystem& operator=(const FileSystem&) = delete;
+        ~FileSystem() = delete;
+    private:
+        static std::deque<std::string> getPathUntilExist(const std::string& path);
+        static std::deque<std::string> getPathUntilNotExist(const std::string &path);
+        static std::string _main_path;
+    };
+
+    /**
+     * @class ResourceSystem
+     * @brief 资源系统
+     *
+     */
+    class ResourceSystem {
+        /**
+         * @struct Resource
+         * @brief 资源
+         */
+        struct Resource {
+            /**
+             * @enum Type
+             * @brief 资源类型
+             */
+            enum Type {
+                /// 无，用于占位
+                None,
+                /// 文本文档
+                Text = 0x10,
+                /// 图片
+                Image = 0x20,
+                /// 字体
+                Font = 0x30,
+                /// 音频
+                Audio = 0x40,
+                /// 视频
+                Video = 0x50,
+                /// 其它二进制文件
+                Binary = 0x60
+            };
+            /// 资源类型
+            Type type;
+            /// 资源所在路径
+            std::string url;
+            /// 元数据
+            union MetaData {
+                explicit MetaData() {}
+                ~MetaData() {}
+                std::shared_ptr<SSurface> surface;
+                std::shared_ptr<TTF_Font> font;
+                std::shared_ptr<MIX_Audio> audio;
+                std::shared_ptr<std::string> data;
+
+            };
+            /// 元数据存储
+            MetaData meta_data;
+        };
+    public:
+        /**
+         * @brief 获取全局资源系统
+         */
+        static ResourceSystem* global();
+        /**
+         * @brief 设置根目录
+         * @param path 指定目录
+         *
+         * 用于设置整个资源系统的根目录
+         */
+        void setRootPath(const std::string& path);
+        /**
+         * @brief 载入资源
+         * @param name 为载入的资源命名
+         * @param path 指定路径
+         * @return 返回是否成功载入资源
+         */
+        bool load(const std::string& name, const std::string& path);
+
+        /**
+         * @brief 卸载指定资源
+         * @param name 指定卸载的资源名
+         */
+        void unload(const std::string& name);
+        /**
+         * @brief 获取指定资源
+         * @param name 指定资源名
+         * @return 返回对应的资源
+         * @note 若指定资源名不存在，将强制报错并异常退出！
+         * @see Resource
+         */
+        const Resource& resource(const std::string& name);
+
+        ResourceSystem(ResourceSystem&) = delete;
+        ResourceSystem& operator=(const ResourceSystem&) = delete;
+    private:
+        explicit ResourceSystem() = default;
+        static std::unique_ptr<ResourceSystem> _instance;
+        std::map<std::string, Resource> _resource;
     };
 }
 

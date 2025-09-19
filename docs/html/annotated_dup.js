@@ -5,8 +5,8 @@ var annotated_dup =
         [ "Animation", "class_easy_engine_1_1_components_1_1_animation.html", "class_easy_engine_1_1_components_1_1_animation" ],
         [ "BGM", "class_easy_engine_1_1_components_1_1_b_g_m.html", "class_easy_engine_1_1_components_1_1_b_g_m" ],
         [ "Collider", "class_easy_engine_1_1_components_1_1_collider.html", "class_easy_engine_1_1_components_1_1_collider" ],
-        [ "Container", "class_easy_engine_1_1_components_1_1_container.html", null ],
         [ "Control", "class_easy_engine_1_1_components_1_1_control.html", "class_easy_engine_1_1_components_1_1_control" ],
+        [ "Element", "class_easy_engine_1_1_components_1_1_element.html", null ],
         [ "Entity", "class_easy_engine_1_1_components_1_1_entity.html", "class_easy_engine_1_1_components_1_1_entity" ],
         [ "SFX", "class_easy_engine_1_1_components_1_1_s_f_x.html", "class_easy_engine_1_1_components_1_1_s_f_x" ],
         [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html", "class_easy_engine_1_1_components_1_1_sprite" ],
@@ -25,12 +25,17 @@ var annotated_dup =
       [ "Cursor", "class_easy_engine_1_1_cursor.html", "class_easy_engine_1_1_cursor" ],
       [ "Engine", "class_easy_engine_1_1_engine.html", "class_easy_engine_1_1_engine" ],
       [ "EventSystem", "class_easy_engine_1_1_event_system.html", "class_easy_engine_1_1_event_system" ],
+      [ "FileSystem", "class_easy_engine_1_1_file_system.html", null ],
       [ "Geometry", "struct_easy_engine_1_1_geometry.html", null ],
       [ "GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
+      [ "Layer", "class_easy_engine_1_1_layer.html", null ],
       [ "Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
-      [ "Resources", "class_easy_engine_1_1_resources.html", null ],
+      [ "ResourceSystem", "class_easy_engine_1_1_resource_system.html", "class_easy_engine_1_1_resource_system" ],
+      [ "Scene", "class_easy_engine_1_1_scene.html", null ],
+      [ "SceneManager", "class_easy_engine_1_1_scene_manager.html", null ],
       [ "Size", "struct_easy_engine_1_1_size.html", "struct_easy_engine_1_1_size" ],
       [ "Vector2", "struct_easy_engine_1_1_vector2.html", "struct_easy_engine_1_1_vector2" ],
       [ "Window", "class_easy_engine_1_1_window.html", "class_easy_engine_1_1_window" ]
-    ] ]
+    ] ],
+    [ "Test", "struct_test.html", null ]
 ];

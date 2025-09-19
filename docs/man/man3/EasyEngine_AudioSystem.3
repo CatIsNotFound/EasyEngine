@@ -77,11 +77,11 @@ EasyEngine::AudioSystem \- 音频系统
 .ti -1c
 .RI "void \fBstopBGM\fP (uint8_t channel, bool pause, int64_t fade_out_duration=0)"
 .br
-.RI "立刻暂停/停止播放指定通道的 BGM "
+.RI "立刻暂停/停止播放指定通道的 \fBBGM\fP "
 .ti -1c
 .RI "void \fBstopSFX\fP (uint8_t channel)"
 .br
-.RI "立刻停止播放指定通道的 SFX "
+.RI "立刻停止播放指定通道的 \fBSFX\fP "
 .ti -1c
 .RI "void \fBstopAllBGM\fP ()"
 .br
@@ -185,7 +185,7 @@ EasyEngine::AudioSystem \- 音频系统
 .PP
 \fB参数\fP
 .RS 4
-\fIbgm\fP 指定 BGM 
+\fIbgm\fP 指定 \fBBGM\fP 
 .RE
 .PP
 \fB返回\fP
@@ -217,7 +217,7 @@ EasyEngine::AudioSystem \- 音频系统
 .PP
 \fB参数\fP
 .RS 4
-\fIsfx\fP 指定 SFX 
+\fIsfx\fP 指定 \fBSFX\fP 
 .RE
 .PP
 \fB返回\fP
@@ -452,7 +452,7 @@ AudioSystem::global()\->setSFXVolume(0\&.75f);
 .SS "void EasyEngine::AudioSystem::stopBGM (uint8_t channel, bool pause, int64_t fade_out_duration = \fR0\fP)"
 
 .PP
-立刻暂停/停止播放指定通道的 BGM 
+立刻暂停/停止播放指定通道的 \fBBGM\fP 
 .PP
 \fB参数\fP
 .RS 4
@@ -481,7 +481,7 @@ AudioSystem::global()\->setSFXVolume(0\&.75f);
 .SS "void EasyEngine::AudioSystem::stopSFX (uint8_t channel)"
 
 .PP
-立刻停止播放指定通道的 SFX 
+立刻停止播放指定通道的 \fBSFX\fP 
 .PP
 \fB参数\fP
 .RS 4

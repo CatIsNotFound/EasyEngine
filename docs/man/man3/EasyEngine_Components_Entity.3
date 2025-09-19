@@ -92,7 +92,7 @@ EasyEngine::Components::Entity \- 游戏实体
 
 .in +1c
 .ti -1c
-.RI "class \fBContainer\fP"
+.RI "class \fBElement\fP"
 .br
 .in -1c
 .SH "详细描述"
@@ -118,7 +118,8 @@ EasyEngine::Components::Entity \- 游戏实体
 .SS "template<class Type> Type * EasyEngine::Components::Entity::self () const"
 
 .PP
-获取实体本身 
+获取实体本身 获取游戏实体的本体
+
 .PP
 \fB模板参数\fP
 .RS 4
@@ -140,7 +141,27 @@ EasyEngine::Components::Entity \- 游戏实体
 .PP
 \fB参见\fP
 .RS 4
-\fBtypeInfo\fP 
+\fBtypeInfo\fP
+.RE
+.PP
+\fB模板参数\fP
+.RS 4
+\fIType\fP 指定类型 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回指定类型的本体 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+可支持的类：Sprite、SpriteGroup、Animation、GeometryF 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定的类型与现有本体的类型不一致，将强制报错并退出！ 
 .RE
 .PP
 

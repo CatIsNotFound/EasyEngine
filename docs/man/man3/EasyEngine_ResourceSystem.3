@@ -1,0 +1,107 @@
+.TH "EasyEngine::ResourceSystem" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::ResourceSystem \- 资源系统  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Resources\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "bool \fBload\fP (const std::string &name, const std::string &path, const Resource::Type &type)"
+.br
+.RI "载入资源 "
+.ti -1c
+.RI "void \fBunload\fP (const std::string &name)"
+.br
+.RI "卸载指定资源 "
+.ti -1c
+.RI "const Resource & \fBresource\fP (const std::string &name)"
+.br
+.RI "获取指定资源 "
+.ti -1c
+.RI "\fBResourceSystem\fP (\fBResourceSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBResourceSystem\fP & \fBoperator=\fP (const \fBResourceSystem\fP &)=delete"
+.br
+.in -1c
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static \fBResourceSystem\fP * \fBglobal\fP ()"
+.br
+.RI "获取全局资源系统 "
+.in -1c
+.SH "详细描述"
+.PP 
+资源系统 
+.SH "成员函数说明"
+.PP 
+.SS "bool ResourceSystem::load (const std::string & name, const std::string & path, const Resource::Type & type)"
+
+.PP
+载入资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 为载入的资源命名 
+.br
+\fIpath\fP 指定路径 
+.br
+\fItype\fP 指定类型 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功载入资源 
+.RE
+.PP
+
+.SS "const ResourceSystem::Resource & ResourceSystem::resource (const std::string & name)"
+
+.PP
+获取指定资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定资源名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的资源 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若指定资源名不存在，将强制报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Resource 
+.RE
+.PP
+
+.SS "void ResourceSystem::unload (const std::string & name)"
+
+.PP
+卸载指定资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定卸载的资源名 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

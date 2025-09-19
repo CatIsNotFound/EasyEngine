@@ -170,8 +170,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (<a class=
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
-<tr class="memitem:aee29d97f7e87f0263024133085c28e3d" id="r_aee29d97f7e87f0263024133085c28e3d"><td class="memItemLeft" align="right" valign="top"><a id="aee29d97f7e87f0263024133085c28e3d" name="aee29d97f7e87f0263024133085c28e3d"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></tr>
+<tr class="memitem:a016b821f88c7c0a2de1451c175cefbf9" id="r_a016b821f88c7c0a2de1451c175cefbf9"><td class="memItemLeft" align="right" valign="top"><a id="a016b821f88c7c0a2de1451c175cefbf9" name="a016b821f88c7c0a2de1451c175cefbf9"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Element</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>游戏实体 </p>
@@ -229,6 +229,7 @@ template&lt;class Type&gt; </div>
 </div><div class="memdoc">
 
 <p>获取实体本身 </p>
+<p>获取游戏实体的本体</p>
 <dl class="tparams"><dt>模板参数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>指定实体类型 </td></tr>
@@ -239,7 +240,16 @@ template&lt;class Type&gt; </div>
 <dl class="section note"><dt>注解</dt><dd>目前支持的类：Sprite、SpriteGroup、Animation、GeometryF </dd>
 <dd>
 可通过使用 <a class="el" href="#a91dc1094162154d07d15e03d3dd02a4b" title="获取当前实体的类型">typeInfo()</a> 判断当前本体的类型 </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a91dc1094162154d07d15e03d3dd02a4b" title="获取当前实体的类型">typeInfo</a> </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a91dc1094162154d07d15e03d3dd02a4b" title="获取当前实体的类型">typeInfo</a></dd></dl>
+<dl class="tparams"><dt>模板参数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>指定类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回指定类型的本体 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>可支持的类：Sprite、SpriteGroup、Animation、GeometryF </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定的类型与现有本体的类型不一致，将强制报错并退出！ </dd></dl>
 
 </div>
 </div>

@@ -27,6 +27,9 @@
 #include "libs/sdl3_gfx/SDL3_imageFilter.h"
 #include "libs/sdl3_gfx/SDL3_rotozoom.h"
 
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <variant>

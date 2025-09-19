@@ -168,15 +168,12 @@ EasyEngine::Components::Control \- 控件
 .ti -1c
 .RI "\fBEvent\fP \fB__currentEvent\fP () const"
 .br
-.ti -1c
-.RI "template<class Type> Type * \fBstatus\fP (const \fBEasyEngine::Components::Control::Status\fP &status) const"
-.br
 .in -1c
 .SS "友元"
 
 .in +1c
 .ti -1c
-.RI "class \fBContainer\fP"
+.RI "class \fBElement\fP"
 .br
 .in -1c
 .SH "详细描述"
@@ -742,7 +739,7 @@ event
 .RE
 .PP
 
-.SS "template<class Type> Type * EasyEngine::Components::Control::status (const enum \fBStatus\fP & status) const"
+.SS "template<class Type> Type * EasyEngine::Components::Control::status (const enum \fBStatus\fP & status) const\fR [inline]\fP"
 
 .PP
 获取当前指定状态下的精灵、组、动画 
@@ -768,6 +765,11 @@ event
 
 .PP
 如果无法确定当前状态下使用的类，请使用 \fBgetTypename()\fP 以获取该状态下使用的类。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定的类型与对应状态下的现有类型不一致，将强制报错并异常退出！ 
 .RE
 .PP
 \fB参见\fP

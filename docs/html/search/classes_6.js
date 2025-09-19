@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['line_0',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]]
+  ['hotpoint_0',['HotPoint',['../struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html',1,'EasyEngine::Cursor::UserCustom']]]
 ];

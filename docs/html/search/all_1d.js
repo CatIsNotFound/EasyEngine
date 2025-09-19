@@ -5,5 +5,7 @@ var searchData=
   ['windowcount_2',['windowCount',['../class_easy_engine_1_1_engine.html#a39b495dcb4ce33bb5fab76824b853e77',1,'EasyEngine::Engine']]],
   ['windowidlist_3',['windowIDList',['../class_easy_engine_1_1_engine.html#afa2ab8a04166fbc0fed19a91e6ff3b75',1,'EasyEngine::Engine']]],
   ['windows_20使用_20vcpkg_4',['Windows (使用 vcpkg)',['../md_quickstart.html#autotoc_md27',1,'']]],
-  ['windowtitle_5',['windowTitle',['../class_easy_engine_1_1_engine.html#a282de1155b05980b1edddc8d0b6bc4ed',1,'EasyEngine::Engine']]]
+  ['windowtitle_5',['windowTitle',['../class_easy_engine_1_1_engine.html#a282de1155b05980b1edddc8d0b6bc4ed',1,'EasyEngine::Engine']]],
+  ['writebinaryfile_6',['writeBinaryFile',['../class_easy_engine_1_1_file_system.html#a4b404566e8cd04319dc27aa0c6171028',1,'EasyEngine::FileSystem']]],
+  ['writefile_7',['writeFile',['../class_easy_engine_1_1_file_system.html#aab0743ddbf56894f792e8ae870675806',1,'EasyEngine::FileSystem']]]
 ];

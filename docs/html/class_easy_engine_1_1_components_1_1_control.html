@@ -237,14 +237,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>__updateEvent</b> (co
 <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__currentStatus</b> () const</td></tr>
 <tr class="memitem:afba6db8305f862ff74cfe80cde45edcc" id="r_afba6db8305f862ff74cfe80cde45edcc"><td class="memItemLeft" align="right" valign="top"><a id="afba6db8305f862ff74cfe80cde45edcc" name="afba6db8305f862ff74cfe80cde45edcc"></a>
 <a class="el" href="#ac035e5c4aafa5612d619e295608403b2">Event</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__currentEvent</b> () const</td></tr>
-<tr class="memitem:a8773333ab309b07ca6b9e6752c2f66ab" id="r_a8773333ab309b07ca6b9e6752c2f66ab"><td class="memTemplParams" colspan="2"><a id="a8773333ab309b07ca6b9e6752c2f66ab" name="a8773333ab309b07ca6b9e6752c2f66ab"></a>
-template&lt;class Type&gt; </td></tr>
-<tr class="memitem:a8773333ab309b07ca6b9e6752c2f66ab template"><td class="memItemLeft" align="right" valign="top">Type *&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> (const <a class="el" href="#a2524efa41469bb6335468b8382c5db9f">EasyEngine::Components::Control::Status</a> &amp;status) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
-<tr class="memitem:aee29d97f7e87f0263024133085c28e3d" id="r_aee29d97f7e87f0263024133085c28e3d"><td class="memItemLeft" align="right" valign="top"><a id="aee29d97f7e87f0263024133085c28e3d" name="aee29d97f7e87f0263024133085c28e3d"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></tr>
+<tr class="memitem:a016b821f88c7c0a2de1451c175cefbf9" id="r_a016b821f88c7c0a2de1451c175cefbf9"><td class="memItemLeft" align="right" valign="top"><a id="a016b821f88c7c0a2de1451c175cefbf9" name="a016b821f88c7c0a2de1451c175cefbf9"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Element</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>控件 </p>
@@ -1165,6 +1162,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Container</b></td></
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Type&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Type * EasyEngine::Components::Control::status </td>
@@ -1173,6 +1173,11 @@ template&lt;class Type&gt; </div>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>获取当前指定状态下的精灵、组、动画 </p>
@@ -1192,6 +1197,7 @@ template&lt;class Type&gt; </div>
 <dl class="section note"><dt>注解</dt><dd>目前支持的类：Sprite、SpriteGroup、Animation、GeometryF </dd>
 <dd>
 如果无法确定当前状态下使用的类，请使用 <a class="el" href="#a9b920bf877b708cfd9b4f6d4e254833c" title="获取当前指定状态下的类型">getTypename()</a> 以获取该状态下使用的类。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定的类型与对应状态下的现有类型不一致，将强制报错并异常退出！ </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#aaad67edf7b27afaabf728ba385943374" title="设定控件指定状态">setStatus</a> </dd>
 <dd>
 <a class="el" href="#a3ed49936ba26ad09ccc84fd4f2a54f43" title="移除指定的控件状态">removeStatus</a> </dd>

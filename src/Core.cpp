@@ -488,6 +488,7 @@ void EasyEngine::Engine::cleanUp() {
     if (_clean_up_function) _clean_up_function();
     AudioSystem::global()->unload();
     Cursor::global()->unload();
+
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);

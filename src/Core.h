@@ -13,16 +13,11 @@
  * @author CatIsNotFound
  */
 
+#include "Basic.h"
 #include "Algorithm.h"
 #include "Components.h"
-
-using SEvent        = SDL_Event;
-using SWinEvent     = SDL_WindowEvent;
-using SWindow       = SDL_Window;
-using SWindowID     = SDL_WindowID;
-using SCursor       = SDL_Cursor;
-using SStdCursor    = SDL_SystemCursor;
-using SAudioSpec    = SDL_AudioSpec;
+#include "Resources.h"
+#include "Scene.h"
 
 /// 主版本号
 #define EASYENGINE_MAJOR_VERSION 0
@@ -1096,6 +1091,37 @@ namespace EasyEngine {
         /// 音频格式（Hi-fi 高音质）
         constexpr SAudioSpec HIFI = {SDL_AUDIO_S16, 2, 96000};
     }
+
+    /**
+     * @class FontSystem
+     * @brief 字体系统
+     *
+     * 用于加载、渲染字体
+     */
+    class FontSystem {
+    public:
+        /**
+         * @brief 获取全局字体系统
+         */
+        static FontSystem* global();
+        /**
+         * @brief 初始化字体系统
+         */
+        void init();
+        /**
+         * @brief 卸载字体系统
+         */
+        void unload();
+
+        void loadFont(const std::string& path, uint32_t font_size, );
+
+        FontSystem() = delete;
+        FontSystem(FontSystem&) = delete;
+        FontSystem& operator=(const FontSystem&) = delete;
+    private:
+        static std::unique_ptr<FontSystem> _instance;
+
+    };
 }
 
 

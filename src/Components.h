@@ -15,10 +15,6 @@
 
 #include "Basic.h"
 
-using SSurface = SDL_Surface;
-using STexture = SDL_Texture;
-using SRenderer = SDL_Renderer;
-
 namespace EasyEngine {
     class Painter;
     class EventSystem;
@@ -846,22 +842,21 @@ namespace EasyEngine {
         };
 
         /**
-         * @class Container
-         * @brief 存储容器
+         * @class Element
+         * @brief 存储元素
          *
          * 用于存储 Sprite, Animation, SpriteGroup, ClipSprite 等
          */
-        class Container {
+        class Element {
             friend class Entity;
             friend class Control;
         private:
-            // explicit Container() : type_id(0), self() {}
             /// @brief 用于区分存储的类型
             ///
             /// 按照 Self 的顺序表示（从 1 开始）
             uint8_t type_id{0};
             /// @union Self
-            /// @brief 在容器中存储的指针或数据
+            /// @brief 在元素中存储的指针或数据
             union Self {
                 explicit Self() {}
                 ~Self() {}
@@ -1036,13 +1031,13 @@ namespace EasyEngine {
              * @brief 获取碰撞器的形状
              * @tparam Shape 指定的形状
              * @note 可支持的形状：Rectangle、Ellipse、Point
-             *
+             * @warning 若指定的形状与现有的形状不匹配，将强制报错并退出！
              */
             template<class Shape>
             const Shape* shape() const {
                 static_assert(std::is_same_v<Shape, Graphics::Rectangle> ||
                               std::is_same_v<Shape, Graphics::Ellipse> ||
-                              std::is_same_v<Shape, Graphics::Point>, "[ERROR] Unspported shape type!");
+                              std::is_same_v<Shape, Graphics::Point>, "[ERROR] The specified shape is not supported!");
                 if constexpr (std::is_same_v<Shape, Graphics::Rectangle>) {
                     if (_con.mode == 1) return &_con.shape.rectangle;
                 } else if constexpr (std::is_same_v<Shape, Graphics::Ellipse>) {
@@ -1050,8 +1045,7 @@ namespace EasyEngine {
                 } else if constexpr (std::is_same_v<Shape, Graphics::Point>) {
                     if (_con.mode == 3) return &_con.shape.point;
                 }
-                SDL_Log("[ERROR] The specified shape type is not match the current shape!");
-                return nullptr;
+                throw std::runtime_error("[ERROR] The specified shape is not match the current shape!");
             }
         private:
             Container _con;
@@ -1066,7 +1060,7 @@ namespace EasyEngine {
          * 用于作为游戏中的实体
          */
         class Entity {
-            friend class Container;
+            friend class Element;
         public:
             /**
              * @brief 创建一个游戏实体
@@ -1163,10 +1157,17 @@ namespace EasyEngine {
             Vector2 _pos, _center_pos;
             std::unique_ptr<Collider> _collider;
             std::string _obj_name;
-            std::shared_ptr<Container> _container;
+            std::shared_ptr<Element> _container;
             std::unique_ptr<Sprite> _def_sprite;
         };
 
+        /**
+         * @brief 获取游戏实体的本体
+         * @tparam Type 指定类型
+         * @return 返回指定类型的本体
+         * @note 可支持的类：Sprite、SpriteGroup、Animation、GeometryF
+         * @warning 若指定的类型与现有本体的类型不一致，将强制报错并退出！
+         */
         template<class Type>
         Type *EasyEngine::Components::Entity::self() const {
             if constexpr (std::is_same_v<Type, Sprite>) {
@@ -1183,9 +1184,7 @@ namespace EasyEngine {
                         std::is_same_v<Type, Animation> ||
                         std::is_same_v<Type, GeometryF>, "[ERROR] Can't support the specified type!");
             }
-            SDL_Log("[ERROR] The specified type is not match the current entity!\n"
-                    "        p.s: Try to use typeInfo() instead.");
-            return nullptr;
+            throw std::runtime_error("[ERROR] The specified type is not match the current entity!\n");
         }
 
         /**
@@ -1195,7 +1194,7 @@ namespace EasyEngine {
          * 适用于 UI 界面的操作控件
          */
         class Control {
-            friend class Container;
+            friend class Element;
         public:
             /**
              * @enum Status
@@ -1327,13 +1326,36 @@ namespace EasyEngine {
              * @return 返回当前状态下的精灵、组、动画
              * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
              * @note 如果无法确定当前状态下使用的类，请使用 getTypename() 以获取该状态下使用的类。
+             * @warning 若指定的类型与对应状态下的现有类型不一致，将强制报错并异常退出！
              * @see setStatus
              * @see removeStatus
              * @see typeInfo
              * @see getTypename
              */
             template<class Type>
-            Type* status(const enum Status& status) const;
+            Type* status(const enum Status& status) const {
+                if (!_container_list.contains(status)) {
+                    SDL_Log("[ERROR] Status %d not found in Control '%s'", static_cast<int>(status), _name.c_str());
+                    return nullptr;
+                }
+                auto _con = _container_list.at(status).get();
+                if constexpr (std::is_same_v<Type, Sprite>) {
+                    if (_con->type_id == 1) return _con->self.sprite.get();
+                } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
+                    if (_con->type_id == 2) return _con->self.sprite_group.get();
+                } else if constexpr (std::is_same_v<Type, Animation>) {
+                    if (_con->type_id == 3) return _con->self.animation.get();
+                } else if constexpr (std::is_same_v<Type, GeometryF>) {
+                    if (_con->type_id == 4) return &_con->self.clip_sprite;
+                } else {
+                    static_assert(std::is_same_v<Type, Sprite> ||
+                                  std::is_same_v<Type, SpriteGroup> ||
+                                  std::is_same_v<Type, Animation> ||
+                                  std::is_same_v<Type, GeometryF>,
+                                  "[ERROR] Unsupported type for Control::status()");
+                }
+                throw std::runtime_error("[ERROR] The specified type is not match the current type!");
+            }
             /**
              * @brief 获取当前指定状态下的类型
              * @param status 指定控件的状态
@@ -1495,7 +1517,7 @@ namespace EasyEngine {
         private:
             std::string _name;
             std::shared_ptr<Sprite> _def_sprite;
-            std::map<Status, std::shared_ptr<Container>> _container_list;
+            std::map<Status, std::shared_ptr<Element>> _container_list;
             std::map<Event, std::shared_ptr<Trigger>> _trigger_list;
             Status _status{Status::Default};
             Event _event{Event::None};

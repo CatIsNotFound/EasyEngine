@@ -695,7 +695,7 @@ EasyEngine::Components::Control::Control(const std::string &name, const EasyEngi
             fmt::format("{}_copy", control._def_sprite->name()), *control._def_sprite);
     _def_sprite->properties()->clip_mode = true;
     for (auto& _con : control._container_list) {
-        auto container = std::make_shared<Container>();
+        auto container = std::make_shared<Element>();
         container->type_id = _con.second->type_id;
         if (container->type_id == 1) {
             container->self.sprite = _con.second->self.sprite;
@@ -730,21 +730,21 @@ const std::string &EasyEngine::Components::Control::name() const {
 }
 
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Sprite *sprite) {
-    auto new_con = std::make_shared<Container>();
+    auto new_con = std::make_shared<Element>();
     new_con->type_id = 1;
     new_con->self.sprite = std::shared_ptr<Sprite>(sprite);
     _container_list[status] = new_con;
 }
 
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, SpriteGroup *sprite_group) {
-    auto new_con = std::make_shared<Container>();
+    auto new_con = std::make_shared<Element>();
     new_con->type_id = 2;
     new_con->self.sprite_group = std::shared_ptr<SpriteGroup>(sprite_group);
     _container_list[status] = new_con;
 }
 
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation) {
-    auto new_con = std::make_shared<Container>();
+    auto new_con = std::make_shared<Element>();
     new_con->type_id = 3;
     new_con->self.animation = std::shared_ptr<Animation>(animation);
     _container_list[status] = new_con;
@@ -753,7 +753,7 @@ void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Co
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status,
                                                 const EasyEngine::GeometryF &clip_sprite) {
     if (_def_sprite) {
-        auto new_con = std::make_shared<Container>();
+        auto new_con = std::make_shared<Element>();
         new_con->type_id = 4;
         new_con->self.clip_sprite = clip_sprite;
         _container_list[status] = new_con;
@@ -766,34 +766,6 @@ void EasyEngine::Components::Control::removeStatus(const EasyEngine::Components:
     if (_container_list.contains(status)) {
         _container_list.erase(status);
     }
-}
-
-template<class Type>
-Type *EasyEngine::Components::Control::status(const EasyEngine::Components::Control::Status &status) const {
-    if (!_container_list.contains(status)) {
-        SDL_Log("[ERROR] Status %d not found in Control '%s'", static_cast<int>(status), _name.c_str());
-        return nullptr;
-    }
-    auto _con = _container_list.at(status).get();
-    if constexpr (std::is_same_v<Type, Sprite>) {
-        if (_con->type_id == 1) return _con->self.sprite.get();
-    } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
-        if (_con->type_id == 2) return _con->self.sprite_group.get();
-    } else if constexpr (std::is_same_v<Type, Animation>) {
-        if (_con->type_id == 3) return _con->self.animation.get();
-    } else if constexpr (std::is_same_v<Type, GeometryF>) {
-        if (_con->type_id == 4) return &_con->self.clip_sprite;
-    } else {
-        static_assert(std::is_same_v<Type, Sprite> || 
-                     std::is_same_v<Type, SpriteGroup> || 
-                     std::is_same_v<Type, Animation> ||
-                     std::is_same_v<Type, GeometryF>,
-                     "[ERROR] Unsupported type for Control::status()");
-    }
-    SDL_Log("[ERROR] Type mismatch in Control '%s'!\n"
-            "%7s PS: Try to use Control::getTypename() to view the type!",
-            _name.c_str(), " ");
-    return nullptr;
 }
 
 const char * EasyEngine::Components::Control::getTypename(
@@ -1167,13 +1139,13 @@ const std::type_info& EasyEngine::Components::Collider::shapeType() const {
 
 EasyEngine::Components::Entity::Entity(const std::string &name) : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container = std::make_shared<Container>();
+    _container = std::make_shared<Element>();
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container = std::make_shared<Container>();
+    _container = std::make_shared<Element>();
     _container->type_id = 1;
     _container->self.sprite = std::make_shared<Sprite>(sprite.name(), sprite);
 }
@@ -1181,7 +1153,7 @@ EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::SpriteGroup &group)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container = std::make_shared<Container>();
+    _container = std::make_shared<Element>();
     _container->type_id = 2;
     _container->self.sprite_group = std::make_shared<SpriteGroup>(group);
 }
@@ -1189,7 +1161,7 @@ EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Animation &animation)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container = std::make_shared<Container>();
+    _container = std::make_shared<Element>();
     _container->type_id = 3;
     _container->self.animation = std::make_shared<Animation>(animation);
 }
@@ -1198,7 +1170,7 @@ EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine
                                        const EasyEngine::GeometryF &clip)
    : _obj_name(name) {
     _collider = std::make_unique<Collider>();
-    _container = std::make_shared<Container>();
+    _container = std::make_shared<Element>();
     _def_sprite = std::make_unique<Sprite>(sprite.name(), sprite);
     _container->type_id = 4;
     _container->self.clip_sprite = clip;

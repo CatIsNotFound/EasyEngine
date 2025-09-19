@@ -285,7 +285,7 @@ macOS (使用 Homebrew)</h3>
 <div class="line">    MyGame game;</div>
 <div class="line">    <span class="keywordflow">return</span> game.run();</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_easy_engine_1_1_engine_html"><div class="ttname"><a href="class_easy_engine_1_1_engine.html">EasyEngine::Engine</a></div><div class="ttdoc">引擎类</div><div class="ttdef"><b>定义</b> Core.h:256</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_engine_html"><div class="ttname"><a href="class_easy_engine_1_1_engine.html">EasyEngine::Engine</a></div><div class="ttdoc">引擎类</div><div class="ttdef"><b>定义</b> Core.h:258</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_engine_html_a272a2105228cba94cc353f989b0011f9"><div class="ttname"><a href="class_easy_engine_1_1_engine.html#a272a2105228cba94cc353f989b0011f9">EasyEngine::Engine::show</a></div><div class="ttdeci">bool show(SWindowID window_id=_main_window_id)</div><div class="ttdoc">显示指定窗口</div><div class="ttdef"><b>定义</b> Core.cpp:184</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_engine_html_a2cbb7deffc1740da3c471a099f6ab779"><div class="ttname"><a href="class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779">EasyEngine::Engine::installEventHandler</a></div><div class="ttdeci">void installEventHandler(std::function&lt; bool(SEvent)&gt; event_handler)</div><div class="ttdoc">安装自定义事件处理器</div><div class="ttdef"><b>定义</b> Core.cpp:526</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_engine_html_a5ccc24ade1d3b3d3755f3cadba98fbf1"><div class="ttname"><a href="class_easy_engine_1_1_engine.html#a5ccc24ade1d3b3d3755f3cadba98fbf1">EasyEngine::Engine::setFPS</a></div><div class="ttdeci">void setFPS(uint32_t fps)</div><div class="ttdoc">设置最大限定帧数</div><div class="ttdef"><b>定义</b> Core.cpp:535</div></div>
@@ -355,8 +355,8 @@ macOS (使用 Homebrew)</h3>
 <div class="ttc" id="astruct_easy_engine_1_1_vector2_html"><div class="ttname"><a href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a></div><div class="ttdoc">向量坐标</div><div class="ttdef"><b>定义</b> Basic.h:137</div></div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
 4.2 碰撞检测</h2>
-<div class="fragment"><div class="line">Entity player(<span class="stringliteral">&quot;player&quot;</span>);</div>
-<div class="line">Entity enemy(<span class="stringliteral">&quot;enemy&quot;</span>);</div>
+<div class="fragment"><div class="line"><a class="code hl_class" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> player(<span class="stringliteral">&quot;player&quot;</span>);</div>
+<div class="line"><a class="code hl_class" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> enemy(<span class="stringliteral">&quot;enemy&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// 设置位置</span></div>
 <div class="line">player.setPosition(<a class="code hl_struct" href="struct_easy_engine_1_1_vector2.html">Vector2</a>(100, 100));</div>
@@ -366,6 +366,7 @@ macOS (使用 Homebrew)</h3>
 <div class="line"><span class="keywordflow">if</span> (player.isCollision(enemy)) {</div>
 <div class="line">    <span class="comment">// 碰撞处理</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclass_easy_engine_1_1_components_1_1_entity_html"><div class="ttname"><a href="class_easy_engine_1_1_components_1_1_entity.html">EasyEngine::Components::Entity</a></div><div class="ttdoc">游戏实体</div><div class="ttdef"><b>定义</b> Components.h:1066</div></div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
 4.3 性能监控</h2>
 <div class="fragment"><div class="line"><span class="comment">// 启用性能监控</span></div>

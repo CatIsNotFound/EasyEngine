@@ -1,0 +1,270 @@
+.TH "EasyEngine::FileSystem" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::FileSystem \- 文件系统  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Resources\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBFileSystem\fP (\fBFileSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBFileSystem\fP & \fBoperator=\fP (const \fBFileSystem\fP &)=delete"
+.br
+.in -1c
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBsetCurrentPath\fP (const std::string &main_directory)"
+.br
+.RI "设置当前的目录 "
+.ti -1c
+.RI "static const std::string & \fBcurrentPath\fP ()"
+.br
+.RI "获取当前的目录 "
+.ti -1c
+.RI "static bool \fBisFile\fP (const std::string &path)"
+.br
+.RI "指定文件是否存在 "
+.ti -1c
+.RI "static bool \fBisDir\fP (const std::string &path)"
+.br
+.RI "指定一个目录是否存在？ "
+.ti -1c
+.RI "static bool \fBmkDir\fP (const std::string &path, bool ignore_error=false, bool recursive_create=false)"
+.br
+.RI "创建一个空目录 "
+.ti -1c
+.RI "static bool \fBrmDir\fP (const std::string &path, bool ignore_error=false, bool recursive_remove=false)"
+.br
+.RI "删除指定的目录 "
+.ti -1c
+.RI "static bool \fBmkFile\fP (const std::string &path, bool auto_create_directory=false, bool ignore_error=false)"
+.br
+.RI "创建一个空白文件 "
+.ti -1c
+.RI "static bool \fBrmFile\fP (const std::string &path, bool ignore_error=false)"
+.br
+.RI "删除指定的文件 "
+.ti -1c
+.RI "static bool \fBwriteFile\fP (const std::string &context, const std::string &path, bool append_mode, bool ignore_error=false)"
+.br
+.RI "写入内容到指定文件 "
+.ti -1c
+.RI "static std::string \fBreadFile\fP (const std::string &path, bool ignore_error=false)"
+.br
+.RI "从指定文件中读取内容 "
+.ti -1c
+.RI "static bool \fBwriteBinaryFile\fP (const std::string &path, bool append_mode, const std::function< void(std::ofstream &file)> &how2WriteFile, bool ignore_error=false)"
+.br
+.RI "写入二进制内容到指定文件 "
+.ti -1c
+.RI "static bool \fBreadBinaryFile\fP (const std::string &path, const std::function< void(std::ifstream &file)> &how2ReadFile, bool ignore_error=false)"
+.br
+.RI "从指定文件中读取二进制内容 "
+.in -1c
+.SH "详细描述"
+.PP 
+文件系统 
+.SH "成员函数说明"
+.PP 
+.SS "bool FileSystem::isDir (const std::string & path)\fR [static]\fP"
+
+.PP
+指定一个目录是否存在？ 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定目录 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若指定相对目录，则会从主目录下遍历！ 
+.RE
+.PP
+
+.SS "bool FileSystem::isFile (const std::string & path)\fR [static]\fP"
+
+.PP
+指定文件是否存在 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若指定相对目录，则会从主目录下遍历！ 
+.RE
+.PP
+
+.SS "bool FileSystem::mkDir (const std::string & path, bool ignore_error = \fRfalse\fP, bool recursive_create = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+创建一个空目录 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定新的空目录 
+.br
+\fIignore_error\fP 忽略目录存在的错误 
+.br
+\fIrecursive_create\fP 是否递归创建目录 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功创建一个空目录 
+.RE
+.PP
+
+.SS "bool FileSystem::mkFile (const std::string & path, bool auto_create_directory = \fRfalse\fP, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+创建一个空白文件 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.br
+\fIauto_create_directory\fP 是否自动创建目录（当目录不存在时递归创建） 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+
+.SS "bool FileSystem::readBinaryFile (const std::string & path, const std::function< void(std::ifstream &file)> & how2ReadFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+从指定文件中读取二进制内容 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.br
+\fIhow2ReadFile\fP 指定读取文件的方法 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功读取二进制内容 
+.RE
+.PP
+
+.SS "std::string FileSystem::readFile (const std::string & path, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+从指定文件中读取内容 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回读取到的文件的所有内容，若遇到错误，则返回空 
+.RE
+.PP
+
+.SS "bool FileSystem::rmDir (const std::string & path, bool ignore_error = \fRfalse\fP, bool recursive_remove = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+删除指定的目录 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定目录 
+.br
+\fIignore_error\fP 忽略目录存在的错误 
+.br
+\fIrecursive_remove\fP 递归删除此目录下的所有文件及目录 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+请不要随意使用 recursive_remove 参数，如指定目录下包含重要文件，使用此参数后将一同删除！ 
+.RE
+.PP
+
+.SS "bool FileSystem::rmFile (const std::string & path, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+删除指定的文件 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.br
+\fIignore_error\fP 忽略文件存在的错误 
+.RE
+.PP
+
+.SS "bool FileSystem::setCurrentPath (const std::string & main_directory)\fR [static]\fP"
+
+.PP
+设置当前的目录 
+.PP
+\fB参数\fP
+.RS 4
+\fImain_directory\fP 设定目录 
+.RE
+.PP
+
+.SS "bool FileSystem::writeBinaryFile (const std::string & path, bool append_mode, const std::function< void(std::ofstream &file)> & how2WriteFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+写入二进制内容到指定文件 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定输出文件路径 
+.br
+\fIappend_mode\fP 是否使用追加写入模式 
+.br
+\fIhow2WriteFile\fP 指定写入文件的方法 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功写入文件 
+.RE
+.PP
+
+.SS "bool FileSystem::writeFile (const std::string & context, const std::string & path, bool append_mode, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+写入内容到指定文件 
+.PP
+\fB参数\fP
+.RS 4
+\fIcontext\fP 指定写入内容 
+.br
+\fIpath\fP 指定文件路径 
+.br
+\fIappend_mode\fP 是否使用追加写入 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.
