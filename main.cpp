@@ -15,7 +15,6 @@ int main() {
     font.setOutlineColor(StdColor::White);
     font.setFontHinting(Font::Hinting::Light);
     font.setFontKerning(true);
-//    font.setLineSpacing(10);
     auto sprite = font.textToSprite("Success!", *engine.painter());
     fmt::println("SP: SIZE({}, {})", sprite.size().width, sprite.size().height);
     engine.painter()->installPaintEvent([&](Painter& painter) {
@@ -28,9 +27,6 @@ int main() {
             return false;
         }
         return true;
-    });
-    engine.installCleanUpEvent([&]{
-        font.unload();
     });
 
     return engine.exec();

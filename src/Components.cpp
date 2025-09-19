@@ -1323,6 +1323,10 @@ EasyEngine::Components::Font::Font(const std::string &path, float font_size)
     load(path, font_size);
 }
 
+EasyEngine::Components::Font::~Font() {
+    unload();
+}
+
 bool EasyEngine::Components::Font::load(const std::string &path, float font_size) {
     _font = TTF_OpenFont(path.c_str(), font_size);
     if (!_font) {

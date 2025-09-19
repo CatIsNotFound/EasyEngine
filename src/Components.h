@@ -1590,6 +1590,7 @@ namespace EasyEngine {
              * @see load
              */
             explicit Font(const std::string& path, float font_size);
+            ~Font();
             /**
              * @brief 加载字体
              * @param path      指定路径
