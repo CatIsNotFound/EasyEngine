@@ -11,7 +11,6 @@ int main() {
     Sprite sp_test("test", "assets/load1.png", engine.window()->renderer), sp_block("red", "assets/red.png", engine.window()->renderer);
     Sprite sp_green("green", "assets/green.png", engine.window()->renderer);
 
-    Control con("con", std::move(sp_test));
     Entity test("test", std::move(sp_test));
     Entity block("red", sp_block);
     Entity green("green", sp_test);

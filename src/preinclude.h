@@ -47,5 +47,6 @@
 #include <cmath>
 #include <algorithm>
 #include <chrono>
+#include <future>
 
 #endif //EASYENGINE_PREINCLUDE_H

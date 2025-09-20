@@ -11,6 +11,7 @@ std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nu
 std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
 std::unique_ptr<EasyEngine::FontSystem> EasyEngine::FontSystem::_instance = nullptr;
 
+
 EasyEngine::Cursor::Cursor() {
     _cursor = SDL_CreateSystemCursor(SStdCursor(0));
     SDL_SetCursor(_cursor);
@@ -488,9 +489,10 @@ void EasyEngine::Engine::cleanUp() {
     EventSystem::global()->clearTimer();
     EventSystem::global()->clearTrigger();
     if (_clean_up_function) _clean_up_function();
-    AudioSystem::global()->unload();
     Cursor::global()->unload();
+    AudioSystem::global()->unload();
     FontSystem::global()->unload();
+    ResourceSystem::global()->unloadAll();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
         if (_win.second->window) SDL_DestroyWindow(_win.second->window);

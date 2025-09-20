@@ -34,6 +34,8 @@ namespace EasyEngine {
      * @see Basic.h
      */
     namespace StdColor {
+        constexpr SColor Transparent = {0, 0, 0, 0};
+
         constexpr SColor Black = {0, 0, 0, 255};
         constexpr SColor White = {255, 255, 255, 255};
         constexpr SColor Red = {255, 0, 0, 255};

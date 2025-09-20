@@ -8,12 +8,14 @@ set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image/x86_64-w64-mingw32")
 set(SDL_TTF_DIR "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
 set(SDL_MIXER_DIR "D:/CPPLibs/SDL3_mixer")
 set(FMT_DIR "D:/CPPLibs/FMT")
+set(PUGIXML_DIR "D:/CPPLibs/pugixml")
 
 list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_IMAGE_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
+list(APPEND CMAKE_PREFIX_PAth ${PUGIXML_DIR})
 #set(FFMPEG_DIR "D:/CPPLibs/ffmpeg")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -23,6 +25,7 @@ find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(SDL3_mixer REQUIRED)
 find_package(fmt REQUIRED)
+find_package(pugixml REQUIRED)
 
 set(SDL3_GFX_LIB
         libs/sdl3_gfx/SDL3_framerate.c
@@ -64,6 +67,7 @@ target_link_libraries(EasyEngine PRIVATE
         SDL3_ttf::SDL3_ttf
         SDL3_mixer::SDL3_mixer
         fmt::fmt
+        pugixml::pugixml
 )
 
 if (WIN32)

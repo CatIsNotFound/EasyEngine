@@ -37,8 +37,7 @@ bool FileSystem::isDir(const std::string &path) {
 }
 
 bool FileSystem::mkDir(const std::string &path, bool ignore_error, bool recursive_create) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     if (std::filesystem::is_directory(temp)) {
         if (ignore_error) fmt::println("[ERROR] Directory '{}' is exist!", temp.string());
         return false;
@@ -69,8 +68,7 @@ bool FileSystem::mkDir(const std::string &path, bool ignore_error, bool recursiv
 }
 
 bool FileSystem::rmDir(const std::string &path, bool ignore_error, bool recursive_remove) {
-    std::filesystem::path temp = (path.front() == '.' ?
-             fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     if (!std::filesystem::is_directory(temp)) {
         if (!ignore_error) fmt::println("[ERROR] Directory '{}' is not exist!", temp.string());
         return false;
@@ -105,8 +103,7 @@ bool FileSystem::rmDir(const std::string &path, bool ignore_error, bool recursiv
 }
 
 bool FileSystem::mkFile(const std::string &path, bool auto_create_directory, bool ignore_error) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     if (auto_create_directory) {
         auto dir = temp.string().substr(0, temp.string().find_last_of('/'));
         if (!std::filesystem::is_directory(dir)) {
@@ -123,8 +120,7 @@ bool FileSystem::mkFile(const std::string &path, bool auto_create_directory, boo
 }
 
 bool FileSystem::rmFile(const std::string &path, bool ignore_error) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     if (std::filesystem::is_regular_file(temp)) {
         std::filesystem::remove(temp);
         return true;
@@ -134,8 +130,7 @@ bool FileSystem::rmFile(const std::string &path, bool ignore_error) {
 }
 
 bool FileSystem::writeFile(const std::string &context, const std::string &path, bool append_mode, bool ignore_error) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     std::ofstream file(temp.string(),((append_mode ? (std::ios::in | std::ios::app) : std::ios::in)));
     if (!file.is_open()) {
         if (!ignore_error) fmt::println("[ERROR] Can't create file '{}'!", temp.string());
@@ -147,8 +142,7 @@ bool FileSystem::writeFile(const std::string &context, const std::string &path, 
 }
 
 std::string FileSystem::readFile(const std::string &path, bool ignore_error, bool *ok) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     std::ifstream file(temp.string(), std::ios::in);
     if (!file.is_open()) {
         if (!ignore_error) fmt::println("[ERROR] File '{}' is not found!", temp.string());
@@ -156,11 +150,17 @@ std::string FileSystem::readFile(const std::string &path, bool ignore_error, boo
         return "";
     }
     std::string output;
-    char buf[1024] = {'\0'};
-    while (true) {
-        file.getline(buf, 1024);
-        output += buf;
-        if (!file.eof()) output += '\n'; else break;
+    size_t line = 0;
+    try {
+        char buf[1024] = {'\0'};
+        while (true) {
+            line += 1;
+            file.getline(buf, 1024);
+            output += buf;
+            if (!file.eof()) output += '\n'; else break;
+        }
+    } catch (const std::exception &exception) {
+        SDL_Log("[ERROR] Read file '%s' failed at line %zu!", temp.string().c_str(), line);
     }
     file.close();
     if (ok) *ok = true;
@@ -169,8 +169,7 @@ std::string FileSystem::readFile(const std::string &path, bool ignore_error, boo
 
 bool FileSystem::writeBinaryFile(const std::string &path, bool append_mode,
                                  const std::function<void(std::ofstream &)> &how2WriteFile, bool ignore_error) {
-    std::filesystem::path temp = (path.front() == '.' ?
-                                  fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     std::ofstream file(temp.string(),((append_mode ? (std::ios::in | std::ios::app | std::ios::binary) :
                                             std::ios::in | std::ios::binary)));
     if (!file.is_open()) {
@@ -182,10 +181,25 @@ bool FileSystem::writeBinaryFile(const std::string &path, bool append_mode,
     return true;
 }
 
+bool FileSystem::writeBinaryFile(const std::vector<uint8_t> &binaries, const std::string &path, bool append_mode,
+                                 bool ignore_error) {
+    std::filesystem::path temp = getAbsolutePath(path);
+    std::ofstream file(temp.string(),((append_mode ? (std::ios::in | std::ios::app | std::ios::binary) :
+                                       std::ios::in | std::ios::binary)));
+    if (!file.is_open()) {
+        if (!ignore_error) fmt::println("[ERROR] Can't create file '{}'!", temp.string());
+        return false;
+    }
+    for (auto& bin : binaries) {
+        file.write(reinterpret_cast<char*>(bin), sizeof(uint8_t));
+    }
+    file.close();
+    return true;
+}
+
 bool FileSystem::readBinaryFile(const std::string &path, const std::function<void(std::ifstream &)> &how2ReadFile,
                                 bool ignore_error) {
-    std::filesystem::path temp = (path.front() == '.' ?
-            fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) : path);
+    std::filesystem::path temp = getAbsolutePath(path);
     std::ifstream file(temp.string(), std::ios::in | std::ios::binary);
     if (!file.is_open()) {
         if (!ignore_error) fmt::println("[ERROR] File '{}' is not found!", temp.string());
@@ -196,9 +210,28 @@ bool FileSystem::readBinaryFile(const std::string &path, const std::function<voi
     return true;
 }
 
-const char* FileSystem::getAbsolutePath(const std::string &path) {
+std::vector<uint8_t> FileSystem::readBinaryFile(const std::string &path, bool ignore_error, bool *ok) {
+    std::filesystem::path temp = getAbsolutePath(path);
+    std::ifstream file(temp.string(), std::ios::in | std::ios::binary);
+    if (!file.is_open()) {
+        if (!ignore_error) fmt::println("[ERROR] File '{}' is not found!", temp.string());
+        if (ok) *ok = false;
+        return {};
+    }
+    std::vector<uint8_t> ret(1024);
+    char temp_buf;
+    while (!file.eof()) {
+        file.get(temp_buf);
+        ret.emplace_back(static_cast<uint8_t>(temp_buf));
+    }
+    file.close();
+    if (ok) *ok = true;
+    return ret;
+}
+
+std::string FileSystem::getAbsolutePath(const std::string &path) {
     return (path.front() == '.' ? fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) 
-            : path).c_str();
+            : path);
 }
 
 std::deque<std::string> FileSystem::getPathUntilExist(const std::string &path) {
@@ -243,31 +276,160 @@ void ResourceSystem::setRootPath(const std::string &path) {
 }
 
 bool
-ResourceSystem::load(const std::string &name, const std::string &path) {
-    std::string real_path = FileSystem::getAbsolutePath(path);
-    if (FileSystem::isDir(real_path)) {
-        fmt::println("[ERROR] Path '{}' is the directory, not the file!", real_path);
-        return false;
-    }
-    if (!FileSystem::isFile(real_path)) {
-        fmt::println("[ERROR] File '{}' is not found!", real_path);
-        return false;
-    }
+ResourceSystem::load(const std::string &name, const std::string &path, const Resource::Type &type) {
+    if (!append(name, path, type)) return false;
+    return load(name);
+}
 
+bool ResourceSystem::load(const std::string &name) {
+    if (!isContain(name)) {
+        SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
+        return false;
+    }
+    auto resource = _resource.at(name);
+    if (resource.is_loaded) {
+        SDL_Log("[ERROR] Resource '%s' is already loaded!", name.c_str());
+        return false;
+    }
+    if (resource.type == Resource::Text) {
+        bool is_error;
+        _resource.at(name).meta_data = FileSystem::readFile(resource.url, false, &is_error);
+        if (!is_error) {
+            SDL_Log("[ERROR] Resource '%s' loaded failed!", name.c_str());
+            return false;
+        }
+    } else if (resource.type == Resource::Image) {
+        _resource.at(name).meta_data = IMG_Load(resource.url.c_str());
+        if (!std::get<SSurface*>(_resource.at(name).meta_data)) {
+            SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Load image file '%s' failed!\n",
+                    name.c_str(), resource.url.c_str());
+            return false;
+        }
+//    } else if (resource.type == Resource::Font) {
+//
+//    } else if (resource.type == Resource::Audio) {
+//
+//    } else if (resource.type == Resource::Video) {
+//
+    } else {
+        bool ret;
+        _resource.at(name).meta_data = FileSystem::readBinaryFile(resource.url, false, &ret);
+        if (!ret) {
+            SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Read binary file '%s' failed!\n",
+                    name.c_str(), resource.url.c_str());
+            return false;
+        }
+    }
+    _resource.at(name).is_loaded = true;
     return true;
 }
 
-void ResourceSystem::unload(const std::string &name) {
-    if (_resource.contains(name)) {
-        _resource.erase(name);
-        return;
-    }
-    fmt::println("[ERROR] Can't find the resource \'{}\'!", name);
+uint64_t ResourceSystem::preload(const std::vector<std::string> &resource_names) {
+    uint64_t err = 0;
+    for (auto& name : resource_names) err += load(name);
+    return err;
 }
 
-const ResourceSystem::Resource &ResourceSystem::resource(const std::string &name) {
-    if (_resource.contains(name))
-        return _resource[name];
-    else
-        throw std::runtime_error(fmt::format("[ERROR] Resourse {} is not found!", name));
+uint64_t ResourceSystem::asyncLoad(const std::vector<std::string> &resource_names) {
+    uint64_t err = 0;
+    auto is_ok = std::async(std::launch::async, [this, &resource_names, &err]() -> bool {
+        for (auto& name : resource_names) err += load(name);
+        return err == 0;
+    });
+    return err;
+}
+
+bool ResourceSystem::unload(const std::string &name) {
+    if (!isContain(name)) {
+        SDL_Log("[ERROR] Can't find the resource '%s'!", name.c_str());
+        return false;
+    }
+    auto resource = _resource.at(name);
+    if (!resource.is_loaded) return true;
+    if (resource.type == Resource::Image) {
+        SDL_DestroySurface(std::get<SSurface*>(resource.meta_data));
+    }
+    resource.meta_data = {};
+    return true;
+}
+
+void ResourceSystem::unloadAll() {
+    for (auto& res : _resource) {
+        unload(res.first);
+    }
+}
+
+bool
+ResourceSystem::append(const std::string &name, const std::string &path, const ResourceSystem::Resource::Type &type) {
+    std::string real_path = FileSystem::getAbsolutePath(path);
+    if (FileSystem::isDir(real_path)) {
+        SDL_Log("[ERROR] Path '%s' is the directory, not the file!", real_path.c_str());
+        return false;
+    }
+    if (!FileSystem::isFile(real_path)) {
+        SDL_Log("[ERROR] File '%s' is not found!", real_path.c_str());
+        return false;
+    }
+    if (isContain(name)) {
+        SDL_Log("[ERROR] Resource '%s' is already exist! Did you mean to use `replace()`?", name.c_str());
+        return false;
+    }
+    _resource.emplace(name, Resource{type, real_path, false, {}});
+    return true;
+}
+
+void ResourceSystem::remove(const std::string &name) {
+    if (unload(name)) {
+        _resource.erase(name);
+    }
+}
+
+bool
+ResourceSystem::replace(const std::string &name, const std::string &path, const ResourceSystem::Resource::Type &type) {
+    if (!isContain(name)) {
+        SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str()); return false;
+    }
+    unload(name);
+    std::string real_path = FileSystem::getAbsolutePath(path);
+    if (FileSystem::isDir(real_path)) {
+        SDL_Log("[ERROR] Path '%s' is the directory, not the file!", real_path.c_str());
+        return false;
+    }
+    if (!FileSystem::isFile(real_path)) {
+        SDL_Log("[ERROR] File '%s' is not found!", real_path.c_str());
+        return false;
+    }
+    _resource.at(name).type = type;
+    _resource.at(name).url = real_path;
+    _resource.at(name).is_loaded = false;
+    _resource.at(name).meta_data = {};
+    return true;
+}
+
+const std::variant<std::monostate, std::string, SSurface *, char *, void *, std::vector<uint8_t>> &
+ResourceSystem::metaData(const std::string &name) const {
+    if (!isContain(name)) {
+        SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
+        return {};
+    } else if (!_resource.at(name).is_loaded) {
+        SDL_Log("[ERROR] Resource '%s' is not loaded!", name.c_str());
+        return {};
+    }
+    return _resource.at(name).meta_data;
+}
+
+const std::string &ResourceSystem::resourcePath(const std::string &name) const {
+    if (isContain(name)) return _resource.at(name).url;
+    SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
+    return _null_str;
+}
+
+bool ResourceSystem::isLoaded(const std::string &name) const {
+    if (isContain(name)) return _resource.at(name).is_loaded;
+    SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
+    return false;
+}
+
+bool ResourceSystem::isContain(const std::string &name) const {
+    return _resource.contains(name);
 }

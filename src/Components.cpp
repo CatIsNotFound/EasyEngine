@@ -1416,19 +1416,25 @@ EasyEngine::Sprite
 EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::Painter &painter) {
     SSurface* surface;
     if (_font_outline) {
-        auto filled_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
-        TTF_SetFontOutline(_font, _font_outline);
-        auto bordered_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _outline_color);
-        TTF_SetFontOutline(_font, 0);
-        int real_width = bordered_surface->w, real_height = bordered_surface->h;
-        surface = SDL_CreateSurface(real_width, real_height, bordered_surface->format);
+        if (_font_color.a > 0) {
+            auto filled_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
+            TTF_SetFontOutline(_font, _font_outline);
+            auto bordered_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _outline_color);
+            TTF_SetFontOutline(_font, 0);
+            int real_width = bordered_surface->w, real_height = bordered_surface->h;
+            surface = SDL_CreateSurface(real_width, real_height, bordered_surface->format);
 
-        SDL_FillSurfaceRect(surface, nullptr, SDL_MapSurfaceRGBA(surface, 0, 0, 0, 0));
-        SDL_BlitSurface(filled_surface, nullptr, surface, nullptr);
-        SDL_BlitSurface(bordered_surface, nullptr, surface, nullptr);
+            SDL_FillSurfaceRect(surface, nullptr, SDL_MapSurfaceRGBA(surface, 0, 0, 0, 0));
+            SDL_BlitSurface(filled_surface, nullptr, surface, nullptr);
+            SDL_BlitSurface(bordered_surface, nullptr, surface, nullptr);
 
-        SDL_DestroySurface(filled_surface);
-        SDL_DestroySurface(bordered_surface);
+            SDL_DestroySurface(filled_surface);
+            SDL_DestroySurface(bordered_surface);
+        } else {
+            TTF_SetFontOutline(_font, _font_outline);
+            surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _outline_color);
+            TTF_SetFontOutline(_font, 0);
+        }
     } else {
         surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
         if (!surface) {

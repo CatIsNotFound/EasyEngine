@@ -1680,21 +1680,23 @@ namespace EasyEngine {
             /**
              * @brief 文本转换精灵
              * @param text 指定内容
+             *
+             * 会根据当前的字体属性进行渲染并转换成可用的精灵
              */
             Sprite textToSprite(const std::string &text, EasyEngine::Painter &painter);
 
         private:
             /// 字体指针
-            TTF_Font* _font;
-            float _font_size;
-            SColor _font_color;
-            uint32_t _font_style_flags;
-            uint32_t _font_outline;
-            SColor _outline_color;
-            Direction _font_direction;
-            uint32_t _font_hinting;
-            bool _font_kerning;
-            uint32_t _line_spacing;
+            TTF_Font* _font{};
+            float _font_size{};
+            SColor _font_color{};
+            uint32_t _font_style_flags{};
+            uint32_t _font_outline{};
+            SColor _outline_color{};
+            Direction _font_direction{};
+            uint32_t _font_hinting{};
+            bool _font_kerning{};
+            uint32_t _line_spacing{};
         };
     }
 }

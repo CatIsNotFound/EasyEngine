@@ -341,7 +341,7 @@ namespace EasyEngine {
          * @return 返回 true 表示成功，若找不到窗口 ID 等返回 false
          * @see windowIDList
          */
-        bool setFullScreen(bool enabled, bool move_cursor_to_center, SDL_WindowID window_id = _main_window_id);
+        bool setFullScreen(bool enabled, bool move_cursor_to_center = false, SDL_WindowID window_id = _main_window_id);
         /**
          * @brief 修改窗口标题
          * @param title  新的窗口标题名称
