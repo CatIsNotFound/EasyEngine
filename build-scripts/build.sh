@@ -8,6 +8,7 @@
 if [[ $1 == "-h" || $1 == "--help" ]];then
     echo "此脚本仅用于下载并编译所需的依赖库！"
     echo -e "Tips: 编译之前，请编辑 \033[1mvars.sh\033[0m 文件进行配置！"
+    exit 0
 fi
 
 
@@ -157,7 +158,7 @@ fi
 
 # 检查编译套件
 if [ ! -f /usr/bin/cmake ];then
-    install_pkg cmake ninja gcc g++ gdb make
+    install_pkg cmake ninja-build gcc g++ gdb make
 fi
 
 function readyToCompile() {
