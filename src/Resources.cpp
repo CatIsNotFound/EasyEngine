@@ -230,8 +230,11 @@ std::vector<uint8_t> FileSystem::readBinaryFile(const std::string &path, bool ig
 }
 
 std::string FileSystem::getAbsolutePath(const std::string &path) {
-    return (path.front() == '.' ? fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/'))) 
-            : path);
+    if (path[1] == ':') return path;
+    if (path.front() == '.') return fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/')));
+    else return fmt::format("{}/{}", _main_path, path);
+//    return (path.front() != '/' ? fmt::format("{}{}", _main_path, path.substr(path.find_first_of('/')))
+//            : path);
 }
 
 std::deque<std::string> FileSystem::getPathUntilExist(const std::string &path) {
@@ -305,12 +308,22 @@ bool ResourceSystem::load(const std::string &name) {
                     name.c_str(), resource.url.c_str());
             return false;
         }
-//    } else if (resource.type == Resource::Font) {
-//
-//    } else if (resource.type == Resource::Audio) {
-//
-//    } else if (resource.type == Resource::Video) {
-//
+    } else if (resource.type == Resource::Font) {
+        TTF_Font* font = TTF_OpenFont(resource.url.c_str(), 12.0f);
+        if (!font) {
+            SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Load font file '%s' failed!\n",
+                    name.c_str(), resource.url.c_str());
+            return false;
+        }
+        _resource.at(name).meta_data = reinterpret_cast<void*>(font);
+    } else if (resource.type == Resource::Audio) {
+        MIX_Audio* audio = MIX_LoadAudio(AudioSystem::global()->mixer(), resource.url.c_str(), true);
+        if (!audio) {
+            SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Load audio file '%s' failed!\n",
+                    name.c_str(), resource.url.c_str());
+            return false;
+        }
+        _resource.at(name).meta_data = reinterpret_cast<void*>(audio);
     } else {
         bool ret;
         _resource.at(name).meta_data = FileSystem::readBinaryFile(resource.url, false, &ret);
@@ -326,17 +339,27 @@ bool ResourceSystem::load(const std::string &name) {
 
 uint64_t ResourceSystem::preload(const std::vector<std::string> &resource_names) {
     uint64_t err = 0;
-    for (auto& name : resource_names) err += load(name);
+    if (resource_names.empty()) {
+        for (auto& name: _resource) err += (!load(name.first));
+    } else {
+        for (auto &name: resource_names) err += (!load(name));
+    }
     return err;
 }
 
-uint64_t ResourceSystem::asyncLoad(const std::vector<std::string> &resource_names) {
-    uint64_t err = 0;
-    auto is_ok = std::async(std::launch::async, [this, &resource_names, &err]() -> bool {
-        for (auto& name : resource_names) err += load(name);
-        return err == 0;
+void ResourceSystem::asyncLoad(const std::vector<std::string> &resource_names,
+                               const std::function<void(uint64_t)>& callback) {
+    const std::vector<std::string>& copy_res_name = resource_names;
+    auto is_ok = std::async(std::launch::async, [this, copy_res_name, callback]() -> bool {
+        uint64_t ret = 0;
+        if (copy_res_name.empty()) {
+            for (auto& name : _resource) ret += (!load(name.first));
+        } else {
+            for (auto& name : copy_res_name) ret += (!load(name));
+        }
+        if (callback) callback(ret);
+        return ret == 0;
     });
-    return err;
 }
 
 bool ResourceSystem::unload(const std::string &name) {
@@ -347,9 +370,17 @@ bool ResourceSystem::unload(const std::string &name) {
     auto resource = _resource.at(name);
     if (!resource.is_loaded) return true;
     if (resource.type == Resource::Image) {
-        SDL_DestroySurface(std::get<SSurface*>(resource.meta_data));
+        if (std::get<SSurface*>(resource.meta_data))
+            SDL_DestroySurface(std::get<SSurface*>(resource.meta_data));
+    } else if (resource.type == Resource::Font) {
+        auto font = reinterpret_cast<TTF_Font*>(std::get<void*>(resource.meta_data));
+        if (font) TTF_CloseFont(font);
+    } else if (resource.type == Resource::Audio) {
+        auto audio = reinterpret_cast<MIX_Audio*>(std::get<void*>(resource.meta_data));
+        if (audio) MIX_DestroyAudio(audio);
     }
     resource.meta_data = {};
+    SDL_Log("[INFO] Unload Resource: '%s'", name.c_str());
     return true;
 }
 

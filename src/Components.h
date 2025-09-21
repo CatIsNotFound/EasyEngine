@@ -1590,6 +1590,11 @@ namespace EasyEngine {
              * @see load
              */
             explicit Font(const std::string& path, float font_size);
+            /**
+             * @brief 使用已有的字体（从资源系统中获取）
+             * @param name 指定资源名称
+             */
+            Font(const std::string& name);
             ~Font();
             /**
              * @brief 加载字体

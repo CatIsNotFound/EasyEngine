@@ -25,7 +25,7 @@ find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(SDL3_mixer REQUIRED)
 find_package(fmt REQUIRED)
-find_package(pugixml REQUIRED)
+#find_package(pugixml REQUIRED)
 
 set(SDL3_GFX_LIB
         libs/sdl3_gfx/SDL3_framerate.c
@@ -67,7 +67,7 @@ target_link_libraries(EasyEngine PRIVATE
         SDL3_ttf::SDL3_ttf
         SDL3_mixer::SDL3_mixer
         fmt::fmt
-        pugixml::pugixml
+#        pugixml::pugixml
 )
 
 if (WIN32)

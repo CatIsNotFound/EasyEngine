@@ -148,7 +148,12 @@ namespace EasyEngine {
          * @see globalPosition
          * @see move
          */
-        EasyEngine::Vector2 position();
+        EasyEngine::Vector2 position() const;
+        /**
+         * @brief 获取鼠标当前聚焦于哪个窗口
+         * @return 返回鼠标所在的窗口 ID
+         */
+        uint64_t focusOn() const;
         /**
          * @brief 移动鼠标光标至指定位置
          * @param pos 指定位置
@@ -497,6 +502,7 @@ namespace EasyEngine {
          */
         Geometry screenGeometry();
 
+
     private:
         Engine() = delete;
         Engine(const Engine&) = delete;
@@ -612,11 +618,33 @@ namespace EasyEngine {
 
         void drawSprite(const Components::Sprite &sprite,
                         const Components::Sprite::Properties *properties);
-
+        /**
+         * @brief 绘制像素文本
+         * @param text  指定文本内容（仅支持 ASCII 字符）
+         * @param pos   指定绘制的位置
+         * @param size  指定绘制的尺寸比例（默认 1:1）
+         * @param color 指定绘制的颜色（默认白色）
+         */
+        void drawPixelText(const std::string& text, const Vector2& pos,
+                           const Size& size = {1.0f, 1.0f}, const SColor& color = StdColor::White);
         /**
          * @brief 清空所有绘制命令
          */
         void clear();
+        /**
+         * @brief 设置整个视图
+         * @param geometry 用于调整视图的位置、大小
+         * @param size     用于调整视图的缩放比例（默认使用 1:1）
+         *
+         * 执行后，整个位置及大小都将发生改变！适合用于写基本控件视图
+         */
+        void setViewport(const Geometry &geometry, const Size &size = {1.0f, 1.0f});
+        /**
+         * @brief 裁剪可见视图
+         * @param geometry 用于调整裁剪可见视图的位置、大小
+         * @param size     用于调整可见视图的缩放比例（默认 1:1）
+         */
+        void setClipView(const Geometry &geometry, const Size &size = {1.0f, 1.0f});
 
     private:
         /**
@@ -627,44 +655,35 @@ namespace EasyEngine {
         void paintEvent();
         Window* _window;
         struct Command {
-            enum class Types {
-                None = 0,
-                Point,
-                Line,
-                Rectangle,
-                Ellipse,
-                Fill = 8,
-                Spirit = 16
-            } graphics;
-            explicit Command() : graphics(Types::None) {};
+            explicit Command() {};
             virtual ~Command() = default;
             virtual void exec(SRenderer *renderer, uint32_t thickness) = 0;
         };
         struct PointCMD : Command {
             Graphics::Point pt;
-            explicit PointCMD(const Graphics::Point& point) : pt(point) { Command::graphics = Command::Types::Point; }
+            explicit PointCMD(const Graphics::Point& point) : pt(point) {}
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         struct LineCMD : Command {
             Graphics::Line line;
-            explicit LineCMD(const Graphics::Line& line) : line(line) { Command::graphics = Command::Types::Line; }
+            explicit LineCMD(const Graphics::Line& line) : line(line) {}
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         struct RectCMD : Command {
             Graphics::Rectangle rect;
-            explicit RectCMD(const Graphics::Rectangle& rect) : rect(rect) { Command::graphics = Command::Types::Rectangle; }
+            explicit RectCMD(const Graphics::Rectangle& rect) : rect(rect) {}
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         struct EllipseCMD : Command {
             Graphics::Ellipse ellipse;
             explicit EllipseCMD(const Graphics::Ellipse& ellipse) : ellipse(ellipse)
-                { Command::graphics = Command::Types::Ellipse; }
+                {}
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         struct FillCMD : Command {
             SColor color;
             explicit FillCMD(const SColor& color) : color(color)
-                { Command::graphics = Command::Types::Fill; }
+                {}
             void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         struct SpriteCMD : Command {
@@ -683,7 +702,7 @@ namespace EasyEngine {
                 : _sprite(sprite.spirit()), _size(sprite.size()), _pos(pos),
                   _rotate_center(0, 0), _scaled_center(0, 0),
                   _clip_pos(0, 0), _clip_size(0, 0)
-                { Command::graphics = Command::Types::Spirit; }
+                {}
             SpriteCMD(const Components::Sprite& sprite, const Vector2& pos,
                       const Components::Sprite::Properties& properties)
                       : _sprite(sprite.spirit()), _size(sprite.size().width, sprite.size().height),
@@ -694,6 +713,26 @@ namespace EasyEngine {
                     _flip_mode = (properties.flip_mode == Components::Sprite::FlipMode::HFlip) ? SDL_FLIP_HORIZONTAL :
                         ((properties.flip_mode == Components::Sprite::FlipMode::VFlip) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);
             }
+            void exec(SRenderer *renderer, uint32_t) override;
+        };
+        struct PixelTextCMD : Command {
+            Vector2 pos;
+            Size size;
+            SColor color;
+            std::string text;
+            explicit PixelTextCMD() : pos(0, 0), size(0, 0), color(StdColor::White), text() {}
+            PixelTextCMD(const GeometryF& geometry, const SColor& color, const std::string& text)
+                : pos(geometry.pos), size(geometry.size), color(color), text(text) {}
+            void exec(SRenderer *renderer, uint32_t) override;
+        };
+        struct ViewportCMD : Command {
+            Geometry geometry;
+            bool is_clipped_mode;
+            Size scaled;
+            explicit ViewportCMD() : geometry(0, 0, 0, 0), is_clipped_mode(false), scaled(1.0f, 1.0f) {}
+            ViewportCMD(const Geometry& geometry, bool is_clipped_mode, const Size& scaled)
+                : geometry(geometry.x, geometry.y, geometry.width, geometry.height),
+                is_clipped_mode(is_clipped_mode), scaled(scaled.width, scaled.height) {}
             void exec(SRenderer *renderer, uint32_t) override;
         };
         std::vector<std::unique_ptr<Command>> command_list;
@@ -1056,7 +1095,7 @@ namespace EasyEngine {
          * @see Audio
          */
         const Audio& sfxChannel(uint8_t channel);
-
+        MIX_Mixer* mixer() const;
     private:
         static std::unique_ptr<AudioSystem> _instance;
         SAudioSpec _audio_spec;

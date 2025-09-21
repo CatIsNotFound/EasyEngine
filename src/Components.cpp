@@ -1323,6 +1323,12 @@ EasyEngine::Components::Font::Font(const std::string &path, float font_size)
     load(path, font_size);
 }
 
+EasyEngine::Components::Font::Font(const std::string &name)
+    : _font_size(12.0f), _font_direction(LeftToRight), _font_outline(0), _font_style_flags(0) {
+    // TODO: 加载字体
+
+}
+
 EasyEngine::Components::Font::~Font() {
     unload();
 }

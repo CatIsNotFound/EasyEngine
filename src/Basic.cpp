@@ -68,4 +68,81 @@ namespace EasyEngine {
                                     back_color(Algorithm::hexToRGBA(background)) {}
 
 
+    template<typename T>
+    uint32_t Matrix2<T>::count(Pos2 &start, Pos2 &end) {
+        correct(start, end);
+        uint32_t sum_rows = data.size(), sum_cols = data[0].size(), sum = sum_rows * sum_cols;
+        uint32_t start_id = start.row * sum_rows + start.col,
+                 end_id = end.row * sum_rows + end.col;
+        if (end_id >= sum) end_id = sum;
+        return end_id - start_id + 1;
+    }
+
+    template<typename T>
+    void Matrix2<T>::forRange(Pos2 &start, Pos2 &end,
+                              const std::function<void(const T &)> &function) {
+        correct(start, end);
+        uint32_t sum_cols = data[0].size();
+        bool f = false;
+        for (uint32_t r = start.row; r <= end.row; ++r) {
+            for (uint32_t c = 0; c <= sum_cols; ++c) {
+                if (!f && start.col >= c) { f = true; }
+                else {
+                    if (function) function(data[r][c]);
+                }
+            }
+        }
+    }
+
+    template<typename T>
+    void Matrix2<T>::forRange(Pos2 &start, Pos2 &end,
+                              const std::function<void(const Pos2 &)> &function) {
+        correct(start, end);
+        uint32_t sum_cols = data[0].size();
+        bool f = false;
+        for (uint32_t r = start.row; r <= end.row; ++r) {
+            for (uint32_t c = 0; c <= sum_cols; ++c) {
+                if (!f && start.col >= c) { f = true; }
+                else {
+                    if (function) function({r, c});
+                }
+            }
+        }
+    }
+
+    template<typename T>
+    void Matrix2<T>::correct(Pos2 &start, Pos2 &end) {
+        if (start > end) {
+            Matrix2 temp = start;
+            start = end;
+            end = temp;
+        }
+        uint32_t sum_rows = data.size(), sum_cols = data[0].size();
+        Pos2 max_end = {sum_rows - 1, sum_cols - 1};
+        if (max_end > end) {
+            end = max_end;
+        }
+    }
+
+    template<typename T>
+    std::vector<T> Matrix2<T>::getN(Pos2 &start, Pos2 &end) {
+        std::vector<T> ret(data.size() * data[0].size());
+        forRange(start, end, [&ret](const T& value) { ret.emplace_back(value); });
+        return ret;
+    }
+
+    template<typename T>
+    void Matrix2<T>::setN(Pos2 &start, Pos2 &end, const T& value) {
+        forRange(start, end, [this, &value](const Pos2& pos) { data[pos.row][pos.col] = value; });
+    }
+
+    template<typename T>
+    void Matrix2<T>::foreach(const std::function<void(T&)>& function) {
+        if (!function) return;
+        for (auto& row : data) {
+            for (auto& col : row) {
+                function(col);
+            }
+        }
+    }
 }

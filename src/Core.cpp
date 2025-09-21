@@ -32,10 +32,14 @@ EasyEngine::Vector2 EasyEngine::Cursor::globalPosition() const {
     return temp_pos;
 }
 
-EasyEngine::Vector2 EasyEngine::Cursor::position() {
+EasyEngine::Vector2 EasyEngine::Cursor::position() const {
     Vector2 temp_pos;
     SDL_GetMouseState(&temp_pos.x, &temp_pos.y);
     return temp_pos;
+}
+
+uint64_t EasyEngine::Cursor::focusOn() const {
+    return SDL_GetWindowID(SDL_GetMouseFocus());
 }
 
 void EasyEngine::Cursor::move(const EasyEngine::Vector2 &pos, const EasyEngine::Window *window) {
@@ -345,7 +349,8 @@ std::string EasyEngine::Engine::windowTitle(SWindowID window_id) {
 }
 
 bool EasyEngine::Engine::init(const char *title, uint32_t width, uint32_t height, uint32_t *wID) {
-    SDL_Window* _sdl_window = SDL_CreateWindow(title, width, height, SDL_WINDOW_HIDDEN);
+    SDL_Window* _sdl_window = SDL_CreateWindow(title, width, height,
+                           SDL_WINDOW_HIDDEN | SDL_WINDOW_HIGH_PIXEL_DENSITY);
 
     if (!_sdl_window) {
         SDL_Log("[ERROR] Create window failed! Code: %s\n", SDL_GetError());
@@ -358,6 +363,7 @@ bool EasyEngine::Engine::init(const char *title, uint32_t width, uint32_t height
         SDL_DestroyWindow(_sdl_window);
         return false;
     }
+
     _sdl_window_list[id] = std::make_shared<Window>(Window(_sdl_window, _sdl_renderer));
     _sdl_window_list[id]->geometry.setGeometry(0, 0, width, height);
     _renderer_list[id] = std::make_unique<Painter>(_sdl_window_list[id].get());
@@ -625,10 +631,8 @@ void EasyEngine::Painter::paintEvent() {
 }
 
 void EasyEngine::Painter::update() {
-    SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
-    SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
-    SDL_Rect _win_rect(0, 0, _window->geometry.width, _window->geometry.height);
-    SDL_SetRenderViewport(_window->renderer, &_win_rect);
+    SDL_SetRenderViewport(_window->renderer, nullptr);
+    SDL_SetRenderClipRect(_window->renderer, nullptr);
     SDL_SetRenderDrawBlendMode(_window->renderer, SDL_BLENDMODE_NONE);
     for (auto& cmd : command_list) {
         cmd->exec(_window->renderer, thickness());
@@ -708,12 +712,28 @@ void EasyEngine::Painter::drawSprite(const EasyEngine::Components::Sprite &sprit
     command_list.emplace_back(std::unique_ptr<SpriteCMD>(spiritCmd));
 }
 
+void EasyEngine::Painter::drawPixelText(const std::string &text, const EasyEngine::Vector2 &pos,
+                                        const EasyEngine::Size &size, const SColor &color) {
+    auto pixelTextCmd = new PixelTextCMD({pos, size}, color, text);
+    command_list.emplace_back(std::unique_ptr<PixelTextCMD>(pixelTextCmd));
+}
+
 void EasyEngine::Painter::clear() {
     command_list.clear();
 }
 
 void EasyEngine::Painter::installPaintEvent(std::function<void(Painter&)> function) {
     paint_function = std::move(function);
+}
+
+void EasyEngine::Painter::setViewport(const Geometry &geometry, const Size &size) {
+    auto cmd = new ViewportCMD(geometry, false, size);
+    command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
+}
+
+void EasyEngine::Painter::setClipView(const Geometry &geometry, const Size &size) {
+    auto cmd = new ViewportCMD(geometry, true, size);
+    command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
 }
 
 void EasyEngine::Painter::PointCMD::exec(SRenderer *renderer, uint32_t thickness) {
@@ -809,6 +829,24 @@ void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
         SDL_RenderTextureRotated(renderer, _sprite, nullptr, &_dst,
                                  _rotate, &center, _flip_mode);
     }
+}
+
+void EasyEngine::Painter::PixelTextCMD::exec(SRenderer *renderer, uint32_t) {
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, SDL_ALPHA_OPAQUE);
+    
+    SDL_SetRenderScale(renderer, size.width, size.height);
+    SDL_RenderDebugText(renderer, pos.x, pos.y, text.c_str());
+    SDL_SetRenderScale(renderer, 1.0f, 1.0f);
+}
+
+void EasyEngine::Painter::ViewportCMD::exec(SRenderer* renderer, uint32_t) {
+    SDL_Rect rect = {geometry.x, geometry.y, geometry.width, geometry.height};
+    if (is_clipped_mode) {
+        SDL_SetRenderClipRect(renderer, &rect);
+    } else {
+        SDL_SetRenderViewport(renderer, &rect);
+    }
+    SDL_SetRenderScale(renderer, scaled.width, scaled.height);
 }
 
 EasyEngine::EventSystem::~EventSystem() {};
@@ -1329,6 +1367,10 @@ const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::bgmChannel(uint8_
 
 const EasyEngine::AudioSystem::Audio &EasyEngine::AudioSystem::sfxChannel(uint8_t channel) {
     return _sfx_channels[channel];
+}
+
+MIX_Mixer *EasyEngine::AudioSystem::mixer() const {
+    return _bgm_mixer;
 }
 
 

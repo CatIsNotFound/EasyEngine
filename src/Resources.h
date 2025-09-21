@@ -13,6 +13,7 @@
 #include "Basic.h"
 
 namespace EasyEngine {
+    class AudioSystem;
     /**
      * @class FileSystem
      * @brief 文件系统
@@ -216,7 +217,7 @@ namespace EasyEngine {
         bool load(const std::string &name);
         /**
          * @brief 预加载多个现有的资源
-         * @param resource_names 指定的资源名列表
+         * @param resource_names 指定的资源名列表（若为空，则默认加载全部资源）
          * @return 返回加载失败的个数。若为 0，则加载所有资源成功！
          * @see load
          * @see asyncLoad
@@ -224,12 +225,13 @@ namespace EasyEngine {
         uint64_t preload(const std::vector<std::string>& resource_names);
         /**
          * @brief 异步加载多个现有的资源
-         * @param resource_names 指定的资源名列表
-         * @return 返回加载失败的个数。若为 0，则加载所有资源成功！
+         * @param resource_names 指定的资源名列表（若为空，则默认加载全部资源）
+         * @param callback       当加载完成后执行回调函数（默认未定义）
          * @see load
          * @see preload
          */
-        uint64_t asyncLoad(const std::vector<std::string>& resource_names);
+        void asyncLoad(const std::vector<std::string>& resource_names,
+                       const std::function<void(uint64_t)>& callback = {});
         /**
          * @brief 卸载指定资源
          * @param name 指定卸载的资源名
@@ -291,5 +293,7 @@ namespace EasyEngine {
         std::string _null_str{};
     };
 }
+
+#include "Core.h"
 
 #endif //EASYENGINE_RESOURCES_H
