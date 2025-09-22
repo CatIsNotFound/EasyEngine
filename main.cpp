@@ -49,10 +49,8 @@ int main() {
     engine.painter()->installPaintEvent([&](Painter& painter) {
         painter.fillBackColor(StdColor::White);
         pixel_text.draw(Vector2{100, 100});
-
         if (is_mouse_down) clicked.draw();
         else icon.draw();
-
     });
     engine.installEventHandler([&](SEvent& ev) {
         timer->stop();
