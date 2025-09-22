@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['ubuntu_20debian_0',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
-  ['unload_1',['Unload',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea123385ccf3896b667817d81dcd3040a2',1,'EasyEngine::AudioSystem::Audio']]],
-  ['unload_2',['unload',['../class_easy_engine_1_1_audio_system.html#a81b7aef121bd5df668cfe0be2d29dae5',1,'EasyEngine::AudioSystem::unload()'],['../class_easy_engine_1_1_resource_system.html#ad2315eb291fd89a8020fb4dcf0ba0e76',1,'EasyEngine::ResourceSystem::unload()']]],
-  ['unloadallchannel_3',['unloadAllChannel',['../class_easy_engine_1_1_audio_system.html#a9027e9446ca0797f82ac15f80f318813',1,'EasyEngine::AudioSystem']]],
-  ['unloadbgm_4',['unloadBGM',['../class_easy_engine_1_1_audio_system.html#a50091941d1f325400f95f222dc678df3',1,'EasyEngine::AudioSystem']]],
-  ['unloadsfx_5',['unloadSFX',['../class_easy_engine_1_1_audio_system.html#a0686e0fbf415e51b2ee7af9dc673cf17',1,'EasyEngine::AudioSystem']]],
-  ['update_6',['update',['../class_easy_engine_1_1_components_1_1_timer.html#a3bf56a0003c56017aa62bca6e4c60cab',1,'EasyEngine::Components::Timer::update()'],['../class_easy_engine_1_1_components_1_1_control.html#aae9138e8e3c78f35be82bddce5d18a00',1,'EasyEngine::Components::Control::update()'],['../class_easy_engine_1_1_painter.html#a72a32c99fd098857822c9d1009e43b24',1,'EasyEngine::Painter::update()']]],
-  ['url_7',['url',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5d4e547b5051a37ebc0e06bb9e62a475',1,'EasyEngine::AudioSystem::Audio']]],
-  ['usercustom_8',['UserCustom',['../struct_easy_engine_1_1_cursor_1_1_user_custom.html',1,'EasyEngine::Cursor']]],
-  ['usercustomenabled_9',['userCustomEnabled',['../class_easy_engine_1_1_cursor.html#a5d8fb90cc50a683c94b9661d31dbcdab',1,'EasyEngine::Cursor']]]
+  ['text_0',['Text',['../struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0ade751e1d0c842a4b01b20f3891c812bc',1,'EasyEngine::Resource']]],
+  ['texttosprite_1',['textToSprite',['../class_easy_engine_1_1_components_1_1_font.html#a131f649d2edbdeca64a313ad6e313a88',1,'EasyEngine::Components::Font']]],
+  ['thickness_2',['thickness',['../class_easy_engine_1_1_painter.html#a0a2ccfbcc029ea582279f3220c153105',1,'EasyEngine::Painter']]],
+  ['timer_3',['Timer',['../class_easy_engine_1_1_components_1_1_timer.html',1,'EasyEngine::Components::Timer'],['../class_easy_engine_1_1_components_1_1_timer.html#aad1678dce72369236e66807546b14714',1,'EasyEngine::Components::Timer::Timer()'],['../class_easy_engine_1_1_components_1_1_timer.html#a3349518f8fc0be2a8f701df5ec66b1f9',1,'EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function&lt; void()&gt; &amp;function)']]],
+  ['timer_4',['timer',['../class_easy_engine_1_1_components_1_1_animation.html#a186bd71648842a8ab67b427ed0929c18',1,'EasyEngine::Components::Animation']]],
+  ['toptobottom_5',['TopToBottom',['../class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcada31ac3a0c12c277a1f501fe95d56cd886',1,'EasyEngine::Components::Font']]],
+  ['trigger_6',['Trigger',['../class_easy_engine_1_1_components_1_1_trigger.html',1,'EasyEngine::Components']]],
+  ['trigger_7',['trigger',['../class_easy_engine_1_1_components_1_1_trigger.html#afb8a3782f871164123d54cc8e8f983ce',1,'EasyEngine::Components::Trigger']]],
+  ['txt_8',['2.2 CMakeLists.txt',['../md_quickstart.html#autotoc_md32',1,'']]],
+  ['type_9',['Type',['../struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0',1,'EasyEngine::Resource']]],
+  ['type_10',['type',['../struct_easy_engine_1_1_resource.html#a7f3f5cfb51d85d66cbc1a23a28798937',1,'EasyEngine::Resource']]],
+  ['typeinfo_11',['typeInfo',['../class_easy_engine_1_1_components_1_1_entity.html#a91dc1094162154d07d15e03d3dd02a4b',1,'EasyEngine::Components::Entity::typeInfo()'],['../class_easy_engine_1_1_components_1_1_control.html#a02d81b78aba53d317894b1ca2ce752fa',1,'EasyEngine::Components::Control::typeInfo()']]]
 ];

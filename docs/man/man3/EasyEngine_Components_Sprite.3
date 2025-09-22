@@ -33,6 +33,14 @@ EasyEngine::Components::Sprite \- 精灵
 .br
 .RI "创建一个精灵，无精灵纹理 "
 .ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, SSurface *surface, SRenderer *\fBrenderer\fP)"
+.br
+.RI "创建一个精灵 "
+.ti -1c
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const std::string &resource_name, SRenderer *\fBrenderer\fP)"
+.br
+.RI "通过资源系统中创建一个精灵 "
+.ti -1c
 .RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP)"
 .br
 .RI "克隆已有的精灵 "
@@ -40,10 +48,6 @@ EasyEngine::Components::Sprite \- 精灵
 .RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size)"
 .br
 .RI "克隆并裁剪已有的精灵 "
-.ti -1c
-.RI "\fBSprite\fP (const std::string &\fBname\fP, const std::string &\fBpath\fP, SRenderer *\fBrenderer\fP)"
-.br
-.RI "创建一个精灵 "
 .ti -1c
 .RI "\fBSprite\fP (const std::string &\fBname\fP, const std::string &\fBpath\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size, SRenderer *\fBrenderer\fP)"
 .br
@@ -169,6 +173,36 @@ EasyEngine::Components::Sprite \- 精灵
 .RE
 .PP
 
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, SSurface * surface, SRenderer * renderer)"
+
+.PP
+创建一个精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIsurface\fP 指定的图片 
+.br
+\fIrenderer\fP 使用的渲染器 
+.RE
+.PP
+
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const std::string & resource_name, SRenderer * renderer)"
+
+.PP
+通过资源系统中创建一个精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 精灵别名 
+.br
+\fIresource_name\fP 指定资源名称 
+.br
+\fIrenderer\fP 使用的渲染器 
+.RE
+.PP
+
 .SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & spirit)"
 
 .PP
@@ -196,21 +230,6 @@ EasyEngine::Components::Sprite \- 精灵
 \fIclip_pos\fP 裁剪位置（相对坐标） 
 .br
 \fIclip_size\fP 裁剪大小 
-.RE
-.PP
-
-.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const std::string & path, SRenderer * renderer)"
-
-.PP
-创建一个精灵 
-.PP
-\fB参数\fP
-.RS 4
-\fIname\fP 精灵别名 
-.br
-\fIpath\fP 精灵纹理路径 
-.br
-\fIrenderer\fP 使用的渲染器 
 .RE
 .PP
 

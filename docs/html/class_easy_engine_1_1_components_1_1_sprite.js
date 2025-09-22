@@ -7,9 +7,10 @@ var class_easy_engine_1_1_components_1_1_sprite =
       [ "VFlip", "class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7", null ]
     ] ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#aab2bba8fa8ba366f7d715894ecba7e7b", null ],
+    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#abe3b2218496e93f2ad5f12737b65b431", null ],
+    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a7d1241ad2a86816891fa7e0000775ea7", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a91f04b8c2c6df6aeec4564e4701677a8", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a64eea868a997cb7c1e04e32edf80f2ce", null ],
-    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#ac1ccb6d80543a268dbfa252ce7c9eb58", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a8d4c72ac09a20e6cb0c90dd2fcec9dd5", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#a7757f67b4415db65d9c31528c8a4529b", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#a844d1c3804f5bde5f6aceeefa30c80a8", null ],

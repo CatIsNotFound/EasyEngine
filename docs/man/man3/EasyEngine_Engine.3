@@ -53,7 +53,7 @@ EasyEngine::Engine \- 引擎类
 .br
 .RI "设置窗口为无边框窗口 "
 .ti -1c
-.RI "bool \fBsetFullScreen\fP (bool enabled, bool move_cursor_to_center, SDL_WindowID window_id=_main_window_id)"
+.RI "bool \fBsetFullScreen\fP (bool enabled, bool move_cursor_to_center=false, SDL_WindowID window_id=_main_window_id)"
 .br
 .RI "设置指定窗口是否为全屏 "
 .ti -1c
@@ -555,7 +555,7 @@ EasyEngine::Engine \- 引擎类
 .RE
 .PP
 
-.SS "bool EasyEngine::Engine::setFullScreen (bool enabled, bool move_cursor_to_center, SDL_WindowID window_id = \fR_main_window_id\fP)"
+.SS "bool EasyEngine::Engine::setFullScreen (bool enabled, bool move_cursor_to_center = \fRfalse\fP, SDL_WindowID window_id = \fR_main_window_id\fP)"
 
 .PP
 设置指定窗口是否为全屏 

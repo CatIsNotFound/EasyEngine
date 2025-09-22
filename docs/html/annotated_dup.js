@@ -8,6 +8,7 @@ var annotated_dup =
         [ "Control", "class_easy_engine_1_1_components_1_1_control.html", "class_easy_engine_1_1_components_1_1_control" ],
         [ "Element", "class_easy_engine_1_1_components_1_1_element.html", null ],
         [ "Entity", "class_easy_engine_1_1_components_1_1_entity.html", "class_easy_engine_1_1_components_1_1_entity" ],
+        [ "Font", "class_easy_engine_1_1_components_1_1_font.html", "class_easy_engine_1_1_components_1_1_font" ],
         [ "SFX", "class_easy_engine_1_1_components_1_1_s_f_x.html", "class_easy_engine_1_1_components_1_1_s_f_x" ],
         [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html", "class_easy_engine_1_1_components_1_1_sprite" ],
         [ "SpriteGroup", "class_easy_engine_1_1_components_1_1_sprite_group.html", "class_easy_engine_1_1_components_1_1_sprite_group" ],
@@ -26,16 +27,17 @@ var annotated_dup =
       [ "Engine", "class_easy_engine_1_1_engine.html", "class_easy_engine_1_1_engine" ],
       [ "EventSystem", "class_easy_engine_1_1_event_system.html", "class_easy_engine_1_1_event_system" ],
       [ "FileSystem", "class_easy_engine_1_1_file_system.html", null ],
+      [ "FontSystem", "class_easy_engine_1_1_font_system.html", "class_easy_engine_1_1_font_system" ],
       [ "Geometry", "struct_easy_engine_1_1_geometry.html", null ],
       [ "GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
       [ "Layer", "class_easy_engine_1_1_layer.html", null ],
       [ "Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
+      [ "Resource", "struct_easy_engine_1_1_resource.html", "struct_easy_engine_1_1_resource" ],
       [ "ResourceSystem", "class_easy_engine_1_1_resource_system.html", "class_easy_engine_1_1_resource_system" ],
       [ "Scene", "class_easy_engine_1_1_scene.html", null ],
       [ "SceneManager", "class_easy_engine_1_1_scene_manager.html", null ],
       [ "Size", "struct_easy_engine_1_1_size.html", "struct_easy_engine_1_1_size" ],
       [ "Vector2", "struct_easy_engine_1_1_vector2.html", "struct_easy_engine_1_1_vector2" ],
       [ "Window", "class_easy_engine_1_1_window.html", "class_easy_engine_1_1_window" ]
-    ] ],
-    [ "Test", "struct_test.html", null ]
+    ] ]
 ];

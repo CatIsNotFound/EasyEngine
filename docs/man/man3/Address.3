@@ -1,0 +1,41 @@
+.TH "Address" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Address
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBAddress\fP (const std::string &_street, const std::string &_city, const std::string &_country, int _zipCode)"
+.br
+.ti -1c
+.RI "void \fBserialize\fP (std::ofstream &file) const"
+.br
+.ti -1c
+.RI "void \fBdeserialize\fP (std::ifstream &file)"
+.br
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBstreet\fP"
+.br
+.ti -1c
+.RI "std::string \fBcity\fP"
+.br
+.ti -1c
+.RI "std::string \fBcountry\fP"
+.br
+.ti -1c
+.RI "int \fBzipCode\fP"
+.br
+.in -1c
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

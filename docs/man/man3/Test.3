@@ -6,6 +6,8 @@ Test
 .SH SYNOPSIS
 .br
 .PP
+.PP
+继承自 \fBSerializable\fP \&.
 .SS "Public 成员函数"
 
 .in +1c
@@ -13,10 +15,10 @@ Test
 .RI "\fBTest\fP (uint64_t _id, const std::string &_name, const std::string &_data)"
 .br
 .ti -1c
-.RI "void \fBserialize\fP (std::ofstream &file) const"
+.RI "void \fBserialize\fP (std::ofstream &file) const override"
 .br
 .ti -1c
-.RI "void \fBdeserialize\fP (std::ifstream &file)"
+.RI "void \fBdeserialize\fP (std::ifstream &file) override"
 .br
 .in -1c
 .SS "Public 属性"
@@ -32,6 +34,16 @@ Test
 .RI "std::string \fBdata\fP"
 .br
 .in -1c
+.SH "成员函数说明"
+.PP 
+.SS "void Test::deserialize (std::ifstream & file)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+实现了 \fBSerializable\fP\&.
+.SS "void Test::serialize (std::ofstream & file) const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+实现了 \fBSerializable\fP\&.
 
 .SH "作者"
 .PP 

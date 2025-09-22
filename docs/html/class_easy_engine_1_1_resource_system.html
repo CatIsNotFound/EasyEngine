@@ -122,12 +122,38 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a2c72b8bd6c0fca574922b05ed44ce094" id="r_a2c72b8bd6c0fca574922b05ed44ce094"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c72b8bd6c0fca574922b05ed44ce094">load</a> (const std::string &amp;name, const std::string &amp;path, const Resource::Type &amp;type)</td></tr>
-<tr class="memdesc:a2c72b8bd6c0fca574922b05ed44ce094"><td class="mdescLeft">&#160;</td><td class="mdescRight">载入资源  <br /></td></tr>
-<tr class="memitem:ad2315eb291fd89a8020fb4dcf0ba0e76" id="r_ad2315eb291fd89a8020fb4dcf0ba0e76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2315eb291fd89a8020fb4dcf0ba0e76">unload</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:ad2315eb291fd89a8020fb4dcf0ba0e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">卸载指定资源  <br /></td></tr>
-<tr class="memitem:a46f4b22a85a1252d4b4142853aaada0b" id="r_a46f4b22a85a1252d4b4142853aaada0b"><td class="memItemLeft" align="right" valign="top">const Resource &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46f4b22a85a1252d4b4142853aaada0b">resource</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a46f4b22a85a1252d4b4142853aaada0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定资源  <br /></td></tr>
+<tr class="memitem:a54af6e25de8468ac19a7cc024499e3e2" id="r_a54af6e25de8468ac19a7cc024499e3e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54af6e25de8468ac19a7cc024499e3e2">setRootPath</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a54af6e25de8468ac19a7cc024499e3e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置根目录  <br /></td></tr>
+<tr class="memitem:a2c72b8bd6c0fca574922b05ed44ce094" id="r_a2c72b8bd6c0fca574922b05ed44ce094"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c72b8bd6c0fca574922b05ed44ce094">load</a> (const std::string &amp;name, const std::string &amp;path, const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;type)</td></tr>
+<tr class="memdesc:a2c72b8bd6c0fca574922b05ed44ce094"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件系统中加载资源  <br /></td></tr>
+<tr class="memitem:a41ffe709cbac61d88dbd54048869abdf" id="r_a41ffe709cbac61d88dbd54048869abdf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41ffe709cbac61d88dbd54048869abdf">load</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a41ffe709cbac61d88dbd54048869abdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定现有的资源并加载  <br /></td></tr>
+<tr class="memitem:aaeb546f0cf0effd56f99fe9f848779bf" id="r_aaeb546f0cf0effd56f99fe9f848779bf"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaeb546f0cf0effd56f99fe9f848779bf">preload</a> (const std::vector&lt; std::string &gt; &amp;resource_names)</td></tr>
+<tr class="memdesc:aaeb546f0cf0effd56f99fe9f848779bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">预加载多个现有的资源  <br /></td></tr>
+<tr class="memitem:a36f03d1cdd60d0a4319542847e248bf4" id="r_a36f03d1cdd60d0a4319542847e248bf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36f03d1cdd60d0a4319542847e248bf4">asyncLoad</a> (const std::vector&lt; std::string &gt; &amp;resource_names, const std::function&lt; void(uint64_t)&gt; &amp;callback={})</td></tr>
+<tr class="memdesc:a36f03d1cdd60d0a4319542847e248bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">异步加载多个现有的资源  <br /></td></tr>
+<tr class="memitem:add3f59d0f27dd3d6aa9e193f2da06539" id="r_add3f59d0f27dd3d6aa9e193f2da06539"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add3f59d0f27dd3d6aa9e193f2da06539">unload</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:add3f59d0f27dd3d6aa9e193f2da06539"><td class="mdescLeft">&#160;</td><td class="mdescRight">卸载指定资源  <br /></td></tr>
+<tr class="memitem:a80b57447ca2626eb7d55000e1b3a38da" id="r_a80b57447ca2626eb7d55000e1b3a38da"><td class="memItemLeft" align="right" valign="top"><a id="a80b57447ca2626eb7d55000e1b3a38da" name="a80b57447ca2626eb7d55000e1b3a38da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>unloadAll</b> ()</td></tr>
+<tr class="memdesc:a80b57447ca2626eb7d55000e1b3a38da"><td class="mdescLeft">&#160;</td><td class="mdescRight">卸载全部资源 <br /></td></tr>
+<tr class="memitem:a478fbe014ea125b28a7537981afa73ac" id="r_a478fbe014ea125b28a7537981afa73ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a478fbe014ea125b28a7537981afa73ac">append</a> (const std::string &amp;name, const std::string &amp;path, const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;type)</td></tr>
+<tr class="memdesc:a478fbe014ea125b28a7537981afa73ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件系统中添加资源  <br /></td></tr>
+<tr class="memitem:ad8e1f04826b602b48d9f36a216c367db" id="r_ad8e1f04826b602b48d9f36a216c367db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8e1f04826b602b48d9f36a216c367db">remove</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ad8e1f04826b602b48d9f36a216c367db"><td class="mdescLeft">&#160;</td><td class="mdescRight">从资源系统中移除指定资源  <br /></td></tr>
+<tr class="memitem:a57fd170dabd9e3b366426b87f7b87aa8" id="r_a57fd170dabd9e3b366426b87f7b87aa8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57fd170dabd9e3b366426b87f7b87aa8">replace</a> (const std::string &amp;name, const std::string &amp;path, const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;type)</td></tr>
+<tr class="memdesc:a57fd170dabd9e3b366426b87f7b87aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定现有的资源并替换  <br /></td></tr>
+<tr class="memitem:ada1858891e88104ffe437563a82f907f" id="r_ada1858891e88104ffe437563a82f907f"><td class="memItemLeft" align="right" valign="top">const std::variant&lt; std::monostate, std::string, SSurface *, char *, void *, std::vector&lt; uint8_t &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada1858891e88104ffe437563a82f907f">metaData</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:ada1858891e88104ffe437563a82f907f"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定资源中获取元数据  <br /></td></tr>
+<tr class="memitem:a4e6e70dfe70846b92ca952e31a850de9" id="r_a4e6e70dfe70846b92ca952e31a850de9"><td class="memItemLeft" align="right" valign="top"><a id="a4e6e70dfe70846b92ca952e31a850de9" name="a4e6e70dfe70846b92ca952e31a850de9"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>resourcePath</b> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:a4e6e70dfe70846b92ca952e31a850de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定资源中获取资源所在路径 <br /></td></tr>
+<tr class="memitem:a15c033a195910a6402905e37a0bb5118" id="r_a15c033a195910a6402905e37a0bb5118"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15c033a195910a6402905e37a0bb5118">resourceType</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:a15c033a195910a6402905e37a0bb5118"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定资源下的类型  <br /></td></tr>
+<tr class="memitem:a644571a3270036cb9caf537864f91d55" id="r_a644571a3270036cb9caf537864f91d55"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a644571a3270036cb9caf537864f91d55">isLoaded</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:a644571a3270036cb9caf537864f91d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">查看指定资源是否被加载  <br /></td></tr>
+<tr class="memitem:afee52d1df50e9d00e01e96da9a18c74c" id="r_afee52d1df50e9d00e01e96da9a18c74c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afee52d1df50e9d00e01e96da9a18c74c">isContain</a> (const std::string &amp;name) const</td></tr>
+<tr class="memdesc:afee52d1df50e9d00e01e96da9a18c74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">查看当前资源系统中是否存在指定资源  <br /></td></tr>
 <tr class="memitem:af001ad827a4fef285d1233c0b21023db" id="r_af001ad827a4fef285d1233c0b21023db"><td class="memItemLeft" align="right" valign="top"><a id="af001ad827a4fef285d1233c0b21023db" name="af001ad827a4fef285d1233c0b21023db"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>ResourceSystem</b> (<a class="el" href="class_easy_engine_1_1_resource_system.html">ResourceSystem</a> &amp;)=delete</td></tr>
 <tr class="memitem:a38668a0735d0ff077132328532691303" id="r_a38668a0735d0ff077132328532691303"><td class="memItemLeft" align="right" valign="top"><a id="a38668a0735d0ff077132328532691303" name="a38668a0735d0ff077132328532691303"></a>
@@ -142,8 +168,153 @@ static <a class="el" href="class_easy_engine_1_1_resource_system.html">ResourceS
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>资源系统 </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a478fbe014ea125b28a7537981afa73ac" name="a478fbe014ea125b28a7537981afa73ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a478fbe014ea125b28a7537981afa73ac">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResourceSystem::append </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从文件系统中添加资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>命名新的资源名称 </td></tr>
+    <tr><td class="paramname">path</td><td>指定路径 </td></tr>
+    <tr><td class="paramname">type</td><td>指定资源类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a36f03d1cdd60d0a4319542847e248bf4" name="a36f03d1cdd60d0a4319542847e248bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f03d1cdd60d0a4319542847e248bf4">&#9670;&#160;</a></span>asyncLoad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceSystem::asyncLoad </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>resource_names</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(uint64_t)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>异步加载多个现有的资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resource_names</td><td>指定的资源名列表（若为空，则默认加载全部资源） </td></tr>
+    <tr><td class="paramname">callback</td><td>当加载完成后执行回调函数（默认未定义） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2c72b8bd6c0fca574922b05ed44ce094" title="从文件系统中加载资源">load</a> </dd>
+<dd>
+<a class="el" href="#aaeb546f0cf0effd56f99fe9f848779bf" title="预加载多个现有的资源">preload</a> </dd></dl>
+
+</div>
+</div>
+<a id="afee52d1df50e9d00e01e96da9a18c74c" name="afee52d1df50e9d00e01e96da9a18c74c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afee52d1df50e9d00e01e96da9a18c74c">&#9670;&#160;</a></span>isContain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResourceSystem::isContain </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查看当前资源系统中是否存在指定资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定查找的资源名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a644571a3270036cb9caf537864f91d55" name="a644571a3270036cb9caf537864f91d55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a644571a3270036cb9caf537864f91d55">&#9670;&#160;</a></span>isLoaded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResourceSystem::isLoaded </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查看指定资源是否被加载 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定的资源名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a41ffe709cbac61d88dbd54048869abdf" name="a41ffe709cbac61d88dbd54048869abdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41ffe709cbac61d88dbd54048869abdf">&#9670;&#160;</a></span>load() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResourceSystem::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定现有的资源并加载 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定的资源名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功加载资源 </dd></dl>
+
+</div>
+</div>
 <a id="a2c72b8bd6c0fca574922b05ed44ce094" name="a2c72b8bd6c0fca574922b05ed44ce094"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c72b8bd6c0fca574922b05ed44ce094">&#9670;&#160;</a></span>load()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c72b8bd6c0fca574922b05ed44ce094">&#9670;&#160;</a></span>load() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,17 +332,17 @@ static <a class="el" href="class_easy_engine_1_1_resource_system.html">ResourceS
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Resource::Type &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>载入资源 </p>
+<p>从文件系统中加载资源 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>为载入的资源命名 </td></tr>
+    <tr><td class="paramname">name</td><td>命名新的资源名称 </td></tr>
     <tr><td class="paramname">path</td><td>指定路径 </td></tr>
-    <tr><td class="paramname">type</td><td>指定类型 </td></tr>
+    <tr><td class="paramname">type</td><td>指定资源类型 </td></tr>
   </table>
   </dd>
 </dl>
@@ -179,14 +350,70 @@ static <a class="el" href="class_easy_engine_1_1_resource_system.html">ResourceS
 
 </div>
 </div>
-<a id="a46f4b22a85a1252d4b4142853aaada0b" name="a46f4b22a85a1252d4b4142853aaada0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46f4b22a85a1252d4b4142853aaada0b">&#9670;&#160;</a></span>resource()</h2>
+<a id="ada1858891e88104ffe437563a82f907f" name="ada1858891e88104ffe437563a82f907f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada1858891e88104ffe437563a82f907f">&#9670;&#160;</a></span>metaData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const ResourceSystem::Resource &amp; ResourceSystem::resource </td>
+          <td class="memname">const std::variant&lt; std::monostate, std::string, SSurface *, char *, void *, std::vector&lt; uint8_t &gt; &gt; &amp; ResourceSystem::metaData </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从指定资源中获取元数据 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定的资源名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的元数据 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>对于未找到的资源名或未加载的资源，将报错并异常退出！ </dd></dl>
+
+</div>
+</div>
+<a id="aaeb546f0cf0effd56f99fe9f848779bf" name="aaeb546f0cf0effd56f99fe9f848779bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeb546f0cf0effd56f99fe9f848779bf">&#9670;&#160;</a></span>preload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t ResourceSystem::preload </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>resource_names</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>预加载多个现有的资源 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resource_names</td><td>指定的资源名列表（若为空，则默认加载全部资源） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回加载失败的个数。若为 0，则加载所有资源成功！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2c72b8bd6c0fca574922b05ed44ce094" title="从文件系统中加载资源">load</a> </dd>
+<dd>
+<a class="el" href="#a36f03d1cdd60d0a4319542847e248bf4" title="异步加载多个现有的资源">asyncLoad</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad8e1f04826b602b48d9f36a216c367db" name="ad8e1f04826b602b48d9f36a216c367db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8e1f04826b602b48d9f36a216c367db">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceSystem::remove </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>
@@ -194,27 +421,114 @@ static <a class="el" href="class_easy_engine_1_1_resource_system.html">ResourceS
       </table>
 </div><div class="memdoc">
 
-<p>获取指定资源 </p>
+<p>从资源系统中移除指定资源 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>指定资源名 </td></tr>
+    <tr><td class="paramname">name</td><td>指定的资源名称</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>返回对应的资源 </dd></dl>
-<dl class="section note"><dt>注解</dt><dd>若指定资源名不存在，将强制报错并异常退出！ </dd></dl>
-<dl class="section see"><dt>参见</dt><dd>Resource </dd></dl>
+<p>将自动卸载并完全移除该资源 </p>
 
 </div>
 </div>
-<a id="ad2315eb291fd89a8020fb4dcf0ba0e76" name="ad2315eb291fd89a8020fb4dcf0ba0e76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2315eb291fd89a8020fb4dcf0ba0e76">&#9670;&#160;</a></span>unload()</h2>
+<a id="a57fd170dabd9e3b366426b87f7b87aa8" name="a57fd170dabd9e3b366426b87f7b87aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57fd170dabd9e3b366426b87f7b87aa8">&#9670;&#160;</a></span>replace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ResourceSystem::unload </td>
+          <td class="memname">bool ResourceSystem::replace </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定现有的资源并替换 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定的资源名称 </td></tr>
+    <tr><td class="paramname">path</td><td>指定新的资源路径 </td></tr>
+    <tr><td class="paramname">type</td><td>指定新的资源类型 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a15c033a195910a6402905e37a0bb5118" name="a15c033a195910a6402905e37a0bb5118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c033a195910a6402905e37a0bb5118">&#9670;&#160;</a></span>resourceType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0">Resource::Type</a> ResourceSystem::resourceType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定资源下的类型 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定资源名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的资源类型，具体见 <span class="tt"><a class="el" href="struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0" title="资源类型">Resource::Type</a></span>。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="struct_easy_engine_1_1_resource.html" title="资源">Resource</a> </dd></dl>
+
+</div>
+</div>
+<a id="a54af6e25de8468ac19a7cc024499e3e2" name="a54af6e25de8468ac19a7cc024499e3e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54af6e25de8468ac19a7cc024499e3e2">&#9670;&#160;</a></span>setRootPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ResourceSystem::setRootPath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置根目录 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>指定目录</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>用于设置整个资源系统的根目录 </p>
+
+</div>
+</div>
+<a id="add3f59d0f27dd3d6aa9e193f2da06539" name="add3f59d0f27dd3d6aa9e193f2da06539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3f59d0f27dd3d6aa9e193f2da06539">&#9670;&#160;</a></span>unload()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ResourceSystem::unload </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
           <td></td>

@@ -33,9 +33,13 @@ EasyEngine::Cursor \- 鼠标光标
 .br
 .RI "获取鼠标光标在显示器中所在的位置 "
 .ti -1c
-.RI "\fBEasyEngine::Vector2\fP \fBposition\fP ()"
+.RI "\fBEasyEngine::Vector2\fP \fBposition\fP () const"
 .br
 .RI "获取鼠标光标在获得焦点的窗口下的位置 "
+.ti -1c
+.RI "uint64_t \fBfocusOn\fP () const"
+.br
+.RI "获取鼠标当前聚焦于哪个窗口 "
 .ti -1c
 .RI "void \fBmove\fP (const \fBVector2\fP &pos, const \fBWindow\fP *window=nullptr)"
 .br
@@ -103,6 +107,17 @@ EasyEngine::Cursor \- 鼠标光标
 标准鼠标光标样式 获取系统下当前使用的鼠标光标 
 .SH "成员函数说明"
 .PP 
+.SS "uint64_t EasyEngine::Cursor::focusOn () const"
+
+.PP
+获取鼠标当前聚焦于哪个窗口 
+.PP
+\fB返回\fP
+.RS 4
+返回鼠标所在的窗口 ID 
+.RE
+.PP
+
 .SS "\fBEasyEngine::Vector2\fP EasyEngine::Cursor::globalPosition () const"
 
 .PP
@@ -192,7 +207,7 @@ EasyEngine::Cursor \- 鼠标光标
 .RE
 .PP
 
-.SS "\fBEasyEngine::Vector2\fP EasyEngine::Cursor::position ()"
+.SS "\fBEasyEngine::Vector2\fP EasyEngine::Cursor::position () const"
 
 .PP
 获取鼠标光标在获得焦点的窗口下的位置 

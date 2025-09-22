@@ -20,7 +20,7 @@ var class_easy_engine_1_1_engine =
     [ "setFPS", "class_easy_engine_1_1_engine.html#a5ccc24ade1d3b3d3755f3cadba98fbf1", null ],
     [ "setFrameDropThreshold", "class_easy_engine_1_1_engine.html#a8b1d629b195d5b9e2976864c671fc76d", null ],
     [ "setFrameDropTolerance", "class_easy_engine_1_1_engine.html#a23c04fd8df861221b37a1b362e0451b4", null ],
-    [ "setFullScreen", "class_easy_engine_1_1_engine.html#a397683cb8672e7a21f1c72138742c09c", null ],
+    [ "setFullScreen", "class_easy_engine_1_1_engine.html#a28576ad319e26ffb4a483ecb2b5140d1", null ],
     [ "setGeometry", "class_easy_engine_1_1_engine.html#a2b2e2ce6f54e8900979814f808b2049a", null ],
     [ "setResizable", "class_easy_engine_1_1_engine.html#a6106d33771e370822b38cf8f85ce2a75", null ],
     [ "setWindowTitle", "class_easy_engine_1_1_engine.html#aad213c3ad36ac11e6b457d5fde128d1e", null ],

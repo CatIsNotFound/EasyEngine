@@ -13,9 +13,9 @@ EasyEngine::Components::BGM \- 背景音乐
 
 .in +1c
 .ti -1c
-.RI "\fBBGM\fP (const std::string &\fBpath\fP)"
+.RI "\fBBGM\fP (const std::string &resource_name)"
 .br
-.RI "创建指定路径下的 \fBBGM\fP "
+.RI "从资源系统中指定资源并创建 \fBBGM\fP "
 .ti -1c
 .RI "void \fBsetPath\fP (const std::string &\fBpath\fP)"
 .br
@@ -68,14 +68,19 @@ EasyEngine::Components::BGM \- 背景音乐
 背景音乐 
 .SH "构造及析构函数说明"
 .PP 
-.SS "EasyEngine::Components::BGM::BGM (const std::string & path)"
+.SS "EasyEngine::Components::BGM::BGM (const std::string & resource_name)"
 
 .PP
-创建指定路径下的 \fBBGM\fP 
+从资源系统中指定资源并创建 \fBBGM\fP 
 .PP
 \fB参数\fP
 .RS 4
-\fIpath\fP 指定有效路径 
+\fIresource_name\fP 指定资源名称 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBResourceSystem\fP 
 .RE
 .PP
 

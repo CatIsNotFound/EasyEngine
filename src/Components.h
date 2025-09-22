@@ -36,15 +36,16 @@ namespace EasyEngine {
             explicit BGM();
             ~BGM();
             /**
-             * @brief 创建指定路径下的 BGM
-             * @param path 指定有效路径
+             * @brief 从资源系统中指定资源并创建 BGM
+             * @param resource_name 指定资源名称
+             * @see ResourceSystem
              */
-            BGM(const std::string &path);
+            BGM(const std::string &resource_name);
             /**
              * @brief 设置 BGM 播放源路径
-             * @param path 指定路径
+             * @param resource_name 指定路径
              */
-            void setPath(const std::string &path);
+            void setResource(const std::string &resource_name);
             /**
              * @brief 获取该 BGM 下的播放源路径
              *
@@ -118,15 +119,15 @@ namespace EasyEngine {
             explicit SFX();
             ~SFX();
             /**
-             * @brief 创建指定路径的 SFX
-             * @param path 指定音频路径
+             * @brief 从资源系统中指定资源并创建 SFX
+             * @param resource_name 指定资源名称
              */
-            SFX(const std::string& path);
+            SFX(const std::string& resource_name);
             /**
              * @brief 设置指定源路径
-             * @param path 指定音频源路径
+             * @param resource_name 指定音频源路径
              */
-            void setPath(const std::string& path);
+            void setResource(const std::string& resource_name);
             /**
              * @brief 获取当前音频源路径
              */
@@ -333,16 +334,23 @@ namespace EasyEngine {
             /**
              * @brief 创建一个精灵，无精灵纹理
              * @param name 精灵别名
-             * @param renderer 使用的渲染器
+             * @param painter 使用的渲染器
              */
-            explicit Sprite(const std::string& name, SRenderer* renderer);
+            explicit Sprite(const std::string& name, Painter *painter);
             /**
              * @brief 创建一个精灵
              * @param name      精灵别名
              * @param surface   指定的图片
-             * @param renderer  使用的渲染器
+             * @param painter  使用的渲染器
              */
-            Sprite(const std::string& name, SSurface* surface, SRenderer* renderer);
+            Sprite(const std::string& name, SSurface* surface, Painter *painter);
+            /**
+             * @brief 通过资源系统中创建一个精灵
+             * @param name          精灵别名
+             * @param resource_name 指定资源名称
+             * @param painter      使用的渲染器
+             */
+            Sprite(const std::string& name, const std::string& resource_name, Painter *painter);
             /**
              * @brief 克隆已有的精灵
              * @param name   精灵别名
@@ -359,22 +367,15 @@ namespace EasyEngine {
             Sprite(const std::string& name, const Sprite& spirit,
                    const Vector2& clip_pos, const Size& clip_size);
             /**
-             * @brief 创建一个精灵
-             * @param name 精灵别名
-             * @param path 精灵纹理路径
-             * @param renderer 使用的渲染器
-             */
-            Sprite(const std::string& name, const std::string& path, SRenderer* renderer);
-            /**
              * @brief 创建一个精灵并裁剪
              * @param name 精灵别名
-             * @param path 精灵纹理路径
+             * @param resource_name 精灵纹理路径
              * @param clip_pos 裁剪位置（相对坐标）
              * @param clip_size 裁剪大小
-             * @param renderer 使用的渲染器
+             * @param painter 使用的渲染器
              */
-            Sprite(const std::string& name, const std::string& path,
-                   const Vector2& clip_pos, const Size& clip_size, SRenderer* renderer);
+            Sprite(const std::string& name, const std::string& resource_name,
+                   const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size, Painter *painter);
             ~Sprite();
             /**
              * @brief 设置精灵别名
@@ -386,10 +387,10 @@ namespace EasyEngine {
              */
             std::string name() const;
             /**
-             * @brief 设置精灵纹理路径
-             * @param new_path 指定图片路径，支持绝对路径或相对路径
+             * @brief 从资源系统中设置指定资源
+             * @param resource_name 指定资源名称
              */
-            bool setPath(const std::string& new_path);
+            bool setResource(const std::string& resource_name);
             /**
              * @brief 获取精灵纹理路径
              */
@@ -402,13 +403,13 @@ namespace EasyEngine {
             bool isValid(const std::string& path) const;
             /**
              * @brief 设置渲染器
-             * @param renderer  指定新的渲染器
+             * @param painter  指定新的渲染器
              */
-            void setRenderer(SRenderer* renderer);
+            void setPainter(Painter *painter);
             /**
              * @brief 获取当前使用的渲染器
              */
-            const SRenderer* renderer() const;
+            const Painter* painter() const;
             /**
              * @brief 重新调整精灵纹理的尺寸
              * @param width 新的宽度
@@ -426,26 +427,23 @@ namespace EasyEngine {
             /**
              * @brief 在指定位置上绘制精灵
              * @param pos 指定绘制坐标
-             * @see painter
              */
-            void draw(const Vector2 &pos, Painter *painter) const;
+            void draw(const Vector2 &pos) const;
             /**
              * @brief 在指定位置下绘制临时指定大小的精灵
              * @param pos     指定绘制坐标
              * @param scaled  缩放范围
-             * @param painter 指定绘图器
              * @param center  缩放中心点（默认为左上角）
              */
-            void draw(const Vector2 &pos, float scaled, Painter *painter,
+            void draw(const Vector2 &pos, float scaled,
                       const Vector2 &center = Vector2(0, 0)) const;
             /**
              * @brief 在指定位置下临时裁剪并绘制精灵
              * @param pos       指定绘制坐标
              * @param clip_pos  裁剪坐标（相对坐标）
              * @param clip_size 裁剪大小（相对大小）
-             * @param painter   指定绘图器
              */
-            void draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size, Painter *painter) const;
+            void draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size) const;
 
             /**
              * @enum FlipMode
@@ -467,22 +465,19 @@ namespace EasyEngine {
              * @brief 在指定位置下临时旋转、翻转并绘制精灵
              * @param pos           指定绘制坐标
              * @param rotate        旋转角度
-             * @param painter       指定绘图器
              * @param flipMode      翻转方式（默认为无翻转）
              * @param rotate_center 旋转中心点（默认为左上坐标）
              */
-            void draw(const Vector2 &pos, double rotate, Painter *painter, const FlipMode &flipMode = FlipMode::None,
+            void draw(const Vector2 &pos, double rotate, const FlipMode &flipMode = FlipMode::None,
                       const Vector2 &rotate_center = {0, 0}) const;
             /**
              * @brief 在指定位置下，使用颜色通道绘制精灵
              * @param pos           指定位置
              * @param color_alpha   颜色通道（或透明通道）
-             * @param painter       指定绘图器
              * @see StdColor
              * @see hexToRGBA
-             * @see Painter
              */
-            void draw(const Vector2 &pos, const SColor &color_alpha, Painter* painter) const;
+            void draw(const Vector2 &pos, const SColor &color_alpha) const;
 
             /**
              * @struct Properties
@@ -528,22 +523,20 @@ namespace EasyEngine {
              *
              * 适合用于需要同时满足多种效果的情况下使用。
              * @param properties 绘制精灵属性
-             * @param painter    指定绘图器
              * @see Properties
-             * @see Painter
              */
-            void draw(const EasyEngine::Components::Sprite::Properties &properties, Painter *painter) const;
+            void draw(const EasyEngine::Components::Sprite::Properties &properties) const;
             /**
              * @brief 使用精灵自己的绘制属性进行绘制
-             * @param painter 指定绘图器
+             * @param painter 指定绘图器（默认使用自己的绘图器）
              * @see properties
              */
-            void draw(Painter* painter) const;
+            void draw(Painter* painter = nullptr) const;
 
         private:
             SSurface* _surface;
             STexture* _texture;
-            SRenderer* _renderer;
+            Painter* _painter;
             std::unique_ptr<Properties> _properties;
             std::string _name;
             std::string _path;
@@ -683,9 +676,8 @@ namespace EasyEngine {
             /**
              * @brief 指定绘图器并绘制精灵组
              * @param pos 指定绘制的位置
-             * @param painter 指定绘图器
              */
-            void draw(const Vector2 &pos, Painter *painter);
+            void draw(const Vector2 &pos);
             /**
              * @brief 获取当前精灵组合的精灵总个数
              *
@@ -773,12 +765,11 @@ namespace EasyEngine {
             /**
              * @brief 绘制动画
              * @param position 指定绘制的位置
-             * @param painter 指定绘制的绘制器
              * @note 必须执行，否则将无法在窗口上显示动画
              * @see play
              * @see stop
              */
-            void draw(const Vector2& position, Painter* painter);
+            void draw(const Vector2& position);
             /**
              * @brief 播放动画
              * @param loop          是否循环播放动画（默认循环播放）
@@ -1269,7 +1260,7 @@ namespace EasyEngine {
              * @param name  创建时需给定名称
              * @param sprite 指定的精灵（作为裁剪精灵）
              */
-            Control(const std::string& name, const Sprite&& sprite);
+            Control(const std::string& name, const Sprite& sprite);
             /**
              * @brief 完全克隆已有的控件
              * @param name  创建时需给定名称
@@ -1516,7 +1507,7 @@ namespace EasyEngine {
             /**
              * @brief 更新控件状态（无需手动调用）
              */
-            void update(Painter *painter);
+            void update();
             void __updateStatus(const Status& status);
             void __updateEvent(const Event& event);
             Status __currentStatus() const;
@@ -1584,18 +1575,18 @@ namespace EasyEngine {
             };
         public:
             /**
-             * @brief 创建并打开字体
-             * @param path      指定路径
-             * @param font_size 字体大小（按点为单位）
-             * @see load
-             */
-            explicit Font(const std::string& path, float font_size);
-            /**
              * @brief 使用已有的字体（从资源系统中获取）
              * @param name 指定资源名称
+             * @param font_size 指定字体大小
+             * @note 执行后，原先资源系统中的字体将被卸载！
              */
-            Font(const std::string& name);
+            explicit Font(const std::string &name, float font_size);
             ~Font();
+            /**
+             * @brief 检查当前字体是否可用（或已加载）？
+             * @return 返回 `true` 表示已加载，否则为 `false`
+             */
+            bool isAvailable() const;
             /**
              * @brief 加载字体
              * @param path      指定路径
@@ -1687,6 +1678,7 @@ namespace EasyEngine {
              * @param text 指定内容
              *
              * 会根据当前的字体属性进行渲染并转换成可用的精灵
+             * @warning 若当前字体未加载，将报错并异常退出
              */
             Sprite textToSprite(const std::string &text, EasyEngine::Painter &painter);
 
@@ -1702,6 +1694,7 @@ namespace EasyEngine {
             uint32_t _font_hinting{};
             bool _font_kerning{};
             uint32_t _line_spacing{};
+            bool _font_is_loaded{false};
         };
     }
 }

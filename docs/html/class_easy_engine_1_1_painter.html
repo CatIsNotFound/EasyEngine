@@ -151,9 +151,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 <tr class="memdesc:aa42ae115d2036c9efb553d91677f8ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据精灵属性绘制精灵  <br /></td></tr>
 <tr class="memitem:a34f864789244365cad43014d27f9cd60" id="r_a34f864789244365cad43014d27f9cd60"><td class="memItemLeft" align="right" valign="top"><a id="a34f864789244365cad43014d27f9cd60" name="a34f864789244365cad43014d27f9cd60"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>drawSprite</b> (const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> &amp;sprite, const <a class="el" href="struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html">Components::Sprite::Properties</a> *properties)</td></tr>
+<tr class="memitem:acb8f1980d209b566c9765e88a4a50a8e" id="r_acb8f1980d209b566c9765e88a4a50a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb8f1980d209b566c9765e88a4a50a8e">drawPixelText</a> (const std::string &amp;text, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size={1.0f, 1.0f}, const SColor &amp;color=StdColor::White)</td></tr>
+<tr class="memdesc:acb8f1980d209b566c9765e88a4a50a8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制像素文本  <br /></td></tr>
 <tr class="memitem:a19dc2cb2aa21472456916c6cf80a8a38" id="r_a19dc2cb2aa21472456916c6cf80a8a38"><td class="memItemLeft" align="right" valign="top"><a id="a19dc2cb2aa21472456916c6cf80a8a38" name="a19dc2cb2aa21472456916c6cf80a8a38"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
 <tr class="memdesc:a19dc2cb2aa21472456916c6cf80a8a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空所有绘制命令 <br /></td></tr>
+<tr class="memitem:a72e902425d21e1fa0ee3a5c5b6c20a39" id="r_a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e902425d21e1fa0ee3a5c5b6c20a39">setViewport</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size={1.0f, 1.0f})</td></tr>
+<tr class="memdesc:a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整个视图  <br /></td></tr>
+<tr class="memitem:ada9d7ba28146786fbe17d1356523fa85" id="r_ada9d7ba28146786fbe17d1356523fa85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada9d7ba28146786fbe17d1356523fa85">setClipView</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size={1.0f, 1.0f})</td></tr>
+<tr class="memdesc:ada9d7ba28146786fbe17d1356523fa85"><td class="mdescLeft">&#160;</td><td class="mdescRight">裁剪可见视图  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -242,6 +248,48 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Components::Sprite</
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">line</td><td>线段 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb8f1980d209b566c9765e88a4a50a8e" name="acb8f1980d209b566c9765e88a4a50a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb8f1980d209b566c9765e88a4a50a8e">&#9670;&#160;</a></span>drawPixelText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Painter::drawPixelText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{1.0f,&#160;1.0f}</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SColor &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval">StdColor::White</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>绘制像素文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>指定文本内容（仅支持 ASCII 字符） </td></tr>
+    <tr><td class="paramname">pos</td><td>指定绘制的位置 </td></tr>
+    <tr><td class="paramname">size</td><td>指定绘制的尺寸比例（默认 1:1） </td></tr>
+    <tr><td class="paramname">color</td><td>指定绘制的颜色（默认白色） </td></tr>
   </table>
   </dd>
 </dl>
@@ -415,6 +463,36 @@ hexToRGBA </dd></dl>
 
 </div>
 </div>
+<a id="ada9d7ba28146786fbe17d1356523fa85" name="ada9d7ba28146786fbe17d1356523fa85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9d7ba28146786fbe17d1356523fa85">&#9670;&#160;</a></span>setClipView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Painter::setClipView </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{1.0f,&#160;1.0f}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>裁剪可见视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geometry</td><td>用于调整裁剪可见视图的位置、大小 </td></tr>
+    <tr><td class="paramname">size</td><td>用于调整可见视图的缩放比例（默认 1:1） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a30c2d4a79c229cd355f988773133f0d0" name="a30c2d4a79c229cd355f988773133f0d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30c2d4a79c229cd355f988773133f0d0">&#9670;&#160;</a></span>setThickness()</h2>
 
@@ -439,6 +517,37 @@ hexToRGBA </dd></dl>
 </dl>
 <dl class="section note"><dt>注解</dt><dd>决定了绘制点、线段、边框时的粗细程度 </dd></dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#a0a2ccfbcc029ea582279f3220c153105" title="获取绘制时的粗细程度">thickness</a> </dd></dl>
+
+</div>
+</div>
+<a id="a72e902425d21e1fa0ee3a5c5b6c20a39" name="a72e902425d21e1fa0ee3a5c5b6c20a39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e902425d21e1fa0ee3a5c5b6c20a39">&#9670;&#160;</a></span>setViewport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Painter::setViewport </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{1.0f,&#160;1.0f}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置整个视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geometry</td><td>用于调整视图的位置、大小 </td></tr>
+    <tr><td class="paramname">size</td><td>用于调整视图的缩放比例（默认使用 1:1）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>执行后，整个位置及大小都将发生改变！适合用于写基本控件视图 </p>
 
 </div>
 </div>

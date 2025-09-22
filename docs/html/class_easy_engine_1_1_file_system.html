@@ -148,16 +148,56 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
 <tr class="memdesc:afbfadf0549fd2ca15949de1faf2d1913"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除指定的文件  <br /></td></tr>
 <tr class="memitem:aab0743ddbf56894f792e8ae870675806" id="r_aab0743ddbf56894f792e8ae870675806"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab0743ddbf56894f792e8ae870675806">writeFile</a> (const std::string &amp;context, const std::string &amp;path, bool append_mode, bool ignore_error=false)</td></tr>
 <tr class="memdesc:aab0743ddbf56894f792e8ae870675806"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入内容到指定文件  <br /></td></tr>
-<tr class="memitem:a7eda47608ddf9f04a92edf3af91779c3" id="r_a7eda47608ddf9f04a92edf3af91779c3"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7eda47608ddf9f04a92edf3af91779c3">readFile</a> (const std::string &amp;path, bool ignore_error=false)</td></tr>
-<tr class="memdesc:a7eda47608ddf9f04a92edf3af91779c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定文件中读取内容  <br /></td></tr>
-<tr class="memitem:a4b404566e8cd04319dc27aa0c6171028" id="r_a4b404566e8cd04319dc27aa0c6171028"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b404566e8cd04319dc27aa0c6171028">writeBinaryFile</a> (const std::string &amp;path, bool append_mode, const std::function&lt; void(std::ofstream &amp;file)&gt; &amp;how2WriteFile, bool ignore_error=false)</td></tr>
-<tr class="memdesc:a4b404566e8cd04319dc27aa0c6171028"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入二进制内容到指定文件  <br /></td></tr>
-<tr class="memitem:ace0e952b04e758806b8f3c02be3becc7" id="r_ace0e952b04e758806b8f3c02be3becc7"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace0e952b04e758806b8f3c02be3becc7">readBinaryFile</a> (const std::string &amp;path, const std::function&lt; void(std::ifstream &amp;file)&gt; &amp;how2ReadFile, bool ignore_error=false)</td></tr>
-<tr class="memdesc:ace0e952b04e758806b8f3c02be3becc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定文件中读取二进制内容  <br /></td></tr>
+<tr class="memitem:ac335e3dae1f6c53922f55a6ba0acafd5" id="r_ac335e3dae1f6c53922f55a6ba0acafd5"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac335e3dae1f6c53922f55a6ba0acafd5">readFile</a> (const std::string &amp;path, bool ignore_error=false, bool *ok=nullptr)</td></tr>
+<tr class="memdesc:ac335e3dae1f6c53922f55a6ba0acafd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定文件中读取内容  <br /></td></tr>
+<tr class="memitem:ad97bdb076d1f49feb46f21add652fc2b" id="r_ad97bdb076d1f49feb46f21add652fc2b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97bdb076d1f49feb46f21add652fc2b">writeBinaryFile</a> (const std::string &amp;path, bool append_mode, const std::function&lt; void(std::ofstream &amp;file)&gt; &amp;how2WriteFile, bool ignore_error=false)</td></tr>
+<tr class="memdesc:ad97bdb076d1f49feb46f21add652fc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入二进制内容到指定文件  <br /></td></tr>
+<tr class="memitem:a55b0d46bf104e009bc260871491116f5" id="r_a55b0d46bf104e009bc260871491116f5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55b0d46bf104e009bc260871491116f5">writeBinaryFile</a> (const std::vector&lt; uint8_t &gt; &amp;binaries, const std::string &amp;path, bool append_mode, bool ignore_error=false)</td></tr>
+<tr class="memdesc:a55b0d46bf104e009bc260871491116f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">写入二进制内容到指定文件中  <br /></td></tr>
+<tr class="memitem:af2f23e3b1db9a9813e41c7771a050ae0" id="r_af2f23e3b1db9a9813e41c7771a050ae0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2f23e3b1db9a9813e41c7771a050ae0">readBinaryFile</a> (const std::string &amp;path, const std::function&lt; void(std::ifstream &amp;file)&gt; &amp;how2ReadFile, bool ignore_error=false)</td></tr>
+<tr class="memdesc:af2f23e3b1db9a9813e41c7771a050ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定文件中读取二进制内容  <br /></td></tr>
+<tr class="memitem:a6d0b02843ea07a78b410d7d5ca7762e5" id="r_a6d0b02843ea07a78b410d7d5ca7762e5"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d0b02843ea07a78b410d7d5ca7762e5">readBinaryFile</a> (const std::string &amp;path, bool ignore_error=false, bool *ok=nullptr)</td></tr>
+<tr class="memdesc:a6d0b02843ea07a78b410d7d5ca7762e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从指定文件中读取二进制内容  <br /></td></tr>
+<tr class="memitem:a1a2b479f8270a59c6d63cadc5fdd8741" id="r_a1a2b479f8270a59c6d63cadc5fdd8741"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a2b479f8270a59c6d63cadc5fdd8741">getAbsolutePath</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a1a2b479f8270a59c6d63cadc5fdd8741"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取绝对路径  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>文件系统 </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a1a2b479f8270a59c6d63cadc5fdd8741" name="a1a2b479f8270a59c6d63cadc5fdd8741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a2b479f8270a59c6d63cadc5fdd8741">&#9670;&#160;</a></span>getAbsolutePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string FileSystem::getAbsolutePath </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取绝对路径 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>指定路径 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>将返回完整的绝对路径 </dd></dl>
+
+</div>
+</div>
 <a id="ac6b35186d8f4706e06202af63a6301ae" name="ac6b35186d8f4706e06202af63a6301ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac6b35186d8f4706e06202af63a6301ae">&#9670;&#160;</a></span>isDir()</h2>
 
@@ -315,8 +355,8 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
 
 </div>
 </div>
-<a id="ace0e952b04e758806b8f3c02be3becc7" name="ace0e952b04e758806b8f3c02be3becc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace0e952b04e758806b8f3c02be3becc7">&#9670;&#160;</a></span>readBinaryFile()</h2>
+<a id="a6d0b02843ea07a78b410d7d5ca7762e5" name="a6d0b02843ea07a78b410d7d5ca7762e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0b02843ea07a78b410d7d5ca7762e5">&#9670;&#160;</a></span>readBinaryFile() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -325,7 +365,52 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool FileSystem::readBinaryFile </td>
+          <td class="memname">std::vector&lt; uint8_t &gt; FileSystem::readBinaryFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ignore_error</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>ok</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>从指定文件中读取二进制内容 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>指定文件路径 </td></tr>
+    <tr><td class="paramname">ignore_error</td><td>忽略存在的错误 </td></tr>
+    <tr><td class="paramname">ok</td><td>执行是否存在问题 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回完整的二进制内容 </dd></dl>
+
+</div>
+</div>
+<a id="af2f23e3b1db9a9813e41c7771a050ae0" name="af2f23e3b1db9a9813e41c7771a050ae0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2f23e3b1db9a9813e41c7771a050ae0">&#9670;&#160;</a></span>readBinaryFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::FileSystem::readBinaryFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
@@ -360,8 +445,8 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
 
 </div>
 </div>
-<a id="a7eda47608ddf9f04a92edf3af91779c3" name="a7eda47608ddf9f04a92edf3af91779c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7eda47608ddf9f04a92edf3af91779c3">&#9670;&#160;</a></span>readFile()</h2>
+<a id="ac335e3dae1f6c53922f55a6ba0acafd5" name="ac335e3dae1f6c53922f55a6ba0acafd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac335e3dae1f6c53922f55a6ba0acafd5">&#9670;&#160;</a></span>readFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -377,7 +462,12 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ignore_error</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ignore_error</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *</td>          <td class="paramname"><span class="paramname"><em>ok</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -392,10 +482,11 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
   <table class="params">
     <tr><td class="paramname">path</td><td>指定文件路径 </td></tr>
     <tr><td class="paramname">ignore_error</td><td>忽略存在的错误 </td></tr>
+    <tr><td class="paramname">ok</td><td>用于检查当前是否存在错误 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>返回读取到的文件的所有内容，若遇到错误，则返回空 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>返回读取到的文件的所有内容 </dd></dl>
 
 </div>
 </div>
@@ -515,8 +606,8 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
 
 </div>
 </div>
-<a id="a4b404566e8cd04319dc27aa0c6171028" name="a4b404566e8cd04319dc27aa0c6171028"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b404566e8cd04319dc27aa0c6171028">&#9670;&#160;</a></span>writeBinaryFile()</h2>
+<a id="ad97bdb076d1f49feb46f21add652fc2b" name="ad97bdb076d1f49feb46f21add652fc2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97bdb076d1f49feb46f21add652fc2b">&#9670;&#160;</a></span>writeBinaryFile() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -525,7 +616,7 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool FileSystem::writeBinaryFile </td>
+          <td class="memname">bool EasyEngine::FileSystem::writeBinaryFile </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
@@ -558,6 +649,57 @@ static const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom
     <tr><td class="paramname">path</td><td>指定输出文件路径 </td></tr>
     <tr><td class="paramname">append_mode</td><td>是否使用追加写入模式 </td></tr>
     <tr><td class="paramname">how2WriteFile</td><td>指定写入文件的方法 </td></tr>
+    <tr><td class="paramname">ignore_error</td><td>忽略存在的错误 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功写入文件 </dd></dl>
+
+</div>
+</div>
+<a id="a55b0d46bf104e009bc260871491116f5" name="a55b0d46bf104e009bc260871491116f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b0d46bf104e009bc260871491116f5">&#9670;&#160;</a></span>writeBinaryFile() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FileSystem::writeBinaryFile </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>binaries</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>append_mode</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>ignore_error</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>写入二进制内容到指定文件中 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">binaries</td><td>指定存储的二进制内容 </td></tr>
+    <tr><td class="paramname">path</td><td>指定文件输出路径 </td></tr>
+    <tr><td class="paramname">append_mode</td><td>指定是否使用追加写入模式 </td></tr>
     <tr><td class="paramname">ignore_error</td><td>忽略存在的错误 </td></tr>
   </table>
   </dd>

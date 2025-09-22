@@ -173,6 +173,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a8a2a2bd25db729d63a6e20d56f00dc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">从背景音通道中获取指定通道的音频  <br /></td></tr>
 <tr class="memitem:a6b3323005b9207907c7a750caed850c5" id="r_a6b3323005b9207907c7a750caed850c5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_easy_engine_1_1_audio_system_1_1_audio.html">Audio</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b3323005b9207907c7a750caed850c5">sfxChannel</a> (uint8_t channel)</td></tr>
 <tr class="memdesc:a6b3323005b9207907c7a750caed850c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从音效通道中获取指定通道的音频  <br /></td></tr>
+<tr class="memitem:a5a3768808c790e1912e7a419b296b67c" id="r_a5a3768808c790e1912e7a419b296b67c"><td class="memItemLeft" align="right" valign="top"><a id="a5a3768808c790e1912e7a419b296b67c" name="a5a3768808c790e1912e7a419b296b67c"></a>
+MIX_Mixer *&#160;</td><td class="memItemRight" valign="bottom"><b>mixer</b> () const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
@@ -456,8 +458,8 @@ static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem<
   <table class="params">
     <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比） <div class="fragment"><div class="line"><span class="comment">// 75% volume of BGM</span></div>
 <div class="line"><a class="code hl_function" href="#af97d5e048491fb63ac5a446d26ab9853">AudioSystem::global</a>()-&gt;<a class="code hl_function" href="#a853de9afec877d9ec367f5ea9ded0b05">setBGMVolume</a>(0.75f);</div>
-<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_a853de9afec877d9ec367f5ea9ded0b05"><div class="ttname"><a href="#a853de9afec877d9ec367f5ea9ded0b05">EasyEngine::AudioSystem::setBGMVolume</a></div><div class="ttdeci">void setBGMVolume(float volume)</div><div class="ttdoc">设置背景音乐音量</div><div class="ttdef"><b>定义</b> Core.cpp:1110</div></div>
-<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_af97d5e048491fb63ac5a446d26ab9853"><div class="ttname"><a href="#af97d5e048491fb63ac5a446d26ab9853">EasyEngine::AudioSystem::global</a></div><div class="ttdeci">static AudioSystem * global()</div><div class="ttdoc">获取全局音频系统</div><div class="ttdef"><b>定义</b> Core.cpp:1043</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_a853de9afec877d9ec367f5ea9ded0b05"><div class="ttname"><a href="#a853de9afec877d9ec367f5ea9ded0b05">EasyEngine::AudioSystem::setBGMVolume</a></div><div class="ttdeci">void setBGMVolume(float volume)</div><div class="ttdoc">设置背景音乐音量</div><div class="ttdef"><b>定义</b> Core.cpp:1170</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_af97d5e048491fb63ac5a446d26ab9853"><div class="ttname"><a href="#af97d5e048491fb63ac5a446d26ab9853">EasyEngine::AudioSystem::global</a></div><div class="ttdeci">static AudioSystem * global()</div><div class="ttdoc">获取全局音频系统</div><div class="ttdef"><b>定义</b> Core.cpp:1103</div></div>
 </div><!-- fragment --> </td></tr>
   </table>
   </dd>
@@ -487,7 +489,7 @@ static <a class="el" href="class_easy_engine_1_1_audio_system.html">AudioSystem<
     <tr><td class="paramname">volume</td><td>指定音量（按 0.0 ~ 1.0 表示音量百分比）<ul>
 <li><div class="fragment"><div class="line"><span class="comment">// 75% volume of SFX</span></div>
 <div class="line"><a class="code hl_function" href="#af97d5e048491fb63ac5a446d26ab9853">AudioSystem::global</a>()-&gt;<a class="code hl_function" href="#ab77b8d1042ffb6e740815cd542e84c9b">setSFXVolume</a>(0.75f);</div>
-<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_ab77b8d1042ffb6e740815cd542e84c9b"><div class="ttname"><a href="#ab77b8d1042ffb6e740815cd542e84c9b">EasyEngine::AudioSystem::setSFXVolume</a></div><div class="ttdeci">void setSFXVolume(float volume)</div><div class="ttdoc">设置音效音量</div><div class="ttdef"><b>定义</b> Core.cpp:1119</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_audio_system_html_ab77b8d1042ffb6e740815cd542e84c9b"><div class="ttname"><a href="#ab77b8d1042ffb6e740815cd542e84c9b">EasyEngine::AudioSystem::setSFXVolume</a></div><div class="ttdeci">void setSFXVolume(float volume)</div><div class="ttdoc">设置音效音量</div><div class="ttdef"><b>定义</b> Core.cpp:1179</div></div>
 </div><!-- fragment --> </li>
 </ul>
 </td></tr>

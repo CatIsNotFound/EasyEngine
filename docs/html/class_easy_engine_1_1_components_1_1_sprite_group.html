@@ -142,11 +142,11 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:ac3baf90c06bab7b55b29e5727637c9f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除指定位置的精灵  <br /></td></tr>
 <tr class="memitem:ad675677ac97d5fbe90841de07a74dd2a" id="r_ad675677ac97d5fbe90841de07a74dd2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad675677ac97d5fbe90841de07a74dd2a">replace</a> (uint32_t index, const <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> &amp;sprite)</td></tr>
 <tr class="memdesc:ad675677ac97d5fbe90841de07a74dd2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">替换指定索引的精灵  <br /></td></tr>
-<tr class="memitem:a6bf4b8271d29132264e5be247505ae0d" id="r_a6bf4b8271d29132264e5be247505ae0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf4b8271d29132264e5be247505ae0d">correct</a> (uint32_t index1, uint32_t index2)</td></tr>
+<tr class="memitem:a6bf4b8271d29132264e5be247505ae0d" id="r_a6bf4b8271d29132264e5be247505ae0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf4b8271d29132264e5be247505ae0d">swap</a> (uint32_t index1, uint32_t index2)</td></tr>
 <tr class="memdesc:a6bf4b8271d29132264e5be247505ae0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">交换精灵位置  <br /></td></tr>
-<tr class="memitem:af62465619133e3b465cf5be97eb54aad" id="r_af62465619133e3b465cf5be97eb54aad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62465619133e3b465cf5be97eb54aad">correct</a> (const std::string &amp;sprite1, const std::string &amp;sprite2)</td></tr>
+<tr class="memitem:af62465619133e3b465cf5be97eb54aad" id="r_af62465619133e3b465cf5be97eb54aad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af62465619133e3b465cf5be97eb54aad">swap</a> (const std::string &amp;sprite1, const std::string &amp;sprite2)</td></tr>
 <tr class="memdesc:af62465619133e3b465cf5be97eb54aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">交换精灵位置  <br /></td></tr>
-<tr class="memitem:ae60264b119320ee9adef6c71cab62e3b" id="r_ae60264b119320ee9adef6c71cab62e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae60264b119320ee9adef6c71cab62e3b">correct</a> (uint32_t index, const std::string &amp;name)</td></tr>
+<tr class="memitem:ae60264b119320ee9adef6c71cab62e3b" id="r_ae60264b119320ee9adef6c71cab62e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae60264b119320ee9adef6c71cab62e3b">swap</a> (uint32_t index, const std::string &amp;name)</td></tr>
 <tr class="memdesc:ae60264b119320ee9adef6c71cab62e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">交换精灵位置  <br /></td></tr>
 <tr class="memitem:aba8cda570b757f3ed24294c5bbbf69b3" id="r_aba8cda570b757f3ed24294c5bbbf69b3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba8cda570b757f3ed24294c5bbbf69b3">indexAt</a> (const std::string &amp;name, uint32_t start=0)</td></tr>
 <tr class="memdesc:aba8cda570b757f3ed24294c5bbbf69b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取精灵所在索引  <br /></td></tr>
@@ -612,13 +612,13 @@ lastIndexOf </dd></dl>
 </div>
 </div>
 <a id="af62465619133e3b465cf5be97eb54aad" name="af62465619133e3b465cf5be97eb54aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af62465619133e3b465cf5be97eb54aad">&#9670;&#160;</a></span>correct() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af62465619133e3b465cf5be97eb54aad">&#9670;&#160;</a></span>swap() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EasyEngine::Components::SpriteGroup::correct </td>
+          <td class="memname">void EasyEngine::Components::SpriteGroup::swap </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>sprite1</em></span>, </td>
         </tr>
@@ -642,13 +642,13 @@ lastIndexOf </dd></dl>
 </div>
 </div>
 <a id="ae60264b119320ee9adef6c71cab62e3b" name="ae60264b119320ee9adef6c71cab62e3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae60264b119320ee9adef6c71cab62e3b">&#9670;&#160;</a></span>correct() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae60264b119320ee9adef6c71cab62e3b">&#9670;&#160;</a></span>swap() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EasyEngine::Components::SpriteGroup::correct </td>
+          <td class="memname">void EasyEngine::Components::SpriteGroup::swap </td>
           <td>(</td>
           <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
@@ -672,13 +672,13 @@ lastIndexOf </dd></dl>
 </div>
 </div>
 <a id="a6bf4b8271d29132264e5be247505ae0d" name="a6bf4b8271d29132264e5be247505ae0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bf4b8271d29132264e5be247505ae0d">&#9670;&#160;</a></span>correct() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf4b8271d29132264e5be247505ae0d">&#9670;&#160;</a></span>swap() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EasyEngine::Components::SpriteGroup::correct </td>
+          <td class="memname">void EasyEngine::Components::SpriteGroup::swap </td>
           <td>(</td>
           <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>index1</em></span>, </td>
         </tr>

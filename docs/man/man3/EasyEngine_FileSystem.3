@@ -59,7 +59,7 @@ EasyEngine::FileSystem \- 文件系统
 .br
 .RI "写入内容到指定文件 "
 .ti -1c
-.RI "static std::string \fBreadFile\fP (const std::string &path, bool ignore_error=false)"
+.RI "static std::string \fBreadFile\fP (const std::string &path, bool ignore_error=false, bool *ok=nullptr)"
 .br
 .RI "从指定文件中读取内容 "
 .ti -1c
@@ -67,15 +67,43 @@ EasyEngine::FileSystem \- 文件系统
 .br
 .RI "写入二进制内容到指定文件 "
 .ti -1c
+.RI "static bool \fBwriteBinaryFile\fP (const std::vector< uint8_t > &binaries, const std::string &path, bool append_mode, bool ignore_error=false)"
+.br
+.RI "写入二进制内容到指定文件中 "
+.ti -1c
 .RI "static bool \fBreadBinaryFile\fP (const std::string &path, const std::function< void(std::ifstream &file)> &how2ReadFile, bool ignore_error=false)"
 .br
 .RI "从指定文件中读取二进制内容 "
+.ti -1c
+.RI "static std::vector< uint8_t > \fBreadBinaryFile\fP (const std::string &path, bool ignore_error=false, bool *ok=nullptr)"
+.br
+.RI "从指定文件中读取二进制内容 "
+.ti -1c
+.RI "static std::string \fBgetAbsolutePath\fP (const std::string &path)"
+.br
+.RI "获取绝对路径 "
 .in -1c
 .SH "详细描述"
 .PP 
 文件系统 
 .SH "成员函数说明"
 .PP 
+.SS "std::string FileSystem::getAbsolutePath (const std::string & path)\fR [static]\fP"
+
+.PP
+获取绝对路径 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定路径 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+将返回完整的绝对路径 
+.RE
+.PP
+
 .SS "bool FileSystem::isDir (const std::string & path)\fR [static]\fP"
 
 .PP
@@ -143,7 +171,27 @@ EasyEngine::FileSystem \- 文件系统
 .RE
 .PP
 
-.SS "bool FileSystem::readBinaryFile (const std::string & path, const std::function< void(std::ifstream &file)> & how2ReadFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+.SS "std::vector< uint8_t > FileSystem::readBinaryFile (const std::string & path, bool ignore_error = \fRfalse\fP, bool * ok = \fRnullptr\fP)\fR [static]\fP"
+
+.PP
+从指定文件中读取二进制内容 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定文件路径 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.br
+\fIok\fP 执行是否存在问题 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回完整的二进制内容 
+.RE
+.PP
+
+.SS "bool EasyEngine::FileSystem::readBinaryFile (const std::string & path, const std::function< void(std::ifstream &file)> & how2ReadFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
 
 .PP
 从指定文件中读取二进制内容 
@@ -163,7 +211,7 @@ EasyEngine::FileSystem \- 文件系统
 .RE
 .PP
 
-.SS "std::string FileSystem::readFile (const std::string & path, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+.SS "std::string FileSystem::readFile (const std::string & path, bool ignore_error = \fRfalse\fP, bool * ok = \fRnullptr\fP)\fR [static]\fP"
 
 .PP
 从指定文件中读取内容 
@@ -173,11 +221,13 @@ EasyEngine::FileSystem \- 文件系统
 \fIpath\fP 指定文件路径 
 .br
 \fIignore_error\fP 忽略存在的错误 
+.br
+\fIok\fP 用于检查当前是否存在错误 
 .RE
 .PP
 \fB返回\fP
 .RS 4
-返回读取到的文件的所有内容，若遇到错误，则返回空 
+返回读取到的文件的所有内容 
 .RE
 .PP
 
@@ -225,7 +275,7 @@ EasyEngine::FileSystem \- 文件系统
 .RE
 .PP
 
-.SS "bool FileSystem::writeBinaryFile (const std::string & path, bool append_mode, const std::function< void(std::ofstream &file)> & how2WriteFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+.SS "bool EasyEngine::FileSystem::writeBinaryFile (const std::string & path, bool append_mode, const std::function< void(std::ofstream &file)> & how2WriteFile, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
 
 .PP
 写入二进制内容到指定文件 
@@ -237,6 +287,28 @@ EasyEngine::FileSystem \- 文件系统
 \fIappend_mode\fP 是否使用追加写入模式 
 .br
 \fIhow2WriteFile\fP 指定写入文件的方法 
+.br
+\fIignore_error\fP 忽略存在的错误 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功写入文件 
+.RE
+.PP
+
+.SS "bool FileSystem::writeBinaryFile (const std::vector< uint8_t > & binaries, const std::string & path, bool append_mode, bool ignore_error = \fRfalse\fP)\fR [static]\fP"
+
+.PP
+写入二进制内容到指定文件中 
+.PP
+\fB参数\fP
+.RS 4
+\fIbinaries\fP 指定存储的二进制内容 
+.br
+\fIpath\fP 指定文件输出路径 
+.br
+\fIappend_mode\fP 指定是否使用追加写入模式 
 .br
 \fIignore_error\fP 忽略存在的错误 
 .RE

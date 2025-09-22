@@ -31,11 +31,12 @@ var class_easy_engine_1_1_cursor =
       [ "Custom", "class_easy_engine_1_1_cursor.html#aea464aae862924ae930638e3fe3a6b89a1dd9f2d30d72700a976ee111a2dbb228", null ]
     ] ],
     [ "cursor", "class_easy_engine_1_1_cursor.html#a712c15a8f7ced9cda7554b00a67fce7c", null ],
+    [ "focusOn", "class_easy_engine_1_1_cursor.html#a571d1cbd9568b5a40d5f29819a79e4ca", null ],
     [ "globalPosition", "class_easy_engine_1_1_cursor.html#ac8e30a7bdecccedf53697b25318d6949", null ],
     [ "move", "class_easy_engine_1_1_cursor.html#a87ecdb70644635d5aef9cf2192a4bd4b", null ],
     [ "move", "class_easy_engine_1_1_cursor.html#a189cba39845419555d421adbace00165", null ],
     [ "moveToCenter", "class_easy_engine_1_1_cursor.html#ad54e73d425b2f28a050ff73360cacb29", null ],
-    [ "position", "class_easy_engine_1_1_cursor.html#abdfe65c037a665575a93fe945ca672cc", null ],
+    [ "position", "class_easy_engine_1_1_cursor.html#ae1e014c929760d40f904a77b58f2e75f", null ],
     [ "setCursor", "class_easy_engine_1_1_cursor.html#acaebd3ef8b39f38d666a7c64cc13d40c", null ],
     [ "setCursor", "class_easy_engine_1_1_cursor.html#a6fc24aff2495412b988daa919b8fd414", null ],
     [ "setCustomCursor", "class_easy_engine_1_1_cursor.html#a935b9ff05c99286f1b3d86ad88ca8f55", null ],

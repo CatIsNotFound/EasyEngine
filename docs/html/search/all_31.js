@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['文档和示例_0',['📚 文档和示例',['../D:/Coding/EasyEngine/README.md#autotoc_md64',1,'']]]
+  ['技术架构_0',['技术架构',['../index.html#autotoc_md8',1,'']]]
 ];

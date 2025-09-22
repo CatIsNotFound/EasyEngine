@@ -149,46 +149,46 @@ namespace EasyEngine {
     };
 
     /**
+     * @struct Resource
+     * @brief 资源
+     */
+    struct Resource {
+        /**
+         * @enum Type
+         * @brief 资源类型
+         */
+        enum Type {
+            /// 无，用于占位
+            None,
+            /// 文本文档
+            Text = 0x10,
+            /// 图片
+            Image = 0x20,
+            /// 字体
+            Font = 0x30,
+            /// 音频
+            Audio = 0x40,
+            /// 视频
+            Video = 0x50,
+            /// 其它二进制文件
+            Binary = 0x60
+        };
+        /// 资源类型
+        Type type;
+        /// 资源所在路径
+        std::string url;
+        /// 是否加载
+        bool is_loaded;
+        /// 元数据
+        std::variant<std::monostate, std::string, SSurface*, char*, void*, std::vector<uint8_t>> meta_data;
+    };
+
+    /**
      * @class ResourceSystem
      * @brief 资源系统
      *
      */
     class ResourceSystem {
-    public:
-        /**
-         * @struct Resource
-         * @brief 资源
-         */
-        struct Resource {
-            /**
-             * @enum Type
-             * @brief 资源类型
-             */
-            enum Type {
-                /// 无，用于占位
-                None,
-                /// 文本文档
-                Text = 0x10,
-                /// 图片
-                Image = 0x20,
-                /// 字体
-                Font = 0x30,
-                /// 音频
-                Audio = 0x40,
-                /// 视频
-                Video = 0x50,
-                /// 其它二进制文件
-                Binary = 0x60
-            };
-            /// 资源类型
-            Type type;
-            /// 资源所在路径
-            std::string url;
-            /// 是否加载
-            bool is_loaded;
-            /// 元数据
-            std::variant<std::monostate, std::string, SSurface*, char*, void*, std::vector<uint8_t>> meta_data;
-        };
     public:
         /**
          * @brief 获取全局资源系统
@@ -247,7 +247,7 @@ namespace EasyEngine {
          * @param path 指定路径
          * @param type 指定资源类型
          */
-        bool append(const std::string &name, const std::string &path, const ResourceSystem::Resource::Type &type);
+        bool append(const std::string &name, const std::string &path, const Resource::Type &type);
         /**
          * @brief 从资源系统中移除指定资源
          * @param name 指定的资源名称
@@ -266,6 +266,7 @@ namespace EasyEngine {
          * @brief 从指定资源中获取元数据
          * @param name 指定的资源名称
          * @return 返回对应的元数据
+         * @warning 对于未找到的资源名或未加载的资源，将报错并异常退出！
          */
         const std::variant<std::monostate, std::string, SSurface *, char *, void *, std::vector<uint8_t>>&
                     metaData(const std::string &name) const;
@@ -273,6 +274,13 @@ namespace EasyEngine {
          * @brief 从指定资源中获取资源所在路径
          */
         const std::string &resourcePath(const std::string &name) const;
+        /**
+         * @brief 获取指定资源下的类型
+         * @param name 指定资源名称
+         * @return 返回对应的资源类型，具体见 `Resource::Type`。
+         * @see Resource
+         */
+        Resource::Type resourceType(const std::string &name) const;
         /**
          * @brief 查看指定资源是否被加载
          * @param name 指定的资源名称

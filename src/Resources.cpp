@@ -289,21 +289,21 @@ bool ResourceSystem::load(const std::string &name) {
         SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
         return false;
     }
-    auto resource = _resource.at(name);
+    auto& resource = _resource.at(name);
     if (resource.is_loaded) {
         SDL_Log("[ERROR] Resource '%s' is already loaded!", name.c_str());
         return false;
     }
     if (resource.type == Resource::Text) {
         bool is_error;
-        _resource.at(name).meta_data = FileSystem::readFile(resource.url, false, &is_error);
+        resource.meta_data = FileSystem::readFile(resource.url, false, &is_error);
         if (!is_error) {
             SDL_Log("[ERROR] Resource '%s' loaded failed!", name.c_str());
             return false;
         }
     } else if (resource.type == Resource::Image) {
-        _resource.at(name).meta_data = IMG_Load(resource.url.c_str());
-        if (!std::get<SSurface*>(_resource.at(name).meta_data)) {
+        resource.meta_data = IMG_Load(resource.url.c_str());
+        if (!std::get<SSurface*>(resource.meta_data)) {
             SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Load image file '%s' failed!\n",
                     name.c_str(), resource.url.c_str());
             return false;
@@ -315,7 +315,7 @@ bool ResourceSystem::load(const std::string &name) {
                     name.c_str(), resource.url.c_str());
             return false;
         }
-        _resource.at(name).meta_data = reinterpret_cast<void*>(font);
+        resource.meta_data = reinterpret_cast<void*>(font);
     } else if (resource.type == Resource::Audio) {
         MIX_Audio* audio = MIX_LoadAudio(AudioSystem::global()->mixer(), resource.url.c_str(), true);
         if (!audio) {
@@ -323,17 +323,17 @@ bool ResourceSystem::load(const std::string &name) {
                     name.c_str(), resource.url.c_str());
             return false;
         }
-        _resource.at(name).meta_data = reinterpret_cast<void*>(audio);
+        resource.meta_data = reinterpret_cast<void*>(audio);
     } else {
         bool ret;
-        _resource.at(name).meta_data = FileSystem::readBinaryFile(resource.url, false, &ret);
+        resource.meta_data = FileSystem::readBinaryFile(resource.url, false, &ret);
         if (!ret) {
             SDL_Log("[ERROR] Resource '%s' loaded failed!\nException: Read binary file '%s' failed!\n",
                     name.c_str(), resource.url.c_str());
             return false;
         }
     }
-    _resource.at(name).is_loaded = true;
+    resource.is_loaded = true;
     return true;
 }
 
@@ -367,7 +367,7 @@ bool ResourceSystem::unload(const std::string &name) {
         SDL_Log("[ERROR] Can't find the resource '%s'!", name.c_str());
         return false;
     }
-    auto resource = _resource.at(name);
+    auto& resource = _resource.at(name);
     if (!resource.is_loaded) return true;
     if (resource.type == Resource::Image) {
         if (std::get<SSurface*>(resource.meta_data))
@@ -380,6 +380,7 @@ bool ResourceSystem::unload(const std::string &name) {
         if (audio) MIX_DestroyAudio(audio);
     }
     resource.meta_data = {};
+    resource.is_loaded = false;
     SDL_Log("[INFO] Unload Resource: '%s'", name.c_str());
     return true;
 }
@@ -391,7 +392,7 @@ void ResourceSystem::unloadAll() {
 }
 
 bool
-ResourceSystem::append(const std::string &name, const std::string &path, const ResourceSystem::Resource::Type &type) {
+ResourceSystem::append(const std::string &name, const std::string &path, const Resource::Type &type) {
     std::string real_path = FileSystem::getAbsolutePath(path);
     if (FileSystem::isDir(real_path)) {
         SDL_Log("[ERROR] Path '%s' is the directory, not the file!", real_path.c_str());
@@ -416,7 +417,7 @@ void ResourceSystem::remove(const std::string &name) {
 }
 
 bool
-ResourceSystem::replace(const std::string &name, const std::string &path, const ResourceSystem::Resource::Type &type) {
+ResourceSystem::replace(const std::string &name, const std::string &path, const Resource::Type &type) {
     if (!isContain(name)) {
         SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str()); return false;
     }
@@ -441,10 +442,10 @@ const std::variant<std::monostate, std::string, SSurface *, char *, void *, std:
 ResourceSystem::metaData(const std::string &name) const {
     if (!isContain(name)) {
         SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
-        return {};
+        throw std::runtime_error(fmt::format("[ERROR] Resource '{}' is not found!", name));
     } else if (!_resource.at(name).is_loaded) {
         SDL_Log("[ERROR] Resource '%s' is not loaded!", name.c_str());
-        return {};
+        throw std::runtime_error(fmt::format("[ERROR] Resource '{}' is not found!", name));
     }
     return _resource.at(name).meta_data;
 }
@@ -453,6 +454,12 @@ const std::string &ResourceSystem::resourcePath(const std::string &name) const {
     if (isContain(name)) return _resource.at(name).url;
     SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
     return _null_str;
+}
+
+Resource::Type ResourceSystem::resourceType(const std::string &name) const {
+    if (isContain(name)) return _resource.at(name).type;
+    SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
+    return Resource::None;
 }
 
 bool ResourceSystem::isLoaded(const std::string &name) const {

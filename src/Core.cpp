@@ -5,7 +5,7 @@
 
 SDL_WindowID EasyEngine::Engine::_main_window_id = 0;
 bool EasyEngine::Engine::_is_stopped = false;
-std::function<bool(SEvent)> EasyEngine::EventSystem::_my_event_handler = nullptr;
+std::function<bool(SEvent&)> EasyEngine::EventSystem::_my_event_handler = nullptr;
 std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
@@ -534,7 +534,7 @@ uint32_t EasyEngine::Engine::windowCount() const {
     return _window_count;
 }
 
-void EasyEngine::Engine::installEventHandler(std::function<bool(SEvent)> event_handler) {
+void EasyEngine::Engine::installEventHandler(std::function<bool(SEvent &)> event_handler) {
     EasyEngine::EventSystem::_my_event_handler = std::move(event_handler);
 }
 
@@ -715,6 +715,8 @@ void EasyEngine::Painter::drawSprite(const EasyEngine::Components::Sprite &sprit
 void EasyEngine::Painter::drawPixelText(const std::string &text, const EasyEngine::Vector2 &pos,
                                         const EasyEngine::Size &size, const SColor &color) {
     auto pixelTextCmd = new PixelTextCMD({pos, size}, color, text);
+    pixelTextCmd->pos.x /= size.width;
+    pixelTextCmd->pos.y /= size.height;
     command_list.emplace_back(std::unique_ptr<PixelTextCMD>(pixelTextCmd));
 }
 
@@ -757,7 +759,7 @@ void EasyEngine::Painter::LineCMD::exec(SRenderer *renderer, uint32_t thickness)
 }
 
 void EasyEngine::Painter::RectCMD::exec(SRenderer *renderer, uint32_t thickness) {
-    SDL_FRect r = {rect.pos.x, rect.pos.y, (float)rect.size.width, (float)rect.size.height},
+    SDL_FRect r = {rect.pos.x, rect.pos.y, rect.size.width, rect.size.height},
               rb = {rect.pos.x - thickness + 1, rect.pos.y - thickness + 1,
                     rect.size.width + (float)((thickness - 1) * 2),
                     rect.size.height + (float)((thickness - 1) * 2)};
@@ -771,8 +773,23 @@ void EasyEngine::Painter::RectCMD::exec(SRenderer *renderer, uint32_t thickness)
         SDL_SetRenderDrawColor(renderer, rect.back_color.r, rect.back_color.g, rect.back_color.b, rect.back_color.a);
         SDL_RenderFillRect(renderer, &r);
     } else if (rect.bordered_mode) {
-        SDL_SetRenderDrawColor(renderer, rect.fore_color.r, rect.fore_color.g, rect.fore_color.b, rect.fore_color.a);
-        SDL_RenderRect(renderer, &r);
+        const float P = thickness / 2, T = (thickness - 1) / 2;
+        // N
+        thickLineRGBA(renderer, rect.pos.x - P, rect.pos.y,
+                      rect.pos.x + rect.size.width + T, rect.pos.y, thickness,
+                      rect.fore_color.r, rect.fore_color.g, rect.fore_color.b, rect.fore_color.a);
+        // W
+        thickLineRGBA(renderer, rect.pos.x, rect.pos.y,
+                      rect.pos.x, rect.pos.y + rect.size.height + T, thickness,
+                      rect.fore_color.r, rect.fore_color.g, rect.fore_color.b, rect.fore_color.a);
+        // E
+        thickLineRGBA(renderer, rect.pos.x, rect.pos.y + rect.size.height,
+                      rect.pos.x + rect.size.width + T, rect.pos.y + rect.size.height, thickness,
+                      rect.fore_color.r, rect.fore_color.g, rect.fore_color.b, rect.fore_color.a);
+        // S
+        thickLineRGBA(renderer, rect.pos.x + rect.size.width, rect.pos.y,
+                      rect.pos.x + rect.size.width, rect.pos.y + rect.size.height, thickness,
+                      rect.fore_color.r, rect.fore_color.g, rect.fore_color.b, rect.fore_color.a);
     }
 }
 
@@ -798,7 +815,7 @@ void EasyEngine::Painter::EllipseCMD::exec(SRenderer *renderer, uint32_t thickne
                           ellipse.back_color.r, ellipse.back_color.g,
                           ellipse.back_color.b, ellipse.back_color.a);
     } else {
-        // 暂时单画边框圆
+        /// @bug 由于没有适合画不同粗细程度的单边圆，这里只能暂时绘制粗细度为 1 的边框圆！
         ellipseRGBA(renderer, ellipse.pos.x, ellipse.pos.y,
                           tmp_width + tmp_thickness,tmp_height + tmp_thickness,
                           ellipse.fore_color.r, ellipse.fore_color.g,
@@ -813,7 +830,7 @@ void EasyEngine::Painter::FillCMD::exec(SRenderer *renderer, uint32_t) {
 
 void EasyEngine::Painter::SpriteCMD::exec(SRenderer *renderer, uint32_t) {
     SDL_SetTextureColorMod(_sprite, _color_alpha.r, _color_alpha.g, _color_alpha.b);
-    if (_color_reversed) SDL_SetTextureBlendMode(_sprite, SDL_BLENDMODE_MOD);
+    SDL_SetTextureAlphaMod(_sprite, _color_alpha.a);
     Vector2 _global_center_pos(_pos.x + _scaled_center.x, _pos.y + _scaled_center.y);
     Vector2 newPos((_pos.x - _global_center_pos.x) * _scaled + _global_center_pos.x,
                    (_pos.y - _global_center_pos.y) * _scaled + _global_center_pos.y);
@@ -889,6 +906,7 @@ bool EasyEngine::EventSystem::handler() {
                 } else {
                     _is_key_down = false;
                     _container->__updateEvent(Components::Control::Event::KeyUp);
+                    _container->__updateEvent(Components::Control::Event::KeyPressed);
                     _container->__updateStatus(Components::Control::Status::Active);
                 }
                 continue;
@@ -902,12 +920,11 @@ bool EasyEngine::EventSystem::handler() {
                     is_hovered_one = true;
                     _container->__updateEvent(Components::Control::Event::MouseHover);
                     _container->__updateStatus(Components::Control::Status::Hovered);
-                } else if (ev.button.down) {
+                } else if (ev.button.type == SDL_EVENT_MOUSE_BUTTON_DOWN && is_hovered_one) {
                     _container->__updateEvent(Components::Control::Event::MouseDown);
                     _container->__updateStatus(Components::Control::Status::Pressed);
                     old_cursor_pos = cursor_pos;
-                } else if (
-                    _container->__currentStatus() == Components::Control::Status::Pressed) {
+                } else if (_container->__currentStatus() == Components::Control::Status::Pressed) {
                     current_click_time = SDL_GetTicks();
                     if (!last_click_time) {
                         last_click_time = current_click_time;
@@ -1389,6 +1406,41 @@ void EasyEngine::FontSystem::init() {
 
 void EasyEngine::FontSystem::unload() {
     if (!TTF_Init()) return;
-
+    for (auto& font : _font_info) {
+        font.second->unload();
+    }
     TTF_Quit();
+}
+
+void EasyEngine::FontSystem::loadFont(const std::string &name, EasyEngine::Font *font) {
+    if (_font_info.contains(name)) {
+        SDL_Log("[WARNING] The specified font '%s' is replaced!", name.c_str());
+        unloadFont(name);
+    }
+    _font_info.emplace(name, font);
+}
+
+void EasyEngine::FontSystem::loadFont(const std::string &name, const std::string &resource_name, float font_size) {
+    if (_font_info.contains(name)) {
+        SDL_Log("[WARNING] The specified font '%s' is replaced!", name.c_str());
+        unloadFont(name);
+    }
+    _font_info.emplace(name, std::make_shared<Components::Font>(resource_name, font_size));
+}
+
+void EasyEngine::FontSystem::unloadFont(const std::string &name) {
+    if (_font_info.contains(name)) {
+        _font_info.erase(name);
+    } else {
+        SDL_Log("[ERROR] The specified font '%s' is not found!", name.c_str());
+    }
+}
+
+EasyEngine::Font *EasyEngine::FontSystem::font(const std::string &name) {
+    if (_font_info.contains(name))
+        return _font_info[name].get();
+    else {
+        SDL_Log("[ERROR] The specified font '%s' is not found!", name.c_str());
+        return nullptr;
+    }
 }

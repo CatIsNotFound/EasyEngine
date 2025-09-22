@@ -13,17 +13,65 @@ EasyEngine::ResourceSystem \- 资源系统
 
 .in +1c
 .ti -1c
-.RI "bool \fBload\fP (const std::string &name, const std::string &path, const Resource::Type &type)"
+.RI "void \fBsetRootPath\fP (const std::string &path)"
 .br
-.RI "载入资源 "
+.RI "设置根目录 "
 .ti -1c
-.RI "void \fBunload\fP (const std::string &name)"
+.RI "bool \fBload\fP (const std::string &name, const std::string &path, const \fBResource::Type\fP &type)"
+.br
+.RI "从文件系统中加载资源 "
+.ti -1c
+.RI "bool \fBload\fP (const std::string &name)"
+.br
+.RI "指定现有的资源并加载 "
+.ti -1c
+.RI "uint64_t \fBpreload\fP (const std::vector< std::string > &resource_names)"
+.br
+.RI "预加载多个现有的资源 "
+.ti -1c
+.RI "void \fBasyncLoad\fP (const std::vector< std::string > &resource_names, const std::function< void(uint64_t)> &callback={})"
+.br
+.RI "异步加载多个现有的资源 "
+.ti -1c
+.RI "bool \fBunload\fP (const std::string &name)"
 .br
 .RI "卸载指定资源 "
 .ti -1c
-.RI "const Resource & \fBresource\fP (const std::string &name)"
+.RI "void \fBunloadAll\fP ()"
 .br
-.RI "获取指定资源 "
+.RI "卸载全部资源 "
+.ti -1c
+.RI "bool \fBappend\fP (const std::string &name, const std::string &path, const \fBResource::Type\fP &type)"
+.br
+.RI "从文件系统中添加资源 "
+.ti -1c
+.RI "void \fBremove\fP (const std::string &name)"
+.br
+.RI "从资源系统中移除指定资源 "
+.ti -1c
+.RI "bool \fBreplace\fP (const std::string &name, const std::string &path, const \fBResource::Type\fP &type)"
+.br
+.RI "指定现有的资源并替换 "
+.ti -1c
+.RI "const std::variant< std::monostate, std::string, SSurface *, char *, void *, std::vector< uint8_t > > & \fBmetaData\fP (const std::string &name) const"
+.br
+.RI "从指定资源中获取元数据 "
+.ti -1c
+.RI "const std::string & \fBresourcePath\fP (const std::string &name) const"
+.br
+.RI "从指定资源中获取资源所在路径 "
+.ti -1c
+.RI "\fBResource::Type\fP \fBresourceType\fP (const std::string &name) const"
+.br
+.RI "获取指定资源下的类型 "
+.ti -1c
+.RI "bool \fBisLoaded\fP (const std::string &name) const"
+.br
+.RI "查看指定资源是否被加载 "
+.ti -1c
+.RI "bool \fBisContain\fP (const std::string &name) const"
+.br
+.RI "查看当前资源系统中是否存在指定资源 "
 .ti -1c
 .RI "\fBResourceSystem\fP (\fBResourceSystem\fP &)=delete"
 .br
@@ -44,18 +92,92 @@ EasyEngine::ResourceSystem \- 资源系统
 资源系统 
 .SH "成员函数说明"
 .PP 
-.SS "bool ResourceSystem::load (const std::string & name, const std::string & path, const Resource::Type & type)"
+.SS "bool ResourceSystem::append (const std::string & name, const std::string & path, const \fBResource::Type\fP & type)"
 
 .PP
-载入资源 
+从文件系统中添加资源 
 .PP
 \fB参数\fP
 .RS 4
-\fIname\fP 为载入的资源命名 
+\fIname\fP 命名新的资源名称 
 .br
 \fIpath\fP 指定路径 
 .br
-\fItype\fP 指定类型 
+\fItype\fP 指定资源类型 
+.RE
+.PP
+
+.SS "void ResourceSystem::asyncLoad (const std::vector< std::string > & resource_names, const std::function< void(uint64_t)> & callback = \fR{}\fP)"
+
+.PP
+异步加载多个现有的资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIresource_names\fP 指定的资源名列表（若为空，则默认加载全部资源） 
+.br
+\fIcallback\fP 当加载完成后执行回调函数（默认未定义） 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBload\fP 
+
+.PP
+\fBpreload\fP 
+.RE
+.PP
+
+.SS "bool ResourceSystem::isContain (const std::string & name) const"
+
+.PP
+查看当前资源系统中是否存在指定资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定查找的资源名 
+.RE
+.PP
+
+.SS "bool ResourceSystem::isLoaded (const std::string & name) const"
+
+.PP
+查看指定资源是否被加载 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定的资源名称 
+.RE
+.PP
+
+.SS "bool ResourceSystem::load (const std::string & name)"
+
+.PP
+指定现有的资源并加载 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定的资源名称 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功加载资源 
+.RE
+.PP
+
+.SS "bool ResourceSystem::load (const std::string & name, const std::string & path, const \fBResource::Type\fP & type)"
+
+.PP
+从文件系统中加载资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 命名新的资源名称 
+.br
+\fIpath\fP 指定路径 
+.br
+\fItype\fP 指定资源类型 
 .RE
 .PP
 \fB返回\fP
@@ -64,33 +186,110 @@ EasyEngine::ResourceSystem \- 资源系统
 .RE
 .PP
 
-.SS "const ResourceSystem::Resource & ResourceSystem::resource (const std::string & name)"
+.SS "const std::variant< std::monostate, std::string, SSurface *, char *, void *, std::vector< uint8_t > > & ResourceSystem::metaData (const std::string & name) const"
 
 .PP
-获取指定资源 
+从指定资源中获取元数据 
 .PP
 \fB参数\fP
 .RS 4
-\fIname\fP 指定资源名 
+\fIname\fP 指定的资源名称 
 .RE
 .PP
 \fB返回\fP
 .RS 4
-返回对应的资源 
+返回对应的元数据 
 .RE
 .PP
-\fB注解\fP
+\fB警告\fP
 .RS 4
-若指定资源名不存在，将强制报错并异常退出！ 
+对于未找到的资源名或未加载的资源，将报错并异常退出！ 
+.RE
+.PP
+
+.SS "uint64_t ResourceSystem::preload (const std::vector< std::string > & resource_names)"
+
+.PP
+预加载多个现有的资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIresource_names\fP 指定的资源名列表（若为空，则默认加载全部资源） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回加载失败的个数。若为 0，则加载所有资源成功！ 
 .RE
 .PP
 \fB参见\fP
 .RS 4
-Resource 
+\fBload\fP 
+
+.PP
+\fBasyncLoad\fP 
 .RE
 .PP
 
-.SS "void ResourceSystem::unload (const std::string & name)"
+.SS "void ResourceSystem::remove (const std::string & name)"
+
+.PP
+从资源系统中移除指定资源 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定的资源名称
+.RE
+.PP
+将自动卸载并完全移除该资源 
+.SS "bool ResourceSystem::replace (const std::string & name, const std::string & path, const \fBResource::Type\fP & type)"
+
+.PP
+指定现有的资源并替换 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定的资源名称 
+.br
+\fIpath\fP 指定新的资源路径 
+.br
+\fItype\fP 指定新的资源类型 
+.RE
+.PP
+
+.SS "\fBResource::Type\fP ResourceSystem::resourceType (const std::string & name) const"
+
+.PP
+获取指定资源下的类型 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定资源名称 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的资源类型，具体见 \fR\fBResource::Type\fP\fP。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBResource\fP 
+.RE
+.PP
+
+.SS "void ResourceSystem::setRootPath (const std::string & path)"
+
+.PP
+设置根目录 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定目录
+.RE
+.PP
+用于设置整个资源系统的根目录 
+.SS "bool ResourceSystem::unload (const std::string & name)"
 
 .PP
 卸载指定资源 

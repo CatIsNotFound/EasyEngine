@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['高级功能示例_0',['高级功能示例',['../index.html#autotoc_md13',1,'']]]
+  ['长期目标_0',['长期目标',['../D:/Coding/EasyEngine/README.md#autotoc_md72',1,'']]]
 ];

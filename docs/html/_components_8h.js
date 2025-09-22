@@ -12,5 +12,6 @@ var _components_8h =
     [ "EasyEngine::Components::Collider", "class_easy_engine_1_1_components_1_1_collider.html", "class_easy_engine_1_1_components_1_1_collider" ],
     [ "EasyEngine::Components::Collider::Container::Shape", "union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape.html", "union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape" ],
     [ "EasyEngine::Components::Entity", "class_easy_engine_1_1_components_1_1_entity.html", "class_easy_engine_1_1_components_1_1_entity" ],
-    [ "EasyEngine::Components::Control", "class_easy_engine_1_1_components_1_1_control.html", "class_easy_engine_1_1_components_1_1_control" ]
+    [ "EasyEngine::Components::Control", "class_easy_engine_1_1_components_1_1_control.html", "class_easy_engine_1_1_components_1_1_control" ],
+    [ "EasyEngine::Components::Font", "class_easy_engine_1_1_components_1_1_font.html", "class_easy_engine_1_1_components_1_1_font" ]
 ];

@@ -413,7 +413,7 @@ namespace EasyEngine {
          * @note 1. 指定的事件处理器必须以 `bool` 返回。当返回 true 表示持续运行，false 表示结束运行并释放引擎；
          * @note 2. 原有指定函数指针、 `std::function`、语法糖等的事件处理器将被替换。
          */
-        void installEventHandler(std::function<bool(SEvent)> event_handler);
+        void installEventHandler(std::function<bool(SEvent &)> event_handler);
         /**
          * @brief 获取指定窗口的渲染器
          * @param window_id 指定窗口（默认为主窗口）
@@ -696,7 +696,6 @@ namespace EasyEngine {
             Vector2 _scaled_center;
             float _scaled{1.0f};
             SColor _color_alpha{255, 255, 255, 255};
-            bool _color_reversed{false};
             SDL_FlipMode _flip_mode{SDL_FLIP_NONE};
             explicit SpriteCMD(const Components::Sprite& sprite, const Vector2& pos = Vector2(0, 0))
                 : _sprite(sprite.spirit()), _size(sprite.size()), _pos(pos),
@@ -850,7 +849,7 @@ namespace EasyEngine {
          */
         void clearControls();
     private:
-        static std::function<bool(SEvent)> _my_event_handler;
+        static std::function<bool(SEvent&)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
         std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
         std::map<uint64_t, std::unique_ptr<Components::Trigger>> _trigger_list;
@@ -1135,7 +1134,7 @@ namespace EasyEngine {
      * @class FontSystem
      * @brief 字体系统
      *
-     * 用于加载、渲染字体
+     * 用于加载、渲染字体、支持字体排版功能，实现更为复杂的功能
      */
     class FontSystem {
     public:
@@ -1156,15 +1155,25 @@ namespace EasyEngine {
          * @brief 加载字体到字体系统
          * @param name      命名字体名称（便于后续管理）
          * @param font      指定字体
+         * @note 对于指定已加载的字体，将重新加载新的字体！
          * @see font
          * @see unloadFont
          */
         void loadFont(const std::string& name, Components::Font* font);
         /**
+         * @brief 从资源系统中加载字体到字体系统
+         * @param name             命名新的字体名称（便于后续管理）
+         * @param resource_name    指定资源名称
+         * @param font_size        指定字体大小
+         * @see font
+         * @see unloadFont
+         */
+        void loadFont(const std::string& name, const std::string& resource_name, float font_size);
+        /**
          * @brief 从字体系统中卸载指定字体
          * @param name 指定字体名称
          * @see loadFont
-         * @see fontInfo
+         * @see font
          */
         void unloadFont(const std::string& name);
         /**
@@ -1180,6 +1189,7 @@ namespace EasyEngine {
         FontSystem() = default;
         static std::unique_ptr<FontSystem> _instance;
         std::map<std::string, std::shared_ptr<Components::Font>> _font_info;
+
     };
 }
 

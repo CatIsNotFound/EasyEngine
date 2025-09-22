@@ -1,0 +1,76 @@
+.TH "EasyEngine::Resource" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Resource \- 资源  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Resources\&.h>\fP
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBNone\fP, \fBText\fP = 0x10, \fBImage\fP = 0x20, \fBFont\fP = 0x30, \fBAudio\fP = 0x40, \fBVideo\fP = 0x50, \fBBinary\fP = 0x60 }"
+.br
+.RI "资源类型 "
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "\fBType\fP \fBtype\fP"
+.br
+.RI "资源类型 "
+.ti -1c
+.RI "std::string \fBurl\fP"
+.br
+.RI "资源所在路径 "
+.ti -1c
+.RI "bool \fBis_loaded\fP"
+.br
+.RI "是否加载 "
+.ti -1c
+.RI "std::variant< std::monostate, std::string, SSurface *, char *, void *, std::vector< uint8_t > > \fBmeta_data\fP"
+.br
+.RI "元数据 "
+.in -1c
+.SH "详细描述"
+.PP 
+资源 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum \fBEasyEngine::Resource::Type\fP"
+
+.PP
+资源类型 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BINone \fP
+无，用于占位 
+.TP
+\f(BIText \fP(0x10)
+文本文档 
+.TP
+\f(BIImage \fP(0x20)
+图片 
+.TP
+\f(BIFont \fP(0x30)
+字体 
+.TP
+\f(BIAudio \fP(0x40)
+音频 
+.TP
+\f(BIVideo \fP(0x50)
+视频 
+.TP
+\f(BIBinary \fP(0x60)
+其它二进制文件 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

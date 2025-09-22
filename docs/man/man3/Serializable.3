@@ -1,0 +1,44 @@
+.TH "Serializable" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Serializable
+.SH SYNOPSIS
+.br
+.PP
+.PP
+被 \fBComplexData\fP, \fBPerson\fP , 以及 \fBTest\fP 继承\&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBserialize\fP (std::ofstream &file) const =0"
+.br
+.ti -1c
+.RI "virtual void \fBdeserialize\fP (std::ifstream &file)=0"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+通用序列化和反序列化框架
+
+.PP
+该框架支持：
+.IP "1." 4
+基本数据类型（int, float, bool等）
+.IP "2." 4
+std::string类型
+.IP "3." 4
+嵌套结构体和类
+.IP "4." 4
+标准容器类型（std::vector, std::list, std::map等）
+.IP "5." 4
+智能指针（std::shared_ptr, std::unique_ptr）
+.PP
+
+.PP
+核心思想是使用模板特化和SFINAE技术为不同类型提供专门的处理。 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

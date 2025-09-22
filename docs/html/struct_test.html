@@ -114,15 +114,23 @@ $(function() {
   <div class="headertitle"><div class="title">Test结构体 参考</div></div>
 </div><!--header-->
 <div class="contents">
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>类 Test 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="struct_test.png" usemap="#Test_map" alt=""/>
+  <map id="Test_map" name="Test_map">
+<area href="class_serializable.html" alt="Serializable" shape="rect" coords="0,0,78,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a8195dc1e61fb6bae714c0d9095ca88b1" id="r_a8195dc1e61fb6bae714c0d9095ca88b1"><td class="memItemLeft" align="right" valign="top"><a id="a8195dc1e61fb6bae714c0d9095ca88b1" name="a8195dc1e61fb6bae714c0d9095ca88b1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Test</b> (uint64_t _id, const std::string &amp;_name, const std::string &amp;_data)</td></tr>
-<tr class="memitem:a2778a91182a253e3fd6a8cb8169eb6c3" id="r_a2778a91182a253e3fd6a8cb8169eb6c3"><td class="memItemLeft" align="right" valign="top"><a id="a2778a91182a253e3fd6a8cb8169eb6c3" name="a2778a91182a253e3fd6a8cb8169eb6c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>serialize</b> (std::ofstream &amp;file) const</td></tr>
-<tr class="memitem:a1fc66c384a0705078d04f86b18eee61e" id="r_a1fc66c384a0705078d04f86b18eee61e"><td class="memItemLeft" align="right" valign="top"><a id="a1fc66c384a0705078d04f86b18eee61e" name="a1fc66c384a0705078d04f86b18eee61e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deserialize</b> (std::ifstream &amp;file)</td></tr>
+<tr class="memitem:aab7a1a299c6a7fef057918d1aaaa9f4e" id="r_aab7a1a299c6a7fef057918d1aaaa9f4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab7a1a299c6a7fef057918d1aaaa9f4e">serialize</a> (std::ofstream &amp;file) const override</td></tr>
+<tr class="memitem:afecd09537da8244e5797b83ff511bd4d" id="r_afecd09537da8244e5797b83ff511bd4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afecd09537da8244e5797b83ff511bd4d">deserialize</a> (std::ifstream &amp;file) override</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 属性</h2></td></tr>
@@ -133,8 +141,63 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td><
 <tr class="memitem:a399a1d204a7c8f37f5f26b15d18838f8" id="r_a399a1d204a7c8f37f5f26b15d18838f8"><td class="memItemLeft" align="right" valign="top"><a id="a399a1d204a7c8f37f5f26b15d18838f8" name="a399a1d204a7c8f37f5f26b15d18838f8"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
 </table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="afecd09537da8244e5797b83ff511bd4d" name="afecd09537da8244e5797b83ff511bd4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afecd09537da8244e5797b83ff511bd4d">&#9670;&#160;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Test::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">std::ifstream &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="class_serializable.html">Serializable</a>.</p>
+
+</div>
+</div>
+<a id="aab7a1a299c6a7fef057918d1aaaa9f4e" name="aab7a1a299c6a7fef057918d1aaaa9f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7a1a299c6a7fef057918d1aaaa9f4e">&#9670;&#160;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Test::serialize </td>
+          <td>(</td>
+          <td class="paramtype">std::ofstream &amp;</td>          <td class="paramname"><span class="paramname"><em>file</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>实现了 <a class="el" href="class_serializable.html">Serializable</a>.</p>
+
+</div>
+</div>
 <hr/>该结构体的文档由以下文件生成:<ul>
-<li>D:/Coding/EasyEngine/<b>main.cpp</b></li>
+<li>D:/Coding/EasyEngine/examples/<b>draft.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

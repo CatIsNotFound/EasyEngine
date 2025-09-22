@@ -13,9 +13,9 @@ EasyEngine::Components::SFX \- 音效
 
 .in +1c
 .ti -1c
-.RI "\fBSFX\fP (const std::string &\fBpath\fP)"
+.RI "\fBSFX\fP (const std::string &resource_name)"
 .br
-.RI "创建指定路径的 \fBSFX\fP "
+.RI "从资源系统中指定资源并创建 \fBSFX\fP "
 .ti -1c
 .RI "void \fBsetPath\fP (const std::string &\fBpath\fP)"
 .br
@@ -60,14 +60,14 @@ EasyEngine::Components::SFX \- 音效
 音效 
 .SH "构造及析构函数说明"
 .PP 
-.SS "EasyEngine::Components::SFX::SFX (const std::string & path)"
+.SS "EasyEngine::Components::SFX::SFX (const std::string & resource_name)"
 
 .PP
-创建指定路径的 \fBSFX\fP 
+从资源系统中指定资源并创建 \fBSFX\fP 
 .PP
 \fB参数\fP
 .RS 4
-\fIpath\fP 指定音频路径 
+\fIresource_name\fP 指定资源名称 
 .RE
 .PP
 

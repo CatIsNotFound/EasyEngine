@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['未来规划_0',['🔮 未来规划',['../D:/Coding/EasyEngine/README.md#autotoc_md74',1,'']]]
+  ['最佳实践_0',['5. 最佳实践',['../md_quickstart.html#autotoc_md42',1,'']]],
+  ['最小示例_1',['最小示例',['../index.html#autotoc_md12',1,'']]]
 ];

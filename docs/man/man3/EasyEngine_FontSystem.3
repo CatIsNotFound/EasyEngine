@@ -1,0 +1,143 @@
+.TH "EasyEngine::FontSystem" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::FontSystem \- 字体系统  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Core\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.RI "初始化字体系统 "
+.ti -1c
+.RI "void \fBunload\fP ()"
+.br
+.RI "卸载字体系统 "
+.ti -1c
+.RI "void \fBloadFont\fP (const std::string &name, \fBComponents::Font\fP *\fBfont\fP)"
+.br
+.RI "加载字体到字体系统 "
+.ti -1c
+.RI "void \fBloadFont\fP (const std::string &name, const std::string &resource_name, float font_size)"
+.br
+.RI "从资源系统中加载字体到字体系统 "
+.ti -1c
+.RI "void \fBunloadFont\fP (const std::string &name)"
+.br
+.RI "从字体系统中卸载指定字体 "
+.ti -1c
+.RI "\fBComponents::Font\fP * \fBfont\fP (const std::string &name)"
+.br
+.RI "从字体系统中获取字体信息 "
+.ti -1c
+.RI "\fBFontSystem\fP (\fBFontSystem\fP &)=delete"
+.br
+.ti -1c
+.RI "\fBFontSystem\fP & \fBoperator=\fP (const \fBFontSystem\fP &)=delete"
+.br
+.in -1c
+.SS "静态 Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "static \fBFontSystem\fP * \fBglobal\fP ()"
+.br
+.RI "获取全局字体系统 "
+.in -1c
+.SH "详细描述"
+.PP 
+字体系统 
+
+用于加载、渲染字体、支持字体排版功能，实现更为复杂的功能 
+.SH "成员函数说明"
+.PP 
+.SS "\fBEasyEngine::Font\fP * EasyEngine::FontSystem::font (const std::string & name)"
+
+.PP
+从字体系统中获取字体信息 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定字体名称 
+.RE
+.PP
+
+.SS "void EasyEngine::FontSystem::loadFont (const std::string & name, \fBComponents::Font\fP * font)"
+
+.PP
+加载字体到字体系统 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 命名字体名称（便于后续管理） 
+.br
+\fIfont\fP 指定字体 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+对于指定已加载的字体，将重新加载新的字体！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBfont\fP 
+
+.PP
+\fBunloadFont\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::FontSystem::loadFont (const std::string & name, const std::string & resource_name, float font_size)"
+
+.PP
+从资源系统中加载字体到字体系统 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 命名新的字体名称（便于后续管理） 
+.br
+\fIresource_name\fP 指定资源名称 
+.br
+\fIfont_size\fP 指定字体大小 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBfont\fP 
+
+.PP
+\fBunloadFont\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::FontSystem::unloadFont (const std::string & name)"
+
+.PP
+从字体系统中卸载指定字体 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定字体名称 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadFont\fP 
+
+.PP
+\fBfont\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

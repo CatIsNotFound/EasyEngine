@@ -117,7 +117,8 @@ $(function() {
 
 <p>引擎内核  
 <a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_algorithm_8h_source.html">Algorithm.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_basic_8h_source.html">Basic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_algorithm_8h_source.html">Algorithm.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_components_8h_source.html">Components.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_resources_8h_source.html">Resources.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_scene_8h_source.html">Scene.h</a>&quot;</code><br />
@@ -144,6 +145,8 @@ $(function() {
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">音频系统  <a href="class_easy_engine_1_1_audio_system.html#details">更多...</a><br /></td></tr>
 <tr class="memitem:EasyEngine_3A_3AAudioSystem_3A_3AAudio" id="r_EasyEngine_3A_3AAudioSystem_3A_3AAudio"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_easy_engine_1_1_audio_system_1_1_audio.html">EasyEngine::AudioSystem::Audio</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">音频属性  <a href="struct_easy_engine_1_1_audio_system_1_1_audio.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AFontSystem" id="r_EasyEngine_3A_3AFontSystem"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_font_system.html">EasyEngine::FontSystem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">字体系统  <a href="class_easy_engine_1_1_font_system.html#details">更多...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 命名空间</h2></td></tr>
@@ -171,23 +174,6 @@ $(function() {
 <tr class="memitem:a82267badcceab7389c6f2c31cfed1367" id="r_a82267badcceab7389c6f2c31cfed1367"><td class="memItemLeft" align="right" valign="top"><a id="a82267badcceab7389c6f2c31cfed1367" name="a82267badcceab7389c6f2c31cfed1367"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EASYENGINE_NAME</b>&#160;&#160;&#160;&quot;EasyEngine&quot;</td></tr>
 <tr class="memdesc:a82267badcceab7389c6f2c31cfed1367"><td class="mdescLeft">&#160;</td><td class="mdescRight">项目名称 <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-类型定义</h2></td></tr>
-<tr class="memitem:aa682a21b42a10447f25af4dc75c15a3e" id="r_aa682a21b42a10447f25af4dc75c15a3e"><td class="memItemLeft" align="right" valign="top"><a id="aa682a21b42a10447f25af4dc75c15a3e" name="aa682a21b42a10447f25af4dc75c15a3e"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SEvent</b> = SDL_Event</td></tr>
-<tr class="memitem:a8bce9d82881ea1eba3add48568817dea" id="r_a8bce9d82881ea1eba3add48568817dea"><td class="memItemLeft" align="right" valign="top"><a id="a8bce9d82881ea1eba3add48568817dea" name="a8bce9d82881ea1eba3add48568817dea"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SWinEvent</b> = SDL_WindowEvent</td></tr>
-<tr class="memitem:ae229fdde9d8badf956e5f8a59d4ea1c0" id="r_ae229fdde9d8badf956e5f8a59d4ea1c0"><td class="memItemLeft" align="right" valign="top"><a id="ae229fdde9d8badf956e5f8a59d4ea1c0" name="ae229fdde9d8badf956e5f8a59d4ea1c0"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SWindow</b> = SDL_Window</td></tr>
-<tr class="memitem:a9f29487d0c223d2b32f8299da3fc128b" id="r_a9f29487d0c223d2b32f8299da3fc128b"><td class="memItemLeft" align="right" valign="top"><a id="a9f29487d0c223d2b32f8299da3fc128b" name="a9f29487d0c223d2b32f8299da3fc128b"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SWindowID</b> = SDL_WindowID</td></tr>
-<tr class="memitem:aba24c484ff945c689544253bb69fc25e" id="r_aba24c484ff945c689544253bb69fc25e"><td class="memItemLeft" align="right" valign="top"><a id="aba24c484ff945c689544253bb69fc25e" name="aba24c484ff945c689544253bb69fc25e"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SCursor</b> = SDL_Cursor</td></tr>
-<tr class="memitem:ab7fb7fa1807f20469359c6cafe47dbaf" id="r_ab7fb7fa1807f20469359c6cafe47dbaf"><td class="memItemLeft" align="right" valign="top"><a id="ab7fb7fa1807f20469359c6cafe47dbaf" name="ab7fb7fa1807f20469359c6cafe47dbaf"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SStdCursor</b> = SDL_SystemCursor</td></tr>
-<tr class="memitem:ac6f26824e329ff1096da3927fb05efa8" id="r_ac6f26824e329ff1096da3927fb05efa8"><td class="memItemLeft" align="right" valign="top"><a id="ac6f26824e329ff1096da3927fb05efa8" name="ac6f26824e329ff1096da3927fb05efa8"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>SAudioSpec</b> = SDL_AudioSpec</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>

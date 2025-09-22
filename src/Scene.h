@@ -26,6 +26,7 @@ namespace EasyEngine {
         explicit Layer(const std::string& name);
 
 
+
     private:
         std::string name;
         std::map<uint64_t, std::shared_ptr<Element>> _elements;

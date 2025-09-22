@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['loaded_0',['Loaded',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea556a75fc5a15d4006e10a0961252213c',1,'EasyEngine::AudioSystem::Audio']]],
-  ['loading_1',['Loading',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ead56836f7417639aaa93e417c37994597',1,'EasyEngine::AudioSystem::Audio']]],
-  ['lostfocus_2',['LostFocus',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994',1,'EasyEngine::Components::Control']]]
+  ['image_0',['Image',['../struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0a66a879a680b61978e303f1850987fd7c',1,'EasyEngine::Resource']]],
+  ['italic_1',['Italic',['../class_easy_engine_1_1_components_1_1_font.html#a2167f08989df919d756663447b355e39a22295faa2f9f6235b06978cff60908fa',1,'EasyEngine::Components::Font']]]
 ];

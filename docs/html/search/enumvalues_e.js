@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['vflip_0',['VFlip',['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a0b5d83f7ecb707aee4151b6575ca5af7',1,'EasyEngine::Components::Sprite']]]
+  ['regular_0',['Regular',['../class_easy_engine_1_1_components_1_1_font.html#a2167f08989df919d756663447b355e39aa13afc202b53e40339893c65f4814f70',1,'EasyEngine::Components::Font']]],
+  ['resized_1',['Resized',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a22995988de764d7a8cb4165fbff371cb',1,'EasyEngine::Components::Control']]],
+  ['righttoleft_2',['RightToLeft',['../class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcada139b1c49ed53477964680d26b5eb0c12',1,'EasyEngine::Components::Font']]]
 ];

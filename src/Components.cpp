@@ -7,17 +7,29 @@ EasyEngine::Components::BGM::BGM() {}
 
 EasyEngine::Components::BGM::~BGM() {}
 
-EasyEngine::Components::BGM::BGM(const std::string &path) : _path(path) {
-    auto ret = AudioSystem::global()->loadBGM(*this);
-    _is_load = (ret != -1);
-    _channel = static_cast<uint8_t>(ret);
+EasyEngine::Components::BGM::BGM(const std::string &resource_name) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Audio) {
+        _path = ResourceSystem::global()->resourcePath(resource_name);
+        auto ret = AudioSystem::global()->loadBGM(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the audio file!", resource_name.c_str());
+        _is_load = false;
+    }
 }
 
-void EasyEngine::Components::BGM::setPath(const std::string &path) {
-    _path = path;
-    auto ret = AudioSystem::global()->loadBGM(*this);
-    _is_load = (ret != -1);
-    _channel = static_cast<uint8_t>(ret);
+void EasyEngine::Components::BGM::setResource(const std::string &resource_name) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Audio) {
+        _path = ResourceSystem::global()->resourcePath(resource_name);
+        AudioSystem::global()->unloadBGM(_channel);
+        auto ret = AudioSystem::global()->loadBGM(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the audio file!", resource_name.c_str());
+        _is_load = false;
+    }
 }
 
 const std::string &EasyEngine::Components::BGM::path() const {
@@ -52,7 +64,7 @@ bool EasyEngine::Components::BGM::isLoop() const {
 
 int64_t EasyEngine::Components::BGM::position() const {
     auto _ms = MIX_AudioFramesToMS(AudioSystem::global()->bgmChannel(_channel).audio,
-                                   MIX_GetTrackPlaybackPosition(AudioSystem::global()->bgmChannel(_channel).Stream.track));
+               MIX_GetTrackPlaybackPosition(AudioSystem::global()->bgmChannel(_channel).Stream.track));
     if (AudioSystem::global()->bgmChannel(_channel).status == AudioSystem::Audio::Loaded) return 0;
     return _ms;
 }
@@ -69,18 +81,29 @@ EasyEngine::Components::SFX::SFX() {}
 
 EasyEngine::Components::SFX::~SFX() {}
 
-EasyEngine::Components::SFX::SFX(const std::string &path) {
-    _path = path;
-    auto ret = AudioSystem::global()->loadSFX(*this);
-    _is_load = (ret != -1);
-    _channel = static_cast<uint8_t>(ret);
+EasyEngine::Components::SFX::SFX(const std::string &resource_name) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Audio) {
+        _path = ResourceSystem::global()->resourcePath(resource_name);
+        auto ret = AudioSystem::global()->loadSFX(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the audio file!", resource_name.c_str());
+        _is_load = false;
+    }
 }
 
-void EasyEngine::Components::SFX::setPath(const std::string &path) {
-    _path = path;
-    auto ret = AudioSystem::global()->loadSFX(*this);
-    _is_load = (ret != -1);
-    _channel = static_cast<uint8_t>(ret);
+void EasyEngine::Components::SFX::setResource(const std::string &resource_name) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Audio) {
+        _path = ResourceSystem::global()->resourcePath(resource_name);
+        AudioSystem::global()->unloadSFX(_channel);
+        auto ret = AudioSystem::global()->loadSFX(*this);
+        _is_load = (ret != -1);
+        _channel = static_cast<uint8_t>(ret);
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the audio file!", resource_name.c_str());
+        _is_load = false;
+    }
 }
 
 const std::string &EasyEngine::Components::SFX::path() const {
@@ -245,47 +268,44 @@ std::function<void()> &EasyEngine::Components::Trigger::event() {
 }
 
 
-EasyEngine::Components::Sprite::Sprite(const std::string &name, SRenderer *renderer)
-    : _name(name), _renderer(renderer), _size(0, 0) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
-    }
+EasyEngine::Components::Sprite::Sprite(const std::string &name, Painter *painter)
+    : _name(name), _painter(painter), _size(0, 0) {
     _surface = SDL_CreateSurface(0, 0, SDL_PIXELFORMAT_RGBA64);
-    _texture = SDL_CreateTextureFromSurface(renderer, _surface);
+    _texture = SDL_CreateTextureFromSurface(painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Sprite::Sprite(const std::string &name, SSurface *surface, SRenderer *renderer)
-    : _name(name), _renderer(renderer) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
-    }
+EasyEngine::Components::Sprite::Sprite(const std::string &name, SSurface *surface, Painter *painter)
+    : _name(name), _painter(painter) {
     _surface = surface;
-    _texture = SDL_CreateTextureFromSurface(renderer, _surface);
+    _texture = SDL_CreateTextureFromSurface(painter->window()->renderer, _surface);
+    SDL_GetTextureSize(_texture, &_size.width, &_size.height);
+    _properties = std::make_unique<Properties>();
+}
+
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &resource_name, Painter *painter)
+    : _name(name), _painter(painter) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Image) {
+        _surface = IMG_Load(ResourceSystem::global()->resourcePath(resource_name).c_str());
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the image file!", resource_name.c_str());
+        _surface = SDL_CreateSurface(0, 0, SDL_PIXELFORMAT_RGBA64);
+    }
+    _texture = SDL_CreateTextureFromSurface(painter->window()->renderer, _surface);
     SDL_GetTextureSize(_texture, &_size.width, &_size.height);
     _properties = std::make_unique<Properties>();
 }
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit)
-    : _name(name), _renderer(spirit._renderer), _size(spirit._size) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
-    }
+    : _name(name), _painter(spirit._painter), _size(spirit._size) {
     _surface = SDL_DuplicateSurface(spirit._surface);
-    _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
 }
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit,
                                        const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size)
-    : _name(name), _renderer(spirit._renderer), _size(spirit._size) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
-    }
+    : _name(name), _painter(spirit._painter), _size(spirit._size) {
     _surface = SDL_DuplicateSurface(spirit._surface);
     auto _rect = SDL_Rect(
             static_cast<int>(clip_pos.x),
@@ -294,37 +314,22 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine
             static_cast<int>(clip_size.height)
     );
     SDL_SetSurfaceClipRect(_surface, &_rect);
-    _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &path, SRenderer *renderer)
-    : _name(name), _path(path), _renderer(renderer), _size(0, 0) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
-    }
-    _surface = IMG_Load(path.data());
-    if (!_surface) {
-        SDL_Log("[ERROR] Can't load image file: %s\nps: Try to use `Spirit::setPath()`.", path.data());
-        return;
-    }
-    _properties = std::make_unique<Properties>();
-    _size.reset(_surface->w, _surface->h);
-    _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
-}
-
-EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &path,
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &resource_name,
                                        const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size,
-                                       SRenderer *renderer)
-    : _name(name), _path(path), _renderer(renderer), _size(0, 0) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] Current renderer is not valid!");
-        return;
+                                       Painter *painter)
+    : _name(name), _painter(painter), _size(0, 0) {
+    if (ResourceSystem::global()->resourceType(resource_name) == Resource::Image) {
+        _surface = IMG_Load(ResourceSystem::global()->resourcePath(resource_name).c_str());
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the image file!", resource_name.c_str());
+        _surface = SDL_CreateSurface(0, 0, SDL_PIXELFORMAT_RGBA64);
     }
-    _surface = IMG_Load(path.data());
     if (!_surface) {
-        SDL_Log("[ERROR] Can't load image file: %s\nps: Try to use `Spirit::setPath()`.", path.data());
+        SDL_Log("[ERROR] Can't load image file: %s\nps: Try to use `Spirit::setPath()`.", resource_name.data());
         return;
     }
     auto _rect = SDL_Rect(
@@ -334,8 +339,8 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::strin
             static_cast<int>(clip_size.height)
     );
     SDL_SetSurfaceClipRect(_surface, &_rect);
-    _size.reset(_surface->w, _surface->h);
-    _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    _size.reset((float)_surface->w, (float)_surface->h);
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
 }
 
@@ -352,16 +357,21 @@ std::string EasyEngine::Components::Sprite::name() const {
     return _name;
 }
 
-bool EasyEngine::Components::Sprite::setPath(const std::string &new_path) {
-    _path = new_path;
-    if (_texture) SDL_DestroyTexture(_texture);
-    if (_surface) SDL_DestroySurface(_surface);
-    _surface = IMG_Load(new_path.data());
-    if (!_surface) {
-        SDL_Log("[ERROR] Can't load image file: %s", new_path.data());
+bool EasyEngine::Components::Sprite::setResource(const std::string &resource_name) {
+    if (ResourceSystem::global()->resourceType(resource_name)) {
+        _path = ResourceSystem::global()->resourcePath(resource_name);
+    } else {
+        SDL_Log("[ERROR] Resource '%s' is not the image path!", resource_name.c_str());
         return false;
     }
-    _texture = SDL_CreateTextureFromSurface(_renderer, _surface);
+    if (_texture) SDL_DestroyTexture(_texture);
+    if (_surface) SDL_DestroySurface(_surface);
+    _surface = IMG_Load(_path.data());
+    if (!_surface) {
+        SDL_Log("[ERROR] Can't load image file: %s", _path.data());
+        return false;
+    }
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     return true;
 }
 
@@ -370,22 +380,18 @@ std::string EasyEngine::Components::Sprite::path() const {
 }
 
 bool EasyEngine::Components::Sprite::isValid(const std::string &path) const {
-    if (!_renderer) return false;
+    if (!_painter) return false;
     if (!_surface) return false;
     if (!_texture) return false;
     return true;
 }
 
-void EasyEngine::Components::Sprite::setRenderer(SRenderer *renderer) {
-    if (!_renderer) {
-        SDL_Log("[ERROR] The specified renderer is not valid!");
-        return;
-    }
-    _renderer = renderer;
+void EasyEngine::Components::Sprite::setPainter(Painter *painter) {
+    _painter = painter;
 }
 
-const SRenderer *EasyEngine::Components::Sprite::renderer() const {
-    return _renderer;
+const EasyEngine::Painter * EasyEngine::Components::Sprite::painter() const {
+    return _painter;
 }
 
 void EasyEngine::Components::Sprite::resize(float width, float height) {
@@ -400,50 +406,47 @@ STexture *EasyEngine::Components::Sprite::spirit() const {
     return _texture;
 }
 
-void EasyEngine::Components::Sprite::draw(const Vector2 &pos, Painter *painter) const {
-    painter->drawSprite(*this, pos);
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos) const {
+    _painter->drawSprite(*this, pos);
 }
 
 void
-EasyEngine::Components::Sprite::draw(const Vector2 &pos, float scaled, Painter *painter, const Vector2 &center) const {
+EasyEngine::Components::Sprite::draw(const Vector2 &pos, float scaled, const Vector2 &center) const {
     Properties properties;
     properties.position = pos;
     properties.scaled = scaled;
     properties.scaled_center = center;
-    painter->drawSprite(*this, properties);
+    _painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Sprite::draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size,
-                                          Painter *painter) const {
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos, const Vector2 &clip_pos, const Size &clip_size) const {
     Properties properties;
     properties.position = pos;
     properties.clip_pos = clip_pos;
     properties.clip_size = clip_size;
-    painter->drawSprite(*this, properties);
+    _painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Sprite::draw(const Vector2 &pos, double rotate, Painter *painter, const FlipMode &flipMode,
+void EasyEngine::Components::Sprite::draw(const Vector2 &pos, double rotate, const FlipMode &flipMode,
                                           const Vector2 &rotate_center) const {
     Properties properties;
     properties.position = pos;
     properties.rotate = rotate;
     properties.flip_mode = flipMode;
     properties.rotate_center = rotate_center;
-    painter->drawSprite(*this, properties);
+    _painter->drawSprite(*this, properties);
 }
 
-void EasyEngine::Components::Sprite::draw(const EasyEngine::Vector2 &pos, const SColor &color_alpha,
-                                          Painter *painter) const {
+void EasyEngine::Components::Sprite::draw(const EasyEngine::Vector2 &pos, const SColor &color_alpha) const {
     Properties properties;
     properties.position = pos;
     properties.color_alpha = color_alpha;
-    painter->drawSprite(*this, properties);
+    _painter->drawSprite(*this, properties);
 }
 
 void
-EasyEngine::Components::Sprite::draw(const EasyEngine::Components::Sprite::Properties &properties,
-                                     Painter *painter) const {
-    painter->drawSprite(*this, properties);
+EasyEngine::Components::Sprite::draw(const EasyEngine::Components::Sprite::Properties &properties) const {
+    _painter->drawSprite(*this, properties);
 }
 
 EasyEngine::Components::Sprite::Properties *EasyEngine::Components::Sprite::properties() const {
@@ -451,7 +454,10 @@ EasyEngine::Components::Sprite::Properties *EasyEngine::Components::Sprite::prop
 }
 
 void EasyEngine::Components::Sprite::draw(EasyEngine::Painter *painter) const {
-    painter->drawSprite(*this, _properties.get());
+    if (painter)
+        painter->drawSprite(*this, _properties.get());
+    else
+        _painter->drawSprite(*this, _properties.get());
 }
 
 
@@ -573,9 +579,9 @@ EasyEngine::Components::Sprite::Properties *EasyEngine::Components::SpriteGroup:
     return _sprites.at(indexAt(name))->properties();
 }
 
-void EasyEngine::Components::SpriteGroup::draw(const Vector2 &pos, Painter *painter) {
+void EasyEngine::Components::SpriteGroup::draw(const Vector2 &pos) {
     for (auto& sprite : _sprites) {
-        sprite->draw(pos, painter);
+        sprite->draw(pos);
     }
 }
 
@@ -634,9 +640,9 @@ EasyEngine::Components::Sprite *EasyEngine::Components::Animation::sprite(const 
     return _animations.at(frame).sprite;
 }
 
-void EasyEngine::Components::Animation::draw(const EasyEngine::Vector2 &position, EasyEngine::Painter* painter) {
+void EasyEngine::Components::Animation::draw(const EasyEngine::Vector2 &position) {
     try {
-        _animations.at(_cur_frame).sprite->draw(position, painter);
+        _animations.at(_cur_frame).sprite->draw(position);
     } catch (const std::exception& e) {
         SDL_Log("Error for frame %llu", _cur_frame);
     }
@@ -691,7 +697,7 @@ EasyEngine::Components::Control::Control(const std::string &name) : _name(name) 
     EventSystem::global()->addControl(this);
 }
 
-EasyEngine::Components::Control::Control(const std::string &name, const EasyEngine::Components::Sprite &&sprite) {
+EasyEngine::Components::Control::Control(const std::string &name, const EasyEngine::Components::Sprite &sprite) {
     _def_sprite = std::make_shared<Sprite>(fmt::format("{}_group", sprite.name()), sprite);
     _def_sprite->properties()->clip_mode = true;
     EventSystem::global()->addControl(this);
@@ -932,31 +938,31 @@ const EasyEngine::Graphics::Rectangle & EasyEngine::Components::Control::hotArea
     return _hot_area;
 }
 
-void EasyEngine::Components::Control::update(Painter *painter) {
+void EasyEngine::Components::Control::update() {
     if (!_container_list.contains(_status)) {
         if (_container_list[Status::Default]->type_id == 1) {
-            status<Sprite>(Status::Default)->draw(_position, painter);
+            status<Sprite>(Status::Default)->draw(_position);
         } else if (_container_list[Status::Default]->type_id == 2) {
-            status<SpriteGroup>(Status::Default)->draw(_position, painter);
+            status<SpriteGroup>(Status::Default)->draw(_position);
         } else if (_container_list[Status::Default]->type_id == 3) {
-            status<Animation>(Status::Default)->draw(_position, painter);
+            status<Animation>(Status::Default)->draw(_position);
         } else if (_container_list[Status::Default]->type_id == 4) {
             auto clip = status<GeometryF>(Status::Default);
             _def_sprite->properties()->clip_pos = clip->pos;
             _def_sprite->properties()->clip_size = clip->size;
-            _def_sprite->draw(_position, painter);
+            _def_sprite->draw(_position);
         }
     } else if (_container_list[_status]->type_id == 1) {
-        status<Sprite>(_status)->draw(_position, painter);
+        status<Sprite>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 2) {
-        status<SpriteGroup>(_status)->draw(_position, painter);
+        status<SpriteGroup>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 3) {
-        status<Animation>(_status)->draw(_position, painter);
+        status<Animation>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 4) {
         auto clip = status<GeometryF>(_status);
         _def_sprite->properties()->clip_pos = clip->pos;
         _def_sprite->properties()->clip_size = clip->size;
-        _def_sprite->draw(_position, painter);
+        _def_sprite->draw(_position);
     }
     if (_event != Event::None && _trigger_list.contains(_event)) {
         _trigger_list.at(_event)->trigger();
@@ -1305,52 +1311,67 @@ const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
 
 void EasyEngine::Components::Entity::update(Painter *painter) const {
     if (_container->type_id == 1) {
-        _container->self.sprite->draw(_pos, painter);
+        _container->self.sprite->draw(_pos);
     } else if (_container->type_id == 2) {
-        _container->self.sprite_group->draw(_pos, painter);
+        _container->self.sprite_group->draw(_pos);
     } else if (_container->type_id == 3) {
-        _container->self.animation->draw(_pos, painter);
+        _container->self.animation->draw(_pos);
     } else if (_container->type_id == 4) {
         if (_def_sprite) {
             auto clip = _container->self.clip_sprite;
-            _def_sprite->draw(_pos, clip.pos, clip.size, painter);
+            _def_sprite->draw(_pos, clip.pos, clip.size);
         }
     }
 }
 
-EasyEngine::Components::Font::Font(const std::string &path, float font_size)
+EasyEngine::Components::Font::Font(const std::string &name, float font_size)
     : _font_size(font_size), _font_direction(LeftToRight), _font_outline(0), _font_style_flags(0) {
-    load(path, font_size);
-}
-
-EasyEngine::Components::Font::Font(const std::string &name)
-    : _font_size(12.0f), _font_direction(LeftToRight), _font_outline(0), _font_style_flags(0) {
-    // TODO: 加载字体
-
+    _font = TTF_OpenFont(ResourceSystem::global()->resourcePath(name).c_str(), font_size);
+    if (!_font) {
+        SDL_Log("[ERROR] Can't load the specified font!\nException: %s", SDL_GetError());
+        _font_is_loaded = false;
+    } else {
+        if (ResourceSystem::global()->isLoaded(name)) {
+            ResourceSystem::global()->unload(name);
+        }
+        _font_is_loaded = true;
+    }
 }
 
 EasyEngine::Components::Font::~Font() {
     unload();
 }
 
+bool EasyEngine::Components::Font::isAvailable() const {
+    return _font_is_loaded;
+}
+
 bool EasyEngine::Components::Font::load(const std::string &path, float font_size) {
     _font = TTF_OpenFont(path.c_str(), font_size);
     if (!_font) {
         SDL_Log("[ERROR] Can't load the specified font!\nException: %s", SDL_GetError());
+        _font_is_loaded = false;
         return false;
     }
+    _font_is_loaded = true;
     return true;
 }
 
 void EasyEngine::Components::Font::unload() {
-    if (_font) {
+    if (_font && _font_is_loaded) {
         TTF_CloseFont(_font);
+        _font = nullptr;
+        _font_is_loaded = false;
     }
 }
 
 void EasyEngine::Components::Font::setFontSize(float size) {
-    auto ret = TTF_SetFontSize(_font, size);
-    if (ret) _font_size = size;
+    if (_font_is_loaded) {
+        auto ret = TTF_SetFontSize(_font, size);
+        if (ret) _font_size = size;
+    } else {
+        SDL_Log("[WARNING] The current font is not loaded!");
+    }
 }
 
 float EasyEngine::Components::Font::fontSize() const {
@@ -1358,8 +1379,12 @@ float EasyEngine::Components::Font::fontSize() const {
 }
 
 void EasyEngine::Components::Font::setStyle(uint32_t style) {
-    TTF_SetFontStyle(_font, style);
-    _font_style_flags = style;
+    if (_font_is_loaded) {
+        TTF_SetFontStyle(_font, style);
+        _font_style_flags = style;
+    } else {
+        SDL_Log("[WARNING] The current font is not loaded!");
+    }
 }
 
 void EasyEngine::Components::Font::setOutline(uint32_t value) {
@@ -1421,6 +1446,9 @@ uint32_t EasyEngine::Components::Font::lineSpacing() const {
 EasyEngine::Sprite
 EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::Painter &painter) {
     SSurface* surface;
+    if (!_font_is_loaded) {
+        throw std::runtime_error("[ERROR] The current font is not loaded! Please use `isValid()` function at first!");
+    }
     if (_font_outline) {
         if (_font_color.a > 0) {
             auto filled_surface = TTF_RenderText_Blended(_font, text.c_str(), 0, _font_color);
@@ -1447,6 +1475,6 @@ EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::
             SDL_Log("[ERROR] Can't draw the current text!\nException: %s", SDL_GetError());
         }
     }
-    return {text, surface, painter.window()->renderer};
+    return {text, surface, &painter};
 }
 

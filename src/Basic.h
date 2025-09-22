@@ -34,7 +34,10 @@ namespace EasyEngine {
      * @see Basic.h
      */
     namespace StdColor {
-        constexpr SColor Transparent = {0, 0, 0, 0};
+        /// 完全透明
+        constexpr SColor Transparent = {255, 255, 255, 0};
+        /// 半透明
+        constexpr SColor HalfTransparent = {255, 255, 255, 128};
 
         constexpr SColor Black = {0, 0, 0, 255};
         constexpr SColor White = {255, 255, 255, 255};
@@ -379,102 +382,6 @@ namespace EasyEngine {
                       filled_mode(filled_mode), back_color(background) {}
         };
     }
-
-
-    /**
-     * @struct Pos2
-     * @brief 用于指定行列
-     */
-    struct Pos2 {
-        uint32_t row, col;
-
-        void reset(uint32_t row, uint32_t col) { this->row = row; this->col = col; }
-
-        Pos2& operator=(const Pos2& r) {
-            this->row = r.row;
-            this->col = r.col;
-            return *this;
-        }
-        bool operator==(const Pos2& r) {
-            return (row == r.row && col == r.col);
-        }
-        bool operator!=(const Pos2& r) {
-            return (row != r.row || col != r.col);
-        }
-        bool operator>(const Pos2& r) {
-            if (row == r.row) {
-                return col > r.col;
-            }
-            return row > r.row;
-        }
-        bool operator>=(const Pos2& r) {
-            if (row == r.row) {
-                return col >= r.col;
-            }
-            return row > r.row;
-        }
-        bool operator<(const Pos2& r) {
-            if (row == r.row) {
-                return col < r.col;
-            }
-            return row < r.row;
-        }
-        bool operator<=(const Pos2& r) {
-            if (row == r.row) {
-                return col <= r.col;
-            }
-            return row < r.row;
-        }
-    };
-
-    /**
-     * @brief 二维矩阵
-     * @tparam T 指定类型
-     *
-     * 用于存储各种数据类型的二维矩阵
-     */
-    template<typename T>
-    struct Matrix2 {
-    private:
-        uint32_t count(Pos2 &start, Pos2 &end);
-        void forRange(Pos2 &start, Pos2 &end, const std::function<void(const T&)>& function);
-        void forRange(Pos2 &start, Pos2 &end,
-                      const std::function<void(const Pos2 &)> &function);
-        void correct(Pos2 &start, Pos2 &end);
-
-        std::vector<std::vector<T>> data;
-        uint32_t _rows, _cols;
-    public:
-        explicit Matrix2(uint32_t row, uint32_t col, const T& default_value = {}) : _rows(row), _cols(col) {
-            for (uint32_t r = 0; r < row; ++r)
-                data.emplace_back(std::vector<T>(col, default_value));
-        }
-
-        /**
-         * @brief 获取指定行列的值
-         * @param row 指定行
-         * @param col 指定列
-         * @return 返回所在对应的值
-         */
-        const T& get(uint32_t row, uint32_t col) {
-            return data[row][col];
-        }
-
-        std::vector<T> getN(Pos2 &start, Pos2 &end);
-
-        void setN(Pos2 &start, Pos2 &end, const T& value);
-
-        void foreach(const std::function<void(T&)>& function);
-
-        void operator=(const T& value) {
-            for (auto& line : data) {
-                for (auto& col : line) {
-                    col = value;
-                }
-            }
-        }
-
-    };
 
     class EventSystem;
 

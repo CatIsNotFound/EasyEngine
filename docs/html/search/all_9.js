@@ -9,9 +9,10 @@ var searchData=
   ['algorithm_6',['Algorithm',['../class_easy_engine_1_1_algorithm.html',1,'EasyEngine']]],
   ['algorithm_2eh_7',['Algorithm.h',['../_algorithm_8h.html',1,'']]],
   ['animation_8',['Animation',['../class_easy_engine_1_1_components_1_1_animation.html',1,'EasyEngine::Components::Animation'],['../class_easy_engine_1_1_components_1_1_animation.html#a894d1ea77b9c64fe8cfebc322ced2a85',1,'EasyEngine::Components::Animation::Animation(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_animation.html#ab8d8c9ace0755f3376445ddc1309acf3',1,'EasyEngine::Components::Animation::Animation(const std::string &amp;name, const std::vector&lt; Sprite * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)']]],
-  ['append_9',['append',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a3de4a6b15e6f4ecdf546225e81f2703d',1,'EasyEngine::Components::SpriteGroup']]],
-  ['audio_10',['Audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html',1,'EasyEngine::AudioSystem']]],
-  ['audio_11',['audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a2d0d27614d757b87f4f9ee7e5490a3e7',1,'EasyEngine::AudioSystem::Audio']]],
-  ['audiospec_12',['audioSpec',['../class_easy_engine_1_1_audio_system.html#a069f80cac8b5c3b738f82bfbada7e9b2',1,'EasyEngine::AudioSystem']]],
-  ['audiosystem_13',['AudioSystem',['../class_easy_engine_1_1_audio_system.html',1,'EasyEngine']]]
+  ['append_9',['append',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a3de4a6b15e6f4ecdf546225e81f2703d',1,'EasyEngine::Components::SpriteGroup::append()'],['../class_easy_engine_1_1_resource_system.html#a478fbe014ea125b28a7537981afa73ac',1,'EasyEngine::ResourceSystem::append(const std::string &amp;name, const std::string &amp;path, const Resource::Type &amp;type)']]],
+  ['asyncload_10',['asyncLoad',['../class_easy_engine_1_1_resource_system.html#a36f03d1cdd60d0a4319542847e248bf4',1,'EasyEngine::ResourceSystem']]],
+  ['audio_11',['Audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html',1,'EasyEngine::AudioSystem::Audio'],['../struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0aa77cc5391a8516e83a3757bf1a13d9bf',1,'EasyEngine::Resource::Audio']]],
+  ['audio_12',['audio',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a2d0d27614d757b87f4f9ee7e5490a3e7',1,'EasyEngine::AudioSystem::Audio']]],
+  ['audiospec_13',['audioSpec',['../class_easy_engine_1_1_audio_system.html#a069f80cac8b5c3b738f82bfbada7e9b2',1,'EasyEngine::AudioSystem']]],
+  ['audiosystem_14',['AudioSystem',['../class_easy_engine_1_1_audio_system.html',1,'EasyEngine']]]
 ];

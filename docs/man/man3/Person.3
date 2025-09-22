@@ -1,0 +1,56 @@
+.TH "Person" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Person
+.SH SYNOPSIS
+.br
+.PP
+.PP
+继承自 \fBSerializable\fP \&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBPerson\fP (int _age, float _height, bool _isStudent, const std::string &_name, const std::string &_address)"
+.br
+.ti -1c
+.RI "void \fBserialize\fP (std::ofstream &file) const override"
+.br
+.ti -1c
+.RI "void \fBdeserialize\fP (std::ifstream &file) override"
+.br
+.in -1c
+.SS "Public 属性"
+
+.in +1c
+.ti -1c
+.RI "int \fBage\fP"
+.br
+.ti -1c
+.RI "float \fBheight\fP"
+.br
+.ti -1c
+.RI "bool \fBisStudent\fP"
+.br
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.ti -1c
+.RI "std::string \fBaddress\fP"
+.br
+.in -1c
+.SH "成员函数说明"
+.PP 
+.SS "void Person::deserialize (std::ifstream & file)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+实现了 \fBSerializable\fP\&.
+.SS "void Person::serialize (std::ofstream & file) const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+实现了 \fBSerializable\fP\&.
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

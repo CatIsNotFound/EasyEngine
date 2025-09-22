@@ -1,0 +1,356 @@
+.TH "EasyEngine::Components::Font" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Font \- 字体  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Components\&.h>\fP
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum \fBStyle\fP { \fBRegular\fP = 0x0, \fBBold\fP = 0x1, \fBItalic\fP = 0x2, \fBUnderline\fP = 0x4, \fBStrikethrough\fP = 0x8 }"
+.br
+.RI "字体样式 "
+.ti -1c
+.RI "enum \fBDirection\fP { \fBLeftToRight\fP = 4, \fBRightToLeft\fP, \fBTopToBottom\fP, \fBBottomToTop\fP }"
+.br
+.RI "字体方向 "
+.ti -1c
+.RI "enum \fBHinting\fP { \fBNormal\fP, \fBLight\fP, \fBMono\fP, \fBNone\fP, \fBSubPixel\fP }"
+.br
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBFont\fP (const std::string &name, float font_size)"
+.br
+.RI "使用已有的字体（从资源系统中获取） "
+.ti -1c
+.RI "bool \fBisAvailable\fP () const"
+.br
+.RI "检查当前字体是否可用（或已加载）？ "
+.ti -1c
+.RI "bool \fBload\fP (const std::string &path, float font_size)"
+.br
+.RI "加载字体 "
+.ti -1c
+.RI "void \fBunload\fP ()"
+.br
+.RI "卸载字体 "
+.ti -1c
+.RI "void \fBsetFontSize\fP (float size)"
+.br
+.RI "设置字体大小 "
+.ti -1c
+.RI "float \fBfontSize\fP () const"
+.br
+.RI "获取当前字体大小 "
+.ti -1c
+.RI "void \fBsetStyle\fP (uint32_t style)"
+.br
+.RI "设置字体样式 "
+.ti -1c
+.RI "void \fBsetOutline\fP (uint32_t value=0)"
+.br
+.RI "设置字体描边 "
+.ti -1c
+.RI "uint32_t \fBoutline\fP () const"
+.br
+.RI "获取字体描边值 "
+.ti -1c
+.RI "void \fBsetOutlineColor\fP (const SColor &color)"
+.br
+.RI "设置字体描边颜色 "
+.ti -1c
+.RI "const SColor & \fBoutlineColor\fP () const"
+.br
+.RI "获取字体描边颜色 "
+.ti -1c
+.RI "void \fBsetFontDirection\fP (const \fBDirection\fP &direction)"
+.br
+.RI "设置字体方向 "
+.ti -1c
+.RI "const \fBDirection\fP & \fBfontDirection\fP () const"
+.br
+.RI "获取字体方向 "
+.ti -1c
+.RI "void \fBsetFontColor\fP (const SColor &color)"
+.br
+.RI "设置字体颜色 "
+.ti -1c
+.RI "const SColor & \fBfontColor\fP () const"
+.br
+.RI "获取字体颜色 "
+.ti -1c
+.RI "void \fBsetFontHinting\fP (uint32_t hinting)"
+.br
+.RI "设置字体微调 "
+.ti -1c
+.RI "void \fBsetFontKerning\fP (bool enabled)"
+.br
+.RI "设置是否允许字体间距 "
+.ti -1c
+.RI "bool \fBfontKerning\fP () const"
+.br
+.RI "获取当前字体下是否允许字体间距 "
+.ti -1c
+.RI "void \fBsetLineSpacing\fP (uint32_t spacing)"
+.br
+.RI "设置行间距 "
+.ti -1c
+.RI "uint32_t \fBlineSpacing\fP () const"
+.br
+.RI "获取行间距 "
+.ti -1c
+.RI "\fBSprite\fP \fBtextToSprite\fP (const std::string &text, \fBEasyEngine::Painter\fP &painter)"
+.br
+.RI "文本转换精灵 "
+.in -1c
+.SH "详细描述"
+.PP 
+字体 
+
+包含字体相关的信息 
+.SH "成员枚举类型说明"
+.PP 
+.SS "enum \fBEasyEngine::Components::Font::Direction\fP"
+
+.PP
+字体方向 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BILeftToRight \fP(4)
+从左到右 
+.TP
+\f(BIRightToLeft \fP
+从右到左 
+.TP
+\f(BITopToBottom \fP
+从上到下 
+.TP
+\f(BIBottomToTop \fP
+从下到上 
+.SS "enum \fBEasyEngine::Components::Font::Style\fP"
+
+.PP
+字体样式 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIRegular \fP(0x0)
+常规样式 
+.TP
+\f(BIBold \fP(0x1)
+粗体样式 
+.TP
+\f(BIItalic \fP(0x2)
+斜体样式 
+.TP
+\f(BIUnderline \fP(0x4)
+下划线样式 
+.TP
+\f(BIStrikethrough \fP(0x8)
+删除线样式 
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Components::Font::Font (const std::string & name, float font_size)\fR [explicit]\fP"
+
+.PP
+使用已有的字体（从资源系统中获取） 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定资源名称 
+.br
+\fIfont_size\fP 指定字体大小 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+执行后，原先资源系统中的字体将被卸载！ 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "bool EasyEngine::Components::Font::isAvailable () const"
+
+.PP
+检查当前字体是否可用（或已加载）？ 
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRtrue\fP 表示已加载，否则为 \fRfalse\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Font::load (const std::string & path, float font_size)"
+
+.PP
+加载字体 
+.PP
+\fB参数\fP
+.RS 4
+\fIpath\fP 指定路径 
+.br
+\fIfont_size\fP 字体大小（按点为单位） 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功加载字体 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Components::Font::outline () const"
+
+.PP
+获取字体描边值 
+.PP
+\fB返回\fP
+.RS 4
+返回描边值，0 表示无描边 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setFontColor (const SColor & color)"
+
+.PP
+设置字体颜色 
+.PP
+\fB参数\fP
+.RS 4
+\fIcolor\fP 指定颜色 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setFontDirection (const \fBDirection\fP & direction)"
+
+.PP
+设置字体方向 
+.PP
+\fB参数\fP
+.RS 4
+\fIdirection\fP 指定字体方向 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setFontHinting (uint32_t hinting)"
+
+.PP
+设置字体微调 
+.PP
+\fB参数\fP
+.RS 4
+\fIhinting\fP 指定的字体微调 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setFontKerning (bool enabled)"
+
+.PP
+设置是否允许字体间距 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 允许/禁用字体间距 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setFontSize (float size)"
+
+.PP
+设置字体大小 
+.PP
+\fB参数\fP
+.RS 4
+\fIsize\fP 字体大小 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setLineSpacing (uint32_t spacing)"
+
+.PP
+设置行间距 
+.PP
+\fB参数\fP
+.RS 4
+\fIspacing\fP 间距值 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setOutline (uint32_t value = \fR0\fP)"
+
+.PP
+设置字体描边 
+.PP
+\fB参数\fP
+.RS 4
+\fIvalue\fP 设定值（0 = 无描边） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setOutlineColor (const SColor & color)"
+
+.PP
+设置字体描边颜色 
+.PP
+\fB参数\fP
+.RS 4
+\fIcolor\fP 指定描边颜色 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::setStyle (uint32_t style)"
+
+.PP
+设置字体样式 
+.PP
+\fB参数\fP
+.RS 4
+\fIstyle\fP 指定样式 
+.RE
+.PP
+
+.SS "\fBEasyEngine::Sprite\fP EasyEngine::Components::Font::textToSprite (const std::string & text, \fBEasyEngine::Painter\fP & painter)"
+
+.PP
+文本转换精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fItext\fP 指定内容
+.RE
+.PP
+会根据当前的字体属性进行渲染并转换成可用的精灵 
+.PP
+\fB警告\fP
+.RS 4
+若当前字体未加载，将报错并异常退出 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Font::unload ()"
+
+.PP
+卸载字体 
+.PP
+\fB注解\fP
+.RS 4
+必须执行，否则将无法完全卸载字体！ 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

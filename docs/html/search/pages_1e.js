@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['完整示例代码_0',['完整示例代码',['../D:/Coding/EasyEngine/README.md#autotoc_md63',1,'']]]
+  ['安装依赖_0',['1.2 安装依赖',['../md_quickstart.html#autotoc_md26',1,'']]]
 ];
