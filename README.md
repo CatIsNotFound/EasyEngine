@@ -191,7 +191,7 @@ doxygen docs/Doxyfile
 
 ## 🙋‍♂️ 获取帮助
 
-- 📖 **文档**: 查看项目文档了解详细API使用
+- 📖 **文档**: 查看[项目文档](./docs/html/index.html)了解详细API使用
 - 💬 **讨论**: 通过GitHub Issues提交问题和建议
 - 🔍 **示例**: 参考 main.cpp 和 examples/ 目录中的示例代码
 

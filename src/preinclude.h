@@ -21,11 +21,11 @@
 #include <SDL3_mixer/SDL_mixer.h>
 #include <fmt/core.h>
 
-#include "libs/sdl3_gfx/SDL3_framerate.h"
-#include "libs/sdl3_gfx/SDL3_gfxPrimitives.h"
-#include "libs/sdl3_gfx/SDL3_gfxPrimitives_font.h"
-#include "libs/sdl3_gfx/SDL3_imageFilter.h"
-#include "libs/sdl3_gfx/SDL3_rotozoom.h"
+#include <SDL3_gfx/SDL3_framerate.h>
+#include <SDL3_gfx/SDL3_gfxPrimitives.h>
+#include <SDL3_gfx/SDL3_gfxPrimitives_font.h>
+#include <SDL3_gfx/SDL3_imageFilter.h>
+#include <SDL3_gfx/SDL3_rotozoom.h>
 
 #include <iostream>
 #include <fstream>

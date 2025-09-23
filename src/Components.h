@@ -99,6 +99,7 @@ namespace EasyEngine {
              * @return 返回一个以毫秒单位的播放时长
              */
             int64_t position() const;
+
         protected:
             void reload();
         private:

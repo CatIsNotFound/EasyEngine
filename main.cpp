@@ -13,13 +13,16 @@ int main() {
     FontSystem::global()->loadFont("pixel", "pixel", 128.f);
     Cursor::global()->setVisible(false);
     ResourceSystem::global()->append("icon", "my_cursor.png", Resource::Image);
-    ResourceSystem::global()->append("clicked", "clicked_cursor.png", Resource::Image);
+    ResourceSystem::global()->append("clicked", "my_cursor.png", Resource::Image);
     ResourceSystem::global()->append("btn", "Button.png", Resource::Image);
     ResourceSystem::global()->append("bgm", "Peace.wav", Resource::Audio);
+
     BGM bgm("bgm");
+    bgm.setResource("bgm");
     bgm.play();
     Sprite icon("icon", "icon", engine.painter());
     Sprite clicked("icon_clicked", "clicked", engine.painter());
+    clicked.properties()->color_alpha = StdColor::LightBlue;
     Sprite clip_button("icon", "btn", engine.painter());
     clip_button.setResource("btn");
     Control button("button", clip_button);
