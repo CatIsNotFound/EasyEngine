@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['texttosprite_0',['textToSprite',['../class_easy_engine_1_1_components_1_1_font.html#a131f649d2edbdeca64a313ad6e313a88',1,'EasyEngine::Components::Font']]],
+  ['texttosprite_0',['textToSprite',['../class_easy_engine_1_1_components_1_1_font.html#a0b6eead019d755813b677cce4d20972b',1,'EasyEngine::Components::Font']]],
   ['thickness_1',['thickness',['../class_easy_engine_1_1_painter.html#a0a2ccfbcc029ea582279f3220c153105',1,'EasyEngine::Painter']]],
   ['timer_2',['Timer',['../class_easy_engine_1_1_components_1_1_timer.html#aad1678dce72369236e66807546b14714',1,'EasyEngine::Components::Timer::Timer()'],['../class_easy_engine_1_1_components_1_1_timer.html#a3349518f8fc0be2a8f701df5ec66b1f9',1,'EasyEngine::Components::Timer::Timer(uint64_t delay, const std::function&lt; void()&gt; &amp;function)']]],
   ['timer_3',['timer',['../class_easy_engine_1_1_components_1_1_animation.html#a186bd71648842a8ab67b427ed0929c18',1,'EasyEngine::Components::Animation']]],

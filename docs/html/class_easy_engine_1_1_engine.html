@@ -158,8 +158,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:afa2ab8a04166fbc0fed19a91e6ff3b75"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取所有可用的窗口 ID  <br /></td></tr>
 <tr class="memitem:a39b495dcb4ce33bb5fab76824b853e77" id="r_a39b495dcb4ce33bb5fab76824b853e77"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39b495dcb4ce33bb5fab76824b853e77">windowCount</a> () const</td></tr>
 <tr class="memdesc:a39b495dcb4ce33bb5fab76824b853e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取窗口总个数  <br /></td></tr>
-<tr class="memitem:a2cbb7deffc1740da3c471a099f6ab779" id="r_a2cbb7deffc1740da3c471a099f6ab779"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cbb7deffc1740da3c471a099f6ab779">installEventHandler</a> (std::function&lt; bool(SEvent)&gt; event_handler)</td></tr>
-<tr class="memdesc:a2cbb7deffc1740da3c471a099f6ab779"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装自定义事件处理器  <br /></td></tr>
+<tr class="memitem:a5bf08615d3b676a76ac90d23bfe36d49" id="r_a5bf08615d3b676a76ac90d23bfe36d49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bf08615d3b676a76ac90d23bfe36d49">installEventHandler</a> (std::function&lt; bool(SEvent &amp;)&gt; event_handler)</td></tr>
+<tr class="memdesc:a5bf08615d3b676a76ac90d23bfe36d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装自定义事件处理器  <br /></td></tr>
 <tr class="memitem:acb4e2107e5c31d729dbae944e503bdb0" id="r_acb4e2107e5c31d729dbae944e503bdb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4e2107e5c31d729dbae944e503bdb0">painter</a> (SWindowID window_id=_main_window_id)</td></tr>
 <tr class="memdesc:acb4e2107e5c31d729dbae944e503bdb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定窗口的渲染器  <br /></td></tr>
 <tr class="memitem:a5ccc24ade1d3b3d3755f3cadba98fbf1" id="r_a5ccc24ade1d3b3d3755f3cadba98fbf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ccc24ade1d3b3d3755f3cadba98fbf1">setFPS</a> (uint32_t <a class="el" href="#a09ee3e3164410c88eed23aa142cc7f5b">fps</a>)</td></tr>
@@ -409,8 +409,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 
 </div>
 </div>
-<a id="a2cbb7deffc1740da3c471a099f6ab779" name="a2cbb7deffc1740da3c471a099f6ab779"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cbb7deffc1740da3c471a099f6ab779">&#9670;&#160;</a></span>installEventHandler()</h2>
+<a id="a5bf08615d3b676a76ac90d23bfe36d49" name="a5bf08615d3b676a76ac90d23bfe36d49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bf08615d3b676a76ac90d23bfe36d49">&#9670;&#160;</a></span>installEventHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +418,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
         <tr>
           <td class="memname">void EasyEngine::Engine::installEventHandler </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; bool(SEvent)&gt;</td>          <td class="paramname"><span class="paramname"><em>event_handler</em></span></td><td>)</td>
+          <td class="paramtype">std::function&lt; bool(SEvent &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>event_handler</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

@@ -570,8 +570,9 @@ namespace EasyEngine {
         void installPaintEvent(std::function<void(Painter&)> function);
         /**
          * @brief 渲染/刷新画面
+         * @warning 请勿手动使用此函数，会出现异常退出！
          */
-        void update();
+        void _render();
         /**
          * @brief 填充背景颜色
          * @param color 指定颜色
@@ -632,19 +633,20 @@ namespace EasyEngine {
          */
         void clear();
         /**
-         * @brief 设置整个视图
+         * @brief 设置自定义视图
          * @param geometry 用于调整视图的位置、大小
          * @param size     用于调整视图的缩放比例（默认使用 1:1）
          *
-         * 执行后，整个位置及大小都将发生改变！适合用于写基本控件视图
+         * 执行后，整个位置及大小都将发生改变！
+         * @note 当指定的宽度或高度小于等于 0，则取消使用自定义视图
          */
         void setViewport(const Geometry &geometry, const Size &size = {1.0f, 1.0f});
         /**
          * @brief 裁剪可见视图
          * @param geometry 用于调整裁剪可见视图的位置、大小
-         * @param size     用于调整可见视图的缩放比例（默认 1:1）
+         * @note 当指定的宽度或高度小于等于 0，则取消使用裁剪！
          */
-        void setClipView(const Geometry &geometry, const Size &size = {1.0f, 1.0f});
+        void setClipView(const Geometry &geometry);
 
     private:
         /**
@@ -729,7 +731,7 @@ namespace EasyEngine {
             bool is_clipped_mode;
             Size scaled;
             explicit ViewportCMD() : geometry(0, 0, 0, 0), is_clipped_mode(false), scaled(1.0f, 1.0f) {}
-            ViewportCMD(const Geometry& geometry, bool is_clipped_mode, const Size& scaled)
+            ViewportCMD(const Geometry& geometry, bool is_clipped_mode, const Size& scaled = {1.f, 1.f})
                 : geometry(geometry.x, geometry.y, geometry.width, geometry.height),
                 is_clipped_mode(is_clipped_mode), scaled(scaled.width, scaled.height) {}
             void exec(SRenderer *renderer, uint32_t) override;

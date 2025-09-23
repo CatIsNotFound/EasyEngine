@@ -29,7 +29,7 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "创建控件 "
 .ti -1c
-.RI "\fBControl\fP (const std::string &\fBname\fP, const \fBSprite\fP &&sprite)"
+.RI "\fBControl\fP (const std::string &\fBname\fP, const \fBSprite\fP &sprite)"
 .br
 .RI "指定一个精灵并创建控件 "
 .ti -1c
@@ -153,7 +153,7 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "获取热区 "
 .ti -1c
-.RI "void \fBupdate\fP (\fBPainter\fP *painter)"
+.RI "void \fBupdate\fP ()"
 .br
 .RI "更新控件状态（无需手动调用） "
 .ti -1c
@@ -273,7 +273,7 @@ EasyEngine::Components::Control \- 控件
 .RE
 .PP
 
-.SS "EasyEngine::Components::Control::Control (const std::string & name, const \fBSprite\fP && sprite)"
+.SS "EasyEngine::Components::Control::Control (const std::string & name, const \fBSprite\fP & sprite)"
 
 .PP
 指定一个精灵并创建控件 

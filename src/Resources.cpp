@@ -442,10 +442,10 @@ const std::variant<std::monostate, std::string, SSurface *, char *, void *, std:
 ResourceSystem::metaData(const std::string &name) const {
     if (!isContain(name)) {
         SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
-        throw std::runtime_error(fmt::format("[ERROR] Resource '{}' is not found!", name));
+        throw std::runtime_error(fmt::format("[FATAL] Resource '{}' is not found!", name));
     } else if (!_resource.at(name).is_loaded) {
         SDL_Log("[ERROR] Resource '%s' is not loaded!", name.c_str());
-        throw std::runtime_error(fmt::format("[ERROR] Resource '{}' is not found!", name));
+        throw std::runtime_error(fmt::format("[FATAL] Resource '{}' is not found!", name));
     }
     return _resource.at(name).meta_data;
 }

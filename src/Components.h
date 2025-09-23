@@ -552,9 +552,17 @@ namespace EasyEngine {
          */
         class SpriteGroup {
         public:
-            explicit SpriteGroup() = default;
-            SpriteGroup(const SpriteGroup& group) = default;
-            SpriteGroup(const SpriteGroup&& group);
+            explicit SpriteGroup(const std::string &name);
+            SpriteGroup(const SpriteGroup& group);
+            /**
+             * @brief 设置新的别名
+             * @param name 新别名
+             */
+            void setName(const std::string &name);
+            /**
+             * @brief 获取当前精灵组合别名
+             */
+            const std::string& name() const;
             /**
              * @brief 重新调整整体精灵组合大小
              * @param width  新的宽度
@@ -680,6 +688,19 @@ namespace EasyEngine {
              */
             void draw(const Vector2 &pos);
             /**
+             * @brief 设置绘制所在位置
+             * @param pos 指定位置
+             */
+            void setPosition(const Vector2& pos);
+            /**
+             * @brief 获取当前精灵组合所绘制的位置
+             */
+            Vector2 position() const;
+            /**
+             * @brief 绘制精灵组合
+             */
+            void draw();
+            /**
              * @brief 获取当前精灵组合的精灵总个数
              *
              */
@@ -687,6 +708,8 @@ namespace EasyEngine {
 
         private:
             std::vector<std::shared_ptr<Sprite>> _sprites;
+            std::string _name;
+            Vector2 _pos;
         };
 
         /**
@@ -712,6 +735,24 @@ namespace EasyEngine {
             Animation(const std::string& name, const std::vector<Sprite *> &sprite_list,
                       uint64_t duration_per_frame = 50);
             ~Animation();
+            /**
+             * @brief 设置新的别名
+             * @param name 新别名
+             */
+            void setName(const std::string& name);
+            /**
+             * @brief 获取当前动画别名
+             */
+            const std::string& name() const;
+            /**
+             * @brief 设置动画绘制时的位置
+             * @param pos 指定位置
+             */
+            void setPosition(const Vector2& pos);
+            /**
+             * @brief 获取当前动画所绘制的位置
+             */
+            const Vector2& position() const;
             /**
              * @brief 将精灵图像加入到帧
              * @param sprite 指定精灵
@@ -765,12 +806,19 @@ namespace EasyEngine {
             Sprite* sprite(const size_t frame = 0) const;
             /**
              * @brief 绘制动画
-             * @param position 指定绘制的位置
              * @note 必须执行，否则将无法在窗口上显示动画
              * @see play
              * @see stop
              */
-            void draw(const Vector2& position);
+            void draw();
+            /**
+             * @brief 在指定位置下绘制动画
+             * @param pos 指定位置
+             * @note 必须执行，否则将无法在窗口上显示动画
+             * @see play
+             * @see stop
+             */
+            void draw(const Vector2& pos);
             /**
              * @brief 播放动画
              * @param loop          是否循环播放动画（默认循环播放）
@@ -837,6 +885,7 @@ namespace EasyEngine {
             size_t _cur_frame{0};
             bool _is_loop{false};
             size_t _played{0};
+            Vector2 _pos{0, 0};
             Timer* _frame_changer{nullptr};
         };
 
@@ -1044,7 +1093,7 @@ namespace EasyEngine {
                 } else if constexpr (std::is_same_v<Shape, Graphics::Point>) {
                     if (_con.mode == 3) return &_con.shape.point;
                 }
-                throw std::runtime_error("[ERROR] The specified shape is not match the current shape!");
+                throw std::runtime_error("[FATAL] The specified shape is not match the current shape!");
             }
         private:
             Container _con;
@@ -1150,7 +1199,7 @@ namespace EasyEngine {
              * @see self
              */
             const std::type_info & typeInfo() const;
-            void update(Painter* painter) const;
+            void update() const;
 
         private:
             Vector2 _pos, _center_pos;
@@ -1183,7 +1232,7 @@ namespace EasyEngine {
                         std::is_same_v<Type, Animation> ||
                         std::is_same_v<Type, GeometryF>, "[ERROR] Can't support the specified type!");
             }
-            throw std::runtime_error("[ERROR] The specified type is not match the current entity!\n");
+            throw std::runtime_error("[FATAL] The specified type is not match the current entity!\n");
         }
 
         /**
@@ -1353,7 +1402,7 @@ namespace EasyEngine {
                                   std::is_same_v<Type, GeometryF>,
                                   "[ERROR] Unsupported type for Control::status()");
                 }
-                throw std::runtime_error("[ERROR] The specified type is not match the current type!");
+                throw std::runtime_error("[FATAL] The specified type is not match the current type!");
             }
             /**
              * @brief 获取当前指定状态下的类型
@@ -1679,9 +1728,10 @@ namespace EasyEngine {
              * @param text 指定内容
              *
              * 会根据当前的字体属性进行渲染并转换成可用的精灵
-             * @warning 若当前字体未加载，将报错并异常退出
+             * @warning 若当前字体未加载，将报错并异常退出！
+             * @return 返回转换后的精灵指针（便于后续处理）
              */
-            Sprite textToSprite(const std::string &text, EasyEngine::Painter &painter);
+            Sprite * textToSprite(const std::string &text, EasyEngine::Painter &painter);
 
         private:
             /// 字体指针

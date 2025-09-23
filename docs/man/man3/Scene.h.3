@@ -14,11 +14,11 @@ D:/Coding/EasyEngine/src/Scene.h \- 场景管理
 
 .in +1c
 .ti -1c
-.RI "class \fBEasyEngine::Layer\fP"
+.RI "class \fBEasyEngine::Components::Layer\fP"
 .br
 .RI "图层 "
 .ti -1c
-.RI "class \fBEasyEngine::Scene\fP"
+.RI "class \fBEasyEngine::Components::Scene\fP"
 .br
 .RI "场景 "
 .ti -1c
@@ -33,6 +33,14 @@ D:/Coding/EasyEngine/src/Scene.h \- 场景管理
 .RI "namespace \fBEasyEngine\fP"
 .br
 .RI "引擎 "
+.in -1c
+.SS "类型定义"
+
+.in +1c
+.ti -1c
+.RI "using \fBEasyEngine::Components::Elements\fP"
+.br
+.RI "使用的元素集合 "
 .in -1c
 .SH "详细描述"
 .PP 
@@ -52,6 +60,18 @@ CatIsNotFound
 .RE
 .PP
 
+.SH "类型定义说明"
+.PP 
+.SS "using \fBEasyEngine::Components::Elements\fP"
+\fB初始值:\fP
+.nf
+ std::variant<std::shared_ptr<Sprite>, std::shared_ptr<SpriteGroup>,
+                std::shared_ptr<Animation>, std::shared_ptr<Entity>, std::shared_ptr<Control>>
+.PP
+.fi
+
+.PP
+使用的元素集合 
 .SH "作者"
 .PP 
 由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

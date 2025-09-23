@@ -1,7 +1,7 @@
 var searchData=
 [
   ['lastindexat_0',['lastIndexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a5da2a1284697323caab1220e70daf1f1',1,'EasyEngine::Components::SpriteGroup']]],
-  ['layer_1',['Layer',['../class_easy_engine_1_1_layer.html',1,'EasyEngine']]],
+  ['layer_1',['Layer',['../class_easy_engine_1_1_components_1_1_layer.html',1,'EasyEngine::Components::Layer'],['../class_easy_engine_1_1_components_1_1_layer.html#a2763db46281ba8ca86d0386c4eb9e14c',1,'EasyEngine::Components::Layer::Layer()']]],
   ['lefttoright_2',['LeftToRight',['../class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcada1d4c16af03a3998077b790aca919f64f',1,'EasyEngine::Components::Font']]],
   ['line_3',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]],
   ['linespacing_4',['lineSpacing',['../class_easy_engine_1_1_components_1_1_font.html#a699e3381185e1de78a3cce448fdd8e86',1,'EasyEngine::Components::Font']]],

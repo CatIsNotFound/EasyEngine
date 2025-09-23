@@ -1,0 +1,755 @@
+.TH "EasyEngine::Components::Layer" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Layer \- 图层  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Scene\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBLayer\fP (const std::string &\fBname\fP)"
+.br
+.RI "创建图层 "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
+.br
+.RI "设置图层别名 "
+.ti -1c
+.RI "const std::string & \fBname\fP () const"
+.br
+.RI "获取当前图层别名 "
+.ti -1c
+.RI "bool \fBappend\fP (uint32_t z_order, \fBSprite\fP *\fBsprite\fP)"
+.br
+.RI "添加指定精灵到图层 "
+.ti -1c
+.RI "bool \fBappend\fP (uint32_t z_order, \fBSpriteGroup\fP *group)"
+.br
+.RI "添加指定精灵组合到图层 "
+.ti -1c
+.RI "bool \fBappend\fP (uint32_t z_order, \fBAnimation\fP *\fBanimation\fP)"
+.br
+.RI "添加指定精灵动画到图层 "
+.ti -1c
+.RI "bool \fBappend\fP (uint32_t z_order, \fBEntity\fP *\fBentity\fP)"
+.br
+.RI "添加指定游戏实体到图层 "
+.ti -1c
+.RI "bool \fBappend\fP (uint32_t z_order, \fBControl\fP *\fBcontrol\fP)"
+.br
+.RI "添加指定控件到图层 "
+.ti -1c
+.RI "void \fBremove\fP (uint32_t z_order)"
+.br
+.RI "移除图层 "
+.ti -1c
+.RI "\fBSprite\fP * \fBsprite\fP (uint32_t z_order) const"
+.br
+.RI "获取指定图层下的精灵 "
+.ti -1c
+.RI "\fBSpriteGroup\fP * \fBspriteGroup\fP (uint32_t z_order) const"
+.br
+.RI "获取指定图层下的精灵组合 "
+.ti -1c
+.RI "\fBAnimation\fP * \fBanimation\fP (uint32_t z_order) const"
+.br
+.RI "获取指定图层下的精灵动画 "
+.ti -1c
+.RI "\fBEntity\fP * \fBentity\fP (uint32_t z_order) const"
+.br
+.RI "获取指定图层下的游戏实体 "
+.ti -1c
+.RI "\fBControl\fP * \fBcontrol\fP (uint32_t z_order) const"
+.br
+.RI "获取指定图层下的控件 "
+.ti -1c
+.RI "uint32_t \fBindexOf\fP (const std::string &\fBname\fP, uint32_t start_of=0, uint32_t end_of=UINT32_MAX) const"
+.br
+.RI "指定别名并获取对应的图层渲染顺序 "
+.ti -1c
+.RI "void \fBswap\fP (uint32_t z_order1, uint32_t z_order2)"
+.br
+.RI "指定两个元素并交换图层渲染顺序 "
+.ti -1c
+.RI "bool \fBsetZOrder\fP (uint32_t old_z_order, uint32_t new_z_order)"
+.br
+.RI "将当前元素更换新的图层渲染顺序 "
+.ti -1c
+.RI "void \fBsetVisible\fP (bool \fBvisible\fP)"
+.br
+.RI "设置当前图层是否可见 "
+.ti -1c
+.RI "bool \fBvisible\fP () const"
+.br
+.RI "获取当前图层是否可见 "
+.ti -1c
+.RI "void \fBsetViewport\fP (const \fBGeometry\fP &geometry)"
+.br
+.RI "设置视图 "
+.ti -1c
+.RI "void \fBsetViewport\fP (int x, int y, int w, int h)"
+.br
+.RI "设置视图 "
+.ti -1c
+.RI "void \fBsetViewportScaled\fP (float width, float height)"
+.br
+.RI "设置视图缩放 "
+.ti -1c
+.RI "void \fBsetViewportScaled\fP (const \fBSize\fP &scaled)"
+.br
+.RI "设置视图缩放比例 "
+.ti -1c
+.RI "void \fBsetClipViewport\fP (const \fBGeometry\fP &geometry)"
+.br
+.RI "设置裁剪视图 "
+.ti -1c
+.RI "void \fBsetClipViewport\fP (int x, int y, int w, int h)"
+.br
+.RI "设置裁剪视图 "
+.ti -1c
+.RI "void \fBsetViewportPainter\fP (\fBPainter\fP *painter)"
+.br
+.RI "设置绘制视图的绘制器（必需） "
+.ti -1c
+.RI "void \fBdraw\fP (bool viewport_mode=false, bool clip_mode=false)"
+.br
+.RI "绘制图层 "
+.ti -1c
+.RI "const \fBGeometry\fP & \fBviewport\fP () const"
+.br
+.RI "获取当前视图的位置和大小 "
+.ti -1c
+.RI "const \fBSize\fP & \fBviewportScaled\fP () const"
+.br
+.RI "获取当前视图的缩放宽高比例 "
+.ti -1c
+.RI "const \fBGeometry\fP & \fBclipViewport\fP () const"
+.br
+.RI "获取当前裁剪视图的位置和大小 "
+.ti -1c
+.RI "const \fBPainter\fP * \fBviewportPainter\fP () const"
+.br
+.RI "获取当前绘制视图的绘图器 "
+.in -1c
+.SH "详细描述"
+.PP 
+图层 
+
+定义单个图层，在该图层下绘制元素 
+.SH "构造及析构函数说明"
+.PP 
+.SS "Components::Layer::Layer (const std::string & name)\fR [explicit]\fP"
+
+.PP
+创建图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 图层别名 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "\fBComponents::Animation\fP * Components::Layer::animation (uint32_t z_order) const"
+
+.PP
+获取指定图层下的精灵动画 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应图层下的指针 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定图层下的不是精灵动画，则报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBAnimation\fP * animation)"
+
+.PP
+添加指定精灵动画到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定精灵动画 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBAnimation\fP 
+
+.PP
+\fBanimation\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBControl\fP * control)"
+
+.PP
+添加指定控件到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定控件 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBControl\fP 
+
+.PP
+\fBcontrol\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBEntity\fP * entity)"
+
+.PP
+添加指定游戏实体到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定游戏实体 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBEntity\fP 
+
+.PP
+\fBentity\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBSprite\fP * sprite)"
+
+.PP
+添加指定精灵到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定精灵 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBSprite\fP 
+
+.PP
+\fBsprite\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBSpriteGroup\fP * group)"
+
+.PP
+添加指定精灵组合到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定精灵组合 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBSpriteGroup\fP 
+
+.PP
+\fBspriteGroup\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "\fBComponents::Control\fP * Components::Layer::control (uint32_t z_order) const"
+
+.PP
+获取指定图层下的控件 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应图层下的指针 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定图层下的不是控件，则报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "void Components::Layer::draw (bool viewport_mode = \fRfalse\fP, bool clip_mode = \fRfalse\fP)"
+
+.PP
+绘制图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIviewport_mode\fP 是否使用视图（需调用 \fR\fBsetViewport()\fP\fP） 
+.br
+\fIclip_mode\fP 是否使用裁剪视图（需调用 \fR\fBsetClipViewport()\fP\fP） 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+执行此函数前，若 \fRviewport_mode\fP 或 \fRclip_mode\fP 为 \fRtrue\fP， 
+
+.PP
+还需调用 \fR\fBsetViewportPainter()\fP\fP 才能生效！
+.RE
+.PP
+执行后，这将会按照图层的渲染顺序依次绘制！\fRz_order\fP 越大，渲染越靠后，显示最靠前！ 
+.SS "\fBComponents::Entity\fP * Components::Layer::entity (uint32_t z_order) const"
+
+.PP
+获取指定图层下的游戏实体 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应图层下的指针 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定图层下的不是游戏实体，则报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "uint32_t Components::Layer::indexOf (const std::string & name, uint32_t start_of = \fR0\fP, uint32_t end_of = \fRUINT32_MAX\fP) const"
+
+.PP
+指定别名并获取对应的图层渲染顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 指定别名（可能是精灵、精灵组合、精灵动画等） 
+.br
+\fIstart_of\fP 指定从第几个图层渲染顺序开始 
+.br
+\fIend_of\fP 指定从第几个图层渲染顺序结束 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+获取对应的渲染顺序 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsprite\fP 
+
+.PP
+\fBspriteGroup\fP 
+
+.PP
+\fBanimation\fP 
+
+.PP
+\fBentity\fP 
+
+.PP
+\fBcontrol\fP 
+
+.PP
+\fBremove\fP 
+
+.PP
+\fBswap\fP 
+
+.PP
+\fBsetZOrder\fP 
+.RE
+.PP
+
+.SS "void Components::Layer::remove (uint32_t z_order)"
+
+.PP
+移除图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+.RE
+.PP
+
+.SS "void Components::Layer::setClipViewport (const \fBGeometry\fP & geometry)"
+
+.PP
+设置裁剪视图 
+.PP
+\fB参数\fP
+.RS 4
+\fIgeometry\fP 指定位置、大小
+.RE
+.PP
+\fB注解\fP
+.RS 4
+仅在原有的基础上进行裁剪，这不会发生任何的改变！ 
+.RE
+.PP
+
+.SS "void Components::Layer::setClipViewport (int x, int y, int w, int h)"
+
+.PP
+设置裁剪视图 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定位置横坐标 
+.br
+\fIy\fP 指定位置纵坐标 
+.br
+\fIw\fP 指定宽度 
+.br
+\fIh\fP 指定高度
+.RE
+.PP
+\fB注解\fP
+.RS 4
+仅在原有的基础上进行裁剪，这不会发生任何的改变！ 
+.RE
+.PP
+
+.SS "void Components::Layer::setName (const std::string & name)"
+
+.PP
+设置图层别名 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 新的图层名 
+.RE
+.PP
+
+.SS "void Components::Layer::setViewport (const \fBGeometry\fP & geometry)"
+
+.PP
+设置视图 
+.PP
+\fB参数\fP
+.RS 4
+\fIgeometry\fP 指定其位置、大小
+.RE
+.PP
+决定了图层绘制的区域 
+.PP
+\fB注解\fP
+.RS 4
+视图影响了所有元素所在的位置 
+.RE
+.PP
+
+.SS "void Components::Layer::setViewport (int x, int y, int w, int h)"
+
+.PP
+设置视图 
+.PP
+\fB参数\fP
+.RS 4
+\fIx\fP 指定位置横坐标 
+.br
+\fIy\fP 指定位置纵坐标 
+.br
+\fIw\fP 指定宽度 
+.br
+\fIh\fP 指定高度
+.RE
+.PP
+决定了图层绘制的区域 
+.PP
+\fB注解\fP
+.RS 4
+视图影响了所有元素所在的位置 
+.RE
+.PP
+
+.SS "void Components::Layer::setViewportPainter (\fBPainter\fP * painter)"
+
+.PP
+设置绘制视图的绘制器（必需） 
+.PP
+\fB参数\fP
+.RS 4
+\fIpainter\fP 指定绘制器
+.RE
+.PP
+\fB注解\fP
+.RS 4
+必需设置，否则即便设置视图大小位置，也是无用！ 
+.RE
+.PP
+
+.SS "void Components::Layer::setViewportScaled (const \fBSize\fP & scaled)"
+
+.PP
+设置视图缩放比例 
+.PP
+\fB参数\fP
+.RS 4
+\fIscaled\fP 尺寸比例（按照 1:1 比例调整） 
+.RE
+.PP
+
+.SS "void Components::Layer::setViewportScaled (float width, float height)"
+
+.PP
+设置视图缩放 
+.PP
+\fB参数\fP
+.RS 4
+\fIwidth\fP 宽度比例（注：此处并非调整视图的宽度） 
+.br
+\fIheight\fP 高度比例（注：此处并非调整视图的高度） 
+.RE
+.PP
+
+.SS "void Components::Layer::setVisible (bool visible)"
+
+.PP
+设置当前图层是否可见 
+.PP
+\fB参数\fP
+.RS 4
+\fIvisible\fP 指定是否可见 
+.RE
+.PP
+
+.SS "bool Components::Layer::setZOrder (uint32_t old_z_order, uint32_t new_z_order)"
+
+.PP
+将当前元素更换新的图层渲染顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIold_z_order\fP 指定原先的图层渲染顺序 
+.br
+\fInew_z_order\fP 新的图层渲染顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功更换图层渲染顺序 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBswap\fP 
+.RE
+.PP
+
+.SS "\fBComponents::Sprite\fP * Components::Layer::sprite (uint32_t z_order) const"
+
+.PP
+获取指定图层下的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应图层下的指针 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定图层下的不是精灵，则报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "\fBComponents::SpriteGroup\fP * Components::Layer::spriteGroup (uint32_t z_order) const"
+
+.PP
+获取指定图层下的精灵组合 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层绘制顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应图层下的指针 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若不确定 z_order， 可使用 \fR\fBindexOf()\fP\fP 获取。 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定图层下的不是精灵组合，则报错并异常退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "void Components::Layer::swap (uint32_t z_order1, uint32_t z_order2)"
+
+.PP
+指定两个元素并交换图层渲染顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order1\fP 指定第一个 
+.br
+\fIz_order2\fP 指定第二个 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBindexOf\fP 
+
+.PP
+\fBsetZOrder\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

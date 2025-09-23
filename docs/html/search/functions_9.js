@@ -1,12 +1,12 @@
 var searchData=
 [
   ['indexat_0',['indexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#aba8cda570b757f3ed24294c5bbbf69b3',1,'EasyEngine::Components::SpriteGroup']]],
-  ['indexof_1',['indexOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a1a08c6b14cbee91a7cf4023275d08355',1,'EasyEngine::Components::SpriteGroup']]],
+  ['indexof_1',['indexOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a1a08c6b14cbee91a7cf4023275d08355',1,'EasyEngine::Components::SpriteGroup::indexOf()'],['../class_easy_engine_1_1_components_1_1_layer.html#a928a24f43bfe2054a63a74957185eb70',1,'EasyEngine::Components::Layer::indexOf()']]],
   ['init_2',['init',['../class_easy_engine_1_1_audio_system.html#a057ad850a7fb93d929c0ffbe394224c1',1,'EasyEngine::AudioSystem::init()'],['../class_easy_engine_1_1_font_system.html#a2a72005e997d79a81bb9ac6e1c9e34e9',1,'EasyEngine::FontSystem::init()']]],
   ['insert_3',['insert',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a6190140c50d5bc9a67ff906c79272a43',1,'EasyEngine::Components::SpriteGroup']]],
   ['insertframe_4',['insertFrame',['../class_easy_engine_1_1_components_1_1_animation.html#a19e145ee0d2dc73f77bacb4b0a5e6c81',1,'EasyEngine::Components::Animation']]],
   ['installcleanupevent_5',['installCleanUpEvent',['../class_easy_engine_1_1_engine.html#aeb5e1cab414d8fbac80096960ed481ee',1,'EasyEngine::Engine']]],
-  ['installeventhandler_6',['installEventHandler',['../class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779',1,'EasyEngine::Engine']]],
+  ['installeventhandler_6',['installEventHandler',['../class_easy_engine_1_1_engine.html#a5bf08615d3b676a76ac90d23bfe36d49',1,'EasyEngine::Engine']]],
   ['installpaintevent_7',['installPaintEvent',['../class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4',1,'EasyEngine::Painter']]],
   ['isavailable_8',['isAvailable',['../class_easy_engine_1_1_components_1_1_font.html#aa5402d40364e470b8ad6685a20ef6191',1,'EasyEngine::Components::Font']]],
   ['iscontain_9',['isContain',['../class_easy_engine_1_1_resource_system.html#afee52d1df50e9d00e01e96da9a18c74c',1,'EasyEngine::ResourceSystem']]],

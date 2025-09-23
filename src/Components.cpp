@@ -285,8 +285,9 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, SSurface *surfac
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::string &resource_name, Painter *painter)
     : _name(name), _painter(painter) {
+    _path = ResourceSystem::global()->resourcePath(resource_name);
     if (ResourceSystem::global()->resourceType(resource_name) == Resource::Image) {
-        _surface = IMG_Load(ResourceSystem::global()->resourcePath(resource_name).c_str());
+        _surface = IMG_Load(_path.c_str());
     } else {
         SDL_Log("[ERROR] Resource '%s' is not the image file!", resource_name.c_str());
         _surface = SDL_CreateSurface(0, 0, SDL_PIXELFORMAT_RGBA64);
@@ -297,7 +298,7 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::strin
 }
 
 EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit)
-    : _name(name), _painter(spirit._painter), _size(spirit._size) {
+    : _name(name), _painter(spirit._painter), _size(spirit._size), _path(spirit._path) {
     _surface = SDL_DuplicateSurface(spirit._surface);
     _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
@@ -347,6 +348,7 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::strin
 EasyEngine::Components::Sprite::~Sprite() {
     if (_texture) SDL_DestroyTexture(_texture);
     if (_surface) SDL_DestroySurface(_surface);
+    // SDL_Log("Unload Sprite: %s", _name.c_str());
 }
 
 void EasyEngine::Components::Sprite::setName(const std::string &new_name) {
@@ -460,8 +462,10 @@ void EasyEngine::Components::Sprite::draw(EasyEngine::Painter *painter) const {
         _painter->drawSprite(*this, _properties.get());
 }
 
+EasyEngine::Components::SpriteGroup::SpriteGroup(const std::string &name) : _name(name) {}
 
-EasyEngine::Components::SpriteGroup::SpriteGroup(const EasyEngine::Components::SpriteGroup &&group) {
+EasyEngine::Components::SpriteGroup::SpriteGroup(const EasyEngine::Components::SpriteGroup &group)
+    :_name(group._name) {
     uint32_t _idx = 0;
     for (auto& sprite : group._sprites) {
         _sprites.push_back(std::make_shared<Sprite>(sprite->name(), *sprite.get()));
@@ -478,6 +482,10 @@ EasyEngine::Components::SpriteGroup::SpriteGroup(const EasyEngine::Components::S
         dst_properties->clip_size = src_properties->clip_size;
     }
 }
+
+void EasyEngine::Components::SpriteGroup::setName(const std::string &name) { _name = name; }
+
+const std::string& EasyEngine::Components::SpriteGroup::name() const { return _name; }
 
 void EasyEngine::Components::SpriteGroup::resize(float width, float height) {
     if (width <= 0 || height <= 0) return;
@@ -585,6 +593,20 @@ void EasyEngine::Components::SpriteGroup::draw(const Vector2 &pos) {
     }
 }
 
+void EasyEngine::Components::SpriteGroup::setPosition(const EasyEngine::Vector2 &pos) {
+    _pos.reset(pos.x, pos.y);
+}
+
+EasyEngine::Vector2 EasyEngine::Components::SpriteGroup::position() const {
+    return _pos;
+}
+
+void EasyEngine::Components::SpriteGroup::draw() {
+    for (auto& sprite : _sprites) {
+        sprite->draw(_pos);
+    }
+}
+
 uint32_t EasyEngine::Components::SpriteGroup::count() const {
     return _sprites.size();
 }
@@ -604,6 +626,14 @@ EasyEngine::Components::Animation::~Animation() {
         EventSystem::global()->removeTimer(_frame_changer);
     }
 }
+
+void EasyEngine::Components::Animation::setName(const std::string &name) { _name = name; }
+
+const std::string& EasyEngine::Components::Animation::name() const { return _name; }
+
+void EasyEngine::Components::Animation::setPosition(const EasyEngine::Vector2 &pos) { _pos.reset(pos.x, pos.y); }
+
+const EasyEngine::Vector2& EasyEngine::Components::Animation::position() const { return _pos; }
 
 void EasyEngine::Components::Animation::addFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration) {
     _animations.push_back({.sprite = sprite, .duration = duration});
@@ -640,11 +670,15 @@ EasyEngine::Components::Sprite *EasyEngine::Components::Animation::sprite(const 
     return _animations.at(frame).sprite;
 }
 
-void EasyEngine::Components::Animation::draw(const EasyEngine::Vector2 &position) {
+void EasyEngine::Components::Animation::draw() {
+    draw(_pos);
+}
+
+void EasyEngine::Components::Animation::draw(const Vector2& pos){
     try {
-        _animations.at(_cur_frame).sprite->draw(position);
+        _animations.at(_cur_frame).sprite->draw(pos);
     } catch (const std::exception& e) {
-        SDL_Log("Error for frame %llu", _cur_frame);
+        SDL_Log("[ERROR] Failed to drawn for frame %llu in animation '%s'!", _cur_frame, _name.c_str());
     }
 }
 
@@ -1309,7 +1343,7 @@ const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
     }
 }
 
-void EasyEngine::Components::Entity::update(Painter *painter) const {
+void EasyEngine::Components::Entity::update() const {
     if (_container->type_id == 1) {
         _container->self.sprite->draw(_pos);
     } else if (_container->type_id == 2) {
@@ -1403,12 +1437,12 @@ const SColor &EasyEngine::Components::Font::outlineColor() const {
     return _outline_color;
 }
 
-void EasyEngine::Components::Font::setFontDirection(const EasyEngine::Font::Direction &direction) {
+void EasyEngine::Components::Font::setFontDirection(const EasyEngine::Components::Font::Direction &direction) {
     TTF_SetFontDirection(_font, TTF_Direction(direction));
     _font_direction = direction;
 }
 
-const EasyEngine::Font::Direction &EasyEngine::Components::Font::fontDirection() const {
+const EasyEngine::Components::Font::Direction &EasyEngine::Components::Font::fontDirection() const {
     return _font_direction;
 }
 
@@ -1443,11 +1477,11 @@ uint32_t EasyEngine::Components::Font::lineSpacing() const {
     return _line_spacing;
 }
 
-EasyEngine::Sprite
+EasyEngine::Components::Sprite *
 EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::Painter &painter) {
     SSurface* surface;
     if (!_font_is_loaded) {
-        throw std::runtime_error("[ERROR] The current font is not loaded! Please use `isValid()` function at first!");
+        throw std::runtime_error("[FATAL] The current font is not loaded! Please use `isValid()` function at first!");
     }
     if (_font_outline) {
         if (_font_color.a > 0) {
@@ -1475,6 +1509,6 @@ EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::
             SDL_Log("[ERROR] Can't draw the current text!\nException: %s", SDL_GetError());
         }
     }
-    return {text, surface, &painter};
+    return new Sprite(text, surface, &painter);
 }
 

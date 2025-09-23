@@ -33,7 +33,7 @@ EasyEngine::Painter \- 图形绘制器
 .br
 .RI "安装自定义绘图事件 "
 .ti -1c
-.RI "void \fBupdate\fP ()"
+.RI "void \fB_render\fP ()"
 .br
 .RI "渲染/刷新画面 "
 .ti -1c
@@ -78,9 +78,9 @@ EasyEngine::Painter \- 图形绘制器
 .ti -1c
 .RI "void \fBsetViewport\fP (const \fBGeometry\fP &geometry, const \fBSize\fP &size={1\&.0f, 1\&.0f})"
 .br
-.RI "设置整个视图 "
+.RI "设置自定义视图 "
 .ti -1c
-.RI "void \fBsetClipView\fP (const \fBGeometry\fP &geometry, const \fBSize\fP &size={1\&.0f, 1\&.0f})"
+.RI "void \fBsetClipView\fP (const \fBGeometry\fP &geometry)"
 .br
 .RI "裁剪可见视图 "
 .in -1c
@@ -111,6 +111,17 @@ EasyEngine::Painter \- 图形绘制器
 
 .SH "成员函数说明"
 .PP 
+.SS "void EasyEngine::Painter::_render ()"
+
+.PP
+渲染/刷新画面 
+.PP
+\fB警告\fP
+.RS 4
+请勿手动使用此函数，会出现异常退出！ 
+.RE
+.PP
+
 .SS "void EasyEngine::Painter::drawEllipse (const \fBGraphics::Ellipse\fP & ellipse)"
 
 .PP
@@ -241,7 +252,7 @@ hexToRGBA
 .RE
 .PP
 
-.SS "void EasyEngine::Painter::setClipView (const \fBGeometry\fP & geometry, const \fBSize\fP & size = \fR{1\&.0f, 1\&.0f}\fP)"
+.SS "void EasyEngine::Painter::setClipView (const \fBGeometry\fP & geometry)"
 
 .PP
 裁剪可见视图 
@@ -249,8 +260,11 @@ hexToRGBA
 \fB参数\fP
 .RS 4
 \fIgeometry\fP 用于调整裁剪可见视图的位置、大小 
-.br
-\fIsize\fP 用于调整可见视图的缩放比例（默认 1:1） 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+当指定的宽度或高度小于等于 0，则取消使用裁剪！ 
 .RE
 .PP
 
@@ -278,7 +292,7 @@ hexToRGBA
 .SS "void EasyEngine::Painter::setViewport (const \fBGeometry\fP & geometry, const \fBSize\fP & size = \fR{1\&.0f, 1\&.0f}\fP)"
 
 .PP
-设置整个视图 
+设置自定义视图 
 .PP
 \fB参数\fP
 .RS 4
@@ -287,7 +301,14 @@ hexToRGBA
 \fIsize\fP 用于调整视图的缩放比例（默认使用 1:1）
 .RE
 .PP
-执行后，整个位置及大小都将发生改变！适合用于写基本控件视图 
+执行后，整个位置及大小都将发生改变！ 
+.PP
+\fB注解\fP
+.RS 4
+当指定的宽度或高度小于等于 0，则取消使用自定义视图 
+.RE
+.PP
+
 .SS "uint16_t EasyEngine::Painter::thickness () const"
 
 .PP

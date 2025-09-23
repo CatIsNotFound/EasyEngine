@@ -164,12 +164,12 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
             EASYENGINE_VERSION, SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
         SDL_Log("[ERROR] Initializing Engine failed!\n");
-        throw std::runtime_error("Runtime Error: Initialized Engine failed!\n");
+        throw std::runtime_error("[FATAL] Initialized Engine failed!\n");
     }
     if (!init(title.c_str(), width, height, &_main_window_id)) {
         SDL_Log("[ERROR] Initializing window failed!\n");
         SDL_Quit();
-        throw std::runtime_error("Runtime Error: Initializing window failed!\n");
+        throw std::runtime_error("[FATAL] Initializing window failed!\n");
     }
     AudioSystem::global()->init();
     Cursor::global();
@@ -453,10 +453,10 @@ int EasyEngine::Engine::run() {
 
                 if (!should_skip_frame) {
                     if (_window_count == 1) {
-                        _renderer_list.begin()->second->update();
+                        _renderer_list.begin()->second->_render();
                     } else if (_window_count > 1) {
                         for (auto &_renderer: _renderer_list) {
-                            _renderer.second->update();
+                            _renderer.second->_render();
                         }
                     }
                 }
@@ -630,7 +630,9 @@ void EasyEngine::Painter::paintEvent() {
     if (paint_function) paint_function(*this);
 }
 
-void EasyEngine::Painter::update() {
+void EasyEngine::Painter::_render() {
+    SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
+    SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
     SDL_SetRenderViewport(_window->renderer, nullptr);
     SDL_SetRenderClipRect(_window->renderer, nullptr);
     SDL_SetRenderDrawBlendMode(_window->renderer, SDL_BLENDMODE_NONE);
@@ -733,8 +735,8 @@ void EasyEngine::Painter::setViewport(const Geometry &geometry, const Size &size
     command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
 }
 
-void EasyEngine::Painter::setClipView(const Geometry &geometry, const Size &size) {
-    auto cmd = new ViewportCMD(geometry, true, size);
+void EasyEngine::Painter::setClipView(const Geometry &geometry) {
+    auto cmd = new ViewportCMD(geometry, true);
     command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
 }
 
@@ -858,12 +860,13 @@ void EasyEngine::Painter::PixelTextCMD::exec(SRenderer *renderer, uint32_t) {
 
 void EasyEngine::Painter::ViewportCMD::exec(SRenderer* renderer, uint32_t) {
     SDL_Rect rect = {geometry.x, geometry.y, geometry.width, geometry.height};
+    bool is_invalid = (rect.w <= 0 || rect.h <= 0);
     if (is_clipped_mode) {
-        SDL_SetRenderClipRect(renderer, &rect);
+        SDL_SetRenderClipRect(renderer, (is_invalid ? nullptr : &rect));
     } else {
-        SDL_SetRenderViewport(renderer, &rect);
+        SDL_SetRenderViewport(renderer, (is_invalid ? nullptr : &rect));
+        SDL_SetRenderScale(renderer, scaled.width, scaled.height);
     }
-    SDL_SetRenderScale(renderer, scaled.width, scaled.height);
 }
 
 EasyEngine::EventSystem::~EventSystem() {};
@@ -1412,7 +1415,7 @@ void EasyEngine::FontSystem::unload() {
     TTF_Quit();
 }
 
-void EasyEngine::FontSystem::loadFont(const std::string &name, EasyEngine::Font *font) {
+void EasyEngine::FontSystem::loadFont(const std::string &name, EasyEngine::Components::Font *font) {
     if (_font_info.contains(name)) {
         SDL_Log("[WARNING] The specified font '%s' is replaced!", name.c_str());
         unloadFont(name);
@@ -1436,7 +1439,7 @@ void EasyEngine::FontSystem::unloadFont(const std::string &name) {
     }
 }
 
-EasyEngine::Font *EasyEngine::FontSystem::font(const std::string &name) {
+EasyEngine::Components::Font *EasyEngine::FontSystem::font(const std::string &name) {
     if (_font_info.contains(name))
         return _font_info[name].get();
     else {

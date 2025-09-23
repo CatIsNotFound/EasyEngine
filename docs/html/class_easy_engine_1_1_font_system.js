@@ -1,6 +1,6 @@
 var class_easy_engine_1_1_font_system =
 [
-    [ "font", "class_easy_engine_1_1_font_system.html#a71a4e59d63e445b16dec5446053678f7", null ],
+    [ "font", "class_easy_engine_1_1_font_system.html#a680a1f8491109caf549bddfbff1f527f", null ],
     [ "init", "class_easy_engine_1_1_font_system.html#a2a72005e997d79a81bb9ac6e1c9e34e9", null ],
     [ "loadFont", "class_easy_engine_1_1_font_system.html#ac78b5540966262c1b92720461254bdbf", null ],
     [ "loadFont", "class_easy_engine_1_1_font_system.html#a012fa313adc544f0a3aa6e770975a88b", null ],

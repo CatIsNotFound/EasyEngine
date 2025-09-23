@@ -26,7 +26,7 @@ var class_easy_engine_1_1_components_1_1_control =
       [ "Disabled", "class_easy_engine_1_1_components_1_1_control.html#a2524efa41469bb6335468b8382c5db9fab9f5c797ebbf55adccdd8539a65a0241", null ]
     ] ],
     [ "Control", "class_easy_engine_1_1_components_1_1_control.html#a524df2f541fd3b8a9f5c48c627ae790e", null ],
-    [ "Control", "class_easy_engine_1_1_components_1_1_control.html#ab2acc8e8b47f8bfc0f6a82a9c76d44cb", null ],
+    [ "Control", "class_easy_engine_1_1_components_1_1_control.html#a67e9dfc4a058c0e2bc497e38fc498140", null ],
     [ "Control", "class_easy_engine_1_1_components_1_1_control.html#ac005ba0a4a794fa3c3a390398b85d594", null ],
     [ "active", "class_easy_engine_1_1_components_1_1_control.html#a1fca725bf499ed6310308a658dada073", null ],
     [ "enabled", "class_easy_engine_1_1_components_1_1_control.html#a95872bba5aed3972d8e82479411ac9e1", null ],
@@ -57,5 +57,5 @@ var class_easy_engine_1_1_components_1_1_control =
     [ "size", "class_easy_engine_1_1_components_1_1_control.html#ab4259dddc23b43a600b2fd79f9bfd4b0", null ],
     [ "status", "class_easy_engine_1_1_components_1_1_control.html#a52b634d3e5084f7a757acea500267577", null ],
     [ "typeInfo", "class_easy_engine_1_1_components_1_1_control.html#a02d81b78aba53d317894b1ca2ce752fa", null ],
-    [ "update", "class_easy_engine_1_1_components_1_1_control.html#aae9138e8e3c78f35be82bddce5d18a00", null ]
+    [ "update", "class_easy_engine_1_1_components_1_1_control.html#a68a8b108988d4fd3563544bf493af6b8", null ]
 ];

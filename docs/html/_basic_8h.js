@@ -7,5 +7,7 @@ var _basic_8h =
     [ "EasyEngine::Graphics::Point", "struct_easy_engine_1_1_graphics_1_1_point.html", null ],
     [ "EasyEngine::Graphics::Line", "struct_easy_engine_1_1_graphics_1_1_line.html", null ],
     [ "EasyEngine::Graphics::Rectangle", "struct_easy_engine_1_1_graphics_1_1_rectangle.html", null ],
-    [ "EasyEngine::Graphics::Ellipse", "struct_easy_engine_1_1_graphics_1_1_ellipse.html", null ]
+    [ "EasyEngine::Graphics::Ellipse", "struct_easy_engine_1_1_graphics_1_1_ellipse.html", null ],
+    [ "EasyEngine::StdColor::HalfTransparent", "_basic_8h.html#ae80836231c498452fd755f67ae0c6e84", null ],
+    [ "EasyEngine::StdColor::Transparent", "_basic_8h.html#a337820c3002219c9606575040552458d", null ]
 ];

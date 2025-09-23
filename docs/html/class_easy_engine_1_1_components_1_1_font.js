@@ -15,7 +15,7 @@ var class_easy_engine_1_1_components_1_1_font =
     ] ],
     [ "Font", "class_easy_engine_1_1_components_1_1_font.html#a0312afe7708eb1af46887e22a11fafe8", null ],
     [ "fontColor", "class_easy_engine_1_1_components_1_1_font.html#a358b9b5808bff3e43e6f520e9e5ced8e", null ],
-    [ "fontDirection", "class_easy_engine_1_1_components_1_1_font.html#a643b3ac71583e8f430025c13c35ad6df", null ],
+    [ "fontDirection", "class_easy_engine_1_1_components_1_1_font.html#a153157b544c038020b6eccaca3897c41", null ],
     [ "fontKerning", "class_easy_engine_1_1_components_1_1_font.html#a1a8f51fa0a374c849916adf1300de3d8", null ],
     [ "fontSize", "class_easy_engine_1_1_components_1_1_font.html#ac19c89a5b3d9786c7ed4d52c98175334", null ],
     [ "isAvailable", "class_easy_engine_1_1_components_1_1_font.html#aa5402d40364e470b8ad6685a20ef6191", null ],
@@ -32,6 +32,6 @@ var class_easy_engine_1_1_components_1_1_font =
     [ "setOutline", "class_easy_engine_1_1_components_1_1_font.html#a67ea9ebc18978110aa8883b4b6a50e73", null ],
     [ "setOutlineColor", "class_easy_engine_1_1_components_1_1_font.html#ac383f960083898df3b9330f9687ea35b", null ],
     [ "setStyle", "class_easy_engine_1_1_components_1_1_font.html#a29405383ac18f04235be42047bb66494", null ],
-    [ "textToSprite", "class_easy_engine_1_1_components_1_1_font.html#a131f649d2edbdeca64a313ad6e313a88", null ],
+    [ "textToSprite", "class_easy_engine_1_1_components_1_1_font.html#a0b6eead019d755813b677cce4d20972b", null ],
     [ "unload", "class_easy_engine_1_1_components_1_1_font.html#ac13286801c82d50598bee942cc3e626a", null ]
 ];

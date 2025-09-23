@@ -108,7 +108,7 @@ EasyEngine::Components::Font \- 字体
 .br
 .RI "获取行间距 "
 .ti -1c
-.RI "\fBSprite\fP \fBtextToSprite\fP (const std::string &text, \fBEasyEngine::Painter\fP &painter)"
+.RI "\fBSprite\fP * \fBtextToSprite\fP (const std::string &text, \fBEasyEngine::Painter\fP &painter)"
 .br
 .RI "文本转换精灵 "
 .in -1c
@@ -321,7 +321,7 @@ EasyEngine::Components::Font \- 字体
 .RE
 .PP
 
-.SS "\fBEasyEngine::Sprite\fP EasyEngine::Components::Font::textToSprite (const std::string & text, \fBEasyEngine::Painter\fP & painter)"
+.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::Font::textToSprite (const std::string & text, \fBEasyEngine::Painter\fP & painter)"
 
 .PP
 文本转换精灵 
@@ -335,7 +335,12 @@ EasyEngine::Components::Font \- 字体
 .PP
 \fB警告\fP
 .RS 4
-若当前字体未加载，将报错并异常退出 
+若当前字体未加载，将报错并异常退出！ 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回转换后的精灵指针（便于后续处理） 
 .RE
 .PP
 

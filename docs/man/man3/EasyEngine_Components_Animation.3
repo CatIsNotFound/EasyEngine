@@ -13,13 +13,29 @@ EasyEngine::Components::Animation \- 动画
 
 .in +1c
 .ti -1c
-.RI "\fBAnimation\fP (const std::string &name)"
+.RI "\fBAnimation\fP (const std::string &\fBname\fP)"
 .br
 .RI "创建动画 "
 .ti -1c
-.RI "\fBAnimation\fP (const std::string &name, const std::vector< \fBSprite\fP * > &sprite_list, uint64_t duration_per_frame=50)"
+.RI "\fBAnimation\fP (const std::string &\fBname\fP, const std::vector< \fBSprite\fP * > &sprite_list, uint64_t duration_per_frame=50)"
 .br
 .RI "创建动画 "
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
+.br
+.RI "设置新的别名 "
+.ti -1c
+.RI "const std::string & \fBname\fP () const"
+.br
+.RI "获取当前动画别名 "
+.ti -1c
+.RI "void \fBsetPosition\fP (const \fBVector2\fP &pos)"
+.br
+.RI "设置动画绘制时的位置 "
+.ti -1c
+.RI "const \fBVector2\fP & \fBposition\fP () const"
+.br
+.RI "获取当前动画所绘制的位置 "
 .ti -1c
 .RI "void \fBaddFrame\fP (\fBEasyEngine::Components::Sprite\fP *\fBsprite\fP, uint64_t duration=50)"
 .br
@@ -53,9 +69,13 @@ EasyEngine::Components::Animation \- 动画
 .br
 .RI "获取指定帧数下的精灵 "
 .ti -1c
-.RI "void \fBdraw\fP (const \fBVector2\fP &position, \fBPainter\fP *painter)"
+.RI "void \fBdraw\fP ()"
 .br
 .RI "绘制动画 "
+.ti -1c
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos)"
+.br
+.RI "在指定位置下绘制动画 "
 .ti -1c
 .RI "void \fBplay\fP (bool loop=true, size_t start_frame=0)"
 .br
@@ -152,16 +172,33 @@ EasyEngine::Components::Animation \- 动画
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Animation::draw (const \fBVector2\fP & position, \fBEasyEngine::Painter\fP * painter)"
+.SS "void EasyEngine::Components::Animation::draw ()"
 
 .PP
 绘制动画 
 .PP
+\fB注解\fP
+.RS 4
+必须执行，否则将无法在窗口上显示动画 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBplay\fP 
+
+.PP
+\fBstop\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Animation::draw (const \fBVector2\fP & pos)"
+
+.PP
+在指定位置下绘制动画 
+.PP
 \fB参数\fP
 .RS 4
-\fIposition\fP 指定绘制的位置 
-.br
-\fIpainter\fP 指定绘制的绘制器 
+\fIpos\fP 指定位置 
 .RE
 .PP
 \fB注解\fP
@@ -298,6 +335,28 @@ playLoop
 \fIframe\fP 指定帧数 
 .br
 \fIduration\fP 设定持续时间（毫秒） 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Animation::setName (const std::string & name)"
+
+.PP
+设置新的别名 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 新别名 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Animation::setPosition (const \fBVector2\fP & pos)"
+
+.PP
+设置动画绘制时的位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定位置 
 .RE
 .PP
 

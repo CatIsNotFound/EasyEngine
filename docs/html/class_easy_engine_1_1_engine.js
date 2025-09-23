@@ -8,7 +8,7 @@ var class_easy_engine_1_1_engine =
     [ "frameDropTolerance", "class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664", null ],
     [ "hide", "class_easy_engine_1_1_engine.html#ac9bc753dcc986c09052ba67e8ccb4ab7", null ],
     [ "installCleanUpEvent", "class_easy_engine_1_1_engine.html#aeb5e1cab414d8fbac80096960ed481ee", null ],
-    [ "installEventHandler", "class_easy_engine_1_1_engine.html#a2cbb7deffc1740da3c471a099f6ab779", null ],
+    [ "installEventHandler", "class_easy_engine_1_1_engine.html#a5bf08615d3b676a76ac90d23bfe36d49", null ],
     [ "move", "class_easy_engine_1_1_engine.html#ad906d9933e0da82b9e81e65c85ab1ea3", null ],
     [ "newWindow", "class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3", null ],
     [ "painter", "class_easy_engine_1_1_engine.html#acb4e2107e5c31d729dbae944e503bdb0", null ],

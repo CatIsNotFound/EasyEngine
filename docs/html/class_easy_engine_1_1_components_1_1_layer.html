@@ -1,0 +1,1038 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Components::Layer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_components_1_1_layer.html','','class_easy_engine_1_1_components_1_1_layer-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Components::Layer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>图层  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_scene_8h_source.html">Scene.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2763db46281ba8ca86d0386c4eb9e14c" id="r_a2763db46281ba8ca86d0386c4eb9e14c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2763db46281ba8ca86d0386c4eb9e14c">Layer</a> (const std::string &amp;<a class="el" href="#a9320de8c893b075202ca00824c6601f4">name</a>)</td></tr>
+<tr class="memdesc:a2763db46281ba8ca86d0386c4eb9e14c"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建图层  <br /></td></tr>
+<tr class="memitem:ac3d79b63969b29dd1980b79a48a683ca" id="r_ac3d79b63969b29dd1980b79a48a683ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d79b63969b29dd1980b79a48a683ca">setName</a> (const std::string &amp;<a class="el" href="#a9320de8c893b075202ca00824c6601f4">name</a>)</td></tr>
+<tr class="memdesc:ac3d79b63969b29dd1980b79a48a683ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置图层别名  <br /></td></tr>
+<tr class="memitem:a9320de8c893b075202ca00824c6601f4" id="r_a9320de8c893b075202ca00824c6601f4"><td class="memItemLeft" align="right" valign="top"><a id="a9320de8c893b075202ca00824c6601f4" name="a9320de8c893b075202ca00824c6601f4"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
+<tr class="memdesc:a9320de8c893b075202ca00824c6601f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前图层别名 <br /></td></tr>
+<tr class="memitem:a0ffef933e1a54de87be15de3bbb4f977" id="r_a0ffef933e1a54de87be15de3bbb4f977"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ffef933e1a54de87be15de3bbb4f977">append</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *<a class="el" href="#a9cdafd23516bc87bfc65a03c9c231d14">sprite</a>)</td></tr>
+<tr class="memdesc:a0ffef933e1a54de87be15de3bbb4f977"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定精灵到图层  <br /></td></tr>
+<tr class="memitem:a0554a0c569eaed130ca07d31ac18e5fc" id="r_a0554a0c569eaed130ca07d31ac18e5fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0554a0c569eaed130ca07d31ac18e5fc">append</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> *group)</td></tr>
+<tr class="memdesc:a0554a0c569eaed130ca07d31ac18e5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定精灵组合到图层  <br /></td></tr>
+<tr class="memitem:aa2773980c77788ac70e8db8ae2eddd1f" id="r_aa2773980c77788ac70e8db8ae2eddd1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2773980c77788ac70e8db8ae2eddd1f">append</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Animation</a> *<a class="el" href="#a8616962ef531847aa615b9f0ea5a44eb">animation</a>)</td></tr>
+<tr class="memdesc:aa2773980c77788ac70e8db8ae2eddd1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定精灵动画到图层  <br /></td></tr>
+<tr class="memitem:a46f67fadfacd916e4ae11726f35ff822" id="r_a46f67fadfacd916e4ae11726f35ff822"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46f67fadfacd916e4ae11726f35ff822">append</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> *<a class="el" href="#a1bd8a0644473c62bfe4afaf744c1763d">entity</a>)</td></tr>
+<tr class="memdesc:a46f67fadfacd916e4ae11726f35ff822"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定游戏实体到图层  <br /></td></tr>
+<tr class="memitem:a35bffdda860b20a29fdcb55e61559aa1" id="r_a35bffdda860b20a29fdcb55e61559aa1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35bffdda860b20a29fdcb55e61559aa1">append</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_control.html">Control</a> *<a class="el" href="#a8b36400fec527b17d3a1a57a9044bf5f">control</a>)</td></tr>
+<tr class="memdesc:a35bffdda860b20a29fdcb55e61559aa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定控件到图层  <br /></td></tr>
+<tr class="memitem:abf3bbdbc516e3734995770bfb731d817" id="r_abf3bbdbc516e3734995770bfb731d817"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf3bbdbc516e3734995770bfb731d817">remove</a> (uint32_t z_order)</td></tr>
+<tr class="memdesc:abf3bbdbc516e3734995770bfb731d817"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除图层  <br /></td></tr>
+<tr class="memitem:a9cdafd23516bc87bfc65a03c9c231d14" id="r_a9cdafd23516bc87bfc65a03c9c231d14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cdafd23516bc87bfc65a03c9c231d14">sprite</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a9cdafd23516bc87bfc65a03c9c231d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层下的精灵  <br /></td></tr>
+<tr class="memitem:a8bb50017008c2a47cf9ed562d9a35f5f" id="r_a8bb50017008c2a47cf9ed562d9a35f5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bb50017008c2a47cf9ed562d9a35f5f">spriteGroup</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a8bb50017008c2a47cf9ed562d9a35f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层下的精灵组合  <br /></td></tr>
+<tr class="memitem:a8616962ef531847aa615b9f0ea5a44eb" id="r_a8616962ef531847aa615b9f0ea5a44eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Animation</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8616962ef531847aa615b9f0ea5a44eb">animation</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a8616962ef531847aa615b9f0ea5a44eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层下的精灵动画  <br /></td></tr>
+<tr class="memitem:a1bd8a0644473c62bfe4afaf744c1763d" id="r_a1bd8a0644473c62bfe4afaf744c1763d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bd8a0644473c62bfe4afaf744c1763d">entity</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a1bd8a0644473c62bfe4afaf744c1763d"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层下的游戏实体  <br /></td></tr>
+<tr class="memitem:a8b36400fec527b17d3a1a57a9044bf5f" id="r_a8b36400fec527b17d3a1a57a9044bf5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_control.html">Control</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b36400fec527b17d3a1a57a9044bf5f">control</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a8b36400fec527b17d3a1a57a9044bf5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层下的控件  <br /></td></tr>
+<tr class="memitem:a928a24f43bfe2054a63a74957185eb70" id="r_a928a24f43bfe2054a63a74957185eb70"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70">indexOf</a> (const std::string &amp;<a class="el" href="#a9320de8c893b075202ca00824c6601f4">name</a>, uint32_t start_of=0, uint32_t end_of=UINT32_MAX) const</td></tr>
+<tr class="memdesc:a928a24f43bfe2054a63a74957185eb70"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定别名并获取对应的图层渲染顺序  <br /></td></tr>
+<tr class="memitem:a2491d067517314fadf3c4ba1c1b8a00c" id="r_a2491d067517314fadf3c4ba1c1b8a00c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2491d067517314fadf3c4ba1c1b8a00c">swap</a> (uint32_t z_order1, uint32_t z_order2)</td></tr>
+<tr class="memdesc:a2491d067517314fadf3c4ba1c1b8a00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定两个元素并交换图层渲染顺序  <br /></td></tr>
+<tr class="memitem:aa510952b9cc0eea784611d1d435aba68" id="r_aa510952b9cc0eea784611d1d435aba68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa510952b9cc0eea784611d1d435aba68">setZOrder</a> (uint32_t old_z_order, uint32_t new_z_order)</td></tr>
+<tr class="memdesc:aa510952b9cc0eea784611d1d435aba68"><td class="mdescLeft">&#160;</td><td class="mdescRight">将当前元素更换新的图层渲染顺序  <br /></td></tr>
+<tr class="memitem:abd9435e6b5fa4d4afd3bbf5f51b190f0" id="r_abd9435e6b5fa4d4afd3bbf5f51b190f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd9435e6b5fa4d4afd3bbf5f51b190f0">setVisible</a> (bool <a class="el" href="#a64d1d0fe7fab62d747451a5194ae1bfd">visible</a>)</td></tr>
+<tr class="memdesc:abd9435e6b5fa4d4afd3bbf5f51b190f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置当前图层是否可见  <br /></td></tr>
+<tr class="memitem:a64d1d0fe7fab62d747451a5194ae1bfd" id="r_a64d1d0fe7fab62d747451a5194ae1bfd"><td class="memItemLeft" align="right" valign="top"><a id="a64d1d0fe7fab62d747451a5194ae1bfd" name="a64d1d0fe7fab62d747451a5194ae1bfd"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>visible</b> () const</td></tr>
+<tr class="memdesc:a64d1d0fe7fab62d747451a5194ae1bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前图层是否可见 <br /></td></tr>
+<tr class="memitem:a8e0f1cb84e0ec3a8ecf11b375882821e" id="r_a8e0f1cb84e0ec3a8ecf11b375882821e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e0f1cb84e0ec3a8ecf11b375882821e">setViewport</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry)</td></tr>
+<tr class="memdesc:a8e0f1cb84e0ec3a8ecf11b375882821e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置视图  <br /></td></tr>
+<tr class="memitem:af126de9041c3d7cf7593e5af71607f8d" id="r_af126de9041c3d7cf7593e5af71607f8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af126de9041c3d7cf7593e5af71607f8d">setViewport</a> (int x, int y, int w, int h)</td></tr>
+<tr class="memdesc:af126de9041c3d7cf7593e5af71607f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置视图  <br /></td></tr>
+<tr class="memitem:ab7b0a12563550d5146d5a2ee0f31c6f5" id="r_ab7b0a12563550d5146d5a2ee0f31c6f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7b0a12563550d5146d5a2ee0f31c6f5">setViewportScaled</a> (float width, float height)</td></tr>
+<tr class="memdesc:ab7b0a12563550d5146d5a2ee0f31c6f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置视图缩放  <br /></td></tr>
+<tr class="memitem:ad01750b114afaccf407229deca72659b" id="r_ad01750b114afaccf407229deca72659b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad01750b114afaccf407229deca72659b">setViewportScaled</a> (const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;scaled)</td></tr>
+<tr class="memdesc:ad01750b114afaccf407229deca72659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置视图缩放比例  <br /></td></tr>
+<tr class="memitem:a15fd36c2483ab40f8b08865611255fbb" id="r_a15fd36c2483ab40f8b08865611255fbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15fd36c2483ab40f8b08865611255fbb">setClipViewport</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry)</td></tr>
+<tr class="memdesc:a15fd36c2483ab40f8b08865611255fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置裁剪视图  <br /></td></tr>
+<tr class="memitem:a441ef753e0551bcc762264c337d2b2c5" id="r_a441ef753e0551bcc762264c337d2b2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a441ef753e0551bcc762264c337d2b2c5">setClipViewport</a> (int x, int y, int w, int h)</td></tr>
+<tr class="memdesc:a441ef753e0551bcc762264c337d2b2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置裁剪视图  <br /></td></tr>
+<tr class="memitem:a7cab91df770a8cc17ddcdcb02126221d" id="r_a7cab91df770a8cc17ddcdcb02126221d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cab91df770a8cc17ddcdcb02126221d">setViewportPainter</a> (<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
+<tr class="memdesc:a7cab91df770a8cc17ddcdcb02126221d"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置绘制视图的绘制器（必需）  <br /></td></tr>
+<tr class="memitem:a2e219db8d38d924c54c6da56a55006d4" id="r_a2e219db8d38d924c54c6da56a55006d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e219db8d38d924c54c6da56a55006d4">draw</a> (bool viewport_mode=false, bool clip_mode=false)</td></tr>
+<tr class="memdesc:a2e219db8d38d924c54c6da56a55006d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制图层  <br /></td></tr>
+<tr class="memitem:ae74c108b3d16402cd95217de8a28b40a" id="r_ae74c108b3d16402cd95217de8a28b40a"><td class="memItemLeft" align="right" valign="top"><a id="ae74c108b3d16402cd95217de8a28b40a" name="ae74c108b3d16402cd95217de8a28b40a"></a>
+const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>viewport</b> () const</td></tr>
+<tr class="memdesc:ae74c108b3d16402cd95217de8a28b40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前视图的位置和大小 <br /></td></tr>
+<tr class="memitem:ae5d2540ef3a4a1210bb8a4a949d7abe7" id="r_ae5d2540ef3a4a1210bb8a4a949d7abe7"><td class="memItemLeft" align="right" valign="top"><a id="ae5d2540ef3a4a1210bb8a4a949d7abe7" name="ae5d2540ef3a4a1210bb8a4a949d7abe7"></a>
+const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>viewportScaled</b> () const</td></tr>
+<tr class="memdesc:ae5d2540ef3a4a1210bb8a4a949d7abe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前视图的缩放宽高比例 <br /></td></tr>
+<tr class="memitem:ae1a9475613038bb74f7f642b88bc9401" id="r_ae1a9475613038bb74f7f642b88bc9401"><td class="memItemLeft" align="right" valign="top"><a id="ae1a9475613038bb74f7f642b88bc9401" name="ae1a9475613038bb74f7f642b88bc9401"></a>
+const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>clipViewport</b> () const</td></tr>
+<tr class="memdesc:ae1a9475613038bb74f7f642b88bc9401"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前裁剪视图的位置和大小 <br /></td></tr>
+<tr class="memitem:a1ecc478657705f1305a40a5cb0e6b0de" id="r_a1ecc478657705f1305a40a5cb0e6b0de"><td class="memItemLeft" align="right" valign="top"><a id="a1ecc478657705f1305a40a5cb0e6b0de" name="a1ecc478657705f1305a40a5cb0e6b0de"></a>
+const <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>viewportPainter</b> () const</td></tr>
+<tr class="memdesc:a1ecc478657705f1305a40a5cb0e6b0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前绘制视图的绘图器 <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>图层 </p>
+<p>定义单个图层，在该图层下绘制元素 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="a2763db46281ba8ca86d0386c4eb9e14c" name="a2763db46281ba8ca86d0386c4eb9e14c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2763db46281ba8ca86d0386c4eb9e14c">&#9670;&#160;</a></span>Layer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Components::Layer::Layer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>图层别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a8616962ef531847aa615b9f0ea5a44eb" name="a8616962ef531847aa615b9f0ea5a44eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8616962ef531847aa615b9f0ea5a44eb">&#9670;&#160;</a></span>animation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Components::Animation</a> * Components::Layer::animation </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层下的精灵动画 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应图层下的指针 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定图层下的不是精灵动画，则报错并异常退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="aa2773980c77788ac70e8db8ae2eddd1f" name="aa2773980c77788ac70e8db8ae2eddd1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2773980c77788ac70e8db8ae2eddd1f">&#9670;&#160;</a></span>append() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Layer::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_animation.html">Animation</a> *</td>          <td class="paramname"><span class="paramname"><em>animation</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定精灵动画到图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>绘制顺序（数字越大，显示最先） </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定精灵动画 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功添加到图层 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_easy_engine_1_1_components_1_1_animation.html" title="动画">Animation</a> </dd>
+<dd>
+<a class="el" href="#a8616962ef531847aa615b9f0ea5a44eb" title="获取指定图层下的精灵动画">animation</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a35bffdda860b20a29fdcb55e61559aa1" name="a35bffdda860b20a29fdcb55e61559aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35bffdda860b20a29fdcb55e61559aa1">&#9670;&#160;</a></span>append() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Layer::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_control.html">Control</a> *</td>          <td class="paramname"><span class="paramname"><em>control</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定控件到图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>绘制顺序（数字越大，显示最先） </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定控件 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功添加到图层 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_easy_engine_1_1_components_1_1_control.html" title="控件">Control</a> </dd>
+<dd>
+<a class="el" href="#a8b36400fec527b17d3a1a57a9044bf5f" title="获取指定图层下的控件">control</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a46f67fadfacd916e4ae11726f35ff822" name="a46f67fadfacd916e4ae11726f35ff822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f67fadfacd916e4ae11726f35ff822">&#9670;&#160;</a></span>append() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Layer::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Entity</a> *</td>          <td class="paramname"><span class="paramname"><em>entity</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定游戏实体到图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>绘制顺序（数字越大，显示最先） </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定游戏实体 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功添加到图层 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_easy_engine_1_1_components_1_1_entity.html" title="游戏实体">Entity</a> </dd>
+<dd>
+<a class="el" href="#a1bd8a0644473c62bfe4afaf744c1763d" title="获取指定图层下的游戏实体">entity</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0ffef933e1a54de87be15de3bbb4f977" name="a0ffef933e1a54de87be15de3bbb4f977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ffef933e1a54de87be15de3bbb4f977">&#9670;&#160;</a></span>append() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Layer::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定精灵到图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>绘制顺序（数字越大，显示最先） </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定精灵 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功添加到图层 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html" title="精灵">Sprite</a> </dd>
+<dd>
+<a class="el" href="#a9cdafd23516bc87bfc65a03c9c231d14" title="获取指定图层下的精灵">sprite</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0554a0c569eaed130ca07d31ac18e5fc" name="a0554a0c569eaed130ca07d31ac18e5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0554a0c569eaed130ca07d31ac18e5fc">&#9670;&#160;</a></span>append() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Layer::append </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">SpriteGroup</a> *</td>          <td class="paramname"><span class="paramname"><em>group</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定精灵组合到图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>绘制顺序（数字越大，显示最先） </td></tr>
+    <tr><td class="paramname">sprite</td><td>指定精灵组合 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功添加到图层 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html" title="精灵组合">SpriteGroup</a> </dd>
+<dd>
+<a class="el" href="#a8bb50017008c2a47cf9ed562d9a35f5f" title="获取指定图层下的精灵组合">spriteGroup</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8b36400fec527b17d3a1a57a9044bf5f" name="a8b36400fec527b17d3a1a57a9044bf5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b36400fec527b17d3a1a57a9044bf5f">&#9670;&#160;</a></span>control()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_control.html">Components::Control</a> * Components::Layer::control </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层下的控件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应图层下的指针 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定图层下的不是控件，则报错并异常退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2e219db8d38d924c54c6da56a55006d4" name="a2e219db8d38d924c54c6da56a55006d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e219db8d38d924c54c6da56a55006d4">&#9670;&#160;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::draw </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>viewport_mode</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>clip_mode</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>绘制图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">viewport_mode</td><td>是否使用视图（需调用 <span class="tt"><a class="el" href="#a8e0f1cb84e0ec3a8ecf11b375882821e" title="设置视图">setViewport()</a></span>） </td></tr>
+    <tr><td class="paramname">clip_mode</td><td>是否使用裁剪视图（需调用 <span class="tt"><a class="el" href="#a15fd36c2483ab40f8b08865611255fbb" title="设置裁剪视图">setClipViewport()</a></span>） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>执行此函数前，若 <span class="tt">viewport_mode</span> 或 <span class="tt">clip_mode</span> 为 <span class="tt">true</span>， </dd>
+<dd>
+还需调用 <span class="tt"><a class="el" href="#a7cab91df770a8cc17ddcdcb02126221d" title="设置绘制视图的绘制器（必需）">setViewportPainter()</a></span> 才能生效！</dd></dl>
+<p>执行后，这将会按照图层的渲染顺序依次绘制！<span class="tt">z_order</span> 越大，渲染越靠后，显示最靠前！ </p>
+
+</div>
+</div>
+<a id="a1bd8a0644473c62bfe4afaf744c1763d" name="a1bd8a0644473c62bfe4afaf744c1763d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bd8a0644473c62bfe4afaf744c1763d">&#9670;&#160;</a></span>entity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_entity.html">Components::Entity</a> * Components::Layer::entity </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层下的游戏实体 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应图层下的指针 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定图层下的不是游戏实体，则报错并异常退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a928a24f43bfe2054a63a74957185eb70" name="a928a24f43bfe2054a63a74957185eb70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a928a24f43bfe2054a63a74957185eb70">&#9670;&#160;</a></span>indexOf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Components::Layer::indexOf </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>start_of</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>end_of</em></span><span class="paramdefsep"> = </span><span class="paramdefval">UINT32_MAX</span>&#160;) const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定别名并获取对应的图层渲染顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定别名（可能是精灵、精灵组合、精灵动画等） </td></tr>
+    <tr><td class="paramname">start_of</td><td>指定从第几个图层渲染顺序开始 </td></tr>
+    <tr><td class="paramname">end_of</td><td>指定从第几个图层渲染顺序结束 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>获取对应的渲染顺序 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a9cdafd23516bc87bfc65a03c9c231d14" title="获取指定图层下的精灵">sprite</a> </dd>
+<dd>
+<a class="el" href="#a8bb50017008c2a47cf9ed562d9a35f5f" title="获取指定图层下的精灵组合">spriteGroup</a> </dd>
+<dd>
+<a class="el" href="#a8616962ef531847aa615b9f0ea5a44eb" title="获取指定图层下的精灵动画">animation</a> </dd>
+<dd>
+<a class="el" href="#a1bd8a0644473c62bfe4afaf744c1763d" title="获取指定图层下的游戏实体">entity</a> </dd>
+<dd>
+<a class="el" href="#a8b36400fec527b17d3a1a57a9044bf5f" title="获取指定图层下的控件">control</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd>
+<dd>
+<a class="el" href="#a2491d067517314fadf3c4ba1c1b8a00c" title="指定两个元素并交换图层渲染顺序">swap</a> </dd>
+<dd>
+<a class="el" href="#aa510952b9cc0eea784611d1d435aba68" title="将当前元素更换新的图层渲染顺序">setZOrder</a> </dd></dl>
+
+</div>
+</div>
+<a id="abf3bbdbc516e3734995770bfb731d817" name="abf3bbdbc516e3734995770bfb731d817"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf3bbdbc516e3734995770bfb731d817">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::remove </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移除图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd></dl>
+
+</div>
+</div>
+<a id="a15fd36c2483ab40f8b08865611255fbb" name="a15fd36c2483ab40f8b08865611255fbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15fd36c2483ab40f8b08865611255fbb">&#9670;&#160;</a></span>setClipViewport() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setClipViewport </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置裁剪视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geometry</td><td>指定位置、大小</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>仅在原有的基础上进行裁剪，这不会发生任何的改变！ </dd></dl>
+
+</div>
+</div>
+<a id="a441ef753e0551bcc762264c337d2b2c5" name="a441ef753e0551bcc762264c337d2b2c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a441ef753e0551bcc762264c337d2b2c5">&#9670;&#160;</a></span>setClipViewport() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setClipViewport </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置裁剪视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>指定位置横坐标 </td></tr>
+    <tr><td class="paramname">y</td><td>指定位置纵坐标 </td></tr>
+    <tr><td class="paramname">w</td><td>指定宽度 </td></tr>
+    <tr><td class="paramname">h</td><td>指定高度</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>仅在原有的基础上进行裁剪，这不会发生任何的改变！ </dd></dl>
+
+</div>
+</div>
+<a id="ac3d79b63969b29dd1980b79a48a683ca" name="ac3d79b63969b29dd1980b79a48a683ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d79b63969b29dd1980b79a48a683ca">&#9670;&#160;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置图层别名 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>新的图层名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e0f1cb84e0ec3a8ecf11b375882821e" name="a8e0f1cb84e0ec3a8ecf11b375882821e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e0f1cb84e0ec3a8ecf11b375882821e">&#9670;&#160;</a></span>setViewport() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setViewport </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geometry</td><td>指定其位置、大小</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>决定了图层绘制的区域 </p><dl class="section note"><dt>注解</dt><dd>视图影响了所有元素所在的位置 </dd></dl>
+
+</div>
+</div>
+<a id="af126de9041c3d7cf7593e5af71607f8d" name="af126de9041c3d7cf7593e5af71607f8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af126de9041c3d7cf7593e5af71607f8d">&#9670;&#160;</a></span>setViewport() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setViewport </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置视图 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>指定位置横坐标 </td></tr>
+    <tr><td class="paramname">y</td><td>指定位置纵坐标 </td></tr>
+    <tr><td class="paramname">w</td><td>指定宽度 </td></tr>
+    <tr><td class="paramname">h</td><td>指定高度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>决定了图层绘制的区域 </p><dl class="section note"><dt>注解</dt><dd>视图影响了所有元素所在的位置 </dd></dl>
+
+</div>
+</div>
+<a id="a7cab91df770a8cc17ddcdcb02126221d" name="a7cab91df770a8cc17ddcdcb02126221d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cab91df770a8cc17ddcdcb02126221d">&#9670;&#160;</a></span>setViewportPainter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setViewportPainter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置绘制视图的绘制器（必需） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">painter</td><td>指定绘制器</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>必需设置，否则即便设置视图大小位置，也是无用！ </dd></dl>
+
+</div>
+</div>
+<a id="ad01750b114afaccf407229deca72659b" name="ad01750b114afaccf407229deca72659b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad01750b114afaccf407229deca72659b">&#9670;&#160;</a></span>setViewportScaled() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setViewportScaled </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>scaled</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置视图缩放比例 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scaled</td><td>尺寸比例（按照 1:1 比例调整） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7b0a12563550d5146d5a2ee0f31c6f5" name="ab7b0a12563550d5146d5a2ee0f31c6f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b0a12563550d5146d5a2ee0f31c6f5">&#9670;&#160;</a></span>setViewportScaled() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setViewportScaled </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置视图缩放 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>宽度比例（注：此处并非调整视图的宽度） </td></tr>
+    <tr><td class="paramname">height</td><td>高度比例（注：此处并非调整视图的高度） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abd9435e6b5fa4d4afd3bbf5f51b190f0" name="abd9435e6b5fa4d4afd3bbf5f51b190f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd9435e6b5fa4d4afd3bbf5f51b190f0">&#9670;&#160;</a></span>setVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::setVisible </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>visible</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置当前图层是否可见 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">visible</td><td>指定是否可见 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa510952b9cc0eea784611d1d435aba68" name="aa510952b9cc0eea784611d1d435aba68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa510952b9cc0eea784611d1d435aba68">&#9670;&#160;</a></span>setZOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Layer::setZOrder </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>old_z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>new_z_order</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将当前元素更换新的图层渲染顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">old_z_order</td><td>指定原先的图层渲染顺序 </td></tr>
+    <tr><td class="paramname">new_z_order</td><td>新的图层渲染顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功更换图层渲染顺序 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#a2491d067517314fadf3c4ba1c1b8a00c" title="指定两个元素并交换图层渲染顺序">swap</a> </dd></dl>
+
+</div>
+</div>
+<a id="a9cdafd23516bc87bfc65a03c9c231d14" name="a9cdafd23516bc87bfc65a03c9c231d14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cdafd23516bc87bfc65a03c9c231d14">&#9670;&#160;</a></span>sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> * Components::Layer::sprite </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层下的精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应图层下的指针 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定图层下的不是精灵，则报错并异常退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8bb50017008c2a47cf9ed562d9a35f5f" name="a8bb50017008c2a47cf9ed562d9a35f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bb50017008c2a47cf9ed562d9a35f5f">&#9670;&#160;</a></span>spriteGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite_group.html">Components::SpriteGroup</a> * Components::Layer::spriteGroup </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层下的精灵组合 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层绘制顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应图层下的指针 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>若不确定 z_order， 可使用 <span class="tt"><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf()</a></span> 获取。 </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定图层下的不是精灵组合，则报错并异常退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#abf3bbdbc516e3734995770bfb731d817" title="移除图层">remove</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2491d067517314fadf3c4ba1c1b8a00c" name="a2491d067517314fadf3c4ba1c1b8a00c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2491d067517314fadf3c4ba1c1b8a00c">&#9670;&#160;</a></span>swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Layer::swap </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>指定两个元素并交换图层渲染顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order1</td><td>指定第一个 </td></tr>
+    <tr><td class="paramname">z_order2</td><td>指定第二个 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a928a24f43bfe2054a63a74957185eb70" title="指定别名并获取对应的图层渲染顺序">indexOf</a> </dd>
+<dd>
+<a class="el" href="#aa510952b9cc0eea784611d1d435aba68" title="将当前元素更换新的图层渲染顺序">setZOrder</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_scene_8h_source.html">Scene.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Scene.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><b>Components</b></li><li class="navelem"><a href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

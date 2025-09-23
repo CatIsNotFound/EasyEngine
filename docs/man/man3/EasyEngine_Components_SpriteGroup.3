@@ -13,11 +13,19 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 
 .in +1c
 .ti -1c
-.RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &group)=default"
+.RI "\fBSpriteGroup\fP (const std::string &\fBname\fP)"
 .br
 .ti -1c
-.RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &&group)"
+.RI "\fBSpriteGroup\fP (const \fBSpriteGroup\fP &group)"
 .br
+.ti -1c
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
+.br
+.RI "设置新的别名 "
+.ti -1c
+.RI "const std::string & \fBname\fP () const"
+.br
+.RI "获取当前精灵组合别名 "
 .ti -1c
 .RI "void \fBresize\fP (float width, float height)"
 .br
@@ -39,7 +47,7 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .br
 .RI "在指定位置上插入精灵 "
 .ti -1c
-.RI "void \fBremove\fP (const std::string &name)"
+.RI "void \fBremove\fP (const std::string &\fBname\fP)"
 .br
 .RI "移除指定名称的精灵 "
 .ti -1c
@@ -59,15 +67,15 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .br
 .RI "交换精灵位置 "
 .ti -1c
-.RI "void \fBswap\fP (uint32_t index, const std::string &name)"
+.RI "void \fBswap\fP (uint32_t index, const std::string &\fBname\fP)"
 .br
 .RI "交换精灵位置 "
 .ti -1c
-.RI "uint32_t \fBindexAt\fP (const std::string &name, uint32_t start=0)"
+.RI "uint32_t \fBindexAt\fP (const std::string &\fBname\fP, uint32_t start=0)"
 .br
 .RI "获取精灵所在索引 "
 .ti -1c
-.RI "uint32_t \fBlastIndexAt\fP (const std::string &name, uint32_t start=0)"
+.RI "uint32_t \fBlastIndexAt\fP (const std::string &\fBname\fP, uint32_t start=0)"
 .br
 .RI "获取精灵所在索引 "
 .ti -1c
@@ -75,7 +83,7 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .br
 .RI "获取指定索引的精灵 "
 .ti -1c
-.RI "\fBSprite\fP * \fBnameOf\fP (const std::string &name)"
+.RI "\fBSprite\fP * \fBnameOf\fP (const std::string &\fBname\fP)"
 .br
 .RI "获取指定名称的精灵 "
 .ti -1c
@@ -83,13 +91,25 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .br
 .RI "根据指定索引获取精灵对应的属性 "
 .ti -1c
-.RI "\fBSprite::Properties\fP * \fBpropertiesOf\fP (const std::string &name)"
+.RI "\fBSprite::Properties\fP * \fBpropertiesOf\fP (const std::string &\fBname\fP)"
 .br
 .RI "根据精灵名称获取精灵对应的属性 "
 .ti -1c
-.RI "void \fBdraw\fP (const \fBVector2\fP &pos, \fBPainter\fP *painter)"
+.RI "void \fBdraw\fP (const \fBVector2\fP &pos)"
 .br
 .RI "指定绘图器并绘制精灵组 "
+.ti -1c
+.RI "void \fBsetPosition\fP (const \fBVector2\fP &pos)"
+.br
+.RI "设置绘制所在位置 "
+.ti -1c
+.RI "\fBVector2\fP \fBposition\fP () const"
+.br
+.RI "获取当前精灵组合所绘制的位置 "
+.ti -1c
+.RI "void \fBdraw\fP ()"
+.br
+.RI "绘制精灵组合 "
 .ti -1c
 .RI "uint32_t \fBcount\fP () const"
 .br
@@ -113,7 +133,7 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 .RE
 .PP
 
-.SS "void EasyEngine::Components::SpriteGroup::draw (const \fBVector2\fP & pos, \fBPainter\fP * painter)"
+.SS "void EasyEngine::Components::SpriteGroup::draw (const \fBVector2\fP & pos)"
 
 .PP
 指定绘图器并绘制精灵组 
@@ -121,8 +141,6 @@ EasyEngine::Components::SpriteGroup \- 精灵组合
 \fB参数\fP
 .RS 4
 \fIpos\fP 指定绘制的位置 
-.br
-\fIpainter\fP 指定绘图器 
 .RE
 .PP
 
@@ -365,6 +383,28 @@ lastIndexOf
 \fB参见\fP
 .RS 4
 \fBsize\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::setName (const std::string & name)"
+
+.PP
+设置新的别名 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 新别名 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::SpriteGroup::setPosition (const \fBVector2\fP & pos)"
+
+.PP
+设置绘制所在位置 
+.PP
+\fB参数\fP
+.RS 4
+\fIpos\fP 指定位置 
 .RE
 .PP
 

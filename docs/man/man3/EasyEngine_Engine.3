@@ -85,7 +85,7 @@ EasyEngine::Engine \- 引擎类
 .br
 .RI "获取窗口总个数 "
 .ti -1c
-.RI "void \fBinstallEventHandler\fP (std::function< bool(SEvent)> event_handler)"
+.RI "void \fBinstallEventHandler\fP (std::function< bool(SEvent &)> event_handler)"
 .br
 .RI "安装自定义事件处理器 "
 .ti -1c
@@ -292,7 +292,7 @@ EasyEngine::Engine \- 引擎类
 .RE
 .PP
 仅在引擎释放期间执行！ 
-.SS "void EasyEngine::Engine::installEventHandler (std::function< bool(SEvent)> event_handler)"
+.SS "void EasyEngine::Engine::installEventHandler (std::function< bool(SEvent &)> event_handler)"
 
 .PP
 安装自定义事件处理器 

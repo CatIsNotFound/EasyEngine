@@ -1,0 +1,51 @@
+.TH "EasyEngine::Components::Scene" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Components::Scene \- 场景  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Scene\&.h>\fP
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBScene\fP (const std::string &name)"
+.br
+.ti -1c
+.RI "void \fBappend\fP (uint32_t z_order, const std::string &name)"
+.br
+.ti -1c
+.RI "void \fBappend\fP (uint32_t z_order, \fBLayer\fP *layer)"
+.br
+.ti -1c
+.RI "void \fBremove\fP (uint32_t z_order)"
+.br
+.ti -1c
+.RI "uint32_t \fBindexOf\fP (const std::string &layer_name) const"
+.br
+.ti -1c
+.RI "uint32_t \fBindexOf\fP (const \fBLayer\fP *layer) const"
+.br
+.ti -1c
+.RI "\fBLayer\fP * \fBlayer\fP () const"
+.br
+.ti -1c
+.RI "void \fBswap\fP (uint32_t z_order1, uint32_t z_order2)"
+.br
+.ti -1c
+.RI "bool \fBsetZOrder\fP (uint32_t old_ZOrder, uint32_t new_ZOrder)"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+场景 
+
+定义单个场景，包含多个图层，可用于管理图层 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

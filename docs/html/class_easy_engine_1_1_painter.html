@@ -132,9 +132,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a0a2ccfbcc029ea582279f3220c153105"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取绘制时的粗细程度  <br /></td></tr>
 <tr class="memitem:ad389b74c7faf83315046c4123768b3c4" id="r_ad389b74c7faf83315046c4123768b3c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad389b74c7faf83315046c4123768b3c4">installPaintEvent</a> (std::function&lt; void(<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> &amp;)&gt; function)</td></tr>
 <tr class="memdesc:ad389b74c7faf83315046c4123768b3c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">安装自定义绘图事件  <br /></td></tr>
-<tr class="memitem:a72a32c99fd098857822c9d1009e43b24" id="r_a72a32c99fd098857822c9d1009e43b24"><td class="memItemLeft" align="right" valign="top"><a id="a72a32c99fd098857822c9d1009e43b24" name="a72a32c99fd098857822c9d1009e43b24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="memdesc:a72a32c99fd098857822c9d1009e43b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">渲染/刷新画面 <br /></td></tr>
+<tr class="memitem:aaa2c82d5458eb458f277d58b6b7fc4a0" id="r_aaa2c82d5458eb458f277d58b6b7fc4a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa2c82d5458eb458f277d58b6b7fc4a0">_render</a> ()</td></tr>
+<tr class="memdesc:aaa2c82d5458eb458f277d58b6b7fc4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">渲染/刷新画面  <br /></td></tr>
 <tr class="memitem:a66f911e0a810c1a1eafeaf3d4a9300ef" id="r_a66f911e0a810c1a1eafeaf3d4a9300ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66f911e0a810c1a1eafeaf3d4a9300ef">fillBackColor</a> (const SColor &amp;color)</td></tr>
 <tr class="memdesc:a66f911e0a810c1a1eafeaf3d4a9300ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">填充背景颜色  <br /></td></tr>
 <tr class="memitem:a5f5c5ded78dbf9c92861128d6d9e6a4f" id="r_a5f5c5ded78dbf9c92861128d6d9e6a4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f5c5ded78dbf9c92861128d6d9e6a4f">drawPoint</a> (const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_point.html">Graphics::Point</a> &amp;point)</td></tr>
@@ -157,9 +156,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawSprite</b> (const
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
 <tr class="memdesc:a19dc2cb2aa21472456916c6cf80a8a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空所有绘制命令 <br /></td></tr>
 <tr class="memitem:a72e902425d21e1fa0ee3a5c5b6c20a39" id="r_a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e902425d21e1fa0ee3a5c5b6c20a39">setViewport</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size={1.0f, 1.0f})</td></tr>
-<tr class="memdesc:a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置整个视图  <br /></td></tr>
-<tr class="memitem:ada9d7ba28146786fbe17d1356523fa85" id="r_ada9d7ba28146786fbe17d1356523fa85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada9d7ba28146786fbe17d1356523fa85">setClipView</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry, const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;size={1.0f, 1.0f})</td></tr>
-<tr class="memdesc:ada9d7ba28146786fbe17d1356523fa85"><td class="mdescLeft">&#160;</td><td class="mdescRight">裁剪可见视图  <br /></td></tr>
+<tr class="memdesc:a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自定义视图  <br /></td></tr>
+<tr class="memitem:a7f44722d3bb5141668e181e7a49dc637" id="r_a7f44722d3bb5141668e181e7a49dc637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f44722d3bb5141668e181e7a49dc637">setClipView</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry)</td></tr>
+<tr class="memdesc:a7f44722d3bb5141668e181e7a49dc637"><td class="mdescLeft">&#160;</td><td class="mdescRight">裁剪可见视图  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -204,6 +203,26 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Components::Sprite</
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="aaa2c82d5458eb458f277d58b6b7fc4a0" name="aaa2c82d5458eb458f277d58b6b7fc4a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa2c82d5458eb458f277d58b6b7fc4a0">&#9670;&#160;</a></span>_render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Painter::_render </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>渲染/刷新画面 </p>
+<dl class="section warning"><dt>警告</dt><dd>请勿手动使用此函数，会出现异常退出！ </dd></dl>
+
+</div>
+</div>
 <a id="a6ed21bfc6ee3adce6dfdedb66a54f4f5" name="a6ed21bfc6ee3adce6dfdedb66a54f4f5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ed21bfc6ee3adce6dfdedb66a54f4f5">&#9670;&#160;</a></span>drawEllipse()</h2>
 
@@ -463,8 +482,8 @@ hexToRGBA </dd></dl>
 
 </div>
 </div>
-<a id="ada9d7ba28146786fbe17d1356523fa85" name="ada9d7ba28146786fbe17d1356523fa85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada9d7ba28146786fbe17d1356523fa85">&#9670;&#160;</a></span>setClipView()</h2>
+<a id="a7f44722d3bb5141668e181e7a49dc637" name="a7f44722d3bb5141668e181e7a49dc637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f44722d3bb5141668e181e7a49dc637">&#9670;&#160;</a></span>setClipView()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,12 +491,8 @@ hexToRGBA </dd></dl>
         <tr>
           <td class="memname">void EasyEngine::Painter::setClipView </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>geometry</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_size.html">Size</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{1.0f,&#160;1.0f}</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -486,10 +501,10 @@ hexToRGBA </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">geometry</td><td>用于调整裁剪可见视图的位置、大小 </td></tr>
-    <tr><td class="paramname">size</td><td>用于调整可见视图的缩放比例（默认 1:1） </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>当指定的宽度或高度小于等于 0，则取消使用裁剪！ </dd></dl>
 
 </div>
 </div>
@@ -539,7 +554,7 @@ hexToRGBA </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>设置整个视图 </p>
+<p>设置自定义视图 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">geometry</td><td>用于调整视图的位置、大小 </td></tr>
@@ -547,7 +562,7 @@ hexToRGBA </dd></dl>
   </table>
   </dd>
 </dl>
-<p>执行后，整个位置及大小都将发生改变！适合用于写基本控件视图 </p>
+<p>执行后，整个位置及大小都将发生改变！ </p><dl class="section note"><dt>注解</dt><dd>当指定的宽度或高度小于等于 0，则取消使用自定义视图 </dd></dl>
 
 </div>
 </div>
