@@ -107,7 +107,7 @@ public:
     void loadAssets() {
         // 这里可以加载精灵、音频等资源
         // player = std::make_unique<Spirit>("player", "assets/player.png", 
-        //                                   engine.painter()->_render());
+        //                                   engine.painter()->______());
     }
     
     void setupEventHandlers() {
@@ -213,7 +213,7 @@ case SDL_EVENT_MOUSE_MOTION:
 ### 4.1 精灵动画
 ```cpp
 // 创建精灵
-Spirit player("player", "assets/player.png", _render);
+Spirit player("player", "assets/player.png", ______);
 
 // 动画帧
 std::vector<SDL_Rect> frames = {

@@ -53,6 +53,8 @@ add_executable(EasyEngine
         src/Scene.cpp
         src/Scene.h
         main.cpp
+        src/Transition.cpp
+        src/Transition.h
 )
 
 #include_directories(${FFMPEG_DIR}/include)

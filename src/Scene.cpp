@@ -193,10 +193,15 @@ uint32_t Components::Layer::indexOf(const std::string &name, uint32_t start_of, 
     return 0;
 }
 
-void Components::Layer::swap(uint32_t z_order1, uint32_t z_order2) {
+bool Components::Layer::swap(uint32_t z_order1, uint32_t z_order2) {
+    if (!_elements.contains(z_order1) || !_elements.contains(z_order2)) {
+        SDL_Log("[ERROR] Swap failed! One of the specified z_order is not valid! ");
+        return false;
+    }
     auto temp = _elements.at(z_order1);
     _elements.at(z_order1) = _elements.at(z_order2);
     _elements.at(z_order2) = temp;
+    return true;
 }
 
 bool Components::Layer::setZOrder(uint32_t old_z_order, uint32_t new_z_order) {
@@ -288,12 +293,12 @@ void Components::Layer::setViewportPainter(Painter *painter) {
 
 void Components::Layer::draw(bool viewport_mode, bool clip_mode) {
     if (_painter) {
-        if (viewport_mode) {
-            _painter->setViewport(_viewport_geometry, _scaled);
-        }
-        if (clip_mode) {
-            _painter->setClipView(_clipViewport_geometry);
-        }
+        if (viewport_mode) _painter->setViewport(_viewport_geometry, _scaled);
+        if (clip_mode) _painter->setClipView(_clipViewport_geometry);
+        update();
+        if (viewport_mode) _painter->setViewport({0, 0, 0, 0});
+        if (clip_mode) _painter->setClipView({0, 0, 0, 0});
+        return;
     }
     update();
 }
@@ -314,3 +319,290 @@ const Painter *Components::Layer::viewportPainter() const {
     return _painter;
 }
 
+Components::Scene::Scene(const std::string &name) : _name(name), _event() {}
+
+void Components::Scene::setName(const std::string &name) {
+    _name = name;
+}
+
+const std::string &Components::Scene::name() const {
+    return _name;
+}
+
+bool Components::Scene::appendLayer(uint32_t z_order, const std::string &name) {
+    if (_layers.contains(z_order)) {
+        SDL_Log("[ERROR] The specified z_order is already exist!");
+        return false;
+    }
+    auto idx = indexOf(name);
+    if (idx > 0) {
+        SDL_Log("[ERROR] The specified layer '%s' is in index %u (already exist)!", name.c_str(), idx);
+        return false;
+    }
+    _layers.emplace(z_order, std::make_shared<Layer>(name));
+    return true;
+}
+
+bool Components::Scene::appendLayer(uint32_t z_order, Components::Layer *layer) {
+    if (_layers.contains(z_order)) {
+        SDL_Log("[ERROR] The specified z_order is already exist!");
+        return false;
+    }
+    auto idx = indexOf(layer);
+    if (idx > 0) {
+        SDL_Log("[ERROR] The specified layer '%s' is in index %u (already exist)!", layer->name().c_str(), idx);
+        return false;
+    }
+    _layers.emplace(z_order, std::shared_ptr<Layer>(layer));
+    return true;
+}
+
+bool Components::Scene::removeLayer(uint32_t z_order) {
+    if (!_layers.contains(z_order)) {
+        SDL_Log("[ERROR] The specified z_order is not exist!");
+        return false;
+    }
+    _layers.erase(z_order);
+    return true;
+}
+
+uint32_t Components::Scene::indexOf(const std::string &layer_name) const {
+    for (auto& _one : _layers) {
+        if (_one.second->name() == layer_name) {
+            return _one.first;
+        }
+    }
+    return 0;
+}
+
+uint32_t Components::Scene::indexOf(const Components::Layer *layer) const {
+    for (auto& _one : _layers) {
+        if (_one.second.get() == layer) {
+            return _one.first;
+        }
+    }
+    return 0;
+}
+
+Components::Layer *Components::Scene::layer(const std::string &layer_name) const {
+    auto idx = indexOf(layer_name);
+    if (idx == 0) {
+        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name.c_str());
+        return nullptr;
+    }
+    return _layers.at(idx).get();
+}
+
+Components::Layer *Components::Scene::layer(uint32_t z_order) const {
+    if (!_layers.contains(z_order)) {
+        SDL_Log("[ERROR] The specified z_order is not exist!");
+        return nullptr;
+    }
+    return _layers.at(z_order).get();
+}
+
+bool Components::Scene::swapLayer(uint32_t z_order1, uint32_t z_order2) {
+    if (!_layers.contains(z_order1) || !_layers.contains(z_order2)) {
+        SDL_Log("[ERROR] The specified z_order1 or z_order2 is not exist!");
+        return false;
+    }
+    auto _tmp = _layers.at(z_order1);
+    _layers.at(z_order1) = _layers.at(z_order2);
+    _layers.at(z_order2) = _tmp;
+    return true;
+}
+
+bool Components::Scene::swapLayer(const std::string &layer_name1, const std::string &layer_name2) {
+    auto idx1 = indexOf(layer_name1);
+    auto idx2 = indexOf(layer_name2);
+    if (!idx1) {
+        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name1.c_str());
+        return false;
+    }
+    if (!idx2) {
+        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name2.c_str());
+        return false;
+    }
+    auto _tmp = _layers.at(idx1);
+    _layers.at(idx1) = _layers.at(idx2);
+    _layers.at(idx2) = _tmp;
+    return true;
+}
+
+bool Components::Scene::setZOrder(uint32_t old_z_order, uint32_t new_z_order) {
+    if (!_layers.contains(old_z_order)) {
+        SDL_Log("[ERROR] The specified old_z_order is not found!");
+        return false;
+    }
+    if (_layers.contains(new_z_order)) {
+        SDL_Log("[ERROR] The specified new_z_order is already exist! Please use `swap()` function!");
+        return false;
+    }
+    _layers.emplace(new_z_order, _layers.at(old_z_order));
+    _layers.erase(old_z_order);
+    return true;
+}
+
+bool Components::Scene::setZOrder(const std::string &layer_name, uint32_t new_z_order) {
+    auto idx = indexOf(layer_name);
+    if (idx == 0) {
+        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name.c_str());
+        return false;
+    }
+    if (_layers.contains(new_z_order)) {
+        SDL_Log("[ERROR] The specified new_z_order is already exist!");
+        return false;
+    }
+    _layers.emplace(new_z_order, _layers.at(idx));
+    _layers.erase(idx);
+    return true;
+}
+
+void Components::Scene::setSceneEvent(const std::function<void()> &event) {
+    _event = event;
+}
+
+void Components::Scene::drawLayers() {
+    _event();
+    for (auto& _layer : _layers) {
+        _layer.second->draw(true, true);
+    }
+}
+
+SceneManager::SceneManager() = default;
+
+bool SceneManager::append(Components::Scene *scene, uint32_t index) {
+    if (_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is already appended!");
+        return false;
+    }
+    auto _idx = indexOf(scene);
+    if (_idx > 0) {
+        SDL_Log("[ERROR] The specified scene '%s' is already appended!", scene->name().c_str());
+        return false;
+    }
+    _scenes.emplace(index, Property(std::shared_ptr<Components::Scene>(scene)));
+    EventSystem::global()->addSceneManager(this);
+    return true;
+}
+
+bool SceneManager::remove(uint32_t index) {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return false;
+    }
+    _scenes.erase(index);
+    return true;
+}
+
+bool SceneManager::setEvent(uint32_t index, const std::function<void()> &event) {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return false;
+    }
+    _scenes.at(index).change_event = event;
+    return true;
+}
+
+bool SceneManager::removeEvent(uint32_t index) {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return false;
+    }
+    _scenes.at(index).change_event = {};
+    return true;
+}
+
+bool SceneManager::setTransition(uint32_t index, Transition *transition) {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return false;
+    }
+    if (_scenes.at(index).transition) {
+        _scenes.at(index).transition.reset();
+    }
+    _scenes.at(index).transition = std::shared_ptr<Transition>(transition);
+    return true;
+}
+
+bool SceneManager::removeTransition(uint32_t index) {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return false;
+    }
+    _scenes.at(index).transition.reset();
+    return true;
+}
+
+void SceneManager::changeScene(uint32_t index) {
+    _new_changer = index;
+    if (_scenes.contains(_changer_index)) {
+        if (_scenes.at(_changer_index).transition) {
+            _scenes.at(_changer_index).transition->start();
+            _change_signal = true;
+        } else if (_scenes.at(_changer_index).change_event) {
+            _changer_index = _new_changer;
+            _scenes.at(_changer_index).change_event();
+        }
+    } else {
+        _changer_index = _new_changer;
+    }
+}
+
+uint32_t SceneManager::indexOf(const Components::Scene *scene) const {
+    for (auto& _scene : _scenes) {
+        if (_scene.second.scene.get() == scene) return _scene.first;
+    }
+    return 0;
+}
+
+uint32_t SceneManager::indexOf(const std::string &scene_name) const {
+    for (auto& _scene : _scenes) {
+        if (_scene.second.scene->name() == scene_name) return _scene.first;
+    }
+    return 0;
+}
+
+uint32_t SceneManager::currentSceneIndex() const {
+    return _changer_index;
+}
+
+Components::Scene *SceneManager::scene(uint64_t index) const {
+    if (!_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return nullptr;
+    } else {
+        return _scenes.at(index).scene.get();
+    }
+}
+
+Components::Scene *SceneManager::currentScene() const {
+    if (_scenes.contains(_changer_index))
+        return _scenes.at(_changer_index).scene.get();
+    else
+        return nullptr;
+}
+
+void SceneManager::______() {
+    if (_change_signal) changeSceneEvent();
+}
+
+void SceneManager::changeSceneEvent() {
+    auto _prop = _scenes.at(_changer_index);
+    // SDL_Log("Changer: %u", _changer_index);
+    if (_prop.transition) {
+        if (!_prop.transition->loopCount()) _prop.transition->______();
+        else if (_prop.transition->__is_changed_signal()) {
+            _changer_index = _new_changer;
+            if (_scenes.at(_new_changer).change_event) _scenes.at(_new_changer).change_event();
+        } else {
+            if (_prop.transition) {
+                // SDL_Log("Loop: %llu", _prop.transition->loopCount());
+                _prop.transition->clearLoopCount();
+            }
+            _change_signal = false;
+        }
+    } else {
+        _change_signal = false;
+    }
+}

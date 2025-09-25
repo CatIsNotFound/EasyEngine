@@ -246,6 +246,8 @@ namespace EasyEngine {
     };
 
     class Painter;
+    class Transition;
+    class SceneManager;
 
     /**
      * @class Engine
@@ -569,10 +571,15 @@ namespace EasyEngine {
          */
         void installPaintEvent(std::function<void(Painter&)> function);
         /**
+         * @brief 设置场景管理器以做到实时渲染
+         * @param sceneManager 指定场景管理器
+         */
+        void setSceneManager(SceneManager* sceneManager);
+        /**
          * @brief 渲染/刷新画面
          * @warning 请勿手动使用此函数，会出现异常退出！
          */
-        void _render();
+        void ______();
         /**
          * @brief 填充背景颜色
          * @param color 指定颜色
@@ -739,6 +746,7 @@ namespace EasyEngine {
         std::vector<std::unique_ptr<Command>> command_list;
         std::function<void(Painter&)> paint_function;
         uint32_t _thickness;
+        SceneManager* _scene_manager{nullptr};
         friend class Components::Sprite;
     };
 
@@ -766,6 +774,10 @@ namespace EasyEngine {
          * @return 返回 true 将持续处理事件，false 将结束处理事件
          */
         bool handler();
+        /**
+         * @brief 清理所有事件
+         */
+        void cleanUp();
         /**
          * @brief 添加定时器事件
          * @param timer 指定定时器
@@ -850,15 +862,33 @@ namespace EasyEngine {
          * @brief 清空所有控件
          */
         void clearControls();
+        /**
+         * @brief 添加场景管理器
+         * @param scene_manager 指定场景管理器
+         * @return 添加成功后，将返回 ID
+         */
+        uint64_t addSceneManager(EasyEngine::SceneManager *scene_manager);
+        /**
+         * @brief 移除场景管理器
+         * @param id 指定 ID
+         */
+        void removeSceneManager(uint64_t id);
+        /**
+         * @brief 清空场景管理器
+         */
+        void clearSceneManger();
+
     private:
         static std::function<bool(SEvent&)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
         std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
         std::map<uint64_t, std::unique_ptr<Components::Trigger>> _trigger_list;
         std::map<uint64_t, Components::Control*> _control_list;
+        std::map<uint64_t, std::unique_ptr<SceneManager>> _scene_mgr_list;
         uint64_t _timer_id{0};
         uint64_t _trigger_id{0};
         uint64_t _control_id{0};
+        uint64_t _scene_id{0};
     };
 
     /**

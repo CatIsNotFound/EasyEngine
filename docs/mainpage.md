@@ -111,7 +111,7 @@ int main() {
 #### 精灵动画
 ```cpp
 // 创建精灵
-Spirit player("player", "assets/player.png", _render);
+Spirit player("player", "assets/player.png", ______);
 player.setPosition(Vector2(400, 300));
 
 // 在渲染循环中

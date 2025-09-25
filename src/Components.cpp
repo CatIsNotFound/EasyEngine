@@ -196,7 +196,7 @@ uint64_t EasyEngine::Components::Timer::_currentTimeMs() {
     ).count();
 }
 
-void EasyEngine::Components::Timer::update() {
+void EasyEngine::Components::Timer::______() {
     if (!_enabled || !_timer_function) return;
 
     uint64_t current_time = _currentTimeMs();
@@ -247,7 +247,7 @@ bool EasyEngine::Components::Trigger::enabled() const {
     return _enabled;
 }
 
-void EasyEngine::Components::Trigger::__update() {
+void EasyEngine::Components::Trigger::______() {
     if (_enabled && _condition()) {
         _event();
     }
@@ -1478,7 +1478,8 @@ uint32_t EasyEngine::Components::Font::lineSpacing() const {
 }
 
 EasyEngine::Components::Sprite *
-EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::Painter &painter) {
+EasyEngine::Components::Font::textToSprite(const std::string &sprite_name, const std::string &text,
+                                           EasyEngine::Painter *painter) {
     SSurface* surface;
     if (!_font_is_loaded) {
         throw std::runtime_error("[FATAL] The current font is not loaded! Please use `isValid()` function at first!");
@@ -1509,6 +1510,6 @@ EasyEngine::Components::Font::textToSprite(const std::string &text, EasyEngine::
             SDL_Log("[ERROR] Can't draw the current text!\nException: %s", SDL_GetError());
         }
     }
-    return new Sprite(text, surface, &painter);
+    return new Sprite(sprite_name, surface, painter);
 }
 

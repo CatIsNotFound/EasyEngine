@@ -453,10 +453,10 @@ int EasyEngine::Engine::run() {
 
                 if (!should_skip_frame) {
                     if (_window_count == 1) {
-                        _renderer_list.begin()->second->_render();
+                        _renderer_list.begin()->second->______();
                     } else if (_window_count > 1) {
                         for (auto &_renderer: _renderer_list) {
-                            _renderer.second->_render();
+                            _renderer.second->______();
                         }
                     }
                 }
@@ -492,9 +492,8 @@ int EasyEngine::Engine::run() {
 }
 
 void EasyEngine::Engine::cleanUp() {
-    EventSystem::global()->clearTimer();
-    EventSystem::global()->clearTrigger();
     if (_clean_up_function) _clean_up_function();
+    EventSystem::global()->cleanUp();
     Cursor::global()->unload();
     AudioSystem::global()->unload();
     FontSystem::global()->unload();
@@ -630,7 +629,11 @@ void EasyEngine::Painter::paintEvent() {
     if (paint_function) paint_function(*this);
 }
 
-void EasyEngine::Painter::_render() {
+void EasyEngine::Painter::______() {
+    if (_scene_manager && _scene_manager->currentScene()) {
+        _scene_manager->currentScene()->drawLayers();
+        _scene_manager->______();
+    }
     SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
     SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
     SDL_SetRenderViewport(_window->renderer, nullptr);
@@ -728,6 +731,10 @@ void EasyEngine::Painter::clear() {
 
 void EasyEngine::Painter::installPaintEvent(std::function<void(Painter&)> function) {
     paint_function = std::move(function);
+}
+
+void EasyEngine::Painter::setSceneManager(EasyEngine::SceneManager *sceneManager) {
+    _scene_manager = sceneManager;
 }
 
 void EasyEngine::Painter::setViewport(const Geometry &geometry, const Size &size) {
@@ -964,12 +971,22 @@ bool EasyEngine::EventSystem::handler() {
         }
     }
     for (auto& _timer : _timer_list) {
-        _timer.second->update();
+        _timer.second->______();
     }
     for (auto& _trigger : _trigger_list) {
-        _trigger.second->__update();
+        _trigger.second->______();
+    }
+    for (auto& _scene_mgr : _scene_mgr_list) {
+        // _scene_mgr.second->______();
     }
     return ret;
+}
+
+void EasyEngine::EventSystem::cleanUp() {
+    clearTimer();
+    clearTrigger();
+    clearControls();
+    clearSceneManger();
 }
 
 uint64_t EasyEngine::EventSystem::addTimer(EasyEngine::Components::Timer *timer) {
@@ -1089,6 +1106,32 @@ void EasyEngine::EventSystem::removeControl(uint64_t id) {
 
 void EasyEngine::EventSystem::clearControls() {
     _control_list.clear();
+}
+
+uint64_t EasyEngine::EventSystem::addSceneManager(EasyEngine::SceneManager *scene_manager) {
+    if (!scene_manager) {
+        SDL_Log("[ERROR] The specified scene manager is not valid!");
+        return UINT64_MAX;
+    }
+    auto it = std::find_if(_scene_mgr_list.begin(), _scene_mgr_list.end(),
+                           [scene_manager](const auto& pair) {
+                               return scene_manager == pair.second.get();
+                           });
+    if (it != _scene_mgr_list.end()) {
+        return it->first;
+    }
+    _scene_mgr_list[++_scene_id] = std::unique_ptr<EasyEngine::SceneManager>(scene_manager);
+    return _scene_id;
+}
+
+void EasyEngine::EventSystem::removeSceneManager(uint64_t id) {
+    if (_scene_mgr_list.contains(id)) {
+        _scene_mgr_list.erase(id);
+    }
+}
+
+void EasyEngine::EventSystem::clearSceneManger() {
+    _scene_mgr_list.clear();
 }
 
 EasyEngine::AudioSystem::AudioSystem() : _audio_spec(StdAudioSpec::Stereo), _bgm_mixer(nullptr), _sfx_mixer(nullptr) {

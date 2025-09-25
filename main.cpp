@@ -5,83 +5,127 @@ using namespace Components;
 
 int main() {
     Engine engine("Graphics Test", 1280, 680);
-    engine.setResizable(true);
+    // engine.setResizable(false);
     engine.setBackgroundRenderingEnabled(false);
-    engine.setFPS(60);
+    engine.setFPS(63);
     engine.show();
 
+    auto sceneManager = new SceneManager();
     auto res = ResourceSystem::global();
     res->setRootPath("./assets");
-    res->append("red1", "red.png", Resource::Image);
-    res->append("green1", "green.png", Resource::Image);
-    res->append("red2", "red.png", Resource::Image);
-    res->append("green2", "green.png", Resource::Image);
-    res->append("red3", "red.png", Resource::Image);
-    res->append("green3", "green.png", Resource::Image);
-    res->append("red4", "red.png", Resource::Image);
-    res->append("mask", "white_mask.png", Resource::Image);
     res->append("font", "Jersey_15/Jersey15-Regular.ttf", Resource::Font);
+    res->append("red", "red.png", Resource::Image);
+    res->append("block", "block.png", Resource::Image);
+    res->append("bgm", "bgm.mp3", Resource::Audio);
+    res->append("btn1", "buttons/normal.png", Resource::Image);
+    res->append("btn2", "buttons/hover.png", Resource::Image);
+    res->append("btn3", "buttons/pressed.png", Resource::Image);
+    res->append("btn4", "buttons/disabled.png", Resource::Image);
+    res->append("btn5", "buttons/active.png", Resource::Image);
+    BGM bgm("bgm");
+    uint32_t changer = 1;
+    auto block_layer = new Layer("blocks");
+    block_layer->append(1, new Sprite("red", "red", engine.painter()));
+    block_layer->append(2, new Sprite("blue", "block", engine.painter()));
+    block_layer->append(3, new Sprite("green", "block", engine.painter()));
+    block_layer->append(4, new Control("button"));
+    auto btn = block_layer->control(4);
+    auto tmp_sp = new Sprite("default", "btn1", engine.painter());
+    btn->setStatus(Control::Status::Default, tmp_sp);
+    btn->setStatus(Control::Status::Hovered, new Sprite("hoverd", "btn2", engine.painter()));
+    btn->setStatus(Control::Status::Pressed, new Sprite("pressed", "btn3", engine.painter()));
+    btn->setStatus(Control::Status::Disabled, new Sprite("disabled", "btn4", engine.painter()));
+    btn->setStatus(Control::Status::Active, new Sprite("active", "btn5", engine.painter()));
+    btn->setGeometryForHotArea(500, 500, tmp_sp->size().width, tmp_sp->size().height);
+    btn->move(100, 0);
+    btn->setEvent(Control::Event::Clicked, [sceneManager, &bgm]{ sceneManager->changeScene(2); fmt::println("Goto Scene 2"); });
+    btn->setEnabled(true);
+    btn->setActive();
+    block_layer->setViewportPainter(engine.painter());
+    block_layer->setViewport(500, 500, 500, 500);
 
-    Font font("font", 128.0f);
+    Font font("font", 96.0);
     font.setFontColor(StdColor::Yellow);
     font.setOutline(1);
-    font.setOutlineColor(StdColor::LimeGreen);
+    font.setOutlineColor(StdColor::DarkOrange);
 
-    bool is_mouse_down = false;
-    Layer layer("main");
-    layer.append(1, new Sprite("red1", "red1", engine.painter()));
-    layer.append(2, new Sprite("green1", "green1", engine.painter()));
-    layer.append(3, new Sprite("red2", "red2", engine.painter()));
-    layer.append(4, new Sprite("green2", "green2", engine.painter()));
-    layer.append(5, new Sprite("red3", "red3", engine.painter()));
-    layer.append(6, new Sprite("green3", "green3", engine.painter()));
-    layer.append(7, new Sprite("red4", "red4", engine.painter()));
-    layer.append(8, font.textToSprite("Hello world!", *engine.painter()));
-    layer.append(124, new Sprite("red124", "red4", engine.painter()));
-    layer.sprite(1)->properties()->position = {0, 0};
-    layer.sprite(1)->properties()->color_alpha = StdColor::Green;
-    layer.sprite(1)->properties()->scaled = 5.f;
-    layer.sprite(2)->properties()->position = {100, 0};
-    layer.sprite(3)->properties()->position = {200, 10};
-    layer.sprite(4)->properties()->position = {200, 140};
-    layer.sprite(5)->properties()->position = {300, 120};
-    layer.sprite(6)->properties()->position = {400, 100};
-    layer.sprite(7)->properties()->position = {400, 400};
-    layer.remove(7);
-    layer.swap(1, 3);
-    layer.setZOrder(4, 14);
-    layer.sprite(layer.indexOf("Hello world!"))->properties()->position = {20, 200};
-    fmt::println("Index of {}\n", layer.indexOf("green2"));
-    fmt::println("Index of {}\n", layer.indexOf("red124", 1));
-    layer.setVisible(true);
-    layer.setViewportPainter(engine.painter());
-    layer.setViewport(0, 0, 600, 600);
-    Sprite mask("mask", "mask", engine.painter());
-    mask.resize(108, 108);
-    mask.properties()->color_alpha = StdColor::Black;
-    engine.painter()->installPaintEvent([&](Painter& p) {
-        p.fillBackColor(StdColor::Black);
-        Vector2 pos = Cursor::global()->position();
-        int s = (is_mouse_down ? 0 : 100);
-        layer.setClipViewport((int)pos.x - 50, (int)pos.y - 50, s, s);
-        layer.draw(false, true);
-        if (!is_mouse_down)
-        mask.draw({pos.x - mask.size().width / 2, pos.y - mask.size().height / 2});
-        p.setClipView({0, 0, 0, 0});
-        p.drawPixelText(fmt::format("Move mouse! FPS: {}", engine.fps()), {10, 10}, {1.f, 1.f}, StdColor::White);
-        if (!is_mouse_down)
-        mask.draw({static_cast<float>(engine.window()->geometry.width - 120),
-                   static_cast<float>(engine.window()->geometry.height - 120)}, StdColor::White);
+
+    auto text_layer = new Layer("text_layer");
+    text_layer->append(1, font.textToSprite("text1", "Hello EasyEngine!", engine.painter()));
+    font.setFontSize(32.f);
+    text_layer->append(2, font.textToSprite("text2", "Pay the toll to the angels, drawing circles in the clouds", engine.painter()));
+    text_layer->sprite(1)->properties()->position = {370, 100};
+    text_layer->sprite(2)->properties()->position = {350, 300};
+
+    auto btn2 = new Control("back");
+    btn2->setStatus(Control::Status::Default, tmp_sp);
+    btn2->setStatus(Control::Status::Hovered, new Sprite("hoverd", "btn2", engine.painter()));
+    btn2->setStatus(Control::Status::Pressed, new Sprite("pressed", "btn3", engine.painter()));
+    btn2->setStatus(Control::Status::Disabled, new Sprite("disabled", "btn4", engine.painter()));
+    btn2->setStatus(Control::Status::Active, new Sprite("active", "btn5", engine.painter()));
+    btn2->setGeometryForHotArea(0, 0, tmp_sp->size().width, tmp_sp->size().height);
+    btn2->move(400, 500);
+    btn2->setEvent(Control::Event::Clicked, [sceneManager, &bgm]{ sceneManager->changeScene(1); });
+    btn2->setEnabled(true);
+    btn2->setActive();
+
+    auto text2_layer = new Layer("text2_layer");
+    font.setFontSize(96.0f);
+    text2_layer->append(1, font.textToSprite("text3", "Please listen music!", engine.painter()));
+    text2_layer->sprite(1)->properties()->position = {400, 100};
+    text2_layer->append(2, btn2);
+
+    auto moving_layer = new Layer("moving_layer");
+    moving_layer->append(1, new Sprite("moving", "block", engine.painter()));
+    auto sp = moving_layer->sprite(1);
+    sp->properties()->rotate_center = {sp->size().width * 3, sp->size().height / 2};
+    sp->properties()->rotate = 0;
+    sp->properties()->color_alpha = {5, 132, 190, 255};
+    sp->properties()->position = {300, 250};
+
+    auto scene = new Scene("main");
+    scene->appendLayer(1, block_layer);
+    scene->appendLayer(2, text_layer);
+    scene->setSceneEvent([&]() {
+         engine.painter()->fillBackColor(StdColor::LightBlue);
     });
 
-    engine.installEventHandler([&](SEvent& e) {
-        if (e.button.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
-            is_mouse_down = true;
-        } else if (e.button.type == SDL_EVENT_MOUSE_BUTTON_UP) {
-            is_mouse_down = false;
-        }
-        return true;
+    Graphics::Ellipse ellipse(0, 0, 100, 100);
+    ellipse.bordered_mode = false;
+    ellipse.filled_mode = true;
+    ellipse.back_color = StdColor::HalfTransparent;
+    auto scene2 = new Scene("exit");
+    scene2->appendLayer(1, text2_layer);
+    scene2->appendLayer(2, moving_layer);
+    scene2->swapLayer(1, 2);
+    scene2->setSceneEvent([&] {
+        engine.painter()->fillBackColor(StdColor::LightGreen);
+        auto cur_pos = Cursor::global()->position();
+        ellipse.pos = cur_pos;
+        engine.painter()->drawEllipse(ellipse);
+        // static float x = 0, y = 0, fx = 1.0f, fy = 1.0f;
+        // if (x > 1280 || x < 0) fx = -fx;
+        // if (y > 680 || y < 0) fy = -fy;
+        // x += fx; y += fy;
+        static float angle = 1.f;
+        // sp->properties()->position = {x, y};
+        sp->properties()->rotate += angle;
     });
 
+
+    sceneManager->append(scene, 1);
+    sceneManager->append(scene2, 2);
+    sceneManager->changeScene(1);
+    auto fade_effect = new FadeTransition(1000, Transition::KeepWhenStopped, engine.painter());
+    sceneManager->setTransition(1, fade_effect);
+    sceneManager->setEvent(1, [&bgm]() { fmt::println("Changed: scene 1!"); bgm.stop(); });
+    sceneManager->setEvent(2, [&bgm]() { fmt::println("Changed: scene 2!"); bgm.play(); });
+    engine.painter()->setSceneManager(sceneManager);
+    engine.painter()->installPaintEvent([&](Painter& painter) {
+        painter.fillBackColor(StdColor::White);
+        engine.setWindowTitle(fmt::format("EasyEngine Demo - FPS {}", engine.fps()));
+    });
+
+    
     return engine.exec();
 }

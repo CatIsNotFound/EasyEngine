@@ -12,9 +12,10 @@
  * @author CatIsNotFound
  */
 #include "Components.h"
+#include "Transition.h"
 
 namespace EasyEngine {
-
+    class Transition;
     namespace Components {
         /// 使用的元素集合
         using Elements = std::variant<std::shared_ptr<Sprite>, std::shared_ptr<SpriteGroup>,
@@ -173,7 +174,7 @@ namespace EasyEngine {
              * @see indexOf
              * @see setZOrder
              */
-            void swap(uint32_t z_order1, uint32_t z_order2);
+            bool swap(uint32_t z_order1, uint32_t z_order2);
             /**
              * @brief 将当前元素更换新的图层渲染顺序
              * @param old_z_order   指定原先的图层渲染顺序
@@ -293,19 +294,25 @@ namespace EasyEngine {
         class Scene {
         public:
             explicit Scene(const std::string& name);
-            void append(uint32_t z_order, const std::string &name);
-            void append(uint32_t z_order, Layer* layer);
-            void remove(uint32_t z_order);
+            void setName(const std::string& name);
+            const std::string& name() const;
+            bool appendLayer(uint32_t z_order, const std::string &name);
+            bool appendLayer(uint32_t z_order, Layer* layer);
+            bool removeLayer(uint32_t z_order);
             uint32_t indexOf(const std::string& layer_name) const;
             uint32_t indexOf(const Layer* layer) const;
-            Layer* layer() const;
-            void swap(uint32_t z_order1, uint32_t z_order2);
-            bool setZOrder(uint32_t old_ZOrder, uint32_t new_ZOrder);
-
+            Layer* layer(const std::string& layer_name) const;
+            Layer* layer(uint32_t z_order) const;
+            bool swapLayer(uint32_t z_order1, uint32_t z_order2);
+            bool swapLayer(const std::string& layer_name1, const std::string& layer_name2);
+            bool setZOrder(uint32_t old_z_order, uint32_t new_z_order);
+            bool setZOrder(const std::string& layer_name, uint32_t new_z_order);
+            void setSceneEvent(const std::function<void()>& event);
+            void drawLayers();
         private:
             std::string _name;
             std::map<uint32_t, std::shared_ptr<Layer>> _layers;
-            Painter* _painter;
+            std::function<void()> _event;
         };
     }
     /**
@@ -315,7 +322,39 @@ namespace EasyEngine {
      * 定义场景管理器，用于管理多个游戏场景
      */
     class SceneManager {
+    public:
+        /**
+         * @struct Property
+         * @brief 场景属性
+         */
+        struct Property {
+            /// 场景
+            std::shared_ptr<Components::Scene> scene{};
+            std::function<void()> change_event{};
+            std::shared_ptr<Transition> transition{};
+        };
+        explicit SceneManager();
 
+        bool append(Components::Scene* scene, uint32_t index);
+        bool remove(uint32_t index);
+        bool setEvent(uint32_t index, const std::function<void()>& event);
+        bool removeEvent(uint32_t index);
+        bool setTransition(uint32_t index, Transition* transition);
+        bool removeTransition(uint32_t index);
+        void changeScene(uint32_t index);
+        uint32_t indexOf(const Components::Scene* scene) const;
+        uint32_t indexOf(const std::string& scene_name) const;
+        uint32_t currentSceneIndex() const;
+        Components::Scene *scene(uint64_t index) const;
+        Components::Scene* currentScene() const;
+        void ______();
+    private:
+        void changeSceneEvent();
+        std::map<uint32_t, Property> _scenes;
+        uint32_t _changer_index{0};
+        uint32_t _new_changer{0};
+        uint32_t _old_changer_index{0};
+        bool _change_signal{false};
     };
 }
 

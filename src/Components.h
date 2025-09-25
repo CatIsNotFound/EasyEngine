@@ -244,7 +244,7 @@ namespace EasyEngine {
             /**
              * @brief 更新定时器状态（无需手动调用）
              */
-            void update();
+            void ______();
             /**
              * @brief 获取触发定时器的总次数
              * @see clearCount
@@ -304,7 +304,7 @@ namespace EasyEngine {
             /**
              * @brief 更新触发器状态（无需手动执行）
              */
-            void __update();
+            void ______();
             /**
              * @brief 手动触发触发器
              */
@@ -1725,13 +1725,15 @@ namespace EasyEngine {
             uint32_t lineSpacing() const;
             /**
              * @brief 文本转换精灵
+             * @param sprite_name 指定精灵别名
              * @param text 指定内容
+             * @param painter 指定绘图器
              *
              * 会根据当前的字体属性进行渲染并转换成可用的精灵
              * @warning 若当前字体未加载，将报错并异常退出！
              * @return 返回转换后的精灵指针（便于后续处理）
              */
-            Sprite * textToSprite(const std::string &text, EasyEngine::Painter &painter);
+            Sprite *textToSprite(const std::string &sprite_name, const std::string &text, EasyEngine::Painter *painter);
 
         private:
             /// 字体指针
