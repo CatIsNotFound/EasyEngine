@@ -654,7 +654,10 @@ namespace EasyEngine {
          * @note 当指定的宽度或高度小于等于 0，则取消使用裁剪！
          */
         void setClipView(const Geometry &geometry);
-
+        bool _addTransition(Transition* transition);
+        bool _removeTransition(Transition* transition);
+        bool _startTransition(Transition* transition);
+        bool _stopTransition(Transition* transition);
     private:
         /**
          * @brief 绘图事件
@@ -747,6 +750,8 @@ namespace EasyEngine {
         std::function<void(Painter&)> paint_function;
         uint32_t _thickness;
         SceneManager* _scene_manager{nullptr};
+        std::vector<std::shared_ptr<Transition>> _running_transition_list;
+        std::vector<std::shared_ptr<Transition>> _transition_list;
         friend class Components::Sprite;
     };
 

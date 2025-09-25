@@ -180,12 +180,12 @@ namespace EasyEngine {
              * @code
              * Timer* timer = new Timer();
              * timer->setDelay(1000);   // 1000ms = 1sec
-             * timer->setEvent(your_function);
+             * timer->setEnterSceneEvent(your_function);
              * timer->start();
              * // delete timer; // 调用 start() 函数后，不能释放此指针！
              * @endcode
              * @see setDelay
-             * @see setEvent
+             * @see setEnterSceneEvent
              * @see start
              */
             explicit Timer();
@@ -201,7 +201,7 @@ namespace EasyEngine {
             /**
              * @brief 设定定时器触发延迟
              * @param delay 指定延迟（毫秒）
-             * @see setEvent
+             * @see setEnterSceneEvent
              * @see start
              */
             void setDelay(uint64_t delay);
@@ -1429,7 +1429,7 @@ namespace EasyEngine {
              * @param event     指定事件
              * @param function  触发函数
              * @see event
-             * @see removeEvent
+             * @see removeEnterSceneEvent
              * @see Trigger
              */
             void setEvent(const enum Event& event, const std::function<void()>& function);
@@ -1439,7 +1439,7 @@ namespace EasyEngine {
              * @param condition 触发条件（额外条件）
              * @param function  触发函数
              * @see event
-             * @see removeEvent
+             * @see removeEnterSceneEvent
              * @see Trigger
              */
             void setEvent(const enum Event& event, const std::function<bool()>& condition,
@@ -1448,7 +1448,7 @@ namespace EasyEngine {
              * @brief 移除指定事件下的触发器
              * @param event 指定事件
              * @see event
-             * @see setEvent
+             * @see setEnterSceneEvent
              */
             void removeEvent(const enum Event& event);
 

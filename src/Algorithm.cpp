@@ -343,3 +343,31 @@ int8_t Algorithm::compareRectEllipse(const Graphics::Rectangle &rect, const Grap
     return -1;
 }
 
+SSurface *Algorithm::captureWindow(Painter *painter) {
+    if (!painter) {
+        SDL_Log("[ERROR] The specified painter is not valid!");
+        return nullptr;
+    }
+    if (!painter->window() || !painter->window()->window) {
+        SDL_Log("[ERROR] Failed to get window! The window is not valid!");
+        return nullptr;
+    }
+    SSurface *_window = SDL_GetWindowSurface(painter->window()->window);
+    if (!_window) {
+        SDL_Log("[ERROR] Failed to get window surface! Exception: %s", SDL_GetError());
+        return nullptr;
+    }
+    SSurface *_new = SDL_CreateSurface(_window->w, _window->h, _window->format);
+    if (!_new) {
+        SDL_Log("[ERROR] Failed to get window surface! Exception: %s", SDL_GetError());
+        return nullptr;
+    }
+    if (!SDL_BlitSurface(_window, nullptr, _new, nullptr)) {
+        SDL_Log("[ERROR] Capture window failed! Please check the window whether it is valid!");
+        SDL_DestroySurface(_new);
+        return nullptr;
+    }
+    SDL_Log("Captured Window! width: %d height: %d", _new->w, _new->h);
+    return _new;
+}
+

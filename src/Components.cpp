@@ -46,7 +46,7 @@ void EasyEngine::Components::BGM::play(bool loop) {
 
 void EasyEngine::Components::BGM::stop() {
     if (_is_load)
-        AudioSystem::global()->stopBGM(_channel, false, 100);
+        AudioSystem::global()->stopBGM(_channel, false, 1000);
 }
 
 void EasyEngine::Components::BGM::pause() {

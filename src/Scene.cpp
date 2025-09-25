@@ -1,4 +1,3 @@
-
 #include "Scene.h"
 
 using namespace EasyEngine;
@@ -463,7 +462,7 @@ void Components::Scene::setSceneEvent(const std::function<void()> &event) {
 }
 
 void Components::Scene::drawLayers() {
-    _event();
+    if (_event) _event();
     for (auto& _layer : _layers) {
         _layer.second->draw(true, true);
     }
@@ -495,58 +494,55 @@ bool SceneManager::remove(uint32_t index) {
     return true;
 }
 
-bool SceneManager::setEvent(uint32_t index, const std::function<void()> &event) {
+bool SceneManager::setEnterSceneEvent(uint32_t index, const std::function<void()> &event) {
     if (!_scenes.contains(index)) {
         SDL_Log("[ERROR] The specified index is not exist!");
         return false;
     }
-    _scenes.at(index).change_event = event;
+    _scenes.at(index).enter_scene_event = event;
     return true;
 }
 
-bool SceneManager::removeEvent(uint32_t index) {
+bool SceneManager::removeEnterSceneEvent(uint32_t index) {
     if (!_scenes.contains(index)) {
         SDL_Log("[ERROR] The specified index is not exist!");
         return false;
     }
-    _scenes.at(index).change_event = {};
+    _scenes.at(index).enter_scene_event = {};
     return true;
 }
 
-bool SceneManager::setTransition(uint32_t index, Transition *transition) {
+
+bool SceneManager::setLeaveSceneEvent(uint32_t index, const std::function<void()> &event) {
     if (!_scenes.contains(index)) {
         SDL_Log("[ERROR] The specified index is not exist!");
         return false;
     }
-    if (_scenes.at(index).transition) {
-        _scenes.at(index).transition.reset();
-    }
-    _scenes.at(index).transition = std::shared_ptr<Transition>(transition);
+    _scenes.at(index).leave_scene_event = event;
     return true;
 }
 
-bool SceneManager::removeTransition(uint32_t index) {
+bool SceneManager::removeLeaveSceneEvent(uint32_t index) {
     if (!_scenes.contains(index)) {
         SDL_Log("[ERROR] The specified index is not exist!");
         return false;
     }
-    _scenes.at(index).transition.reset();
+    _scenes.at(index).leave_scene_event = {};
     return true;
 }
 
 void SceneManager::changeScene(uint32_t index) {
     _new_changer = index;
-    if (_scenes.contains(_changer_index)) {
-        if (_scenes.at(_changer_index).transition) {
-            _scenes.at(_changer_index).transition->start();
-            _change_signal = true;
-        } else if (_scenes.at(_changer_index).change_event) {
-            _changer_index = _new_changer;
-            _scenes.at(_changer_index).change_event();
-        }
-    } else {
-        _changer_index = _new_changer;
+    if (!_current_changer) {
+        _current_changer = index;
     }
+
+    if (_scenes.contains(_current_changer)) {
+        _current_changer = _new_changer;
+        auto& cur_scene = _scenes.at(_current_changer);
+        if (cur_scene.enter_scene_event) cur_scene.enter_scene_event();
+    }
+
 }
 
 uint32_t SceneManager::indexOf(const Components::Scene *scene) const {
@@ -564,7 +560,7 @@ uint32_t SceneManager::indexOf(const std::string &scene_name) const {
 }
 
 uint32_t SceneManager::currentSceneIndex() const {
-    return _changer_index;
+    return _current_changer;
 }
 
 Components::Scene *SceneManager::scene(uint64_t index) const {
@@ -577,32 +573,14 @@ Components::Scene *SceneManager::scene(uint64_t index) const {
 }
 
 Components::Scene *SceneManager::currentScene() const {
-    if (_scenes.contains(_changer_index))
-        return _scenes.at(_changer_index).scene.get();
+    if (_scenes.contains(_current_changer))
+        return _scenes.at(_current_changer).scene.get();
     else
         return nullptr;
 }
 
 void SceneManager::______() {
-    if (_change_signal) changeSceneEvent();
+
 }
 
-void SceneManager::changeSceneEvent() {
-    auto _prop = _scenes.at(_changer_index);
-    // SDL_Log("Changer: %u", _changer_index);
-    if (_prop.transition) {
-        if (!_prop.transition->loopCount()) _prop.transition->______();
-        else if (_prop.transition->__is_changed_signal()) {
-            _changer_index = _new_changer;
-            if (_scenes.at(_new_changer).change_event) _scenes.at(_new_changer).change_event();
-        } else {
-            if (_prop.transition) {
-                // SDL_Log("Loop: %llu", _prop.transition->loopCount());
-                _prop.transition->clearLoopCount();
-            }
-            _change_signal = false;
-        }
-    } else {
-        _change_signal = false;
-    }
-}
+

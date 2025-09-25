@@ -5,9 +5,9 @@ using namespace Components;
 
 int main() {
     Engine engine("Graphics Test", 1280, 680);
-    // engine.setResizable(false);
+     engine.setResizable(true);
     engine.setBackgroundRenderingEnabled(false);
-    engine.setFPS(63);
+    engine.setFPS(30);
     engine.show();
 
     auto sceneManager = new SceneManager();
@@ -86,9 +86,9 @@ int main() {
     auto scene = new Scene("main");
     scene->appendLayer(1, block_layer);
     scene->appendLayer(2, text_layer);
-    scene->setSceneEvent([&]() {
-         engine.painter()->fillBackColor(StdColor::LightBlue);
-    });
+//    scene->setSceneEvent([&]() {
+//         engine.painter()->fillBackColor(StdColor::LightBlue);
+//    });
 
     Graphics::Ellipse ellipse(0, 0, 100, 100);
     ellipse.bordered_mode = false;
@@ -96,7 +96,7 @@ int main() {
     ellipse.back_color = StdColor::HalfTransparent;
     auto scene2 = new Scene("exit");
     scene2->appendLayer(1, text2_layer);
-    scene2->appendLayer(2, moving_layer);
+//    scene2->appendLayer(2, moving_layer);
     scene2->swapLayer(1, 2);
     scene2->setSceneEvent([&] {
         engine.painter()->fillBackColor(StdColor::LightGreen);
@@ -112,20 +112,58 @@ int main() {
         sp->properties()->rotate += angle;
     });
 
+    auto esc_layer = new Layer("esc");
+    esc_layer->append(1, font.textToSprite("text", "Press ESC to go back!", engine.painter()));
+    auto scene3 = new Scene("scene3");
+    scene3->appendLayer(1, esc_layer);
+    scene3->setSceneEvent([&]{
+        engine.painter()->fillBackColor(StdColor::LightPink);
+        auto sp = scene3->layer(1)->sprite(1);
+        sp->properties()->position = Cursor::global()->position();
+    });
 
     sceneManager->append(scene, 1);
     sceneManager->append(scene2, 2);
-    sceneManager->changeScene(1);
-    auto fade_effect = new FadeTransition(1000, Transition::KeepWhenStopped, engine.painter());
-    sceneManager->setTransition(1, fade_effect);
-    sceneManager->setEvent(1, [&bgm]() { fmt::println("Changed: scene 1!"); bgm.stop(); });
-    sceneManager->setEvent(2, [&bgm]() { fmt::println("Changed: scene 2!"); bgm.play(); });
-    engine.painter()->setSceneManager(sceneManager);
-    engine.painter()->installPaintEvent([&](Painter& painter) {
-        painter.fillBackColor(StdColor::White);
-        engine.setWindowTitle(fmt::format("EasyEngine Demo - FPS {}", engine.fps()));
+    sceneManager->append(scene3, 3);
+    auto dark = new DarkTransition(1500, Transition::KeepWhenStopped, engine.painter());
+    auto move_img = new MoveTransition(3000, MoveTransition::LeftToRight, Transition::KeepWhenStopped, engine.painter());
+    sceneManager->setEnterSceneEvent(1, [&]() {
+        fmt::println("Changed: scene 1!");
+        bgm.stop();
+        dark->setDirection(Transition::Forward);
+        dark->start();
     });
-
+    sceneManager->setEnterSceneEvent(2, [&]() {
+        fmt::println("Changed: scene 2!");
+        bgm.play();
+        dark->setDirection(Transition::Forward);
+        dark->start();
+    });
+    sceneManager->setLeaveSceneEvent(2, [&] {
+        dark->setDirection(Transition::Backward);
+        dark->start();
+    });
+    sceneManager->setEnterSceneEvent(3, [&] {
+        // move_img->setDirection(Transition::Forward);
+        move_img->setMoveDirection(MoveTransition::TopToBottom);
+        move_img->setDirection(Transition::Backward);
+        move_img->start();
+    });
+    engine.painter()->setSceneManager(sceneManager);
+    sceneManager->changeScene(1);
+    engine.painter()->installPaintEvent([&](Painter& painter) {
+        painter.fillBackColor(StdColor::LightYellow);
+        engine.setWindowTitle(fmt::format("EasyEngine Demo - FPS {} Scene {}", engine.fps(), sceneManager->currentSceneIndex()));
+    });
+    engine.installEventHandler([&] (SEvent& e) {
+        if (e.key.down && e.key.key == SDLK_Q) {
+            if (sceneManager->currentSceneIndex() != 3) sceneManager->changeScene(3);
+        }
+        if (e.key.down && e.key.key == SDLK_ESCAPE) {
+            if (sceneManager->currentSceneIndex() != 1) sceneManager->changeScene(1);
+        }
+        return true;
+    });
     
     return engine.exec();
 }

@@ -152,6 +152,8 @@ namespace EasyEngine {
          */
         static int8_t compareRectEllipse(const Graphics::Rectangle &rect, const Graphics::Ellipse &ellipse);
 
+        static SSurface *captureWindow(Painter* painter);
+
     private:
         /**
          * @brief 判断两椭圆是否包含

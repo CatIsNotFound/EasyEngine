@@ -131,7 +131,7 @@ namespace EasyEngine {
         /**
          * @brief 检查是否将 A 效果切换到 B 效果
          */
-        bool __is_changed_signal();
+        bool __is_changed();
     protected:
         uint64_t _duration;
         Direction _direction{Forward};
@@ -141,6 +141,7 @@ namespace EasyEngine {
         bool _change_signal{false};
     private:
         virtual void update() = 0;
+        virtual void getReady() = 0;
         uint64_t _start_time{0};
         uint64_t _current_time{0};
         uint64_t _loop_count{0};
@@ -148,21 +149,51 @@ namespace EasyEngine {
     };
 
     /**
-     * @class FadeTransition
-     * @brief 淡入淡出效果
+     * @class DarkTransition
+     * @brief 黑幕效果
      *
-     * 实现最简单的淡入淡出效果
+     * 实现最简单的黑幕效果，实现画面由透明到黑或由黑到透明的过渡效果
      */
-    class FadeTransition : public Transition {
+    class DarkTransition : public Transition {
     public:
-        FadeTransition(uint64_t _duration, DeletionPolicy deletion_policy, Painter *painter);
-        ~FadeTransition() override;
+        DarkTransition(uint64_t _duration, DeletionPolicy deletion_policy, Painter *painter);
+        ~DarkTransition() override;
 
-        void setFadeColor(const SColor& color);
+        /**
+         * @brief 设置黑幕背景颜色
+         * @param color 指定背景颜色
+         */
+        void setBackgroundColor(const SColor& color);
+        /**
+         * @brief 获取当前黑幕背景颜色
+         */
+        const SColor &backgroundColor() const;
 
     private:
         void update() override;
+        void getReady() override;
         Graphics::Rectangle _mask;
+    };
+
+    /**
+     * @class MoveTransition
+     * @brief 画面平移过渡
+     */
+    class MoveTransition : public Transition {
+    public:
+        enum MoveDirection { LeftToRight, TopToBottom };
+        MoveTransition(uint64_t duration, const enum MoveDirection& direction, DeletionPolicy deletion_policy, Painter *painter);
+        ~MoveTransition();
+
+        void setMoveDirection(const enum MoveDirection& direction);
+        const enum MoveDirection& moveDirection() const;
+
+    private:
+        void update() override;
+        void getReady() override;
+        SSurface* _surface{};
+        enum MoveDirection _direction{MoveDirection::LeftToRight};
+        std::unique_ptr<Components::Sprite> _sprite;
     };
 
 } // EasyEngine

@@ -3,7 +3,9 @@
 
 namespace EasyEngine {
     Transition::Transition(uint64_t duration, DeletionPolicy deletion_policy, Painter *painter)
-        : _duration(duration), _deletion_policy(deletion_policy), _painter(painter) {}
+        : _duration(duration), _deletion_policy(deletion_policy), _painter(painter) {
+        _painter->_addTransition(this);
+    }
 
     void Transition::setDeletionPolicy(const Transition::DeletionPolicy &deletion_policy) {
         _deletion_policy = deletion_policy;
@@ -18,9 +20,13 @@ namespace EasyEngine {
     }
 
     void Transition::start() {
+        if (_state == Running) return;
         _state = Running;
         _start_time = SDL_GetTicks();
         _change_signal = false;
+        SDL_Log("Start Transition!");
+        getReady();
+        _painter->_startTransition(this);
     }
 
     void Transition::pause() {
@@ -28,7 +34,10 @@ namespace EasyEngine {
     }
 
     void Transition::stop() {
+        if (_state == Stopped) return;
         _state = Stopped;
+        _change_signal = false;
+        _painter->_stopTransition(this);
     }
 
     uint64_t Transition::duration() const {
@@ -62,44 +71,100 @@ namespace EasyEngine {
     void Transition::______() {
         if (_state == Running) {
             _current_time = SDL_GetTicks() - _start_time;
-            // SDL_Log("Transition: %llu / %llu", _current_time, _duration);
             if (_current_time <= _duration) update();
             else {
+                SDL_Log("End: %llu", _current_time);
                 _loop_count += 1;
                 _state = Stopped;
-                SDL_Log("Finished!");
+                _painter->_stopTransition(this);
+                if (_deletion_policy == DeleteWhenStopped) {
+                    auto _r = _painter->_removeTransition(this);
+                    fmt::println("Deleted? {}", _r);
+                }
             }
         }
     }
 
-    bool Transition::__is_changed_signal() {
+    bool Transition::__is_changed() {
         return _change_signal;
     }
 
-    FadeTransition::FadeTransition(uint64_t _duration, DeletionPolicy deletion_policy, Painter *painter) : Transition(
+    DarkTransition::DarkTransition(uint64_t _duration, DeletionPolicy deletion_policy, Painter *painter) : Transition(
             _duration, deletion_policy, painter) {
         _mask.bordered_mode = false;
         _mask.filled_mode = true;
         _mask.back_color = StdColor::Black;
-        _mask.pos = {0, 0};
-        _mask.size = {(float)painter->window()->geometry.width, (float)painter->window()->geometry.height};
+        _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
     }
 
-    FadeTransition::~FadeTransition() = default;
+    DarkTransition::~DarkTransition() = default;
 
-    void FadeTransition::setFadeColor(const SColor &color) {
+    void DarkTransition::setBackgroundColor(const SColor &color) {
         _mask.back_color = color;
     }
 
-    void FadeTransition::update() {
+    void DarkTransition::update() {
         auto current = currentTime();
-        auto percent = ((current * 1.f) / _duration) / 0.5f;
-        if (percent <= 1.f)
-            _mask.back_color.a = (uint8_t)(255 * percent);
-        else {
-            _change_signal = true;
-            _mask.back_color.a = (uint8_t) (255 * (1.f - percent));
+        auto percent = ((current * 1.f) / _duration);
+        if (percent <= 1.f) {
+            if (_direction == Backward)
+                _mask.back_color.a = (uint8_t)(255.f * percent);
+            if (_direction == Forward)
+                _mask.back_color.a = (uint8_t)(255.f * (1.f - percent));
         }
         _painter->drawRectangle(_mask);
+        _painter->drawPixelText(fmt::format("Opacity: {}, Process: {} / {}, {:.4}%",
+                                     _mask.back_color.a, currentTime(), _duration, percent * 100.f), {20, 20});
+
+    }
+
+    void DarkTransition::getReady() {
+        _mask.pos = {0, 0};
+        // _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
+
+    }
+
+    const SColor &DarkTransition::backgroundColor() const {
+        return _mask.back_color;
+    }
+
+    MoveTransition::MoveTransition(uint64_t duration, const enum MoveDirection& direction,
+            Transition::DeletionPolicy deletion_policy, Painter *painter)
+            : Transition(duration, deletion_policy, painter), _direction(direction) {}
+
+    MoveTransition::~MoveTransition() {}
+
+    void MoveTransition::setMoveDirection(const MoveTransition::MoveDirection &direction) {
+        _direction = direction;
+    }
+
+    const MoveTransition::MoveDirection &MoveTransition::moveDirection() const {
+        return _direction;
+    }
+
+    void MoveTransition::update() {
+        auto current = currentTime();
+        auto percent = ((current * 1.f) / _duration);
+        auto size = _sprite->size();
+        if (percent <= 1.f) {
+            if (_direction == MoveDirection::LeftToRight) {
+                if (Transition::_direction == Forward)
+                    _sprite->draw(Vector2((size.width * percent), 0));
+                else
+                    _sprite->draw(Vector2((size.width * (1.f - percent)), 0));
+            } else {
+                if (Transition::_direction == Forward)
+                    _sprite->draw(Vector2(0, (size.height * percent)));
+                else
+                    _sprite->draw(Vector2(0, (size.height * (1.f - percent))));
+            }
+        }
+    }
+
+    void MoveTransition::getReady() {
+        if (_sprite) _sprite.reset();
+        _surface = Algorithm::captureWindow(_painter);
+
+        _sprite = std::make_unique<Components::Sprite>("move_transition", _surface, _painter);
     }
 } // EasyEngine

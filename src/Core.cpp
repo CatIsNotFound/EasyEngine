@@ -632,7 +632,11 @@ void EasyEngine::Painter::paintEvent() {
 void EasyEngine::Painter::______() {
     if (_scene_manager && _scene_manager->currentScene()) {
         _scene_manager->currentScene()->drawLayers();
-        _scene_manager->______();
+    }
+    if (!_running_transition_list.empty()) {
+        for (auto &_running_transition: _running_transition_list) {
+            if (_running_transition) _running_transition->______();
+        }
     }
     SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
     SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
@@ -747,6 +751,40 @@ void EasyEngine::Painter::setClipView(const Geometry &geometry) {
     command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
 }
 
+bool EasyEngine::Painter::_addTransition(EasyEngine::Transition *transition) {
+    for (auto& _transition : _transition_list) {
+        if (_transition.get() == transition) return false;
+    }
+    _transition_list.emplace_back(std::shared_ptr<Transition>(transition));
+    return true;
+}
+
+bool EasyEngine::Painter::_removeTransition(EasyEngine::Transition *transition) {
+    _stopTransition(transition);
+    auto _ret = std::erase_if(_transition_list, [transition](const auto& _t) {
+        return _t.get() == transition;
+    });
+    return _ret > 0;
+}
+
+bool EasyEngine::Painter::_startTransition(EasyEngine::Transition *transition) {
+    std::shared_ptr<Transition> _ret = nullptr;
+    for (auto& _trans : _transition_list) {
+        if (_trans.get() == transition) {
+            _ret = _trans;
+        }
+    }
+    if (_ret) _running_transition_list.emplace_back(_ret);
+    return _ret.get();
+}
+
+bool EasyEngine::Painter::_stopTransition(EasyEngine::Transition *transition) {
+    auto _ret = std::erase_if(_running_transition_list, [transition](const auto& _t) {
+        return _t.get() == transition;
+    });
+    return _ret > 0;
+}
+
 void EasyEngine::Painter::PointCMD::exec(SRenderer *renderer, uint32_t thickness) {
     if (thickness > 1) {
         filledCircleRGBA(renderer, pt.pos.x, pt.pos.y, thickness - 1, pt.color.r, pt.color.g, pt.color.b, pt.color.a);
@@ -772,7 +810,6 @@ void EasyEngine::Painter::RectCMD::exec(SRenderer *renderer, uint32_t thickness)
               rb = {rect.pos.x - thickness + 1, rect.pos.y - thickness + 1,
                     rect.size.width + (float)((thickness - 1) * 2),
                     rect.size.height + (float)((thickness - 1) * 2)};
-
     if (rect.filled_mode && !rect.bordered_mode) {
         SDL_SetRenderDrawColor(renderer, rect.back_color.r, rect.back_color.g, rect.back_color.b, rect.back_color.a);
         SDL_RenderFillRect(renderer, &r);

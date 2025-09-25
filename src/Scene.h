@@ -30,7 +30,7 @@ namespace EasyEngine {
         public:
             /**
              * @brief 创建图层
-             * @param name 图层别名
+             * @param name    图层别名
              */
             explicit Layer(const std::string &name);
             ~Layer();
@@ -293,21 +293,100 @@ namespace EasyEngine {
          */
         class Scene {
         public:
+            /**
+             * @brief 创建场景
+             * @param name 场景别名
+             */
             explicit Scene(const std::string& name);
+            /**
+             * @brief 设置场景别名
+             * @param name  新的场景别名
+             */
             void setName(const std::string& name);
+            /**
+             * @brief 获取场景别名
+             */
             const std::string& name() const;
+            /**
+             * @brief 添加并创建图层
+             * @param z_order 图层顺序（数字越大，显示越靠前）
+             * @param name 新建图层别名
+             * @return 返回是否成功创建图层
+             */
             bool appendLayer(uint32_t z_order, const std::string &name);
+            /**
+             * @brief 添加指定的图层
+             * @param z_order 图层顺序（数字越大，显示越靠前）
+             * @param layer 指定已有的图层
+             * @return 返回是否成功创建图层
+             */
             bool appendLayer(uint32_t z_order, Layer* layer);
+            /**
+             * @brief 移除图层
+             * @param z_order 指定图层顺序
+             * @return 返回是否成功移除图层
+             */
             bool removeLayer(uint32_t z_order);
+            /**
+             * @brief 根据图层别名获取其对应的图层顺序
+             * @param layer_name 指定图层别名
+             * @return 返回对应的图层顺序编号
+             */
             uint32_t indexOf(const std::string& layer_name) const;
+            /**
+             * @brief 根据指定图层获取其对应的图层顺序
+             * @param layer 指定图层
+             * @return 返回对应的图层顺序编号
+             */
             uint32_t indexOf(const Layer* layer) const;
+            /**
+             * @brief 获取指定图层别名的图层
+             * @param layer_name 图层别名
+             * @return 返回对应的图层，若找不到，则为 `nullptr`。
+             */
             Layer* layer(const std::string& layer_name) const;
+            /**
+             * @brief 获取指定图层顺序的图层
+             * @param z_order 图层顺序编号
+             * @return 返回对应的图层，若找不到，则为 `nullptr`。
+             */
             Layer* layer(uint32_t z_order) const;
+            /**
+             * @brief 交换两个图层之间的图层顺序
+             * @param z_order1 指向第一个图层顺序编号
+             * @param z_order2 指向第二个图层顺序编号
+             * @return 返回是否成功交换图层顺序
+             */
             bool swapLayer(uint32_t z_order1, uint32_t z_order2);
+            /**
+             * @brief 交换两个图层之间的图层顺序
+             * @param layer_name1 指向第一个图层别名
+             * @param layer_name2 指向第二个图层别名
+             * @return 返回是否成功交换图层顺序
+             */
             bool swapLayer(const std::string& layer_name1, const std::string& layer_name2);
+            /**
+             * @brief 设置新的图层顺序编号
+             * @param old_z_order 指定原先的图层顺序编号
+             * @param new_z_order 指向新的图层顺序编号
+             * @return 返回是否成功设置新的图层编号
+             */
             bool setZOrder(uint32_t old_z_order, uint32_t new_z_order);
+            /**
+             * @brief 设置新的图层顺序编号
+             * @param layer_name 指定原先的图层别名
+             * @param new_z_order 指向新的图层顺序编号
+             * @return 返回是否成功设置新的图层编号
+             */
             bool setZOrder(const std::string& layer_name, uint32_t new_z_order);
+            /**
+             * @brief 设置当前图层的渲染事件
+             * @param event 指定事件
+             */
             void setSceneEvent(const std::function<void()>& event);
+            /**
+             * @brief 绘制所有图层
+             */
             void drawLayers();
         private:
             std::string _name;
@@ -330,17 +409,16 @@ namespace EasyEngine {
         struct Property {
             /// 场景
             std::shared_ptr<Components::Scene> scene{};
-            std::function<void()> change_event{};
-            std::shared_ptr<Transition> transition{};
+            std::function<void()> enter_scene_event{};
+            std::function<void()> leave_scene_event{};
         };
         explicit SceneManager();
-
         bool append(Components::Scene* scene, uint32_t index);
         bool remove(uint32_t index);
-        bool setEvent(uint32_t index, const std::function<void()>& event);
-        bool removeEvent(uint32_t index);
-        bool setTransition(uint32_t index, Transition* transition);
-        bool removeTransition(uint32_t index);
+        bool setEnterSceneEvent(uint32_t index, const std::function<void()>& event);
+        bool removeEnterSceneEvent(uint32_t index);
+        bool setLeaveSceneEvent(uint32_t index, const std::function<void()>& event);
+        bool removeLeaveSceneEvent(uint32_t index);
         void changeScene(uint32_t index);
         uint32_t indexOf(const Components::Scene* scene) const;
         uint32_t indexOf(const std::string& scene_name) const;
@@ -349,12 +427,12 @@ namespace EasyEngine {
         Components::Scene* currentScene() const;
         void ______();
     private:
-        void changeSceneEvent();
         std::map<uint32_t, Property> _scenes;
-        uint32_t _changer_index{0};
+        uint32_t _current_changer{0};
         uint32_t _new_changer{0};
-        uint32_t _old_changer_index{0};
-        bool _change_signal{false};
+        uint32_t _old_changer{0};
+        bool _fade_out_signal{false};
+        bool _fade_in_signal{false};
     };
 }
 
