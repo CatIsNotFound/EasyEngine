@@ -208,6 +208,12 @@ namespace EasyEngine {
         }
     }
 
+    void MoveTransition::clearFirstPicture() {
+        if (_sprite1) {
+            _sprite1.reset();
+        }
+    }
+
     Components::Sprite *MoveTransition::firstPicture() const {
         return _sprite1.get();
     }
@@ -227,6 +233,12 @@ namespace EasyEngine {
             _sprite2->copySprite(sprite);
         } else {
             _sprite2 = std::make_shared<Components::Sprite>("second_pic", *sprite);
+        }
+    }
+
+    void MoveTransition::clearSecondPicture() {
+        if (_sprite2) {
+            _sprite2.reset();
         }
     }
 

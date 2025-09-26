@@ -7,7 +7,7 @@ int main() {
     Engine engine("Graphics Test", 1280, 680);
      engine.setResizable(true);
     engine.setBackgroundRenderingEnabled(false);
-    engine.setFPS(30);
+    engine.setFPS(60);
     engine.show();
 
     auto sceneManager = new SceneManager();
@@ -89,7 +89,7 @@ int main() {
 //    scene->setSceneEvent([&]() {
 //         engine.painter()->fillBackColor(StdColor::LightBlue);
 //    });
-    SSurface* scene_1 = nullptr, *scene_2 = nullptr;
+    std::shared_ptr<SSurface> scene_1 = nullptr, scene_2 = nullptr;
     Graphics::Ellipse ellipse(0, 0, 100, 100);
     ellipse.bordered_mode = false;
     ellipse.filled_mode = true;
@@ -109,7 +109,6 @@ int main() {
         x += fx; y += fy;
         static float angle = 1.f;
         sp->properties()->rotate += angle;
-
     });
 
     auto esc_layer = new Layer("esc");
@@ -153,13 +152,17 @@ int main() {
         bgm.stop(1000);
     });
     sceneManager->setEnterSceneEvent(3, [&] {
-        // move_img->setDirection(Transition::Forward);
-        move->setFirstPicture(Algorithm::captureWindow(engine.painter()));
+        scene_1 = std::shared_ptr<SSurface>(Algorithm::captureWindow(engine.painter()));
+        move->setFirstPicture(SDL_DuplicateSurface(scene_1.get()));
+        move->clearSecondPicture();
         move->setMoveDirection(MoveTransition::RightToLeft);
         move->start();
     });
     sceneManager->setLeaveSceneEvent(3, erase->duration(), [&] {
         move->setFirstPicture(Algorithm::captureWindow(engine.painter()));
+        // if (scene_1) {
+            move->setSecondPicture(SDL_DuplicateSurface(scene_1.get()));
+        // }
         move->setMoveDirection(MoveTransition::LeftToRight);
         move->start();
     });

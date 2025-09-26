@@ -229,9 +229,11 @@ namespace EasyEngine {
 
         void setFirstPicture(SSurface* surface);
         void setFirstPicture(Components::Sprite* sprite);
+        void clearFirstPicture();
         Components::Sprite* firstPicture() const;
         void setSecondPicture(SSurface* surface);
         void setSecondPicture(Components::Sprite* sprite);
+        void clearSecondPicture();
         Components::Sprite* secondPicture() const;
 
         void setMoveDirection(const enum MoveDirection& direction);
