@@ -44,9 +44,10 @@ void EasyEngine::Components::BGM::play(bool loop) {
     }
 }
 
-void EasyEngine::Components::BGM::stop() {
-    if (_is_load)
-        AudioSystem::global()->stopBGM(_channel, false, 1000);
+void EasyEngine::Components::BGM::stop(int64_t fade_out_duration) {
+    if (_is_load) {
+        AudioSystem::global()->stopBGM(_channel, false, fade_out_duration);
+    }
 }
 
 void EasyEngine::Components::BGM::pause() {
@@ -351,6 +352,18 @@ EasyEngine::Components::Sprite::~Sprite() {
     // SDL_Log("Unload Sprite: %s", _name.c_str());
 }
 
+void EasyEngine::Components::Sprite::copySprite(EasyEngine::Components::Sprite *sprite) {
+    if (!sprite) {
+        SDL_Log("[ERROR] The specified sprite is not valid!");
+        return;
+    }
+    if (_texture) SDL_DestroyTexture(_texture);
+    if (_surface) SDL_DestroySurface(_surface);
+    _surface = SDL_DuplicateSurface(sprite->_surface);
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
+    SDL_GetTextureSize(_texture, &_size.width, &_size.height);
+}
+
 void EasyEngine::Components::Sprite::setName(const std::string &new_name) {
     _name = new_name;
 }
@@ -379,6 +392,20 @@ bool EasyEngine::Components::Sprite::setResource(const std::string &resource_nam
 
 std::string EasyEngine::Components::Sprite::path() const {
     return _path;
+}
+
+void EasyEngine::Components::Sprite::setSurface(SSurface *surface) {
+    if (!surface) {
+        return;
+    }
+    if (_texture) SDL_DestroyTexture(_texture);
+    if (_surface) SDL_DestroySurface(_surface);
+    _surface = surface;
+    _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
+    if (!_texture) {
+        return;
+    }
+    SDL_GetTextureSize(_texture, &_size.width, &_size.height);
 }
 
 bool EasyEngine::Components::Sprite::isValid(const std::string &path) const {

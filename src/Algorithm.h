@@ -152,6 +152,11 @@ namespace EasyEngine {
          */
         static int8_t compareRectEllipse(const Graphics::Rectangle &rect, const Graphics::Ellipse &ellipse);
 
+        /**
+         * @brief 捕获当前窗口下的所有内容
+         * @param painter 指定窗口下使用的绘图器
+         * @return 返回生成的捕获画面
+         */
         static SSurface *captureWindow(Painter* painter);
 
     private:

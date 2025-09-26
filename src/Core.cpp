@@ -8,6 +8,7 @@ bool EasyEngine::Engine::_is_stopped = false;
 std::function<bool(SEvent&)> EasyEngine::EventSystem::_my_event_handler = nullptr;
 std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nullptr;
 std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
+bool EasyEngine::EventSystem::_handler_trigger = true;
 std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
 std::unique_ptr<EasyEngine::FontSystem> EasyEngine::FontSystem::_instance = nullptr;
 
@@ -922,6 +923,12 @@ EasyEngine::EventSystem *EasyEngine::EventSystem::global() {
     return _instance.get();
 }
 
+void EasyEngine::EventSystem::setHandlerEnabled(bool enabled) {
+    _handler_trigger = enabled;
+}
+
+bool EasyEngine::EventSystem::handlerEnabled() const { return _handler_trigger; }
+
 bool EasyEngine::EventSystem::handler() {
     static SEvent ev;
     static bool ret = true;
@@ -936,77 +943,82 @@ bool EasyEngine::EventSystem::handler() {
             Engine::_is_stopped = false;
         }
 
-        Vector2 cursor_pos = Cursor::global()->position();
-        const uint64_t CLICK_DELAY = 500;
-        for (auto& _control : _control_list) {
-            auto _container = _control.second;
-            if (!_container->enabled()) continue;
-            if (_container->active() &&
-                (ev.key.key == SDLK_SPACE || ev.key.key == SDLK_RETURN || ev.key.key == SDLK_KP_ENTER)) {
-                static bool _is_key_down = false;
-                if (ev.key.down) {
-                    if (!_is_key_down) {
-                        _container->__updateEvent(Components::Control::Event::KeyDown);
+        if (_handler_trigger) {
+            Vector2 cursor_pos = Cursor::global()->position();
+            const uint64_t CLICK_DELAY = 500;
+            for (auto &_control: _control_list) {
+                auto _container = _control.second;
+                if (!_container->enabled()) continue;
+                if (_container->active() &&
+                    (ev.key.key == SDLK_SPACE || ev.key.key == SDLK_RETURN || ev.key.key == SDLK_KP_ENTER)) {
+                    static bool _is_key_down = false;
+                    if (ev.key.down) {
+                        if (!_is_key_down) {
+                            _container->__updateEvent(Components::Control::Event::KeyDown);
+                            _container->__updateStatus(Components::Control::Status::Pressed);
+                            _is_key_down = true;
+                        }
+                    } else {
+                        _is_key_down = false;
+                        _container->__updateEvent(Components::Control::Event::KeyUp);
+                        _container->__updateEvent(Components::Control::Event::KeyPressed);
+                        _container->__updateStatus(Components::Control::Status::Active);
+                    }
+                    continue;
+                }
+                bool is_cursor_on_control = Algorithm::comparePosRect(cursor_pos, _container->hotArea()) > -1;
+                static bool is_hovered_one = false;
+                static uint64_t last_click_time = 0, current_click_time = 0, click_count = 0;
+                static Vector2 old_cursor_pos = cursor_pos;
+                if (is_cursor_on_control) {
+                    if (!is_hovered_one) {
+                        is_hovered_one = true;
+                        _container->__updateEvent(Components::Control::Event::MouseHover);
+                        _container->__updateStatus(Components::Control::Status::Hovered);
+                    } else if (ev.button.type == SDL_EVENT_MOUSE_BUTTON_DOWN && is_hovered_one) {
+                        _container->__updateEvent(Components::Control::Event::MouseDown);
                         _container->__updateStatus(Components::Control::Status::Pressed);
-                        _is_key_down = true;
+                        old_cursor_pos = cursor_pos;
+                    } else if (_container->__currentStatus() == Components::Control::Status::Pressed) {
+                        current_click_time = SDL_GetTicks();
+                        if (!last_click_time) {
+                            last_click_time = current_click_time;
+                            click_count += 1;
+                        } else if (current_click_time - last_click_time < CLICK_DELAY) {
+                            click_count += 1;
+                        } else {
+                            last_click_time = current_click_time;
+                            click_count = 1;
+                        }
+                        if (click_count == 1) {
+                            _container->__updateEvent(Components::Control::Event::Clicked);
+                        } else if (click_count == 2) {
+                            _container->__updateEvent(Components::Control::Event::DblClicked);
+                        } else {
+                            _container->__updateEvent(Components::Control::Event::MouseUp);
+                        }
+                        _container->__updateStatus(Components::Control::Status::Hovered);
                     }
-                } else {
-                    _is_key_down = false;
-                    _container->__updateEvent(Components::Control::Event::KeyUp);
-                    _container->__updateEvent(Components::Control::Event::KeyPressed);
-                    _container->__updateStatus(Components::Control::Status::Active);
-                }
-                continue;
-            }
-            bool is_cursor_on_control = Algorithm::comparePosRect(cursor_pos, _container->hotArea()) > -1;
-            static bool is_hovered_one = false;
-            static uint64_t last_click_time = 0, current_click_time = 0, click_count = 0;
-            static Vector2 old_cursor_pos = cursor_pos;
-            if (is_cursor_on_control) {
-                if (!is_hovered_one) {
-                    is_hovered_one = true;
-                    _container->__updateEvent(Components::Control::Event::MouseHover);
-                    _container->__updateStatus(Components::Control::Status::Hovered);
-                } else if (ev.button.type == SDL_EVENT_MOUSE_BUTTON_DOWN && is_hovered_one) {
-                    _container->__updateEvent(Components::Control::Event::MouseDown);
-                    _container->__updateStatus(Components::Control::Status::Pressed);
-                    old_cursor_pos = cursor_pos;
+                } else if (_container->__currentStatus() == Components::Control::Status::Hovered) {
+                    is_hovered_one = false;
+                    _container->__updateEvent(Components::Control::Event::MouseLeave);
+                    _container->__updateStatus(_container->active() ?
+                                               Components::Control::Status::Active
+                                                                    : Components::Control::Status::Default);
                 } else if (_container->__currentStatus() == Components::Control::Status::Pressed) {
-                    current_click_time = SDL_GetTicks();
-                    if (!last_click_time) {
-                        last_click_time = current_click_time;
-                        click_count += 1;
-                    } else if (current_click_time - last_click_time < CLICK_DELAY) {
-                        click_count += 1;
-                    } else {
-                        last_click_time = current_click_time;
-                        click_count = 1;
-                    }
-                    if (click_count == 1) {
-                        _container->__updateEvent(Components::Control::Event::Clicked);
-                    } else if (click_count == 2) {
-                        _container->__updateEvent(Components::Control::Event::DblClicked);
-                    } else {
-                        _container->__updateEvent(Components::Control::Event::MouseUp);
-                    }
-                    _container->__updateStatus(Components::Control::Status::Hovered);
+                    is_hovered_one = false;
+                    _container->__updateEvent(Components::Control::Event::MouseLeave);
+                    _container->__updateStatus(_container->active() ?
+                                               Components::Control::Status::Active
+                                                                    : Components::Control::Status::Default);
                 }
-            } else if (_container->__currentStatus() == Components::Control::Status::Hovered) {
-                is_hovered_one = false;
-                _container->__updateEvent(Components::Control::Event::MouseLeave);
-                _container->__updateStatus(_container->active() ?
-                    Components::Control::Status::Active : Components::Control::Status::Default);
-            } else if (_container->__currentStatus() == Components::Control::Status::Pressed) {
-                is_hovered_one = false;
-                _container->__updateEvent(Components::Control::Event::MouseLeave);
-                _container->__updateStatus(_container->active() ?
-                                           Components::Control::Status::Active : Components::Control::Status::Default);
             }
-        }
-        if (_my_event_handler) {
-            ret = _my_event_handler(ev);
+            if (_my_event_handler) {
+                ret = _my_event_handler(ev);
+            }
         }
     }
+
     for (auto& _timer : _timer_list) {
         _timer.second->______();
     }
@@ -1014,7 +1026,7 @@ bool EasyEngine::EventSystem::handler() {
         _trigger.second->______();
     }
     for (auto& _scene_mgr : _scene_mgr_list) {
-        // _scene_mgr.second->______();
+         _scene_mgr.second->______();
     }
     return ret;
 }
@@ -1413,7 +1425,8 @@ void EasyEngine::AudioSystem::stopBGM(uint8_t channel, bool pause, int64_t fade_
         MIX_PauseTrack(_bgm_channels[channel].Stream.track);
         _bgm_channels[channel].status = Audio::Paused;
     } else {
-        MIX_StopTrack(_bgm_channels[channel].Stream.track, fade_out_duration);
+        auto frames = MIX_AudioMSToFrames(_bgm_channels[channel].audio, fade_out_duration);
+        MIX_StopTrack(_bgm_channels[channel].Stream.track, frames);
         _bgm_channels[channel].status = Audio::Loaded;
     }
 }

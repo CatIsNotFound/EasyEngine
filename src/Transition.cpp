@@ -20,24 +20,26 @@ namespace EasyEngine {
     }
 
     void Transition::start() {
-        if (_state == Running) return;
+        // if (_state == Running) return;
         _state = Running;
         _start_time = SDL_GetTicks();
         _change_signal = false;
-        SDL_Log("Start Transition!");
         getReady();
+        EventSystem::global()->setHandlerEnabled(false);
         _painter->_startTransition(this);
     }
 
     void Transition::pause() {
+        EventSystem::global()->setHandlerEnabled(true);
         _state = Paused;
     }
 
     void Transition::stop() {
-        if (_state == Stopped) return;
+        // if (_state == Stopped) return;
         _state = Stopped;
         _change_signal = false;
         _painter->_stopTransition(this);
+        EventSystem::global()->setHandlerEnabled(true);
     }
 
     uint64_t Transition::duration() const {
@@ -76,10 +78,10 @@ namespace EasyEngine {
                 SDL_Log("End: %llu", _current_time);
                 _loop_count += 1;
                 _state = Stopped;
+                EventSystem::global()->setHandlerEnabled(true);
                 _painter->_stopTransition(this);
                 if (_deletion_policy == DeleteWhenStopped) {
                     auto _r = _painter->_removeTransition(this);
-                    fmt::println("Deleted? {}", _r);
                 }
             }
         }
@@ -94,7 +96,7 @@ namespace EasyEngine {
         _mask.bordered_mode = false;
         _mask.filled_mode = true;
         _mask.back_color = StdColor::Black;
-        _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
+        // _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
     }
 
     DarkTransition::~DarkTransition() = default;
@@ -113,58 +115,180 @@ namespace EasyEngine {
                 _mask.back_color.a = (uint8_t)(255.f * (1.f - percent));
         }
         _painter->drawRectangle(_mask);
-        _painter->drawPixelText(fmt::format("Opacity: {}, Process: {} / {}, {:.4}%",
-                                     _mask.back_color.a, currentTime(), _duration, percent * 100.f), {20, 20});
-
     }
 
     void DarkTransition::getReady() {
         _mask.pos = {0, 0};
-        // _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
-
+        _mask.size = {(float)_painter->window()->geometry.width, (float)_painter->window()->geometry.height};
     }
 
     const SColor &DarkTransition::backgroundColor() const {
         return _mask.back_color;
     }
 
-    MoveTransition::MoveTransition(uint64_t duration, const enum MoveDirection& direction,
-            Transition::DeletionPolicy deletion_policy, Painter *painter)
-            : Transition(duration, deletion_policy, painter), _direction(direction) {}
+    EraseTransition::EraseTransition(uint64_t duration, const enum EraseDirection& direction,
+                                     Transition::DeletionPolicy deletion_policy, Painter *painter)
+            : Transition(duration, deletion_policy, painter), _direction(direction) {
+        _rect.bordered_mode = false;
+        _rect.filled_mode = true;
+        _rect.back_color = StdColor::Black;
+    }
 
-    MoveTransition::~MoveTransition() {}
+    EraseTransition::~EraseTransition() {}
 
-    void MoveTransition::setMoveDirection(const MoveTransition::MoveDirection &direction) {
+    void EraseTransition::setEraseDirection(const enum EraseDirection &direction) {
         _direction = direction;
     }
 
-    const MoveTransition::MoveDirection &MoveTransition::moveDirection() const {
+    const EraseTransition::EraseDirection &EraseTransition::eraseDirection() const {
         return _direction;
+    }
+
+    void EraseTransition::setBackColor(const SColor &color) { _rect.back_color = color; }
+
+    const SColor &EraseTransition::backColor() const { return _rect.back_color; }
+
+    void EraseTransition::update() {
+        auto current = currentTime();
+        auto percent = ((current * 1.f) / _duration);
+        if (percent <= 1.f) {
+            if (_direction == EraseDirection::LeftToRight) {
+                if (Transition::_direction == Forward) {
+                    _rect.pos = {(_rect.size.width * percent), 0};
+                } else {
+                    _rect.pos = {_rect.size.width * (1.f - percent), 0};
+                }
+            } else if (_direction == EraseDirection::RightToLeft) {
+                if (Transition::_direction == Forward) {
+                    _rect.pos = {(-(_rect.size.width * percent)), 0 };
+                } else {
+                    _rect.pos = {(-(_rect.size.width * (1.f - percent))), 0};
+                }
+            } else if (_direction == EraseDirection::TopToBottom) {
+                if (Transition::_direction == Forward) {
+                    _rect.pos = {0, (_rect.size.height * percent)};
+                } else {
+                    _rect.pos = {0, _rect.size.height * (1.f - percent)};
+                }
+            } else if (_direction == EraseDirection::BottomToTop) {
+                if (Transition::_direction == Forward) {
+                    _rect.pos = {0, (-(_rect.size.height * percent))};
+                } else {
+                    _rect.pos = {0, (-(_rect.size.height * (1.f - percent)))};
+                }
+            }
+        }
+        _painter->drawRectangle(_rect);
+    }
+
+    void EraseTransition::getReady() {
+        _rect.size = {static_cast<float>(_painter->window()->geometry.width),
+                      static_cast<float>(_painter->window()->geometry.height)};
+    }
+
+    MoveTransition::MoveTransition(uint32_t duration, const MoveTransition::MoveDirection &direction,
+                                   Transition::DeletionPolicy deletion_policy, Painter *painter)
+           : Transition(duration, deletion_policy, painter), _move_direction(direction) {}
+
+    void MoveTransition::setFirstPicture(SSurface *surface) {
+        if (!surface) return;
+        if (_sprite1) {
+            _sprite1->setSurface(surface);
+        } else {
+            _sprite1 = std::make_shared<Components::Sprite>("first_pic", surface, _painter);
+        }
+    }
+
+    void MoveTransition::setFirstPicture(Components::Sprite *sprite) {
+        if (!sprite) return;
+        if (_sprite1) {
+            _sprite1->copySprite(sprite);
+        } else {
+            _sprite1 = std::make_shared<Components::Sprite>("first_pic", *sprite);
+        }
+    }
+
+    Components::Sprite *MoveTransition::firstPicture() const {
+        return _sprite1.get();
+    }
+
+    void MoveTransition::setSecondPicture(SSurface *surface) {
+        if (!surface) return;
+        if (_sprite2) {
+            _sprite2->setSurface(surface);
+        } else {
+            _sprite2 = std::make_shared<Components::Sprite>("second_pic", surface, _painter);
+        }
+    }
+
+    void MoveTransition::setSecondPicture(Components::Sprite *sprite) {
+        if (!sprite) return;
+        if (_sprite2) {
+            _sprite2->copySprite(sprite);
+        } else {
+            _sprite2 = std::make_shared<Components::Sprite>("second_pic", *sprite);
+        }
+    }
+
+    Components::Sprite *MoveTransition::secondPicture() const {
+        return _sprite2.get();
+    }
+
+    void MoveTransition::setMoveDirection(const MoveTransition::MoveDirection &direction) {
+        _move_direction = direction;
+    }
+
+    const MoveTransition::MoveDirection &MoveTransition::moveDirection() const {
+        return _move_direction;
     }
 
     void MoveTransition::update() {
         auto current = currentTime();
         auto percent = ((current * 1.f) / _duration);
-        auto size = _sprite->size();
-        if (percent <= 1.f) {
-            if (_direction == MoveDirection::LeftToRight) {
-                if (Transition::_direction == Forward)
-                    _sprite->draw(Vector2((size.width * percent), 0));
-                else
-                    _sprite->draw(Vector2((size.width * (1.f - percent)), 0));
-            } else {
-                if (Transition::_direction == Forward)
-                    _sprite->draw(Vector2(0, (size.height * percent)));
-                else
-                    _sprite->draw(Vector2(0, (size.height * (1.f - percent))));
+        if (percent > 1.f) return;
+        if (!_sprite1) return;
+        if (_move_direction == LeftToRight) {
+            _sprite1->properties()->position = ( _direction == Forward ?
+                    Vector2(_sprite1->size().width * percent, 0) :
+                    Vector2(_sprite1->size().width * (1.f - percent), 0));
+            if (_draw_second_pic) {
+                _sprite2->properties()->position = ( _direction == Forward ?
+                        Vector2(-(_sprite2->size().width * (1.f - percent)), 0) :
+                        Vector2(-(_sprite2->size().width * percent), 0));
+            }
+        } else if (_move_direction == RightToLeft) {
+            _sprite1->properties()->position = ( _direction == Forward ?
+                    Vector2(-(_sprite1->size().width * percent), 0) :
+                    Vector2(-(_sprite1->size().width * (1.f - percent)), 0));
+            if (_draw_second_pic) {
+                _sprite2->properties()->position = ( _direction == Forward ?
+                        Vector2(_sprite2->size().width * percent, 0) :
+                        Vector2(_sprite2->size().width * (1.f - percent), 0));
+            }
+        } else if (_move_direction == TopToBottom) {
+            _sprite1->properties()->position = ( _direction == Forward ?
+                    Vector2(0, _sprite1->size().height * percent) :
+                    Vector2(0, _sprite1->size().height * (1.f - percent)));
+            if (_draw_second_pic) {
+                _sprite2->properties()->position = ( _direction == Forward ?
+                        Vector2(-(_sprite2->size().height * (1.f - percent)), 0) :
+                        Vector2(-(_sprite2->size().height * percent), 0));
+            }
+        } else if (_move_direction == BottomToTop) {
+            _sprite1->properties()->position = ( _direction == Forward ?
+                    Vector2(0, -(_sprite1->size().height * percent)) :
+                    Vector2(0, -(_sprite1->size().height * (1.f - percent))));
+            if (_draw_second_pic) {
+                _sprite2->properties()->position = ( _direction == Forward ?
+                        Vector2(0, _sprite2->size().height * percent) :
+                        Vector2(0, _sprite2->size().height * (1.f - percent)));
             }
         }
+        _sprite1->draw();
+        if (_draw_second_pic) _sprite2->draw();
     }
 
     void MoveTransition::getReady() {
-        if (_sprite) _sprite.reset();
-        _surface = Algorithm::captureWindow(_painter);
-
-        _sprite = std::make_unique<Components::Sprite>("move_transition", _surface, _painter);
+        _draw_second_pic = secondPicture();
     }
 } // EasyEngine

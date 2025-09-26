@@ -68,7 +68,7 @@ namespace EasyEngine {
              * @see isPlayed
              * @see isLoop
              */
-            void stop();
+            void stop(int64_t fade_out_duration);
             /**
              * @brief 暂停播放当前 BGM
              * @see play
@@ -379,6 +379,11 @@ namespace EasyEngine {
                    const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size, Painter *painter);
             ~Sprite();
             /**
+             * @brief 复制并替换原有的精灵
+             * @param sprite 指定精灵
+             */
+            void copySprite(Sprite* sprite);
+            /**
              * @brief 设置精灵别名
              * @param new_name 新的精灵别名
              */
@@ -396,6 +401,11 @@ namespace EasyEngine {
              * @brief 获取精灵纹理路径
              */
             std::string path() const;
+            /**
+             * @brief 为精灵设置新的表面
+             * @param surface 指定的表面
+             */
+            void setSurface(SSurface *surface);
             /**
              * @brief 检查精灵纹理路径是否有效
              * @param path 指定路径

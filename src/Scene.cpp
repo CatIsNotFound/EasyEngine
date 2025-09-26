@@ -109,8 +109,11 @@ Components::Sprite *Components::Layer::sprite(uint32_t z_order) const {
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the sprite!", z_order, _name.c_str());
-        throw std::runtime_error(fmt::format("[FATAL] The z_order {} in layer '{}' is not the sprite!",
-                                             z_order, _name));
+        throw std::runtime_error(fmt::format(
+            "[FATAL] The z_order {} in layer '{}' does not contain a Sprite object!\n"
+            "Possible reasons: the element at this z_order is of a different type, "
+            "or the stored pointer is invalid. Please check the type of the element stored at this z_order.",
+            z_order, _name));
     }
 }
 
@@ -124,8 +127,11 @@ Components::SpriteGroup *Components::Layer::spriteGroup(uint32_t z_order) const 
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the sprite group!", z_order, _name.c_str());
-        throw std::runtime_error(fmt::format("[FATAL] The z_order {} in layer '{}' is not the sprite group!",
-                                             z_order, _name));
+        throw std::runtime_error(fmt::format(
+            "[FATAL] The z_order {} in layer '{}' does not contain a SpriteGroup object!\n"
+            "Possible reasons: the element at this z_order is of a different type, "
+            "or the stored pointer is invalid. Please check the type of the element stored at this z_order.",
+            z_order, _name));
     }
 }
 
@@ -139,8 +145,11 @@ Components::Animation *Components::Layer::animation(uint32_t z_order) const {
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the animation!", z_order, _name.c_str());
-        throw std::runtime_error(fmt::format("[FATAL] The z_order {} in layer '{}' is not the animation!",
-                                             z_order, _name));
+        throw std::runtime_error(fmt::format(
+            "[FATAL] The z_order {} in layer '{}' does not contain an Animation object!\n"
+            "Possible reasons: the element at this z_order is of a different type, "
+            "or the stored pointer is invalid. Please check the type of the element stored at this z_order.",
+            z_order, _name));
     }
 }
 
@@ -154,8 +163,11 @@ Components::Entity *Components::Layer::entity(uint32_t z_order) const {
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the entity!", z_order, _name.c_str());
-        throw std::runtime_error(fmt::format("[FATAL] The z_order {} in layer '{}' is not the entity!",
-                                             z_order, _name));
+        throw std::runtime_error(fmt::format(
+            "[FATAL] The z_order {} in layer '{}' does not contain an Entity object!\n"
+            "Possible reasons: the element at this z_order is of a different type, "
+            "or the stored pointer is invalid. Please check the type of the element stored at this z_order.",
+            z_order, _name));
     }
 }
 
@@ -169,8 +181,11 @@ Components::Control *Components::Layer::control(uint32_t z_order) const {
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the control!", z_order, _name.c_str());
-        throw std::runtime_error(fmt::format("[FATAL] The z_order {} in layer '{}' is not the control!",
-                                             z_order, _name));
+        throw std::runtime_error(fmt::format(
+            "[FATAL] The z_order {} in layer '{}' does not contain a Control object!\n"
+            "Possible reasons: the element at this z_order is of a different type, "
+            "or the stored pointer is invalid. Please check the type of the element stored at this z_order.",
+            z_order, _name));
     }
 }
 
@@ -339,6 +354,8 @@ bool Components::Scene::appendLayer(uint32_t z_order, const std::string &name) {
         return false;
     }
     _layers.emplace(z_order, std::make_shared<Layer>(name));
+    _layers.at(z_order)->_z_order = z_order;
+    _layers_find_string_map.emplace(_layers.at(z_order)->name(), _layers.at(z_order));
     return true;
 }
 
@@ -352,7 +369,9 @@ bool Components::Scene::appendLayer(uint32_t z_order, Components::Layer *layer) 
         SDL_Log("[ERROR] The specified layer '%s' is in index %u (already exist)!", layer->name().c_str(), idx);
         return false;
     }
+    layer->_z_order = z_order;
     _layers.emplace(z_order, std::shared_ptr<Layer>(layer));
+    _layers_find_string_map.emplace(layer->name(), _layers.at(z_order));
     return true;
 }
 
@@ -366,12 +385,8 @@ bool Components::Scene::removeLayer(uint32_t z_order) {
 }
 
 uint32_t Components::Scene::indexOf(const std::string &layer_name) const {
-    for (auto& _one : _layers) {
-        if (_one.second->name() == layer_name) {
-            return _one.first;
-        }
-    }
-    return 0;
+    if (!_layers_find_string_map.contains(layer_name)) return 0;
+    return _layers_find_string_map.at(layer_name)->_z_order;
 }
 
 uint32_t Components::Scene::indexOf(const Components::Layer *layer) const {
@@ -384,12 +399,11 @@ uint32_t Components::Scene::indexOf(const Components::Layer *layer) const {
 }
 
 Components::Layer *Components::Scene::layer(const std::string &layer_name) const {
-    auto idx = indexOf(layer_name);
-    if (idx == 0) {
+    if (!_layers_find_string_map.contains(layer_name)) {
         SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name.c_str());
         return nullptr;
     }
-    return _layers.at(idx).get();
+    return _layers_find_string_map.at(layer_name).get();
 }
 
 Components::Layer *Components::Scene::layer(uint32_t z_order) const {
@@ -412,19 +426,20 @@ bool Components::Scene::swapLayer(uint32_t z_order1, uint32_t z_order2) {
 }
 
 bool Components::Scene::swapLayer(const std::string &layer_name1, const std::string &layer_name2) {
-    auto idx1 = indexOf(layer_name1);
-    auto idx2 = indexOf(layer_name2);
-    if (!idx1) {
+    if (!_layers_find_string_map.contains(layer_name1)) {
         SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name1.c_str());
         return false;
     }
-    if (!idx2) {
-        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name2.c_str());
+    if (!_layers_find_string_map.contains(layer_name2)) {
+        SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name1.c_str());
         return false;
     }
-    auto _tmp = _layers.at(idx1);
-    _layers.at(idx1) = _layers.at(idx2);
-    _layers.at(idx2) = _tmp;
+    auto layer1_zorder = _layers_find_string_map.at(layer_name1)->_z_order;
+    auto layer2_zorder = _layers_find_string_map.at(layer_name2)->_z_order;
+
+    auto _tmp = _layers.at(layer1_zorder);
+    _layers.at(layer1_zorder) = _layers.at(layer2_zorder);
+    _layers.at(layer2_zorder) = _tmp;
     return true;
 }
 
@@ -444,7 +459,7 @@ bool Components::Scene::setZOrder(uint32_t old_z_order, uint32_t new_z_order) {
 
 bool Components::Scene::setZOrder(const std::string &layer_name, uint32_t new_z_order) {
     auto idx = indexOf(layer_name);
-    if (idx == 0) {
+    if (!_layers_find_string_map.contains(layer_name)) {
         SDL_Log("[ERROR] The specified layer '%s' is not found!", layer_name.c_str());
         return false;
     }
@@ -452,13 +467,50 @@ bool Components::Scene::setZOrder(const std::string &layer_name, uint32_t new_z_
         SDL_Log("[ERROR] The specified new_z_order is already exist!");
         return false;
     }
-    _layers.emplace(new_z_order, _layers.at(idx));
-    _layers.erase(idx);
+    auto& layer = _layers_find_string_map.at(layer_name);
+    _layers.emplace(new_z_order, layer);
+    _layers.erase(layer->_z_order);
+    layer->_z_order = new_z_order;
     return true;
 }
 
 void Components::Scene::setSceneEvent(const std::function<void()> &event) {
     _event = event;
+}
+
+bool Components::Scene::renameLayer(const std::string &layer_name, const std::string &new_layer_name) {
+    if (!_layers_find_string_map.contains(layer_name)) {
+        SDL_Log("[ERROR] Can't find the specified layer '%s'.", layer_name.c_str());
+        return false;
+    }
+    if (_layers_find_string_map.contains(new_layer_name)) {
+        SDL_Log("[ERROR] Can't rename the specified layer '%s' to new name '%s'.\n"
+                "Exception: The new layer name is already exist at index %u.",
+                layer_name.c_str(), new_layer_name.c_str(), _layers_find_string_map.at(layer_name)->_z_order);
+        return false;
+    }
+    _layers_find_string_map.emplace(new_layer_name, _layers_find_string_map.at(layer_name));
+    _layers_find_string_map.at(layer_name)->setName(new_layer_name);
+    _layers_find_string_map.erase(layer_name);
+    return true;
+}
+
+bool Components::Scene::renameLayer(uint32_t z_order, const std::string &new_layer_name) {
+    if (!_layers.contains(z_order)) {
+        SDL_Log("[ERROR] Can't find the specified z_order!");
+        return false;
+    }
+    auto& layer = _layers.at(z_order);
+    if (_layers_find_string_map.contains(new_layer_name)) {
+        SDL_Log("[ERROR] Can't rename the specified layer '%s' to new name '%s'.\n"
+                "Exception: The new layer name is already exist at index %u.",
+                layer->name().c_str(), new_layer_name.c_str(), z_order);
+        return false;
+    }
+    _layers_find_string_map.emplace(new_layer_name, layer);
+    _layers_find_string_map.erase(layer->name());
+    layer->setName(new_layer_name);
+    return true;
 }
 
 void Components::Scene::drawLayers() {
@@ -468,7 +520,9 @@ void Components::Scene::drawLayers() {
     }
 }
 
-SceneManager::SceneManager() = default;
+SceneManager::SceneManager() : _leave_delayer(new Components::Timer()) {
+    EventSystem::global()->addSceneManager(this);
+};
 
 bool SceneManager::append(Components::Scene *scene, uint32_t index) {
     if (_scenes.contains(index)) {
@@ -480,8 +534,11 @@ bool SceneManager::append(Components::Scene *scene, uint32_t index) {
         SDL_Log("[ERROR] The specified scene '%s' is already appended!", scene->name().c_str());
         return false;
     }
+    bool b = false;
+    if (_scenes.empty()) {
+        _current_changer = _new_changer = index;
+    }
     _scenes.emplace(index, Property(std::shared_ptr<Components::Scene>(scene)));
-    EventSystem::global()->addSceneManager(this);
     return true;
 }
 
@@ -513,11 +570,12 @@ bool SceneManager::removeEnterSceneEvent(uint32_t index) {
 }
 
 
-bool SceneManager::setLeaveSceneEvent(uint32_t index, const std::function<void()> &event) {
+bool SceneManager::setLeaveSceneEvent(uint32_t index, uint32_t delay_to_change, const std::function<void()> &event) {
     if (!_scenes.contains(index)) {
         SDL_Log("[ERROR] The specified index is not exist!");
         return false;
     }
+    _scenes.at(index).leave_delay = delay_to_change;
     _scenes.at(index).leave_scene_event = event;
     return true;
 }
@@ -532,17 +590,35 @@ bool SceneManager::removeLeaveSceneEvent(uint32_t index) {
 }
 
 void SceneManager::changeScene(uint32_t index) {
+    if (index == 0 || !_scenes.contains(index)) {
+        SDL_Log("[ERROR] The specified index is not exist!");
+        return;
+    }
+    if (index == _current_changer || index == _new_changer) {
+        SDL_Log("[ERROR] The specified index is already changing!");
+        return;
+    }
+    if (!EventSystem::global()->handlerEnabled()) {
+        SDL_Log("[ERROR] The event system is not enabled! Can not change scene now!");
+        return;
+    }
     _new_changer = index;
-    if (!_current_changer) {
-        _current_changer = index;
-    }
-
     if (_scenes.contains(_current_changer)) {
-        _current_changer = _new_changer;
-        auto& cur_scene = _scenes.at(_current_changer);
-        if (cur_scene.enter_scene_event) cur_scene.enter_scene_event();
+        if (_scenes.at(_current_changer).leave_scene_event) {
+            _scenes.at(_current_changer).leave_scene_event();
+            _leave_delayer->setDelay(_scenes.at(_current_changer).leave_delay);
+            _leave_delayer->setEvent([&] {
+                auto &new_scene = _scenes.at(_new_changer);
+                if (new_scene.enter_scene_event) new_scene.enter_scene_event();
+                _current_changer = _new_changer;
+            });
+            _leave_delayer->start();
+        } else {
+            _current_changer = _new_changer;
+            auto &cur_scene = _scenes.at(_current_changer);
+            if (cur_scene.enter_scene_event) cur_scene.enter_scene_event();
+        }
     }
-
 }
 
 uint32_t SceneManager::indexOf(const Components::Scene *scene) const {
@@ -580,7 +656,6 @@ Components::Scene *SceneManager::currentScene() const {
 }
 
 void SceneManager::______() {
-
 }
 
 

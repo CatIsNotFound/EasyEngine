@@ -16,10 +16,12 @@
 
 namespace EasyEngine {
     class Transition;
+    class SceneManager;
     namespace Components {
         /// 使用的元素集合
         using Elements = std::variant<std::shared_ptr<Sprite>, std::shared_ptr<SpriteGroup>,
                 std::shared_ptr<Animation>, std::shared_ptr<Entity>, std::shared_ptr<Control>>;
+        class Scene;
         /**
          * @class Layer
          * @brief 图层
@@ -27,6 +29,7 @@ namespace EasyEngine {
          * 定义单个图层，在该图层下绘制元素
          */
         class Layer {
+            friend class Scene;
         public:
             /**
              * @brief 创建图层
@@ -283,6 +286,7 @@ namespace EasyEngine {
             Size _scaled{1.0f, 1.0f};
             Painter* _painter{nullptr};
             bool _visible{true};
+            uint32_t _z_order{0};
         };
 
         /**
@@ -292,6 +296,7 @@ namespace EasyEngine {
          * 定义单个场景，包含多个图层，可用于管理图层
          */
         class Scene {
+            friend class EasyEngine::SceneManager;
         public:
             /**
              * @brief 创建场景
@@ -385,13 +390,29 @@ namespace EasyEngine {
              */
             void setSceneEvent(const std::function<void()>& event);
             /**
+             * @brief 重命名指定图层
+             * @param layer_name        指定要修改的图层名
+             * @param new_layer_name    新的图层名
+             * @return 是否成功重命名图层？若找不到指定的图层名，则发生错误！
+             */
+            bool renameLayer(const std::string& layer_name, const std::string& new_layer_name);
+            /**
+             * @brief 重命名指定 `z_order` 的图层
+             * @param z_order           指定图层渲染顺序
+             * @param new_layer_name    新的图层名
+             * @return 是否成功重命名图层？若找不到指定的 `z_order`，则发生错误！
+             */
+            bool renameLayer(uint32_t z_order, const std::string& new_layer_name);
+            /**
              * @brief 绘制所有图层
              */
             void drawLayers();
         private:
             std::string _name;
             std::map<uint32_t, std::shared_ptr<Layer>> _layers;
+            std::unordered_map<std::string, std::shared_ptr<Layer>> _layers_find_string_map;
             std::function<void()> _event;
+            uint32_t _z_order{0};
         };
     }
     /**
@@ -410,14 +431,16 @@ namespace EasyEngine {
             /// 场景
             std::shared_ptr<Components::Scene> scene{};
             std::function<void()> enter_scene_event{};
+            uint32_t enter_delay{0};
             std::function<void()> leave_scene_event{};
+            uint32_t leave_delay{0};
         };
         explicit SceneManager();
         bool append(Components::Scene* scene, uint32_t index);
         bool remove(uint32_t index);
-        bool setEnterSceneEvent(uint32_t index, const std::function<void()>& event);
+        bool setEnterSceneEvent(uint32_t index, const std::function<void()> &event);
         bool removeEnterSceneEvent(uint32_t index);
-        bool setLeaveSceneEvent(uint32_t index, const std::function<void()>& event);
+        bool setLeaveSceneEvent(uint32_t index, uint32_t delay_to_change, const std::function<void()> &event);
         bool removeLeaveSceneEvent(uint32_t index);
         void changeScene(uint32_t index);
         uint32_t indexOf(const Components::Scene* scene) const;
@@ -433,6 +456,7 @@ namespace EasyEngine {
         uint32_t _old_changer{0};
         bool _fade_out_signal{false};
         bool _fade_in_signal{false};
+        Components::Timer* _leave_delayer;
     };
 }
 

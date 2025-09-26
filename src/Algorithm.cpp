@@ -357,17 +357,21 @@ SSurface *Algorithm::captureWindow(Painter *painter) {
         SDL_Log("[ERROR] Failed to get window surface! Exception: %s", SDL_GetError());
         return nullptr;
     }
-    SSurface *_new = SDL_CreateSurface(_window->w, _window->h, _window->format);
+    if (SDL_UpdateWindowSurface(painter->window()->window) == false) {
+        SDL_Log("[ERROR] Failed to update the current window! Exception: %s", SDL_GetError());
+    }
+    _window = SDL_GetWindowSurface(painter->window()->window);
+    if (!_window) {
+        SDL_Log("[ERROR] Failed to get window surface! Exception: %s", SDL_GetError());
+        return nullptr;
+    }
+    auto _new = SDL_RenderReadPixels(painter->window()->renderer, nullptr);
     if (!_new) {
         SDL_Log("[ERROR] Failed to get window surface! Exception: %s", SDL_GetError());
         return nullptr;
     }
-    if (!SDL_BlitSurface(_window, nullptr, _new, nullptr)) {
-        SDL_Log("[ERROR] Capture window failed! Please check the window whether it is valid!");
-        SDL_DestroySurface(_new);
-        return nullptr;
-    }
-    SDL_Log("Captured Window! width: %d height: %d", _new->w, _new->h);
+
+    SDL_Log("[INFO] Captured Window! width: %d height: %d", _new->w, _new->h);
     return _new;
 }
 

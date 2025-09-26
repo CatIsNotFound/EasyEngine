@@ -140,7 +140,13 @@ namespace EasyEngine {
         Painter* _painter{nullptr};
         bool _change_signal{false};
     private:
+        /**
+         * @brief 编辑过渡效果的过渡过程
+         */
         virtual void update() = 0;
+        /**
+         * @brief 编辑在开始执行过渡之前的事件
+         */
         virtual void getReady() = 0;
         uint64_t _start_time{0};
         uint64_t _current_time{0};
@@ -176,24 +182,67 @@ namespace EasyEngine {
     };
 
     /**
-     * @class MoveTransition
-     * @brief 画面平移过渡
+     * @class EraseTransition
+     * @brief 擦除效果
+     *
+     * 实现基本的不同方向的擦除效果
      */
-    class MoveTransition : public Transition {
+    class EraseTransition : public Transition {
     public:
-        enum MoveDirection { LeftToRight, TopToBottom };
-        MoveTransition(uint64_t duration, const enum MoveDirection& direction, DeletionPolicy deletion_policy, Painter *painter);
-        ~MoveTransition();
+        /**
+         * @enum EraseDirection
+         * @brief 擦除方向
+         */
+        enum EraseDirection { LeftToRight, RightToLeft, TopToBottom, BottomToTop };
+        EraseTransition(uint64_t duration, const enum EraseDirection& direction,
+                DeletionPolicy deletion_policy, Painter *painter);
+        ~EraseTransition();
 
-        void setMoveDirection(const enum MoveDirection& direction);
-        const enum MoveDirection& moveDirection() const;
+        void setEraseDirection(const enum EraseDirection &direction);
+        const enum EraseDirection& eraseDirection() const;
+
+        void setBackColor(const SColor& color);
+        const SColor& backColor() const;
 
     private:
         void update() override;
         void getReady() override;
-        SSurface* _surface{};
-        enum MoveDirection _direction{MoveDirection::LeftToRight};
-        std::unique_ptr<Components::Sprite> _sprite;
+        Graphics::Rectangle _rect;
+        enum EraseDirection _direction{EraseDirection::LeftToRight};
+    };
+
+    /**
+     * @class MoveTransition
+     * @brief 平移过渡效果
+     *
+     * 实现不同方向的平移效果，需要单张图片进行平移
+     */
+    class MoveTransition : public Transition {
+    public:
+        /**
+         * @enum MoveDirection
+         * @brief 移动方向
+         */
+        enum MoveDirection { LeftToRight, RightToLeft, TopToBottom, BottomToTop };
+        explicit MoveTransition(uint32_t duration, const enum MoveDirection& direction,
+                                DeletionPolicy deletion_policy, Painter* painter);
+
+        void setFirstPicture(SSurface* surface);
+        void setFirstPicture(Components::Sprite* sprite);
+        Components::Sprite* firstPicture() const;
+        void setSecondPicture(SSurface* surface);
+        void setSecondPicture(Components::Sprite* sprite);
+        Components::Sprite* secondPicture() const;
+
+        void setMoveDirection(const enum MoveDirection& direction);
+        const enum MoveDirection& moveDirection() const;
+    private:
+        void update() override;
+        void getReady() override;
+        std::shared_ptr<Components::Sprite> _sprite1;
+        std::shared_ptr<Components::Sprite> _sprite2;
+        bool _draw_second_pic{false};
+        enum MoveDirection _move_direction;
     };
 
 } // EasyEngine

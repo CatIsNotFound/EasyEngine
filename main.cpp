@@ -89,27 +89,27 @@ int main() {
 //    scene->setSceneEvent([&]() {
 //         engine.painter()->fillBackColor(StdColor::LightBlue);
 //    });
-
+    SSurface* scene_1 = nullptr, *scene_2 = nullptr;
     Graphics::Ellipse ellipse(0, 0, 100, 100);
     ellipse.bordered_mode = false;
     ellipse.filled_mode = true;
     ellipse.back_color = StdColor::HalfTransparent;
     auto scene2 = new Scene("exit");
     scene2->appendLayer(1, text2_layer);
-//    scene2->appendLayer(2, moving_layer);
+    scene2->appendLayer(2, moving_layer);
     scene2->swapLayer(1, 2);
     scene2->setSceneEvent([&] {
         engine.painter()->fillBackColor(StdColor::LightGreen);
         auto cur_pos = Cursor::global()->position();
         ellipse.pos = cur_pos;
         engine.painter()->drawEllipse(ellipse);
-        // static float x = 0, y = 0, fx = 1.0f, fy = 1.0f;
-        // if (x > 1280 || x < 0) fx = -fx;
-        // if (y > 680 || y < 0) fy = -fy;
-        // x += fx; y += fy;
+        static float x = 0, y = 0, fx = 1.0f, fy = 1.0f;
+        if (x > 1280 || x < 0) fx = -fx;
+        if (y > 680 || y < 0) fy = -fy;
+        x += fx; y += fy;
         static float angle = 1.f;
-        // sp->properties()->position = {x, y};
         sp->properties()->rotate += angle;
+
     });
 
     auto esc_layer = new Layer("esc");
@@ -119,41 +119,59 @@ int main() {
     scene3->setSceneEvent([&]{
         engine.painter()->fillBackColor(StdColor::LightPink);
         auto sp = scene3->layer(1)->sprite(1);
-        sp->properties()->position = Cursor::global()->position();
+        sp->properties()->position = {20, 20};
+
     });
 
     sceneManager->append(scene, 1);
     sceneManager->append(scene2, 2);
     sceneManager->append(scene3, 3);
-    auto dark = new DarkTransition(1500, Transition::KeepWhenStopped, engine.painter());
-    auto move_img = new MoveTransition(3000, MoveTransition::LeftToRight, Transition::KeepWhenStopped, engine.painter());
-    sceneManager->setEnterSceneEvent(1, [&]() {
-        fmt::println("Changed: scene 1!");
-        bgm.stop();
-        dark->setDirection(Transition::Forward);
-        dark->start();
-    });
+    auto dark = new DarkTransition(1000, Transition::KeepWhenStopped, engine.painter());
+    auto erase = new EraseTransition(800, EraseTransition::LeftToRight, Transition::KeepWhenStopped, engine.painter());
+    auto move = new MoveTransition(1000, MoveTransition::LeftToRight, Transition::KeepWhenStopped, engine.painter());
+    erase->setBackColor(StdColor::White);
+    dark->setBackgroundColor(StdColor::White);
+//    sceneManager->setEnterSceneEvent(1, [&]() {
+//        fmt::println("Changed: scene 1!");
+//        erase->setDirection(Transition::Forward);
+//        erase->setEraseDirection(EraseTransition::TopToBottom);
+//        erase->start();
+//    });
+//    sceneManager->setLeaveSceneEvent(1, erase->duration(), [&]{
+//        erase->setDirection(Transition::Backward);
+//        erase->start();
+//    });
     sceneManager->setEnterSceneEvent(2, [&]() {
         fmt::println("Changed: scene 2!");
         bgm.play();
         dark->setDirection(Transition::Forward);
         dark->start();
     });
-    sceneManager->setLeaveSceneEvent(2, [&] {
+    sceneManager->setLeaveSceneEvent(2, dark->duration(), [&] {
         dark->setDirection(Transition::Backward);
         dark->start();
+        bgm.stop(1000);
     });
     sceneManager->setEnterSceneEvent(3, [&] {
         // move_img->setDirection(Transition::Forward);
-        move_img->setMoveDirection(MoveTransition::TopToBottom);
-        move_img->setDirection(Transition::Backward);
-        move_img->start();
+        move->setFirstPicture(Algorithm::captureWindow(engine.painter()));
+        move->setMoveDirection(MoveTransition::RightToLeft);
+        move->start();
+    });
+    sceneManager->setLeaveSceneEvent(3, erase->duration(), [&] {
+        move->setFirstPicture(Algorithm::captureWindow(engine.painter()));
+        move->setMoveDirection(MoveTransition::LeftToRight);
+        move->start();
     });
     engine.painter()->setSceneManager(sceneManager);
-    sceneManager->changeScene(1);
     engine.painter()->installPaintEvent([&](Painter& painter) {
         painter.fillBackColor(StdColor::LightYellow);
         engine.setWindowTitle(fmt::format("EasyEngine Demo - FPS {} Scene {}", engine.fps(), sceneManager->currentSceneIndex()));
+    });
+    Sprite test_sprite("test", engine.painter());
+    bool _show_capture = false;
+    scene->setSceneEvent([&]{
+        if (_show_capture) test_sprite.draw({20, 20}, 0.45f);
     });
     engine.installEventHandler([&] (SEvent& e) {
         if (e.key.down && e.key.key == SDLK_Q) {
@@ -161,6 +179,12 @@ int main() {
         }
         if (e.key.down && e.key.key == SDLK_ESCAPE) {
             if (sceneManager->currentSceneIndex() != 1) sceneManager->changeScene(1);
+        }
+        if (e.key.down && e.key.key == SDLK_P) {
+            _show_capture = !_show_capture;
+            if (_show_capture) {
+                test_sprite.setSurface(Algorithm::captureWindow(engine.painter()));
+            }
         }
         return true;
     });

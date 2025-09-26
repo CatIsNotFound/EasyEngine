@@ -772,6 +772,22 @@ namespace EasyEngine {
         EventSystem operator=(const EventSystem&) = delete;
         ~EventSystem();
         /**
+         * @brief 设置是否启用全局事件监听
+         * @param enabled 启用/禁用全局事件监听
+         *
+         * 当 `enabled` 为 `false` 时，除了基本的事件处理以及计时器、触发器以外，
+         * 其它事件（如：自定义事件处理、控件处理）都将被忽略。一般情况下，当场景正在切换时会禁用全局事件监听。
+         * @see handlerEnabled
+         */
+        void setHandlerEnabled(bool enabled);
+        /**
+         * @brief 获取当前是否启用全局事件监听
+         * @retval true 表示事件系统正在监听所有事件,
+         * @retval false 表示事件系统只监听基础事件、计时器、触发器事件
+         * @see setHandlerEnabled
+         */
+        bool handlerEnabled() const;
+        /**
          * @brief 事件处理器
          *
          * 所有事件都将被管理与处理
@@ -886,6 +902,7 @@ namespace EasyEngine {
     private:
         static std::function<bool(SEvent&)> _my_event_handler;
         static std::unique_ptr<EventSystem> _instance;
+        static bool _handler_trigger;
         std::map<uint64_t, std::unique_ptr<Components::Timer>> _timer_list;
         std::map<uint64_t, std::unique_ptr<Components::Trigger>> _trigger_list;
         std::map<uint64_t, Components::Control*> _control_list;
