@@ -263,19 +263,26 @@ $(function() {
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 构建命令</h2>
-<div class="fragment"><div class="line"># 进入项目目录</div>
+<div class="fragment"><div class="line"># 克隆项目</div>
+<div class="line">git clone https://github.com/CatIsNotFound/EasyEngine.git</div>
 <div class="line">cd EasyEngine</div>
-<div class="line">mkdir build</div>
-<div class="line">cd build</div>
+</div><!-- fragment --><p>编辑 <span class="tt">CMakeLists.txt</span> 文件，并修改以下内容：</p>
+<div class="fragment"><div class="line"># TODO：请记得在此处修改目录</div>
+<div class="line">set(SDL_DIR       &quot;/path/to/SDL&quot;)</div>
+<div class="line">set(SDL_IMAGE_DIR &quot;/path/to/SDL3_image&quot;)</div>
+<div class="line">set(SDL_TTF_DIR   &quot;/path/to/SDL3_ttf&quot;)</div>
+<div class="line">set(SDL_MIXER_DIR &quot;/path/to/SDL3_mixer&quot;)</div>
+<div class="line">set(SDL_GFX_DIR   &quot;/path/to/SDL3_gfx&quot;)</div>
+<div class="line">set(FMT_DIR       &quot;/path/to/FMT&quot;)</div>
+</div><!-- fragment --><p>配置项目并编译</p>
+<div class="fragment"><div class="line"># 配置构建</div>
+<div class="line">cmake -B build -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line"> </div>
-<div class="line"># 配置项目</div>
-<div class="line">cmake ..</div>
-<div class="line"> </div>
-<div class="line"># 构建项目</div>
-<div class="line">cmake --build .</div>
+<div class="line"># 编译项目</div>
+<div class="line">cmake --build build</div>
 <div class="line"> </div>
 <div class="line"># 运行示例</div>
-<div class="line">./EasyEngine</div>
+<div class="line">./build/EasyEngine</div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 开发环境配置</h2>
 <p>项目已配置好 CLion/Visual Studio 的 CMake 支持，可直接导入构建。</p>
@@ -285,7 +292,7 @@ $(function() {
 <li>当前版本：1.0.1-beta</li>
 <li>API 状态：稳定开发中</li>
 <li>兼容性：Windows/Linux/macOS (通过 SDL3)</li>
-<li>许可证：开源项目</li>
+<li>许可证：MIT 开源项目</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 贡献和支持</h1>
