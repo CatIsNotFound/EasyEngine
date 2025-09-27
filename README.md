@@ -47,11 +47,11 @@ Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专�
 
 ### 如何构建项目
 
-Step 1. [点击前往此页面](https://github.com/CatIsNotFound/EasyEngine/releases/tag/1.0.1-beta)，并根据当前使用的编译器下载对应的第三方库。
+Step 1. [点击前往此页面](https://github.com/CatIsNotFound/EasyEngine/releases/latest)以下载最新版本；
 
-Step 2. 新建一个项目目录，例如：`MyGame`。
+Step 2. 新建一个你的项目目录，例如：`MyGame`。
 
-Step 3. 解压第 1 步中下载的压缩包，并将解压后的多个目录复制到项目目录的 `lib` 目录。
+Step 3. 解压所有包，并将解压后的多个目录复制到你的项目目录的 `libs` 目录。
 
 Step 4. 在 `CMakeLists.txt` 文件下添加以下内容：
 
@@ -75,6 +75,7 @@ list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_GFX_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
+list(APPEND CMAKE_PREFIX_PATH "libs/EasyEngine")
 
 # 添加 EasyEngine 模块
 find_package(EasyEngine REQUIRED)
