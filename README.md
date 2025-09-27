@@ -4,7 +4,7 @@
 
 [![C++23](https://img.shields.io/badge/C++-23-blue.svg)](https://en.cppreference.com/w/cpp/23)
 [![SDL3](https://img.shields.io/badge/SDL-3-blue.svg)](https://github.com/libsdl-org/SDL)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Version](https://img.shields.io/badge/Version-1.0.1%20-red.svg)
 
 ## 🚀 项目简介
@@ -43,70 +43,104 @@ Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专�
 ### 环境要求
 - **编译器**: 支持 C++23 的现代编译器 (MSVC 2022+, GCC 11+, Clang 14+)
 - **依赖库**: SDL3 及其扩展库 (`SDL3_image`, `SDL_ttf`, `SDL_mixer`, `SDL_gfx`)
-- **构建工具**: CMake 3.31+
+- **构建工具**: CMake 3.28+
 
-### 构建项目
+### 如何构建项目
 
-```bash
-# 克隆项目
-git clone https://github.com/CatIsNotFound/EasyEngine.git
-cd EasyEngine
-```
+Step 1. [点击前往此页面](https://github.com/CatIsNotFound/EasyEngine/releases/tag/1.0.1-beta)，并根据当前使用的编译器下载对应的第三方库。
 
-编辑 `CMakeLists.txt` 文件，并修改以下内容：
+Step 2. 新建一个项目目录，例如：`MyGame`。
+
+Step 3. 解压第 1 步中下载的压缩包，并将解压后的多个目录复制到项目目录的 `lib` 目录。
+
+Step 4. 在 `CMakeLists.txt` 文件下添加以下内容：
 
 ```cmake
-# TODO：请记得在此处修改目录
-set(SDL_DIR       "/path/to/SDL")
-set(SDL_IMAGE_DIR "/path/to/SDL3_image")
-set(SDL_TTF_DIR   "/path/to/SDL3_ttf")
-set(SDL_MIXER_DIR "/path/to/SDL3_mixer")
-set(SDL_GFX_DIR   "/path/to/SDL3_gfx")
-set(FMT_DIR       "/path/to/FMT")
+cmake_minimum_required(VERSION 3.31)
+project(MyGame)  # 这里定义你的项目名称（可以将 `MyGame` 修改成其它名称）
+
+set(CMAKE_CXX_STANDARD 23)
+
+# 定义第三方库目录（如果不在项目目录中，请修改为其它实际路径）
+set(SDL_DIR       "libs/SDL")
+set(SDL_IMAGE_DIR "libs/SDL3_image")
+set(SDL_TTF_DIR   "libs/SDL3_ttf")
+set(SDL_MIXER_DIR "libs/SDL3_mixer")
+set(SDL_GFX_DIR   "libs/SDL3_gfx")
+set(FMT_DIR       "libs/FMT")
+
+list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_IMAGE_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${SDL_GFX_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
+
+# 添加 EasyEngine 模块
+find_package(EasyEngine REQUIRED)
+
+# 添加可执行程序目标
+add_executable(${PROJECT_NAME} main.cpp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    EasyEngine::EasyEngine
+)
+
+# 复制第三方库文件到构建目录，针对 Windows 系统。
+if (WIN32)
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin       ${CMAKE_BINARY_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_TTF_DIR}/bin   ${CMAKE_BINARY_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}
+            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_GFX_DIR}/bin   ${CMAKE_BINARY_DIR}
+    )
+endif()
 ```
 
-配置项目并编译：
-
-```bash
-# 配置构建
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-
-# 编译项目
-cmake --build build
-
-# 运行示例
-./build/EasyEngine
-```
-
-### 基础示例代码
+Step 5: 新建 `main.cpp` 文件并加入以下示例代码：
 
 ```cpp
-#include "src/Core.h"
+#include <EasyEngine/Core.h>
 using namespace EasyEngine;
+using namespace Components;
 
 int main() {
     // 创建引擎实例
-    Engine engine("我的游戏", 800, 600);
+    Engine engine("Hello EasyEngine!", 800, 600);
     engine.show();
-    
+
     // 设置事件处理器
-    engine.installEventHandler([&engine](SDL_Event event) {
+    engine.installEventHandler([](SDL_Event& e) {
         if (e.key.down && e.key.key == SDLK_ESCAPE) {
             return false;
         }
         return true;
     });
-    
+
     // 设置渲染回调
     engine.painter()->installPaintEvent([&](Painter& painter) {
         painter.fillBackColor(StdColor::White);
-        
+
         // 绘制一个红色矩形
+        painter.setThickness(20);
         Graphics::Rectangle rect(100, 100, 200, 150, StdColor::Red, true, true, StdColor::Yellow);
         painter.drawRectangle(rect);
+        // 添加像素文字
+        painter.drawPixelText("Hello EasyEngine!", {20, 20}, {1.f, 1.f}, StdColor::Black);
     });
     return engine.exec();
 }
+```
+
+Step 6: 编译当前项目，或在终端执行以下命令：
+
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./MyGame          # 你的实际项目，这里以 MyGame 为例
 ```
 
 ## 🏗️ 项目结构

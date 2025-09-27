@@ -1,4 +1,4 @@
-#include "src/Core.h"
+#include <EasyEngine/Core.h>
 
 using namespace EasyEngine;
 using namespace Components;
@@ -87,9 +87,6 @@ int main() {
     auto scene = new Scene("main");
     scene->appendLayer(1, block_layer);
     scene->appendLayer(2, text_layer);
-//    scene->setSceneEvent([&]() {
-//         engine.painter()->fillBackColor(StdColor::LightBlue);
-//    });
     std::shared_ptr<SSurface> scene_1 = nullptr, scene_2 = nullptr;
     Graphics::Ellipse ellipse(0, 0, 100, 100);
     ellipse.bordered_mode = false;
@@ -131,16 +128,6 @@ int main() {
     auto move = new MoveTransition(1000, MoveTransition::LeftToRight, Transition::KeepWhenStopped, engine.painter());
     erase->setBackColor(StdColor::White);
     dark->setBackgroundColor(StdColor::White);
-//    sceneManager->setEnterSceneEvent(1, [&]() {
-//        fmt::println("Changed: scene 1!");
-//        erase->setDirection(Transition::Forward);
-//        erase->setEraseDirection(EraseTransition::TopToBottom);
-//        erase->start();
-//    });
-//    sceneManager->setLeaveSceneEvent(1, erase->duration(), [&]{
-//        erase->setDirection(Transition::Backward);
-//        erase->start();
-//    });
     sceneManager->setEnterSceneEvent(2, [&]() {
         fmt::println("Changed: scene 2!");
         bgm.play();

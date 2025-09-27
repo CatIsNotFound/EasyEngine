@@ -1,16 +1,15 @@
-cmake_minimum_required(VERSION 3.31)
-project(EasyEngine VERSION 0.1.1)
+cmake_minimum_required(VERSION 3.28)
+project(EasyEngine VERSION 1.0.1)
 
 set(CMAKE_CXX_STANDARD 23)
 
 # TODO：请记得在此处修改目录
 set(SDL_DIR       "D:/CPPLibs/SDL")
-set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image/x86_64-w64-mingw32")
-set(SDL_TTF_DIR   "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
+set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image")
+set(SDL_TTF_DIR   "D:/CPPLibs/SDL3_ttf")
 set(SDL_MIXER_DIR "D:/CPPLibs/SDL3_mixer")
 set(SDL_GFX_DIR   "D:/CPPLibs/SDL3_gfx")
 set(FMT_DIR       "D:/CPPLibs/FMT")
-
 
 list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_IMAGE_DIR})
@@ -34,49 +33,63 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif()
 message(STATUS "CURRENT INSTALL PATH: ${CMAKE_INSTALL_PREFIX}")
 
-
-add_executable(EasyEngine
-        src/Core.cpp
-        src/Core.h
-        src/preinclude.h
-        src/Basic.cpp
-        src/Basic.h
-        src/Algorithm.h
-        src/Algorithm.cpp
-        src/Components.h
-        src/Components.cpp
-        src/Resources.cpp
-        src/Resources.h
-        main.cpp
-        src/Scene.cpp
-        src/Scene.h
-        main.cpp
-        src/Transition.cpp
-        src/Transition.h
+add_library(EasyEngine STATIC
+    src/Core.cpp
+    src/Basic.cpp
+    src/Algorithm.cpp
+    src/Components.cpp
+    src/Resources.cpp
+    src/Scene.cpp
+    src/Transition.cpp
 )
 
-#include_directories(${FFMPEG_DIR}/include)
-#link_directories(${FFMPEG_DIR}/lib)
-
-target_link_libraries(EasyEngine PRIVATE
-        SDL3::SDL3
-        SDL3_image::SDL3_image
-        SDL3_ttf::SDL3_ttf
-        SDL3_mixer::SDL3_mixer
-        SDL3_gfx::SDL3_gfx
-        fmt::fmt
+target_include_directories(EasyEngine PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:include>
 )
 
-if (WIN32)
-add_custom_command(TARGET EasyEngine POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin ${CMAKE_BINARY_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_TTF_DIR}/bin ${CMAKE_BINARY_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_GFX_DIR}/bin   ${CMAKE_BINARY_DIR}
+target_link_libraries(EasyEngine PUBLIC
+    SDL3::SDL3
+    SDL3_image::SDL3_image
+    SDL3_ttf::SDL3_ttf
+    SDL3_mixer::SDL3_mixer
+    SDL3_gfx::SDL3_gfx
+    fmt::fmt
 )
-endif()
 
-add_custom_command(TARGET EasyEngine POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets
+install(TARGETS EasyEngine
+    EXPORT EasyEngineTargets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+install(DIRECTORY src/
+    DESTINATION include/EasyEngine
+    FILES_MATCHING PATTERN "*.h"
+)
+install(DIRECTORY assets/
+    DESTINATION assets
+)
+
+install(EXPORT EasyEngineTargets
+    FILE EasyEngineTargets.cmake
+    NAMESPACE EasyEngine::
+    DESTINATION lib/cmake/EasyEngine
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/EasyEngineConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/EasyEngineConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/EasyEngineConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/EasyEngine
+)
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/EasyEngineConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/EasyEngineConfigVersion.cmake"
+    DESTINATION lib/cmake/EasyEngine
 )
