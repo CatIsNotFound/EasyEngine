@@ -3,13 +3,13 @@ project(EasyEngine VERSION 0.1.1)
 
 set(CMAKE_CXX_STANDARD 23)
 
-set(SDL_DIR       "D:/CPPLibs/SDL_GIT")
+# TODO：请记得在此处修改目录
+set(SDL_DIR       "D:/CPPLibs/SDL")
 set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image/x86_64-w64-mingw32")
 set(SDL_TTF_DIR   "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
 set(SDL_MIXER_DIR "D:/CPPLibs/SDL3_mixer")
 set(SDL_GFX_DIR   "D:/CPPLibs/SDL3_gfx")
 set(FMT_DIR       "D:/CPPLibs/FMT")
-#set(PUGIXML_DIR "D:/CPPLibs/pugixml")
 
 
 list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
@@ -18,8 +18,6 @@ list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${SDL_GFX_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
-#list(APPEND CMAKE_PREFIX_PATH ${PUGIXML_DIR})
-#set(FFMPEG_DIR "D:/CPPLibs/ffmpeg")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -69,12 +67,16 @@ target_link_libraries(EasyEngine PRIVATE
         fmt::fmt
 )
 
-
+if (WIN32)
 add_custom_command(TARGET EasyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_TTF_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_GFX_DIR}/bin   ${CMAKE_BINARY_DIR}
+)
+endif()
+
+add_custom_command(TARGET EasyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets
 )

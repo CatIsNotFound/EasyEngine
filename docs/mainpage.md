@@ -119,19 +119,34 @@ int main() {
 
 ### 构建命令
 ```bash
-# 进入项目目录
+# 克隆项目
+git clone https://github.com/CatIsNotFound/EasyEngine.git
 cd EasyEngine
-mkdir build
-cd build
+```
 
-# 配置项目
-cmake ..
+编辑 `CMakeLists.txt` 文件，并修改以下内容：
 
-# 构建项目
-cmake --build .
+```cmake
+# TODO：请记得在此处修改目录
+set(SDL_DIR       "/path/to/SDL")
+set(SDL_IMAGE_DIR "/path/to/SDL3_image")
+set(SDL_TTF_DIR   "/path/to/SDL3_ttf")
+set(SDL_MIXER_DIR "/path/to/SDL3_mixer")
+set(SDL_GFX_DIR   "/path/to/SDL3_gfx")
+set(FMT_DIR       "/path/to/FMT")
+```
+
+配置项目并编译
+
+```bash
+# 配置构建
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+# 编译项目
+cmake --build build
 
 # 运行示例
-./EasyEngine
+./build/EasyEngine
 ```
 
 ### 开发环境配置
@@ -142,7 +157,7 @@ cmake --build .
 - 当前版本：1.0.1-beta
 - API 状态：稳定开发中
 - 兼容性：Windows/Linux/macOS (通过 SDL3)
-- 许可证：开源项目
+- 许可证：MIT 开源项目
 
 ## 贡献和支持
 

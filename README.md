@@ -3,12 +3,13 @@
 基于 SDL3 图形引擎库二次封装的开源游戏引擎
 
 [![C++23](https://img.shields.io/badge/C++-23-blue.svg)](https://en.cppreference.com/w/cpp/23)
-[![SDL3](https://img.shields.io/badge/SDL-3-green.svg)](https://github.com/libsdl-org/SDL)
-[![License](https://img.shields.io/badge/License-Open%20Source-blue.svg)](LICENSE)
+[![SDL3](https://img.shields.io/badge/SDL-3-blue.svg)](https://github.com/libsdl-org/SDL)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Version](https://img.shields.io/badge/Version-1.0.1%20-red.svg)
 
 ## 🚀 项目简介
 
-Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专为简化 2D 游戏开发而设计。它提供了直观易用的 API，将复杂的底层图形编程抽象成简单的函数调用，让开发者能够专注于游戏创意而非技术细节。当前版本：0.1.1 Beta
+Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专为简化 2D 游戏开发而设计。它提供了直观易用的 API，将复杂的底层图形编程抽象成简单的函数调用，让开发者能够专注于游戏创意而非技术细节。
 
 ## ✨ 核心特性
 
@@ -50,7 +51,23 @@ Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专�
 # 克隆项目
 git clone https://github.com/CatIsNotFound/EasyEngine.git
 cd EasyEngine
+```
 
+编辑 `CMakeLists.txt` 文件，并修改以下内容：
+
+```cmake
+# TODO：请记得在此处修改目录
+set(SDL_DIR       "/path/to/SDL")
+set(SDL_IMAGE_DIR "/path/to/SDL3_image")
+set(SDL_TTF_DIR   "/path/to/SDL3_ttf")
+set(SDL_MIXER_DIR "/path/to/SDL3_mixer")
+set(SDL_GFX_DIR   "/path/to/SDL3_gfx")
+set(FMT_DIR       "/path/to/FMT")
+```
+
+配置项目并编译：
+
+```bash
 # 配置构建
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 
@@ -105,7 +122,6 @@ EasyEngine/
 │   ├── Scene.h/.cpp       # 场景管理（Layer、Scene、SceneManager - 待完善）
 │   └── preinclude.h       # 预包含头文件
 ├── docs/                  # 文档和教程
-├── libs/                  # 第三方库（SDL3_gfx等扩展库）
 ├── assets/                # 游戏资源文件（图片、音频等）
 ├── examples/              # 示例代码
 ├── main.cpp              # 主示例程序
@@ -161,31 +177,15 @@ EasyEngine/
 
 我们欢迎社区贡献！项目采用开源开发模式，欢迎提交问题报告和功能请求。
 
-### 开发设置
-
-```bash
-# 开发构建
-cmake -B build -DCMAKE_BUILD_TYPE=Debug
-
-# 编译项目
-cmake --build build
-
-# 运行测试
-./build/EasyEngine
-
-# 生成文档
-doxygen docs/Doxyfile
-```
-
 ## 📄 许可证
 
-本项目采用开源许可证，详见 [LICENSE](LICENSE) 文件。
+本项目采用 MIT 开源许可证，详见 [LICENSE](LICENSE) 文件。
 
 ## 🙋‍♂️ 获取帮助
 
 - 📖 **文档**: 查看[项目文档](./docs/html/index.html)了解详细API使用
-- 💬 **讨论**: 通过GitHub Issues提交问题和建议
-- 🔍 **示例**: 参考 main.cpp 和 examples/ 目录中的示例代码
+- 💬 **讨论**: 通过 GitHub Issues 提交问题和建议
+- 🔍 **示例**: 参考 `main.cpp` 和 `examples/` 目录中的示例代码
 
 ---
 
