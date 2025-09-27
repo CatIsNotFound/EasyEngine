@@ -1,27 +1,7 @@
 var searchData=
 [
-  ['easy_20engine_0',['Easy Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'']]],
-  ['easy_20engine_20快速入门指南_1',['Easy Engine 快速入门指南',['../md_quickstart.html',1,'']]],
-  ['easy_20engine_20游戏引擎文档_2',['Easy Engine 游戏引擎文档',['../index.html',1,'']]],
-  ['easyengine_3',['EasyEngine',['../namespace_easy_engine.html',1,'']]],
-  ['easyengine_5fmacro_5fversion_4',['EASYENGINE_MACRO_VERSION',['../_core_8h.html#a3f11a5eff0407307608730ead00f16ad',1,'Core.h']]],
-  ['easyengine_5fmajor_5fversion_5',['EASYENGINE_MAJOR_VERSION',['../_core_8h.html#a2b3da6b9c37884c4a7982f6849369040',1,'Core.h']]],
-  ['easyengine_5fminor_5fversion_6',['EASYENGINE_MINOR_VERSION',['../_core_8h.html#aff667148e31d3e7d9ca9d173fdf571e6',1,'Core.h']]],
-  ['easyengine_5fname_7',['EASYENGINE_NAME',['../_core_8h.html#a82267badcceab7389c6f2c31cfed1367',1,'Core.h']]],
-  ['easyengine_5fversion_8',['EASYENGINE_VERSION',['../_core_8h.html#a294fb3cebb960034032325aabc94f3f8',1,'Core.h']]],
-  ['element_9',['Element',['../class_easy_engine_1_1_components_1_1_element.html',1,'EasyEngine::Components']]],
-  ['elements_10',['Elements',['../_scene_8h.html#a6b6315a3d8197c214f3607f3f3c16993',1,'EasyEngine::Components']]],
-  ['ellipse_11',['Ellipse',['../struct_easy_engine_1_1_graphics_1_1_ellipse.html',1,'EasyEngine::Graphics']]],
-  ['ellipse_12',['ellipse',['../union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape.html#a63d1e5fe875f08810593bfe6eec40e3a',1,'EasyEngine::Components::Collider::Container::Shape']]],
-  ['enabled_13',['enabled',['../class_easy_engine_1_1_components_1_1_timer.html#afc5094393367f756190b183c8efa8311',1,'EasyEngine::Components::Timer::enabled()'],['../class_easy_engine_1_1_components_1_1_trigger.html#ad89b741c15f1742e85335d727b05146b',1,'EasyEngine::Components::Trigger::enabled()'],['../class_easy_engine_1_1_components_1_1_collider.html#a6235b60cefad5914d6be022957d372c9',1,'EasyEngine::Components::Collider::enabled()'],['../class_easy_engine_1_1_components_1_1_control.html#a95872bba5aed3972d8e82479411ac9e1',1,'EasyEngine::Components::Control::enabled() const']]],
-  ['enabledchange_14',['EnabledChange',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a14bdf2ac59e6cf40b7dc615bfb2fb305',1,'EasyEngine::Components::Control']]],
-  ['engine_15',['Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'Easy Engine'],['../class_easy_engine_1_1_engine.html',1,'EasyEngine::Engine'],['../class_easy_engine_1_1_engine.html#a21aaab8bbbf9faf626b71c0f28ed9b14',1,'EasyEngine::Engine::Engine()']]],
-  ['engine_20快速入门指南_16',['Easy Engine 快速入门指南',['../md_quickstart.html',1,'']]],
-  ['engine_20游戏引擎文档_17',['Easy Engine 游戏引擎文档',['../index.html',1,'']]],
-  ['entity_18',['Entity',['../class_easy_engine_1_1_components_1_1_entity.html',1,'EasyEngine::Components::Entity'],['../class_easy_engine_1_1_components_1_1_entity.html#a9ba855cf89c90e5eccd5c70c045597c8',1,'EasyEngine::Components::Entity::Entity()']]],
-  ['entity_19',['entity',['../class_easy_engine_1_1_components_1_1_layer.html#a1bd8a0644473c62bfe4afaf744c1763d',1,'EasyEngine::Components::Layer']]],
-  ['event_20',['Event',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2',1,'EasyEngine::Components::Control']]],
-  ['event_21',['event',['../class_easy_engine_1_1_components_1_1_trigger.html#aa206447f4564b0b922a7e36fc3900439',1,'EasyEngine::Components::Trigger']]],
-  ['eventsystem_22',['EventSystem',['../class_easy_engine_1_1_event_system.html',1,'EasyEngine']]],
-  ['exec_23',['exec',['../class_easy_engine_1_1_engine.html#ad2530b5fbbea2ad182c83461d3f5c149',1,'EasyEngine::Engine']]]
+  ['name_0',['name',['../class_easy_engine_1_1_components_1_1_sprite.html#af26c8980014a6062bf0ff83b1712eb15',1,'EasyEngine::Components::Sprite::name()'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#af6056390cef36a61a789732f9a9017c2',1,'EasyEngine::Components::SpriteGroup::name()'],['../class_easy_engine_1_1_components_1_1_animation.html#ae1fb6bd473e67f6c14390ae274fc69c6',1,'EasyEngine::Components::Animation::name()'],['../class_easy_engine_1_1_components_1_1_entity.html#a1b1db701b402de1c41caa261b0c4cfbc',1,'EasyEngine::Components::Entity::name()'],['../class_easy_engine_1_1_components_1_1_control.html#a333152092e35e8a4ba9766706290785d',1,'EasyEngine::Components::Control::name()'],['../class_easy_engine_1_1_components_1_1_layer.html#a9320de8c893b075202ca00824c6601f4',1,'EasyEngine::Components::Layer::name()'],['../class_easy_engine_1_1_components_1_1_scene.html#ac99caefbcee83ca2602965dd954ceadd',1,'EasyEngine::Components::Scene::name()']]],
+  ['nameof_1',['nameOf',['../class_easy_engine_1_1_components_1_1_sprite_group.html#ade78778b798f090a6bf6f5a3341879d1',1,'EasyEngine::Components::SpriteGroup']]],
+  ['newwindow_2',['newWindow',['../class_easy_engine_1_1_engine.html#aa83321639c89239c6333ac1ee5d2f5c3',1,'EasyEngine::Engine']]],
+  ['none_3',['None',['../struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0a6f634e1503f54481f51806432c24ac0a',1,'EasyEngine::Resource::None'],['../class_easy_engine_1_1_components_1_1_sprite.html#aca83ba48be69794f23e337b95c67d3a5a6adf97f83acf6453d4a6a4b1070f3754',1,'EasyEngine::Components::Sprite::None'],['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a6adf97f83acf6453d4a6a4b1070f3754',1,'EasyEngine::Components::Control::None']]]
 ];

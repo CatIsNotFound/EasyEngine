@@ -12,6 +12,7 @@ var class_easy_engine_1_1_components_1_1_sprite =
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a91f04b8c2c6df6aeec4564e4701677a8", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a64eea868a997cb7c1e04e32edf80f2ce", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#ae620d84951761b6a4fc21bea05a42d4c", null ],
+    [ "copySprite", "class_easy_engine_1_1_components_1_1_sprite.html#a5166bdc06b50085b8852ca3a95bff88f", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#a7d8fe3c9232a189b678e826cb2ab40bd", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#aa7ac817abba474ba495be2ced90e7390", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#af57bf42461dd8692bd3e6944e431b1f4", null ],
@@ -28,6 +29,7 @@ var class_easy_engine_1_1_components_1_1_sprite =
     [ "setName", "class_easy_engine_1_1_components_1_1_sprite.html#a21c3811e2e781b5966e05e733bc103ef", null ],
     [ "setPainter", "class_easy_engine_1_1_components_1_1_sprite.html#af8215c1d330f2fce8c7ae21e683840ca", null ],
     [ "setResource", "class_easy_engine_1_1_components_1_1_sprite.html#a90fb95eacd18f699e273417a3ef443bf", null ],
+    [ "setSurface", "class_easy_engine_1_1_components_1_1_sprite.html#a4170d6e74f5d06e525ef5242560f20ff", null ],
     [ "size", "class_easy_engine_1_1_components_1_1_sprite.html#a37587046608c596cf0fdf922d7fa6478", null ],
     [ "spirit", "class_easy_engine_1_1_components_1_1_sprite.html#a8ee07edccb6987426caa9287a64319d5", null ]
 ];

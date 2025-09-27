@@ -13,18 +13,13 @@ var index =
       [ "核心类层次", "index.html#autotoc_md10", null ]
     ] ],
     [ "快速开始", "index.html#autotoc_md11", [
-      [ "最小示例", "index.html#autotoc_md12", null ],
-      [ "高级功能示例", "index.html#autotoc_md13", [
-        [ "精灵动画", "index.html#autotoc_md14", null ],
-        [ "碰撞检测", "index.html#autotoc_md15", null ],
-        [ "性能监控", "index.html#autotoc_md16", null ]
-      ] ]
+      [ "最小示例", "index.html#autotoc_md12", null ]
     ] ],
-    [ "构建和部署", "index.html#autotoc_md17", [
-      [ "系统要求", "index.html#autotoc_md18", null ],
-      [ "构建命令", "index.html#autotoc_md19", null ],
-      [ "开发环境配置", "index.html#autotoc_md20", null ]
+    [ "构建和部署", "index.html#autotoc_md13", [
+      [ "系统要求", "index.html#autotoc_md14", null ],
+      [ "构建命令", "index.html#autotoc_md15", null ],
+      [ "开发环境配置", "index.html#autotoc_md16", null ]
     ] ],
-    [ "版本信息", "index.html#autotoc_md21", null ],
-    [ "贡献和支持", "index.html#autotoc_md22", null ]
+    [ "版本信息", "index.html#autotoc_md17", null ],
+    [ "贡献和支持", "index.html#autotoc_md18", null ]
 ];

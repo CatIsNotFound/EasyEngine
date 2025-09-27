@@ -8,5 +8,5 @@ var class_easy_engine_1_1_components_1_1_b_g_m =
     [ "play", "class_easy_engine_1_1_components_1_1_b_g_m.html#ad7695847144f9b22395357809cf8c2fc", null ],
     [ "position", "class_easy_engine_1_1_components_1_1_b_g_m.html#a8f5e8ad1709afa3b2f1916427e7186d4", null ],
     [ "setResource", "class_easy_engine_1_1_components_1_1_b_g_m.html#a8bc72b68fddf1e8494961516b15b90fe", null ],
-    [ "stop", "class_easy_engine_1_1_components_1_1_b_g_m.html#a29cf6bf994a646de66cc7c66f87b63c3", null ]
+    [ "stop", "class_easy_engine_1_1_components_1_1_b_g_m.html#ae2ec6f66349e57480680c127f3f4ff9a", null ]
 ];

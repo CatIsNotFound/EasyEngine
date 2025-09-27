@@ -1,15 +1,11 @@
 var hierarchy =
 [
-    [ "Address", "struct_address.html", null ],
     [ "EasyEngine::Algorithm", "class_easy_engine_1_1_algorithm.html", null ],
     [ "EasyEngine::Components::Animation", "class_easy_engine_1_1_components_1_1_animation.html", null ],
     [ "EasyEngine::AudioSystem::Audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html", null ],
     [ "EasyEngine::AudioSystem", "class_easy_engine_1_1_audio_system.html", null ],
     [ "EasyEngine::Components::BGM", "class_easy_engine_1_1_components_1_1_b_g_m.html", null ],
     [ "EasyEngine::Components::Collider", "class_easy_engine_1_1_components_1_1_collider.html", null ],
-    [ "std::conditional_t", null, [
-      [ "is_serializable< T, std::void_t< decltype(std::declval< T >().serialize(std::declval< std::ofstream & >()))> >", "structis__serializable_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_0df1757ac00945bbc1b9b0f2312568cd6.html", null ]
-    ] ],
     [ "EasyEngine::Components::Control", "class_easy_engine_1_1_components_1_1_control.html", null ],
     [ "EasyEngine::Cursor", "class_easy_engine_1_1_cursor.html", null ],
     [ "EasyEngine::Components::Element", "class_easy_engine_1_1_components_1_1_element.html", null ],
@@ -17,37 +13,34 @@ var hierarchy =
     [ "EasyEngine::Engine", "class_easy_engine_1_1_engine.html", null ],
     [ "EasyEngine::Components::Entity", "class_easy_engine_1_1_components_1_1_entity.html", null ],
     [ "EasyEngine::EventSystem", "class_easy_engine_1_1_event_system.html", null ],
-    [ "std::false_type", null, [
-      [ "is_serializable< T, std::void_t< decltype(std::declval< T >().serialize(std::declval< std::ofstream & >()))> >", "structis__serializable_3_01_t_00_01std_1_1void__t_3_01decltype_07std_1_1declval_3_01_t_01_4_07_0df1757ac00945bbc1b9b0f2312568cd6.html", null ],
-      [ "is_serializable< T, typename >", "structis__serializable.html", null ]
-    ] ],
     [ "EasyEngine::FileSystem", "class_easy_engine_1_1_file_system.html", null ],
     [ "EasyEngine::Components::Font", "class_easy_engine_1_1_components_1_1_font.html", null ],
     [ "EasyEngine::FontSystem", "class_easy_engine_1_1_font_system.html", null ],
     [ "EasyEngine::Geometry", "struct_easy_engine_1_1_geometry.html", null ],
     [ "EasyEngine::GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
     [ "EasyEngine::Cursor::UserCustom::HotPoint", "struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html", null ],
-    [ "EasyEngine::Layer", "class_easy_engine_1_1_layer.html", null ],
+    [ "EasyEngine::Components::Layer", "class_easy_engine_1_1_components_1_1_layer.html", null ],
     [ "EasyEngine::Graphics::Line", "struct_easy_engine_1_1_graphics_1_1_line.html", null ],
     [ "EasyEngine::Painter", "class_easy_engine_1_1_painter.html", null ],
     [ "EasyEngine::Graphics::Point", "struct_easy_engine_1_1_graphics_1_1_point.html", null ],
     [ "EasyEngine::Components::Sprite::Properties", "struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html", null ],
+    [ "EasyEngine::SceneManager::Property", "struct_easy_engine_1_1_scene_manager_1_1_property.html", null ],
     [ "EasyEngine::Graphics::Rectangle", "struct_easy_engine_1_1_graphics_1_1_rectangle.html", null ],
     [ "EasyEngine::Resource", "struct_easy_engine_1_1_resource.html", null ],
     [ "EasyEngine::ResourceSystem", "class_easy_engine_1_1_resource_system.html", null ],
-    [ "EasyEngine::Scene", "class_easy_engine_1_1_scene.html", null ],
+    [ "EasyEngine::Components::Scene", "class_easy_engine_1_1_components_1_1_scene.html", null ],
     [ "EasyEngine::SceneManager", "class_easy_engine_1_1_scene_manager.html", null ],
-    [ "Serializable", "class_serializable.html", [
-      [ "ComplexData", "struct_complex_data.html", null ],
-      [ "Person", "struct_person.html", null ],
-      [ "Test", "struct_test.html", null ]
-    ] ],
     [ "EasyEngine::Components::SFX", "class_easy_engine_1_1_components_1_1_s_f_x.html", null ],
     [ "EasyEngine::Components::Collider::Container::Shape", "union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape.html", null ],
     [ "EasyEngine::Size", "struct_easy_engine_1_1_size.html", null ],
     [ "EasyEngine::Components::Sprite", "class_easy_engine_1_1_components_1_1_sprite.html", null ],
     [ "EasyEngine::Components::SpriteGroup", "class_easy_engine_1_1_components_1_1_sprite_group.html", null ],
     [ "EasyEngine::Components::Timer", "class_easy_engine_1_1_components_1_1_timer.html", null ],
+    [ "EasyEngine::Transition", "class_easy_engine_1_1_transition.html", [
+      [ "EasyEngine::DarkTransition", "class_easy_engine_1_1_dark_transition.html", null ],
+      [ "EasyEngine::EraseTransition", "class_easy_engine_1_1_erase_transition.html", null ],
+      [ "EasyEngine::MoveTransition", "class_easy_engine_1_1_move_transition.html", null ]
+    ] ],
     [ "EasyEngine::Components::Trigger", "class_easy_engine_1_1_components_1_1_trigger.html", null ],
     [ "EasyEngine::Cursor::UserCustom", "struct_easy_engine_1_1_cursor_1_1_user_custom.html", null ],
     [ "EasyEngine::Vector2", "struct_easy_engine_1_1_vector2.html", null ],

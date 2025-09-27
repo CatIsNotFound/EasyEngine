@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['✨_20核心特性_0',['✨ 核心特性',['../D:/Coding/EasyEngine/README.md#autotoc_md55',1,'']]]
+  ['数学和算法库_0',['📐 数学和算法库',['../index.html#autotoc_md6',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['下一步_0',['7. 下一步',['../md_quickstart.html#autotoc_md50',1,'']]]
+  ['系统要求_0',['系统要求',['../index.html#autotoc_md14',1,'']]]
 ];

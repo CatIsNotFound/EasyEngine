@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_0',['Window',['../class_easy_engine_1_1_window.html',1,'EasyEngine']]]
+  ['usercustom_0',['UserCustom',['../struct_easy_engine_1_1_cursor_1_1_user_custom.html',1,'EasyEngine::Cursor']]]
 ];

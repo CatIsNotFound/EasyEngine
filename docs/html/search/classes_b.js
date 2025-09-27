@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['timer_0',['Timer',['../class_easy_engine_1_1_components_1_1_timer.html',1,'EasyEngine::Components']]],
-  ['trigger_1',['Trigger',['../class_easy_engine_1_1_components_1_1_trigger.html',1,'EasyEngine::Components']]]
+  ['rectangle_0',['Rectangle',['../struct_easy_engine_1_1_graphics_1_1_rectangle.html',1,'EasyEngine::Graphics']]],
+  ['resource_1',['Resource',['../struct_easy_engine_1_1_resource.html',1,'EasyEngine']]],
+  ['resourcesystem_2',['ResourceSystem',['../class_easy_engine_1_1_resource_system.html',1,'EasyEngine']]]
 ];

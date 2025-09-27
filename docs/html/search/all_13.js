@@ -1,18 +1,15 @@
 var searchData=
 [
-  ['lastindexat_0',['lastIndexAt',['../class_easy_engine_1_1_components_1_1_sprite_group.html#a5da2a1284697323caab1220e70daf1f1',1,'EasyEngine::Components::SpriteGroup']]],
-  ['layer_1',['Layer',['../class_easy_engine_1_1_components_1_1_layer.html',1,'EasyEngine::Components::Layer'],['../class_easy_engine_1_1_components_1_1_layer.html#a2763db46281ba8ca86d0386c4eb9e14c',1,'EasyEngine::Components::Layer::Layer()']]],
-  ['lefttoright_2',['LeftToRight',['../class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcada1d4c16af03a3998077b790aca919f64f',1,'EasyEngine::Components::Font']]],
-  ['line_3',['Line',['../struct_easy_engine_1_1_graphics_1_1_line.html',1,'EasyEngine::Graphics']]],
-  ['linespacing_4',['lineSpacing',['../class_easy_engine_1_1_components_1_1_font.html#a699e3381185e1de78a3cce448fdd8e86',1,'EasyEngine::Components::Font']]],
-  ['linux_20ubuntu_20debian_5',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]],
-  ['load_6',['load',['../class_easy_engine_1_1_components_1_1_font.html#af6ec27f99f354e575c25786370d8d5b0',1,'EasyEngine::Components::Font::load()'],['../class_easy_engine_1_1_resource_system.html#a2c72b8bd6c0fca574922b05ed44ce094',1,'EasyEngine::ResourceSystem::load(const std::string &amp;name, const std::string &amp;path, const Resource::Type &amp;type)'],['../class_easy_engine_1_1_resource_system.html#a41ffe709cbac61d88dbd54048869abdf',1,'EasyEngine::ResourceSystem::load(const std::string &amp;name)']]],
-  ['loadbgm_7',['loadBGM',['../class_easy_engine_1_1_audio_system.html#a55ddf913f2926b60a7ee974511b16d69',1,'EasyEngine::AudioSystem']]],
-  ['loaded_8',['Loaded',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea556a75fc5a15d4006e10a0961252213c',1,'EasyEngine::AudioSystem::Audio']]],
-  ['loadfont_9',['loadFont',['../class_easy_engine_1_1_font_system.html#ac78b5540966262c1b92720461254bdbf',1,'EasyEngine::FontSystem::loadFont(const std::string &amp;name, Components::Font *font)'],['../class_easy_engine_1_1_font_system.html#a012fa313adc544f0a3aa6e770975a88b',1,'EasyEngine::FontSystem::loadFont(const std::string &amp;name, const std::string &amp;resource_name, float font_size)']]],
-  ['loading_10',['Loading',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ead56836f7417639aaa93e417c37994597',1,'EasyEngine::AudioSystem::Audio']]],
-  ['loadsfx_11',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a2eee89a3825c9b43bd21e280eeb3ae3f',1,'EasyEngine::AudioSystem']]],
-  ['loop_12',['loop',['../class_easy_engine_1_1_components_1_1_timer.html#a4de5c9dae77b0d69902a799d17da6a40',1,'EasyEngine::Components::Timer']]],
-  ['lostfocus_13',['LostFocus',['../class_easy_engine_1_1_components_1_1_control.html#ac035e5c4aafa5612d619e295608403b2a8813875a99e12b641965aeb0e951a994',1,'EasyEngine::Components::Control']]],
-  ['low_14',['Low',['../_core_8h.html#a7422fab4d0815fd77910384afa7bf347',1,'EasyEngine::StdAudioSpec']]]
+  ['underline_0',['Underline',['../class_easy_engine_1_1_components_1_1_font.html#a2167f08989df919d756663447b355e39aba59c7001158b376f4b1c472648a537d',1,'EasyEngine::Components::Font']]],
+  ['unload_1',['Unload',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ea123385ccf3896b667817d81dcd3040a2',1,'EasyEngine::AudioSystem::Audio']]],
+  ['unload_2',['unload',['../class_easy_engine_1_1_components_1_1_font.html#ac13286801c82d50598bee942cc3e626a',1,'EasyEngine::Components::Font::unload()'],['../class_easy_engine_1_1_audio_system.html#a81b7aef121bd5df668cfe0be2d29dae5',1,'EasyEngine::AudioSystem::unload()'],['../class_easy_engine_1_1_font_system.html#acb892b0ef015a9d0e42ab74192ebdbda',1,'EasyEngine::FontSystem::unload()'],['../class_easy_engine_1_1_resource_system.html#add3f59d0f27dd3d6aa9e193f2da06539',1,'EasyEngine::ResourceSystem::unload(const std::string &amp;name)']]],
+  ['unloadall_3',['unloadAll',['../class_easy_engine_1_1_resource_system.html#a80b57447ca2626eb7d55000e1b3a38da',1,'EasyEngine::ResourceSystem']]],
+  ['unloadallchannel_4',['unloadAllChannel',['../class_easy_engine_1_1_audio_system.html#a9027e9446ca0797f82ac15f80f318813',1,'EasyEngine::AudioSystem']]],
+  ['unloadbgm_5',['unloadBGM',['../class_easy_engine_1_1_audio_system.html#a50091941d1f325400f95f222dc678df3',1,'EasyEngine::AudioSystem']]],
+  ['unloadfont_6',['unloadFont',['../class_easy_engine_1_1_font_system.html#a2f757d669c3c5fc5530fdd22adbc732d',1,'EasyEngine::FontSystem']]],
+  ['unloadsfx_7',['unloadSFX',['../class_easy_engine_1_1_audio_system.html#a0686e0fbf415e51b2ee7af9dc673cf17',1,'EasyEngine::AudioSystem']]],
+  ['update_8',['update',['../class_easy_engine_1_1_components_1_1_control.html#a68a8b108988d4fd3563544bf493af6b8',1,'EasyEngine::Components::Control']]],
+  ['url_9',['url',['../struct_easy_engine_1_1_audio_system_1_1_audio.html#a5d4e547b5051a37ebc0e06bb9e62a475',1,'EasyEngine::AudioSystem::Audio::url'],['../struct_easy_engine_1_1_resource.html#a91fa642357c6c2125f0d1f333242c66a',1,'EasyEngine::Resource::url']]],
+  ['usercustom_10',['UserCustom',['../struct_easy_engine_1_1_cursor_1_1_user_custom.html',1,'EasyEngine::Cursor']]],
+  ['usercustomenabled_11',['userCustomEnabled',['../class_easy_engine_1_1_cursor.html#a5d8fb90cc50a683c94b9661d31dbcdab',1,'EasyEngine::Cursor']]]
 ];

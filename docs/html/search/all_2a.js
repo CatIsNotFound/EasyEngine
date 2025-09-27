@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['安装依赖_0',['1.2 安装依赖',['../md_quickstart.html#autotoc_md26',1,'']]]
+  ['系统要求_0',['系统要求',['../index.html#autotoc_md14',1,'']]]
 ];

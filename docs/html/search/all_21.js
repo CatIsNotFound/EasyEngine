@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['下一步_0',['7. 下一步',['../md_quickstart.html#autotoc_md50',1,'']]]
+  ['最小示例_0',['最小示例',['../index.html#autotoc_md12',1,'']]]
 ];

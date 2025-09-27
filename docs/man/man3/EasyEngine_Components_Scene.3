@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Scene" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Scene" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,31 +13,83 @@ EasyEngine::Components::Scene \- 场景
 
 .in +1c
 .ti -1c
-.RI "\fBScene\fP (const std::string &name)"
+.RI "\fBScene\fP (const std::string &\fBname\fP)"
 .br
+.RI "创建场景 "
 .ti -1c
-.RI "void \fBappend\fP (uint32_t z_order, const std::string &name)"
+.RI "void \fBsetName\fP (const std::string &\fBname\fP)"
 .br
+.RI "设置场景别名 "
 .ti -1c
-.RI "void \fBappend\fP (uint32_t z_order, \fBLayer\fP *layer)"
+.RI "const std::string & \fBname\fP () const"
 .br
+.RI "获取场景别名 "
 .ti -1c
-.RI "void \fBremove\fP (uint32_t z_order)"
+.RI "bool \fBappendLayer\fP (uint32_t z_order, const std::string &\fBname\fP)"
 .br
+.RI "添加并创建图层 "
+.ti -1c
+.RI "bool \fBappendLayer\fP (uint32_t z_order, \fBLayer\fP *\fBlayer\fP)"
+.br
+.RI "添加指定的图层 "
+.ti -1c
+.RI "bool \fBremoveLayer\fP (uint32_t z_order)"
+.br
+.RI "移除图层 "
 .ti -1c
 .RI "uint32_t \fBindexOf\fP (const std::string &layer_name) const"
 .br
+.RI "根据图层别名获取其对应的图层顺序 "
 .ti -1c
-.RI "uint32_t \fBindexOf\fP (const \fBLayer\fP *layer) const"
+.RI "uint32_t \fBindexOf\fP (const \fBLayer\fP *\fBlayer\fP) const"
 .br
+.RI "根据指定图层获取其对应的图层顺序 "
 .ti -1c
-.RI "\fBLayer\fP * \fBlayer\fP () const"
+.RI "\fBLayer\fP * \fBlayer\fP (const std::string &layer_name) const"
 .br
+.RI "获取指定图层别名的图层 "
 .ti -1c
-.RI "void \fBswap\fP (uint32_t z_order1, uint32_t z_order2)"
+.RI "\fBLayer\fP * \fBlayer\fP (uint32_t z_order) const"
 .br
+.RI "获取指定图层顺序的图层 "
 .ti -1c
-.RI "bool \fBsetZOrder\fP (uint32_t old_ZOrder, uint32_t new_ZOrder)"
+.RI "bool \fBswapLayer\fP (uint32_t z_order1, uint32_t z_order2)"
+.br
+.RI "交换两个图层之间的图层顺序 "
+.ti -1c
+.RI "bool \fBswapLayer\fP (const std::string &layer_name1, const std::string &layer_name2)"
+.br
+.RI "交换两个图层之间的图层顺序 "
+.ti -1c
+.RI "bool \fBsetZOrder\fP (uint32_t old_z_order, uint32_t new_z_order)"
+.br
+.RI "设置新的图层顺序编号 "
+.ti -1c
+.RI "bool \fBsetZOrder\fP (const std::string &layer_name, uint32_t new_z_order)"
+.br
+.RI "设置新的图层顺序编号 "
+.ti -1c
+.RI "void \fBsetSceneEvent\fP (const std::function< void()> &event)"
+.br
+.RI "设置当前图层的渲染事件 "
+.ti -1c
+.RI "bool \fBrenameLayer\fP (const std::string &layer_name, const std::string &new_layer_name)"
+.br
+.RI "重命名指定图层 "
+.ti -1c
+.RI "bool \fBrenameLayer\fP (uint32_t z_order, const std::string &new_layer_name)"
+.br
+.RI "重命名指定 \fRz_order\fP 的图层 "
+.ti -1c
+.RI "void \fBdrawLayers\fP ()"
+.br
+.RI "绘制所有图层 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBEasyEngine::SceneManager\fP"
 .br
 .in -1c
 .SH "详细描述"
@@ -45,6 +97,267 @@ EasyEngine::Components::Scene \- 场景
 场景 
 
 定义单个场景，包含多个图层，可用于管理图层 
+.SH "构造及析构函数说明"
+.PP 
+.SS "Components::Scene::Scene (const std::string & name)\fR [explicit]\fP"
+
+.PP
+创建场景 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 场景别名 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "bool Components::Scene::appendLayer (uint32_t z_order, const std::string & name)"
+
+.PP
+添加并创建图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 图层顺序（数字越大，显示越靠前） 
+.br
+\fIname\fP 新建图层别名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功创建图层 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Scene::appendLayer (uint32_t z_order, \fBLayer\fP * layer)"
+
+.PP
+添加指定的图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 图层顺序（数字越大，显示越靠前） 
+.br
+\fIlayer\fP 指定已有的图层 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功创建图层 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::Components::Scene::indexOf (const \fBLayer\fP * layer) const"
+
+.PP
+根据指定图层获取其对应的图层顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer\fP 指定图层 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的图层顺序编号 
+.RE
+.PP
+
+.SS "uint32_t Components::Scene::indexOf (const std::string & layer_name) const"
+
+.PP
+根据图层别名获取其对应的图层顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer_name\fP 指定图层别名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的图层顺序编号 
+.RE
+.PP
+
+.SS "\fBComponents::Layer\fP * Components::Scene::layer (const std::string & layer_name) const"
+
+.PP
+获取指定图层别名的图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer_name\fP 图层别名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的图层，若找不到，则为 \fRnullptr\fP。 
+.RE
+.PP
+
+.SS "\fBComponents::Layer\fP * Components::Scene::layer (uint32_t z_order) const"
+
+.PP
+获取指定图层顺序的图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 图层顺序编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的图层，若找不到，则为 \fRnullptr\fP。 
+.RE
+.PP
+
+.SS "bool Components::Scene::removeLayer (uint32_t z_order)"
+
+.PP
+移除图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层顺序 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功移除图层 
+.RE
+.PP
+
+.SS "bool Components::Scene::renameLayer (const std::string & layer_name, const std::string & new_layer_name)"
+
+.PP
+重命名指定图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer_name\fP 指定要修改的图层名 
+.br
+\fInew_layer_name\fP 新的图层名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功重命名图层？若找不到指定的图层名，则发生错误！ 
+.RE
+.PP
+
+.SS "bool Components::Scene::renameLayer (uint32_t z_order, const std::string & new_layer_name)"
+
+.PP
+重命名指定 \fRz_order\fP 的图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 指定图层渲染顺序 
+.br
+\fInew_layer_name\fP 新的图层名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功重命名图层？若找不到指定的 \fRz_order\fP，则发生错误！ 
+.RE
+.PP
+
+.SS "void Components::Scene::setName (const std::string & name)"
+
+.PP
+设置场景别名 
+.PP
+\fB参数\fP
+.RS 4
+\fIname\fP 新的场景别名 
+.RE
+.PP
+
+.SS "void Components::Scene::setSceneEvent (const std::function< void()> & event)"
+
+.PP
+设置当前图层的渲染事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIevent\fP 指定事件 
+.RE
+.PP
+
+.SS "bool Components::Scene::setZOrder (const std::string & layer_name, uint32_t new_z_order)"
+
+.PP
+设置新的图层顺序编号 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer_name\fP 指定原先的图层别名 
+.br
+\fInew_z_order\fP 指向新的图层顺序编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功设置新的图层编号 
+.RE
+.PP
+
+.SS "bool Components::Scene::setZOrder (uint32_t old_z_order, uint32_t new_z_order)"
+
+.PP
+设置新的图层顺序编号 
+.PP
+\fB参数\fP
+.RS 4
+\fIold_z_order\fP 指定原先的图层顺序编号 
+.br
+\fInew_z_order\fP 指向新的图层顺序编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功设置新的图层编号 
+.RE
+.PP
+
+.SS "bool Components::Scene::swapLayer (const std::string & layer_name1, const std::string & layer_name2)"
+
+.PP
+交换两个图层之间的图层顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIlayer_name1\fP 指向第一个图层别名 
+.br
+\fIlayer_name2\fP 指向第二个图层别名 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功交换图层顺序 
+.RE
+.PP
+
+.SS "bool Components::Scene::swapLayer (uint32_t z_order1, uint32_t z_order2)"
+
+.PP
+交换两个图层之间的图层顺序 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order1\fP 指向第一个图层顺序编号 
+.br
+\fIz_order2\fP 指向第二个图层顺序编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回是否成功交换图层顺序 
+.RE
+.PP
+
 
 .SH "作者"
 .PP 

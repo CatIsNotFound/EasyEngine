@@ -32,6 +32,6 @@ var class_easy_engine_1_1_components_1_1_font =
     [ "setOutline", "class_easy_engine_1_1_components_1_1_font.html#a67ea9ebc18978110aa8883b4b6a50e73", null ],
     [ "setOutlineColor", "class_easy_engine_1_1_components_1_1_font.html#ac383f960083898df3b9330f9687ea35b", null ],
     [ "setStyle", "class_easy_engine_1_1_components_1_1_font.html#a29405383ac18f04235be42047bb66494", null ],
-    [ "textToSprite", "class_easy_engine_1_1_components_1_1_font.html#a0b6eead019d755813b677cce4d20972b", null ],
+    [ "textToSprite", "class_easy_engine_1_1_components_1_1_font.html#af99ff0a22a6d8eda869ee77bc39c1fff", null ],
     [ "unload", "class_easy_engine_1_1_components_1_1_font.html#ac13286801c82d50598bee942cc3e626a", null ]
 ];

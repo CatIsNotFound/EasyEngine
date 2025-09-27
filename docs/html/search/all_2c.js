@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['常见问题_0',['6. 常见问题',['../md_quickstart.html#autotoc_md46',1,'']]]
+  ['获取帮助_0',['🙋‍♂️ 获取帮助',['../D:/Coding/EasyEngine/README.md#autotoc_md42',1,'']]]
 ];

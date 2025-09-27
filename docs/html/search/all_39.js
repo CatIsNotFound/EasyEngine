@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['环境准备_0',['1. 环境准备',['../md_quickstart.html#autotoc_md24',1,'']]],
-  ['环境要求_1',['环境要求',['../D:/Coding/EasyEngine/README.md#autotoc_md61',1,'']]]
+  ['🔧_20开发工具_0',['🔧 开发工具',['../index.html#autotoc_md7',1,'🔧 开发工具'],['../D:/Coding/EasyEngine/README.md#autotoc_md24',1,'🔧 开发工具']]]
 ];

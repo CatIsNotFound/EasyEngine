@@ -1,4 +1,4 @@
-.TH "EasyEngine::EventSystem" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::EventSystem" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,9 +19,21 @@ EasyEngine::EventSystem \- 事件系统
 .RI "\fBEventSystem\fP \fBoperator=\fP (const \fBEventSystem\fP &)=delete"
 .br
 .ti -1c
+.RI "void \fBsetHandlerEnabled\fP (bool enabled)"
+.br
+.RI "设置是否启用全局事件监听 "
+.ti -1c
+.RI "bool \fBhandlerEnabled\fP () const"
+.br
+.RI "获取当前是否启用全局事件监听 "
+.ti -1c
 .RI "bool \fBhandler\fP ()"
 .br
 .RI "事件处理器 "
+.ti -1c
+.RI "void \fBcleanUp\fP ()"
+.br
+.RI "清理所有事件 "
 .ti -1c
 .RI "uint64_t \fBaddTimer\fP (\fBEasyEngine::Components::Timer\fP *timer)"
 .br
@@ -74,6 +86,18 @@ EasyEngine::EventSystem \- 事件系统
 .RI "void \fBclearControls\fP ()"
 .br
 .RI "清空所有控件 "
+.ti -1c
+.RI "uint64_t \fBaddSceneManager\fP (\fBEasyEngine::SceneManager\fP *scene_manager)"
+.br
+.RI "添加场景管理器 "
+.ti -1c
+.RI "void \fBremoveSceneManager\fP (uint64_t id)"
+.br
+.RI "移除场景管理器 "
+.ti -1c
+.RI "void \fBclearSceneManger\fP ()"
+.br
+.RI "清空场景管理器 "
 .in -1c
 .SS "静态 Public 成员函数"
 
@@ -116,6 +140,22 @@ EasyEngine::EventSystem \- 事件系统
 
 .PP
 \fBremoveControl\fP 
+.RE
+.PP
+
+.SS "uint64_t EasyEngine::EventSystem::addSceneManager (\fBEasyEngine::SceneManager\fP * scene_manager)"
+
+.PP
+添加场景管理器 
+.PP
+\fB参数\fP
+.RS 4
+\fIscene_manager\fP 指定场景管理器 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+添加成功后，将返回 ID 
 .RE
 .PP
 
@@ -179,6 +219,24 @@ EasyEngine::EventSystem \- 事件系统
 .RE
 .PP
 
+.SS "bool EasyEngine::EventSystem::handlerEnabled () const"
+
+.PP
+获取当前是否启用全局事件监听 
+.PP
+\fB返回值\fP
+.RS 4
+\fItrue\fP 表示事件系统正在监听所有事件, 
+.br
+\fIfalse\fP 表示事件系统只监听基础事件、计时器、触发器事件 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBsetHandlerEnabled\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::EventSystem::removeControl (uint64_t id)"
 
 .PP
@@ -198,6 +256,17 @@ EasyEngine::EventSystem \- 事件系统
 
 .PP
 \fBclearControls\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::removeSceneManager (uint64_t id)"
+
+.PP
+移除场景管理器 
+.PP
+\fB参数\fP
+.RS 4
+\fIid\fP 指定 ID 
 .RE
 .PP
 
@@ -303,6 +372,24 @@ EasyEngine::EventSystem \- 事件系统
 \fB参见\fP
 .RS 4
 \fBaddTrigger\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::EventSystem::setHandlerEnabled (bool enabled)"
+
+.PP
+设置是否启用全局事件监听 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 启用/禁用全局事件监听
+.RE
+.PP
+当 \fRenabled\fP 为 \fRfalse\fP 时，除了基本的事件处理以及计时器、触发器以外， 其它事件（如：自定义事件处理、控件处理）都将被忽略。一般情况下，当场景正在切换时会禁用全局事件监听。 
+.PP
+\fB参见\fP
+.RS 4
+\fBhandlerEnabled\fP 
 .RE
 .PP
 

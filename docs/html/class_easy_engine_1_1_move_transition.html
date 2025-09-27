@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::MoveTransition类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_move_transition.html','','class_easy_engine_1_1_move_transition-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::MoveTransition类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>平移过渡效果  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_transition_8h_source.html">Transition.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>类 EasyEngine::MoveTransition 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="class_easy_engine_1_1_move_transition.png" usemap="#EasyEngine_3A_3AMoveTransition_map" alt=""/>
+  <map id="EasyEngine_3A_3AMoveTransition_map" name="EasyEngine_3A_3AMoveTransition_map">
+<area href="class_easy_engine_1_1_transition.html" title="过渡效果" alt="EasyEngine::Transition" shape="rect" coords="0,0,172,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a67bd46d980a19a9c3066d6ccd774fc99" id="r_a67bd46d980a19a9c3066d6ccd774fc99"><td class="memItemLeft" align="right" valign="top"><a id="a67bd46d980a19a9c3066d6ccd774fc99" name="a67bd46d980a19a9c3066d6ccd774fc99"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> { <b>LeftToRight</b>
+, <b>RightToLeft</b>
+, <b>TopToBottom</b>
+, <b>BottomToTop</b>
+ }</td></tr>
+<tr class="memdesc:a67bd46d980a19a9c3066d6ccd774fc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">移动方向 <br /></td></tr>
+<tr class="inherit_header pub_types_class_easy_engine_1_1_transition"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_types_class_easy_engine_1_1_transition')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public 类型 继承自 <a class="el" href="class_easy_engine_1_1_transition.html">EasyEngine::Transition</a></td></tr>
+<tr class="memitem:afd38058b33700c8b13e5593880d8046e inherit pub_types_class_easy_engine_1_1_transition" id="r_afd38058b33700c8b13e5593880d8046e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a> { <a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">Stopped</a>
+, <a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523">Paused</a>
+, <a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931">Running</a>
+ }</td></tr>
+<tr class="memdesc:afd38058b33700c8b13e5593880d8046e"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于定义过渡时的状态  <a href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">更多...</a><br /></td></tr>
+<tr class="memitem:aeb284434e566a61938da5a3a80c5a3c5 inherit pub_types_class_easy_engine_1_1_transition" id="r_aeb284434e566a61938da5a3a80c5a3c5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a> { <a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">Forward</a>
+, <a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb">Backward</a>
+ }</td></tr>
+<tr class="memdesc:aeb284434e566a61938da5a3a80c5a3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于表示过渡效果时的过渡顺序  <a href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">更多...</a><br /></td></tr>
+<tr class="memitem:a4869d559da5461f9ffc0619f34f4552f inherit pub_types_class_easy_engine_1_1_transition" id="r_a4869d559da5461f9ffc0619f34f4552f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> { <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">KeepWhenStopped</a>
+, <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551">DeleteWhenStopped</a>
+ }</td></tr>
+<tr class="memdesc:a4869d559da5461f9ffc0619f34f4552f"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除策略  <a href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0f057a4b27a56a856b3e9879c5c4563e" id="r_a0f057a4b27a56a856b3e9879c5c4563e"><td class="memItemLeft" align="right" valign="top"><a id="a0f057a4b27a56a856b3e9879c5c4563e" name="a0f057a4b27a56a856b3e9879c5c4563e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MoveTransition</b> (uint32_t <a class="el" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>, const enum <a class="el" href="#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> &amp;<a class="el" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>, <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
+<tr class="memitem:ae3627fd9203895feb6249c57802a6814" id="r_ae3627fd9203895feb6249c57802a6814"><td class="memItemLeft" align="right" valign="top"><a id="ae3627fd9203895feb6249c57802a6814" name="ae3627fd9203895feb6249c57802a6814"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setFirstPicture</b> (SSurface *surface)</td></tr>
+<tr class="memitem:afc8ca219552de1f2188ea58dbafc29d6" id="r_afc8ca219552de1f2188ea58dbafc29d6"><td class="memItemLeft" align="right" valign="top"><a id="afc8ca219552de1f2188ea58dbafc29d6" name="afc8ca219552de1f2188ea58dbafc29d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setFirstPicture</b> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> *sprite)</td></tr>
+<tr class="memitem:ac843defb8848e1210130e3bd55b55787" id="r_ac843defb8848e1210130e3bd55b55787"><td class="memItemLeft" align="right" valign="top"><a id="ac843defb8848e1210130e3bd55b55787" name="ac843defb8848e1210130e3bd55b55787"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearFirstPicture</b> ()</td></tr>
+<tr class="memitem:a4a6caf73e53a2977b783c66981894eff" id="r_a4a6caf73e53a2977b783c66981894eff"><td class="memItemLeft" align="right" valign="top"><a id="a4a6caf73e53a2977b783c66981894eff" name="a4a6caf73e53a2977b783c66981894eff"></a>
+<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>firstPicture</b> () const</td></tr>
+<tr class="memitem:aad2eaf0c85a228b4379ae77396fbb234" id="r_aad2eaf0c85a228b4379ae77396fbb234"><td class="memItemLeft" align="right" valign="top"><a id="aad2eaf0c85a228b4379ae77396fbb234" name="aad2eaf0c85a228b4379ae77396fbb234"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSecondPicture</b> (SSurface *surface)</td></tr>
+<tr class="memitem:a4ca51e1acf27f43731a867939b9cc02b" id="r_a4ca51e1acf27f43731a867939b9cc02b"><td class="memItemLeft" align="right" valign="top"><a id="a4ca51e1acf27f43731a867939b9cc02b" name="a4ca51e1acf27f43731a867939b9cc02b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSecondPicture</b> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> *sprite)</td></tr>
+<tr class="memitem:aaefda0d5a6b34d515f6e1d2927a477d1" id="r_aaefda0d5a6b34d515f6e1d2927a477d1"><td class="memItemLeft" align="right" valign="top"><a id="aaefda0d5a6b34d515f6e1d2927a477d1" name="aaefda0d5a6b34d515f6e1d2927a477d1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearSecondPicture</b> ()</td></tr>
+<tr class="memitem:ab9b8257f2f9bd71e4776b3099e8d4ed7" id="r_ab9b8257f2f9bd71e4776b3099e8d4ed7"><td class="memItemLeft" align="right" valign="top"><a id="ab9b8257f2f9bd71e4776b3099e8d4ed7" name="ab9b8257f2f9bd71e4776b3099e8d4ed7"></a>
+<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>secondPicture</b> () const</td></tr>
+<tr class="memitem:a341a3730536efb03b44c8cca0f5a5d1d" id="r_a341a3730536efb03b44c8cca0f5a5d1d"><td class="memItemLeft" align="right" valign="top"><a id="a341a3730536efb03b44c8cca0f5a5d1d" name="a341a3730536efb03b44c8cca0f5a5d1d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMoveDirection</b> (const enum <a class="el" href="#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> &amp;<a class="el" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>)</td></tr>
+<tr class="memitem:a2e4284a14009f3900ea42a1f1947077a" id="r_a2e4284a14009f3900ea42a1f1947077a"><td class="memItemLeft" align="right" valign="top"><a id="a2e4284a14009f3900ea42a1f1947077a" name="a2e4284a14009f3900ea42a1f1947077a"></a>
+enum <a class="el" href="#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>moveDirection</b> () const</td></tr>
+<tr class="inherit_header pub_methods_class_easy_engine_1_1_transition"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_easy_engine_1_1_transition')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public 成员函数 继承自 <a class="el" href="class_easy_engine_1_1_transition.html">EasyEngine::Transition</a></td></tr>
+<tr class="memitem:aa2f50651c53c61959f205093405f9949 inherit pub_methods_class_easy_engine_1_1_transition" id="r_aa2f50651c53c61959f205093405f9949"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a> (uint64_t <a class="el" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>, <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
+<tr class="memdesc:aa2f50651c53c61959f205093405f9949 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建过渡效果  <br /></td></tr>
+<tr class="memitem:aebb8a038a3899e2be705846ef303a9f5 inherit pub_methods_class_easy_engine_1_1_transition" id="r_aebb8a038a3899e2be705846ef303a9f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aebb8a038a3899e2be705846ef303a9f5">setDeletionPolicy</a> (const <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> &amp;deletion_policy)</td></tr>
+<tr class="memdesc:aebb8a038a3899e2be705846ef303a9f5 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置删除策略  <br /></td></tr>
+<tr class="memitem:a498269231d2bcfbd0b8dcc3ccff89638 inherit pub_methods_class_easy_engine_1_1_transition" id="r_a498269231d2bcfbd0b8dcc3ccff89638"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a498269231d2bcfbd0b8dcc3ccff89638">setDuration</a> (uint64_t <a class="el" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>)</td></tr>
+<tr class="memdesc:a498269231d2bcfbd0b8dcc3ccff89638 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置过渡持续时间  <br /></td></tr>
+<tr class="memitem:ab1a6f8d36c6378b857fbe2cf10f0cec8 inherit pub_methods_class_easy_engine_1_1_transition" id="r_ab1a6f8d36c6378b857fbe2cf10f0cec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#ab1a6f8d36c6378b857fbe2cf10f0cec8">setDirection</a> (const <a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a> &amp;<a class="el" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>)</td></tr>
+<tr class="memdesc:ab1a6f8d36c6378b857fbe2cf10f0cec8 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置过渡方式  <br /></td></tr>
+<tr class="memitem:a86488f0d7199218446f364652eb0aef9 inherit pub_methods_class_easy_engine_1_1_transition" id="r_a86488f0d7199218446f364652eb0aef9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a86488f0d7199218446f364652eb0aef9">start</a> ()</td></tr>
+<tr class="memdesc:a86488f0d7199218446f364652eb0aef9 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">开始过渡  <br /></td></tr>
+<tr class="memitem:a99293c0b49369fc6ba3e241fa91ef663 inherit pub_methods_class_easy_engine_1_1_transition" id="r_a99293c0b49369fc6ba3e241fa91ef663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a99293c0b49369fc6ba3e241fa91ef663">pause</a> ()</td></tr>
+<tr class="memdesc:a99293c0b49369fc6ba3e241fa91ef663 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">暂停过渡  <br /></td></tr>
+<tr class="memitem:a22134b1b897178b971fa4da403abefcd inherit pub_methods_class_easy_engine_1_1_transition" id="r_a22134b1b897178b971fa4da403abefcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a22134b1b897178b971fa4da403abefcd">stop</a> ()</td></tr>
+<tr class="memdesc:a22134b1b897178b971fa4da403abefcd inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止过渡  <br /></td></tr>
+<tr class="memitem:aad8c1cae4044373445e025578a09dc53 inherit pub_methods_class_easy_engine_1_1_transition" id="r_aad8c1cae4044373445e025578a09dc53"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a> () const</td></tr>
+<tr class="memdesc:aad8c1cae4044373445e025578a09dc53 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前设置的过渡持续时长  <br /></td></tr>
+<tr class="memitem:aa463a042e13eb9e186a36b6718d10b3a inherit pub_methods_class_easy_engine_1_1_transition" id="r_aa463a042e13eb9e186a36b6718d10b3a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aa463a042e13eb9e186a36b6718d10b3a">currentTime</a> () const</td></tr>
+<tr class="memdesc:aa463a042e13eb9e186a36b6718d10b3a inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前过渡的时间  <br /></td></tr>
+<tr class="memitem:ac6ab958306cd4589fb13c04533179557 inherit pub_methods_class_easy_engine_1_1_transition" id="r_ac6ab958306cd4589fb13c04533179557"><td class="memItemLeft" align="right" valign="top">
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>loopCount</b> () const</td></tr>
+<tr class="memdesc:ac6ab958306cd4589fb13c04533179557 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取过渡效果完成循环总次数 <br /></td></tr>
+<tr class="memitem:af619709414a249643603e465f3766c7a inherit pub_methods_class_easy_engine_1_1_transition" id="r_af619709414a249643603e465f3766c7a"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearLoopCount</b> ()</td></tr>
+<tr class="memdesc:af619709414a249643603e465f3766c7a inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">清零过渡效果完成循环总次数 <br /></td></tr>
+<tr class="memitem:aff7ef3dd7b38599b3fa859bae3f36fc2 inherit pub_methods_class_easy_engine_1_1_transition" id="r_aff7ef3dd7b38599b3fa859bae3f36fc2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a> () const</td></tr>
+<tr class="memdesc:aff7ef3dd7b38599b3fa859bae3f36fc2 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前过渡的方式是正向过渡还是反向过渡  <br /></td></tr>
+<tr class="memitem:abac7ce62087be65cda9ea0c94e2854c0 inherit pub_methods_class_easy_engine_1_1_transition" id="r_abac7ce62087be65cda9ea0c94e2854c0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#abac7ce62087be65cda9ea0c94e2854c0">state</a> () const</td></tr>
+<tr class="memdesc:abac7ce62087be65cda9ea0c94e2854c0 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前过渡的状态  <br /></td></tr>
+<tr class="memitem:a67ec913f25668b09e7cac23d1fb2fa5a inherit pub_methods_class_easy_engine_1_1_transition" id="r_a67ec913f25668b09e7cac23d1fb2fa5a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition.html#a67ec913f25668b09e7cac23d1fb2fa5a">deletionPolicy</a> () const</td></tr>
+<tr class="memdesc:a67ec913f25668b09e7cac23d1fb2fa5a inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前过渡效果的删除策略  <br /></td></tr>
+<tr class="memitem:a5746987a6235f4d880d32f63d6d5dc92 inherit pub_methods_class_easy_engine_1_1_transition" id="r_a5746987a6235f4d880d32f63d6d5dc92"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>______</b> ()</td></tr>
+<tr class="memdesc:a5746987a6235f4d880d32f63d6d5dc92 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">仅用于被其它系统处理，禁止手动调用 <br /></td></tr>
+<tr class="memitem:a125ff3b038454c07dd5c1675ec24e345 inherit pub_methods_class_easy_engine_1_1_transition" id="r_a125ff3b038454c07dd5c1675ec24e345"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>__is_changed</b> ()</td></tr>
+<tr class="memdesc:a125ff3b038454c07dd5c1675ec24e345 inherit pub_methods_class_easy_engine_1_1_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查是否将 A 效果切换到 B 效果 <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pro_attribs_class_easy_engine_1_1_transition"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_easy_engine_1_1_transition')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected 属性 继承自 <a class="el" href="class_easy_engine_1_1_transition.html">EasyEngine::Transition</a></td></tr>
+<tr class="memitem:a270a85a04f512fefc5af31b94e46b165 inherit pro_attribs_class_easy_engine_1_1_transition" id="r_a270a85a04f512fefc5af31b94e46b165"><td class="memItemLeft" align="right" valign="top">
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>_duration</b></td></tr>
+<tr class="memitem:a67f99cb4a295d089b0ffef23dce57a0f inherit pro_attribs_class_easy_engine_1_1_transition" id="r_a67f99cb4a295d089b0ffef23dce57a0f"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_direction</b> {<a class="el" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">Forward</a>}</td></tr>
+<tr class="memitem:a183ede8597368ef0d9edc413e41b77d2 inherit pro_attribs_class_easy_engine_1_1_transition" id="r_a183ede8597368ef0d9edc413e41b77d2"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_state</b> {<a class="el" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">Stopped</a>}</td></tr>
+<tr class="memitem:aeeac00a59a8d9c83c9769f88b8a8cd4c inherit pro_attribs_class_easy_engine_1_1_transition" id="r_aeeac00a59a8d9c83c9769f88b8a8cd4c"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_deletion_policy</b> {<a class="el" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">KeepWhenStopped</a>}</td></tr>
+<tr class="memitem:a30de5cd6502b3ed5b20ad6f7938ea0ca inherit pro_attribs_class_easy_engine_1_1_transition" id="r_a30de5cd6502b3ed5b20ad6f7938ea0ca"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_painter</b> {nullptr}</td></tr>
+<tr class="memitem:aa8d2d5cfa2f8aaabf125ba83a573ae33 inherit pro_attribs_class_easy_engine_1_1_transition" id="r_aa8d2d5cfa2f8aaabf125ba83a573ae33"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_change_signal</b> {false}</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>平移过渡效果 </p>
+<p>实现不同方向的平移效果，需要单张图片进行平移 </p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_transition_8h_source.html">Transition.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Transition.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="class_easy_engine_1_1_move_transition.html">MoveTransition</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

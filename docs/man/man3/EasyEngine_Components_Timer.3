@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Timer" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Timer" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -49,7 +49,7 @@ EasyEngine::Components::Timer \- 定时器
 .br
 .RI "获取触发延迟时长 "
 .ti -1c
-.RI "void \fBupdate\fP ()"
+.RI "void \fB______\fP ()"
 .br
 .RI "更新定时器状态（无需手动调用） "
 .ti -1c
@@ -94,7 +94,7 @@ EasyEngine::Components::Timer \- 定时器
 .nf
 Timer* timer = new Timer();
 timer\->setDelay(1000);   // 1000ms = 1sec
-timer\->setEvent(your_function);
+timer\->setEnterSceneEvent(your_function);
 timer\->start();
 // delete timer; // 调用 start() 函数后，不能释放此指针！
 
@@ -108,7 +108,7 @@ timer\->start();
 \fBsetDelay\fP 
 
 .PP
-\fBsetEvent\fP 
+setEnterSceneEvent 
 
 .PP
 \fBstart\fP 
@@ -185,7 +185,7 @@ timer\->start();
 .PP
 \fB参见\fP
 .RS 4
-\fBsetEvent\fP 
+setEnterSceneEvent 
 
 .PP
 \fBstart\fP 

@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
    </div>
   </td>
  </tr>
@@ -122,30 +122,519 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a082df00f78797c9da17059c9d2ea02fe" id="r_a082df00f78797c9da17059c9d2ea02fe"><td class="memItemLeft" align="right" valign="top"><a id="a082df00f78797c9da17059c9d2ea02fe" name="a082df00f78797c9da17059c9d2ea02fe"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Scene</b> (const std::string &amp;name)</td></tr>
-<tr class="memitem:a9b70f82dd79f246915000eeee00d19f3" id="r_a9b70f82dd79f246915000eeee00d19f3"><td class="memItemLeft" align="right" valign="top"><a id="a9b70f82dd79f246915000eeee00d19f3" name="a9b70f82dd79f246915000eeee00d19f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>append</b> (uint32_t z_order, const std::string &amp;name)</td></tr>
-<tr class="memitem:a051981547147645254811aaad69b8787" id="r_a051981547147645254811aaad69b8787"><td class="memItemLeft" align="right" valign="top"><a id="a051981547147645254811aaad69b8787" name="a051981547147645254811aaad69b8787"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>append</b> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *layer)</td></tr>
-<tr class="memitem:a052225a923868d21112332a561c0d11e" id="r_a052225a923868d21112332a561c0d11e"><td class="memItemLeft" align="right" valign="top"><a id="a052225a923868d21112332a561c0d11e" name="a052225a923868d21112332a561c0d11e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>remove</b> (uint32_t z_order)</td></tr>
-<tr class="memitem:a8dc48fcda15cbceebabb250a489847f0" id="r_a8dc48fcda15cbceebabb250a489847f0"><td class="memItemLeft" align="right" valign="top"><a id="a8dc48fcda15cbceebabb250a489847f0" name="a8dc48fcda15cbceebabb250a489847f0"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (const std::string &amp;layer_name) const</td></tr>
-<tr class="memitem:a712d1bbf81546c5d54d335cf276d8bb0" id="r_a712d1bbf81546c5d54d335cf276d8bb0"><td class="memItemLeft" align="right" valign="top"><a id="a712d1bbf81546c5d54d335cf276d8bb0" name="a712d1bbf81546c5d54d335cf276d8bb0"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (const <a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *layer) const</td></tr>
-<tr class="memitem:a4438dc239a0298ffc871fd7cca9facc0" id="r_a4438dc239a0298ffc871fd7cca9facc0"><td class="memItemLeft" align="right" valign="top"><a id="a4438dc239a0298ffc871fd7cca9facc0" name="a4438dc239a0298ffc871fd7cca9facc0"></a>
-<a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>layer</b> () const</td></tr>
-<tr class="memitem:a7ffe6365176e8297752d6b5246c2bfa2" id="r_a7ffe6365176e8297752d6b5246c2bfa2"><td class="memItemLeft" align="right" valign="top"><a id="a7ffe6365176e8297752d6b5246c2bfa2" name="a7ffe6365176e8297752d6b5246c2bfa2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (uint32_t z_order1, uint32_t z_order2)</td></tr>
-<tr class="memitem:ab08f3d0893fc6e7b8b37c6b8c411918e" id="r_ab08f3d0893fc6e7b8b37c6b8c411918e"><td class="memItemLeft" align="right" valign="top"><a id="ab08f3d0893fc6e7b8b37c6b8c411918e" name="ab08f3d0893fc6e7b8b37c6b8c411918e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>setZOrder</b> (uint32_t old_ZOrder, uint32_t new_ZOrder)</td></tr>
+<tr class="memitem:ad98912a91c077a9e973931882eead6a9" id="r_ad98912a91c077a9e973931882eead6a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad98912a91c077a9e973931882eead6a9">Scene</a> (const std::string &amp;<a class="el" href="#ac99caefbcee83ca2602965dd954ceadd">name</a>)</td></tr>
+<tr class="memdesc:ad98912a91c077a9e973931882eead6a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建场景  <br /></td></tr>
+<tr class="memitem:ad1b3f641b68a2bff25572572bc034877" id="r_ad1b3f641b68a2bff25572572bc034877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b3f641b68a2bff25572572bc034877">setName</a> (const std::string &amp;<a class="el" href="#ac99caefbcee83ca2602965dd954ceadd">name</a>)</td></tr>
+<tr class="memdesc:ad1b3f641b68a2bff25572572bc034877"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置场景别名  <br /></td></tr>
+<tr class="memitem:ac99caefbcee83ca2602965dd954ceadd" id="r_ac99caefbcee83ca2602965dd954ceadd"><td class="memItemLeft" align="right" valign="top"><a id="ac99caefbcee83ca2602965dd954ceadd" name="ac99caefbcee83ca2602965dd954ceadd"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
+<tr class="memdesc:ac99caefbcee83ca2602965dd954ceadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取场景别名 <br /></td></tr>
+<tr class="memitem:a4890e7f15ab4a80a7370f21e8c824c73" id="r_a4890e7f15ab4a80a7370f21e8c824c73"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4890e7f15ab4a80a7370f21e8c824c73">appendLayer</a> (uint32_t z_order, const std::string &amp;<a class="el" href="#ac99caefbcee83ca2602965dd954ceadd">name</a>)</td></tr>
+<tr class="memdesc:a4890e7f15ab4a80a7370f21e8c824c73"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加并创建图层  <br /></td></tr>
+<tr class="memitem:a40c769422724db147c9f5bdfd6aed74e" id="r_a40c769422724db147c9f5bdfd6aed74e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40c769422724db147c9f5bdfd6aed74e">appendLayer</a> (uint32_t z_order, <a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *<a class="el" href="#a0af4f5a68a3f161b785755f92facb1f8">layer</a>)</td></tr>
+<tr class="memdesc:a40c769422724db147c9f5bdfd6aed74e"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加指定的图层  <br /></td></tr>
+<tr class="memitem:a2d3d9bdbc65af395e097c31b335a8f6f" id="r_a2d3d9bdbc65af395e097c31b335a8f6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d3d9bdbc65af395e097c31b335a8f6f">removeLayer</a> (uint32_t z_order)</td></tr>
+<tr class="memdesc:a2d3d9bdbc65af395e097c31b335a8f6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除图层  <br /></td></tr>
+<tr class="memitem:a32d5ce74d01c9b5a4cff79677d4673d7" id="r_a32d5ce74d01c9b5a4cff79677d4673d7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32d5ce74d01c9b5a4cff79677d4673d7">indexOf</a> (const std::string &amp;layer_name) const</td></tr>
+<tr class="memdesc:a32d5ce74d01c9b5a4cff79677d4673d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据图层别名获取其对应的图层顺序  <br /></td></tr>
+<tr class="memitem:a712d1bbf81546c5d54d335cf276d8bb0" id="r_a712d1bbf81546c5d54d335cf276d8bb0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a712d1bbf81546c5d54d335cf276d8bb0">indexOf</a> (const <a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *<a class="el" href="#a0af4f5a68a3f161b785755f92facb1f8">layer</a>) const</td></tr>
+<tr class="memdesc:a712d1bbf81546c5d54d335cf276d8bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据指定图层获取其对应的图层顺序  <br /></td></tr>
+<tr class="memitem:a0af4f5a68a3f161b785755f92facb1f8" id="r_a0af4f5a68a3f161b785755f92facb1f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0af4f5a68a3f161b785755f92facb1f8">layer</a> (const std::string &amp;layer_name) const</td></tr>
+<tr class="memdesc:a0af4f5a68a3f161b785755f92facb1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层别名的图层  <br /></td></tr>
+<tr class="memitem:a18058227b466b089842739b117144ab5" id="r_a18058227b466b089842739b117144ab5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18058227b466b089842739b117144ab5">layer</a> (uint32_t z_order) const</td></tr>
+<tr class="memdesc:a18058227b466b089842739b117144ab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定图层顺序的图层  <br /></td></tr>
+<tr class="memitem:a259332ef13325d6b684e29a6b1bb007b" id="r_a259332ef13325d6b684e29a6b1bb007b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a259332ef13325d6b684e29a6b1bb007b">swapLayer</a> (uint32_t z_order1, uint32_t z_order2)</td></tr>
+<tr class="memdesc:a259332ef13325d6b684e29a6b1bb007b"><td class="mdescLeft">&#160;</td><td class="mdescRight">交换两个图层之间的图层顺序  <br /></td></tr>
+<tr class="memitem:a999f8344b7d5607ceb0fd8397f4e4dd3" id="r_a999f8344b7d5607ceb0fd8397f4e4dd3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a999f8344b7d5607ceb0fd8397f4e4dd3">swapLayer</a> (const std::string &amp;layer_name1, const std::string &amp;layer_name2)</td></tr>
+<tr class="memdesc:a999f8344b7d5607ceb0fd8397f4e4dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">交换两个图层之间的图层顺序  <br /></td></tr>
+<tr class="memitem:acedb1513dee7bd5bc631fa44befd47ec" id="r_acedb1513dee7bd5bc631fa44befd47ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acedb1513dee7bd5bc631fa44befd47ec">setZOrder</a> (uint32_t old_z_order, uint32_t new_z_order)</td></tr>
+<tr class="memdesc:acedb1513dee7bd5bc631fa44befd47ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置新的图层顺序编号  <br /></td></tr>
+<tr class="memitem:a7694376275966f4de6c3372d51cc6288" id="r_a7694376275966f4de6c3372d51cc6288"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7694376275966f4de6c3372d51cc6288">setZOrder</a> (const std::string &amp;layer_name, uint32_t new_z_order)</td></tr>
+<tr class="memdesc:a7694376275966f4de6c3372d51cc6288"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置新的图层顺序编号  <br /></td></tr>
+<tr class="memitem:a359205786e267a98844a8b6c121f2535" id="r_a359205786e267a98844a8b6c121f2535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a359205786e267a98844a8b6c121f2535">setSceneEvent</a> (const std::function&lt; void()&gt; &amp;event)</td></tr>
+<tr class="memdesc:a359205786e267a98844a8b6c121f2535"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置当前图层的渲染事件  <br /></td></tr>
+<tr class="memitem:a17a29de11f96625121123d3ef506565a" id="r_a17a29de11f96625121123d3ef506565a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17a29de11f96625121123d3ef506565a">renameLayer</a> (const std::string &amp;layer_name, const std::string &amp;new_layer_name)</td></tr>
+<tr class="memdesc:a17a29de11f96625121123d3ef506565a"><td class="mdescLeft">&#160;</td><td class="mdescRight">重命名指定图层  <br /></td></tr>
+<tr class="memitem:a27ee4312168efd1849835651d74f3094" id="r_a27ee4312168efd1849835651d74f3094"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27ee4312168efd1849835651d74f3094">renameLayer</a> (uint32_t z_order, const std::string &amp;new_layer_name)</td></tr>
+<tr class="memdesc:a27ee4312168efd1849835651d74f3094"><td class="mdescLeft">&#160;</td><td class="mdescRight">重命名指定 <span class="tt">z_order</span> 的图层  <br /></td></tr>
+<tr class="memitem:a92a5568570ea22c7cf09771b3f043b2e" id="r_a92a5568570ea22c7cf09771b3f043b2e"><td class="memItemLeft" align="right" valign="top"><a id="a92a5568570ea22c7cf09771b3f043b2e" name="a92a5568570ea22c7cf09771b3f043b2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawLayers</b> ()</td></tr>
+<tr class="memdesc:a92a5568570ea22c7cf09771b3f043b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制所有图层 <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a9f188757467838cc7e0c293ca1d1f8cd" id="r_a9f188757467838cc7e0c293ca1d1f8cd"><td class="memItemLeft" align="right" valign="top"><a id="a9f188757467838cc7e0c293ca1d1f8cd" name="a9f188757467838cc7e0c293ca1d1f8cd"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>EasyEngine::SceneManager</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>场景 </p>
 <p>定义单个场景，包含多个图层，可用于管理图层 </p>
-</div><hr/>该类的文档由以下文件生成:<ul>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="ad98912a91c077a9e973931882eead6a9" name="ad98912a91c077a9e973931882eead6a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98912a91c077a9e973931882eead6a9">&#9670;&#160;</a></span>Scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Components::Scene::Scene </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建场景 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>场景别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a4890e7f15ab4a80a7370f21e8c824c73" name="a4890e7f15ab4a80a7370f21e8c824c73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4890e7f15ab4a80a7370f21e8c824c73">&#9670;&#160;</a></span>appendLayer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::appendLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加并创建图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>图层顺序（数字越大，显示越靠前） </td></tr>
+    <tr><td class="paramname">name</td><td>新建图层别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功创建图层 </dd></dl>
+
+</div>
+</div>
+<a id="a40c769422724db147c9f5bdfd6aed74e" name="a40c769422724db147c9f5bdfd6aed74e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c769422724db147c9f5bdfd6aed74e">&#9670;&#160;</a></span>appendLayer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::Scene::appendLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *</td>          <td class="paramname"><span class="paramname"><em>layer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加指定的图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>图层顺序（数字越大，显示越靠前） </td></tr>
+    <tr><td class="paramname">layer</td><td>指定已有的图层 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功创建图层 </dd></dl>
+
+</div>
+</div>
+<a id="a712d1bbf81546c5d54d335cf276d8bb0" name="a712d1bbf81546c5d54d335cf276d8bb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a712d1bbf81546c5d54d335cf276d8bb0">&#9670;&#160;</a></span>indexOf() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t EasyEngine::Components::Scene::indexOf </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Layer</a> *</td>          <td class="paramname"><span class="paramname"><em>layer</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据指定图层获取其对应的图层顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>指定图层 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的图层顺序编号 </dd></dl>
+
+</div>
+</div>
+<a id="a32d5ce74d01c9b5a4cff79677d4673d7" name="a32d5ce74d01c9b5a4cff79677d4673d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32d5ce74d01c9b5a4cff79677d4673d7">&#9670;&#160;</a></span>indexOf() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Components::Scene::indexOf </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据图层别名获取其对应的图层顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer_name</td><td>指定图层别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的图层顺序编号 </dd></dl>
+
+</div>
+</div>
+<a id="a0af4f5a68a3f161b785755f92facb1f8" name="a0af4f5a68a3f161b785755f92facb1f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0af4f5a68a3f161b785755f92facb1f8">&#9670;&#160;</a></span>layer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Components::Layer</a> * Components::Scene::layer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层别名的图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer_name</td><td>图层别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的图层，若找不到，则为 <span class="tt">nullptr</span>。 </dd></dl>
+
+</div>
+</div>
+<a id="a18058227b466b089842739b117144ab5" name="a18058227b466b089842739b117144ab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18058227b466b089842739b117144ab5">&#9670;&#160;</a></span>layer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_layer.html">Components::Layer</a> * Components::Scene::layer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定图层顺序的图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>图层顺序编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的图层，若找不到，则为 <span class="tt">nullptr</span>。 </dd></dl>
+
+</div>
+</div>
+<a id="a2d3d9bdbc65af395e097c31b335a8f6f" name="a2d3d9bdbc65af395e097c31b335a8f6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3d9bdbc65af395e097c31b335a8f6f">&#9670;&#160;</a></span>removeLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::removeLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移除图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层顺序 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功移除图层 </dd></dl>
+
+</div>
+</div>
+<a id="a17a29de11f96625121123d3ef506565a" name="a17a29de11f96625121123d3ef506565a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17a29de11f96625121123d3ef506565a">&#9670;&#160;</a></span>renameLayer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::renameLayer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>new_layer_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重命名指定图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer_name</td><td>指定要修改的图层名 </td></tr>
+    <tr><td class="paramname">new_layer_name</td><td>新的图层名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功重命名图层？若找不到指定的图层名，则发生错误！ </dd></dl>
+
+</div>
+</div>
+<a id="a27ee4312168efd1849835651d74f3094" name="a27ee4312168efd1849835651d74f3094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ee4312168efd1849835651d74f3094">&#9670;&#160;</a></span>renameLayer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::renameLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>new_layer_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重命名指定 <span class="tt">z_order</span> 的图层 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order</td><td>指定图层渲染顺序 </td></tr>
+    <tr><td class="paramname">new_layer_name</td><td>新的图层名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功重命名图层？若找不到指定的 <span class="tt">z_order</span>，则发生错误！ </dd></dl>
+
+</div>
+</div>
+<a id="ad1b3f641b68a2bff25572572bc034877" name="ad1b3f641b68a2bff25572572bc034877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b3f641b68a2bff25572572bc034877">&#9670;&#160;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Scene::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置场景别名 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>新的场景别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a359205786e267a98844a8b6c121f2535" name="a359205786e267a98844a8b6c121f2535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359205786e267a98844a8b6c121f2535">&#9670;&#160;</a></span>setSceneEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Components::Scene::setSceneEvent </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>event</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置当前图层的渲染事件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>指定事件 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7694376275966f4de6c3372d51cc6288" name="a7694376275966f4de6c3372d51cc6288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7694376275966f4de6c3372d51cc6288">&#9670;&#160;</a></span>setZOrder() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::setZOrder </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>new_z_order</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置新的图层顺序编号 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer_name</td><td>指定原先的图层别名 </td></tr>
+    <tr><td class="paramname">new_z_order</td><td>指向新的图层顺序编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功设置新的图层编号 </dd></dl>
+
+</div>
+</div>
+<a id="acedb1513dee7bd5bc631fa44befd47ec" name="acedb1513dee7bd5bc631fa44befd47ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acedb1513dee7bd5bc631fa44befd47ec">&#9670;&#160;</a></span>setZOrder() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::setZOrder </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>old_z_order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>new_z_order</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置新的图层顺序编号 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">old_z_order</td><td>指定原先的图层顺序编号 </td></tr>
+    <tr><td class="paramname">new_z_order</td><td>指向新的图层顺序编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功设置新的图层编号 </dd></dl>
+
+</div>
+</div>
+<a id="a999f8344b7d5607ceb0fd8397f4e4dd3" name="a999f8344b7d5607ceb0fd8397f4e4dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999f8344b7d5607ceb0fd8397f4e4dd3">&#9670;&#160;</a></span>swapLayer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::swapLayer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>layer_name2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>交换两个图层之间的图层顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer_name1</td><td>指向第一个图层别名 </td></tr>
+    <tr><td class="paramname">layer_name2</td><td>指向第二个图层别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功交换图层顺序 </dd></dl>
+
+</div>
+</div>
+<a id="a259332ef13325d6b684e29a6b1bb007b" name="a259332ef13325d6b684e29a6b1bb007b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a259332ef13325d6b684e29a6b1bb007b">&#9670;&#160;</a></span>swapLayer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Components::Scene::swapLayer </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>z_order2</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>交换两个图层之间的图层顺序 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">z_order1</td><td>指向第一个图层顺序编号 </td></tr>
+    <tr><td class="paramname">z_order2</td><td>指向第二个图层顺序编号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回是否成功交换图层顺序 </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
 <li>D:/Coding/EasyEngine/src/<a class="el" href="_scene_8h_source.html">Scene.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Scene.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

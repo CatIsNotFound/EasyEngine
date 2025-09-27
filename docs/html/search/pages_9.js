@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debian_0',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]]
+  ['快速开始_0',['快速开始',['../index.html#autotoc_md11',1,'快速开始'],['../D:/Coding/EasyEngine/README.md#autotoc_md26',1,'📦 快速开始']]]
 ];

@@ -41,7 +41,7 @@ Easy Engine 是一个现代化的 C++23 游戏引擎，基于 SDL3 构建，专�
 
 ### 环境要求
 - **编译器**: 支持 C++23 的现代编译器 (MSVC 2022+, GCC 11+, Clang 14+)
-- **依赖库**: SDL3 及其扩展库 (SDL3_image, SDL3_ttf, SDL3_mixer)
+- **依赖库**: SDL3 及其扩展库 (`SDL3_image`, `SDL_ttf`, `SDL_mixer`, `SDL_gfx`)
 - **构建工具**: CMake 3.31+
 
 ### 构建项目
@@ -65,37 +65,29 @@ cmake --build build
 
 ```cpp
 #include "src/Core.h"
-
 using namespace EasyEngine;
-using namespace Components;
 
 int main() {
-    Engine engine("Demo", 1024, 800);
-    engine.setFPS(60);
-    engine.setBackgroundRenderingEnabled(false);
+    // 创建引擎实例
+    Engine engine("我的游戏", 800, 600);
     engine.show();
     
-    Graphics::Rectangle rect({362, 250}, {300, 300}, StdColor::Black, true, true, StdColor::LightGray);
-    engine.painter()->installPaintEvent([&rect](Painter& painter) { 
+    // 设置事件处理器
+    engine.installEventHandler([&engine](SDL_Event event) {
+        if (e.key.down && e.key.key == SDLK_ESCAPE) {
+            return false;
+        }
+        return true;
+    });
+    
+    // 设置渲染回调
+    engine.painter()->installPaintEvent([&](Painter& painter) {
         painter.fillBackColor(StdColor::White);
-        painter.setThickness(20);
+        
+        // 绘制一个红色矩形
+        Graphics::Rectangle rect(100, 100, 200, 150, StdColor::Red, true, true, StdColor::Yellow);
         painter.drawRectangle(rect);
-        painter.drawPixelText("Hello, EasyEngine!", {500.0f, 360.0f}, {1.5f, 2.0f}, StdColor::Black);
     });
-
-    engine.installEventHandler([&rect](SEvent event) {
-        auto cur_pos = Cursor::global()->position();
-        if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN && event.button.button == SDL_BUTTON_LEFT &&
-           Algorithm::comparePosRect(cur_pos, rect) >= 0) {
-            rect.back_color = {rand() % 255, rand() % 255, rand() % 255, 255};
-            rect.fore_color = {rand() % 255, rand() % 255, rand() % 255, 255};
-        }
-        if (event.key.key == SDLK_ESCAPE && event.key.down) {
-            return false;   // Exit EasyEngine!
-        }
-        return true;        // Keep running!
-    });
-
     return engine.exec();
 }
 ```

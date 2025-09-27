@@ -1,4 +1,4 @@
-.TH "EasyEngine::SceneManager" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::SceneManager" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,6 +9,57 @@ EasyEngine::SceneManager \- 场景管理
 .PP
 .PP
 \fR#include <Scene\&.h>\fP
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "struct \fBProperty\fP"
+.br
+.RI "场景属性 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "bool \fBappend\fP (\fBComponents::Scene\fP *scene, uint32_t index)"
+.br
+.ti -1c
+.RI "bool \fBremove\fP (uint32_t index)"
+.br
+.ti -1c
+.RI "bool \fBsetEnterSceneEvent\fP (uint32_t index, const std::function< void()> &event)"
+.br
+.ti -1c
+.RI "bool \fBremoveEnterSceneEvent\fP (uint32_t index)"
+.br
+.ti -1c
+.RI "bool \fBsetLeaveSceneEvent\fP (uint32_t index, uint32_t delay_to_change, const std::function< void()> &event)"
+.br
+.ti -1c
+.RI "bool \fBremoveLeaveSceneEvent\fP (uint32_t index)"
+.br
+.ti -1c
+.RI "void \fBchangeScene\fP (uint32_t index)"
+.br
+.ti -1c
+.RI "uint32_t \fBindexOf\fP (const \fBComponents::Scene\fP *scene) const"
+.br
+.ti -1c
+.RI "uint32_t \fBindexOf\fP (const std::string &scene_name) const"
+.br
+.ti -1c
+.RI "uint32_t \fBcurrentSceneIndex\fP () const"
+.br
+.ti -1c
+.RI "\fBComponents::Scene\fP * \fBscene\fP (uint64_t index) const"
+.br
+.ti -1c
+.RI "\fBComponents::Scene\fP * \fBcurrentScene\fP () const"
+.br
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.in -1c
 .SH "详细描述"
 .PP 
 场景管理 

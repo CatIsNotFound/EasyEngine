@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['安装依赖_0',['1.2 安装依赖',['../md_quickstart.html#autotoc_md26',1,'']]]
+  ['🎯_20使用场景_0',['🎯 使用场景',['../D:/Coding/EasyEngine/README.md#autotoc_md34',1,'']]]
 ];

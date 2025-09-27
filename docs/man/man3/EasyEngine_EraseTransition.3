@@ -1,0 +1,157 @@
+.TH "EasyEngine::EraseTransition" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::EraseTransition \- 擦除效果  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Transition\&.h>\fP
+.PP
+继承自 \fBEasyEngine::Transition\fP \&.
+.SS "Public 类型"
+
+.in +1c
+.ti -1c
+.RI "enum \fBEraseDirection\fP { \fBLeftToRight\fP, \fBRightToLeft\fP, \fBTopToBottom\fP, \fBBottomToTop\fP }"
+.br
+.RI "擦除方向 "
+.in -1c
+
+Public 类型 继承自 \fBEasyEngine::Transition\fP
+.in +1c
+.ti -1c
+.RI "enum \fBState\fP { \fBStopped\fP, \fBPaused\fP, \fBRunning\fP }"
+.br
+.RI "用于定义过渡时的状态 "
+.ti -1c
+.RI "enum \fBDirection\fP { \fBForward\fP, \fBBackward\fP }"
+.br
+.RI "用于表示过渡效果时的过渡顺序 "
+.ti -1c
+.RI "enum \fBDeletionPolicy\fP { \fBKeepWhenStopped\fP, \fBDeleteWhenStopped\fP }"
+.br
+.RI "删除策略 "
+.in -1c
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBEraseTransition\fP (uint64_t \fBduration\fP, const enum \fBEraseDirection\fP &\fBdirection\fP, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP *painter)"
+.br
+.ti -1c
+.RI "void \fBsetEraseDirection\fP (const enum \fBEraseDirection\fP &\fBdirection\fP)"
+.br
+.ti -1c
+.RI "enum \fBEraseDirection\fP & \fBeraseDirection\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBackColor\fP (const SColor &color)"
+.br
+.ti -1c
+.RI "const SColor & \fBbackColor\fP () const"
+.br
+.in -1c
+
+Public 成员函数 继承自 \fBEasyEngine::Transition\fP
+.in +1c
+.ti -1c
+.RI "\fBTransition\fP (uint64_t \fBduration\fP, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP *painter)"
+.br
+.RI "创建过渡效果 "
+.ti -1c
+.RI "void \fBsetDeletionPolicy\fP (const \fBDeletionPolicy\fP &deletion_policy)"
+.br
+.RI "设置删除策略 "
+.ti -1c
+.RI "void \fBsetDuration\fP (uint64_t \fBduration\fP)"
+.br
+.RI "设置过渡持续时间 "
+.ti -1c
+.RI "void \fBsetDirection\fP (const \fBDirection\fP &\fBdirection\fP)"
+.br
+.RI "设置过渡方式 "
+.ti -1c
+.RI "void \fBstart\fP ()"
+.br
+.RI "开始过渡 "
+.ti -1c
+.RI "void \fBpause\fP ()"
+.br
+.RI "暂停过渡 "
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.RI "停止过渡 "
+.ti -1c
+.RI "uint64_t \fBduration\fP () const"
+.br
+.RI "获取当前设置的过渡持续时长 "
+.ti -1c
+.RI "uint64_t \fBcurrentTime\fP () const"
+.br
+.RI "获取当前过渡的时间 "
+.ti -1c
+.RI "uint64_t \fBloopCount\fP () const"
+.br
+.RI "获取过渡效果完成循环总次数 "
+.ti -1c
+.RI "void \fBclearLoopCount\fP ()"
+.br
+.RI "清零过渡效果完成循环总次数 "
+.ti -1c
+.RI "const \fBDirection\fP & \fBdirection\fP () const"
+.br
+.RI "获取当前过渡的方式是正向过渡还是反向过渡 "
+.ti -1c
+.RI "const \fBState\fP & \fBstate\fP () const"
+.br
+.RI "获取当前过渡的状态 "
+.ti -1c
+.RI "const \fBDeletionPolicy\fP & \fBdeletionPolicy\fP () const"
+.br
+.RI "获取当前过渡效果的删除策略 "
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.RI "仅用于被其它系统处理，禁止手动调用 "
+.ti -1c
+.RI "bool \fB__is_changed\fP ()"
+.br
+.RI "检查是否将 A 效果切换到 B 效果 "
+.in -1c
+.SS "额外继承的成员函数"
+
+
+Protected 属性 继承自 \fBEasyEngine::Transition\fP
+.in +1c
+.ti -1c
+.RI "uint64_t \fB_duration\fP"
+.br
+.ti -1c
+.RI "\fBDirection\fP \fB_direction\fP {\fBForward\fP}"
+.br
+.ti -1c
+.RI "\fBState\fP \fB_state\fP {\fBStopped\fP}"
+.br
+.ti -1c
+.RI "\fBDeletionPolicy\fP \fB_deletion_policy\fP {\fBKeepWhenStopped\fP}"
+.br
+.ti -1c
+.RI "\fBPainter\fP * \fB_painter\fP {nullptr}"
+.br
+.ti -1c
+.RI "bool \fB_change_signal\fP {false}"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+擦除效果 
+
+实现基本的不同方向的擦除效果 
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

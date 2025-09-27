@@ -1,4 +1,4 @@
-.TH "EasyEngine::Painter" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Painter" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,7 +33,11 @@ EasyEngine::Painter \- 图形绘制器
 .br
 .RI "安装自定义绘图事件 "
 .ti -1c
-.RI "void \fB_render\fP ()"
+.RI "void \fBsetSceneManager\fP (\fBSceneManager\fP *sceneManager)"
+.br
+.RI "设置场景管理器以做到实时渲染 "
+.ti -1c
+.RI "void \fB______\fP ()"
 .br
 .RI "渲染/刷新画面 "
 .ti -1c
@@ -83,6 +87,18 @@ EasyEngine::Painter \- 图形绘制器
 .RI "void \fBsetClipView\fP (const \fBGeometry\fP &geometry)"
 .br
 .RI "裁剪可见视图 "
+.ti -1c
+.RI "bool \fB_addTransition\fP (\fBTransition\fP *transition)"
+.br
+.ti -1c
+.RI "bool \fB_removeTransition\fP (\fBTransition\fP *transition)"
+.br
+.ti -1c
+.RI "bool \fB_startTransition\fP (\fBTransition\fP *transition)"
+.br
+.ti -1c
+.RI "bool \fB_stopTransition\fP (\fBTransition\fP *transition)"
+.br
 .in -1c
 .SS "友元"
 
@@ -111,7 +127,7 @@ EasyEngine::Painter \- 图形绘制器
 
 .SH "成员函数说明"
 .PP 
-.SS "void EasyEngine::Painter::_render ()"
+.SS "void EasyEngine::Painter::______ ()"
 
 .PP
 渲染/刷新画面 
@@ -265,6 +281,17 @@ hexToRGBA
 \fB注解\fP
 .RS 4
 当指定的宽度或高度小于等于 0，则取消使用裁剪！ 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::setSceneManager (\fBEasyEngine::SceneManager\fP * sceneManager)"
+
+.PP
+设置场景管理器以做到实时渲染 
+.PP
+\fB参数\fP
+.RS 4
+\fIsceneManager\fP 指定场景管理器 
 .RE
 .PP
 

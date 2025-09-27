@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linux_20ubuntu_20debian_0',['Linux (Ubuntu/Debian)',['../md_quickstart.html#autotoc_md28',1,'']]]
+  ['最小示例_0',['最小示例',['../index.html#autotoc_md12',1,'']]]
 ];

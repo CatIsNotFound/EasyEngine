@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Font" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Font" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -108,7 +108,7 @@ EasyEngine::Components::Font \- 字体
 .br
 .RI "获取行间距 "
 .ti -1c
-.RI "\fBSprite\fP * \fBtextToSprite\fP (const std::string &text, \fBEasyEngine::Painter\fP &painter)"
+.RI "\fBSprite\fP * \fBtextToSprite\fP (const std::string &sprite_name, const std::string &text, \fBEasyEngine::Painter\fP *painter)"
 .br
 .RI "文本转换精灵 "
 .in -1c
@@ -321,14 +321,18 @@ EasyEngine::Components::Font \- 字体
 .RE
 .PP
 
-.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::Font::textToSprite (const std::string & text, \fBEasyEngine::Painter\fP & painter)"
+.SS "\fBEasyEngine::Components::Sprite\fP * EasyEngine::Components::Font::textToSprite (const std::string & sprite_name, const std::string & text, \fBEasyEngine::Painter\fP * painter)"
 
 .PP
 文本转换精灵 
 .PP
 \fB参数\fP
 .RS 4
-\fItext\fP 指定内容
+\fIsprite_name\fP 指定精灵别名 
+.br
+\fItext\fP 指定内容 
+.br
+\fIpainter\fP 指定绘图器
 .RE
 .PP
 会根据当前的字体属性进行渲染并转换成可用的精灵 

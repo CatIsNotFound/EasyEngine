@@ -26,7 +26,7 @@ var class_easy_engine_1_1_components_1_1_layer =
     [ "setZOrder", "class_easy_engine_1_1_components_1_1_layer.html#aa510952b9cc0eea784611d1d435aba68", null ],
     [ "sprite", "class_easy_engine_1_1_components_1_1_layer.html#a9cdafd23516bc87bfc65a03c9c231d14", null ],
     [ "spriteGroup", "class_easy_engine_1_1_components_1_1_layer.html#a8bb50017008c2a47cf9ed562d9a35f5f", null ],
-    [ "swap", "class_easy_engine_1_1_components_1_1_layer.html#a2491d067517314fadf3c4ba1c1b8a00c", null ],
+    [ "swap", "class_easy_engine_1_1_components_1_1_layer.html#a2111fd75a0a6458cfb4af44f309b6e0e", null ],
     [ "viewport", "class_easy_engine_1_1_components_1_1_layer.html#ae74c108b3d16402cd95217de8a28b40a", null ],
     [ "viewportPainter", "class_easy_engine_1_1_components_1_1_layer.html#a1ecc478657705f1305a40a5cb0e6b0de", null ],
     [ "viewportScaled", "class_easy_engine_1_1_components_1_1_layer.html#ae5d2540ef3a4a1210bb8a4a949d7abe7", null ],

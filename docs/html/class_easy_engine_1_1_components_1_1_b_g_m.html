@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
    </div>
   </td>
  </tr>
@@ -131,8 +131,8 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>pa
 <tr class="memdesc:a04768c3197c66f52f1d616d38b41612e"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取该 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a> 下的播放源路径 <br /></td></tr>
 <tr class="memitem:ad7695847144f9b22395357809cf8c2fc" id="r_ad7695847144f9b22395357809cf8c2fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7695847144f9b22395357809cf8c2fc">play</a> (bool loop=true)</td></tr>
 <tr class="memdesc:ad7695847144f9b22395357809cf8c2fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">播放 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a>  <br /></td></tr>
-<tr class="memitem:a29cf6bf994a646de66cc7c66f87b63c3" id="r_a29cf6bf994a646de66cc7c66f87b63c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29cf6bf994a646de66cc7c66f87b63c3">stop</a> ()</td></tr>
-<tr class="memdesc:a29cf6bf994a646de66cc7c66f87b63c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止播放 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a>  <br /></td></tr>
+<tr class="memitem:ae2ec6f66349e57480680c127f3f4ff9a" id="r_ae2ec6f66349e57480680c127f3f4ff9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ec6f66349e57480680c127f3f4ff9a">stop</a> (int64_t fade_out_duration)</td></tr>
+<tr class="memdesc:ae2ec6f66349e57480680c127f3f4ff9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止播放 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a>  <br /></td></tr>
 <tr class="memitem:a2f8364ff03e03646c23eb53d88e2e135" id="r_a2f8364ff03e03646c23eb53d88e2e135"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f8364ff03e03646c23eb53d88e2e135">pause</a> ()</td></tr>
 <tr class="memdesc:a2f8364ff03e03646c23eb53d88e2e135"><td class="mdescLeft">&#160;</td><td class="mdescRight">暂停播放当前 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a>  <br /></td></tr>
 <tr class="memitem:af37922d6ebf555313aefc432cc497f50" id="r_af37922d6ebf555313aefc432cc497f50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af37922d6ebf555313aefc432cc497f50">isPlayed</a> () const</td></tr>
@@ -198,7 +198,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AudioSystem</b></td>
 </div><div class="memdoc">
 
 <p>当前是否正在循环播放 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a> </p>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a29cf6bf994a646de66cc7c66f87b63c3" title="停止播放 BGM">stop</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae2ec6f66349e57480680c127f3f4ff9a" title="停止播放 BGM">stop</a> </dd>
 <dd>
 paused </dd>
 <dd>
@@ -226,7 +226,7 @@ paused </dd>
 <p>当前是否正在播放 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a> </p>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad7695847144f9b22395357809cf8c2fc" title="播放 BGM">play</a> </dd>
 <dd>
-<a class="el" href="#a29cf6bf994a646de66cc7c66f87b63c3" title="停止播放 BGM">stop</a> </dd>
+<a class="el" href="#ae2ec6f66349e57480680c127f3f4ff9a" title="停止播放 BGM">stop</a> </dd>
 <dd>
 paused </dd>
 <dd>
@@ -252,7 +252,7 @@ paused </dd>
 <p>暂停播放当前 <a class="el" href="class_easy_engine_1_1_components_1_1_b_g_m.html" title="背景音乐">BGM</a> </p>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad7695847144f9b22395357809cf8c2fc" title="播放 BGM">play</a> </dd>
 <dd>
-<a class="el" href="#a29cf6bf994a646de66cc7c66f87b63c3" title="停止播放 BGM">stop</a> </dd>
+<a class="el" href="#ae2ec6f66349e57480680c127f3f4ff9a" title="停止播放 BGM">stop</a> </dd>
 <dd>
 <a class="el" href="#af37922d6ebf555313aefc432cc497f50" title="当前是否正在播放 BGM">isPlayed</a> </dd>
 <dd>
@@ -282,7 +282,7 @@ paused </dd>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a29cf6bf994a646de66cc7c66f87b63c3" title="停止播放 BGM">stop</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae2ec6f66349e57480680c127f3f4ff9a" title="停止播放 BGM">stop</a> </dd>
 <dd>
 paused </dd>
 <dd>
@@ -337,8 +337,8 @@ paused </dd>
 
 </div>
 </div>
-<a id="a29cf6bf994a646de66cc7c66f87b63c3" name="a29cf6bf994a646de66cc7c66f87b63c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29cf6bf994a646de66cc7c66f87b63c3">&#9670;&#160;</a></span>stop()</h2>
+<a id="ae2ec6f66349e57480680c127f3f4ff9a" name="ae2ec6f66349e57480680c127f3f4ff9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ec6f66349e57480680c127f3f4ff9a">&#9670;&#160;</a></span>stop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,7 +346,7 @@ paused </dd>
         <tr>
           <td class="memname">void EasyEngine::Components::BGM::stop </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">int64_t</td>          <td class="paramname"><span class="paramname"><em>fade_out_duration</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

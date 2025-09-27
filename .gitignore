@@ -1,7 +1,19 @@
+# Basic
+.cache
+
+# IDE Config
 .vs*
 .vscode
 .idea
-.cache
+*.sln
+*.json
+
+# Build Folder
 cmake-build*
 build
+out*
+
+# Others
 *.old
+*.out*
+

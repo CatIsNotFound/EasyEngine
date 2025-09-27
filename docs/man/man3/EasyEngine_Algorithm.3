@@ -1,4 +1,4 @@
-.TH "EasyEngine::Algorithm" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Algorithm" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,6 +60,10 @@ EasyEngine::Algorithm \- 算法库
 .RI "static int8_t \fBcompareRectEllipse\fP (const \fBGraphics::Rectangle\fP &rect, const \fBGraphics::Ellipse\fP &ellipse)"
 .br
 .RI "判断矩形与椭圆之间的位置关系 "
+.ti -1c
+.RI "static SSurface * \fBcaptureWindow\fP (\fBPainter\fP *painter)"
+.br
+.RI "捕获当前窗口下的所有内容 "
 .in -1c
 .SH "详细描述"
 .PP 
@@ -68,6 +72,22 @@ EasyEngine::Algorithm \- 算法库
 存储图形相关的算法实现，为渲染提供计算支持 
 .SH "成员函数说明"
 .PP 
+.SS "SSurface * Algorithm::captureWindow (\fBPainter\fP * painter)\fR [static]\fP"
+
+.PP
+捕获当前窗口下的所有内容 
+.PP
+\fB参数\fP
+.RS 4
+\fIpainter\fP 指定窗口下使用的绘图器 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回生成的捕获画面 
+.RE
+.PP
+
 .SS "int8_t Algorithm::compareEllipse (const \fBGraphics::Ellipse\fP & ellipse1, const \fBGraphics::Ellipse\fP & ellipse2)\fR [static]\fP"
 
 .PP

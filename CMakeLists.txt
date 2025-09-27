@@ -3,12 +3,12 @@ project(EasyEngine VERSION 0.1.1)
 
 set(CMAKE_CXX_STANDARD 23)
 
-set(SDL_DIR "D:/CPPLibs/SDL_GIT")
+set(SDL_DIR       "D:/CPPLibs/SDL_GIT")
 set(SDL_IMAGE_DIR "D:/CPPLibs/SDL3_image/x86_64-w64-mingw32")
-set(SDL_TTF_DIR "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
+set(SDL_TTF_DIR   "D:/CPPLibs/SDL3_ttf/x86_64-w64-mingw32")
 set(SDL_MIXER_DIR "D:/CPPLibs/SDL3_mixer")
-set(SDL_GFX_DIR "D:/CPPLibs/SDL3_gfx")
-set(FMT_DIR "D:/CPPLibs/FMT")
+set(SDL_GFX_DIR   "D:/CPPLibs/SDL3_gfx")
+set(FMT_DIR       "D:/CPPLibs/FMT")
 #set(PUGIXML_DIR "D:/CPPLibs/pugixml")
 
 
@@ -69,7 +69,7 @@ target_link_libraries(EasyEngine PRIVATE
         fmt::fmt
 )
 
-if (WIN32)
+
 add_custom_command(TARGET EasyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
@@ -78,4 +78,3 @@ add_custom_command(TARGET EasyEngine POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_GFX_DIR}/bin   ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets ${CMAKE_BINARY_DIR}/assets
 )
-endif()

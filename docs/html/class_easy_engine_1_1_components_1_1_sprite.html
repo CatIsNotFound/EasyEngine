@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
    </div>
   </td>
  </tr>
@@ -147,6 +147,8 @@ Public 成员函数</h2></td></tr>
 <tr class="memdesc:a64eea868a997cb7c1e04e32edf80f2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">克隆并裁剪已有的精灵  <br /></td></tr>
 <tr class="memitem:ae620d84951761b6a4fc21bea05a42d4c" id="r_ae620d84951761b6a4fc21bea05a42d4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae620d84951761b6a4fc21bea05a42d4c">Sprite</a> (const std::string &amp;<a class="el" href="#af26c8980014a6062bf0ff83b1712eb15">name</a>, const std::string &amp;resource_name, const <a class="el" href="struct_easy_engine_1_1_vector2.html">EasyEngine::Vector2</a> &amp;clip_pos, const <a class="el" href="struct_easy_engine_1_1_size.html">EasyEngine::Size</a> &amp;clip_size, <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *<a class="el" href="#abc23c2e422423c597811146941a8c4df">painter</a>)</td></tr>
 <tr class="memdesc:ae620d84951761b6a4fc21bea05a42d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个精灵并裁剪  <br /></td></tr>
+<tr class="memitem:a5166bdc06b50085b8852ca3a95bff88f" id="r_a5166bdc06b50085b8852ca3a95bff88f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5166bdc06b50085b8852ca3a95bff88f">copySprite</a> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *sprite)</td></tr>
+<tr class="memdesc:a5166bdc06b50085b8852ca3a95bff88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">复制并替换原有的精灵  <br /></td></tr>
 <tr class="memitem:a21c3811e2e781b5966e05e733bc103ef" id="r_a21c3811e2e781b5966e05e733bc103ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21c3811e2e781b5966e05e733bc103ef">setName</a> (const std::string &amp;new_name)</td></tr>
 <tr class="memdesc:a21c3811e2e781b5966e05e733bc103ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置精灵别名  <br /></td></tr>
 <tr class="memitem:af26c8980014a6062bf0ff83b1712eb15" id="r_af26c8980014a6062bf0ff83b1712eb15"><td class="memItemLeft" align="right" valign="top"><a id="af26c8980014a6062bf0ff83b1712eb15" name="af26c8980014a6062bf0ff83b1712eb15"></a>
@@ -157,6 +159,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () co
 <tr class="memitem:a9cf3d638885c70a06ddab390915b7c05" id="r_a9cf3d638885c70a06ddab390915b7c05"><td class="memItemLeft" align="right" valign="top"><a id="a9cf3d638885c70a06ddab390915b7c05" name="a9cf3d638885c70a06ddab390915b7c05"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>path</b> () const</td></tr>
 <tr class="memdesc:a9cf3d638885c70a06ddab390915b7c05"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取精灵纹理路径 <br /></td></tr>
+<tr class="memitem:a4170d6e74f5d06e525ef5242560f20ff" id="r_a4170d6e74f5d06e525ef5242560f20ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4170d6e74f5d06e525ef5242560f20ff">setSurface</a> (SSurface *surface)</td></tr>
+<tr class="memdesc:a4170d6e74f5d06e525ef5242560f20ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">为精灵设置新的表面  <br /></td></tr>
 <tr class="memitem:a5636cdfc4954970009c0a7a13aecb852" id="r_a5636cdfc4954970009c0a7a13aecb852"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5636cdfc4954970009c0a7a13aecb852">isValid</a> (const std::string &amp;<a class="el" href="#a9cf3d638885c70a06ddab390915b7c05">path</a>) const</td></tr>
 <tr class="memdesc:a5636cdfc4954970009c0a7a13aecb852"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查精灵纹理路径是否有效  <br /></td></tr>
 <tr class="memitem:af8215c1d330f2fce8c7ae21e683840ca" id="r_af8215c1d330f2fce8c7ae21e683840ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8215c1d330f2fce8c7ae21e683840ca">setPainter</a> (<a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *<a class="el" href="#abc23c2e422423c597811146941a8c4df">painter</a>)</td></tr>
@@ -460,6 +464,31 @@ STexture *&#160;</td><td class="memItemRight" valign="bottom"><b>spirit</b> () c
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a5166bdc06b50085b8852ca3a95bff88f" name="a5166bdc06b50085b8852ca3a95bff88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5166bdc06b50085b8852ca3a95bff88f">&#9670;&#160;</a></span>copySprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::copySprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>复制并替换原有的精灵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite</td><td>指定精灵 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7d8fe3c9232a189b678e826cb2ab40bd" name="a7d8fe3c9232a189b678e826cb2ab40bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7d8fe3c9232a189b678e826cb2ab40bd">&#9670;&#160;</a></span>draw() <span class="overload">[1/7]</span></h2>
 
@@ -829,6 +858,31 @@ hexToRGBA </dd></dl>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">resource_name</td><td>指定资源名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4170d6e74f5d06e525ef5242560f20ff" name="a4170d6e74f5d06e525ef5242560f20ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4170d6e74f5d06e525ef5242560f20ff">&#9670;&#160;</a></span>setSurface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::Sprite::setSurface </td>
+          <td>(</td>
+          <td class="paramtype">SSurface *</td>          <td class="paramname"><span class="paramname"><em>surface</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>为精灵设置新的表面 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">surface</td><td>指定的表面 </td></tr>
   </table>
   </dd>
 </dl>

@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Sprite" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Sprite" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -53,6 +53,10 @@ EasyEngine::Components::Sprite \- 精灵
 .br
 .RI "创建一个精灵并裁剪 "
 .ti -1c
+.RI "void \fBcopySprite\fP (\fBSprite\fP *sprite)"
+.br
+.RI "复制并替换原有的精灵 "
+.ti -1c
 .RI "void \fBsetName\fP (const std::string &new_name)"
 .br
 .RI "设置精灵别名 "
@@ -68,6 +72,10 @@ EasyEngine::Components::Sprite \- 精灵
 .RI "std::string \fBpath\fP () const"
 .br
 .RI "获取精灵纹理路径 "
+.ti -1c
+.RI "void \fBsetSurface\fP (SSurface *surface)"
+.br
+.RI "为精灵设置新的表面 "
 .ti -1c
 .RI "bool \fBisValid\fP (const std::string &\fBpath\fP) const"
 .br
@@ -254,6 +262,17 @@ EasyEngine::Components::Sprite \- 精灵
 
 .SH "成员函数说明"
 .PP 
+.SS "void EasyEngine::Components::Sprite::copySprite (\fBSprite\fP * sprite)"
+
+.PP
+复制并替换原有的精灵 
+.PP
+\fB参数\fP
+.RS 4
+\fIsprite\fP 指定精灵 
+.RE
+.PP
+
 .SS "void EasyEngine::Components::Sprite::draw (const \fBEasyEngine::Components::Sprite::Properties\fP & properties) const"
 
 .PP
@@ -435,6 +454,17 @@ hexToRGBA
 \fB参数\fP
 .RS 4
 \fIresource_name\fP 指定资源名称 
+.RE
+.PP
+
+.SS "void EasyEngine::Components::Sprite::setSurface (SSurface * surface)"
+
+.PP
+为精灵设置新的表面 
+.PP
+\fB参数\fP
+.RS 4
+\fIsurface\fP 指定的表面 
 .RE
 .PP
 

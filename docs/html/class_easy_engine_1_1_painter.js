@@ -1,7 +1,7 @@
 var class_easy_engine_1_1_painter =
 [
     [ "Painter", "class_easy_engine_1_1_painter.html#ac730bf88a55fcdaa0612cb8412bd0361", null ],
-    [ "_render", "class_easy_engine_1_1_painter.html#aaa2c82d5458eb458f277d58b6b7fc4a0", null ],
+    [ "______", "class_easy_engine_1_1_painter.html#a3a66ba427079d98632cc3aad58fb10a2", null ],
     [ "clear", "class_easy_engine_1_1_painter.html#a19dc2cb2aa21472456916c6cf80a8a38", null ],
     [ "drawEllipse", "class_easy_engine_1_1_painter.html#a6ed21bfc6ee3adce6dfdedb66a54f4f5", null ],
     [ "drawLine", "class_easy_engine_1_1_painter.html#ae8414f521292cd5d0a4d3f3396d9e93d", null ],
@@ -13,6 +13,7 @@ var class_easy_engine_1_1_painter =
     [ "fillBackColor", "class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef", null ],
     [ "installPaintEvent", "class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4", null ],
     [ "setClipView", "class_easy_engine_1_1_painter.html#a7f44722d3bb5141668e181e7a49dc637", null ],
+    [ "setSceneManager", "class_easy_engine_1_1_painter.html#ab300f0373b019bc8deec93a69af60043", null ],
     [ "setThickness", "class_easy_engine_1_1_painter.html#a30c2d4a79c229cd355f988773133f0d0", null ],
     [ "setViewport", "class_easy_engine_1_1_painter.html#a72e902425d21e1fa0ee3a5c5b6c20a39", null ],
     [ "thickness", "class_easy_engine_1_1_painter.html#a0a2ccfbcc029ea582279f3220c153105", null ],

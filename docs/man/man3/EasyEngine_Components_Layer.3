@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Layer" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Layer" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -73,7 +73,7 @@ EasyEngine::Components::Layer \- 图层
 .br
 .RI "指定别名并获取对应的图层渲染顺序 "
 .ti -1c
-.RI "void \fBswap\fP (uint32_t z_order1, uint32_t z_order2)"
+.RI "bool \fBswap\fP (uint32_t z_order1, uint32_t z_order2)"
 .br
 .RI "指定两个元素并交换图层渲染顺序 "
 .ti -1c
@@ -136,6 +136,13 @@ EasyEngine::Components::Layer \- 图层
 .RI "const \fBPainter\fP * \fBviewportPainter\fP () const"
 .br
 .RI "获取当前绘制视图的绘图器 "
+.in -1c
+.SS "友元"
+
+.in +1c
+.ti -1c
+.RI "class \fBScene\fP"
+.br
 .in -1c
 .SH "详细描述"
 .PP 
@@ -728,7 +735,7 @@ EasyEngine::Components::Layer \- 图层
 .RE
 .PP
 
-.SS "void Components::Layer::swap (uint32_t z_order1, uint32_t z_order2)"
+.SS "bool Components::Layer::swap (uint32_t z_order1, uint32_t z_order2)"
 
 .PP
 指定两个元素并交换图层渲染顺序 

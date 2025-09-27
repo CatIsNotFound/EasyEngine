@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: D:/Coding/EasyEngine/src/Transition.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_transition_8h_source.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Transition.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#ifndef EASYENGINE_TRANSITION_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#define EASYENGINE_TRANSITION_H</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_components_8h.html">Components.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_easy_engine.html">EasyEngine</a> {</div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html">   13</a></span>    <span class="keyword">class </span><a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">   19</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">   21</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">Stopped</a>,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523">   23</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523">Paused</a>,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931">   25</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931">Running</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        };</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">   31</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">   33</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">Forward</a>,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb">   35</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb">Backward</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        };</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="};">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">   41</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">   43</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">KeepWhenStopped</a>,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551">   45</a></span>            <a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551">DeleteWhenStopped</a></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        };</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a>(uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>, <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a> *painter);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">virtual</span> <a class="code hl_class" href="class_easy_engine_1_1_transition.html">~Transition</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aebb8a038a3899e2be705846ef303a9f5">setDeletionPolicy</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a>&amp; deletion_policy);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a498269231d2bcfbd0b8dcc3ccff89638">setDuration</a>(uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#ab1a6f8d36c6378b857fbe2cf10f0cec8">setDirection</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a86488f0d7199218446f364652eb0aef9">start</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a99293c0b49369fc6ba3e241fa91ef663">pause</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a22134b1b897178b971fa4da403abefcd">stop</a>();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa463a042e13eb9e186a36b6718d10b3a">currentTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#ac6ab958306cd4589fb13c04533179557">loopCount</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#af619709414a249643603e465f3766c7a">clearLoopCount</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#abac7ce62087be65cda9ea0c94e2854c0">state</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a67ec913f25668b09e7cac23d1fb2fa5a">deletionPolicy</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a5746987a6235f4d880d32f63d6d5dc92">______</a>();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#a125ff3b038454c07dd5c1675ec24e345">__is_changed</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        uint64_t _duration;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">Direction</a> _direction{<a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">Forward</a>};</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">State</a> _state{<a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">Stopped</a>};</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> _deletion_policy{<a class="code hl_enumvalue" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">KeepWhenStopped</a>};</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        Painter* _painter{<span class="keyword">nullptr</span>};</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordtype">bool</span> _change_signal{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> update() = 0;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> getReady() = 0;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        uint64_t _start_time{0};</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        uint64_t _current_time{0};</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        uint64_t _loop_count{0};</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    };</div>
+</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span></div>
+<div class="foldopen" id="foldopen00163" data-start="{" data-end="};">
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_dark_transition.html">  163</a></span>    <span class="keyword">class </span>DarkTransition : <span class="keyword">public</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a> {</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        DarkTransition(uint64_t _duration, <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a> *painter);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        ~DarkTransition() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_easy_engine_1_1_dark_transition.html#a3810a146f1469373bb99e38cca74d471">setBackgroundColor</a>(<span class="keyword">const</span> SColor&amp; color);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="keyword">const</span> SColor &amp;<a class="code hl_function" href="class_easy_engine_1_1_dark_transition.html#afd9d85007a19768fcbbf6936c0411477">backgroundColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordtype">void</span> getReady() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <a class="code hl_struct" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> _mask;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    };</div>
+</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span></div>
+<div class="foldopen" id="foldopen00190" data-start="{" data-end="};">
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_erase_transition.html">  190</a></span>    <span class="keyword">class </span>EraseTransition : <span class="keyword">public</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a> {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">  196</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EraseDirection</a> { LeftToRight, RightToLeft, TopToBottom, BottomToTop };</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <a class="code hl_class" href="class_easy_engine_1_1_erase_transition.html">EraseTransition</a>(uint64_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>, <span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EraseDirection</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>,</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a> *painter);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <a class="code hl_class" href="class_easy_engine_1_1_erase_transition.html">~EraseTransition</a>();</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="keywordtype">void</span> setEraseDirection(<span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EraseDirection</a> &amp;<a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EraseDirection</a>&amp; eraseDirection() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keywordtype">void</span> setBackColor(<span class="keyword">const</span> SColor&amp; color);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keyword">const</span> SColor&amp; backColor() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordtype">void</span> getReady() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_struct" href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">Graphics::Rectangle</a> _rect;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EraseDirection</a> _direction{EraseDirection::LeftToRight};</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    };</div>
+</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span></div>
+<div class="foldopen" id="foldopen00220" data-start="{" data-end="};">
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_move_transition.html">  220</a></span>    <span class="keyword">class </span>MoveTransition : <span class="keyword">public</span> <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">Transition</a> {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">  226</a></span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> { LeftToRight, RightToLeft, TopToBottom, BottomToTop };</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keyword">explicit</span> <a class="code hl_class" href="class_easy_engine_1_1_move_transition.html">MoveTransition</a>(uint32_t <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">duration</a>, <span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>,</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                                <a class="code hl_enumeration" href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">DeletionPolicy</a> deletion_policy, <a class="code hl_class" href="class_easy_engine_1_1_painter.html">Painter</a>* painter);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="keywordtype">void</span> setFirstPicture(SSurface* surface);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordtype">void</span> setFirstPicture(<a class="code hl_class" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a>* sprite);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordtype">void</span> clearFirstPicture();</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <a class="code hl_class" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a>* firstPicture() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keywordtype">void</span> setSecondPicture(SSurface* surface);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keywordtype">void</span> setSecondPicture(<a class="code hl_class" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a>* sprite);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordtype">void</span> clearSecondPicture();</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <a class="code hl_class" href="class_easy_engine_1_1_components_1_1_sprite.html">Components::Sprite</a>* secondPicture() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordtype">void</span> setMoveDirection(<span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a>&amp; <a class="code hl_function" href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">direction</a>);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keyword">const</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a>&amp; moveDirection() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="keywordtype">void</span> update() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordtype">void</span> getReady() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        std::shared_ptr&lt;Components::Sprite&gt; _sprite1;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        std::shared_ptr&lt;Components::Sprite&gt; _sprite2;</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordtype">bool</span> _draw_second_pic{<span class="keyword">false</span>};</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">MoveDirection</a> _move_direction;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    };</div>
+</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>} <span class="comment">// EasyEngine</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#endif </span><span class="comment">//EASYENGINE_TRANSITION_H</span></div>
+<div class="ttc" id="a_components_8h_html"><div class="ttname"><a href="_components_8h.html">Components.h</a></div><div class="ttdoc">组件库</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_components_1_1_sprite_html"><div class="ttname"><a href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a></div><div class="ttdoc">精灵</div><div class="ttdef"><b>定义</b> Components.h:333</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_dark_transition_html_a3810a146f1469373bb99e38cca74d471"><div class="ttname"><a href="class_easy_engine_1_1_dark_transition.html#a3810a146f1469373bb99e38cca74d471">EasyEngine::DarkTransition::setBackgroundColor</a></div><div class="ttdeci">void setBackgroundColor(const SColor &amp;color)</div><div class="ttdoc">设置黑幕背景颜色</div><div class="ttdef"><b>定义</b> Transition.cpp:104</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_dark_transition_html_afd9d85007a19768fcbbf6936c0411477"><div class="ttname"><a href="class_easy_engine_1_1_dark_transition.html#afd9d85007a19768fcbbf6936c0411477">EasyEngine::DarkTransition::backgroundColor</a></div><div class="ttdeci">const SColor &amp; backgroundColor() const</div><div class="ttdoc">获取当前黑幕背景颜色</div><div class="ttdef"><b>定义</b> Transition.cpp:125</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_erase_transition_html"><div class="ttname"><a href="class_easy_engine_1_1_erase_transition.html">EasyEngine::EraseTransition</a></div><div class="ttdoc">擦除效果</div><div class="ttdef"><b>定义</b> Transition.h:190</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_erase_transition_html_adb31463f998cfa7dee87508fe4dba9f6"><div class="ttname"><a href="class_easy_engine_1_1_erase_transition.html#adb31463f998cfa7dee87508fe4dba9f6">EasyEngine::EraseTransition::EraseDirection</a></div><div class="ttdeci">EraseDirection</div><div class="ttdoc">擦除方向</div><div class="ttdef"><b>定义</b> Transition.h:196</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_move_transition_html"><div class="ttname"><a href="class_easy_engine_1_1_move_transition.html">EasyEngine::MoveTransition</a></div><div class="ttdoc">平移过渡效果</div><div class="ttdef"><b>定义</b> Transition.h:220</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_move_transition_html_a67bd46d980a19a9c3066d6ccd774fc99"><div class="ttname"><a href="class_easy_engine_1_1_move_transition.html#a67bd46d980a19a9c3066d6ccd774fc99">EasyEngine::MoveTransition::MoveDirection</a></div><div class="ttdeci">MoveDirection</div><div class="ttdoc">移动方向</div><div class="ttdef"><b>定义</b> Transition.h:226</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_painter_html"><div class="ttname"><a href="class_easy_engine_1_1_painter.html">EasyEngine::Painter</a></div><div class="ttdoc">图形绘制器</div><div class="ttdef"><b>定义</b> Core.h:542</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html"><div class="ttname"><a href="class_easy_engine_1_1_transition.html">EasyEngine::Transition</a></div><div class="ttdoc">过渡效果</div><div class="ttdef"><b>定义</b> Transition.h:13</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a125ff3b038454c07dd5c1675ec24e345"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a125ff3b038454c07dd5c1675ec24e345">EasyEngine::Transition::__is_changed</a></div><div class="ttdeci">bool __is_changed()</div><div class="ttdoc">检查是否将 A 效果切换到 B 效果</div><div class="ttdef"><b>定义</b> Transition.cpp:90</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a22134b1b897178b971fa4da403abefcd"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a22134b1b897178b971fa4da403abefcd">EasyEngine::Transition::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">停止过渡</div><div class="ttdef"><b>定义</b> Transition.cpp:37</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a4869d559da5461f9ffc0619f34f4552f"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552f">EasyEngine::Transition::DeletionPolicy</a></div><div class="ttdeci">DeletionPolicy</div><div class="ttdoc">删除策略</div><div class="ttdef"><b>定义</b> Transition.h:41</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">EasyEngine::Transition::KeepWhenStopped</a></div><div class="ttdeci">@ KeepWhenStopped</div><div class="ttdoc">当停止时不删除过渡</div><div class="ttdef"><b>定义</b> Transition.h:43</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551">EasyEngine::Transition::DeleteWhenStopped</a></div><div class="ttdeci">@ DeleteWhenStopped</div><div class="ttdoc">当停止时删除过渡</div><div class="ttdef"><b>定义</b> Transition.h:45</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a498269231d2bcfbd0b8dcc3ccff89638"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a498269231d2bcfbd0b8dcc3ccff89638">EasyEngine::Transition::setDuration</a></div><div class="ttdeci">void setDuration(uint64_t duration)</div><div class="ttdoc">设置过渡持续时间</div><div class="ttdef"><b>定义</b> Transition.cpp:14</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a5746987a6235f4d880d32f63d6d5dc92"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a5746987a6235f4d880d32f63d6d5dc92">EasyEngine::Transition::______</a></div><div class="ttdeci">void ______()</div><div class="ttdoc">仅用于被其它系统处理，禁止手动调用</div><div class="ttdef"><b>定义</b> Transition.cpp:73</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a67ec913f25668b09e7cac23d1fb2fa5a"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a67ec913f25668b09e7cac23d1fb2fa5a">EasyEngine::Transition::deletionPolicy</a></div><div class="ttdeci">const DeletionPolicy &amp; deletionPolicy() const</div><div class="ttdoc">获取当前过渡效果的删除策略</div><div class="ttdef"><b>定义</b> Transition.cpp:69</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a86488f0d7199218446f364652eb0aef9"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a86488f0d7199218446f364652eb0aef9">EasyEngine::Transition::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">开始过渡</div><div class="ttdef"><b>定义</b> Transition.cpp:22</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_a99293c0b49369fc6ba3e241fa91ef663"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#a99293c0b49369fc6ba3e241fa91ef663">EasyEngine::Transition::pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">暂停过渡</div><div class="ttdef"><b>定义</b> Transition.cpp:32</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aa2f50651c53c61959f205093405f9949"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aa2f50651c53c61959f205093405f9949">EasyEngine::Transition::Transition</a></div><div class="ttdeci">Transition(uint64_t duration, DeletionPolicy deletion_policy, Painter *painter)</div><div class="ttdoc">创建过渡效果</div><div class="ttdef"><b>定义</b> Transition.cpp:5</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aa463a042e13eb9e186a36b6718d10b3a"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aa463a042e13eb9e186a36b6718d10b3a">EasyEngine::Transition::currentTime</a></div><div class="ttdeci">uint64_t currentTime() const</div><div class="ttdoc">获取当前过渡的时间</div><div class="ttdef"><b>定义</b> Transition.cpp:49</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aad8c1cae4044373445e025578a09dc53"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aad8c1cae4044373445e025578a09dc53">EasyEngine::Transition::duration</a></div><div class="ttdeci">uint64_t duration() const</div><div class="ttdoc">获取当前设置的过渡持续时长</div><div class="ttdef"><b>定义</b> Transition.cpp:45</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_ab1a6f8d36c6378b857fbe2cf10f0cec8"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#ab1a6f8d36c6378b857fbe2cf10f0cec8">EasyEngine::Transition::setDirection</a></div><div class="ttdeci">void setDirection(const Direction &amp;direction)</div><div class="ttdoc">设置过渡方式</div><div class="ttdef"><b>定义</b> Transition.cpp:18</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_abac7ce62087be65cda9ea0c94e2854c0"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#abac7ce62087be65cda9ea0c94e2854c0">EasyEngine::Transition::state</a></div><div class="ttdeci">const State &amp; state() const</div><div class="ttdoc">获取当前过渡的状态</div><div class="ttdef"><b>定义</b> Transition.cpp:65</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_ac6ab958306cd4589fb13c04533179557"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#ac6ab958306cd4589fb13c04533179557">EasyEngine::Transition::loopCount</a></div><div class="ttdeci">uint64_t loopCount() const</div><div class="ttdoc">获取过渡效果完成循环总次数</div><div class="ttdef"><b>定义</b> Transition.cpp:53</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aeb284434e566a61938da5a3a80c5a3c5"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5">EasyEngine::Transition::Direction</a></div><div class="ttdeci">Direction</div><div class="ttdoc">用于表示过渡效果时的过渡顺序</div><div class="ttdef"><b>定义</b> Transition.h:31</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">EasyEngine::Transition::Forward</a></div><div class="ttdeci">@ Forward</div><div class="ttdoc">顺流</div><div class="ttdef"><b>定义</b> Transition.h:33</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb">EasyEngine::Transition::Backward</a></div><div class="ttdeci">@ Backward</div><div class="ttdoc">倒流</div><div class="ttdef"><b>定义</b> Transition.h:35</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aebb8a038a3899e2be705846ef303a9f5"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aebb8a038a3899e2be705846ef303a9f5">EasyEngine::Transition::setDeletionPolicy</a></div><div class="ttdeci">void setDeletionPolicy(const DeletionPolicy &amp;deletion_policy)</div><div class="ttdoc">设置删除策略</div><div class="ttdef"><b>定义</b> Transition.cpp:10</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_af619709414a249643603e465f3766c7a"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#af619709414a249643603e465f3766c7a">EasyEngine::Transition::clearLoopCount</a></div><div class="ttdeci">void clearLoopCount()</div><div class="ttdoc">清零过渡效果完成循环总次数</div><div class="ttdef"><b>定义</b> Transition.cpp:57</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_afd38058b33700c8b13e5593880d8046e"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046e">EasyEngine::Transition::State</a></div><div class="ttdeci">State</div><div class="ttdoc">用于定义过渡时的状态</div><div class="ttdef"><b>定义</b> Transition.h:19</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931">EasyEngine::Transition::Running</a></div><div class="ttdeci">@ Running</div><div class="ttdoc">运行</div><div class="ttdef"><b>定义</b> Transition.h:25</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523">EasyEngine::Transition::Paused</a></div><div class="ttdeci">@ Paused</div><div class="ttdoc">暂停</div><div class="ttdef"><b>定义</b> Transition.h:23</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">EasyEngine::Transition::Stopped</a></div><div class="ttdeci">@ Stopped</div><div class="ttdoc">停止</div><div class="ttdef"><b>定义</b> Transition.h:21</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_transition_html_aff7ef3dd7b38599b3fa859bae3f36fc2"><div class="ttname"><a href="class_easy_engine_1_1_transition.html#aff7ef3dd7b38599b3fa859bae3f36fc2">EasyEngine::Transition::direction</a></div><div class="ttdeci">const Direction &amp; direction() const</div><div class="ttdoc">获取当前过渡的方式是正向过渡还是反向过渡</div><div class="ttdef"><b>定义</b> Transition.cpp:61</div></div>
+<div class="ttc" id="anamespace_easy_engine_html"><div class="ttname"><a href="namespace_easy_engine.html">EasyEngine</a></div><div class="ttdoc">引擎</div><div class="ttdef"><b>定义</b> Algorithm.h:19</div></div>
+<div class="ttc" id="astruct_easy_engine_1_1_graphics_1_1_rectangle_html"><div class="ttname"><a href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">EasyEngine::Graphics::Rectangle</a></div><div class="ttdoc">矩形</div><div class="ttdef"><b>定义</b> Basic.h:332</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>Transition.h</b></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

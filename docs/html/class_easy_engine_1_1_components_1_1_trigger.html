@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;0.1.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
    </div>
   </td>
  </tr>
@@ -124,15 +124,15 @@ $(function() {
 Public 成员函数</h2></td></tr>
 <tr class="memitem:a9eaf3ed743fdd095a7e140dfa12439dd" id="r_a9eaf3ed743fdd095a7e140dfa12439dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eaf3ed743fdd095a7e140dfa12439dd">setCondition</a> (const std::function&lt; bool()&gt; &amp;<a class="el" href="#a2325306a16dd133b1a65a20f4eb99ff6">condition</a>)</td></tr>
 <tr class="memdesc:a9eaf3ed743fdd095a7e140dfa12439dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置触发条件  <br /></td></tr>
-<tr class="memitem:a2e3030c281f9797797f8dffeadd27046" id="r_a2e3030c281f9797797f8dffeadd27046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e3030c281f9797797f8dffeadd27046">setEnterSceneEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
+<tr class="memitem:a2e3030c281f9797797f8dffeadd27046" id="r_a2e3030c281f9797797f8dffeadd27046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e3030c281f9797797f8dffeadd27046">setEvent</a> (const std::function&lt; void()&gt; &amp;function)</td></tr>
 <tr class="memdesc:a2e3030c281f9797797f8dffeadd27046"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置触发后执行的事件  <br /></td></tr>
 <tr class="memitem:a9fd4e074c9977cad190a4c3cabe379fc" id="r_a9fd4e074c9977cad190a4c3cabe379fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fd4e074c9977cad190a4c3cabe379fc">setEnabled</a> (bool <a class="el" href="#ad89b741c15f1742e85335d727b05146b">enabled</a>)</td></tr>
 <tr class="memdesc:a9fd4e074c9977cad190a4c3cabe379fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置启用/禁用触发器  <br /></td></tr>
 <tr class="memitem:ad89b741c15f1742e85335d727b05146b" id="r_ad89b741c15f1742e85335d727b05146b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad89b741c15f1742e85335d727b05146b">enabled</a> () const</td></tr>
 <tr class="memdesc:ad89b741c15f1742e85335d727b05146b"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否已启用触发器  <br /></td></tr>
-<tr class="memitem:a6c6d552e8995010c53bc7badc9a93a85" id="r_a6c6d552e8995010c53bc7badc9a93a85"><td class="memItemLeft" align="right" valign="top"><a id="a6c6d552e8995010c53bc7badc9a93a85" name="a6c6d552e8995010c53bc7badc9a93a85"></a>
+<tr class="memitem:a9ca5c4174e5a778e87d1846d6f5318e6" id="r_a9ca5c4174e5a778e87d1846d6f5318e6"><td class="memItemLeft" align="right" valign="top"><a id="a9ca5c4174e5a778e87d1846d6f5318e6" name="a9ca5c4174e5a778e87d1846d6f5318e6"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>______</b> ()</td></tr>
-<tr class="memdesc:a6c6d552e8995010c53bc7badc9a93a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新触发器状态（无需手动执行） <br /></td></tr>
+<tr class="memdesc:a9ca5c4174e5a778e87d1846d6f5318e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新触发器状态（无需手动执行） <br /></td></tr>
 <tr class="memitem:afb8a3782f871164123d54cc8e8f983ce" id="r_afb8a3782f871164123d54cc8e8f983ce"><td class="memItemLeft" align="right" valign="top"><a id="afb8a3782f871164123d54cc8e8f983ce" name="afb8a3782f871164123d54cc8e8f983ce"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>trigger</b> ()</td></tr>
 <tr class="memdesc:afb8a3782f871164123d54cc8e8f983ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">手动触发触发器 <br /></td></tr>
@@ -225,13 +225,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
 </div>
 </div>
 <a id="a2e3030c281f9797797f8dffeadd27046" name="a2e3030c281f9797797f8dffeadd27046"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e3030c281f9797797f8dffeadd27046">&#9670;&#160;</a></span>setEnterSceneEvent()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3030c281f9797797f8dffeadd27046">&#9670;&#160;</a></span>setEvent()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void EasyEngine::Components::Trigger::setEnterSceneEvent </td>
+          <td class="memname">void EasyEngine::Components::Trigger::setEvent </td>
           <td>(</td>
           <td class="paramtype">const std::function&lt; void()&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
           <td></td>

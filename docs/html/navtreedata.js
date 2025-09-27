@@ -26,49 +26,13 @@ var NAVTREE =
 [
   [ "Easy Engine", "index.html", [
     [ "Easy Engine 游戏引擎文档", "index.html", "index" ],
-    [ "Easy Engine 快速入门指南", "md_quickstart.html", [
-      [ "1. 环境准备", "md_quickstart.html#autotoc_md24", [
-        [ "1.1 系统要求", "md_quickstart.html#autotoc_md25", null ],
-        [ "1.2 安装依赖", "md_quickstart.html#autotoc_md26", [
-          [ "Windows (使用 vcpkg)", "md_quickstart.html#autotoc_md27", null ],
-          [ "Linux (Ubuntu/Debian)", "md_quickstart.html#autotoc_md28", null ],
-          [ "macOS (使用 Homebrew)", "md_quickstart.html#autotoc_md29", null ]
-        ] ]
-      ] ],
-      [ "2. 第一个项目", "md_quickstart.html#autotoc_md30", [
-        [ "2.1 创建项目结构", "md_quickstart.html#autotoc_md31", null ],
-        [ "2.2 CMakeLists.txt", "md_quickstart.html#autotoc_md32", null ],
-        [ "2.3 基础游戏循环", "md_quickstart.html#autotoc_md33", null ]
-      ] ],
-      [ "3. 核心概念", "md_quickstart.html#autotoc_md34", [
-        [ "3.1 引擎管理", "md_quickstart.html#autotoc_md35", null ],
-        [ "3.2 图形系统", "md_quickstart.html#autotoc_md36", null ],
-        [ "3.3 事件处理", "md_quickstart.html#autotoc_md37", null ]
-      ] ],
-      [ "4. 进阶功能", "md_quickstart.html#autotoc_md38", [
-        [ "4.1 精灵动画", "md_quickstart.html#autotoc_md39", null ],
-        [ "4.2 碰撞检测", "md_quickstart.html#autotoc_md40", null ],
-        [ "4.3 性能监控", "md_quickstart.html#autotoc_md41", null ]
-      ] ],
-      [ "5. 最佳实践", "md_quickstart.html#autotoc_md42", [
-        [ "5.1 资源管理", "md_quickstart.html#autotoc_md43", null ],
-        [ "5.2 性能优化", "md_quickstart.html#autotoc_md44", null ],
-        [ "5.3 代码结构", "md_quickstart.html#autotoc_md45", null ]
-      ] ],
-      [ "6. 常见问题", "md_quickstart.html#autotoc_md46", [
-        [ "Q: 如何处理窗口大小变化？", "md_quickstart.html#autotoc_md47", null ],
-        [ "Q: 如何添加音效？", "md_quickstart.html#autotoc_md48", null ],
-        [ "Q: 如何处理不同分辨率？", "md_quickstart.html#autotoc_md49", null ]
-      ] ],
-      [ "7. 下一步", "md_quickstart.html#autotoc_md50", null ],
-      [ "8. 获取帮助", "md_quickstart.html#autotoc_md51", null ]
-    ] ],
     [ "命名空间", "namespaces.html", [
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "类", "annotated.html", [
       [ "类列表", "annotated.html", "annotated_dup" ],
       [ "类索引", "classes.html", null ],
+      [ "类继承关系", "hierarchy.html", "hierarchy" ],
       [ "类成员", "functions.html", [
         [ "全部", "functions.html", "functions_dup" ],
         [ "函数", "functions_func.html", "functions_func" ],
@@ -90,9 +54,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_algorithm_8h.html",
-"class_easy_engine_1_1_components_1_1_layer.html#aa510952b9cc0eea784611d1d435aba68",
-"class_easy_engine_1_1_event_system.html#a81485710f7070c50bd5f9e144c1427a1",
-"struct_easy_engine_1_1_audio_system_1_1_audio.html#a5ce8d9277781d86532c5f790dc2f740ead56836f7417639aaa93e417c37994597"
+"class_easy_engine_1_1_components_1_1_layer.html#aa2773980c77788ac70e8db8ae2eddd1f",
+"class_easy_engine_1_1_engine.html#aad213c3ad36ac11e6b457d5fde128d1e",
+"functions_func.html"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

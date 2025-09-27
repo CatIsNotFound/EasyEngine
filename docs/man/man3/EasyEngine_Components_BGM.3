@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::BGM" 3 "Version 0.1.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::BGM" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,7 +29,7 @@ EasyEngine::Components::BGM \- 背景音乐
 .br
 .RI "播放 \fBBGM\fP "
 .ti -1c
-.RI "void \fBstop\fP ()"
+.RI "void \fBstop\fP (int64_t fade_out_duration)"
 .br
 .RI "停止播放 \fBBGM\fP "
 .ti -1c
@@ -193,7 +193,7 @@ paused
 .RE
 .PP
 
-.SS "void EasyEngine::Components::BGM::stop ()"
+.SS "void EasyEngine::Components::BGM::stop (int64_t fade_out_duration)"
 
 .PP
 停止播放 \fBBGM\fP 
