@@ -20,9 +20,9 @@
 #include "Scene.h"
 
 /// 主版本号
-#define EASYENGINE_MAJOR_VERSION 0
+#define EASYENGINE_MAJOR_VERSION 1
 /// 副版本号
-#define EASYENGINE_MINOR_VERSION 1
+#define EASYENGINE_MINOR_VERSION 0
 /// 修订版本号
 #define EASYENGINE_MACRO_VERSION 1
 /// 版本类型
