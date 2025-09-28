@@ -15,7 +15,7 @@ var index =
     [ "快速开始", "index.html#autotoc_md11", [
       [ "最小示例", "index.html#autotoc_md12", null ]
     ] ],
-    [ "构建和部署", "index.html#autotoc_md13", [
+    [ "构建、部署和安装", "index.html#autotoc_md13", [
       [ "系统要求", "index.html#autotoc_md14", null ],
       [ "构建命令", "index.html#autotoc_md15", null ],
       [ "开发环境配置", "index.html#autotoc_md16", null ]

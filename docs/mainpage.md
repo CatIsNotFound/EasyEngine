@@ -118,10 +118,11 @@ int main() {
 }
 ```
 
-## 构建和部署
+## 构建、部署和安装
 
 ### 系统要求
 - 编译器：支持 C++23 的现代编译器
+- CMake 至少版本为 3.28+
 - 依赖库：
   - SDL3 (图形和窗口管理)
   - SDL3_image (图像加载)
@@ -167,10 +168,10 @@ cmake -B build -DCMAKE_INSTALL_PREFIX=/path/to/install
 
 ```bash
 # 编译项目
-cmake --build build --config Release --target install
+cmake --build build --target install
 
 # Linux 下需要执行如下：
-sudo cmake --build build --config Release --target install
+sudo cmake --build build --target install
 ```
 
 ### 开发环境配置

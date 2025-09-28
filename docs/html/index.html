@@ -258,11 +258,12 @@ $(function() {
 <div class="ttc" id="anamespace_easy_engine_html"><div class="ttname"><a href="namespace_easy_engine.html">EasyEngine</a></div><div class="ttdoc">引擎</div><div class="ttdef"><b>定义</b> Algorithm.h:19</div></div>
 <div class="ttc" id="astruct_easy_engine_1_1_graphics_1_1_rectangle_html"><div class="ttname"><a href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">EasyEngine::Graphics::Rectangle</a></div><div class="ttdoc">矩形</div><div class="ttdef"><b>定义</b> Basic.h:332</div></div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
-构建和部署</h1>
+构建、部署和安装</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 系统要求</h2>
 <ul>
 <li>编译器：支持 C++23 的现代编译器</li>
+<li>CMake 至少版本为 3.28+</li>
 <li>依赖库：<ul>
 <li>SDL3 (图形和窗口管理)</li>
 <li>SDL3_image (图像加载)</li>
@@ -298,10 +299,10 @@ $(function() {
 <div class="line">cmake -B build -DCMAKE_INSTALL_PREFIX=/path/to/install</div>
 </div><!-- fragment --><p>注：这里的 <span class="tt">/path/to/install</span> 请替换为你希望安装的路径。</p>
 <div class="fragment"><div class="line"># 编译项目</div>
-<div class="line">cmake --build build --config Release --target install</div>
+<div class="line">cmake --build build --target install</div>
 <div class="line"> </div>
 <div class="line"># Linux 下需要执行如下：</div>
-<div class="line">sudo cmake --build build --config Release --target install</div>
+<div class="line">sudo cmake --build build --target install</div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 开发环境配置</h2>
 <p>项目已配置好 CLion/Visual Studio 的 CMake 支持，可直接导入构建。</p>

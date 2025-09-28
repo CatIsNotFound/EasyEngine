@@ -66,8 +66,13 @@ install(DIRECTORY src/
     DESTINATION include/EasyEngine
     FILES_MATCHING PATTERN "*.h"
 )
+
 install(DIRECTORY docs/
     DESTINATION docs
+)
+
+install(DIRECTORY examples/
+        DESTINATION examples
 )
 
 install(FILES LICENSE

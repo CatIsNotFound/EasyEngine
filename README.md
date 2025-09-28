@@ -53,88 +53,25 @@ Step 2. 新建一个你的项目目录，例如：`MyGame`。
 
 Step 3. 解压所有包，并将解压后的多个目录复制到你的项目目录的 `libs` 目录。
 
-Step 4. 在 `CMakeLists.txt` 文件下添加以下内容：
+Step 4. 从项目 `examples` 目录下复制 `CMakeLists.txt` 文件和 `main.cpp` 文件。
+
+记得修改 `CMakeLists.txt` 文件，具体如下内容：
 
 ```cmake
-cmake_minimum_required(VERSION 3.31)
-project(MyGame)  # 这里定义你的项目名称（可以将 `MyGame` 修改成其它名称）
+cmake_minimum_required(VERSION 3.28)
+project(MyGame)     # 在此处修改你的项目名称
 
-set(CMAKE_CXX_STANDARD 23)
-
-# 定义第三方库目录（如果不在项目目录中，请修改为其它实际路径）
-set(SDL_DIR       "libs/SDL")
-set(SDL_IMAGE_DIR "libs/SDL3_image")
-set(SDL_TTF_DIR   "libs/SDL3_ttf")
-set(SDL_MIXER_DIR "libs/SDL3_mixer")
-set(SDL_GFX_DIR   "libs/SDL3_gfx")
-set(FMT_DIR       "libs/FMT")
-
-list(APPEND CMAKE_PREFIX_PATH ${SDL_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${SDL_IMAGE_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${SDL_TTF_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${SDL_MIXER_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${SDL_GFX_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${FMT_DIR})
-list(APPEND CMAKE_PREFIX_PATH "libs/EasyEngine")
-
-# 添加 EasyEngine 模块
-find_package(EasyEngine REQUIRED)
-
-# 添加可执行程序目标
-add_executable(${PROJECT_NAME} main.cpp)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    EasyEngine::EasyEngine
-)
-
-# 复制第三方库文件到构建目录，针对 Windows 系统。
-if (WIN32)
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin       ${CMAKE_BINARY_DIR}
-            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_IMAGE_DIR}/bin ${CMAKE_BINARY_DIR}
-            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_TTF_DIR}/bin   ${CMAKE_BINARY_DIR}
-            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}
-            COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_GFX_DIR}/bin   ${CMAKE_BINARY_DIR}
-    )
-endif()
+# 这里的目录需要自行修改实际的目录
+set(SDL_DIR        "/path/to/SDL")
+set(SDL_IMAGE_DIR  "/path/to/SDL3_image")
+set(SDL_TTF_DIR    "/path/to/SDL3_ttf")
+set(SDL_MIXER_DIR  "/path/to/SDL3_mixer")
+set(SDL_GFX_DIR    "/path/to/SDL3_gfx")
+set(FMT_DIR        "/path/to/FMT")
+set(EASYENGINE_DIR "/path/to/EasyEngine")
 ```
 
-Step 5: 新建 `main.cpp` 文件并加入以下示例代码：
-
-```cpp
-#include <EasyEngine/Core.h>
-using namespace EasyEngine;
-using namespace Components;
-
-int main() {
-    // 创建引擎实例
-    Engine engine("Hello EasyEngine!", 800, 600);
-    engine.show();
-
-    // 设置事件处理器
-    engine.installEventHandler([](SDL_Event& e) {
-        if (e.key.down && e.key.key == SDLK_ESCAPE) {
-            return false;
-        }
-        return true;
-    });
-
-    // 设置渲染回调
-    engine.painter()->installPaintEvent([&](Painter& painter) {
-        painter.fillBackColor(StdColor::White);
-
-        // 绘制一个红色矩形
-        painter.setThickness(20);
-        Graphics::Rectangle rect(100, 100, 200, 150, StdColor::Red, true, true, StdColor::Yellow);
-        painter.drawRectangle(rect);
-        // 添加像素文字
-        painter.drawPixelText("Hello EasyEngine!", {20, 20}, {1.f, 1.f}, StdColor::Black);
-    });
-    return engine.exec();
-}
-```
-
-Step 6: 编译当前项目，或在终端执行以下命令：
+Step 5: 编译当前项目，或在终端执行以下命令：
 
 ```bash
 mkdir build
