@@ -26,7 +26,6 @@ find_package(SDL3_ttf REQUIRED)
 find_package(SDL3_mixer REQUIRED)
 find_package(SDL3_gfx REQUIRED)
 find_package(fmt REQUIRED)
-#find_package(pugixml REQUIRED)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}" CACHE PATH "" FORCE)
@@ -67,8 +66,12 @@ install(DIRECTORY src/
     DESTINATION include/EasyEngine
     FILES_MATCHING PATTERN "*.h"
 )
-install(DIRECTORY assets/
-    DESTINATION assets
+install(DIRECTORY docs/
+    DESTINATION docs
+)
+
+install(FILES LICENSE
+    DESTINATION License
 )
 
 install(EXPORT EasyEngineTargets

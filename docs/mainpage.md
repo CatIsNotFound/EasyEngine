@@ -58,36 +58,48 @@ Easy Engine 是一个基于 SDL3 图形引擎库二次封装的开源游戏引�
 ### 模块结构
 ```
 EasyEngine/
-├── Core/           # 引擎核心（窗口、事件、渲染管理）
-├── Components/     # 游戏组件（精灵、实体、碰撞体）
-├── Basic/         # 基础数据结构（图形、数学、颜色）
-├── Algorithm/     # 算法库（几何、数学、工具）
-├── Resources/     # 资源管理（纹理、音频、字体）
-└── Utils/         # 工具类和辅助函数
+├── src/                    # 引擎源码
+│   ├── Core.h/.cpp        # 引擎核心管理（Engine、Cursor、Painter、窗口管理等）
+│   ├── Components.h/.cpp  # 游戏组件系统（BGM、SFX、Timer、Trigger、Sprite等）
+│   ├── Basic.h/.cpp       # 基础数据结构（Vector2、Size、Geometry、StdColor等）
+│   ├── Algorithm.h/.cpp   # 算法和工具函数（颜色转换、图形算法等）
+│   ├── Resources.h/.cpp   # 资源管理（FileSystem、ResourceSystem）
+│   ├── Scene.h/.cpp       # 场景管理（Layer、Scene、SceneManager - 待完善）
+│   └── preinclude.h       # 预包含头文件
+├── docs/                  # 文档和教程
+├── assets/                # 游戏资源文件（图片、音频等）
+├── examples/              # 示例代码
+├── main.cpp              # 主示例程序
+└── CMakeLists.txt        # 构建配置
 ```
 
 ### 核心类层次
 - Engine：主引擎类，管理整个游戏生命周期
 - Window：窗口管理，支持多窗口操作
+- Cursor：鼠标光标管理，支持自定义热点
 - Painter：图形绘制器，提供所有绘图接口
+- EventSystem：事件系统，处理键盘、鼠标、窗口等事件
+- AudioSystem：音频系统，支持音频播放与管理
+- FontSystem：字体系统，支持字体渲染
 - Entity：游戏实体基类
 - Spirit：精灵类，管理纹理和渲染属性
 - Collider：碰撞体组件，处理碰撞检测
+- ResourceSystem/FileSystem：资源加载与管理
 
 ## 快速开始
 
 ### 最小示例
 ```cpp
-#include "src/Core.h"
+#include <EasyEngine/Core.h>
 using namespace EasyEngine;
 
 int main() {
     // 创建引擎实例
-    Engine engine("我的游戏", 800, 600);
+    Engine engine("Hello EasyEngine!", 800, 600);
     engine.show();
     
     // 设置事件处理器
-    engine.installEventHandler([&engine](SDL_Event event) {
+    engine.installEventHandler([&engine](SDL_Event& e) {
         if (e.key.down && e.key.key == SDLK_ESCAPE) {
             return false;
         }
@@ -117,10 +129,18 @@ int main() {
   - SDL3_mixer (音频播放)
   - fmt (格式化库)
 
+可通过以下链接获取对应第三方依赖库下载：
+
+- [Github 下载第三方依赖库](https://github.com/CatIsNotFound/EasyEngine/releases/tag/3rdLibs)
+- [Gitee 下载第三方依赖库](https://gitee.com/CatIsNotFound/EasyEngine/releases/tag/3rdLibs)
+
 ### 构建命令
 ```bash
-# 克隆项目
+# 克隆项目（Github 下）
 git clone https://github.com/CatIsNotFound/EasyEngine.git
+# 克隆项目（Gitee 下）
+git clone https://gitee.com/CatIsNotFound/EasyEngine.git
+#  进入项目目录
 cd EasyEngine
 ```
 
@@ -136,17 +156,21 @@ set(SDL_GFX_DIR   "/path/to/SDL3_gfx")
 set(FMT_DIR       "/path/to/FMT")
 ```
 
-配置项目并编译
+配置与安装项目
 
 ```bash
 # 配置构建
-cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake -B build -DCMAKE_INSTALL_PREFIX=/path/to/install
+```
 
+注：这里的 `/path/to/install` 请替换为你希望安装的路径。
+
+```bash
 # 编译项目
-cmake --build build
+cmake --build build --config Release --target install
 
-# 运行示例
-./build/EasyEngine
+# Linux 下需要执行如下：
+sudo cmake --build build --config Release --target install
 ```
 
 ### 开发环境配置
