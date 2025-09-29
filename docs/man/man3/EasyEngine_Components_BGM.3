@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::BGM" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::BGM" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -66,6 +66,8 @@ EasyEngine::Components::BGM \- 背景音乐
 .SH "详细描述"
 .PP 
 背景音乐 
+
+用于对单个背景音乐的管理，如播放、暂停、停止等基本操作 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Components::BGM::BGM (const std::string & resource_name)"
@@ -197,6 +199,11 @@ paused
 
 .PP
 停止播放 \fBBGM\fP 
+.PP
+\fB参数\fP
+.RS 4
+\fIfade_out_duration\fP 淡出效果持续时长（毫秒） 
+.RE
 .PP
 \fB参见\fP
 .RS 4

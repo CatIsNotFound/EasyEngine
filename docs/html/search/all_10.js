@@ -8,7 +8,7 @@ var searchData=
   ['remove_5',['remove',['../class_easy_engine_1_1_components_1_1_sprite_group.html#adad0a871642230fe5369053b55200fd6',1,'EasyEngine::Components::SpriteGroup::remove(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#ac3baf90c06bab7b55b29e5727637c9f6',1,'EasyEngine::Components::SpriteGroup::remove(uint32_t index=0)'],['../class_easy_engine_1_1_resource_system.html#ad8e1f04826b602b48d9f36a216c367db',1,'EasyEngine::ResourceSystem::remove()'],['../class_easy_engine_1_1_components_1_1_layer.html#abf3bbdbc516e3734995770bfb731d817',1,'EasyEngine::Components::Layer::remove()']]],
   ['removecontrol_6',['removeControl',['../class_easy_engine_1_1_event_system.html#ae032623554fd311ec78d8fda94829519',1,'EasyEngine::EventSystem']]],
   ['removeevent_7',['removeEvent',['../class_easy_engine_1_1_components_1_1_control.html#a25407f100e6ee32a184f1b8678b039a1',1,'EasyEngine::Components::Control']]],
-  ['removeframe_8',['removeFrame',['../class_easy_engine_1_1_components_1_1_animation.html#ac7e2f43869a7f037c715557a93a6230f',1,'EasyEngine::Components::Animation']]],
+  ['removeframe_8',['removeFrame',['../class_easy_engine_1_1_components_1_1_frame_animation.html#ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b',1,'EasyEngine::Components::FrameAnimation']]],
   ['removelayer_9',['removeLayer',['../class_easy_engine_1_1_components_1_1_scene.html#a2d3d9bdbc65af395e097c31b335a8f6f',1,'EasyEngine::Components::Scene']]],
   ['removescenemanager_10',['removeSceneManager',['../class_easy_engine_1_1_event_system.html#a454aeddc881fe95e75ee6533fb287624',1,'EasyEngine::EventSystem']]],
   ['removestatus_11',['removeStatus',['../class_easy_engine_1_1_components_1_1_control.html#a3ed49936ba26ad09ccc84fd4f2a54f43',1,'EasyEngine::Components::Control']]],
@@ -19,7 +19,7 @@ var searchData=
   ['renderer_16',['renderer',['../class_easy_engine_1_1_window.html#a41046f61ad7d68ff36a22b3f2c765801',1,'EasyEngine::Window']]],
   ['replace_17',['replace',['../class_easy_engine_1_1_components_1_1_sprite_group.html#ad675677ac97d5fbe90841de07a74dd2a',1,'EasyEngine::Components::SpriteGroup::replace()'],['../class_easy_engine_1_1_resource_system.html#a57fd170dabd9e3b366426b87f7b87aa8',1,'EasyEngine::ResourceSystem::replace()']]],
   ['replacecontrol_18',['replaceControl',['../class_easy_engine_1_1_event_system.html#ae84d4a57a24a0e8eeb3e298ff001f109',1,'EasyEngine::EventSystem']]],
-  ['replaceframe_19',['replaceFrame',['../class_easy_engine_1_1_components_1_1_animation.html#acd73ebeb90e37dfd83604809c5d61e8b',1,'EasyEngine::Components::Animation']]],
+  ['replaceframe_19',['replaceFrame',['../class_easy_engine_1_1_components_1_1_frame_animation.html#aeb2e4f6c174ad7b95e22fea701326dad',1,'EasyEngine::Components::FrameAnimation']]],
   ['replacetimer_20',['replaceTimer',['../class_easy_engine_1_1_event_system.html#abb9809cacfda2007ca242a9a24ed2f5d',1,'EasyEngine::EventSystem']]],
   ['replacetrigger_21',['replaceTrigger',['../class_easy_engine_1_1_event_system.html#aaf492f5fe57c619b028649df1133cbc0',1,'EasyEngine::EventSystem']]],
   ['reset_22',['reset',['../struct_easy_engine_1_1_vector2.html#af63bdb1dbc67e277ac0cfb53594bd488',1,'EasyEngine::Vector2::reset()'],['../struct_easy_engine_1_1_size.html#a379511bae66bc15816a852889b669e8a',1,'EasyEngine::Size::reset()']]],
@@ -37,5 +37,5 @@ var searchData=
   ['rmfile_34',['rmFile',['../class_easy_engine_1_1_file_system.html#afbfadf0549fd2ca15949de1faf2d1913',1,'EasyEngine::FileSystem']]],
   ['rotate_35',['rotate',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#a0ce153220d67a358afd182823bd06f07',1,'EasyEngine::Components::Sprite::Properties']]],
   ['rotate_5fcenter_36',['rotate_center',['../struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html#ac394e4695c92b824d201163168d6fb65',1,'EasyEngine::Components::Sprite::Properties']]],
-  ['running_37',['Running',['../class_easy_engine_1_1_transition.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931',1,'EasyEngine::Transition']]]
+  ['running_37',['Running',['../_transition_8h.html#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931',1,'EasyEngine::Transition']]]
 ];

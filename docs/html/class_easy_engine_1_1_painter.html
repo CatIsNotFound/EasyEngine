@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
    </div>
   </td>
  </tr>
@@ -135,7 +135,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:ab300f0373b019bc8deec93a69af60043" id="r_ab300f0373b019bc8deec93a69af60043"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab300f0373b019bc8deec93a69af60043">setSceneManager</a> (<a class="el" href="class_easy_engine_1_1_scene_manager.html">SceneManager</a> *sceneManager)</td></tr>
 <tr class="memdesc:ab300f0373b019bc8deec93a69af60043"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置场景管理器以做到实时渲染  <br /></td></tr>
 <tr class="memitem:a3a66ba427079d98632cc3aad58fb10a2" id="r_a3a66ba427079d98632cc3aad58fb10a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a66ba427079d98632cc3aad58fb10a2">______</a> ()</td></tr>
-<tr class="memdesc:a3a66ba427079d98632cc3aad58fb10a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">渲染/刷新画面  <br /></td></tr>
+<tr class="memdesc:a3a66ba427079d98632cc3aad58fb10a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行所有绘制命令并刷新窗口画面  <br /></td></tr>
 <tr class="memitem:a66f911e0a810c1a1eafeaf3d4a9300ef" id="r_a66f911e0a810c1a1eafeaf3d4a9300ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66f911e0a810c1a1eafeaf3d4a9300ef">fillBackColor</a> (const SColor &amp;color)</td></tr>
 <tr class="memdesc:a66f911e0a810c1a1eafeaf3d4a9300ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">填充背景颜色  <br /></td></tr>
 <tr class="memitem:a5f5c5ded78dbf9c92861128d6d9e6a4f" id="r_a5f5c5ded78dbf9c92861128d6d9e6a4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f5c5ded78dbf9c92861128d6d9e6a4f">drawPoint</a> (const <a class="el" href="struct_easy_engine_1_1_graphics_1_1_point.html">Graphics::Point</a> &amp;point)</td></tr>
@@ -161,14 +161,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <tr class="memdesc:a72e902425d21e1fa0ee3a5c5b6c20a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置自定义视图  <br /></td></tr>
 <tr class="memitem:a7f44722d3bb5141668e181e7a49dc637" id="r_a7f44722d3bb5141668e181e7a49dc637"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f44722d3bb5141668e181e7a49dc637">setClipView</a> (const <a class="el" href="struct_easy_engine_1_1_geometry.html">Geometry</a> &amp;geometry)</td></tr>
 <tr class="memdesc:a7f44722d3bb5141668e181e7a49dc637"><td class="mdescLeft">&#160;</td><td class="mdescRight">裁剪可见视图  <br /></td></tr>
-<tr class="memitem:ae60325fd9b0a65a4c55881699d5f1c4a" id="r_ae60325fd9b0a65a4c55881699d5f1c4a"><td class="memItemLeft" align="right" valign="top"><a id="ae60325fd9b0a65a4c55881699d5f1c4a" name="ae60325fd9b0a65a4c55881699d5f1c4a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_addTransition</b> (<a class="el" href="class_easy_engine_1_1_transition.html">Transition</a> *transition)</td></tr>
-<tr class="memitem:a05a23aa23d07aca4697aebcc84a46d63" id="r_a05a23aa23d07aca4697aebcc84a46d63"><td class="memItemLeft" align="right" valign="top"><a id="a05a23aa23d07aca4697aebcc84a46d63" name="a05a23aa23d07aca4697aebcc84a46d63"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_removeTransition</b> (<a class="el" href="class_easy_engine_1_1_transition.html">Transition</a> *transition)</td></tr>
-<tr class="memitem:a70bc4068b72a1acc26edaf0fcf1c9022" id="r_a70bc4068b72a1acc26edaf0fcf1c9022"><td class="memItemLeft" align="right" valign="top"><a id="a70bc4068b72a1acc26edaf0fcf1c9022" name="a70bc4068b72a1acc26edaf0fcf1c9022"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_startTransition</b> (<a class="el" href="class_easy_engine_1_1_transition.html">Transition</a> *transition)</td></tr>
-<tr class="memitem:aea6a100019fdd8156cba767c84618e7c" id="r_aea6a100019fdd8156cba767c84618e7c"><td class="memItemLeft" align="right" valign="top"><a id="aea6a100019fdd8156cba767c84618e7c" name="aea6a100019fdd8156cba767c84618e7c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_stopTransition</b> (<a class="el" href="class_easy_engine_1_1_transition.html">Transition</a> *transition)</td></tr>
+<tr class="memitem:a6355e956d682b63350757673d73ce0cc" id="r_a6355e956d682b63350757673d73ce0cc"><td class="memItemLeft" align="right" valign="top"><a id="a6355e956d682b63350757673d73ce0cc" name="a6355e956d682b63350757673d73ce0cc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_addTransition</b> (<a class="el" href="class_easy_engine_1_1_transition_1_1_abstract_transition.html">Transition::AbstractTransition</a> *transition)</td></tr>
+<tr class="memitem:aa7f010c62437bb4254863c1cf6d07c07" id="r_aa7f010c62437bb4254863c1cf6d07c07"><td class="memItemLeft" align="right" valign="top"><a id="aa7f010c62437bb4254863c1cf6d07c07" name="aa7f010c62437bb4254863c1cf6d07c07"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_removeTransition</b> (<a class="el" href="class_easy_engine_1_1_transition_1_1_abstract_transition.html">Transition::AbstractTransition</a> *transition)</td></tr>
+<tr class="memitem:a235b485fa5fe29e7c176aa7d28a747d9" id="r_a235b485fa5fe29e7c176aa7d28a747d9"><td class="memItemLeft" align="right" valign="top"><a id="a235b485fa5fe29e7c176aa7d28a747d9" name="a235b485fa5fe29e7c176aa7d28a747d9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_startTransition</b> (<a class="el" href="class_easy_engine_1_1_transition_1_1_abstract_transition.html">Transition::AbstractTransition</a> *transition)</td></tr>
+<tr class="memitem:a5e1ab1a934230c4691899a2dd0969f8f" id="r_a5e1ab1a934230c4691899a2dd0969f8f"><td class="memItemLeft" align="right" valign="top"><a id="a5e1ab1a934230c4691899a2dd0969f8f" name="a5e1ab1a934230c4691899a2dd0969f8f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_stopTransition</b> (<a class="el" href="class_easy_engine_1_1_transition_1_1_abstract_transition.html">Transition::AbstractTransition</a> *transition)</td></tr>
+<tr class="memitem:ab1809befa66c08520d3ad1305fa41d1c" id="r_ab1809befa66c08520d3ad1305fa41d1c"><td class="memItemLeft" align="right" valign="top"><a id="ab1809befa66c08520d3ad1305fa41d1c" name="ab1809befa66c08520d3ad1305fa41d1c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_startEasingCurve</b> (const std::shared_ptr&lt; <a class="el" href="class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html">EasingCurve::AbstractEasingCurve</a> &gt; &amp;easing_curve)</td></tr>
+<tr class="memitem:a73ca33bdb9a565fc2e665c7344ce7c97" id="r_a73ca33bdb9a565fc2e665c7344ce7c97"><td class="memItemLeft" align="right" valign="top"><a id="a73ca33bdb9a565fc2e665c7344ce7c97" name="a73ca33bdb9a565fc2e665c7344ce7c97"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_stopEasingCurve</b> (const std::shared_ptr&lt; <a class="el" href="class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html">EasingCurve::AbstractEasingCurve</a> &gt; &amp;easing_curve)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 友元</h2></td></tr>
@@ -177,7 +181,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Components::Sprite</
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>图形绘制器 </p>
-<p>针对单个窗口使用图形绘制器，决定了如何绘制画面 </p>
+<p>绑定单个窗口的渲染器，通过存储并执行绘制命令（点、线、精灵等）实现画面渲染 </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="ac730bf88a55fcdaa0612cb8412bd0361" name="ac730bf88a55fcdaa0612cb8412bd0361"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac730bf88a55fcdaa0612cb8412bd0361">&#9670;&#160;</a></span>Painter()</h2>
@@ -228,7 +232,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Components::Sprite</
       </table>
 </div><div class="memdoc">
 
-<p>渲染/刷新画面 </p>
+<p>执行所有绘制命令并刷新窗口画面 </p>
 <dl class="section warning"><dt>警告</dt><dd>请勿手动使用此函数，会出现异常退出！ </dd></dl>
 
 </div>

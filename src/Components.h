@@ -30,6 +30,8 @@ namespace EasyEngine {
         /**
          * @class BGM
          * @brief 背景音乐
+         *
+         * 用于对单个背景音乐的管理，如播放、暂停、停止等基本操作
          */
         class BGM {
         public:
@@ -63,6 +65,7 @@ namespace EasyEngine {
             void play(bool loop = true);
             /**
              * @brief 停止播放 BGM
+             * @param fade_out_duration 淡出效果持续时长（毫秒）
              * @see play
              * @see paused
              * @see isPlayed
@@ -114,6 +117,8 @@ namespace EasyEngine {
         /**
          * @class SFX
          * @brief 音效
+         *
+         * 用于管理单个音效，支持对音效的播放、停止等操作
          */
         class SFX {
         public:
@@ -139,7 +144,8 @@ namespace EasyEngine {
             void play();
             /**
              * @brief 播放 SFX（循环播放）
-             * @param delay 设定间隔（设定毫秒数）
+             * @param delay 延迟播放时间（毫秒）
+             * @note 若指定 `delay` 参数，当音效播放结束后，将在指定的延迟播放时间后再次播放音效。
              */
             void play(uint32_t delay);
             /**
@@ -168,7 +174,7 @@ namespace EasyEngine {
          * @class Timer
          * @brief 定时器
          *
-         * 用于定时触发事件的组件
+         * 用于定时触发事件的组件。
          * @note 此组件只能以指针的形式使用
          */
         class Timer {
@@ -329,6 +335,8 @@ namespace EasyEngine {
          * @brief 精灵
          *
          * 用于存储精灵（即纹理）以及如何绘制精灵
+         * @note 修正了拼写错误，将 `spirit` 修正为 `sprite`。
+         * @since v1.1.0-alpha
          */
         class Sprite {
         public:
@@ -355,17 +363,17 @@ namespace EasyEngine {
             /**
              * @brief 克隆已有的精灵
              * @param name   精灵别名
-             * @param spirit 指定精灵
+             * @param sprite 指定精灵
              */
-            Sprite(const std::string& name, const Sprite& spirit);
+            Sprite(const std::string& name, const Sprite& sprite);
             /**
              * @brief 克隆并裁剪已有的精灵
              * @param name  精灵别名
-             * @param spirit 指定精灵
+             * @param sprite 指定精灵
              * @param clip_pos 裁剪位置（相对坐标）
              * @param clip_size 裁剪大小
              */
-            Sprite(const std::string& name, const Sprite& spirit,
+            Sprite(const std::string& name, const Sprite& sprite,
                    const Vector2& clip_pos, const Size& clip_size);
             /**
              * @brief 创建一个精灵并裁剪
@@ -395,6 +403,7 @@ namespace EasyEngine {
             /**
              * @brief 从资源系统中设置指定资源
              * @param resource_name 指定资源名称
+             * @return 返回 `bool` 表示当前设置的指定资源是否成功加载。
              */
             bool setResource(const std::string& resource_name);
             /**
@@ -433,8 +442,10 @@ namespace EasyEngine {
             Size size() const;
             /**
              * @brief 获取精灵纹理
+             * @note 自 v1.1.0-alpha 版本，此函数重命名为 `sprite` 以解决不必要的拼写错误的问题。
+             * @since v1.1.0-alpha
              */
-            STexture* spirit() const;
+            STexture* sprite() const;
             /**
              * @brief 在指定位置上绘制精灵
              * @param pos 指定绘制坐标
@@ -577,12 +588,14 @@ namespace EasyEngine {
              * @brief 重新调整整体精灵组合大小
              * @param width  新的宽度
              * @param height 新的高度
+             * @note 当 `width` 或 `height` 小于等于 0 时，将无法调整大小！
              * @see size
              */
             void resize(float width, float height);
             /**
              * @brief 重新调整整体精灵组合大小
              * @param size  给定新的大小
+             * @note 当 `size` 参数中的 `width` 或 `height` 属性小于等于 0 时，将无法调整大小！
              * @see size
              */
             void resize(const Size& size);
@@ -723,28 +736,30 @@ namespace EasyEngine {
         };
 
         /**
-         * @class Animation
-         * @brief 动画
+         * @class FrameAnimation
+         * @brief 帧动画
          *
          * 由帧组成的精灵动画
+         * @note 自版本 v1.1.0 起，原类名 `Animation` 类已重命名为 `FrameAnimation`。着重强调由多精灵组成的帧动画。
+         * @since v1.1.0-alpha
          */
-        class Animation {
+        class FrameAnimation {
             struct Frame;
         public:
             /**
              * @brief 创建动画
              * @param name 动画别名
              */
-            explicit Animation(const std::string& name);
+            explicit FrameAnimation(const std::string& name);
             /**
              * @brief 创建动画
              * @param name 动画别名
              * @param sprite_list 精灵列表
              * @param duration_per_frame 每帧的持续时间（单位：毫秒），默认 50 毫秒
              */
-            Animation(const std::string& name, const std::vector<Sprite *> &sprite_list,
-                      uint64_t duration_per_frame = 50);
-            ~Animation();
+            FrameAnimation(const std::string& name, const std::vector<Sprite *> &sprite_list,
+                           uint64_t duration_per_frame = 50);
+            ~FrameAnimation();
             /**
              * @brief 设置新的别名
              * @param name 新别名
@@ -824,7 +839,8 @@ namespace EasyEngine {
             /**
              * @brief 在指定位置下绘制动画
              * @param pos 指定位置
-             * @note 必须执行，否则将无法在窗口上显示动画
+             * @note 必须执行，否则将无法在窗口上显示动画；
+             * @note 在当前帧数下的 `Sprite` 不可用或帧数超出索引时将输出错误！
              * @see play
              * @see stop
              */
@@ -903,7 +919,7 @@ namespace EasyEngine {
          * @class Element
          * @brief 存储元素
          *
-         * 用于存储 Sprite, Animation, SpriteGroup, ClipSprite 等
+         * 用于存储 Sprite, FrameAnimation, SpriteGroup, ClipSprite 等
          */
         class Element {
             friend class Entity;
@@ -922,8 +938,8 @@ namespace EasyEngine {
                 std::shared_ptr<Sprite> sprite;
                 /// @brief 精灵组合 2
                 std::shared_ptr<SpriteGroup> sprite_group;
-                /// @brief 动画 3
-                std::shared_ptr<Animation> animation;
+                /// @brief 帧动画 3
+                std::shared_ptr<FrameAnimation> frame_animation;
                 /// @brief 裁剪精灵 4
                 GeometryF clip_sprite;
             };
@@ -1127,7 +1143,7 @@ namespace EasyEngine {
             explicit Entity(const std::string& name);
             Entity(const std::string& name, const Sprite& sprite);
             Entity(const std::string& name, const SpriteGroup& group);
-            Entity(const std::string& name, const Animation& animation);
+            Entity(const std::string& name, const FrameAnimation& animation);
             Entity(const std::string& name, const Sprite& sprite, const GeometryF& clip);
             /**
              * @brief 设置实体名称
@@ -1138,6 +1154,18 @@ namespace EasyEngine {
              * @brief 获取实体名称
              */
             std::string name() const;
+            /**
+             * @brief 设置实体的可见性
+             * @param visible 设定实体是否可见
+             * @since v1.1.0-alpha
+             */
+            void setVisible(bool visible);
+            /**
+             * @brief 获取当前实体的可见性
+             * @return 返回 `bool` 值以确认实体是否可见
+             * @since v1.1.0-alpha
+             */
+            bool visible() const;
             /**
              * @brief 设置碰撞器本身形状
              * @param rect 指定矩形
@@ -1195,7 +1223,7 @@ namespace EasyEngine {
              * @brief 获取实体本身
              * @tparam Type 指定实体类型
              * @return 返回对应类型的本体
-             * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
+             * @note 目前支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF
              * @note 可通过使用 typeInfo() 判断当前本体的类型
              * @see typeInfo
              */
@@ -1216,14 +1244,15 @@ namespace EasyEngine {
             std::unique_ptr<Collider> _collider;
             std::string _obj_name;
             std::shared_ptr<Element> _container;
-            std::unique_ptr<Sprite> _def_sprite;
+            std::unique_ptr<Sprite> _defined_sprite;
+            bool _visible{false};
         };
 
         /**
          * @brief 获取游戏实体的本体
          * @tparam Type 指定类型
          * @return 返回指定类型的本体
-         * @note 可支持的类：Sprite、SpriteGroup、Animation、GeometryF
+         * @note 可支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF
          * @warning 若指定的类型与现有本体的类型不一致，将强制报错并退出！
          */
         template<class Type>
@@ -1232,15 +1261,15 @@ namespace EasyEngine {
                 if (_container->type_id == 1) return _container->self.sprite.get();
             } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
                 if (_container->type_id == 2) return _container->self.sprite_group.get();
-            } else if constexpr (std::is_same_v<Type, Animation>) {
-                if (_container->type_id == 3) return _container->self.animation.get();
+            } else if constexpr (std::is_same_v<Type, FrameAnimation>) {
+                if (_container->type_id == 3) return _container->self.frame_animation.get();
             } else if constexpr (std::is_same_v<Type, GeometryF>) {
                 if (_container->type_id == 4) return &_container->self.clip_sprite;
             } else {
                 static_assert(std::is_same_v<Type, Sprite> ||
-                        std::is_same_v<Type, SpriteGroup> ||
-                        std::is_same_v<Type, Animation> ||
-                        std::is_same_v<Type, GeometryF>, "[ERROR] Can't support the specified type!");
+                              std::is_same_v<Type, SpriteGroup> ||
+                              std::is_same_v<Type, FrameAnimation> ||
+                              std::is_same_v<Type, GeometryF>, "[ERROR] Can't support the specified type!");
             }
             throw std::runtime_error("[FATAL] The specified type is not match the current entity!\n");
         }
@@ -1339,6 +1368,18 @@ namespace EasyEngine {
              */
             const std::string& name() const;
             /**
+             * @brief 设置控件的可见性
+             * @param visible 设定控件是否可见
+             * @since v1.1.0-alpha
+             */
+            void setVisible(bool visible);
+            /**
+             * @brief 获取该控件的可见性
+             * @return 返回 `bool` 以确定控件是否存在
+             * @since v1.1.0-alpha
+             */
+            bool visible() const;
+            /**
              * @brief 设定控件指定状态
              * @param status 选择任一状态
              * @param sprite 在当前状态下绘制成什么精灵
@@ -1357,11 +1398,11 @@ namespace EasyEngine {
             /**
              * @brief 设定控件指定状态
              * @param status 选择任一状态
-             * @param sprite 在当前状态下绘制成什么精灵动画
+             * @param frame_animation 在当前状态下绘制成什么精灵动画
              * @see status
              * @see removeStatus
              */
-            void setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation);
+            void setStatus(const EasyEngine::Components::Control::Status &status, FrameAnimation *frame_animation);
             /**
              * @brief 设定控件指定状态
              * @param status 选择任一状态
@@ -1382,7 +1423,7 @@ namespace EasyEngine {
              * @tparam Type 指定类型
              * @param status 选择任一状态
              * @return 返回当前状态下的精灵、组、动画
-             * @note 目前支持的类：Sprite、SpriteGroup、Animation、GeometryF
+             * @note 目前支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF
              * @note 如果无法确定当前状态下使用的类，请使用 getTypename() 以获取该状态下使用的类。
              * @warning 若指定的类型与对应状态下的现有类型不一致，将强制报错并异常退出！
              * @see setStatus
@@ -1401,14 +1442,14 @@ namespace EasyEngine {
                     if (_con->type_id == 1) return _con->self.sprite.get();
                 } else if constexpr (std::is_same_v<Type, SpriteGroup>) {
                     if (_con->type_id == 2) return _con->self.sprite_group.get();
-                } else if constexpr (std::is_same_v<Type, Animation>) {
-                    if (_con->type_id == 3) return _con->self.animation.get();
+                } else if constexpr (std::is_same_v<Type, FrameAnimation>) {
+                    if (_con->type_id == 3) return _con->self.frame_animation.get();
                 } else if constexpr (std::is_same_v<Type, GeometryF>) {
                     if (_con->type_id == 4) return &_con->self.clip_sprite;
                 } else {
                     static_assert(std::is_same_v<Type, Sprite> ||
                                   std::is_same_v<Type, SpriteGroup> ||
-                                  std::is_same_v<Type, Animation> ||
+                                  std::is_same_v<Type, FrameAnimation> ||
                                   std::is_same_v<Type, GeometryF>,
                                   "[ERROR] Unsupported type for Control::status()");
                 }
@@ -1420,8 +1461,10 @@ namespace EasyEngine {
              * @return 返回类型名称，若没有当前状态，将返回空字符串
              * @retval Sprite
              * @retval SpriteGroup
-             * @retval Animation
+             * @retval FrameAnimation
              * @retval Unknown
+             * @note 自 v1.1.0-alpha 版本起，原 `Animation` 类已重命名为 `FrameAnimation` 类。
+             * @since v1.1.0-alpha
              * @see status
              */
             const char* getTypename(const enum Status &status) const;
@@ -1574,12 +1617,13 @@ namespace EasyEngine {
             Event __currentEvent() const;
         private:
             std::string _name;
-            std::shared_ptr<Sprite> _def_sprite;
+            std::shared_ptr<Sprite> _defined_sprite;
             std::map<Status, std::shared_ptr<Element>> _container_list;
             std::map<Event, std::shared_ptr<Trigger>> _trigger_list;
             Status _status{Status::Default};
             Event _event{Event::None};
             bool _active{false};
+            bool _visible{false};
             Vector2 _position, _hot_position;
             Size _size;
             Graphics::Rectangle _hot_area;

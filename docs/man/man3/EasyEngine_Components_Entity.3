@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Entity" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Entity" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,7 +23,7 @@ EasyEngine::Components::Entity \- 游戏实体
 .RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBSpriteGroup\fP &group)"
 .br
 .ti -1c
-.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBAnimation\fP &animation)"
+.RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBFrameAnimation\fP &animation)"
 .br
 .ti -1c
 .RI "\fBEntity\fP (const std::string &\fBname\fP, const \fBSprite\fP &sprite, const \fBGeometryF\fP &clip)"
@@ -36,6 +36,14 @@ EasyEngine::Components::Entity \- 游戏实体
 .RI "std::string \fBname\fP () const"
 .br
 .RI "获取实体名称 "
+.ti -1c
+.RI "void \fBsetVisible\fP (bool \fBvisible\fP)"
+.br
+.RI "设置实体的可见性 "
+.ti -1c
+.RI "bool \fBvisible\fP () const"
+.br
+.RI "获取当前实体的可见性 "
 .ti -1c
 .RI "void \fBsetColliderSelf\fP (const \fBGraphics::Rectangle\fP &rect)"
 .br
@@ -133,7 +141,7 @@ EasyEngine::Components::Entity \- 游戏实体
 .PP
 \fB注解\fP
 .RS 4
-目前支持的类：Sprite、SpriteGroup、Animation、GeometryF 
+目前支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF 
 
 .PP
 可通过使用 \fBtypeInfo()\fP 判断当前本体的类型 
@@ -156,7 +164,7 @@ EasyEngine::Components::Entity \- 游戏实体
 .PP
 \fB注解\fP
 .RS 4
-可支持的类：Sprite、SpriteGroup、Animation、GeometryF 
+可支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF 
 .RE
 .PP
 \fB警告\fP
@@ -272,6 +280,22 @@ EasyEngine::Components::Entity \- 游戏实体
 .RE
 .PP
 
+.SS "void EasyEngine::Components::Entity::setVisible (bool visible)"
+
+.PP
+设置实体的可见性 
+.PP
+\fB参数\fP
+.RS 4
+\fIvisible\fP 设定实体是否可见 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
+.RE
+.PP
+
 .SS "const std::type_info & EasyEngine::Components::Entity::typeInfo () const"
 
 .PP
@@ -290,6 +314,22 @@ EasyEngine::Components::Entity \- 游戏实体
 \fB参见\fP
 .RS 4
 \fBself\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Entity::visible () const"
+
+.PP
+获取当前实体的可见性 
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 值以确认实体是否可见 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
 .RE
 .PP
 

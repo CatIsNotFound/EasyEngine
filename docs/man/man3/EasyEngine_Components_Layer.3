@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Layer" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Layer" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,7 +33,7 @@ EasyEngine::Components::Layer \- 图层
 .br
 .RI "添加指定精灵组合到图层 "
 .ti -1c
-.RI "bool \fBappend\fP (uint32_t z_order, \fBAnimation\fP *\fBanimation\fP)"
+.RI "bool \fBappend\fP (uint32_t z_order, \fBFrameAnimation\fP *\fBanimation\fP)"
 .br
 .RI "添加指定精灵动画到图层 "
 .ti -1c
@@ -57,7 +57,7 @@ EasyEngine::Components::Layer \- 图层
 .br
 .RI "获取指定图层下的精灵组合 "
 .ti -1c
-.RI "\fBAnimation\fP * \fBanimation\fP (uint32_t z_order) const"
+.RI "\fBFrameAnimation\fP * \fBanimation\fP (uint32_t z_order) const"
 .br
 .RI "获取指定图层下的精灵动画 "
 .ti -1c
@@ -164,7 +164,7 @@ EasyEngine::Components::Layer \- 图层
 
 .SH "成员函数说明"
 .PP 
-.SS "\fBComponents::Animation\fP * Components::Layer::animation (uint32_t z_order) const"
+.SS "\fBComponents::FrameAnimation\fP * Components::Layer::animation (uint32_t z_order) const"
 
 .PP
 获取指定图层下的精灵动画 
@@ -192,35 +192,6 @@ EasyEngine::Components::Layer \- 图层
 \fB参见\fP
 .RS 4
 \fBindexOf\fP 
-
-.PP
-\fBremove\fP 
-.RE
-.PP
-
-.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBAnimation\fP * animation)"
-
-.PP
-添加指定精灵动画到图层 
-.PP
-\fB参数\fP
-.RS 4
-\fIz_order\fP 绘制顺序（数字越大，显示最先） 
-.br
-\fIsprite\fP 指定精灵动画 
-.RE
-.PP
-\fB返回\fP
-.RS 4
-是否成功添加到图层 
-.RE
-.PP
-\fB参见\fP
-.RS 4
-\fBAnimation\fP 
-
-.PP
-\fBanimation\fP 
 
 .PP
 \fBremove\fP 
@@ -279,6 +250,35 @@ EasyEngine::Components::Layer \- 图层
 
 .PP
 \fBentity\fP 
+
+.PP
+\fBremove\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Layer::append (uint32_t z_order, \fBFrameAnimation\fP * animation)"
+
+.PP
+添加指定精灵动画到图层 
+.PP
+\fB参数\fP
+.RS 4
+\fIz_order\fP 绘制顺序（数字越大，显示最先） 
+.br
+\fIsprite\fP 指定精灵动画 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+是否成功添加到图层 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+Animation 
+
+.PP
+\fBanimation\fP 
 
 .PP
 \fBremove\fP 

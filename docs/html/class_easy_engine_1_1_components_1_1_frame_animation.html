@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Components::FrameAnimation类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_components_1_1_frame_animation.html','','class_easy_engine_1_1_components_1_1_frame_animation-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Components::FrameAnimation类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>帧动画  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_components_8h_source.html">Components.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a010e0e7f2dc97b181d5737c2b4dfa19d" id="r_a010e0e7f2dc97b181d5737c2b4dfa19d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a010e0e7f2dc97b181d5737c2b4dfa19d">FrameAnimation</a> (const std::string &amp;<a class="el" href="#a313b7d3183bd9d450ae9d146c66dd268">name</a>)</td></tr>
+<tr class="memdesc:a010e0e7f2dc97b181d5737c2b4dfa19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建动画  <br /></td></tr>
+<tr class="memitem:aee4fa7e6b3b94cee607853817218a16c" id="r_aee4fa7e6b3b94cee607853817218a16c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee4fa7e6b3b94cee607853817218a16c">FrameAnimation</a> (const std::string &amp;<a class="el" href="#a313b7d3183bd9d450ae9d146c66dd268">name</a>, const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)</td></tr>
+<tr class="memdesc:aee4fa7e6b3b94cee607853817218a16c"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建动画  <br /></td></tr>
+<tr class="memitem:a81edf8cb257e42820a30618a4e9a859c" id="r_a81edf8cb257e42820a30618a4e9a859c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81edf8cb257e42820a30618a4e9a859c">setName</a> (const std::string &amp;<a class="el" href="#a313b7d3183bd9d450ae9d146c66dd268">name</a>)</td></tr>
+<tr class="memdesc:a81edf8cb257e42820a30618a4e9a859c"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置新的别名  <br /></td></tr>
+<tr class="memitem:a313b7d3183bd9d450ae9d146c66dd268" id="r_a313b7d3183bd9d450ae9d146c66dd268"><td class="memItemLeft" align="right" valign="top"><a id="a313b7d3183bd9d450ae9d146c66dd268" name="a313b7d3183bd9d450ae9d146c66dd268"></a>
+const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const</td></tr>
+<tr class="memdesc:a313b7d3183bd9d450ae9d146c66dd268"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前动画别名 <br /></td></tr>
+<tr class="memitem:aa14190db6b65bdb0307ab1ac00766ca0" id="r_aa14190db6b65bdb0307ab1ac00766ca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa14190db6b65bdb0307ab1ac00766ca0">setPosition</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos)</td></tr>
+<tr class="memdesc:aa14190db6b65bdb0307ab1ac00766ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置动画绘制时的位置  <br /></td></tr>
+<tr class="memitem:aa3e81fe588dc86bbd9879c157191355b" id="r_aa3e81fe588dc86bbd9879c157191355b"><td class="memItemLeft" align="right" valign="top"><a id="aa3e81fe588dc86bbd9879c157191355b" name="aa3e81fe588dc86bbd9879c157191355b"></a>
+const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>position</b> () const</td></tr>
+<tr class="memdesc:aa3e81fe588dc86bbd9879c157191355b"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前动画所绘制的位置 <br /></td></tr>
+<tr class="memitem:aa4d068b7d9bd418b0d39130a03eb82eb" id="r_aa4d068b7d9bd418b0d39130a03eb82eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4d068b7d9bd418b0d39130a03eb82eb">addFrame</a> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *<a class="el" href="#aeac6bff1289baf0db1def5e9b57e8c18">sprite</a>, uint64_t duration=50)</td></tr>
+<tr class="memdesc:aa4d068b7d9bd418b0d39130a03eb82eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">将精灵图像加入到帧  <br /></td></tr>
+<tr class="memitem:a666f9b8defa54d5a1ab88ccc59478e67" id="r_a666f9b8defa54d5a1ab88ccc59478e67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a666f9b8defa54d5a1ab88ccc59478e67">insertFrame</a> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *<a class="el" href="#aeac6bff1289baf0db1def5e9b57e8c18">sprite</a>, uint64_t duration=50, const size_t frame=0)</td></tr>
+<tr class="memdesc:a666f9b8defa54d5a1ab88ccc59478e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">将精灵图像插入到指定帧  <br /></td></tr>
+<tr class="memitem:aeb2e4f6c174ad7b95e22fea701326dad" id="r_aeb2e4f6c174ad7b95e22fea701326dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb2e4f6c174ad7b95e22fea701326dad">replaceFrame</a> (<a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *<a class="el" href="#aeac6bff1289baf0db1def5e9b57e8c18">sprite</a>, const size_t frame, const uint64_t duration)</td></tr>
+<tr class="memdesc:aeb2e4f6c174ad7b95e22fea701326dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定帧下替换精灵图像  <br /></td></tr>
+<tr class="memitem:ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b" id="r_ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b">removeFrame</a> (const size_t frame=0)</td></tr>
+<tr class="memdesc:ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除指定帧对应的图像  <br /></td></tr>
+<tr class="memitem:a184af81bf6f00711afc1713ed633109e" id="r_a184af81bf6f00711afc1713ed633109e"><td class="memItemLeft" align="right" valign="top"><a id="a184af81bf6f00711afc1713ed633109e" name="a184af81bf6f00711afc1713ed633109e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clearFrames</b> ()</td></tr>
+<tr class="memdesc:a184af81bf6f00711afc1713ed633109e"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空所有帧下的图像 <br /></td></tr>
+<tr class="memitem:a6819f7279764f017f8f2c70b39d0ee1c" id="r_a6819f7279764f017f8f2c70b39d0ee1c"><td class="memItemLeft" align="right" valign="top"><a id="a6819f7279764f017f8f2c70b39d0ee1c" name="a6819f7279764f017f8f2c70b39d0ee1c"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>framesCount</b> () const</td></tr>
+<tr class="memdesc:a6819f7279764f017f8f2c70b39d0ee1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取该动画下的总帧数 <br /></td></tr>
+<tr class="memitem:a460badec337f701dc7752fb1591ae41f" id="r_a460badec337f701dc7752fb1591ae41f"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a460badec337f701dc7752fb1591ae41f">durationInFrame</a> (const size_t frame=0)</td></tr>
+<tr class="memdesc:a460badec337f701dc7752fb1591ae41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前帧的持续时间（单位：毫秒）  <br /></td></tr>
+<tr class="memitem:aeac6bff1289baf0db1def5e9b57e8c18" id="r_aeac6bff1289baf0db1def5e9b57e8c18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeac6bff1289baf0db1def5e9b57e8c18">sprite</a> (const size_t frame=0) const</td></tr>
+<tr class="memdesc:aeac6bff1289baf0db1def5e9b57e8c18"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取指定帧数下的精灵  <br /></td></tr>
+<tr class="memitem:ad4c377f628dd5e145fb9b552a87f17c2" id="r_ad4c377f628dd5e145fb9b552a87f17c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4c377f628dd5e145fb9b552a87f17c2">draw</a> ()</td></tr>
+<tr class="memdesc:ad4c377f628dd5e145fb9b552a87f17c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制动画  <br /></td></tr>
+<tr class="memitem:af0f116f6b44932e1f8bcf543c3e402c8" id="r_af0f116f6b44932e1f8bcf543c3e402c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0f116f6b44932e1f8bcf543c3e402c8">draw</a> (const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;pos)</td></tr>
+<tr class="memdesc:af0f116f6b44932e1f8bcf543c3e402c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">在指定位置下绘制动画  <br /></td></tr>
+<tr class="memitem:ae52348089137dfb3d78a2a94f43b697f" id="r_ae52348089137dfb3d78a2a94f43b697f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae52348089137dfb3d78a2a94f43b697f">play</a> (bool loop=true, size_t start_frame=0)</td></tr>
+<tr class="memdesc:ae52348089137dfb3d78a2a94f43b697f"><td class="mdescLeft">&#160;</td><td class="mdescRight">播放动画  <br /></td></tr>
+<tr class="memitem:add2ff42bafddf5061fc1195dddead375" id="r_add2ff42bafddf5061fc1195dddead375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add2ff42bafddf5061fc1195dddead375">stop</a> ()</td></tr>
+<tr class="memdesc:add2ff42bafddf5061fc1195dddead375"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止动画  <br /></td></tr>
+<tr class="memitem:a96131d946e505d8e6d0ea330b32d086e" id="r_a96131d946e505d8e6d0ea330b32d086e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96131d946e505d8e6d0ea330b32d086e">isPlayedAnimation</a> () const</td></tr>
+<tr class="memdesc:a96131d946e505d8e6d0ea330b32d086e"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前动画是否在播放  <br /></td></tr>
+<tr class="memitem:a76edec50252aa5ed0cb32f57a0e2b3a8" id="r_a76edec50252aa5ed0cb32f57a0e2b3a8"><td class="memItemLeft" align="right" valign="top"><a id="a76edec50252aa5ed0cb32f57a0e2b3a8" name="a76edec50252aa5ed0cb32f57a0e2b3a8"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>currentFrame</b> () const</td></tr>
+<tr class="memdesc:a76edec50252aa5ed0cb32f57a0e2b3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前正在绘制的帧数 <br /></td></tr>
+<tr class="memitem:ac7a634bc6b54a566b171f407fc6d36ad" id="r_ac7a634bc6b54a566b171f407fc6d36ad"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7a634bc6b54a566b171f407fc6d36ad">playedCount</a> () const</td></tr>
+<tr class="memdesc:ac7a634bc6b54a566b171f407fc6d36ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前完整播放动画的总次数  <br /></td></tr>
+<tr class="memitem:a8faf6c707711fc00c1a0085711ad3fca" id="r_a8faf6c707711fc00c1a0085711ad3fca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8faf6c707711fc00c1a0085711ad3fca">clearPlayedCount</a> ()</td></tr>
+<tr class="memdesc:a8faf6c707711fc00c1a0085711ad3fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">清零完整播放动画次数  <br /></td></tr>
+<tr class="memitem:a0fd2c654ce0c4d30a03bea8a8e8a1ec0" id="r_a0fd2c654ce0c4d30a03bea8a8e8a1ec0"><td class="memItemLeft" align="right" valign="top"><a id="a0fd2c654ce0c4d30a03bea8a8e8a1ec0" name="a0fd2c654ce0c4d30a03bea8a8e8a1ec0"></a>
+<a class="el" href="class_easy_engine_1_1_components_1_1_timer.html">Timer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>timer</b> ()</td></tr>
+<tr class="memdesc:a0fd2c654ce0c4d30a03bea8a8e8a1ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前使用的定时器 <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>帧动画 </p>
+<p>由帧组成的精灵动画 </p><dl class="section note"><dt>注解</dt><dd>自版本 v1.1.0 起，原类名 <span class="tt">Animation</span> 类已重命名为 <span class="tt"><a class="el" href="class_easy_engine_1_1_components_1_1_frame_animation.html" title="帧动画">FrameAnimation</a></span>。着重强调由多精灵组成的帧动画。 </dd></dl>
+<dl class="section since"><dt>自从</dt><dd>v1.1.0-alpha </dd></dl>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="a010e0e7f2dc97b181d5737c2b4dfa19d" name="a010e0e7f2dc97b181d5737c2b4dfa19d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010e0e7f2dc97b181d5737c2b4dfa19d">&#9670;&#160;</a></span>FrameAnimation() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::FrameAnimation::FrameAnimation </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel explicit">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建动画 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>动画别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aee4fa7e6b3b94cee607853817218a16c" name="aee4fa7e6b3b94cee607853817218a16c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee4fa7e6b3b94cee607853817218a16c">&#9670;&#160;</a></span>FrameAnimation() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EasyEngine::Components::FrameAnimation::FrameAnimation </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">Sprite</a> * &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>sprite_list</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>duration_per_frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">50</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建动画 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>动画别名 </td></tr>
+    <tr><td class="paramname">sprite_list</td><td>精灵列表 </td></tr>
+    <tr><td class="paramname">duration_per_frame</td><td>每帧的持续时间（单位：毫秒），默认 50 毫秒 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="aa4d068b7d9bd418b0d39130a03eb82eb" name="aa4d068b7d9bd418b0d39130a03eb82eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4d068b7d9bd418b0d39130a03eb82eb">&#9670;&#160;</a></span>addFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::addFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>duration</em></span><span class="paramdefsep"> = </span><span class="paramdefval">50</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将精灵图像加入到帧 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite</td><td>指定精灵 </td></tr>
+    <tr><td class="paramname">duration</td><td>帧持续时间（单位：毫秒），默认 50 毫秒 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a666f9b8defa54d5a1ab88ccc59478e67" title="将精灵图像插入到指定帧">insertFrame</a> </dd>
+<dd>
+<a class="el" href="#aeb2e4f6c174ad7b95e22fea701326dad" title="在指定帧下替换精灵图像">replaceFrame</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8faf6c707711fc00c1a0085711ad3fca" name="a8faf6c707711fc00c1a0085711ad3fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8faf6c707711fc00c1a0085711ad3fca">&#9670;&#160;</a></span>clearPlayedCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::clearPlayedCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清零完整播放动画次数 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ac7a634bc6b54a566b171f407fc6d36ad" title="获取当前完整播放动画的总次数">playedCount</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad4c377f628dd5e145fb9b552a87f17c2" name="ad4c377f628dd5e145fb9b552a87f17c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c377f628dd5e145fb9b552a87f17c2">&#9670;&#160;</a></span>draw() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::draw </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>绘制动画 </p>
+<dl class="section note"><dt>注解</dt><dd>必须执行，否则将无法在窗口上显示动画 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae52348089137dfb3d78a2a94f43b697f" title="播放动画">play</a> </dd>
+<dd>
+<a class="el" href="#add2ff42bafddf5061fc1195dddead375" title="停止动画">stop</a> </dd></dl>
+
+</div>
+</div>
+<a id="af0f116f6b44932e1f8bcf543c3e402c8" name="af0f116f6b44932e1f8bcf543c3e402c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f116f6b44932e1f8bcf543c3e402c8">&#9670;&#160;</a></span>draw() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::draw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定位置下绘制动画 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>必须执行，否则将无法在窗口上显示动画； </dd>
+<dd>
+在当前帧数下的 <span class="tt"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html" title="精灵">Sprite</a></span> 不可用或帧数超出索引时将输出错误！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae52348089137dfb3d78a2a94f43b697f" title="播放动画">play</a> </dd>
+<dd>
+<a class="el" href="#add2ff42bafddf5061fc1195dddead375" title="停止动画">stop</a> </dd></dl>
+
+</div>
+</div>
+<a id="a460badec337f701dc7752fb1591ae41f" name="a460badec337f701dc7752fb1591ae41f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a460badec337f701dc7752fb1591ae41f">&#9670;&#160;</a></span>durationInFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t EasyEngine::Components::FrameAnimation::durationInFrame </td>
+          <td>(</td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前帧的持续时间（单位：毫秒） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>指定帧数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a666f9b8defa54d5a1ab88ccc59478e67" name="a666f9b8defa54d5a1ab88ccc59478e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666f9b8defa54d5a1ab88ccc59478e67">&#9670;&#160;</a></span>insertFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::insertFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>duration</em></span><span class="paramdefsep"> = </span><span class="paramdefval">50</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将精灵图像插入到指定帧 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite</td><td>指定精灵 </td></tr>
+    <tr><td class="paramname">duration</td><td>帧持续时间（毫秒），默认 50 毫秒 </td></tr>
+    <tr><td class="paramname">frame</td><td>指定帧数，默认为第 0 帧 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aa4d068b7d9bd418b0d39130a03eb82eb" title="将精灵图像加入到帧">addFrame</a> </dd>
+<dd>
+<a class="el" href="#aeb2e4f6c174ad7b95e22fea701326dad" title="在指定帧下替换精灵图像">replaceFrame</a> </dd></dl>
+
+</div>
+</div>
+<a id="a96131d946e505d8e6d0ea330b32d086e" name="a96131d946e505d8e6d0ea330b32d086e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96131d946e505d8e6d0ea330b32d086e">&#9670;&#160;</a></span>isPlayedAnimation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::Components::FrameAnimation::isPlayedAnimation </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前动画是否在播放 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae52348089137dfb3d78a2a94f43b697f" title="播放动画">play</a> </dd>
+<dd>
+<a class="el" href="#add2ff42bafddf5061fc1195dddead375" title="停止动画">stop</a> </dd>
+<dd>
+frame </dd></dl>
+
+</div>
+</div>
+<a id="ae52348089137dfb3d78a2a94f43b697f" name="ae52348089137dfb3d78a2a94f43b697f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae52348089137dfb3d78a2a94f43b697f">&#9670;&#160;</a></span>play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::play </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>loop</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>start_frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>播放动画 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loop</td><td>是否循环播放动画（默认循环播放） </td></tr>
+    <tr><td class="paramname">start_frame</td><td>从哪一帧开始播放（默认从头开始） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>欲显示绘制动画，需在绘图事件中调用 <span class="tt"><a class="el" href="#ad4c377f628dd5e145fb9b552a87f17c2" title="绘制动画">draw()</a></span> 函数！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ad4c377f628dd5e145fb9b552a87f17c2" title="绘制动画">draw</a> </dd>
+<dd>
+playLoop </dd>
+<dd>
+<a class="el" href="#add2ff42bafddf5061fc1195dddead375" title="停止动画">stop</a> </dd>
+<dd>
+<a class="el" href="#a76edec50252aa5ed0cb32f57a0e2b3a8" title="获取当前正在绘制的帧数">currentFrame</a> </dd>
+<dd>
+<a class="el" href="#a96131d946e505d8e6d0ea330b32d086e" title="获取当前动画是否在播放">isPlayedAnimation</a> </dd></dl>
+
+</div>
+</div>
+<a id="ac7a634bc6b54a566b171f407fc6d36ad" name="ac7a634bc6b54a566b171f407fc6d36ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a634bc6b54a566b171f407fc6d36ad">&#9670;&#160;</a></span>playedCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t EasyEngine::Components::FrameAnimation::playedCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前完整播放动画的总次数 </p>
+<p>当动画完整播放一次后计数 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8faf6c707711fc00c1a0085711ad3fca" title="清零完整播放动画次数">clearPlayedCount</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b" name="ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b">&#9670;&#160;</a></span>removeFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::removeFrame </td>
+          <td>(</td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>移除指定帧对应的图像 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td>指定帧数，默认为第 0 帧 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeb2e4f6c174ad7b95e22fea701326dad" name="aeb2e4f6c174ad7b95e22fea701326dad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb2e4f6c174ad7b95e22fea701326dad">&#9670;&#160;</a></span>replaceFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::replaceFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>sprite</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t</td>          <td class="paramname"><span class="paramname"><em>duration</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在指定帧下替换精灵图像 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sprite</td><td>新的精灵图像 </td></tr>
+    <tr><td class="paramname">frame</td><td>指定帧数 </td></tr>
+    <tr><td class="paramname">duration</td><td>设定持续时间（毫秒） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a81edf8cb257e42820a30618a4e9a859c" name="a81edf8cb257e42820a30618a4e9a859c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81edf8cb257e42820a30618a4e9a859c">&#9670;&#160;</a></span>setName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::setName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置新的别名 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>新别名 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa14190db6b65bdb0307ab1ac00766ca0" name="aa14190db6b65bdb0307ab1ac00766ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14190db6b65bdb0307ab1ac00766ca0">&#9670;&#160;</a></span>setPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::setPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置动画绘制时的位置 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>指定位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeac6bff1289baf0db1def5e9b57e8c18" name="aeac6bff1289baf0db1def5e9b57e8c18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac6bff1289baf0db1def5e9b57e8c18">&#9670;&#160;</a></span>sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_sprite.html">EasyEngine::Components::Sprite</a> * EasyEngine::Components::FrameAnimation::sprite </td>
+          <td>(</td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>frame</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取指定帧数下的精灵 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#aa4d068b7d9bd418b0d39130a03eb82eb" title="将精灵图像加入到帧">addFrame</a> </dd>
+<dd>
+<a class="el" href="#a666f9b8defa54d5a1ab88ccc59478e67" title="将精灵图像插入到指定帧">insertFrame</a> </dd>
+<dd>
+<a class="el" href="#ab1cf4ce3c0b0632b98c0fa5d9ec9fe7b" title="移除指定帧对应的图像">removeFrame</a> </dd>
+<dd>
+<a class="el" href="#aeb2e4f6c174ad7b95e22fea701326dad" title="在指定帧下替换精灵图像">replaceFrame</a> </dd></dl>
+
+</div>
+</div>
+<a id="add2ff42bafddf5061fc1195dddead375" name="add2ff42bafddf5061fc1195dddead375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add2ff42bafddf5061fc1195dddead375">&#9670;&#160;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::Components::FrameAnimation::stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停止动画 </p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ae52348089137dfb3d78a2a94f43b697f" title="播放动画">play</a> </dd>
+<dd>
+frame </dd>
+<dd>
+<a class="el" href="#a96131d946e505d8e6d0ea330b32d086e" title="获取当前动画是否在播放">isPlayedAnimation</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_components_8h_source.html">Components.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Components.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><b>Components</b></li><li class="navelem"><a href="class_easy_engine_1_1_components_1_1_frame_animation.html">FrameAnimation</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

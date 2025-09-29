@@ -1,7 +1,23 @@
 var hierarchy =
 [
+    [ "EasyEngine::EasingCurve::AbstractEasingCurve", "class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html", [
+      [ "EasyEngine::EasingCurve::InCubicCurve", "class_easy_engine_1_1_easing_curve_1_1_in_cubic_curve.html", null ],
+      [ "EasyEngine::EasingCurve::InOutCubicCurve", "class_easy_engine_1_1_easing_curve_1_1_in_out_cubic_curve.html", null ],
+      [ "EasyEngine::EasingCurve::InOutQuadCurve", "class_easy_engine_1_1_easing_curve_1_1_in_out_quad_curve.html", null ],
+      [ "EasyEngine::EasingCurve::InOutSineCurve", "class_easy_engine_1_1_easing_curve_1_1_in_out_sine_curve.html", null ],
+      [ "EasyEngine::EasingCurve::InQuadCurve", "class_easy_engine_1_1_easing_curve_1_1_in_quad_curve.html", null ],
+      [ "EasyEngine::EasingCurve::InSineCurve", "class_easy_engine_1_1_easing_curve_1_1_in_sine_curve.html", null ],
+      [ "EasyEngine::EasingCurve::LinearCurve", "class_easy_engine_1_1_easing_curve_1_1_linear_curve.html", null ],
+      [ "EasyEngine::EasingCurve::OutCubicCurve", "class_easy_engine_1_1_easing_curve_1_1_out_cubic_curve.html", null ],
+      [ "EasyEngine::EasingCurve::OutQuadCurve", "class_easy_engine_1_1_easing_curve_1_1_out_quad_curve.html", null ],
+      [ "EasyEngine::EasingCurve::OutSineCurve", "class_easy_engine_1_1_easing_curve_1_1_out_sine_curve.html", null ]
+    ] ],
+    [ "EasyEngine::Transition::AbstractTransition", "class_easy_engine_1_1_transition_1_1_abstract_transition.html", [
+      [ "EasyEngine::Transition::DarkTransition", "class_easy_engine_1_1_transition_1_1_dark_transition.html", null ],
+      [ "EasyEngine::Transition::EraseTransition", "class_easy_engine_1_1_transition_1_1_erase_transition.html", null ],
+      [ "EasyEngine::Transition::MoveTransition", "class_easy_engine_1_1_transition_1_1_move_transition.html", null ]
+    ] ],
     [ "EasyEngine::Algorithm", "class_easy_engine_1_1_algorithm.html", null ],
-    [ "EasyEngine::Components::Animation", "class_easy_engine_1_1_components_1_1_animation.html", null ],
     [ "EasyEngine::AudioSystem::Audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html", null ],
     [ "EasyEngine::AudioSystem", "class_easy_engine_1_1_audio_system.html", null ],
     [ "EasyEngine::Components::BGM", "class_easy_engine_1_1_components_1_1_b_g_m.html", null ],
@@ -16,6 +32,7 @@ var hierarchy =
     [ "EasyEngine::FileSystem", "class_easy_engine_1_1_file_system.html", null ],
     [ "EasyEngine::Components::Font", "class_easy_engine_1_1_components_1_1_font.html", null ],
     [ "EasyEngine::FontSystem", "class_easy_engine_1_1_font_system.html", null ],
+    [ "EasyEngine::Components::FrameAnimation", "class_easy_engine_1_1_components_1_1_frame_animation.html", null ],
     [ "EasyEngine::Geometry", "struct_easy_engine_1_1_geometry.html", null ],
     [ "EasyEngine::GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
     [ "EasyEngine::Cursor::UserCustom::HotPoint", "struct_easy_engine_1_1_cursor_1_1_user_custom_1_1_hot_point.html", null ],
@@ -36,11 +53,6 @@ var hierarchy =
     [ "EasyEngine::Components::Sprite", "class_easy_engine_1_1_components_1_1_sprite.html", null ],
     [ "EasyEngine::Components::SpriteGroup", "class_easy_engine_1_1_components_1_1_sprite_group.html", null ],
     [ "EasyEngine::Components::Timer", "class_easy_engine_1_1_components_1_1_timer.html", null ],
-    [ "EasyEngine::Transition", "class_easy_engine_1_1_transition.html", [
-      [ "EasyEngine::DarkTransition", "class_easy_engine_1_1_dark_transition.html", null ],
-      [ "EasyEngine::EraseTransition", "class_easy_engine_1_1_erase_transition.html", null ],
-      [ "EasyEngine::MoveTransition", "class_easy_engine_1_1_move_transition.html", null ]
-    ] ],
     [ "EasyEngine::Components::Trigger", "class_easy_engine_1_1_components_1_1_trigger.html", null ],
     [ "EasyEngine::Cursor::UserCustom", "struct_easy_engine_1_1_cursor_1_1_user_custom.html", null ],
     [ "EasyEngine::Vector2", "struct_easy_engine_1_1_vector2.html", null ],

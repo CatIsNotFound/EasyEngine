@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::SFX" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::SFX" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -58,6 +58,8 @@ EasyEngine::Components::SFX \- 音效
 .SH "详细描述"
 .PP 
 音效 
+
+用于管理单个音效，支持对音效的播放、停止等操作 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Components::SFX::SFX (const std::string & resource_name)"
@@ -80,7 +82,12 @@ EasyEngine::Components::SFX \- 音效
 .PP
 \fB参数\fP
 .RS 4
-\fIdelay\fP 设定间隔（设定毫秒数） 
+\fIdelay\fP 延迟播放时间（毫秒） 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+若指定 \fRdelay\fP 参数，当音效播放结束后，将在指定的延迟播放时间后再次播放音效。 
 .RE
 .PP
 

@@ -1,0 +1,142 @@
+.TH "EasyEngine::Transition::DarkTransition" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Transition::DarkTransition \- 黑幕效果  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Transition\&.h>\fP
+.PP
+继承自 \fBEasyEngine::Transition::AbstractTransition\fP \&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBDarkTransition\fP (uint64_t _duration, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP *painter)"
+.br
+.ti -1c
+.RI "void \fBsetBackgroundColor\fP (const SColor &color)"
+.br
+.RI "设置黑幕背景颜色 "
+.ti -1c
+.RI "const SColor & \fBbackgroundColor\fP () const"
+.br
+.RI "获取当前黑幕背景颜色 "
+.in -1c
+
+Public 成员函数 继承自 \fBEasyEngine::Transition::AbstractTransition\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractTransition\fP (uint64_t \fBduration\fP, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP *painter)"
+.br
+.RI "创建过渡效果 "
+.ti -1c
+.RI "void \fBsetDeletionPolicy\fP (const \fBDeletionPolicy\fP &deletion_policy)"
+.br
+.RI "设置删除策略 "
+.ti -1c
+.RI "void \fBsetDuration\fP (uint64_t \fBduration\fP)"
+.br
+.RI "设置过渡持续时间 "
+.ti -1c
+.RI "void \fBsetDirection\fP (const \fBDirection\fP &\fBdirection\fP)"
+.br
+.RI "设置过渡方式 "
+.ti -1c
+.RI "void \fBstart\fP ()"
+.br
+.RI "开始过渡 "
+.ti -1c
+.RI "void \fBpause\fP ()"
+.br
+.RI "暂停过渡 "
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.RI "停止过渡 "
+.ti -1c
+.RI "uint64_t \fBduration\fP () const"
+.br
+.RI "获取当前设置的过渡持续时长 "
+.ti -1c
+.RI "uint64_t \fBcurrentTime\fP () const"
+.br
+.RI "获取当前过渡的时间 "
+.ti -1c
+.RI "uint64_t \fBloopCount\fP () const"
+.br
+.RI "获取过渡效果完成循环总次数 "
+.ti -1c
+.RI "void \fBclearLoopCount\fP ()"
+.br
+.RI "清零过渡效果完成循环总次数 "
+.ti -1c
+.RI "const \fBDirection\fP & \fBdirection\fP () const"
+.br
+.RI "获取当前过渡的方式是正向过渡还是反向过渡 "
+.ti -1c
+.RI "const \fBState\fP & \fBstate\fP () const"
+.br
+.RI "获取当前过渡的状态 "
+.ti -1c
+.RI "const \fBDeletionPolicy\fP & \fBdeletionPolicy\fP () const"
+.br
+.RI "获取当前过渡效果的删除策略 "
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.RI "仅用于被其它系统处理，禁止手动调用 "
+.ti -1c
+.RI "bool \fB__is_changed\fP ()"
+.br
+.RI "检查是否将 A 效果切换到 B 效果 "
+.in -1c
+.SS "额外继承的成员函数"
+
+
+Protected 属性 继承自 \fBEasyEngine::Transition::AbstractTransition\fP
+.in +1c
+.ti -1c
+.RI "uint64_t \fB_duration\fP"
+.br
+.ti -1c
+.RI "\fBDirection\fP \fB_direction\fP {\fBForward\fP}"
+.br
+.ti -1c
+.RI "\fBState\fP \fB_state\fP {\fBStopped\fP}"
+.br
+.ti -1c
+.RI "\fBDeletionPolicy\fP \fB_deletion_policy\fP {\fBKeepWhenStopped\fP}"
+.br
+.ti -1c
+.RI "\fBPainter\fP * \fB_painter\fP {nullptr}"
+.br
+.ti -1c
+.RI "bool \fB_change_signal\fP {false}"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+黑幕效果 
+
+实现最简单的黑幕效果，实现画面由透明到黑或由黑到透明的过渡效果 
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::Transition::DarkTransition::setBackgroundColor (const SColor & color)"
+
+.PP
+设置黑幕背景颜色 
+.PP
+\fB参数\fP
+.RS 4
+\fIcolor\fP 指定背景颜色 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

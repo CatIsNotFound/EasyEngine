@@ -1,0 +1,291 @@
+.TH "EasyEngine::Transition::AbstractTransition" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::Transition::AbstractTransition \- 抽象过渡效果  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Transition\&.h>\fP
+.PP
+被 \fBEasyEngine::Transition::DarkTransition\fP, \fBEasyEngine::Transition::EraseTransition\fP , 以及 \fBEasyEngine::Transition::MoveTransition\fP 继承\&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractTransition\fP (uint64_t \fBduration\fP, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP *painter)"
+.br
+.RI "创建过渡效果 "
+.ti -1c
+.RI "void \fBsetDeletionPolicy\fP (const \fBDeletionPolicy\fP &deletion_policy)"
+.br
+.RI "设置删除策略 "
+.ti -1c
+.RI "void \fBsetDuration\fP (uint64_t \fBduration\fP)"
+.br
+.RI "设置过渡持续时间 "
+.ti -1c
+.RI "void \fBsetDirection\fP (const \fBDirection\fP &\fBdirection\fP)"
+.br
+.RI "设置过渡方式 "
+.ti -1c
+.RI "void \fBstart\fP ()"
+.br
+.RI "开始过渡 "
+.ti -1c
+.RI "void \fBpause\fP ()"
+.br
+.RI "暂停过渡 "
+.ti -1c
+.RI "void \fBstop\fP ()"
+.br
+.RI "停止过渡 "
+.ti -1c
+.RI "uint64_t \fBduration\fP () const"
+.br
+.RI "获取当前设置的过渡持续时长 "
+.ti -1c
+.RI "uint64_t \fBcurrentTime\fP () const"
+.br
+.RI "获取当前过渡的时间 "
+.ti -1c
+.RI "uint64_t \fBloopCount\fP () const"
+.br
+.RI "获取过渡效果完成循环总次数 "
+.ti -1c
+.RI "void \fBclearLoopCount\fP ()"
+.br
+.RI "清零过渡效果完成循环总次数 "
+.ti -1c
+.RI "const \fBDirection\fP & \fBdirection\fP () const"
+.br
+.RI "获取当前过渡的方式是正向过渡还是反向过渡 "
+.ti -1c
+.RI "const \fBState\fP & \fBstate\fP () const"
+.br
+.RI "获取当前过渡的状态 "
+.ti -1c
+.RI "const \fBDeletionPolicy\fP & \fBdeletionPolicy\fP () const"
+.br
+.RI "获取当前过渡效果的删除策略 "
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.RI "仅用于被其它系统处理，禁止手动调用 "
+.ti -1c
+.RI "bool \fB__is_changed\fP ()"
+.br
+.RI "检查是否将 A 效果切换到 B 效果 "
+.in -1c
+.SS "Protected 属性"
+
+.in +1c
+.ti -1c
+.RI "uint64_t \fB_duration\fP"
+.br
+.ti -1c
+.RI "\fBDirection\fP \fB_direction\fP {\fBForward\fP}"
+.br
+.ti -1c
+.RI "\fBState\fP \fB_state\fP {\fBStopped\fP}"
+.br
+.ti -1c
+.RI "\fBDeletionPolicy\fP \fB_deletion_policy\fP {\fBKeepWhenStopped\fP}"
+.br
+.ti -1c
+.RI "\fBPainter\fP * \fB_painter\fP {nullptr}"
+.br
+.ti -1c
+.RI "bool \fB_change_signal\fP {false}"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+抽象过渡效果 
+
+用于实现场景的基本过场效果 
+.PP
+\fB注解\fP
+.RS 4
+早期版本下此类原名为 \fR\fBTransition\fP\fP，随后版本该名称已被作为命名空间。 
+
+.PP
+从 v1\&.1\&.0-alpha 版本起，此类以重命名为 \fR\fBAbstractTransition\fP\fP 类作为抽象过渡效果。 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.0\&.1-beta 
+
+.PP
+v1\&.1\&.0-alpha 
+.RE
+.PP
+
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::Transition::AbstractTransition::AbstractTransition (uint64_t duration, \fBDeletionPolicy\fP deletion_policy, \fBPainter\fP * painter)\fR [explicit]\fP"
+
+.PP
+创建过渡效果 
+.PP
+\fB参数\fP
+.RS 4
+\fIduration\fP 持续时间 
+.br
+\fIdeletion_policy\fP 删除策略 
+.br
+\fIpainter\fP 指定绘图器 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "uint64_t EasyEngine::Transition::AbstractTransition::currentTime () const"
+
+.PP
+获取当前过渡的时间 
+.PP
+\fB参见\fP
+.RS 4
+\fBcurrentTime\fP 
+
+.PP
+\fBloopCount\fP 
+.RE
+.PP
+
+.SS "const \fBDeletionPolicy\fP & EasyEngine::Transition::AbstractTransition::deletionPolicy () const"
+
+.PP
+获取当前过渡效果的删除策略 
+.PP
+\fB参见\fP
+.RS 4
+\fBDeletionPolicy\fP 
+.RE
+.PP
+
+.SS "const \fBDirection\fP & EasyEngine::Transition::AbstractTransition::direction () const"
+
+.PP
+获取当前过渡的方式是正向过渡还是反向过渡 
+.PP
+\fB返回值\fP
+.RS 4
+\fI`Forward`\fP 表示正向过渡（由 A 过渡到 B） 
+.br
+\fI`Backward`\fP 表示反向过渡（由 B 过渡到 A） 
+.RE
+.PP
+
+.SS "uint64_t EasyEngine::Transition::AbstractTransition::duration () const"
+
+.PP
+获取当前设置的过渡持续时长 
+.PP
+\fB参见\fP
+.RS 4
+\fBcurrentTime\fP 
+
+.PP
+\fBloopCount\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::pause ()"
+
+.PP
+暂停过渡 
+.PP
+\fB参见\fP
+.RS 4
+\fBstart\fP \fBstop\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::setDeletionPolicy (const \fBDeletionPolicy\fP & deletion_policy)"
+
+.PP
+设置删除策略 
+.PP
+\fB参数\fP
+.RS 4
+\fIdeletion_policy\fP 
+.RE
+.PP
+当过渡效果过渡之后将触发删除策略 
+.PP
+\fB参见\fP
+.RS 4
+\fBDeletionPolicy\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::setDirection (const \fBDirection\fP & direction)"
+
+.PP
+设置过渡方式 
+.PP
+\fB参数\fP
+.RS 4
+\fIdirection\fP 选择 \fRForward\fP 正向过渡， \fRBackward\fP 反向过渡 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::setDuration (uint64_t duration)"
+
+.PP
+设置过渡持续时间 
+.PP
+\fB参数\fP
+.RS 4
+\fIduration\fP 持续时间（按毫秒计算） 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::start ()"
+
+.PP
+开始过渡 
+.PP
+\fB参见\fP
+.RS 4
+\fBpause\fP 
+
+.PP
+\fBstop\fP 
+.RE
+.PP
+
+.SS "const \fBState\fP & EasyEngine::Transition::AbstractTransition::state () const"
+
+.PP
+获取当前过渡的状态 
+.PP
+\fB参见\fP
+.RS 4
+\fBState\fP 
+.RE
+.PP
+
+.SS "void EasyEngine::Transition::AbstractTransition::stop ()"
+
+.PP
+停止过渡 
+.PP
+\fB参见\fP
+.RS 4
+\fBstart\fP 
+
+.PP
+\fBpause\fP 
+.RE
+.PP
+
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

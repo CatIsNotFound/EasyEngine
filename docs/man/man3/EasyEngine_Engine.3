@@ -1,8 +1,8 @@
-.TH "EasyEngine::Engine" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Engine" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-EasyEngine::Engine \- 引擎类  
+EasyEngine::Engine \- 引擎  
 
 .SH SYNOPSIS
 .br
@@ -19,7 +19,7 @@ EasyEngine::Engine \- 引擎类
 .ti -1c
 .RI "int \fBexec\fP ()"
 .br
-.RI "事件循环，保证引擎持续运作 "
+.RI "启动主事件循环 "
 .ti -1c
 .RI "bool \fBshow\fP (SWindowID window_id=_main_window_id)"
 .br
@@ -145,9 +145,9 @@ EasyEngine::Engine \- 引擎类
 .in -1c
 .SH "详细描述"
 .PP 
-引擎类 
+引擎 
 
-控制所有游戏流程：初始化、渲染、运行、释放等 
+引擎核心控制类，负责窗口创建与管理、渲染流程调度、事件循环驱动及资源生命周期管理 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Engine::Engine (const std::string & title, uint32_t width = \fR800\fP, uint32_t height = \fR600\fP)\fR [explicit]\fP"
@@ -186,14 +186,19 @@ EasyEngine::Engine \- 引擎类
 .SS "int EasyEngine::Engine::exec ()"
 
 .PP
-事件循环，保证引擎持续运作 
+启动主事件循环 
+.PP
+\fB返回\fP
+.RS 4
+返回程序退出码，一般作用于 \fRmain()\fP 函数下的返回值 
+.RE
 .PP
 \fB注解\fP
 .RS 4
-必须调用此函数，否则引擎将会被自动释放 
+必需调用此函数才能使整个引擎持续运行
 .RE
 .PP
-
+启动引擎主事件循环，处理输入、渲染等核心流程。 
 .SS "uint32_t EasyEngine::Engine::fps () const"
 
 .PP

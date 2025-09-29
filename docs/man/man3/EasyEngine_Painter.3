@@ -1,4 +1,4 @@
-.TH "EasyEngine::Painter" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Painter" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,7 +39,7 @@ EasyEngine::Painter \- 图形绘制器
 .ti -1c
 .RI "void \fB______\fP ()"
 .br
-.RI "渲染/刷新画面 "
+.RI "执行所有绘制命令并刷新窗口画面 "
 .ti -1c
 .RI "void \fBfillBackColor\fP (const SColor &color)"
 .br
@@ -88,16 +88,22 @@ EasyEngine::Painter \- 图形绘制器
 .br
 .RI "裁剪可见视图 "
 .ti -1c
-.RI "bool \fB_addTransition\fP (\fBTransition\fP *transition)"
+.RI "bool \fB_addTransition\fP (\fBTransition::AbstractTransition\fP *transition)"
 .br
 .ti -1c
-.RI "bool \fB_removeTransition\fP (\fBTransition\fP *transition)"
+.RI "bool \fB_removeTransition\fP (\fBTransition::AbstractTransition\fP *transition)"
 .br
 .ti -1c
-.RI "bool \fB_startTransition\fP (\fBTransition\fP *transition)"
+.RI "bool \fB_startTransition\fP (\fBTransition::AbstractTransition\fP *transition)"
 .br
 .ti -1c
-.RI "bool \fB_stopTransition\fP (\fBTransition\fP *transition)"
+.RI "bool \fB_stopTransition\fP (\fBTransition::AbstractTransition\fP *transition)"
+.br
+.ti -1c
+.RI "bool \fB_startEasingCurve\fP (const std::shared_ptr< \fBEasingCurve::AbstractEasingCurve\fP > &easing_curve)"
+.br
+.ti -1c
+.RI "bool \fB_stopEasingCurve\fP (const std::shared_ptr< \fBEasingCurve::AbstractEasingCurve\fP > &easing_curve)"
 .br
 .in -1c
 .SS "友元"
@@ -111,7 +117,7 @@ EasyEngine::Painter \- 图形绘制器
 .PP 
 图形绘制器 
 
-针对单个窗口使用图形绘制器，决定了如何绘制画面 
+绑定单个窗口的渲染器，通过存储并执行绘制命令（点、线、精灵等）实现画面渲染 
 .SH "构造及析构函数说明"
 .PP 
 .SS "EasyEngine::Painter::Painter (\fBEasyEngine::Window\fP * window)\fR [explicit]\fP"
@@ -130,7 +136,7 @@ EasyEngine::Painter \- 图形绘制器
 .SS "void EasyEngine::Painter::______ ()"
 
 .PP
-渲染/刷新画面 
+执行所有绘制命令并刷新窗口画面 
 .PP
 \fB警告\fP
 .RS 4

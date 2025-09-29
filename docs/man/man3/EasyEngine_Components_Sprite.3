@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Sprite" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Sprite" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -41,11 +41,11 @@ EasyEngine::Components::Sprite \- 精灵
 .br
 .RI "通过资源系统中创建一个精灵 "
 .ti -1c
-.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP)"
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBsprite\fP)"
 .br
 .RI "克隆已有的精灵 "
 .ti -1c
-.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBspirit\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size)"
+.RI "\fBSprite\fP (const std::string &\fBname\fP, const \fBSprite\fP &\fBsprite\fP, const \fBVector2\fP &clip_pos, const \fBSize\fP &clip_size)"
 .br
 .RI "克隆并裁剪已有的精灵 "
 .ti -1c
@@ -53,7 +53,7 @@ EasyEngine::Components::Sprite \- 精灵
 .br
 .RI "创建一个精灵并裁剪 "
 .ti -1c
-.RI "void \fBcopySprite\fP (\fBSprite\fP *sprite)"
+.RI "void \fBcopySprite\fP (\fBSprite\fP *\fBsprite\fP)"
 .br
 .RI "复制并替换原有的精灵 "
 .ti -1c
@@ -97,7 +97,7 @@ EasyEngine::Components::Sprite \- 精灵
 .br
 .RI "获取当前精灵纹理的尺寸 "
 .ti -1c
-.RI "STexture * \fBspirit\fP () const"
+.RI "STexture * \fBsprite\fP () const"
 .br
 .RI "获取精灵纹理 "
 .ti -1c
@@ -138,6 +138,18 @@ EasyEngine::Components::Sprite \- 精灵
 精灵 
 
 用于存储精灵（即纹理）以及如何绘制精灵 
+.PP
+\fB注解\fP
+.RS 4
+修正了拼写错误，将 \fRspirit\fP 修正为 \fRsprite\fP。 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
+.RE
+.PP
+
 .SH "成员枚举类型说明"
 .PP 
 .SS "enum class \fBEasyEngine::Components::Sprite::FlipMode\fP\fR [strong]\fP"
@@ -211,7 +223,7 @@ EasyEngine::Components::Sprite \- 精灵
 .RE
 .PP
 
-.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & spirit)"
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & sprite)"
 
 .PP
 克隆已有的精灵 
@@ -220,11 +232,11 @@ EasyEngine::Components::Sprite \- 精灵
 .RS 4
 \fIname\fP 精灵别名 
 .br
-\fIspirit\fP 指定精灵 
+\fIsprite\fP 指定精灵 
 .RE
 .PP
 
-.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & spirit, const \fBVector2\fP & clip_pos, const \fBSize\fP & clip_size)"
+.SS "EasyEngine::Components::Sprite::Sprite (const std::string & name, const \fBSprite\fP & sprite, const \fBVector2\fP & clip_pos, const \fBSize\fP & clip_size)"
 
 .PP
 克隆并裁剪已有的精灵 
@@ -233,7 +245,7 @@ EasyEngine::Components::Sprite \- 精灵
 .RS 4
 \fIname\fP 精灵别名 
 .br
-\fIspirit\fP 指定精灵 
+\fIsprite\fP 指定精灵 
 .br
 \fIclip_pos\fP 裁剪位置（相对坐标） 
 .br
@@ -456,6 +468,11 @@ hexToRGBA
 \fIresource_name\fP 指定资源名称 
 .RE
 .PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 表示当前设置的指定资源是否成功加载。 
+.RE
+.PP
 
 .SS "void EasyEngine::Components::Sprite::setSurface (SSurface * surface)"
 
@@ -465,6 +482,22 @@ hexToRGBA
 \fB参数\fP
 .RS 4
 \fIsurface\fP 指定的表面 
+.RE
+.PP
+
+.SS "STexture * EasyEngine::Components::Sprite::sprite () const"
+
+.PP
+获取精灵纹理 
+.PP
+\fB注解\fP
+.RS 4
+自 v1\&.1\&.0-alpha 版本，此函数重命名为 \fRsprite\fP 以解决不必要的拼写错误的问题。 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
 .RE
 .PP
 

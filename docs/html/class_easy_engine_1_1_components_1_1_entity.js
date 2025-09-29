@@ -14,5 +14,7 @@ var class_easy_engine_1_1_components_1_1_entity =
     [ "setName", "class_easy_engine_1_1_components_1_1_entity.html#a04f928a6fa9baba0e15b46d23be3be68", null ],
     [ "setPosition", "class_easy_engine_1_1_components_1_1_entity.html#af14203d83f0c1c2d586e00b6993bf8b8", null ],
     [ "setPosition", "class_easy_engine_1_1_components_1_1_entity.html#a09a6c989f3f6e65887006a3775707211", null ],
-    [ "typeInfo", "class_easy_engine_1_1_components_1_1_entity.html#a91dc1094162154d07d15e03d3dd02a4b", null ]
+    [ "setVisible", "class_easy_engine_1_1_components_1_1_entity.html#a068688bce44b9e5a5aaaf526c7a38b1c", null ],
+    [ "typeInfo", "class_easy_engine_1_1_components_1_1_entity.html#a91dc1094162154d07d15e03d3dd02a4b", null ],
+    [ "visible", "class_easy_engine_1_1_components_1_1_entity.html#aaec010b2db599ff55026a259e5d173c9", null ]
 ];

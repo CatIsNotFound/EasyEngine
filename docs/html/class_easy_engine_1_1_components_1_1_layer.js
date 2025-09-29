@@ -1,10 +1,10 @@
 var class_easy_engine_1_1_components_1_1_layer =
 [
     [ "Layer", "class_easy_engine_1_1_components_1_1_layer.html#a2763db46281ba8ca86d0386c4eb9e14c", null ],
-    [ "animation", "class_easy_engine_1_1_components_1_1_layer.html#a8616962ef531847aa615b9f0ea5a44eb", null ],
-    [ "append", "class_easy_engine_1_1_components_1_1_layer.html#aa2773980c77788ac70e8db8ae2eddd1f", null ],
+    [ "animation", "class_easy_engine_1_1_components_1_1_layer.html#af0a9d816892861b6d3c6399e465ce282", null ],
     [ "append", "class_easy_engine_1_1_components_1_1_layer.html#a35bffdda860b20a29fdcb55e61559aa1", null ],
     [ "append", "class_easy_engine_1_1_components_1_1_layer.html#a46f67fadfacd916e4ae11726f35ff822", null ],
+    [ "append", "class_easy_engine_1_1_components_1_1_layer.html#a9d042253ef4137166e723c183c3ae95e", null ],
     [ "append", "class_easy_engine_1_1_components_1_1_layer.html#a0ffef933e1a54de87be15de3bbb4f977", null ],
     [ "append", "class_easy_engine_1_1_components_1_1_layer.html#a0554a0c569eaed130ca07d31ac18e5fc", null ],
     [ "clipViewport", "class_easy_engine_1_1_components_1_1_layer.html#ae1a9475613038bb74f7f642b88bc9401", null ],

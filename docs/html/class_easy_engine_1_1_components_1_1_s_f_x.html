@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
    </div>
   </td>
  </tr>
@@ -153,6 +153,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AudioSystem</b></td>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
 <div class="textblock"><p>音效 </p>
+<p>用于管理单个音效，支持对音效的播放、停止等操作 </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="a469577fe73d3c5e6ba94f8aeba70ab8e" name="a469577fe73d3c5e6ba94f8aeba70ab8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a469577fe73d3c5e6ba94f8aeba70ab8e">&#9670;&#160;</a></span>SFX()</h2>
@@ -198,10 +199,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AudioSystem</b></td>
 <p>播放 SFX（循环播放） </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delay</td><td>设定间隔（设定毫秒数） </td></tr>
+    <tr><td class="paramname">delay</td><td>延迟播放时间（毫秒） </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>若指定 <span class="tt">delay</span> 参数，当音效播放结束后，将在指定的延迟播放时间后再次播放音效。 </dd></dl>
 
 </div>
 </div>

@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: D:/Coding/EasyEngine/src/Transition.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_transition_8h.html','',''); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Transition.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>过渡效果模块  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="_components_8h_source.html">Components.h</a>&quot;</code><br />
+</div>
+<p><a href="_transition_8h_source.html">浏览该文件的源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AAbstractEasingCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AAbstractEasingCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html">EasyEngine::EasingCurve::AbstractEasingCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">抽象过渡曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3ALinearCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3ALinearCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_linear_curve.html">EasyEngine::EasingCurve::LinearCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">线性曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_linear_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInQuadCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInQuadCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_quad_curve.html">EasyEngine::EasingCurve::InQuadCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">二次方淡入曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_in_quad_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInCubicCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInCubicCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_cubic_curve.html">EasyEngine::EasingCurve::InCubicCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">三次方淡入曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_in_cubic_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInSineCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInSineCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_sine_curve.html">EasyEngine::EasingCurve::InSineCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">正弦淡入曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_in_sine_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AOutQuadCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AOutQuadCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_out_quad_curve.html">EasyEngine::EasingCurve::OutQuadCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">二次方淡出  <a href="class_easy_engine_1_1_easing_curve_1_1_out_quad_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AOutCubicCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AOutCubicCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_out_cubic_curve.html">EasyEngine::EasingCurve::OutCubicCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">三次方淡出  <a href="class_easy_engine_1_1_easing_curve_1_1_out_cubic_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AOutSineCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AOutSineCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_out_sine_curve.html">EasyEngine::EasingCurve::OutSineCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">正弦淡出曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_out_sine_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInOutQuadCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInOutQuadCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_out_quad_curve.html">EasyEngine::EasingCurve::InOutQuadCurve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">二次方淡入淡出曲线  <a href="class_easy_engine_1_1_easing_curve_1_1_in_out_quad_curve.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInOutCubicCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInOutCubicCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_out_cubic_curve.html">EasyEngine::EasingCurve::InOutCubicCurve</a></td></tr>
+<tr class="memitem:EasyEngine_3A_3AEasingCurve_3A_3AInOutSineCurve" id="r_EasyEngine_3A_3AEasingCurve_3A_3AInOutSineCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_easing_curve_1_1_in_out_sine_curve.html">EasyEngine::EasingCurve::InOutSineCurve</a></td></tr>
+<tr class="memitem:EasyEngine_3A_3ATransition_3A_3AAbstractTransition" id="r_EasyEngine_3A_3ATransition_3A_3AAbstractTransition"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition_1_1_abstract_transition.html">EasyEngine::Transition::AbstractTransition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">抽象过渡效果  <a href="class_easy_engine_1_1_transition_1_1_abstract_transition.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3ATransition_3A_3ADarkTransition" id="r_EasyEngine_3A_3ATransition_3A_3ADarkTransition"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition_1_1_dark_transition.html">EasyEngine::Transition::DarkTransition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑幕效果  <a href="class_easy_engine_1_1_transition_1_1_dark_transition.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3ATransition_3A_3AEraseTransition" id="r_EasyEngine_3A_3ATransition_3A_3AEraseTransition"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition_1_1_erase_transition.html">EasyEngine::Transition::EraseTransition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">擦除效果  <a href="class_easy_engine_1_1_transition_1_1_erase_transition.html#details">更多...</a><br /></td></tr>
+<tr class="memitem:EasyEngine_3A_3ATransition_3A_3AMoveTransition" id="r_EasyEngine_3A_3ATransition_3A_3AMoveTransition"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_easy_engine_1_1_transition_1_1_move_transition.html">EasyEngine::Transition::MoveTransition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">平移过渡效果  <a href="class_easy_engine_1_1_transition_1_1_move_transition.html#details">更多...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:EasyEngine" id="r_EasyEngine"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_easy_engine.html">EasyEngine</a></td></tr>
+<tr class="memdesc:namespace_easy_engine"><td class="mdescLeft">&#160;</td><td class="mdescRight">引擎 <br /></td></tr>
+<tr class="memitem:EasingCurve" id="r_EasingCurve"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_easing_curve.html">EasingCurve</a></td></tr>
+<tr class="memdesc:namespace_easing_curve"><td class="mdescLeft">&#160;</td><td class="mdescRight">过渡曲线 <br /></td></tr>
+<tr class="memitem:Transition" id="r_Transition"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_transition.html">Transition</a></td></tr>
+<tr class="memdesc:namespace_transition"><td class="mdescLeft">&#160;</td><td class="mdescRight">场景过渡效果 <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:ab1fbef77f06a083e204b95679a44f1e9" id="r_ab1fbef77f06a083e204b95679a44f1e9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1fbef77f06a083e204b95679a44f1e9">EasyEngine::EasingCurve::Direction</a> { <a class="el" href="#ab1fbef77f06a083e204b95679a44f1e9a72c362a6e4d213a90790aeab46de5e47">EasyEngine::EasingCurve::Forward</a>
+, <a class="el" href="#ab1fbef77f06a083e204b95679a44f1e9a7ea320a22fb91734b27f28491adfc033">EasyEngine::EasingCurve::Backward</a>
+ }</td></tr>
+<tr class="memdesc:ab1fbef77f06a083e204b95679a44f1e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">过渡曲线方向  <a href="#ab1fbef77f06a083e204b95679a44f1e9">更多...</a><br /></td></tr>
+<tr class="memitem:afd38058b33700c8b13e5593880d8046e" id="r_afd38058b33700c8b13e5593880d8046e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd38058b33700c8b13e5593880d8046e">EasyEngine::Transition::State</a> { <a class="el" href="#afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65">EasyEngine::Transition::Stopped</a>
+, <a class="el" href="#afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523">EasyEngine::Transition::Paused</a>
+, <a class="el" href="#afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931">EasyEngine::Transition::Running</a>
+ }</td></tr>
+<tr class="memdesc:afd38058b33700c8b13e5593880d8046e"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于定义过渡时的状态  <a href="#afd38058b33700c8b13e5593880d8046e">更多...</a><br /></td></tr>
+<tr class="memitem:aeb284434e566a61938da5a3a80c5a3c5" id="r_aeb284434e566a61938da5a3a80c5a3c5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb284434e566a61938da5a3a80c5a3c5">EasyEngine::Transition::Direction</a> { <a class="el" href="#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224">EasyEngine::Transition::Forward</a>
+, <a class="el" href="#aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb">EasyEngine::Transition::Backward</a>
+ }</td></tr>
+<tr class="memdesc:aeb284434e566a61938da5a3a80c5a3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于表示过渡效果时的过渡顺序  <a href="#aeb284434e566a61938da5a3a80c5a3c5">更多...</a><br /></td></tr>
+<tr class="memitem:a4869d559da5461f9ffc0619f34f4552f" id="r_a4869d559da5461f9ffc0619f34f4552f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4869d559da5461f9ffc0619f34f4552f">EasyEngine::Transition::DeletionPolicy</a> { <a class="el" href="#a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296">EasyEngine::Transition::KeepWhenStopped</a>
+, <a class="el" href="#a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551">EasyEngine::Transition::DeleteWhenStopped</a>
+ }</td></tr>
+<tr class="memdesc:a4869d559da5461f9ffc0619f34f4552f"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除策略  <a href="#a4869d559da5461f9ffc0619f34f4552f">更多...</a><br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>过渡效果模块 </p>
+<p>定义相关过渡效果、动画曲线的模块</p>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright © 2025 CatIsNotFound </dd></dl>
+<dl class="section author"><dt>作者</dt><dd>CatIsNotFound </dd></dl>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">枚举类型说明</h2>
+<a id="a4869d559da5461f9ffc0619f34f4552f" name="a4869d559da5461f9ffc0619f34f4552f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4869d559da5461f9ffc0619f34f4552f">&#9670;&#160;</a></span>DeletionPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a4869d559da5461f9ffc0619f34f4552f">EasyEngine::Transition::DeletionPolicy</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>删除策略 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296" name="a4869d559da5461f9ffc0619f34f4552fa440a01a155051d6ca19f75d7ba61a296"></a>KeepWhenStopped&#160;</td><td class="fielddoc"><p>当停止时不删除过渡 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551" name="a4869d559da5461f9ffc0619f34f4552fa648dc3d331a0a2ceac87c06371407551"></a>DeleteWhenStopped&#160;</td><td class="fielddoc"><p>当停止时删除过渡 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ab1fbef77f06a083e204b95679a44f1e9" name="ab1fbef77f06a083e204b95679a44f1e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1fbef77f06a083e204b95679a44f1e9">&#9670;&#160;</a></span>Direction <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ab1fbef77f06a083e204b95679a44f1e9">EasyEngine::EasingCurve::Direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>过渡曲线方向 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="ab1fbef77f06a083e204b95679a44f1e9a72c362a6e4d213a90790aeab46de5e47" name="ab1fbef77f06a083e204b95679a44f1e9a72c362a6e4d213a90790aeab46de5e47"></a>Forward&#160;</td><td class="fielddoc"><p>顺流 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab1fbef77f06a083e204b95679a44f1e9a7ea320a22fb91734b27f28491adfc033" name="ab1fbef77f06a083e204b95679a44f1e9a7ea320a22fb91734b27f28491adfc033"></a>Backward&#160;</td><td class="fielddoc"><p>倒流 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="aeb284434e566a61938da5a3a80c5a3c5" name="aeb284434e566a61938da5a3a80c5a3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb284434e566a61938da5a3a80c5a3c5">&#9670;&#160;</a></span>Direction <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#aeb284434e566a61938da5a3a80c5a3c5">EasyEngine::Transition::Direction</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用于表示过渡效果时的过渡顺序 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224" name="aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224"></a>Forward&#160;</td><td class="fielddoc"><p>顺流 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb" name="aeb284434e566a61938da5a3a80c5a3c5a82f6b480571f23325c88e114b19d27cb"></a>Backward&#160;</td><td class="fielddoc"><p>倒流 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="afd38058b33700c8b13e5593880d8046e" name="afd38058b33700c8b13e5593880d8046e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd38058b33700c8b13e5593880d8046e">&#9670;&#160;</a></span>State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#afd38058b33700c8b13e5593880d8046e">EasyEngine::Transition::State</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用于定义过渡时的状态 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65" name="afd38058b33700c8b13e5593880d8046ea7d3660162fd4c8bb5c8840b71f9e0c65"></a>Stopped&#160;</td><td class="fielddoc"><p>停止 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523" name="afd38058b33700c8b13e5593880d8046ea7a9708d509e290f5d0f94aa49e76e523"></a>Paused&#160;</td><td class="fielddoc"><p>暂停 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931" name="afd38058b33700c8b13e5593880d8046ea6f425195e4605e9fdd6d1307d8c79931"></a>Running&#160;</td><td class="fielddoc"><p>运行 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="_transition_8h.html">Transition.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

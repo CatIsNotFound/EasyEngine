@@ -7,9 +7,9 @@ var searchData=
   ['clear_4',['clear',['../class_easy_engine_1_1_painter.html#a19dc2cb2aa21472456916c6cf80a8a38',1,'EasyEngine::Painter']]],
   ['clearcontrols_5',['clearControls',['../class_easy_engine_1_1_event_system.html#a919f07e7e8edf784458d56bdd759d07b',1,'EasyEngine::EventSystem']]],
   ['clearcount_6',['clearCount',['../class_easy_engine_1_1_components_1_1_timer.html#a4ecfd4b2b878b50a4a40c0f3f2229a09',1,'EasyEngine::Components::Timer']]],
-  ['clearframes_7',['clearFrames',['../class_easy_engine_1_1_components_1_1_animation.html#abc8705828a052f552e2058f02e1b7548',1,'EasyEngine::Components::Animation']]],
-  ['clearloopcount_8',['clearLoopCount',['../class_easy_engine_1_1_transition.html#af619709414a249643603e465f3766c7a',1,'EasyEngine::Transition']]],
-  ['clearplayedcount_9',['clearPlayedCount',['../class_easy_engine_1_1_components_1_1_animation.html#ab2b577e41730beb43f01e0dd14f86c7f',1,'EasyEngine::Components::Animation']]],
+  ['clearframes_7',['clearFrames',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a184af81bf6f00711afc1713ed633109e',1,'EasyEngine::Components::FrameAnimation']]],
+  ['clearloopcount_8',['clearLoopCount',['../class_easy_engine_1_1_transition_1_1_abstract_transition.html#afba7478a48eccc68a9dfb0be40653a5e',1,'EasyEngine::Transition::AbstractTransition']]],
+  ['clearplayedcount_9',['clearPlayedCount',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a8faf6c707711fc00c1a0085711ad3fca',1,'EasyEngine::Components::FrameAnimation']]],
   ['clearscenemanger_10',['clearSceneManger',['../class_easy_engine_1_1_event_system.html#adae16d8b4a1585e7e92b68b6a499df97',1,'EasyEngine::EventSystem']]],
   ['cleartimer_11',['clearTimer',['../class_easy_engine_1_1_event_system.html#a81485710f7070c50bd5f9e144c1427a1',1,'EasyEngine::EventSystem']]],
   ['cleartrigger_12',['clearTrigger',['../class_easy_engine_1_1_event_system.html#afc6cb6be998ddc1efdd53791be354ef5',1,'EasyEngine::EventSystem']]],
@@ -26,8 +26,9 @@ var searchData=
   ['control_23',['control',['../class_easy_engine_1_1_components_1_1_layer.html#a8b36400fec527b17d3a1a57a9044bf5f',1,'EasyEngine::Components::Layer']]],
   ['copysprite_24',['copySprite',['../class_easy_engine_1_1_components_1_1_sprite.html#a5166bdc06b50085b8852ca3a95bff88f',1,'EasyEngine::Components::Sprite']]],
   ['count_25',['count',['../class_easy_engine_1_1_components_1_1_timer.html#a6bef2152198ffdfb8b8a59b662852062',1,'EasyEngine::Components::Timer::count()'],['../class_easy_engine_1_1_components_1_1_sprite_group.html#a8e5e1805282a2063d33da0c9188d7eea',1,'EasyEngine::Components::SpriteGroup::count()']]],
-  ['currentframe_26',['currentFrame',['../class_easy_engine_1_1_components_1_1_animation.html#ad4ee84f43408755ee4f9d41b76c4d130',1,'EasyEngine::Components::Animation']]],
-  ['currentpath_27',['currentPath',['../class_easy_engine_1_1_file_system.html#abab2253f125272306dcd6bc9324fe92c',1,'EasyEngine::FileSystem']]],
-  ['currenttime_28',['currentTime',['../class_easy_engine_1_1_transition.html#aa463a042e13eb9e186a36b6718d10b3a',1,'EasyEngine::Transition']]],
-  ['cursor_29',['cursor',['../class_easy_engine_1_1_cursor.html#a712c15a8f7ced9cda7554b00a67fce7c',1,'EasyEngine::Cursor']]]
+  ['current_26',['current',['../class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html#ab00f5a6c3605542715594c736873ecc3',1,'EasyEngine::EasingCurve::AbstractEasingCurve']]],
+  ['currentframe_27',['currentFrame',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a76edec50252aa5ed0cb32f57a0e2b3a8',1,'EasyEngine::Components::FrameAnimation']]],
+  ['currentpath_28',['currentPath',['../class_easy_engine_1_1_file_system.html#abab2253f125272306dcd6bc9324fe92c',1,'EasyEngine::FileSystem']]],
+  ['currenttime_29',['currentTime',['../class_easy_engine_1_1_transition_1_1_abstract_transition.html#aafae2208a3ca013e4bba8526bc756c48',1,'EasyEngine::Transition::AbstractTransition']]],
+  ['cursor_30',['cursor',['../class_easy_engine_1_1_cursor.html#a712c15a8f7ced9cda7554b00a67fce7c',1,'EasyEngine::Cursor']]]
 ];

@@ -9,7 +9,8 @@ var searchData=
   ['fontkerning_6',['fontKerning',['../class_easy_engine_1_1_components_1_1_font.html#a1a8f51fa0a374c849916adf1300de3d8',1,'EasyEngine::Components::Font']]],
   ['fontsize_7',['fontSize',['../class_easy_engine_1_1_components_1_1_font.html#ac19c89a5b3d9786c7ed4d52c98175334',1,'EasyEngine::Components::Font']]],
   ['fps_8',['fps',['../class_easy_engine_1_1_engine.html#a09ee3e3164410c88eed23aa142cc7f5b',1,'EasyEngine::Engine']]],
-  ['framedropthreshold_9',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
-  ['framedroptolerance_10',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
-  ['framescount_11',['framesCount',['../class_easy_engine_1_1_components_1_1_animation.html#a9d9279872e6834b79e210bdd1dea0a8e',1,'EasyEngine::Components::Animation']]]
+  ['frameanimation_9',['FrameAnimation',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a010e0e7f2dc97b181d5737c2b4dfa19d',1,'EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_frame_animation.html#aee4fa7e6b3b94cee607853817218a16c',1,'EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &amp;name, const std::vector&lt; Sprite * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)']]],
+  ['framedropthreshold_10',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
+  ['framedroptolerance_11',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
+  ['framescount_12',['framesCount',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a6819f7279764f017f8f2c70b39d0ee1c',1,'EasyEngine::Components::FrameAnimation']]]
 ];

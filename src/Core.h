@@ -19,17 +19,16 @@
 #include "Resources.h"
 #include "Scene.h"
 
-/// 主版本号
+/// 主版本号（重大功能更新）
 #define EASYENGINE_MAJOR_VERSION 1
-/// 副版本号
-#define EASYENGINE_MINOR_VERSION 0
-/// 修订版本号
-#define EASYENGINE_MACRO_VERSION 1
-/// 版本类型
-#define EASYENGINE_VERSION "Beta"
+/// 副版本号（功能新增、优化）
+#define EASYENGINE_MINOR_VERSION 1
+/// 修订版本号（bug 修复及部分优化）
+#define EASYENGINE_MACRO_VERSION 0
+/// 版本类型（指定 Alpha/Beta/Release）
+#define EASYENGINE_VERSION "Alpha"
 /// 项目名称
 #define EASYENGINE_NAME "EasyEngine"
-
 
 /**
  * @namespace EasyEngine
@@ -43,7 +42,7 @@ namespace EasyEngine {
      * @class Window
      * @brief 窗口
      *
-     * 绑定窗口、渲染器
+     * 窗口封装类，关联 SDL 窗口实例、渲染器实例及窗口的几何属性（位置、尺寸）
      */
     class Window {
     public:
@@ -106,7 +105,9 @@ namespace EasyEngine {
 
         /**
          * @struct UserCustom
-         * @brief 用户自定义鼠标光标
+         * @brief 用户自定义鼠标光标数据
+         *
+         * 包含热点坐标（点击生效点）和光标表面资源
          */
         struct UserCustom {
 
@@ -197,6 +198,9 @@ namespace EasyEngine {
          * @param path 指定路径下加载鼠标光标
          * @param hot_x 中心点横坐标
          * @param hot_y 中心点纵坐标
+         * @note 若指定的 `path` 参数无效，则无法设置！
+         *
+         * 从指定路径加载图像作为自定义鼠标光标，并设置热点坐标。
          */
         void setCursor(const std::string &path, int hot_x, int hot_y);
         /**
@@ -246,14 +250,19 @@ namespace EasyEngine {
     };
 
     class Painter;
-    class Transition;
     class SceneManager;
+    namespace EasingCurve {
+        class AbstractEasingCurve;
+    }
+    namespace Transition {
+        class AbstractTransition;
+    }
 
     /**
      * @class Engine
-     * @brief 引擎类
+     * @brief 引擎
      *
-     * 控制所有游戏流程：初始化、渲染、运行、释放等
+     * 引擎核心控制类，负责窗口创建与管理、渲染流程调度、事件循环驱动及资源生命周期管理
      */
     class Engine {
     public:
@@ -267,8 +276,11 @@ namespace EasyEngine {
         explicit Engine(const std::string& title, uint32_t width = 800, uint32_t height = 600);
         ~Engine();
         /**
-         * @brief 事件循环，保证引擎持续运作
-         * @note 必须调用此函数，否则引擎将会被自动释放
+         * @brief 启动主事件循环
+         * @return 返回程序退出码，一般作用于 `main()` 函数下的返回值
+         * @note 必需调用此函数才能使整个引擎持续运行
+         *
+         * 启动引擎主事件循环，处理输入、渲染等核心流程。
          */
         int exec();
         /**
@@ -537,7 +549,7 @@ namespace EasyEngine {
      * @class Painter
      * @brief 图形绘制器
      *
-     * 针对单个窗口使用图形绘制器，决定了如何绘制画面
+     * 绑定单个窗口的渲染器，通过存储并执行绘制命令（点、线、精灵等）实现画面渲染
      */
     class Painter {
     public:
@@ -576,7 +588,7 @@ namespace EasyEngine {
          */
         void setSceneManager(SceneManager* sceneManager);
         /**
-         * @brief 渲染/刷新画面
+         * @brief 执行所有绘制命令并刷新窗口画面
          * @warning 请勿手动使用此函数，会出现异常退出！
          */
         void ______();
@@ -654,10 +666,13 @@ namespace EasyEngine {
          * @note 当指定的宽度或高度小于等于 0，则取消使用裁剪！
          */
         void setClipView(const Geometry &geometry);
-        bool _addTransition(Transition* transition);
-        bool _removeTransition(Transition* transition);
-        bool _startTransition(Transition* transition);
-        bool _stopTransition(Transition* transition);
+        bool _addTransition(Transition::AbstractTransition* transition);
+        bool _removeTransition(Transition::AbstractTransition* transition);
+        bool _startTransition(Transition::AbstractTransition* transition);
+        bool _stopTransition(Transition::AbstractTransition* transition);
+
+        bool _startEasingCurve(const std::shared_ptr<EasingCurve::AbstractEasingCurve> &easing_curve);
+        bool _stopEasingCurve(const std::shared_ptr<EasingCurve::AbstractEasingCurve> &easing_curve);
     private:
         /**
          * @brief 绘图事件
@@ -710,13 +725,13 @@ namespace EasyEngine {
             SColor _color_alpha{255, 255, 255, 255};
             SDL_FlipMode _flip_mode{SDL_FLIP_NONE};
             explicit SpriteCMD(const Components::Sprite& sprite, const Vector2& pos = Vector2(0, 0))
-                : _sprite(sprite.spirit()), _size(sprite.size()), _pos(pos),
+                : _sprite(sprite.sprite()), _size(sprite.size()), _pos(pos),
                   _rotate_center(0, 0), _scaled_center(0, 0),
                   _clip_pos(0, 0), _clip_size(0, 0)
                 {}
             SpriteCMD(const Components::Sprite& sprite, const Vector2& pos,
                       const Components::Sprite::Properties& properties)
-                      : _sprite(sprite.spirit()), _size(sprite.size().width, sprite.size().height),
+                      : _sprite(sprite.sprite()), _size(sprite.size().width, sprite.size().height),
                         _pos(pos + properties.position), _rotate(properties.rotate), _rotate_center(properties.rotate_center),
                         _scaled(properties.scaled), _scaled_center(properties.scaled_center),
                         _clip_size(properties.clip_size), _is_clip(properties.clip_mode) {
@@ -750,8 +765,10 @@ namespace EasyEngine {
         std::function<void(Painter&)> paint_function;
         uint32_t _thickness;
         SceneManager* _scene_manager{nullptr};
-        std::vector<std::shared_ptr<Transition>> _running_transition_list;
-        std::vector<std::shared_ptr<Transition>> _transition_list;
+        std::vector<std::shared_ptr<Transition::AbstractTransition>> _running_transition_list;
+        std::vector<std::shared_ptr<Transition::AbstractTransition>> _transition_list;
+        std::vector<std::shared_ptr<EasingCurve::AbstractEasingCurve>> _curve_list;
+        std::vector<std::shared_ptr<EasingCurve::AbstractEasingCurve>> _running_curve_list;
         friend class Components::Sprite;
     };
 
@@ -790,9 +807,9 @@ namespace EasyEngine {
         /**
          * @brief 事件处理器
          *
-         * 所有事件都将被管理与处理
+         * 处理所有注册的事件（定时器、触发器、控件事件等）。
          *
-         * @return 返回 true 将持续处理事件，false 将结束处理事件
+         * @return 返回 `true` 将持续处理事件，`false` 将结束处理事件
          */
         bool handler();
         /**

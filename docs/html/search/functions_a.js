@@ -9,5 +9,5 @@ var searchData=
   ['loadfont_6',['loadFont',['../class_easy_engine_1_1_font_system.html#ac78b5540966262c1b92720461254bdbf',1,'EasyEngine::FontSystem::loadFont(const std::string &amp;name, Components::Font *font)'],['../class_easy_engine_1_1_font_system.html#a012fa313adc544f0a3aa6e770975a88b',1,'EasyEngine::FontSystem::loadFont(const std::string &amp;name, const std::string &amp;resource_name, float font_size)']]],
   ['loadsfx_7',['loadSFX',['../class_easy_engine_1_1_audio_system.html#a2eee89a3825c9b43bd21e280eeb3ae3f',1,'EasyEngine::AudioSystem']]],
   ['loop_8',['loop',['../class_easy_engine_1_1_components_1_1_timer.html#a4de5c9dae77b0d69902a799d17da6a40',1,'EasyEngine::Components::Timer']]],
-  ['loopcount_9',['loopCount',['../class_easy_engine_1_1_transition.html#ac6ab958306cd4589fb13c04533179557',1,'EasyEngine::Transition']]]
+  ['loopcount_9',['loopCount',['../class_easy_engine_1_1_transition_1_1_abstract_transition.html#a0836468b3eb40eea204a53a97231faae',1,'EasyEngine::Transition::AbstractTransition']]]
 ];

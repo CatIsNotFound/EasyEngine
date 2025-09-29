@@ -7,7 +7,7 @@ var _components_8h =
     [ "EasyEngine::Components::Sprite", "class_easy_engine_1_1_components_1_1_sprite.html", "class_easy_engine_1_1_components_1_1_sprite" ],
     [ "EasyEngine::Components::Sprite::Properties", "struct_easy_engine_1_1_components_1_1_sprite_1_1_properties.html", "struct_easy_engine_1_1_components_1_1_sprite_1_1_properties" ],
     [ "EasyEngine::Components::SpriteGroup", "class_easy_engine_1_1_components_1_1_sprite_group.html", "class_easy_engine_1_1_components_1_1_sprite_group" ],
-    [ "EasyEngine::Components::Animation", "class_easy_engine_1_1_components_1_1_animation.html", "class_easy_engine_1_1_components_1_1_animation" ],
+    [ "EasyEngine::Components::FrameAnimation", "class_easy_engine_1_1_components_1_1_frame_animation.html", "class_easy_engine_1_1_components_1_1_frame_animation" ],
     [ "EasyEngine::Components::Element", "class_easy_engine_1_1_components_1_1_element.html", null ],
     [ "EasyEngine::Components::Collider", "class_easy_engine_1_1_components_1_1_collider.html", "class_easy_engine_1_1_components_1_1_collider" ],
     [ "EasyEngine::Components::Collider::Container::Shape", "union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape.html", "union_easy_engine_1_1_components_1_1_collider_1_1_container_1_1_shape" ],

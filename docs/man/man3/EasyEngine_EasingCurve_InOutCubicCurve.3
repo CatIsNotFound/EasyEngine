@@ -1,0 +1,99 @@
+.TH "EasyEngine::EasingCurve::InOutCubicCurve" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::EasingCurve::InOutCubicCurve
+.SH SYNOPSIS
+.br
+.PP
+.PP
+继承自 \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP \&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBInOutCubicCurve\fP (uint32_t \fBduration\fP, \fBPainter\fP *painter)"
+.br
+.in -1c
+
+Public 成员函数 继承自 \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP
+.in +1c
+.ti -1c
+.RI "\fBAbstractEasingCurve\fP (uint32_t \fBduration\fP, \fBPainter\fP *painter=nullptr)"
+.br
+.RI "定义抽象过渡曲线 "
+.ti -1c
+.RI "void \fBsetDuration\fP (uint32_t \fBduration\fP)"
+.br
+.RI "设置持续时长 "
+.ti -1c
+.RI "void \fBsetDirection\fP (const enum \fBDirection\fP &\fBdirection\fP)"
+.br
+.RI "设置过渡曲线的方向 "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool \fBenabled\fP, bool loop=false, bool change_direction=false)"
+.br
+.RI "是否启用过渡 "
+.ti -1c
+.RI "float \fBcurrent\fP () const"
+.br
+.RI "获取当前过渡的进程 "
+.ti -1c
+.RI "uint32_t \fBelapsedTime\fP () const"
+.br
+.RI "获取当前的过渡时间 "
+.ti -1c
+.RI "uint32_t \fBduration\fP () const"
+.br
+.RI "获取当前过渡曲线的持续时长 "
+.ti -1c
+.RI "enum \fBDirection\fP & \fBdirection\fP () const"
+.br
+.RI "获取当前过渡时的方向 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "获取当前是否正在过渡 "
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.in -1c
+.SS "Protected 成员函数"
+
+.in +1c
+.ti -1c
+.RI "void \fBupdate\fP () override"
+.br
+.RI "编辑过渡曲线 "
+.ti -1c
+.RI "void \fBgetReady\fP () override"
+.br
+.RI "初始化曲线 "
+.in -1c
+.SS "额外继承的成员函数"
+
+
+Protected 属性 继承自 \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP
+.in +1c
+.ti -1c
+.RI "float \fB_position\fP {0}"
+.br
+.in -1c
+.SH "成员函数说明"
+.PP 
+.SS "void EasyEngine::EasingCurve::InOutCubicCurve::getReady ()\fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+初始化曲线 当开始执行过渡曲线时，将先执行此函数 
+.PP
+实现了 \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP\&.
+.SS "void EasyEngine::EasingCurve::InOutCubicCurve::update ()\fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+编辑过渡曲线 当过渡曲线正在过渡时，执行此函数，可随时变化动画进度 
+.PP
+实现了 \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP\&.
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

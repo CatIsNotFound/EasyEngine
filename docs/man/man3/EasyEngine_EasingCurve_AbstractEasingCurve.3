@@ -1,0 +1,204 @@
+.TH "EasyEngine::EasingCurve::AbstractEasingCurve" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EasyEngine::EasingCurve::AbstractEasingCurve \- 抽象过渡曲线  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Transition\&.h>\fP
+.PP
+被 \fBEasyEngine::EasingCurve::InCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutQuadCurve\fP, \fBEasyEngine::EasingCurve::InOutSineCurve\fP, \fBEasyEngine::EasingCurve::InQuadCurve\fP, \fBEasyEngine::EasingCurve::InSineCurve\fP, \fBEasyEngine::EasingCurve::LinearCurve\fP, \fBEasyEngine::EasingCurve::OutCubicCurve\fP, \fBEasyEngine::EasingCurve::OutQuadCurve\fP , 以及 \fBEasyEngine::EasingCurve::OutSineCurve\fP 继承\&.
+.SS "Public 成员函数"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractEasingCurve\fP (uint32_t \fBduration\fP, \fBPainter\fP *painter=nullptr)"
+.br
+.RI "定义抽象过渡曲线 "
+.ti -1c
+.RI "void \fBsetDuration\fP (uint32_t \fBduration\fP)"
+.br
+.RI "设置持续时长 "
+.ti -1c
+.RI "void \fBsetDirection\fP (const enum \fBDirection\fP &\fBdirection\fP)"
+.br
+.RI "设置过渡曲线的方向 "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool \fBenabled\fP, bool loop=false, bool change_direction=false)"
+.br
+.RI "是否启用过渡 "
+.ti -1c
+.RI "float \fBcurrent\fP () const"
+.br
+.RI "获取当前过渡的进程 "
+.ti -1c
+.RI "uint32_t \fBelapsedTime\fP () const"
+.br
+.RI "获取当前的过渡时间 "
+.ti -1c
+.RI "uint32_t \fBduration\fP () const"
+.br
+.RI "获取当前过渡曲线的持续时长 "
+.ti -1c
+.RI "enum \fBDirection\fP & \fBdirection\fP () const"
+.br
+.RI "获取当前过渡时的方向 "
+.ti -1c
+.RI "bool \fBenabled\fP () const"
+.br
+.RI "获取当前是否正在过渡 "
+.ti -1c
+.RI "void \fB______\fP ()"
+.br
+.in -1c
+.SS "Protected 成员函数"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBupdate\fP ()=0"
+.br
+.RI "编辑过渡曲线 "
+.ti -1c
+.RI "virtual void \fBgetReady\fP ()=0"
+.br
+.RI "初始化曲线 "
+.in -1c
+.SS "Protected 属性"
+
+.in +1c
+.ti -1c
+.RI "float \fB_position\fP {0}"
+.br
+.in -1c
+.SH "详细描述"
+.PP 
+抽象过渡曲线 
+
+用于实现基本的过渡曲线 
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
+.RE
+.PP
+
+.SH "构造及析构函数说明"
+.PP 
+.SS "EasyEngine::EasingCurve::AbstractEasingCurve::AbstractEasingCurve (uint32_t duration, \fBPainter\fP * painter = \fRnullptr\fP)\fR [explicit]\fP"
+
+.PP
+定义抽象过渡曲线 
+.PP
+\fB参数\fP
+.RS 4
+\fIduration\fP 设定持续时长（毫秒） 
+.RE
+.PP
+
+.SH "成员函数说明"
+.PP 
+.SS "float EasyEngine::EasingCurve::AbstractEasingCurve::current () const"
+
+.PP
+获取当前过渡的进程 
+.PP
+\fB返回\fP
+.RS 4
+返回一个当前过渡的百分比，如：75% -> 0\&.75f 
+.RE
+.PP
+
+.SS "enum \fBDirection\fP & EasyEngine::EasingCurve::AbstractEasingCurve::direction () const"
+
+.PP
+获取当前过渡时的方向 
+.PP
+\fB返回\fP
+.RS 4
+返回当前是顺流（Forward）还是倒流（Backward） 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::EasingCurve::AbstractEasingCurve::duration () const"
+
+.PP
+获取当前过渡曲线的持续时长 
+.PP
+\fB返回\fP
+.RS 4
+返回从开始到结束的持续时长（毫秒） 
+.RE
+.PP
+
+.SS "uint32_t EasyEngine::EasingCurve::AbstractEasingCurve::elapsedTime () const"
+
+.PP
+获取当前的过渡时间 
+.PP
+\fB返回\fP
+.RS 4
+返回从开始到现在所持续的总时间（毫秒） 
+.RE
+.PP
+
+.SS "virtual void EasyEngine::EasingCurve::AbstractEasingCurve::getReady ()\fR [protected]\fP, \fR [pure virtual]\fP"
+
+.PP
+初始化曲线 当开始执行过渡曲线时，将先执行此函数 
+.PP
+在 \fBEasyEngine::EasingCurve::InCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutQuadCurve\fP, \fBEasyEngine::EasingCurve::InOutSineCurve\fP, \fBEasyEngine::EasingCurve::InQuadCurve\fP, \fBEasyEngine::EasingCurve::InSineCurve\fP, \fBEasyEngine::EasingCurve::LinearCurve\fP, \fBEasyEngine::EasingCurve::OutCubicCurve\fP, \fBEasyEngine::EasingCurve::OutQuadCurve\fP , 以及 \fBEasyEngine::EasingCurve::OutSineCurve\fP 内被实现\&.
+.SS "void EasyEngine::EasingCurve::AbstractEasingCurve::setDirection (const enum \fBDirection\fP & direction)"
+
+.PP
+设置过渡曲线的方向 
+.PP
+\fB参数\fP
+.RS 4
+\fIdirection\fP 指定顺流（Forward）或倒流（Backward） 
+.RE
+.PP
+
+.SS "void EasyEngine::EasingCurve::AbstractEasingCurve::setDuration (uint32_t duration)"
+
+.PP
+设置持续时长 
+.PP
+\fB参数\fP
+.RS 4
+\fIduration\fP 持续时长（毫秒） 
+.RE
+.PP
+
+.SS "void EasyEngine::EasingCurve::AbstractEasingCurve::setEnabled (bool enabled, bool loop = \fRfalse\fP, bool change_direction = \fRfalse\fP)"
+
+.PP
+是否启用过渡 
+.PP
+\fB参数\fP
+.RS 4
+\fIenabled\fP 决定是否开始过渡 
+.br
+\fIloop\fP 是否循环使用过渡 
+.br
+\fIchange_direction\fP 当完成一次过渡曲线后，是否切换过渡方向（类似于：顺流->倒流->顺流\&.\&.\&.） 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+当 \fRloop\fP 参数设为 \fRtrue\fP 时，\fRchange_direction\fP 参数才会有用 
+.RE
+.PP
+
+.SS "virtual void EasyEngine::EasingCurve::AbstractEasingCurve::update ()\fR [protected]\fP, \fR [pure virtual]\fP"
+
+.PP
+编辑过渡曲线 当过渡曲线正在过渡时，执行此函数，可随时变化动画进度 
+.PP
+在 \fBEasyEngine::EasingCurve::InCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutCubicCurve\fP, \fBEasyEngine::EasingCurve::InOutQuadCurve\fP, \fBEasyEngine::EasingCurve::InOutSineCurve\fP, \fBEasyEngine::EasingCurve::InQuadCurve\fP, \fBEasyEngine::EasingCurve::InSineCurve\fP, \fBEasyEngine::EasingCurve::LinearCurve\fP, \fBEasyEngine::EasingCurve::OutCubicCurve\fP, \fBEasyEngine::EasingCurve::OutQuadCurve\fP , 以及 \fBEasyEngine::EasingCurve::OutSineCurve\fP 内被实现\&.
+
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

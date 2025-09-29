@@ -1,0 +1,188 @@
+.TH "D:/Coding/EasyEngine/src/Transition.h" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+D:/Coding/EasyEngine/src/Transition.h \- 过渡效果模块  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'Components\&.h'\fP
+.br
+
+.SS "类"
+
+.in +1c
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::AbstractEasingCurve\fP"
+.br
+.RI "抽象过渡曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::LinearCurve\fP"
+.br
+.RI "线性曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InQuadCurve\fP"
+.br
+.RI "二次方淡入曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InCubicCurve\fP"
+.br
+.RI "三次方淡入曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InSineCurve\fP"
+.br
+.RI "正弦淡入曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::OutQuadCurve\fP"
+.br
+.RI "二次方淡出 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::OutCubicCurve\fP"
+.br
+.RI "三次方淡出 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::OutSineCurve\fP"
+.br
+.RI "正弦淡出曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InOutQuadCurve\fP"
+.br
+.RI "二次方淡入淡出曲线 "
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InOutCubicCurve\fP"
+.br
+.ti -1c
+.RI "class \fBEasyEngine::EasingCurve::InOutSineCurve\fP"
+.br
+.ti -1c
+.RI "class \fBEasyEngine::Transition::AbstractTransition\fP"
+.br
+.RI "抽象过渡效果 "
+.ti -1c
+.RI "class \fBEasyEngine::Transition::DarkTransition\fP"
+.br
+.RI "黑幕效果 "
+.ti -1c
+.RI "class \fBEasyEngine::Transition::EraseTransition\fP"
+.br
+.RI "擦除效果 "
+.ti -1c
+.RI "class \fBEasyEngine::Transition::MoveTransition\fP"
+.br
+.RI "平移过渡效果 "
+.in -1c
+.SS "命名空间"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBEasyEngine\fP"
+.br
+.RI "引擎 "
+.ti -1c
+.RI "namespace \fBEasingCurve\fP"
+.br
+.RI "过渡曲线 "
+.ti -1c
+.RI "namespace \fBTransition\fP"
+.br
+.RI "场景过渡效果 "
+.in -1c
+.SS "枚举"
+
+.in +1c
+.ti -1c
+.RI "enum \fBEasyEngine::EasingCurve::Direction\fP { \fBEasyEngine::EasingCurve::Forward\fP, \fBEasyEngine::EasingCurve::Backward\fP }"
+.br
+.RI "过渡曲线方向 "
+.ti -1c
+.RI "enum \fBEasyEngine::Transition::State\fP { \fBEasyEngine::Transition::Stopped\fP, \fBEasyEngine::Transition::Paused\fP, \fBEasyEngine::Transition::Running\fP }"
+.br
+.RI "用于定义过渡时的状态 "
+.ti -1c
+.RI "enum \fBEasyEngine::Transition::Direction\fP { \fBEasyEngine::Transition::Forward\fP, \fBEasyEngine::Transition::Backward\fP }"
+.br
+.RI "用于表示过渡效果时的过渡顺序 "
+.ti -1c
+.RI "enum \fBEasyEngine::Transition::DeletionPolicy\fP { \fBEasyEngine::Transition::KeepWhenStopped\fP, \fBEasyEngine::Transition::DeleteWhenStopped\fP }"
+.br
+.RI "删除策略 "
+.in -1c
+.SH "详细描述"
+.PP 
+过渡效果模块 
+
+定义相关过渡效果、动画曲线的模块
+
+.PP
+\fB版权所有\fP
+.RS 4
+Copyright © 2025 CatIsNotFound 
+.RE
+.PP
+\fB作者\fP
+.RS 4
+CatIsNotFound 
+.RE
+.PP
+
+.SH "枚举类型说明"
+.PP 
+.SS "enum \fBEasyEngine::Transition::DeletionPolicy\fP"
+
+.PP
+删除策略 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIKeepWhenStopped \fP
+当停止时不删除过渡 
+.TP
+\f(BIDeleteWhenStopped \fP
+当停止时删除过渡 
+.SS "enum \fBEasyEngine::EasingCurve::Direction\fP"
+
+.PP
+过渡曲线方向 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIForward \fP
+顺流 
+.TP
+\f(BIBackward \fP
+倒流 
+.SS "enum \fBEasyEngine::Transition::Direction\fP"
+
+.PP
+用于表示过渡效果时的过渡顺序 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIForward \fP
+顺流 
+.TP
+\f(BIBackward \fP
+倒流 
+.SS "enum \fBEasyEngine::Transition::State\fP"
+
+.PP
+用于定义过渡时的状态 
+.PP
+\fB枚举值\fP
+.in +1c
+.TP
+\f(BIStopped \fP
+停止 
+.TP
+\f(BIPaused \fP
+暂停 
+.TP
+\f(BIRunning \fP
+运行 
+.SH "作者"
+.PP 
+由 Doyxgen 通过分析 Easy Engine 的 源代码自动生成\&.

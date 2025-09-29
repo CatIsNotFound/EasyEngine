@@ -1,4 +1,4 @@
-.TH "EasyEngine::Cursor" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Cursor" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,7 @@ EasyEngine::Cursor \- 鼠标光标
 .ti -1c
 .RI "struct \fBUserCustom\fP"
 .br
-.RI "用户自定义鼠标光标 "
+.RI "用户自定义鼠标光标数据 "
 .in -1c
 .SS "Public 类型"
 
@@ -240,7 +240,12 @@ EasyEngine::Cursor \- 鼠标光标
 \fIhot_y\fP 中心点纵坐标 
 .RE
 .PP
-
+\fB注解\fP
+.RS 4
+若指定的 \fRpath\fP 参数无效，则无法设置！
+.RE
+.PP
+从指定路径加载图像作为自定义鼠标光标，并设置热点坐标。 
 .SS "void EasyEngine::Cursor::setCursor (const \fBStdCursor\fP & cursor)"
 
 .PP

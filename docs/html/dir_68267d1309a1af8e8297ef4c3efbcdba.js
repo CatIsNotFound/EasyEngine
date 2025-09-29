@@ -7,5 +7,5 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "preinclude.h", "preinclude_8h.html", null ],
     [ "Resources.h", "_resources_8h.html", "_resources_8h" ],
     [ "Scene.h", "_scene_8h.html", "_scene_8h" ],
-    [ "Transition.h", "_transition_8h_source.html", null ]
+    [ "Transition.h", "_transition_8h.html", "_transition_8h" ]
 ];

@@ -9,8 +9,8 @@ var class_easy_engine_1_1_components_1_1_sprite =
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a2584467ed78cd26e7f239667253ef394", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a380a27a2ad7602e87bcae2f56a79ea44", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a5f143016da27b634687578de380ee65f", null ],
-    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a91f04b8c2c6df6aeec4564e4701677a8", null ],
-    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a64eea868a997cb7c1e04e32edf80f2ce", null ],
+    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a68452474ca38c7c511f65c37b2bb47b7", null ],
+    [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a302f5ba2eb1429d16f692efea9209295", null ],
     [ "Sprite", "class_easy_engine_1_1_components_1_1_sprite.html#ae620d84951761b6a4fc21bea05a42d4c", null ],
     [ "copySprite", "class_easy_engine_1_1_components_1_1_sprite.html#a5166bdc06b50085b8852ca3a95bff88f", null ],
     [ "draw", "class_easy_engine_1_1_components_1_1_sprite.html#a7d8fe3c9232a189b678e826cb2ab40bd", null ],
@@ -31,5 +31,5 @@ var class_easy_engine_1_1_components_1_1_sprite =
     [ "setResource", "class_easy_engine_1_1_components_1_1_sprite.html#a90fb95eacd18f699e273417a3ef443bf", null ],
     [ "setSurface", "class_easy_engine_1_1_components_1_1_sprite.html#a4170d6e74f5d06e525ef5242560f20ff", null ],
     [ "size", "class_easy_engine_1_1_components_1_1_sprite.html#a37587046608c596cf0fdf922d7fa6478", null ],
-    [ "spirit", "class_easy_engine_1_1_components_1_1_sprite.html#a8ee07edccb6987426caa9287a64319d5", null ]
+    [ "sprite", "class_easy_engine_1_1_components_1_1_sprite.html#a8b2f29932445771b7215261fc1baf364", null ]
 ];

@@ -1,9 +1,9 @@
 var indexSectionsWithContent =
 {
   0: "_abcdefghiklmnoprstuvw✅✨主使图如已开快技数最构核模游版环短算系组获许贡长项🎨🎮🎯🏗📄📐📝📦🔧🔮🙋🚀🚧🛠🤝🧩",
-  1: "abcdefghlmprstuvw",
-  2: "cegs",
-  3: "abcprs",
+  1: "abcdefghilmoprstuvw",
+  2: "cegst",
+  3: "abcprst",
   4: "_abcdefghilmnoprstuvw",
   5: "acdefghilmprstuw",
   6: "e",

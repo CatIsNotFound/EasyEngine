@@ -159,10 +159,15 @@ void EasyEngine::Cursor::unload() {
 
 
 EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t height) {
-    SDL_Log("%s v%d.%d.%d-%s (Based by SDL %d.%d.%d)\n"
-            "For more information, see https://github.com/CatIsNotFound/EasyEngine.\n\n",
-            EASYENGINE_NAME, EASYENGINE_MAJOR_VERSION, EASYENGINE_MINOR_VERSION, EASYENGINE_MACRO_VERSION,
-            EASYENGINE_VERSION, SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
+    fmt::println("┏━╸┏━┓┏━┓╻ ╻┏━╸┏┓╻┏━╸╻┏┓╻┏━╸\n"
+                 "┣╸ ┣━┫┗━┓┗┳┛┣╸ ┃┗┫┃╺┓┃┃┗┫┣╸\n"
+                 "┗━╸╹ ╹┗━┛ ╹ ┗━╸╹ ╹┗━┛╹╹ ╹┗━╸\n\n"
+                 "{} v{}.{}.{}-{} (Based by SDL {}.{}.{})\n"
+                 "For more information, see:\n"
+                 "- https://github.com/CatIsNotFound/EasyEngine\n"
+                 "- https://gitee.com/CatIsNotFound/EasyEngine\n",
+                 EASYENGINE_NAME, EASYENGINE_MAJOR_VERSION, EASYENGINE_MINOR_VERSION, EASYENGINE_MACRO_VERSION,
+                 EASYENGINE_VERSION, SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_MICRO_VERSION);
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_GAMEPAD | SDL_INIT_CAMERA)) {
         SDL_Log("[ERROR] Initializing Engine failed!\n");
         throw std::runtime_error("[FATAL] Initialized Engine failed!\n");
@@ -639,6 +644,11 @@ void EasyEngine::Painter::______() {
             if (_running_transition) _running_transition->______();
         }
     }
+    if (!_running_curve_list.empty()) {
+        for (auto& _running_curve : _running_curve_list) {
+            if (_running_curve) _running_curve->______();
+        }
+    }
     SDL_GetWindowPosition(_window->window, &_window->geometry.x, &_window->geometry.y);
     SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
     SDL_SetRenderViewport(_window->renderer, nullptr);
@@ -752,15 +762,15 @@ void EasyEngine::Painter::setClipView(const Geometry &geometry) {
     command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
 }
 
-bool EasyEngine::Painter::_addTransition(EasyEngine::Transition *transition) {
+bool EasyEngine::Painter::_addTransition(EasyEngine::Transition::AbstractTransition *transition) {
     for (auto& _transition : _transition_list) {
         if (_transition.get() == transition) return false;
     }
-    _transition_list.emplace_back(std::shared_ptr<Transition>(transition));
+    _transition_list.emplace_back(std::shared_ptr<Transition::AbstractTransition>(transition));
     return true;
 }
 
-bool EasyEngine::Painter::_removeTransition(EasyEngine::Transition *transition) {
+bool EasyEngine::Painter::_removeTransition(EasyEngine::Transition::AbstractTransition *transition) {
     _stopTransition(transition);
     auto _ret = std::erase_if(_transition_list, [transition](const auto& _t) {
         return _t.get() == transition;
@@ -768,8 +778,8 @@ bool EasyEngine::Painter::_removeTransition(EasyEngine::Transition *transition) 
     return _ret > 0;
 }
 
-bool EasyEngine::Painter::_startTransition(EasyEngine::Transition *transition) {
-    std::shared_ptr<Transition> _ret = nullptr;
+bool EasyEngine::Painter::_startTransition(EasyEngine::Transition::AbstractTransition *transition) {
+    std::shared_ptr<Transition::AbstractTransition> _ret = nullptr;
     for (auto& _trans : _transition_list) {
         if (_trans.get() == transition) {
             _ret = _trans;
@@ -779,9 +789,24 @@ bool EasyEngine::Painter::_startTransition(EasyEngine::Transition *transition) {
     return _ret.get();
 }
 
-bool EasyEngine::Painter::_stopTransition(EasyEngine::Transition *transition) {
+bool EasyEngine::Painter::_stopTransition(EasyEngine::Transition::AbstractTransition *transition) {
     auto _ret = std::erase_if(_running_transition_list, [transition](const auto& _t) {
         return _t.get() == transition;
+    });
+    return _ret > 0;
+}
+
+bool EasyEngine::Painter::_startEasingCurve(const std::shared_ptr<EasingCurve::AbstractEasingCurve> &easing_curve) {
+    for (auto& _curve : _running_curve_list) {
+        if (_curve.get() == easing_curve.get()) { return false; }
+    }
+    _running_curve_list.emplace_back(easing_curve);
+    return true;
+}
+
+bool EasyEngine::Painter::_stopEasingCurve(const std::shared_ptr<EasingCurve::AbstractEasingCurve> &easing_curve) {
+    auto _ret = std::erase_if(_running_curve_list, [easing_curve](const auto& _t) {
+        return _t.get() == easing_curve.get();
     });
     return _ret > 0;
 }

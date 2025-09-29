@@ -43,7 +43,7 @@ bool Components::Layer::append(uint32_t z_order, Components::SpriteGroup *group)
     return true;
 }
 
-bool Components::Layer::append(uint32_t z_order, Components::Animation *animation) {
+bool Components::Layer::append(uint32_t z_order, Components::FrameAnimation *animation) {
     if (!checkAppendError(z_order)) return false;
     if (!animation) {
         SDL_Log("[ERROR] The specified animation is not valid!");
@@ -55,7 +55,7 @@ bool Components::Layer::append(uint32_t z_order, Components::Animation *animatio
                 "Exception: Name '%s' is located at index %u.", animation->name().c_str(), idx);
         return false;
     }
-    _elements.emplace(z_order, std::shared_ptr<Animation>(animation));
+    _elements.emplace(z_order, std::shared_ptr<FrameAnimation>(animation));
     return true;
 }
 
@@ -135,13 +135,13 @@ Components::SpriteGroup *Components::Layer::spriteGroup(uint32_t z_order) const 
     }
 }
 
-Components::Animation *Components::Layer::animation(uint32_t z_order) const {
+Components::FrameAnimation *Components::Layer::animation(uint32_t z_order) const {
     if (!_elements.contains(z_order)) {
         SDL_Log("[ERROR] The specified z_order is not found!");
         return nullptr;
     }
     try {
-        auto ret = std::get<std::shared_ptr<Animation>>(_elements.at(z_order));
+        auto ret = std::get<std::shared_ptr<FrameAnimation>>(_elements.at(z_order));
         return ret.get();
     } catch (const std::exception &e) {
         SDL_Log("[ERROR] The z_order %u in layer '%s' is not the animation!", z_order, _name.c_str());
@@ -263,7 +263,7 @@ void Components::Layer::update() {
             SpriteGroup* t = std::get<1>(_ele.second).get();
             t->draw();
         } else if (_idx == 2) {
-            Animation* t = std::get<2>(_ele.second).get();
+            FrameAnimation* t = std::get<2>(_ele.second).get();
             t->draw();
         } else if (_idx == 3) {
             Entity* t = std::get<3>(_ele.second).get();

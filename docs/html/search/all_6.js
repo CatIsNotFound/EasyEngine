@@ -13,9 +13,10 @@ var searchData=
   ['fontkerning_10',['fontKerning',['../class_easy_engine_1_1_components_1_1_font.html#a1a8f51fa0a374c849916adf1300de3d8',1,'EasyEngine::Components::Font']]],
   ['fontsize_11',['fontSize',['../class_easy_engine_1_1_components_1_1_font.html#ac19c89a5b3d9786c7ed4d52c98175334',1,'EasyEngine::Components::Font']]],
   ['fontsystem_12',['FontSystem',['../class_easy_engine_1_1_font_system.html',1,'EasyEngine']]],
-  ['forward_13',['Forward',['../class_easy_engine_1_1_transition.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224',1,'EasyEngine::Transition']]],
+  ['forward_13',['Forward',['../_transition_8h.html#ab1fbef77f06a083e204b95679a44f1e9a72c362a6e4d213a90790aeab46de5e47',1,'EasyEngine::EasingCurve::Forward'],['../_transition_8h.html#aeb284434e566a61938da5a3a80c5a3c5a5adf4fb619a46969f8cf8774b3a38224',1,'EasyEngine::Transition::Forward']]],
   ['fps_14',['fps',['../class_easy_engine_1_1_engine.html#a09ee3e3164410c88eed23aa142cc7f5b',1,'EasyEngine::Engine']]],
-  ['framedropthreshold_15',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
-  ['framedroptolerance_16',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
-  ['framescount_17',['framesCount',['../class_easy_engine_1_1_components_1_1_animation.html#a9d9279872e6834b79e210bdd1dea0a8e',1,'EasyEngine::Components::Animation']]]
+  ['frameanimation_15',['FrameAnimation',['../class_easy_engine_1_1_components_1_1_frame_animation.html',1,'EasyEngine::Components::FrameAnimation'],['../class_easy_engine_1_1_components_1_1_frame_animation.html#a010e0e7f2dc97b181d5737c2b4dfa19d',1,'EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &amp;name)'],['../class_easy_engine_1_1_components_1_1_frame_animation.html#aee4fa7e6b3b94cee607853817218a16c',1,'EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &amp;name, const std::vector&lt; Sprite * &gt; &amp;sprite_list, uint64_t duration_per_frame=50)']]],
+  ['framedropthreshold_16',['frameDropThreshold',['../class_easy_engine_1_1_engine.html#ad6f36b53fbb659f1f79fa8a1be0f453a',1,'EasyEngine::Engine']]],
+  ['framedroptolerance_17',['frameDropTolerance',['../class_easy_engine_1_1_engine.html#ae6586519d2a9dc15ee517d00afd27664',1,'EasyEngine::Engine']]],
+  ['framescount_18',['framesCount',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a6819f7279764f017f8f2c70b39d0ee1c',1,'EasyEngine::Components::FrameAnimation']]]
 ];

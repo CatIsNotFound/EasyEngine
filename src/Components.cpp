@@ -298,17 +298,17 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::strin
     _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit)
-    : _name(name), _painter(spirit._painter), _size(spirit._size), _path(spirit._path) {
-    _surface = SDL_DuplicateSurface(spirit._surface);
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &sprite)
+    : _name(name), _painter(sprite._painter), _size(sprite._size), _path(sprite._path) {
+    _surface = SDL_DuplicateSurface(sprite._surface);
     _texture = SDL_CreateTextureFromSurface(_painter->window()->renderer, _surface);
     _properties = std::make_unique<Properties>();
 }
 
-EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &spirit,
+EasyEngine::Components::Sprite::Sprite(const std::string &name, const EasyEngine::Components::Sprite &sprite,
                                        const EasyEngine::Vector2 &clip_pos, const EasyEngine::Size &clip_size)
-    : _name(name), _painter(spirit._painter), _size(spirit._size) {
-    _surface = SDL_DuplicateSurface(spirit._surface);
+    : _name(name), _painter(sprite._painter), _size(sprite._size) {
+    _surface = SDL_DuplicateSurface(sprite._surface);
     auto _rect = SDL_Rect(
             static_cast<int>(clip_pos.x),
             static_cast<int>(clip_pos.y),
@@ -349,7 +349,6 @@ EasyEngine::Components::Sprite::Sprite(const std::string &name, const std::strin
 EasyEngine::Components::Sprite::~Sprite() {
     if (_texture) SDL_DestroyTexture(_texture);
     if (_surface) SDL_DestroySurface(_surface);
-    // SDL_Log("Unload Sprite: %s", _name.c_str());
 }
 
 void EasyEngine::Components::Sprite::copySprite(EasyEngine::Components::Sprite *sprite) {
@@ -431,7 +430,7 @@ EasyEngine::Size EasyEngine::Components::Sprite::size() const {
     return _size;
 }
 
-STexture *EasyEngine::Components::Sprite::spirit() const {
+STexture *EasyEngine::Components::Sprite::sprite() const {
     return _texture;
 }
 
@@ -638,70 +637,70 @@ uint32_t EasyEngine::Components::SpriteGroup::count() const {
     return _sprites.size();
 }
 
-EasyEngine::Components::Animation::Animation(const std::string &name) : _name(name) {}
+EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &name) : _name(name) {}
 
-EasyEngine::Components::Animation::Animation(const std::string &name,
-                                             const std::vector<Sprite *> &sprite_list,
-                                             uint64_t duration_per_frame) : _name(name) {
+EasyEngine::Components::FrameAnimation::FrameAnimation(const std::string &name,
+                                                       const std::vector<Sprite *> &sprite_list,
+                                                       uint64_t duration_per_frame) : _name(name) {
     for (auto& sprite : sprite_list) {
         _animations.push_back({sprite, duration_per_frame});
     }
 }
 
-EasyEngine::Components::Animation::~Animation() {
+EasyEngine::Components::FrameAnimation::~FrameAnimation() {
     if (_frame_changer) {
         EventSystem::global()->removeTimer(_frame_changer);
     }
 }
 
-void EasyEngine::Components::Animation::setName(const std::string &name) { _name = name; }
+void EasyEngine::Components::FrameAnimation::setName(const std::string &name) { _name = name; }
 
-const std::string& EasyEngine::Components::Animation::name() const { return _name; }
+const std::string& EasyEngine::Components::FrameAnimation::name() const { return _name; }
 
-void EasyEngine::Components::Animation::setPosition(const EasyEngine::Vector2 &pos) { _pos.reset(pos.x, pos.y); }
+void EasyEngine::Components::FrameAnimation::setPosition(const EasyEngine::Vector2 &pos) { _pos.reset(pos.x, pos.y); }
 
-const EasyEngine::Vector2& EasyEngine::Components::Animation::position() const { return _pos; }
+const EasyEngine::Vector2& EasyEngine::Components::FrameAnimation::position() const { return _pos; }
 
-void EasyEngine::Components::Animation::addFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration) {
+void EasyEngine::Components::FrameAnimation::addFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration) {
     _animations.push_back({.sprite = sprite, .duration = duration});
 }
 
-void EasyEngine::Components::Animation::insertFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration,
-                                                    const size_t frame) {
+void EasyEngine::Components::FrameAnimation::insertFrame(EasyEngine::Components::Sprite *sprite, uint64_t duration,
+                                                         const size_t frame) {
     _animations.insert(_animations.begin() + frame, {.sprite = sprite, .duration = duration});
 }
 
-void EasyEngine::Components::Animation::replaceFrame(EasyEngine::Components::Sprite *sprite, const size_t frame,
-                                                     const uint64_t duration) {
+void EasyEngine::Components::FrameAnimation::replaceFrame(EasyEngine::Components::Sprite *sprite, const size_t frame,
+                                                          const uint64_t duration) {
     _animations.at(frame).sprite = sprite;
     _animations.at(frame).duration = duration;
 }
 
-void EasyEngine::Components::Animation::removeFrame(const size_t frame) {
+void EasyEngine::Components::FrameAnimation::removeFrame(const size_t frame) {
     _animations.erase(_animations.begin() + frame);
 }
 
-void EasyEngine::Components::Animation::clearFrames() {
+void EasyEngine::Components::FrameAnimation::clearFrames() {
     _animations.clear();
 }
 
-size_t EasyEngine::Components::Animation::framesCount() const {
+size_t EasyEngine::Components::FrameAnimation::framesCount() const {
     return _animations.size();
 }
 
-uint64_t EasyEngine::Components::Animation::durationInFrame(const size_t frame) {
+uint64_t EasyEngine::Components::FrameAnimation::durationInFrame(const size_t frame) {
     return _animations.at(frame).duration;
 }
 
-EasyEngine::Components::Sprite *EasyEngine::Components::Animation::sprite(const size_t frame) const {
+EasyEngine::Components::Sprite *EasyEngine::Components::FrameAnimation::sprite(const size_t frame) const {
     return _animations.at(frame).sprite;
 }
 
-void EasyEngine::Components::Animation::draw() {
+void EasyEngine::Components::FrameAnimation::draw() {
     draw(_pos);
 }
 
-void EasyEngine::Components::Animation::draw(const Vector2& pos){
+void EasyEngine::Components::FrameAnimation::draw(const Vector2& pos){
     try {
         _animations.at(_cur_frame).sprite->draw(pos);
     } catch (const std::exception& e) {
@@ -709,7 +708,7 @@ void EasyEngine::Components::Animation::draw(const Vector2& pos){
     }
 }
 
-void EasyEngine::Components::Animation::play(bool loop, size_t start_frame) {
+void EasyEngine::Components::FrameAnimation::play(bool loop, size_t start_frame) {
     if (!_frame_changer) {
         _frame_changer = new Timer();
         _frame_changer->setDelay(_animations.front().duration);
@@ -729,38 +728,38 @@ void EasyEngine::Components::Animation::play(bool loop, size_t start_frame) {
     }
 }
 
-void EasyEngine::Components::Animation::stop() {
+void EasyEngine::Components::FrameAnimation::stop() {
     if (_frame_changer) _frame_changer->stop();
 }
 
-bool EasyEngine::Components::Animation::isPlayedAnimation() const {
+bool EasyEngine::Components::FrameAnimation::isPlayedAnimation() const {
     return (!_frame_changer ? false : _frame_changer->enabled());
 }
 
-size_t EasyEngine::Components::Animation::currentFrame() const {
+size_t EasyEngine::Components::FrameAnimation::currentFrame() const {
     return _cur_frame;
 }
 
-size_t EasyEngine::Components::Animation::playedCount() const {
+size_t EasyEngine::Components::FrameAnimation::playedCount() const {
     return _played;
 }
 
-void EasyEngine::Components::Animation::clearPlayedCount() {
+void EasyEngine::Components::FrameAnimation::clearPlayedCount() {
     _played = 0;
 }
 
-EasyEngine::Components::Timer * EasyEngine::Components::Animation::timer() {
+EasyEngine::Components::Timer * EasyEngine::Components::FrameAnimation::timer() {
     return (_frame_changer ? _frame_changer : nullptr);
 }
 
 EasyEngine::Components::Control::Control(const std::string &name) : _name(name) {
-    _def_sprite = nullptr;
+    _defined_sprite = nullptr;
     EventSystem::global()->addControl(this);
 }
 
 EasyEngine::Components::Control::Control(const std::string &name, const EasyEngine::Components::Sprite &sprite) {
-    _def_sprite = std::make_shared<Sprite>(fmt::format("{}_group", sprite.name()), sprite);
-    _def_sprite->properties()->clip_mode = true;
+    _defined_sprite = std::make_shared<Sprite>(fmt::format("{}_group", sprite.name()), sprite);
+    _defined_sprite->properties()->clip_mode = true;
     EventSystem::global()->addControl(this);
 }
 
@@ -770,9 +769,9 @@ EasyEngine::Components::Control::Control(const std::string &name, const EasyEngi
     _size = control._size;
     _hot_area = control._hot_area;
     _status = control._status;
-    _def_sprite = std::make_shared<Sprite>(
-            fmt::format("{}_copy", control._def_sprite->name()), *control._def_sprite);
-    _def_sprite->properties()->clip_mode = true;
+    _defined_sprite = std::make_shared<Sprite>(
+            fmt::format("{}_copy", control._defined_sprite->name()), *control._defined_sprite);
+    _defined_sprite->properties()->clip_mode = true;
     for (auto& _con : control._container_list) {
         auto container = std::make_shared<Element>();
         container->type_id = _con.second->type_id;
@@ -781,7 +780,7 @@ EasyEngine::Components::Control::Control(const std::string &name, const EasyEngi
         } else if (container->type_id == 2) {
             container->self.sprite_group = _con.second->self.sprite_group;
         } else if (container->type_id == 3) {
-            container->self.animation = _con.second->self.animation;
+            container->self.frame_animation = _con.second->self.frame_animation;
         } else if (container->type_id == 4) {
             container->self.clip_sprite = {_con.second->self.clip_sprite.pos, _con.second->self.clip_sprite.size};
             // SDL_Log("Copied");
@@ -808,6 +807,14 @@ const std::string &EasyEngine::Components::Control::name() const {
     return _name;
 }
 
+void EasyEngine::Components::Control::setVisible(bool visible) {
+    _visible = visible;
+}
+
+bool EasyEngine::Components::Control::visible() const {
+    return _visible;
+}
+
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Sprite *sprite) {
     auto new_con = std::make_shared<Element>();
     new_con->type_id = 1;
@@ -822,16 +829,16 @@ void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Co
     _container_list[status] = new_con;
 }
 
-void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, Animation *animation) {
+void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status, FrameAnimation *frame_animation) {
     auto new_con = std::make_shared<Element>();
     new_con->type_id = 3;
-    new_con->self.animation = std::shared_ptr<Animation>(animation);
+    new_con->self.frame_animation = std::shared_ptr<FrameAnimation>(frame_animation);
     _container_list[status] = new_con;
 }
 
 void EasyEngine::Components::Control::setStatus(const EasyEngine::Components::Control::Status &status,
                                                 const EasyEngine::GeometryF &clip_sprite) {
-    if (_def_sprite) {
+    if (_defined_sprite) {
         auto new_con = std::make_shared<Element>();
         new_con->type_id = 4;
         new_con->self.clip_sprite = clip_sprite;
@@ -852,7 +859,7 @@ const char * EasyEngine::Components::Control::getTypename(
     if (!_container_list.contains(status)) return "Undefined";
     if (_container_list.at(status)->type_id == 1) return "Sprite";
     if (_container_list.at(status)->type_id == 2) return "SpriteGroup";
-    if (_container_list.at(status)->type_id == 3) return "Animation";
+    if (_container_list.at(status)->type_id == 3) return "FrameAnimation";
     if (_container_list.at(status)->type_id == 4) return "ClipSprite (GeometryF)";
     return "Unknown";
 }
@@ -861,7 +868,7 @@ const std::type_info& EasyEngine::Components::Control::typeInfo(const enum Statu
     if (!_container_list.contains(status)) return typeid(void);
     if (_container_list.at(status)->type_id == 1) return typeid(Sprite);
     if (_container_list.at(status)->type_id == 2) return typeid(SpriteGroup);
-    if (_container_list.at(status)->type_id == 3) return typeid(Animation);
+    if (_container_list.at(status)->type_id == 3) return typeid(FrameAnimation);
     if (_container_list.at(status)->type_id == 4) return typeid(GeometryF);
     return typeid(void);
 }
@@ -944,8 +951,8 @@ void EasyEngine::Components::Control::resize(float width, float height) {
     if (width <= 0 || height <= 0) return;
     _size.reset(width, height);
     float ratioX, ratioY;
-    if (_def_sprite) {
-        _def_sprite->resize(width, height);
+    if (_defined_sprite) {
+        _defined_sprite->resize(width, height);
     }
     for (auto& con : _container_list) {
         if (con.second->type_id == 1) {
@@ -953,7 +960,7 @@ void EasyEngine::Components::Control::resize(float width, float height) {
         } else if (con.second->type_id == 2) {
             con.second->self.sprite_group->resize(width, height);
         } else if (con.second->type_id == 3) {
-            auto ani = con.second->self.animation;
+            auto ani = con.second->self.frame_animation;
             for (auto f = 0; f < ani->framesCount(); ++f) {
                 ani->sprite(f)->resize(width, height);
             }
@@ -1006,24 +1013,24 @@ void EasyEngine::Components::Control::update() {
         } else if (_container_list[Status::Default]->type_id == 2) {
             status<SpriteGroup>(Status::Default)->draw(_position);
         } else if (_container_list[Status::Default]->type_id == 3) {
-            status<Animation>(Status::Default)->draw(_position);
+            status<FrameAnimation>(Status::Default)->draw(_position);
         } else if (_container_list[Status::Default]->type_id == 4) {
             auto clip = status<GeometryF>(Status::Default);
-            _def_sprite->properties()->clip_pos = clip->pos;
-            _def_sprite->properties()->clip_size = clip->size;
-            _def_sprite->draw(_position);
+            _defined_sprite->properties()->clip_pos = clip->pos;
+            _defined_sprite->properties()->clip_size = clip->size;
+            _defined_sprite->draw(_position);
         }
     } else if (_container_list[_status]->type_id == 1) {
         status<Sprite>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 2) {
         status<SpriteGroup>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 3) {
-        status<Animation>(_status)->draw(_position);
+        status<FrameAnimation>(_status)->draw(_position);
     } else if (_container_list[_status]->type_id == 4) {
         auto clip = status<GeometryF>(_status);
-        _def_sprite->properties()->clip_pos = clip->pos;
-        _def_sprite->properties()->clip_size = clip->size;
-        _def_sprite->draw(_position);
+        _defined_sprite->properties()->clip_pos = clip->pos;
+        _defined_sprite->properties()->clip_size = clip->size;
+        _defined_sprite->draw(_position);
     }
     if (_event != Event::None && _trigger_list.contains(_event)) {
         _trigger_list.at(_event)->trigger();
@@ -1237,12 +1244,12 @@ EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine
     _container->self.sprite_group = std::make_shared<SpriteGroup>(group);
 }
 
-EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Animation &animation)
+EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::FrameAnimation &animation)
     : _obj_name(name) {
     _collider = std::make_unique<Collider>();
     _container = std::make_shared<Element>();
     _container->type_id = 3;
-    _container->self.animation = std::make_shared<Animation>(animation);
+    _container->self.frame_animation = std::make_shared<FrameAnimation>(animation);
 }
 
 EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine::Components::Sprite &sprite,
@@ -1250,7 +1257,7 @@ EasyEngine::Components::Entity::Entity(const std::string &name, const EasyEngine
    : _obj_name(name) {
     _collider = std::make_unique<Collider>();
     _container = std::make_shared<Element>();
-    _def_sprite = std::make_unique<Sprite>(sprite.name(), sprite);
+    _defined_sprite = std::make_unique<Sprite>(sprite.name(), sprite);
     _container->type_id = 4;
     _container->self.clip_sprite = clip;
 }
@@ -1263,6 +1270,14 @@ std::string EasyEngine::Components::Entity::name() const {
     return _obj_name;
 }
 
+void EasyEngine::Components::Entity::setVisible(bool visible) {
+    _visible = visible;
+}
+
+bool EasyEngine::Components::Entity::visible() const {
+    return _visible;
+}
+
 void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics::Rectangle& rect) {
     _collider->setSelf(rect);
     collider()->moveBounds(_pos);
@@ -1272,9 +1287,9 @@ void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics:
     } else if (_container->type_id == 2) {
         real_size = _container->self.sprite_group->size();
     } else if (_container->type_id == 3) {
-        real_size = _container->self.animation->sprite()->size();
-    } else if (_container->type_id == 4 && _def_sprite) {
-        real_size = _def_sprite->size();
+        real_size = _container->self.frame_animation->sprite()->size();
+    } else if (_container->type_id == 4 && _defined_sprite) {
+        real_size = _defined_sprite->size();
     }
     collider()->resizeBounds(real_size);
     _center_pos.reset(real_size.width / 2, real_size.height / 2);
@@ -1290,9 +1305,9 @@ void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics:
     } else if (_container->type_id == 2) {
         real_size = _container->self.sprite_group->size();
     } else if (_container->type_id == 3) {
-        real_size = _container->self.animation->sprite()->size();
-    } else if (_container->type_id == 4 && _def_sprite) {
-        real_size = _def_sprite->size();
+        real_size = _container->self.frame_animation->sprite()->size();
+    } else if (_container->type_id == 4 && _defined_sprite) {
+        real_size = _defined_sprite->size();
     }
     min = std::min(real_size.width, real_size.height);
     collider()->resizeBounds({min, min});
@@ -1309,9 +1324,9 @@ void EasyEngine::Components::Entity::setColliderSelf(const EasyEngine::Graphics:
     } else if (_container->type_id == 2) {
         real_size = _container->self.sprite_group->size();
     } else if (_container->type_id == 3) {
-        real_size = _container->self.animation->sprite()->size();
-    } else if (_container->type_id == 4 && _def_sprite) {
-        real_size = _def_sprite->size();
+        real_size = _container->self.frame_animation->sprite()->size();
+    } else if (_container->type_id == 4 && _defined_sprite) {
+        real_size = _defined_sprite->size();
     }
     Size ret_size = real_size / 2;
     _center_pos.reset(ret_size.width, ret_size.height);
@@ -1362,7 +1377,7 @@ const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
     } else if (_container->type_id == 2) {
         return typeid(SpriteGroup);
     } else if (_container->type_id == 3) {
-        return typeid(Animation);
+        return typeid(FrameAnimation);
     } else if (_container->type_id == 4) {
         return typeid(GeometryF);
     } else {
@@ -1371,16 +1386,17 @@ const std::type_info& EasyEngine::Components::Entity::typeInfo() const {
 }
 
 void EasyEngine::Components::Entity::update() const {
+    if (!_visible) return;
     if (_container->type_id == 1) {
         _container->self.sprite->draw(_pos);
     } else if (_container->type_id == 2) {
         _container->self.sprite_group->draw(_pos);
     } else if (_container->type_id == 3) {
-        _container->self.animation->draw(_pos);
+        _container->self.frame_animation->draw(_pos);
     } else if (_container->type_id == 4) {
-        if (_def_sprite) {
+        if (_defined_sprite) {
             auto clip = _container->self.clip_sprite;
-            _def_sprite->draw(_pos, clip.pos, clip.size);
+            _defined_sprite->draw(_pos, clip.pos, clip.size);
         }
     }
 }

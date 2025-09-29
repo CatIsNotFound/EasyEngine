@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::Control" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::Control" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,6 +45,14 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "获取该控件的名称 "
 .ti -1c
+.RI "void \fBsetVisible\fP (bool \fBvisible\fP)"
+.br
+.RI "设置控件的可见性 "
+.ti -1c
+.RI "bool \fBvisible\fP () const"
+.br
+.RI "获取该控件的可见性 "
+.ti -1c
 .RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBSprite\fP *sprite)"
 .br
 .RI "设定控件指定状态 "
@@ -53,7 +61,7 @@ EasyEngine::Components::Control \- 控件
 .br
 .RI "设定控件指定状态 "
 .ti -1c
-.RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBAnimation\fP *animation)"
+.RI "void \fBsetStatus\fP (const \fBEasyEngine::Components::Control::Status\fP &\fBstatus\fP, \fBFrameAnimation\fP *frame_animation)"
 .br
 .RI "设定控件指定状态 "
 .ti -1c
@@ -322,9 +330,19 @@ EasyEngine::Components::Control \- 控件
 .br
 \fI\fBSpriteGroup\fP\fP 
 .br
-\fI\fBAnimation\fP\fP 
+\fI\fBFrameAnimation\fP\fP 
 .br
 \fIUnknown\fP 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+自 v1\&.1\&.0-alpha 版本起，原 \fRAnimation\fP 类已重命名为 \fR\fBFrameAnimation\fP\fP 类。 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
 .RE
 .PP
 \fB参见\fP
@@ -641,7 +659,7 @@ removeEnterSceneEvent
 .RE
 .PP
 
-.SS "void EasyEngine::Components::Control::setStatus (const \fBEasyEngine::Components::Control::Status\fP & status, \fBAnimation\fP * animation)"
+.SS "void EasyEngine::Components::Control::setStatus (const \fBEasyEngine::Components::Control::Status\fP & status, \fBFrameAnimation\fP * frame_animation)"
 
 .PP
 设定控件指定状态 
@@ -650,7 +668,7 @@ removeEnterSceneEvent
 .RS 4
 \fIstatus\fP 选择任一状态 
 .br
-\fIsprite\fP 在当前状态下绘制成什么精灵动画 
+\fIframe_animation\fP 在当前状态下绘制成什么精灵动画 
 .RE
 .PP
 \fB参见\fP
@@ -725,6 +743,22 @@ removeEnterSceneEvent
 .RE
 .PP
 
+.SS "void EasyEngine::Components::Control::setVisible (bool visible)"
+
+.PP
+设置控件的可见性 
+.PP
+\fB参数\fP
+.RS 4
+\fIvisible\fP 设定控件是否可见 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
+.RE
+.PP
+
 .SS "\fBEasyEngine::Size\fP EasyEngine::Components::Control::size () const"
 
 .PP
@@ -761,7 +795,7 @@ removeEnterSceneEvent
 .PP
 \fB注解\fP
 .RS 4
-目前支持的类：Sprite、SpriteGroup、Animation、GeometryF 
+目前支持的类：Sprite、SpriteGroup、FrameAnimation、GeometryF 
 
 .PP
 如果无法确定当前状态下使用的类，请使用 \fBgetTypename()\fP 以获取该状态下使用的类。 
@@ -802,6 +836,22 @@ removeEnterSceneEvent
 \fB参见\fP
 .RS 4
 \fBstatus\fP 
+.RE
+.PP
+
+.SS "bool EasyEngine::Components::Control::visible () const"
+
+.PP
+获取该控件的可见性 
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 以确定控件是否存在 
+.RE
+.PP
+\fB自从\fP
+.RS 4
+v1\&.1\&.0-alpha 
 .RE
 .PP
 

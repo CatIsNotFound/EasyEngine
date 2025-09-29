@@ -40,7 +40,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.0.1-beta</span>
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>引擎类  
+<p>引擎  
  <a href="#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
@@ -125,7 +125,7 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a21aaab8bbbf9faf626b71c0f28ed9b14" id="r_a21aaab8bbbf9faf626b71c0f28ed9b14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21aaab8bbbf9faf626b71c0f28ed9b14">Engine</a> (const std::string &amp;title, uint32_t width=800, uint32_t height=600)</td></tr>
 <tr class="memdesc:a21aaab8bbbf9faf626b71c0f28ed9b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">定义窗口并初始化引擎资源  <br /></td></tr>
 <tr class="memitem:ad2530b5fbbea2ad182c83461d3f5c149" id="r_ad2530b5fbbea2ad182c83461d3f5c149"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2530b5fbbea2ad182c83461d3f5c149">exec</a> ()</td></tr>
-<tr class="memdesc:ad2530b5fbbea2ad182c83461d3f5c149"><td class="mdescLeft">&#160;</td><td class="mdescRight">事件循环，保证引擎持续运作  <br /></td></tr>
+<tr class="memdesc:ad2530b5fbbea2ad182c83461d3f5c149"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动主事件循环  <br /></td></tr>
 <tr class="memitem:a272a2105228cba94cc353f989b0011f9" id="r_a272a2105228cba94cc353f989b0011f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a272a2105228cba94cc353f989b0011f9">show</a> (SWindowID window_id=_main_window_id)</td></tr>
 <tr class="memdesc:a272a2105228cba94cc353f989b0011f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示指定窗口  <br /></td></tr>
 <tr class="memitem:a1b9cbccfbfbdc0540e2541108b32f717" id="r_a1b9cbccfbfbdc0540e2541108b32f717"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b9cbccfbfbdc0540e2541108b32f717">showAll</a> ()</td></tr>
@@ -192,8 +192,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Painter</b></td></tr
 class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
-<div class="textblock"><p>引擎类 </p>
-<p>控制所有游戏流程：初始化、渲染、运行、释放等 </p>
+<div class="textblock"><p>引擎 </p>
+<p>引擎核心控制类，负责窗口创建与管理、渲染流程调度、事件循环驱动及资源生命周期管理 </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
 <a id="a21aaab8bbbf9faf626b71c0f28ed9b14" name="a21aaab8bbbf9faf626b71c0f28ed9b14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21aaab8bbbf9faf626b71c0f28ed9b14">&#9670;&#160;</a></span>Engine()</h2>
@@ -276,8 +276,10 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EventSystem</b></td>
       </table>
 </div><div class="memdoc">
 
-<p>事件循环，保证引擎持续运作 </p>
-<dl class="section note"><dt>注解</dt><dd>必须调用此函数，否则引擎将会被自动释放 </dd></dl>
+<p>启动主事件循环 </p>
+<dl class="section return"><dt>返回</dt><dd>返回程序退出码，一般作用于 <span class="tt">main()</span> 函数下的返回值 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>必需调用此函数才能使整个引擎持续运行</dd></dl>
+<p>启动引擎主事件循环，处理输入、渲染等核心流程。 </p>
 
 </div>
 </div>

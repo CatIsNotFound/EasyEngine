@@ -1,4 +1,4 @@
-.TH "EasyEngine::EventSystem" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::EventSystem" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -210,12 +210,12 @@ EasyEngine::EventSystem \- 事件系统
 .SS "bool EasyEngine::EventSystem::handler ()"
 
 .PP
-事件处理器 所有事件都将被管理与处理
+事件处理器 处理所有注册的事件（定时器、触发器、控件事件等）。
 
 .PP
 \fB返回\fP
 .RS 4
-返回 true 将持续处理事件，false 将结束处理事件 
+返回 \fRtrue\fP 将持续处理事件，\fRfalse\fP 将结束处理事件 
 .RE
 .PP
 

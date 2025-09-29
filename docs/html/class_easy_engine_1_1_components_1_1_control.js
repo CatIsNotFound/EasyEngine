@@ -50,12 +50,14 @@ var class_easy_engine_1_1_components_1_1_control =
     [ "setGeometryForHotArea", "class_easy_engine_1_1_components_1_1_control.html#a87a481e16758b503c1d67019dc3b260d", null ],
     [ "setInactive", "class_easy_engine_1_1_components_1_1_control.html#a1f8c0032799b8e3a83d904ac40500b86", null ],
     [ "setName", "class_easy_engine_1_1_components_1_1_control.html#a4a5ce46a6697019c03d7df6391139b10", null ],
-    [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#ad1c8e151d2d206f8f06b53fa289d6b32", null ],
+    [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#aa8e7888b35287d9d8e6b4ea934ef1a13", null ],
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#aaad67edf7b27afaabf728ba385943374", null ],
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#aec8c2d0dc60b1d2312038c8ef4349faa", null ],
     [ "setStatus", "class_easy_engine_1_1_components_1_1_control.html#ac62a4fbfd8ec3910a0c8ba70936537b9", null ],
+    [ "setVisible", "class_easy_engine_1_1_components_1_1_control.html#ab1b2647f033ebf875234874ab486229e", null ],
     [ "size", "class_easy_engine_1_1_components_1_1_control.html#ab4259dddc23b43a600b2fd79f9bfd4b0", null ],
     [ "status", "class_easy_engine_1_1_components_1_1_control.html#a52b634d3e5084f7a757acea500267577", null ],
     [ "typeInfo", "class_easy_engine_1_1_components_1_1_control.html#a02d81b78aba53d317894b1ca2ce752fa", null ],
-    [ "update", "class_easy_engine_1_1_components_1_1_control.html#a68a8b108988d4fd3563544bf493af6b8", null ]
+    [ "update", "class_easy_engine_1_1_components_1_1_control.html#a68a8b108988d4fd3563544bf493af6b8", null ],
+    [ "visible", "class_easy_engine_1_1_components_1_1_control.html#ae50cf3e292eb3698005d2bc95873ac48", null ]
 ];

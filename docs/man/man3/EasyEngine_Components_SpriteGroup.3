@@ -1,4 +1,4 @@
-.TH "EasyEngine::Components::SpriteGroup" 3 "Version 1.0.1-beta" "Easy Engine" \" -*- nroff -*-
+.TH "EasyEngine::Components::SpriteGroup" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -362,6 +362,11 @@ lastIndexOf
 \fIsize\fP 给定新的大小 
 .RE
 .PP
+\fB注解\fP
+.RS 4
+当 \fRsize\fP 参数中的 \fRwidth\fP 或 \fRheight\fP 属性小于等于 0 时，将无法调整大小！ 
+.RE
+.PP
 \fB参见\fP
 .RS 4
 \fBsize\fP 
@@ -378,6 +383,11 @@ lastIndexOf
 \fIwidth\fP 新的宽度 
 .br
 \fIheight\fP 新的高度 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+当 \fRwidth\fP 或 \fRheight\fP 小于等于 0 时，将无法调整大小！ 
 .RE
 .PP
 \fB参见\fP

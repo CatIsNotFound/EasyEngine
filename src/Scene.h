@@ -15,12 +15,12 @@
 #include "Transition.h"
 
 namespace EasyEngine {
-    class Transition;
+
     class SceneManager;
     namespace Components {
         /// 使用的元素集合
         using Elements = std::variant<std::shared_ptr<Sprite>, std::shared_ptr<SpriteGroup>,
-                std::shared_ptr<Animation>, std::shared_ptr<Entity>, std::shared_ptr<Control>>;
+                std::shared_ptr<FrameAnimation>, std::shared_ptr<Entity>, std::shared_ptr<Control>>;
         class Scene;
         /**
          * @class Layer
@@ -76,7 +76,7 @@ namespace EasyEngine {
              * @see animation
              * @see remove
              */
-            bool append(uint32_t z_order, Animation* animation);
+            bool append(uint32_t z_order, FrameAnimation* animation);
             /**
              * @brief 添加指定游戏实体到图层
              * @param z_order   绘制顺序（数字越大，显示最先）
@@ -133,7 +133,7 @@ namespace EasyEngine {
              * @see indexOf
              * @see remove
              */
-            Animation* animation(uint32_t z_order) const;
+            FrameAnimation* animation(uint32_t z_order) const;
             /**
              * @brief 获取指定图层下的游戏实体
              * @param z_order   指定图层绘制顺序
