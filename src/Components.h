@@ -1788,7 +1788,10 @@ namespace EasyEngine {
              * @return 返回转换后的精灵指针（便于后续处理）
              */
             Sprite *textToSprite(const std::string &sprite_name, const std::string &text, EasyEngine::Painter *painter);
-
+            /**
+             * @brief 获取字体指针
+             */
+            TTF_Font* TTF_font() const;
         private:
             /// 字体指针
             TTF_Font* _font{};

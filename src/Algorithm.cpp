@@ -3,6 +3,27 @@
 
 using namespace EasyEngine;
 
+std::vector<std::string> Algorithm::splitUTF8(const std::string& utf8_string) {
+    std::vector<std::string> _ret;
+    size_t char_length; // 获取每个 UTF-8 字节的长度
+    for (size_t i = 0; i < utf8_string.size();) {
+        if ((utf8_string[i] & 0x80) == 0) {
+            char_length = 1;
+        } else if ((utf8_string[i] & 0xe0) == 0xc0) {
+            char_length = 2;
+        } else if ((utf8_string[i] & 0xf0) == 0xe0) {
+            char_length = 3;
+        } else if ((utf8_string[i] & 0xf8) == 0xf0) {
+            char_length = 4;
+        } else {
+            char_length = 1;
+        }
+        _ret.emplace_back(utf8_string.substr(i, char_length));
+        i += char_length;
+    }
+    return _ret;
+}
+
 SColor Algorithm::hexToRGBA(const std::string &hex) {
     if (hex.empty() || hex.front() != '#' || hex.size() < 7) {
         fmt::println("ERROR: Format Error! Color In hex: {0}", hex);

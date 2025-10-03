@@ -26,6 +26,13 @@ namespace EasyEngine {
     class Algorithm {
     public:
         /**
+         * @brief 分割每个 UTF-8 编码的字符串
+         * @param utf8_string   指定 utf-8 编码的字符串
+         * @return 返回每个 utf-8 编码的字符，这对于其它亚洲语言比较有用，如：汉语、韩语、日语等语言有用
+         * @since v1.1.0-alpha
+         */
+        static std::vector<std::string> splitUTF8(const std::string& utf8_string);
+        /**
          * @brief 十六进制转换 RGBA
          * @param hex 十六进制颜色
          * @return 得到转换后的 RGBA 值

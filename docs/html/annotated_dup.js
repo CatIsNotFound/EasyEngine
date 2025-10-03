@@ -48,7 +48,6 @@ var annotated_dup =
       [ "Engine", "class_easy_engine_1_1_engine.html", "class_easy_engine_1_1_engine" ],
       [ "EventSystem", "class_easy_engine_1_1_event_system.html", "class_easy_engine_1_1_event_system" ],
       [ "FileSystem", "class_easy_engine_1_1_file_system.html", null ],
-      [ "FontSystem", "class_easy_engine_1_1_font_system.html", "class_easy_engine_1_1_font_system" ],
       [ "Geometry", "struct_easy_engine_1_1_geometry.html", null ],
       [ "GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
       [ "Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
@@ -56,6 +55,7 @@ var annotated_dup =
       [ "ResourceSystem", "class_easy_engine_1_1_resource_system.html", "class_easy_engine_1_1_resource_system" ],
       [ "SceneManager", "class_easy_engine_1_1_scene_manager.html", "class_easy_engine_1_1_scene_manager" ],
       [ "Size", "struct_easy_engine_1_1_size.html", "struct_easy_engine_1_1_size" ],
+      [ "TextSystem", "class_easy_engine_1_1_text_system.html", "class_easy_engine_1_1_text_system" ],
       [ "Vector2", "struct_easy_engine_1_1_vector2.html", "struct_easy_engine_1_1_vector2" ],
       [ "Window", "class_easy_engine_1_1_window.html", "class_easy_engine_1_1_window" ]
     ] ]

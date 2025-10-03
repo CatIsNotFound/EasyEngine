@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['构建、部署和安装_0',['构建、部署和安装',['../index.html#autotoc_md13',1,'']]],
-  ['构建命令_1',['构建命令',['../index.html#autotoc_md15',1,'']]]
+  ['构建、部署和安装_0',['构建、部署和安装',['../index.html#autotoc_md16',1,'']]],
+  ['构建向导_1',['Easy Engine 构建向导',['../md_build.html',1,'']]],
+  ['构建步骤_2',['构建步骤',['../md_build.html#autotoc_md2',1,'']]]
 ];

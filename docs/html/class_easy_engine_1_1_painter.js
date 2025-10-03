@@ -10,6 +10,7 @@ var class_easy_engine_1_1_painter =
     [ "drawRectangle", "class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea", null ],
     [ "drawSprite", "class_easy_engine_1_1_painter.html#aa42ae115d2036c9efb553d91677f8ff7", null ],
     [ "drawSprite", "class_easy_engine_1_1_painter.html#aff56973ec6cfdbacfeb300c2330a57c9", null ],
+    [ "drawText", "class_easy_engine_1_1_painter.html#afc0a22c4ba4517f4da93fff8c52cb412", null ],
     [ "fillBackColor", "class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef", null ],
     [ "installPaintEvent", "class_easy_engine_1_1_painter.html#ad389b74c7faf83315046c4123768b3c4", null ],
     [ "setClipView", "class_easy_engine_1_1_painter.html#a7f44722d3bb5141668e181e7a49dc637", null ],

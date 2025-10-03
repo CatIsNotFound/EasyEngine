@@ -11,6 +11,7 @@ var searchData=
   ['drawpoint_8',['drawPoint',['../class_easy_engine_1_1_painter.html#a5f5c5ded78dbf9c92861128d6d9e6a4f',1,'EasyEngine::Painter']]],
   ['drawrectangle_9',['drawRectangle',['../class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea',1,'EasyEngine::Painter']]],
   ['drawsprite_10',['drawSprite',['../class_easy_engine_1_1_painter.html#aff56973ec6cfdbacfeb300c2330a57c9',1,'EasyEngine::Painter::drawSprite(const Components::Sprite &amp;sprite, const Vector2 &amp;pos)'],['../class_easy_engine_1_1_painter.html#aa42ae115d2036c9efb553d91677f8ff7',1,'EasyEngine::Painter::drawSprite(const Components::Sprite &amp;sprite, const Components::Sprite::Properties &amp;properties)']]],
-  ['duration_11',['duration',['../class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html#a2e8ee792c18d4c9660ef8b351bf6bced',1,'EasyEngine::EasingCurve::AbstractEasingCurve::duration()'],['../class_easy_engine_1_1_transition_1_1_abstract_transition.html#ac5fa08ab72f03b955e8bf9112d5a9e47',1,'EasyEngine::Transition::AbstractTransition::duration()']]],
-  ['durationinframe_12',['durationInFrame',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a460badec337f701dc7752fb1591ae41f',1,'EasyEngine::Components::FrameAnimation']]]
+  ['drawtext_11',['drawText',['../class_easy_engine_1_1_painter.html#afc0a22c4ba4517f4da93fff8c52cb412',1,'EasyEngine::Painter']]],
+  ['duration_12',['duration',['../class_easy_engine_1_1_easing_curve_1_1_abstract_easing_curve.html#a2e8ee792c18d4c9660ef8b351bf6bced',1,'EasyEngine::EasingCurve::AbstractEasingCurve::duration()'],['../class_easy_engine_1_1_transition_1_1_abstract_transition.html#ac5fa08ab72f03b955e8bf9112d5a9e47',1,'EasyEngine::Transition::AbstractTransition::duration()']]],
+  ['durationinframe_13',['durationInFrame',['../class_easy_engine_1_1_components_1_1_frame_animation.html#a460badec337f701dc7752fb1591ae41f',1,'EasyEngine::Components::FrameAnimation']]]
 ];

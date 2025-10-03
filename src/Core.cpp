@@ -10,7 +10,7 @@ std::unique_ptr<EasyEngine::AudioSystem> EasyEngine::AudioSystem::_instance = nu
 std::unique_ptr<EasyEngine::EventSystem> EasyEngine::EventSystem::_instance = nullptr;
 bool EasyEngine::EventSystem::_handler_trigger = true;
 std::unique_ptr<EasyEngine::Cursor> EasyEngine::Cursor::_instance = nullptr;
-std::unique_ptr<EasyEngine::FontSystem> EasyEngine::FontSystem::_instance = nullptr;
+std::unique_ptr<EasyEngine::TextSystem> EasyEngine::TextSystem::_instance = nullptr;
 
 
 EasyEngine::Cursor::Cursor() {
@@ -179,7 +179,7 @@ EasyEngine::Engine::Engine(const std::string& title, uint32_t width, uint32_t he
     }
     AudioSystem::global()->init();
     Cursor::global();
-    FontSystem::global()->init();
+    TextSystem::global()->init();
     SDL_Log("Enjoy! (*^_^*)\n\n");
 }
 
@@ -502,7 +502,7 @@ void EasyEngine::Engine::cleanUp() {
     EventSystem::global()->cleanUp();
     Cursor::global()->unload();
     AudioSystem::global()->unload();
-    FontSystem::global()->unload();
+    TextSystem::global()->unload();
     ResourceSystem::global()->unloadAll();
     for (auto& _win : _sdl_window_list) {
         if (_win.second->renderer) SDL_DestroyRenderer(_win.second->renderer);
@@ -653,7 +653,7 @@ void EasyEngine::Painter::______() {
     SDL_GetWindowSize(_window->window, &_window->geometry.width, &_window->geometry.height);
     SDL_SetRenderViewport(_window->renderer, nullptr);
     SDL_SetRenderClipRect(_window->renderer, nullptr);
-    SDL_SetRenderDrawBlendMode(_window->renderer, SDL_BLENDMODE_NONE);
+    SDL_SetRenderDrawBlendMode(_window->renderer, SDL_BLENDMODE_BLEND);
     for (auto& cmd : command_list) {
         cmd->exec(_window->renderer, thickness());
     }
@@ -760,6 +760,15 @@ void EasyEngine::Painter::setViewport(const Geometry &geometry, const Size &size
 void EasyEngine::Painter::setClipView(const Geometry &geometry) {
     auto cmd = new ViewportCMD(geometry, true);
     command_list.emplace_back(std::unique_ptr<ViewportCMD>(cmd));
+}
+
+void EasyEngine::Painter::drawText(TTF_Text *text, const EasyEngine::Vector2 &position) {
+    if (!text) {
+        SDL_Log("[ERROR] The specified text is not valid!");
+        return;
+    }
+    auto cmd = new TextCMD(position, text);
+    command_list.emplace_back(std::unique_ptr<TextCMD>(cmd));
 }
 
 bool EasyEngine::Painter::_addTransition(EasyEngine::Transition::AbstractTransition *transition) {
@@ -939,6 +948,10 @@ void EasyEngine::Painter::ViewportCMD::exec(SRenderer* renderer, uint32_t) {
     }
 }
 
+void EasyEngine::Painter::TextCMD::exec(SRenderer *renderer, uint32_t thickness) {
+    TTF_DrawRendererText(text, position.x, position.y);
+}
+
 EasyEngine::EventSystem::~EventSystem() {};
 
 EasyEngine::EventSystem *EasyEngine::EventSystem::global() {
@@ -1050,9 +1063,9 @@ bool EasyEngine::EventSystem::handler() {
     for (auto& _trigger : _trigger_list) {
         _trigger.second->______();
     }
-    for (auto& _scene_mgr : _scene_mgr_list) {
-         _scene_mgr.second->______();
-    }
+//    for (auto& _scene_mgr : _scene_mgr_list) {
+//         _scene_mgr.second->______();
+//    }
     return ret;
 }
 
@@ -1512,28 +1525,42 @@ MIX_Mixer *EasyEngine::AudioSystem::mixer() const {
 }
 
 
-EasyEngine::FontSystem *EasyEngine::FontSystem::global() {
+EasyEngine::TextSystem *EasyEngine::TextSystem::global() {
     if (!_instance) {
-        _instance = std::unique_ptr<FontSystem>(new FontSystem());
+        _instance = std::unique_ptr<TextSystem>(new TextSystem());
     }
     return _instance.get();
 }
 
-void EasyEngine::FontSystem::init() {
+void EasyEngine::TextSystem::init() {
     if (!TTF_Init()) {
         SDL_Log("[ERROR] Failed to initialized the font system!");
     }
 }
 
-void EasyEngine::FontSystem::unload() {
+void EasyEngine::TextSystem::unload() {
     if (!TTF_Init()) return;
+    if (_text_engine) TTF_DestroyRendererTextEngine(_text_engine);
     for (auto& font : _font_info) {
         font.second->unload();
     }
     TTF_Quit();
 }
 
-void EasyEngine::FontSystem::loadFont(const std::string &name, EasyEngine::Components::Font *font) {
+bool EasyEngine::TextSystem::load(const EasyEngine::Painter *painter) {
+    if (!painter) {
+        SDL_Log("[ERROR] The specified painter is not valid!");
+        return false;
+    }
+    if (_text_engine) {
+        TTF_DestroyRendererTextEngine(_text_engine);
+    }
+    _text_engine = TTF_CreateRendererTextEngine(painter->window()->renderer);
+    _painter = const_cast<Painter*>(painter);
+    return true;
+}
+
+void EasyEngine::TextSystem::loadFont(const std::string &name, EasyEngine::Components::Font *font) {
     if (_font_info.contains(name)) {
         SDL_Log("[WARNING] The specified font '%s' is replaced!", name.c_str());
         unloadFont(name);
@@ -1541,7 +1568,7 @@ void EasyEngine::FontSystem::loadFont(const std::string &name, EasyEngine::Compo
     _font_info.emplace(name, font);
 }
 
-void EasyEngine::FontSystem::loadFont(const std::string &name, const std::string &resource_name, float font_size) {
+void EasyEngine::TextSystem::loadFont(const std::string &name, const std::string &resource_name, float font_size) {
     if (_font_info.contains(name)) {
         SDL_Log("[WARNING] The specified font '%s' is replaced!", name.c_str());
         unloadFont(name);
@@ -1549,7 +1576,7 @@ void EasyEngine::FontSystem::loadFont(const std::string &name, const std::string
     _font_info.emplace(name, std::make_shared<Components::Font>(resource_name, font_size));
 }
 
-void EasyEngine::FontSystem::unloadFont(const std::string &name) {
+void EasyEngine::TextSystem::unloadFont(const std::string &name) {
     if (_font_info.contains(name)) {
         _font_info.erase(name);
     } else {
@@ -1557,7 +1584,7 @@ void EasyEngine::FontSystem::unloadFont(const std::string &name) {
     }
 }
 
-EasyEngine::Components::Font *EasyEngine::FontSystem::font(const std::string &name) {
+EasyEngine::Components::Font *EasyEngine::TextSystem::font(const std::string &name) {
     if (_font_info.contains(name))
         return _font_info[name].get();
     else {
@@ -1565,3 +1592,129 @@ EasyEngine::Components::Font *EasyEngine::FontSystem::font(const std::string &na
         return nullptr;
     }
 }
+
+void EasyEngine::TextSystem::addText(const std::string &text_name, const std::string &text, const std::string &font_name) {
+    if (!_font_info.contains(font_name)) {
+        SDL_Log("[ERROR] The specified font name '%s' is not exist!\np.s: Did you forget to append font?",
+                font_name.c_str());
+        return;
+    }
+    if (_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is exist!", text_name.c_str());
+        return;
+    }
+    TTF_Text* new_text = TTF_CreateText(_text_engine, _font_info.at(font_name)->TTF_font(), text.c_str(), text.size());
+    _text_list.emplace(text_name, std::shared_ptr<TTF_Text>(new_text));
+}
+
+void EasyEngine::TextSystem::removeText(const std::string &text_name) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_DestroyText(_text_list.at(text_name).get());
+    _text_list.erase(text_name);
+}
+
+void EasyEngine::TextSystem::appendText(const std::string &text_name, const std::string &append_text) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_AppendTextString(_text_list.at(text_name).get(), append_text.c_str(), append_text.size());
+}
+
+void EasyEngine::TextSystem::appendText(const std::string &text_name, const char ch) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    char chs[2] = {'\0'};
+    chs[0] = ch;
+    TTF_AppendTextString(_text_list.at(text_name).get(), chs, 2);
+}
+
+void EasyEngine::TextSystem::modifyText(const std::string &text_name, const std::string &text) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_SetTextString(_text_list.at(text_name).get(), text.c_str(), text.size());
+}
+
+void EasyEngine::TextSystem::clearText(const std::string &text_name) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_SetTextString(_text_list.at(text_name).get(), "", 0);
+}
+
+std::string EasyEngine::TextSystem::text(const std::string &text_name) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return {};
+    }
+    return _text_list.at(text_name)->text;
+}
+
+void EasyEngine::TextSystem::setTextFont(const std::string &text_name, const std::string &font_name) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", font_name.c_str());
+        return;
+    }
+    if (!_font_info.contains(font_name)) {
+        SDL_Log("[ERROR] The specified font name '%s' is not exist!\np.s: Did you forget to append font?",
+                font_name.c_str());
+        return;
+    }
+    TTF_SetTextFont(_text_list.at(text_name).get(), _font_info.at(font_name)->TTF_font());
+}
+
+void EasyEngine::TextSystem::setTextColor(const std::string &text_name, const SColor &text_color) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_SetTextColor(_text_list.at(text_name).get(),
+                     text_color.r, text_color.g, text_color.b, text_color.a);
+}
+
+void EasyEngine::TextSystem::setTextWrapWidth(const std::string &text_name, int width) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_SetTextWrapWidth(_text_list.at(text_name).get(), width);
+}
+
+void EasyEngine::TextSystem::setTextDirection(const std::string &text_name,
+                                              const Components::Font::Direction &direction) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_Direction real_direction = static_cast<TTF_Direction>(direction);
+    TTF_SetTextDirection(_text_list.at(text_name).get(), real_direction);
+}
+
+void EasyEngine::TextSystem::renderText(const std::string &text_name, const Vector2 &position) {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return;
+    }
+    TTF_UpdateText(_text_list.at(text_name).get());
+    _painter->drawText(_text_list.at(text_name).get(), position);
+}
+
+EasyEngine::Size EasyEngine::TextSystem::textAreaSize(const std::string &text_name) const {
+    if (!_text_list.contains(text_name)) {
+        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
+        return {0, 0};
+    }
+    int w, h;
+    TTF_GetTextSize(_text_list.at(text_name).get(), &w, &h);
+    return {static_cast<float>(w), static_cast<float>(h)};
+}
+
+

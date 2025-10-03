@@ -666,6 +666,12 @@ namespace EasyEngine {
          * @note 当指定的宽度或高度小于等于 0，则取消使用裁剪！
          */
         void setClipView(const Geometry &geometry);
+        /**
+         * @brief 绘制文本
+         * @param text      指定文本指针
+         * @param position  指定绘制的位置
+         */
+        void drawText(TTF_Text* text, const Vector2& position);
         bool _addTransition(Transition::AbstractTransition* transition);
         bool _removeTransition(Transition::AbstractTransition* transition);
         bool _startTransition(Transition::AbstractTransition* transition);
@@ -760,6 +766,13 @@ namespace EasyEngine {
                 : geometry(geometry.x, geometry.y, geometry.width, geometry.height),
                 is_clipped_mode(is_clipped_mode), scaled(scaled.width, scaled.height) {}
             void exec(SRenderer *renderer, uint32_t) override;
+        };
+        struct TextCMD : Command {
+            Vector2 position;
+            TTF_Text* text;
+            explicit TextCMD() : position(0, 0), text(nullptr) {}
+            TextCMD(const Vector2& position, TTF_Text* text) : position(position.x, position.y), text(text) {}
+            void exec(SRenderer *renderer, uint32_t thickness) override;
         };
         std::vector<std::unique_ptr<Command>> command_list;
         std::function<void(Painter&)> paint_function;
@@ -1202,28 +1215,37 @@ namespace EasyEngine {
     }
 
     /**
-     * @class FontSystem
-     * @brief 字体系统
+     * @class TextSystem
+     * @brief 文本系统
      *
-     * 用于加载、渲染字体、支持字体排版功能，实现更为复杂的功能
+     * 用于加载、渲染字体、支持文本排版功能，实现更为复杂的功能
+     * @note 自 v1.1.0-alpha 版本起，原 `FontSystem` 重命名为 `TextSystem`，用于文本排版等功能。
+     * @note 并且文本系统将新增文本排版相关功能。
+     * @since v1.1.0-alpha
      */
-    class FontSystem {
+    class TextSystem {
     public:
         /**
-         * @brief 获取全局字体系统
+         * @brief 获取全局文本系统
          */
-        static FontSystem* global();
+        static TextSystem* global();
         /**
-         * @brief 初始化字体系统
+         * @brief 初始化文本系统
          */
         void init();
         /**
-         * @brief 卸载字体系统
+         * @brief 卸载文本系统
          */
         void unload();
+        /**
+         * @brief 加载文本系统
+         * @param painter 指定绘图器
+         * @return 返回 `bool` 以表示是否成功加载文本系统
+         */
+        bool load(const Painter* painter);
 
         /**
-         * @brief 加载字体到字体系统
+         * @brief 加载字体到文本系统
          * @param name      命名字体名称（便于后续管理）
          * @param font      指定字体
          * @note 对于指定已加载的字体，将重新加载新的字体！
@@ -1232,7 +1254,7 @@ namespace EasyEngine {
          */
         void loadFont(const std::string& name, Components::Font* font);
         /**
-         * @brief 从资源系统中加载字体到字体系统
+         * @brief 从资源系统中加载字体到文本系统
          * @param name             命名新的字体名称（便于后续管理）
          * @param resource_name    指定资源名称
          * @param font_size        指定字体大小
@@ -1241,26 +1263,113 @@ namespace EasyEngine {
          */
         void loadFont(const std::string& name, const std::string& resource_name, float font_size);
         /**
-         * @brief 从字体系统中卸载指定字体
+         * @brief 从文本系统中卸载指定字体
          * @param name 指定字体名称
          * @see loadFont
          * @see font
          */
         void unloadFont(const std::string& name);
         /**
-         * @brief 从字体系统中获取字体信息
+         * @brief 从文本系统中获取字体信息
          * @param name 指定字体名称
          *
          */
         Components::Font* font(const std::string& name);
+        /**
+         * @brief 添加新文本
+         * @param text_name 新的文本名称
+         * @param text 新的文本内容
+         * @param font_name 指定字体名称
+         */
+        void addText(const std::string &text_name, const std::string &text, const std::string &font_name);
+        /**
+         * @brief 删除已有的文本
+         * @param text_name 文本名称
+         */
+        void removeText(const std::string& text_name);
+        /**
+         * @brief 追加文本到末尾
+         * @param text_name     指定文本名称
+         * @param append_text   加入的文本内容
+         *
+         * 将追加的文本添加到原有文本的结尾。
+         */
+        void appendText(const std::string& text_name, const std::string& append_text);
+        /**
+         * @brief 追加字符到末尾
+         * @param text_name 指定文本名称
+         * @param ch        加入的字符
+         *
+         * 将追加的字符添加到原有文本的末尾
+         */
+        void appendText(const std::string& text_name, const char ch);
+        /**
+         * @brief 修改已有的文本
+         * @param text_name 指定文本名称
+         * @param text 新的文本内容
+         */
+        void modifyText(const std::string& text_name, const std::string& text);
+        /**
+         * @brief 清空已有的文本
+         * @param text_name 指定文本名称
+         */
+        void clearText(const std::string& text_name);
+        /**
+         * @brief 获取文本
+         * @param text_name 指定文本名称
+         * @return 返回实际的文本内容。当指定的文本名称不存在时，返回空内容
+         */
+        std::string text(const std::string& text_name);
+        /**
+         * @brief 修改文本的字体
+         * @param text_name 指定文本名称
+         * @param font_name 指定字体名称
+         */
+        void setTextFont(const std::string& text_name, const std::string& font_name);
+        /**
+         * @brief 修改文本的颜色
+         * @param text_name     指定文本名称
+         * @param text_color    指定文本颜色
+         */
+        void setTextColor(const std::string& text_name, const SColor& text_color);
 
-        FontSystem(FontSystem&) = delete;
-        FontSystem& operator=(const FontSystem&) = delete;
+        /**
+         * @brief 设置文本行的宽度
+         * @param text_name 指定文本名称
+         * @param width 指定宽度
+         *
+         * 当某行的文本宽度超过设置的宽度时，超出宽度文本的部分将会换行。
+         */
+        void setTextWrapWidth(const std::string& text_name, int width);
+        /**
+         * @brief 设置文本的方向
+         * @param text_name 指定文本名称
+         * @param direction 指定方向
+         */
+        void setTextDirection(const std::string& text_name, const Components::Font::Direction& direction);
+        /**
+         * @brief 实时渲染文本
+         * @param text_name     指定文本名称
+         * @param position      指定渲染位置
+         * @note 最好只在绘图事件下渲染，这样就能实时渲染每一帧文本！
+         */
+        void renderText(const std::string &text_name, const Vector2 &position);
+        /**
+         * @brief 获取当前文本区域的大小
+         * @param text_name
+         * @return 若指定的文本名称找不到时，返回空的大小；否则返回实际的文本区域大小
+         */
+        EasyEngine::Size textAreaSize(const std::string& text_name) const;
+
+        TextSystem(TextSystem&) = delete;
+        TextSystem& operator=(const TextSystem&) = delete;
     private:
-        FontSystem() = default;
-        static std::unique_ptr<FontSystem> _instance;
+        TextSystem() = default;
+        static std::unique_ptr<TextSystem> _instance;
         std::map<std::string, std::shared_ptr<Components::Font>> _font_info;
-
+        std::map<std::string, std::shared_ptr<TTF_Text>> _text_list;
+        TTF_TextEngine* _text_engine{nullptr};
+        Painter* _painter{nullptr};
     };
 }
 

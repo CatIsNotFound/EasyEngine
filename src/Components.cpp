@@ -1556,3 +1556,7 @@ EasyEngine::Components::Font::textToSprite(const std::string &sprite_name, const
     return new Sprite(sprite_name, surface, painter);
 }
 
+TTF_Font *EasyEngine::Components::Font::TTF_font() const {
+    return _font;
+}
+

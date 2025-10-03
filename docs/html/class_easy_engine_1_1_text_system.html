@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::TextSystem类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_easy_engine_1_1_text_system.html','','class_easy_engine_1_1_text_system-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::TextSystem类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文本系统  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_core_8h_source.html">Core.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a6ad0564bb8a210b1b76388e1a8afa904" id="r_a6ad0564bb8a210b1b76388e1a8afa904"><td class="memItemLeft" align="right" valign="top"><a id="a6ad0564bb8a210b1b76388e1a8afa904" name="a6ad0564bb8a210b1b76388e1a8afa904"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memdesc:a6ad0564bb8a210b1b76388e1a8afa904"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化文本系统 <br /></td></tr>
+<tr class="memitem:a0c107a7019651f8730efeec32303f4e6" id="r_a0c107a7019651f8730efeec32303f4e6"><td class="memItemLeft" align="right" valign="top"><a id="a0c107a7019651f8730efeec32303f4e6" name="a0c107a7019651f8730efeec32303f4e6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>unload</b> ()</td></tr>
+<tr class="memdesc:a0c107a7019651f8730efeec32303f4e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">卸载文本系统 <br /></td></tr>
+<tr class="memitem:a6b19038872b10bd5122e71680ae2a510" id="r_a6b19038872b10bd5122e71680ae2a510"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b19038872b10bd5122e71680ae2a510">load</a> (const <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *painter)</td></tr>
+<tr class="memdesc:a6b19038872b10bd5122e71680ae2a510"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载文本系统  <br /></td></tr>
+<tr class="memitem:ab9c74f55fb38db517ac6777af59258c8" id="r_ab9c74f55fb38db517ac6777af59258c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9c74f55fb38db517ac6777af59258c8">loadFont</a> (const std::string &amp;name, <a class="el" href="class_easy_engine_1_1_components_1_1_font.html">Components::Font</a> *<a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5">font</a>)</td></tr>
+<tr class="memdesc:ab9c74f55fb38db517ac6777af59258c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">加载字体到文本系统  <br /></td></tr>
+<tr class="memitem:a12d8ca9244cb7d682fa9ec45dcf6459b" id="r_a12d8ca9244cb7d682fa9ec45dcf6459b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12d8ca9244cb7d682fa9ec45dcf6459b">loadFont</a> (const std::string &amp;name, const std::string &amp;resource_name, float font_size)</td></tr>
+<tr class="memdesc:a12d8ca9244cb7d682fa9ec45dcf6459b"><td class="mdescLeft">&#160;</td><td class="mdescRight">从资源系统中加载字体到文本系统  <br /></td></tr>
+<tr class="memitem:ad29967ad83c1bda326a2ae95cfa496f5" id="r_ad29967ad83c1bda326a2ae95cfa496f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5">unloadFont</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ad29967ad83c1bda326a2ae95cfa496f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文本系统中卸载指定字体  <br /></td></tr>
+<tr class="memitem:a2489bf636aca56a3e5b8cd604e719aa5" id="r_a2489bf636aca56a3e5b8cd604e719aa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_font.html">Components::Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5">font</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a2489bf636aca56a3e5b8cd604e719aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文本系统中获取字体信息  <br /></td></tr>
+<tr class="memitem:a9017e080ee1ab20ba8b2fa960634a651" id="r_a9017e080ee1ab20ba8b2fa960634a651"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9017e080ee1ab20ba8b2fa960634a651">addText</a> (const std::string &amp;text_name, const std::string &amp;<a class="el" href="#acd90784dd3f6208ea3ceeeb905c325e4">text</a>, const std::string &amp;font_name)</td></tr>
+<tr class="memdesc:a9017e080ee1ab20ba8b2fa960634a651"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加新文本  <br /></td></tr>
+<tr class="memitem:ac5b2cd1032a62cae0b8d35d99eab2e5b" id="r_ac5b2cd1032a62cae0b8d35d99eab2e5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5b2cd1032a62cae0b8d35d99eab2e5b">removeText</a> (const std::string &amp;text_name)</td></tr>
+<tr class="memdesc:ac5b2cd1032a62cae0b8d35d99eab2e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除已有的文本  <br /></td></tr>
+<tr class="memitem:a8a0e84ad1222332818bcf34b404a7b7f" id="r_a8a0e84ad1222332818bcf34b404a7b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a0e84ad1222332818bcf34b404a7b7f">appendText</a> (const std::string &amp;text_name, const std::string &amp;append_text)</td></tr>
+<tr class="memdesc:a8a0e84ad1222332818bcf34b404a7b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">追加文本到末尾  <br /></td></tr>
+<tr class="memitem:a6d773fecc67a4f6b97138c6253c8b90d" id="r_a6d773fecc67a4f6b97138c6253c8b90d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d773fecc67a4f6b97138c6253c8b90d">appendText</a> (const std::string &amp;text_name, const char ch)</td></tr>
+<tr class="memdesc:a6d773fecc67a4f6b97138c6253c8b90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">追加字符到末尾  <br /></td></tr>
+<tr class="memitem:a128dfbc7fce0ca97c666bdabdb2fe959" id="r_a128dfbc7fce0ca97c666bdabdb2fe959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a128dfbc7fce0ca97c666bdabdb2fe959">modifyText</a> (const std::string &amp;text_name, const std::string &amp;<a class="el" href="#acd90784dd3f6208ea3ceeeb905c325e4">text</a>)</td></tr>
+<tr class="memdesc:a128dfbc7fce0ca97c666bdabdb2fe959"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改已有的文本  <br /></td></tr>
+<tr class="memitem:a9ad89da4843d31c552f2b7653477f403" id="r_a9ad89da4843d31c552f2b7653477f403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ad89da4843d31c552f2b7653477f403">clearText</a> (const std::string &amp;text_name)</td></tr>
+<tr class="memdesc:a9ad89da4843d31c552f2b7653477f403"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空已有的文本  <br /></td></tr>
+<tr class="memitem:acd90784dd3f6208ea3ceeeb905c325e4" id="r_acd90784dd3f6208ea3ceeeb905c325e4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd90784dd3f6208ea3ceeeb905c325e4">text</a> (const std::string &amp;text_name)</td></tr>
+<tr class="memdesc:acd90784dd3f6208ea3ceeeb905c325e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取文本  <br /></td></tr>
+<tr class="memitem:a8a25308da9911911f28579cdb0dcb763" id="r_a8a25308da9911911f28579cdb0dcb763"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a25308da9911911f28579cdb0dcb763">setTextFont</a> (const std::string &amp;text_name, const std::string &amp;font_name)</td></tr>
+<tr class="memdesc:a8a25308da9911911f28579cdb0dcb763"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改文本的字体  <br /></td></tr>
+<tr class="memitem:a1200b5a6538ba29abe391001d07cae03" id="r_a1200b5a6538ba29abe391001d07cae03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1200b5a6538ba29abe391001d07cae03">setTextColor</a> (const std::string &amp;text_name, const SColor &amp;text_color)</td></tr>
+<tr class="memdesc:a1200b5a6538ba29abe391001d07cae03"><td class="mdescLeft">&#160;</td><td class="mdescRight">修改文本的颜色  <br /></td></tr>
+<tr class="memitem:a043914822793475ef8e7fb89b35df56e" id="r_a043914822793475ef8e7fb89b35df56e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a043914822793475ef8e7fb89b35df56e">setTextWrapWidth</a> (const std::string &amp;text_name, int width)</td></tr>
+<tr class="memdesc:a043914822793475ef8e7fb89b35df56e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本行的宽度  <br /></td></tr>
+<tr class="memitem:a94b3ce4376f94f2d0021ccc519ad53eb" id="r_a94b3ce4376f94f2d0021ccc519ad53eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94b3ce4376f94f2d0021ccc519ad53eb">setTextDirection</a> (const std::string &amp;text_name, const <a class="el" href="class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcad">Components::Font::Direction</a> &amp;direction)</td></tr>
+<tr class="memdesc:a94b3ce4376f94f2d0021ccc519ad53eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置文本的方向  <br /></td></tr>
+<tr class="memitem:a9ba9697d5d1e90fe7879709c549e2958" id="r_a9ba9697d5d1e90fe7879709c549e2958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ba9697d5d1e90fe7879709c549e2958">renderText</a> (const std::string &amp;text_name, const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;position)</td></tr>
+<tr class="memdesc:a9ba9697d5d1e90fe7879709c549e2958"><td class="mdescLeft">&#160;</td><td class="mdescRight">实时渲染文本  <br /></td></tr>
+<tr class="memitem:adf64aa1a51e585deb9925103bf2b7ec4" id="r_adf64aa1a51e585deb9925103bf2b7ec4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_easy_engine_1_1_size.html">EasyEngine::Size</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf64aa1a51e585deb9925103bf2b7ec4">textAreaSize</a> (const std::string &amp;text_name) const</td></tr>
+<tr class="memdesc:adf64aa1a51e585deb9925103bf2b7ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前文本区域的大小  <br /></td></tr>
+<tr class="memitem:a1f4c6c62c86a8eb6835c19568f165a0c" id="r_a1f4c6c62c86a8eb6835c19568f165a0c"><td class="memItemLeft" align="right" valign="top"><a id="a1f4c6c62c86a8eb6835c19568f165a0c" name="a1f4c6c62c86a8eb6835c19568f165a0c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TextSystem</b> (<a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a> &amp;)=delete</td></tr>
+<tr class="memitem:a32873a0af325ffb1cedbadf102e95345" id="r_a32873a0af325ffb1cedbadf102e95345"><td class="memItemLeft" align="right" valign="top"><a id="a32873a0af325ffb1cedbadf102e95345" name="a32873a0af325ffb1cedbadf102e95345"></a>
+<a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a> &amp;)=delete</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a7df072a750fd8ddffe185663a2336e28" id="r_a7df072a750fd8ddffe185663a2336e28"><td class="memItemLeft" align="right" valign="top"><a id="a7df072a750fd8ddffe185663a2336e28" name="a7df072a750fd8ddffe185663a2336e28"></a>
+static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>global</b> ()</td></tr>
+<tr class="memdesc:a7df072a750fd8ddffe185663a2336e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取全局文本系统 <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><p>文本系统 </p>
+<p>用于加载、渲染字体、支持文本排版功能，实现更为复杂的功能 </p><dl class="section note"><dt>注解</dt><dd>自 v1.1.0-alpha 版本起，原 <span class="tt">FontSystem</span> 重命名为 <span class="tt"><a class="el" href="class_easy_engine_1_1_text_system.html" title="文本系统">TextSystem</a></span>，用于文本排版等功能。 </dd>
+<dd>
+并且文本系统将新增文本排版相关功能。 </dd></dl>
+<dl class="section since"><dt>自从</dt><dd>v1.1.0-alpha </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a9017e080ee1ab20ba8b2fa960634a651" name="a9017e080ee1ab20ba8b2fa960634a651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9017e080ee1ab20ba8b2fa960634a651">&#9670;&#160;</a></span>addText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::addText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>font_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>添加新文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>新的文本名称 </td></tr>
+    <tr><td class="paramname">text</td><td>新的文本内容 </td></tr>
+    <tr><td class="paramname">font_name</td><td>指定字体名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6d773fecc67a4f6b97138c6253c8b90d" name="a6d773fecc67a4f6b97138c6253c8b90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d773fecc67a4f6b97138c6253c8b90d">&#9670;&#160;</a></span>appendText() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::appendText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>ch</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>追加字符到末尾 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">ch</td><td>加入的字符</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将追加的字符添加到原有文本的末尾 </p>
+
+</div>
+</div>
+<a id="a8a0e84ad1222332818bcf34b404a7b7f" name="a8a0e84ad1222332818bcf34b404a7b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a0e84ad1222332818bcf34b404a7b7f">&#9670;&#160;</a></span>appendText() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::appendText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>append_text</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>追加文本到末尾 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">append_text</td><td>加入的文本内容</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将追加的文本添加到原有文本的结尾。 </p>
+
+</div>
+</div>
+<a id="a9ad89da4843d31c552f2b7653477f403" name="a9ad89da4843d31c552f2b7653477f403"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad89da4843d31c552f2b7653477f403">&#9670;&#160;</a></span>clearText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::clearText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>清空已有的文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2489bf636aca56a3e5b8cd604e719aa5" name="a2489bf636aca56a3e5b8cd604e719aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2489bf636aca56a3e5b8cd604e719aa5">&#9670;&#160;</a></span>font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_easy_engine_1_1_components_1_1_font.html">EasyEngine::Components::Font</a> * EasyEngine::TextSystem::font </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从文本系统中获取字体信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定字体名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6b19038872b10bd5122e71680ae2a510" name="a6b19038872b10bd5122e71680ae2a510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b19038872b10bd5122e71680ae2a510">&#9670;&#160;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EasyEngine::TextSystem::load </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_painter.html">Painter</a> *</td>          <td class="paramname"><span class="paramname"><em>painter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载文本系统 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">painter</td><td>指定绘图器 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回 <span class="tt">bool</span> 以表示是否成功加载文本系统 </dd></dl>
+
+</div>
+</div>
+<a id="ab9c74f55fb38db517ac6777af59258c8" name="ab9c74f55fb38db517ac6777af59258c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9c74f55fb38db517ac6777af59258c8">&#9670;&#160;</a></span>loadFont() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::loadFont </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_easy_engine_1_1_components_1_1_font.html">Components::Font</a> *</td>          <td class="paramname"><span class="paramname"><em>font</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>加载字体到文本系统 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>命名字体名称（便于后续管理） </td></tr>
+    <tr><td class="paramname">font</td><td>指定字体 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>对于指定已加载的字体，将重新加载新的字体！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd>
+<dd>
+<a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5" title="从文本系统中卸载指定字体">unloadFont</a> </dd></dl>
+
+</div>
+</div>
+<a id="a12d8ca9244cb7d682fa9ec45dcf6459b" name="a12d8ca9244cb7d682fa9ec45dcf6459b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12d8ca9244cb7d682fa9ec45dcf6459b">&#9670;&#160;</a></span>loadFont() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::loadFont </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>resource_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>font_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从资源系统中加载字体到文本系统 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>命名新的字体名称（便于后续管理） </td></tr>
+    <tr><td class="paramname">resource_name</td><td>指定资源名称 </td></tr>
+    <tr><td class="paramname">font_size</td><td>指定字体大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd>
+<dd>
+<a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5" title="从文本系统中卸载指定字体">unloadFont</a> </dd></dl>
+
+</div>
+</div>
+<a id="a128dfbc7fce0ca97c666bdabdb2fe959" name="a128dfbc7fce0ca97c666bdabdb2fe959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128dfbc7fce0ca97c666bdabdb2fe959">&#9670;&#160;</a></span>modifyText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::modifyText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>修改已有的文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">text</td><td>新的文本内容 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac5b2cd1032a62cae0b8d35d99eab2e5b" name="ac5b2cd1032a62cae0b8d35d99eab2e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5b2cd1032a62cae0b8d35d99eab2e5b">&#9670;&#160;</a></span>removeText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::removeText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>删除已有的文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>文本名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9ba9697d5d1e90fe7879709c549e2958" name="a9ba9697d5d1e90fe7879709c549e2958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ba9697d5d1e90fe7879709c549e2958">&#9670;&#160;</a></span>renderText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::renderText </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_vector2.html">Vector2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>position</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>实时渲染文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">position</td><td>指定渲染位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>最好只在绘图事件下渲染，这样就能实时渲染每一帧文本！ </dd></dl>
+
+</div>
+</div>
+<a id="a1200b5a6538ba29abe391001d07cae03" name="a1200b5a6538ba29abe391001d07cae03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1200b5a6538ba29abe391001d07cae03">&#9670;&#160;</a></span>setTextColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::setTextColor </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SColor &amp;</td>          <td class="paramname"><span class="paramname"><em>text_color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>修改文本的颜色 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">text_color</td><td>指定文本颜色 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a94b3ce4376f94f2d0021ccc519ad53eb" name="a94b3ce4376f94f2d0021ccc519ad53eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94b3ce4376f94f2d0021ccc519ad53eb">&#9670;&#160;</a></span>setTextDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::setTextDirection </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_easy_engine_1_1_components_1_1_font.html#a929d1b9aafa4db473a094948cda1fcad">Components::Font::Direction</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>direction</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置文本的方向 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">direction</td><td>指定方向 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8a25308da9911911f28579cdb0dcb763" name="a8a25308da9911911f28579cdb0dcb763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a25308da9911911f28579cdb0dcb763">&#9670;&#160;</a></span>setTextFont()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::setTextFont </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>font_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>修改文本的字体 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">font_name</td><td>指定字体名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a043914822793475ef8e7fb89b35df56e" name="a043914822793475ef8e7fb89b35df56e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a043914822793475ef8e7fb89b35df56e">&#9670;&#160;</a></span>setTextWrapWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::setTextWrapWidth </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>width</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置文本行的宽度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+    <tr><td class="paramname">width</td><td>指定宽度</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>当某行的文本宽度超过设置的宽度时，超出宽度文本的部分将会换行。 </p>
+
+</div>
+</div>
+<a id="acd90784dd3f6208ea3ceeeb905c325e4" name="acd90784dd3f6208ea3ceeeb905c325e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd90784dd3f6208ea3ceeeb905c325e4">&#9670;&#160;</a></span>text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string EasyEngine::TextSystem::text </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取文本 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td>指定文本名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回实际的文本内容。当指定的文本名称不存在时，返回空内容 </dd></dl>
+
+</div>
+</div>
+<a id="adf64aa1a51e585deb9925103bf2b7ec4" name="adf64aa1a51e585deb9925103bf2b7ec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf64aa1a51e585deb9925103bf2b7ec4">&#9670;&#160;</a></span>textAreaSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_size.html">EasyEngine::Size</a> EasyEngine::TextSystem::textAreaSize </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>text_name</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取当前文本区域的大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text_name</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>若指定的文本名称找不到时，返回空的大小；否则返回实际的文本区域大小 </dd></dl>
+
+</div>
+</div>
+<a id="ad29967ad83c1bda326a2ae95cfa496f5" name="ad29967ad83c1bda326a2ae95cfa496f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad29967ad83c1bda326a2ae95cfa496f5">&#9670;&#160;</a></span>unloadFont()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EasyEngine::TextSystem::unloadFont </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>从文本系统中卸载指定字体 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>指定字体名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab9c74f55fb38db517ac6777af59258c8" title="加载字体到文本系统">loadFont</a> </dd>
+<dd>
+<a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_core_8h_source.html">Core.h</a></li>
+<li>D:/Coding/EasyEngine/src/<b>Core.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="class_easy_engine_1_1_text_system.html">TextSystem</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

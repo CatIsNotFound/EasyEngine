@@ -3,6 +3,7 @@
 using namespace EasyEngine;
 using namespace Components;
 
+bool _roll_caption = false;
 int main() {
     Engine engine("Hello EasyEngine!", 1280, 720);
     engine.setBackgroundRenderingEnabled(true);
@@ -12,57 +13,57 @@ int main() {
 
     ResourceSystem::global()->setRootPath("./assets");
     ResourceSystem::global()->append("font", "Jersey_15/Jersey15-Regular.ttf", Resource::Font);
+    ResourceSystem::global()->append("font_sub", "SourceHanSansCN-Medium.otf", Resource::Font);
+    ResourceSystem::global()->append("icon", "demo.png", Resource::Image);
+    ResourceSystem::global()->append("welcome", "Peace.wav", Resource::Audio);
+    ResourceSystem::global()->append("bgm", "bgm.mp3", Resource::Audio);
 
-    Graphics::Ellipse ellipse(200, 0, 200, 200, StdColor::Transparent, false, true, {192, 45, 243, 128});
-    Graphics::Ellipse ellipse2(400, 0, 200, 200, StdColor::Transparent, false, true, {45, 214, 243, 128});
-    Graphics::Ellipse ellipse3(600, 0, 200, 200, StdColor::Transparent, false, true, {45, 96, 243, 128});
-    auto inCurve = new EasingCurve::InSineCurve(1000, engine.painter());
-    inCurve->setEnabled(true, true, true);
-    auto outCurve = new EasingCurve::OutSineCurve(1000, engine.painter());
-    outCurve->setEnabled(true, true, true);
-    auto inOutCurve = new EasingCurve::InOutSineCurve(1000, engine.painter());
-    inOutCurve->setEnabled(true, true, true);
-
-    Font font("font", 96.f);
-    font.setFontColor(StdColor::Yellow);
-    font.setOutlineColor(StdColor::DarkOrange);
-    font.setOutline(1);
-    Sprite* text = font.textToSprite("text", "Hello EasyEngine!", engine.painter());
-    engine.painter()->installPaintEvent([&](Painter &painter) {
-        painter.fillBackColor(StdColor::LightYellow);
-        auto screen = engine.window()->geometry;
-        text->properties()->position = {screen.width / 2 - text->size().width / 2, 
-                                    screen.height / 2 - text->size().height / 2};
-        text->draw();
-        ellipse.pos = {ellipse.pos.x, 180 + (300 * inCurve->current())};
-        painter.drawEllipse(ellipse);
-        ellipse2.pos = {ellipse2.pos.x, 180 + (300 * outCurve->current())};
-        painter.drawEllipse(ellipse2);
-        ellipse3.pos = {ellipse3.pos.x, 180 + (300 * inOutCurve->current())};
-        painter.drawEllipse(ellipse3);
-        painter.drawPixelText(fmt::format("Duration: {:.2f}", inOutCurve->current()), {20, 20}, {1.f, 1.f}, StdColor::Black);
+    auto sceneManager = new SceneManager();
+    engine.painter()->setSceneManager(sceneManager);
+    auto scene_start = new Scene("start");
+    auto scene_main = new Scene("main");
+    scene_start->appendLayer(1, "image");
+    scene_start->layer("image")->append(1, new Sprite("icon", "icon", engine.painter()));
+    auto icon = scene_start->layer("image")->sprite(1);
+    icon->properties()->position = {
+            1280.f / 2 - icon->size().width / 2,
+            720.f / 2 - icon->size().height / 2
+    };
+    scene_start->setSceneEvent([&engine]{
+        engine.painter()->fillBackColor(StdColor::White);
+    });
+    sceneManager->append(new Scene("black"), 1);
+    sceneManager->append(scene_start, 2);
+    SFX sfx("welcome");
+    auto dark = new Transition::DarkTransition(1000, EasyEngine::Transition::KeepWhenStopped, engine.painter());
+    auto tmp_timer = new Timer(5000, [&] {
+        sceneManager->changeScene(3);
+    });
+    BGM bgm("bgm");
+    sceneManager->setEnterSceneEvent(2, [&]{
+        dark->setDirection(Transition::Forward);
+        dark->start();
+        sfx.play();
+        tmp_timer->start();
+    });
+    sceneManager->setLeaveSceneEvent(2, 1000, [&dark] {
+        dark->setDirection(Transition::Backward);
+        dark->start();
+    });
+    auto timer = new Timer(1000, [&] {
+        sceneManager->changeScene(2);
+        fmt::println("Start");
     });
 
-    engine.installEventHandler([&](SEvent &e) {
-        if (e.key.down && e.key.key == SDLK_ESCAPE) {
-            return false;
-        }
-//        if (e.key.down && e.key.key == SDLK_Q) {
-//            inCubicCurve->setDuration(1000);
-//        }
-//        if (e.key.down && e.key.key == SDLK_W) {
-//            inCubicCurve->setDuration(2500);
-//        }
-//        if (e.key.down && e.key.key == SDLK_E) {
-//            inCubicCurve->setDuration(5000);
-//        }
-//        if (e.key.down && e.key.key == SDLK_SPACE) {
-//            inCubicCurve->setEnabled(!inCubicCurve->enabled());
-//        }
-        return true;
+    sceneManager->append(scene_main, 3);
+    scene_main->setSceneEvent([&engine]{
+        engine.painter()->fillBackColor(StdColor::LightBlue);
     });
-    engine.installCleanUpEvent([&]() {
-        delete text;
+    sceneManager->setEnterSceneEvent(3, [&dark, &bgm] {
+        dark->setDirection(Transition::Forward);
+        dark->start();
+        bgm.play(false);
     });
+    timer->start();
     return engine.exec();
 }

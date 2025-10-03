@@ -1,0 +1,105 @@
+.TH "md_build" 3 "Version 1.1.0-alpha" "Easy Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md_build \- Easy Engine 构建向导 
+.PP
+
+
+.PP
+此文以最详细地方式来讲述如何通过源代码克隆编译的方式以部署此项目。
+.SS "系统要求"
+请详细按照如下要求进行检查：
+
+.PP
+.IP "\(bu" 2
+编译器：支持 C++23 的现代编译器
+.IP "\(bu" 2
+CMake 至少版本为 3\&.28+
+.IP "\(bu" 2
+依赖库：
+.IP "  \(bu" 4
+\fRSDL3 (图形和窗口管理)\fP
+.IP "  \(bu" 4
+\fRSDL3_image (图像加载)\fP
+.IP "  \(bu" 4
+\fRSDL3_ttf (字体渲染)\fP
+.IP "  \(bu" 4
+\fRSDL3_mixer (音频播放)\fP
+.IP "  \(bu" 4
+\fRfmt (格式化库)\fP
+.PP
+
+.PP
+
+.PP
+以上第三方库均可在 Github 上找到对应项目，具体可直接点击上面提到的任意一个库。
+
+.PP
+TIPS: 可通过以下链接获取对应第三方依赖库下载：
+
+.PP
+.IP "\(bu" 2
+\fRGithub 下载第三方依赖库\fP
+.IP "\(bu" 2
+\fRGitee 下载第三方依赖库\fP
+.PP
+.SS "构建步骤"
+克隆本项目，可通过 Github 或 Gitee 等渠道克隆本项目。
+
+.PP
+.PP
+.nf
+# 克隆项目（Github 下）
+git clone https://github\&.com/CatIsNotFound/EasyEngine\&.git
+# 克隆项目（Gitee 下）
+git clone https://gitee\&.com/CatIsNotFound/EasyEngine\&.git
+#  进入项目目录
+cd EasyEngine
+.fi
+.PP
+
+.PP
+编辑 \fRCMakeLists\&.txt\fP 文件，并修改以下内容：
+
+.PP
+.PP
+.nf
+# TODO：请记得在此处修改目录
+set(SDL_DIR       "/path/to/SDL")
+set(SDL_IMAGE_DIR "/path/to/SDL3_image")
+set(SDL_TTF_DIR   "/path/to/SDL3_ttf")
+set(SDL_MIXER_DIR "/path/to/SDL3_mixer")
+set(SDL_GFX_DIR   "/path/to/SDL3_gfx")
+set(FMT_DIR       "/path/to/FMT")
+.fi
+.PP
+
+.PP
+配置与安装项目，用于编译并安装此第三方库的位置。
+
+.PP
+.PP
+.nf
+# 配置构建
+cmake \-B build \-DCMAKE_INSTALL_PREFIX=/path/to/install
+.fi
+.PP
+
+.PP
+注：这里的 \fR/path/to/install\fP 请替换为你希望安装的路径。
+
+.PP
+编译项目并安装此库
+
+.PP
+.PP
+.nf
+# 编译项目
+cmake \-\-build build \-\-target install
+
+# Linux 下需要执行如下：
+sudo cmake \-\-build build \-\-target install
+.fi
+.PP
+ 

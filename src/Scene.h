@@ -436,19 +436,84 @@ namespace EasyEngine {
             uint32_t leave_delay{0};
         };
         explicit SceneManager();
+        /**
+         * @brief 添加新的场景
+         * @param scene     指定场景
+         * @param index     新的场景编号
+         * @return 返回 `bool` 已确认是否成功添加新的场景
+         */
         bool append(Components::Scene* scene, uint32_t index);
+        /**
+         * @brief 移除已有的场景
+         * @param index 指定的场景编号
+         * @return 返回 `bool` 已确认是否成功移除已有的场景
+         */
         bool remove(uint32_t index);
+        /**
+         * @brief 设置进入场景事件
+         * @param index 指定场景编号
+         * @param event 编辑具体事件
+         * @return 返回 `bool` 以确认是否成功设置事件
+         *
+         * 当场景管理器切换到此场景时，会触发此事件
+         */
         bool setEnterSceneEvent(uint32_t index, const std::function<void()> &event);
+        /**
+         * @brief 移除已有的进入场景事件
+         * @param index 指定场景编号
+         * @return 返回 `bool` 以确认是否成功移除已有的场景事件
+         */
         bool removeEnterSceneEvent(uint32_t index);
+        /**
+         * @brief 设置离开场景事件
+         * @param index 指定场景编号
+         * @param event 编辑具体事件
+         * @return 返回 `bool` 以确认是否成功设置事件
+         *
+         * 当场景管理器切出原来的场景时，会触发此事件
+         */
         bool setLeaveSceneEvent(uint32_t index, uint32_t delay_to_change, const std::function<void()> &event);
+        /**
+         * @brief 移除已有的离开场景事件
+         * @param index 指定场景编号
+         * @return 返回 `bool` 以确认是否成功移除已有的场景事件
+         */
         bool removeLeaveSceneEvent(uint32_t index);
+        /**
+         * @brief 切换场景
+         * @param index 指定场景编号
+         *
+         * 当场景切换时，相应的进入场景事件和离开场景事件将触发（若两者在已设定的情况下才会触发）
+         */
         void changeScene(uint32_t index);
+        /**
+         * @brief 获取指定场景的场景编号
+         * @param scene 指定场景
+         * @return 返回对应的场景编号，当找不到指定场景时，返回 0
+         */
         uint32_t indexOf(const Components::Scene* scene) const;
+        /**
+         * @brief 获取指定场景的场景编号
+         * @param scene_name 指定场景名称
+         * @return 返回对应的场景编号，当找不到指定场景名称时，返回 0
+         */
         uint32_t indexOf(const std::string& scene_name) const;
+        /**
+         * @brief 获取当前场景管理器所在的场景编号
+         * @return 返回当前的场景编号
+         */
         uint32_t currentSceneIndex() const;
+        /**
+         * @brief 指定场景编号并获取对应场景
+         * @param index 指定场景编号
+         * @return 若不确定场景编号，可使用 `indexOf()` 以获取场景编号。
+         */
         Components::Scene *scene(uint64_t index) const;
+        /**
+         * @brief 获取当前场景
+         * @return 获取当前场景编号下的场景
+         */
         Components::Scene* currentScene() const;
-        void ______();
     private:
         std::map<uint32_t, Property> _scenes;
         uint32_t _current_changer{0};

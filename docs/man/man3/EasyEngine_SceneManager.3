@@ -21,50 +21,244 @@ EasyEngine::SceneManager \- 场景管理
 
 .in +1c
 .ti -1c
-.RI "bool \fBappend\fP (\fBComponents::Scene\fP *scene, uint32_t index)"
+.RI "bool \fBappend\fP (\fBComponents::Scene\fP *\fBscene\fP, uint32_t index)"
 .br
+.RI "添加新的场景 "
 .ti -1c
 .RI "bool \fBremove\fP (uint32_t index)"
 .br
+.RI "移除已有的场景 "
 .ti -1c
 .RI "bool \fBsetEnterSceneEvent\fP (uint32_t index, const std::function< void()> &event)"
 .br
+.RI "设置进入场景事件 "
 .ti -1c
 .RI "bool \fBremoveEnterSceneEvent\fP (uint32_t index)"
 .br
+.RI "移除已有的进入场景事件 "
 .ti -1c
 .RI "bool \fBsetLeaveSceneEvent\fP (uint32_t index, uint32_t delay_to_change, const std::function< void()> &event)"
 .br
+.RI "设置离开场景事件 "
 .ti -1c
 .RI "bool \fBremoveLeaveSceneEvent\fP (uint32_t index)"
 .br
+.RI "移除已有的离开场景事件 "
 .ti -1c
 .RI "void \fBchangeScene\fP (uint32_t index)"
 .br
+.RI "切换场景 "
 .ti -1c
-.RI "uint32_t \fBindexOf\fP (const \fBComponents::Scene\fP *scene) const"
+.RI "uint32_t \fBindexOf\fP (const \fBComponents::Scene\fP *\fBscene\fP) const"
 .br
+.RI "获取指定场景的场景编号 "
 .ti -1c
 .RI "uint32_t \fBindexOf\fP (const std::string &scene_name) const"
 .br
+.RI "获取指定场景的场景编号 "
 .ti -1c
 .RI "uint32_t \fBcurrentSceneIndex\fP () const"
 .br
+.RI "获取当前场景管理器所在的场景编号 "
 .ti -1c
 .RI "\fBComponents::Scene\fP * \fBscene\fP (uint64_t index) const"
 .br
+.RI "指定场景编号并获取对应场景 "
 .ti -1c
 .RI "\fBComponents::Scene\fP * \fBcurrentScene\fP () const"
 .br
-.ti -1c
-.RI "void \fB______\fP ()"
-.br
+.RI "获取当前场景 "
 .in -1c
 .SH "详细描述"
 .PP 
 场景管理 
 
 定义场景管理器，用于管理多个游戏场景 
+.SH "成员函数说明"
+.PP 
+.SS "bool SceneManager::append (\fBComponents::Scene\fP * scene, uint32_t index)"
+
+.PP
+添加新的场景 
+.PP
+\fB参数\fP
+.RS 4
+\fIscene\fP 指定场景 
+.br
+\fIindex\fP 新的场景编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 已确认是否成功添加新的场景 
+.RE
+.PP
+
+.SS "void SceneManager::changeScene (uint32_t index)"
+
+.PP
+切换场景 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号
+.RE
+.PP
+当场景切换时，相应的进入场景事件和离开场景事件将触发（若两者在已设定的情况下才会触发） 
+.SS "\fBComponents::Scene\fP * SceneManager::currentScene () const"
+
+.PP
+获取当前场景 
+.PP
+\fB返回\fP
+.RS 4
+获取当前场景编号下的场景 
+.RE
+.PP
+
+.SS "uint32_t SceneManager::currentSceneIndex () const"
+
+.PP
+获取当前场景管理器所在的场景编号 
+.PP
+\fB返回\fP
+.RS 4
+返回当前的场景编号 
+.RE
+.PP
+
+.SS "uint32_t SceneManager::indexOf (const \fBComponents::Scene\fP * scene) const"
+
+.PP
+获取指定场景的场景编号 
+.PP
+\fB参数\fP
+.RS 4
+\fIscene\fP 指定场景 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的场景编号，当找不到指定场景时，返回 0 
+.RE
+.PP
+
+.SS "uint32_t SceneManager::indexOf (const std::string & scene_name) const"
+
+.PP
+获取指定场景的场景编号 
+.PP
+\fB参数\fP
+.RS 4
+\fIscene_name\fP 指定场景名称 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的场景编号，当找不到指定场景名称时，返回 0 
+.RE
+.PP
+
+.SS "bool SceneManager::remove (uint32_t index)"
+
+.PP
+移除已有的场景 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定的场景编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 已确认是否成功移除已有的场景 
+.RE
+.PP
+
+.SS "bool SceneManager::removeEnterSceneEvent (uint32_t index)"
+
+.PP
+移除已有的进入场景事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 以确认是否成功移除已有的场景事件 
+.RE
+.PP
+
+.SS "bool SceneManager::removeLeaveSceneEvent (uint32_t index)"
+
+.PP
+移除已有的离开场景事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 以确认是否成功移除已有的场景事件 
+.RE
+.PP
+
+.SS "\fBComponents::Scene\fP * SceneManager::scene (uint64_t index) const"
+
+.PP
+指定场景编号并获取对应场景 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+若不确定场景编号，可使用 \fR\fBindexOf()\fP\fP 以获取场景编号。 
+.RE
+.PP
+
+.SS "bool SceneManager::setEnterSceneEvent (uint32_t index, const std::function< void()> & event)"
+
+.PP
+设置进入场景事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号 
+.br
+\fIevent\fP 编辑具体事件 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 以确认是否成功设置事件
+.RE
+.PP
+当场景管理器切换到此场景时，会触发此事件 
+.SS "bool SceneManager::setLeaveSceneEvent (uint32_t index, uint32_t delay_to_change, const std::function< void()> & event)"
+
+.PP
+设置离开场景事件 
+.PP
+\fB参数\fP
+.RS 4
+\fIindex\fP 指定场景编号 
+.br
+\fIevent\fP 编辑具体事件 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回 \fRbool\fP 以确认是否成功设置事件
+.RE
+.PP
+当场景管理器切出原来的场景时，会触发此事件 
 
 .SH "作者"
 .PP 

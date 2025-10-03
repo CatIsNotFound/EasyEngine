@@ -88,6 +88,10 @@ EasyEngine::Painter \- 图形绘制器
 .br
 .RI "裁剪可见视图 "
 .ti -1c
+.RI "void \fBdrawText\fP (TTF_Text *text, const \fBVector2\fP &position)"
+.br
+.RI "绘制文本 "
+.ti -1c
 .RI "bool \fB_addTransition\fP (\fBTransition::AbstractTransition\fP *transition)"
 .br
 .ti -1c
@@ -241,6 +245,19 @@ Properties
 \fB参见\fP
 .RS 4
 Spirit 
+.RE
+.PP
+
+.SS "void EasyEngine::Painter::drawText (TTF_Text * text, const \fBVector2\fP & position)"
+
+.PP
+绘制文本 
+.PP
+\fB参数\fP
+.RS 4
+\fItext\fP 指定文本指针 
+.br
+\fIposition\fP 指定绘制的位置 
 .RE
 .PP
 

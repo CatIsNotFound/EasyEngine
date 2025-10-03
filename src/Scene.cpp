@@ -534,10 +534,9 @@ bool SceneManager::append(Components::Scene *scene, uint32_t index) {
         SDL_Log("[ERROR] The specified scene '%s' is already appended!", scene->name().c_str());
         return false;
     }
-    bool b = false;
-    if (_scenes.empty()) {
-        _current_changer = _new_changer = index;
-    }
+//    if (_scenes.empty()) {
+//        _current_changer = _new_changer = index;
+//    }
     _scenes.emplace(index, Property(std::shared_ptr<Components::Scene>(scene)));
     return true;
 }
@@ -618,6 +617,12 @@ void SceneManager::changeScene(uint32_t index) {
             auto &cur_scene = _scenes.at(_current_changer);
             if (cur_scene.enter_scene_event) cur_scene.enter_scene_event();
         }
+    } else if (_scenes.contains(_new_changer)) {
+        auto& scene = _scenes.at(_new_changer);
+        _current_changer = _new_changer;
+        if (scene.enter_scene_event) {
+            scene.enter_scene_event();
+        }
     }
 }
 
@@ -654,8 +659,4 @@ Components::Scene *SceneManager::currentScene() const {
     else
         return nullptr;
 }
-
-void SceneManager::______() {
-}
-
 

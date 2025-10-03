@@ -122,6 +122,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a5b9a35a90f287cf92dfaef83935cca3d" id="r_a5b9a35a90f287cf92dfaef83935cca3d"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b9a35a90f287cf92dfaef83935cca3d">splitUTF8</a> (const std::string &amp;utf8_string)</td></tr>
+<tr class="memdesc:a5b9a35a90f287cf92dfaef83935cca3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">分割每个 UTF-8 编码的字符串  <br /></td></tr>
 <tr class="memitem:a1190222e9f894a806c370ed5032a87ce" id="r_a1190222e9f894a806c370ed5032a87ce"><td class="memItemLeft" align="right" valign="top">static SColor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1190222e9f894a806c370ed5032a87ce">hexToRGBA</a> (const std::string &amp;hex)</td></tr>
 <tr class="memdesc:a1190222e9f894a806c370ed5032a87ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">十六进制转换 RGBA  <br /></td></tr>
 <tr class="memitem:a17f4c019aa282000dd83553a17315710" id="r_a17f4c019aa282000dd83553a17315710"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17f4c019aa282000dd83553a17315710">rgbaToHex</a> (const SColor &amp;color, bool add_alpha=false)</td></tr>
@@ -463,7 +465,7 @@ $(function() {
 </dl>
 <dl class="section return"><dt>返回</dt><dd>得到转换后的 RGBA 值 <div class="fragment"><div class="line">Color color1 = <a class="code hl_function" href="#a1190222e9f894a806c370ed5032a87ce">Algorithm::hexToRGBA</a>(<span class="stringliteral">&quot;#C0C0C0C0&quot;</span>); <span class="comment">// RGBA(192, 192, 192, 192)</span></div>
 <div class="line">Color color2 = <a class="code hl_function" href="#a1190222e9f894a806c370ed5032a87ce">Algorithm::hexToRGBA</a>(<span class="stringliteral">&quot;#FF00FF&quot;</span>);   <span class="comment">// RGBA(255, 0, 255, 255)</span></div>
-<div class="ttc" id="aclass_easy_engine_1_1_algorithm_html_a1190222e9f894a806c370ed5032a87ce"><div class="ttname"><a href="#a1190222e9f894a806c370ed5032a87ce">EasyEngine::Algorithm::hexToRGBA</a></div><div class="ttdeci">static SColor hexToRGBA(const std::string &amp;hex)</div><div class="ttdoc">十六进制转换 RGBA</div><div class="ttdef"><b>定义</b> Algorithm.cpp:6</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_algorithm_html_a1190222e9f894a806c370ed5032a87ce"><div class="ttname"><a href="#a1190222e9f894a806c370ed5032a87ce">EasyEngine::Algorithm::hexToRGBA</a></div><div class="ttdeci">static SColor hexToRGBA(const std::string &amp;hex)</div><div class="ttdoc">十六进制转换 RGBA</div><div class="ttdef"><b>定义</b> Algorithm.cpp:27</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -542,7 +544,7 @@ $(function() {
     <tr><td class="paramname">add_alpha</td><td>同时转换 Alpha 通道（默认不转换） <div class="fragment"><div class="line">Color color(192, 192, 192, 255);</div>
 <div class="line"><a class="code hl_function" href="#a17f4c019aa282000dd83553a17315710">rgbaToHex</a>(color);        <span class="comment">// #C0C0C0</span></div>
 <div class="line"><a class="code hl_function" href="#a17f4c019aa282000dd83553a17315710">rgbaToHex</a>(color, <span class="keyword">true</span>);  <span class="comment">// #C0C0C0FF</span></div>
-<div class="ttc" id="aclass_easy_engine_1_1_algorithm_html_a17f4c019aa282000dd83553a17315710"><div class="ttname"><a href="#a17f4c019aa282000dd83553a17315710">EasyEngine::Algorithm::rgbaToHex</a></div><div class="ttdeci">static std::string rgbaToHex(const SColor &amp;color, bool add_alpha=false)</div><div class="ttdoc">RGBA 转换十六进制</div><div class="ttdef"><b>定义</b> Algorithm.cpp:33</div></div>
+<div class="ttc" id="aclass_easy_engine_1_1_algorithm_html_a17f4c019aa282000dd83553a17315710"><div class="ttname"><a href="#a17f4c019aa282000dd83553a17315710">EasyEngine::Algorithm::rgbaToHex</a></div><div class="ttdeci">static std::string rgbaToHex(const SColor &amp;color, bool add_alpha=false)</div><div class="ttdoc">RGBA 转换十六进制</div><div class="ttdef"><b>定义</b> Algorithm.cpp:54</div></div>
 </div><!-- fragment --> </td></tr>
   </table>
   </dd>
@@ -629,6 +631,41 @@ $(function() {
 </dl>
 <dl class="section return"><dt>返回</dt><dd>返回缩放后的精灵所在位置（左上角坐标） </dd></dl>
 <dl class="section see"><dt>参见</dt><dd>Properties </dd></dl>
+
+</div>
+</div>
+<a id="a5b9a35a90f287cf92dfaef83935cca3d" name="a5b9a35a90f287cf92dfaef83935cca3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9a35a90f287cf92dfaef83935cca3d">&#9670;&#160;</a></span>splitUTF8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; Algorithm::splitUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>utf8_string</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>分割每个 UTF-8 编码的字符串 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">utf8_string</td><td>指定 utf-8 编码的字符串 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回每个 utf-8 编码的字符，这对于其它亚洲语言比较有用，如：汉语、韩语、日语等语言有用 </dd></dl>
+<dl class="section since"><dt>自从</dt><dd>v1.1.0-alpha </dd></dl>
 
 </div>
 </div>

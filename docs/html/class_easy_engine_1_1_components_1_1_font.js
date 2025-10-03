@@ -33,5 +33,6 @@ var class_easy_engine_1_1_components_1_1_font =
     [ "setOutlineColor", "class_easy_engine_1_1_components_1_1_font.html#ac383f960083898df3b9330f9687ea35b", null ],
     [ "setStyle", "class_easy_engine_1_1_components_1_1_font.html#a29405383ac18f04235be42047bb66494", null ],
     [ "textToSprite", "class_easy_engine_1_1_components_1_1_font.html#af99ff0a22a6d8eda869ee77bc39c1fff", null ],
+    [ "TTF_font", "class_easy_engine_1_1_components_1_1_font.html#a471fb4ca6f7879a8e5843f8a9938ccc1", null ],
     [ "unload", "class_easy_engine_1_1_components_1_1_font.html#ac13286801c82d50598bee942cc3e626a", null ]
 ];

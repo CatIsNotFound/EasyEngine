@@ -9,7 +9,7 @@ var _core_8h =
     [ "EasyEngine::EventSystem", "class_easy_engine_1_1_event_system.html", "class_easy_engine_1_1_event_system" ],
     [ "EasyEngine::AudioSystem", "class_easy_engine_1_1_audio_system.html", "class_easy_engine_1_1_audio_system" ],
     [ "EasyEngine::AudioSystem::Audio", "struct_easy_engine_1_1_audio_system_1_1_audio.html", "struct_easy_engine_1_1_audio_system_1_1_audio" ],
-    [ "EasyEngine::FontSystem", "class_easy_engine_1_1_font_system.html", "class_easy_engine_1_1_font_system" ],
+    [ "EasyEngine::TextSystem", "class_easy_engine_1_1_text_system.html", "class_easy_engine_1_1_text_system" ],
     [ "EASYENGINE_MACRO_VERSION", "_core_8h.html#a3f11a5eff0407307608730ead00f16ad", null ],
     [ "EASYENGINE_MAJOR_VERSION", "_core_8h.html#a2b3da6b9c37884c4a7982f6849369040", null ],
     [ "EASYENGINE_MINOR_VERSION", "_core_8h.html#aff667148e31d3e7d9ca9d173fdf571e6", null ],

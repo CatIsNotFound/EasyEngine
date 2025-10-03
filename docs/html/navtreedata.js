@@ -26,6 +26,7 @@ var NAVTREE =
 [
   [ "Easy Engine", "index.html", [
     [ "Easy Engine 游戏引擎文档", "index.html", "index" ],
+    [ "Easy Engine 构建向导", "md_build.html", null ],
     [ "命名空间", "namespaces.html", [
       [ "命名空间列表", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -54,9 +55,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_algorithm_8h.html",
-"class_easy_engine_1_1_components_1_1_layer.html#a8e0f1cb84e0ec3a8ecf11b375882821e",
+"class_easy_engine_1_1_components_1_1_layer.html#a8bb50017008c2a47cf9ed562d9a35f5f",
 "class_easy_engine_1_1_engine.html",
-"functions_func_e.html"
+"class_easy_engine_1_1_transition_1_1_abstract_transition.html#aaf4578282dbbf32d6aa518d368836806"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';
