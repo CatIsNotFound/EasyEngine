@@ -1270,9 +1270,11 @@ namespace EasyEngine {
          */
         void unloadFont(const std::string& name);
         /**
-         * @brief 从文本系统中获取字体信息
+         * @brief 从文本系统中获取字体
          * @param name 指定字体名称
-         *
+         * @return 返回对应的字体
+         * @see loadFont
+         * @see unloadFont
          */
         Components::Font* font(const std::string& name);
         /**
@@ -1280,11 +1282,18 @@ namespace EasyEngine {
          * @param text_name 新的文本名称
          * @param text 新的文本内容
          * @param font_name 指定字体名称
+         * @warning 执行前，必需先执行 `load()` 加载文本系统才能使用！否则将异常错误退出！
+         * @see load
+         * @see removeText
          */
         void addText(const std::string &text_name, const std::string &text, const std::string &font_name);
         /**
          * @brief 删除已有的文本
          * @param text_name 文本名称
+         * @note 此函数是将文本进行移除，而非清空原有文本。
+         * @note 若清空原有文本，需执行 `clearText()` 函数。
+         * @see addText
+         * @see clearText
          */
         void removeText(const std::string& text_name);
         /**
@@ -1293,6 +1302,7 @@ namespace EasyEngine {
          * @param append_text   加入的文本内容
          *
          * 将追加的文本添加到原有文本的结尾。
+         * @see modifyText
          */
         void appendText(const std::string& text_name, const std::string& append_text);
         /**
@@ -1301,17 +1311,22 @@ namespace EasyEngine {
          * @param ch        加入的字符
          *
          * 将追加的字符添加到原有文本的末尾
+         * @see modifyText
          */
         void appendText(const std::string& text_name, const char ch);
         /**
          * @brief 修改已有的文本
          * @param text_name 指定文本名称
          * @param text 新的文本内容
+         * @see appendText
+         * @see clearText
          */
         void modifyText(const std::string& text_name, const std::string& text);
         /**
          * @brief 清空已有的文本
          * @param text_name 指定文本名称
+         * @see modifyText
+         * @see removeText
          */
         void clearText(const std::string& text_name);
         /**
@@ -1352,6 +1367,7 @@ namespace EasyEngine {
          * @param text_name     指定文本名称
          * @param position      指定渲染位置
          * @note 最好只在绘图事件下渲染，这样就能实时渲染每一帧文本！
+         * @warning 若指定的文本名称不存在，将发生异常错误并退出！
          */
         void renderText(const std::string &text_name, const Vector2 &position);
         /**
@@ -1367,7 +1383,7 @@ namespace EasyEngine {
         TextSystem() = default;
         static std::unique_ptr<TextSystem> _instance;
         std::map<std::string, std::shared_ptr<Components::Font>> _font_info;
-        std::map<std::string, std::shared_ptr<TTF_Text>> _text_list;
+        std::map<std::string, TTF_Text*> _text_list;
         TTF_TextEngine* _text_engine{nullptr};
         Painter* _painter{nullptr};
     };

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['构建、部署和安装_0',['构建、部署和安装',['../index.html#autotoc_md16',1,'']]],
-  ['构建向导_1',['Easy Engine 构建向导',['../md_build.html',1,'']]],
-  ['构建步骤_2',['构建步骤',['../md_build.html#autotoc_md2',1,'']]]
+  ['✨_20核心特性_0',['✨ 核心特性',['../D:/Coding/EasyEngine/README.md#autotoc_md35',1,'']]]
 ];

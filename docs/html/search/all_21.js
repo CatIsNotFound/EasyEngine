@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['最小示例_0',['最小示例',['../index.html#autotoc_md15',1,'']]]
+  ['基础模块_20basic_20module_0',['基础模块 (Basic Module)',['../index.html#autotoc_md21',1,'']]]
 ];

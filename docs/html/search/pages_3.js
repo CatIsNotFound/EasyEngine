@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['主要特性_0',['主要特性',['../index.html#autotoc_md5',1,'']]]
+  ['algorithm_20module_0',['算法库 (Algorithm Module)',['../index.html#autotoc_md23',1,'']]]
 ];

@@ -57,7 +57,8 @@ var NAVTREEINDEX =
 "_algorithm_8h.html",
 "class_easy_engine_1_1_components_1_1_layer.html#a8bb50017008c2a47cf9ed562d9a35f5f",
 "class_easy_engine_1_1_engine.html",
-"class_easy_engine_1_1_transition_1_1_abstract_transition.html#aaf4578282dbbf32d6aa518d368836806"
+"class_easy_engine_1_1_transition_1_1_abstract_transition.html#aaf4578282dbbf32d6aa518d368836806",
+"struct_easy_engine_1_1_resource.html#a61ec542f5ee91f1604fbdeff3de1a5b0aa77cc5391a8516e83a3757bf1a13d9bf"
 ];
 
 var SYNCONMSG = '点击 关闭 面板同步';

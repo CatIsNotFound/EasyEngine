@@ -13,6 +13,7 @@
     - [SDL3_image (图像加载)](https://github.com/libsdl-org/SDL_image)
     - [SDL3_ttf (字体渲染)](https://github.com/libsdl-org/SDL_ttf)
     - [SDL3_mixer (音频播放)](https://github.com/libsdl-org/SDL_ttf)
+    - [SDL3_gfx (图形处理)](https://github.com/sabdul-khabir/SDL3_gfx)
     - [fmt (格式化库)](https://github.com/fmtlib/fmt)
 
 以上第三方库均可在 Github 上找到对应项目，具体可直接点击上面提到的任意一个库。

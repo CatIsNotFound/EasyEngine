@@ -117,80 +117,97 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="md_mainpage"></a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 项目概述</h1>
-<p>Easy Engine 是一个基于 SDL3 图形引擎库二次封装的开源游戏引擎，专为简化游戏开发流程而设计。它提供了现代化的 C++23 接口，将复杂的 SDL3 操作封装成直观易用的 API，让开发者能够专注于游戏逻辑而非底层图形编程。</p>
-<p>引擎采用模块化设计，包含核心引擎管理、图形渲染、组件系统、算法库等多个模块，为 2D 游戏开发提供了完整的解决方案。无论是开发简单的 2D 游戏，还是构建复杂的图形应用，Easy Engine 都能提供强大的支持。</p>
+<p>Easy Engine 是一个基于 SDL3 图形引擎库二次封装的开源游戏引擎，专为简化 2D 游戏开发流程而设计。它提供了现代化的 C++23 接口，将复杂的 SDL3 操作封装成直观易用的 API，让开发者能够专注于游戏逻辑而非底层图形编程。</p>
+<p>引擎采用模块化设计，包含核心引擎管理、图形渲染、组件系统、算法库、过渡动画等多个模块，为 2D 游戏开发提供了完整的解决方案。无论是开发简单的 2D 游戏，还是构建复杂的图形应用，Easy Engine 都能提供强大的支持。</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 主要特性</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 🎮 核心引擎功能</h2>
 <ul>
-<li>多窗口管理：支持创建和管理多个独立窗口</li>
-<li>事件驱动架构：完整的事件处理系统，支持键盘、鼠标、窗口事件</li>
-<li>帧率控制：精确的帧率管理，支持动态调整帧率限制</li>
-<li>资源管理：自动化的纹理、音频资源加载和管理</li>
+<li>**窗口管理**：支持创建和管理游戏窗口，提供完整的窗口生命周期管理</li>
+<li>**事件系统**：完整的事件处理架构，支持键盘、鼠标、窗口事件处理</li>
+<li>**帧率控制**：精确的帧率管理和性能统计，支持动态帧率调整</li>
+<li>**资源管理**：自动化的纹理、音频、字体资源加载和管理系统</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 🎨 图形渲染系统</h2>
 <ul>
-<li>基本图形绘制：<ul>
-<li>点、线、矩形、椭圆等基础图形</li>
-<li>支持填充和描边模式</li>
-<li>透明度和颜色混合</li>
+<li>**基础图形绘制**：<ul>
+<li>点、线、矩形、椭圆等基础图形绘制</li>
+<li>支持填充和描边模式，透明度和颜色混合</li>
+<li>颜色系统内置81种预定义标准颜色</li>
 </ul>
 </li>
-<li>精灵系统：<ul>
-<li>纹理加载和管理</li>
-<li>精灵裁剪和缩放</li>
-<li>旋转和翻转（水平/垂直）</li>
-<li>颜色通道调整</li>
+<li>**精灵系统**：<ul>
+<li>完整的精灵纹理加载、管理和绘制功能</li>
+<li>支持精灵裁剪、缩放、旋转、翻转（水平/垂直）</li>
+<li>颜色通道调整和透明度控制</li>
+<li>多种绘制模式（位置、缩放、旋转、翻转、颜色）</li>
 </ul>
 </li>
-<li>高级渲染：<ul>
-<li>批量渲染优化</li>
-<li>动态粒子系统</li>
-<li>实时性能监控</li>
+<li>**精灵组管理**：<ul>
+<li>精灵批量管理和组合操作</li>
+<li>支持精灵组的统一变换和控制</li>
 </ul>
 </li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 🧩 组件化架构</h2>
 <ul>
-<li>实体系统：基于实体-组件模式的游戏对象管理</li>
-<li>精灵组件：支持动画和静态精灵</li>
-<li>碰撞检测：内置碰撞体组件和碰撞检测算法</li>
-<li>动画系统：帧动画和过渡动画支持</li>
+<li>**音频组件**：<ul>
+<li>BGM（背景音乐）组件：支持播放、暂停、停止、循环控制</li>
+<li>SFX（音效）组件：支持音效播放、停止、带延迟循环播放</li>
+</ul>
+</li>
+<li>**定时器组件**：功能完整的定时器，支持延迟触发、循环启用、事件绑定</li>
+<li>**触发器组件**：条件触发事件系统，支持自定义条件和事件处理</li>
+<li>**精灵组件**：完整的精灵管理组件，支持多种创建方式和属性控制</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 📐 数学和算法库</h2>
 <ul>
-<li>几何算法：<ul>
-<li>中心圆算法生成</li>
-<li>向量数学运算</li>
-<li>碰撞检测算法</li>
+<li>**几何算法**：<ul>
+<li>中心圆算法生成和计算</li>
+<li>向量数学运算和2D几何计算</li>
+<li>点与图形位置关系判断（点/矩形/椭圆包含关系）</li>
+<li>碰撞检测算法支持</li>
 </ul>
 </li>
-<li>颜色处理：<ul>
-<li>RGBA/十六进制颜色转换</li>
-<li>颜色插值和渐变</li>
+<li>**颜色处理**：<ul>
+<li>RGBA/十六进制颜色转换工具函数</li>
+<li>颜色插值和渐变计算</li>
 </ul>
 </li>
-<li>性能优化：高效的数学计算和内存管理</li>
+<li>**精灵变换**：缩放、位置计算、尺寸调整等图形变换算法</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
-🔧 开发工具</h2>
+🎬 过渡动画系统</h2>
 <ul>
-<li>调试支持：<ul>
-<li>实时性能监控面板</li>
-<li>帧率统计和丢帧检测</li>
-<li>详细的日志系统</li>
+<li>**缓动曲线**：<ul>
+<li>线性缓动（LinearCurve）</li>
+<li>二次方缓动（InQuadCurve、OutQuadCurve）</li>
+<li>三次方缓动（InCubicCurve、OutCubicCurve）</li>
+<li>正弦缓动（InSineCurve）</li>
 </ul>
 </li>
-<li>热重载：运行时参数调整（帧率、窗口大小等）</li>
-<li>跨平台：基于 SDL3 的跨平台兼容性</li>
+<li>**动画控制**：支持正向和反向播放，持续时间控制，启用状态管理</li>
+<li>**抽象框架**：提供AbstractEasingCurve基类，便于扩展自定义缓动效果</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+🔧 开发工具</h2>
+<ul>
+<li>**光标控制**：多种标准光标样式支持（箭头、手型、文本、等待等）和自定义光标</li>
+<li>**调试支持**：<ul>
+<li>实时性能监控和帧率统计</li>
+<li>详细的日志系统和错误处理</li>
+</ul>
+</li>
+<li>**文件系统**：完整的文件和目录操作，支持文本和二进制文件读写</li>
+<li>**跨平台支持**：基于 SDL3 的跨平台兼容性（Windows/Linux/macOS）</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 技术架构</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 模块结构</h2>
 <div class="fragment"><div class="line">EasyEngine/</div>
 <div class="line">├── src/                    # 引擎源码</div>
@@ -199,31 +216,45 @@ $(function() {
 <div class="line">│   ├── Basic.h/.cpp       # 基础数据结构（Vector2、Size、Geometry、StdColor等）</div>
 <div class="line">│   ├── Algorithm.h/.cpp   # 算法和工具函数（颜色转换、图形算法等）</div>
 <div class="line">│   ├── Resources.h/.cpp   # 资源管理（FileSystem、ResourceSystem）</div>
-<div class="line">│   ├── Scene.h/.cpp       # 场景管理（Layer、Scene、SceneManager - 待完善）</div>
+<div class="line">│   ├── Scene.h/.cpp       # 场景管理（Layer、Scene、SceneManager - 开发中）</div>
+<div class="line">│   ├── Transition.h/.cpp  # 过渡动画系统（缓动曲线、过渡效果）</div>
 <div class="line">│   └── preinclude.h       # 预包含头文件</div>
 <div class="line">├── docs/                  # 文档和教程</div>
 <div class="line">├── assets/                # 游戏资源文件（图片、音频等）</div>
 <div class="line">├── examples/              # 示例代码</div>
 <div class="line">├── main.cpp              # 主示例程序</div>
 <div class="line">└── CMakeLists.txt        # 构建配置</div>
-</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 核心类层次</h2>
 <ul>
-<li>Engine：主引擎类，管理整个游戏生命周期</li>
-<li>Window：窗口管理，支持多窗口操作</li>
-<li>Cursor：鼠标光标管理，支持自定义热点</li>
-<li>Painter：图形绘制器，提供所有绘图接口</li>
-<li>EventSystem：事件系统，处理键盘、鼠标、窗口等事件</li>
-<li>AudioSystem：音频系统，支持音频播放与管理</li>
-<li>FontSystem：字体系统，支持字体渲染</li>
-<li>Entity：游戏实体基类</li>
-<li>Spirit：精灵类，管理纹理和渲染属性</li>
-<li>Collider：碰撞体组件，处理碰撞检测</li>
-<li>ResourceSystem/FileSystem：资源加载与管理</li>
+<li>**Engine**：主引擎类，管理整个游戏生命周期和核心系统</li>
+<li>**Window**：窗口管理类，支持窗口创建、属性设置和事件处理</li>
+<li>**Cursor**：鼠标光标管理，支持系统光标和自定义光标创建</li>
+<li>**Painter**：图形绘制器，提供所有绘图接口和渲染功能</li>
+<li>**EventSystem**：事件系统，统一处理键盘、鼠标、窗口等各种事件</li>
+<li>**AudioSystem**：音频系统，支持背景音乐和音效的播放与管理</li>
+<li>**FontSystem**：字体系统，支持文本渲染和字体管理</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
-快速开始</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+组件系统</h2>
+<ul>
+<li>**BGM**：背景音乐组件，提供完整的音频播放控制</li>
+<li>**SFX**：音效组件，支持即时音效和循环音效播放</li>
+<li>**Timer**：定时器组件，支持延迟执行和循环触发功能</li>
+<li>**Trigger**：触发器组件，基于条件的事件触发机制</li>
+<li>**Sprite**：精灵组件，完整的精灵纹理管理和绘制功能</li>
+<li>**SpriteGroup**：精灵组组件，支持批量精灵管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+资源管理</h2>
+<ul>
+<li>**ResourceSystem**：资源系统，提供统一的资源加载、缓存和管理</li>
+<li>**FileSystem**：文件系统，支持文件和目录的各种操作</li>
+<li>**Resource**：资源结构体，定义资源类型和元数据管理</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+快速开始</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 最小示例</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;EasyEngine/Core.h&gt;</span></div>
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespace_easy_engine.html">EasyEngine</a>;</div>
@@ -256,22 +287,108 @@ $(function() {
 <div class="ttc" id="aclass_easy_engine_1_1_painter_html_a66f911e0a810c1a1eafeaf3d4a9300ef"><div class="ttname"><a href="class_easy_engine_1_1_painter.html#a66f911e0a810c1a1eafeaf3d4a9300ef">EasyEngine::Painter::fillBackColor</a></div><div class="ttdeci">void fillBackColor(const SColor &amp;color)</div><div class="ttdoc">填充背景颜色</div><div class="ttdef"><b>定义</b> Core.cpp:665</div></div>
 <div class="ttc" id="aclass_easy_engine_1_1_painter_html_a91e81a20096402f0c6be1d3275ca45ea"><div class="ttname"><a href="class_easy_engine_1_1_painter.html#a91e81a20096402f0c6be1d3275ca45ea">EasyEngine::Painter::drawRectangle</a></div><div class="ttdeci">void drawRectangle(const Graphics::Rectangle &amp;rect)</div><div class="ttdoc">绘制矩形</div><div class="ttdef"><b>定义</b> Core.cpp:677</div></div>
 <div class="ttc" id="anamespace_easy_engine_html"><div class="ttname"><a href="namespace_easy_engine.html">EasyEngine</a></div><div class="ttdoc">引擎</div><div class="ttdef"><b>定义</b> Algorithm.h:19</div></div>
-<div class="ttc" id="astruct_easy_engine_1_1_graphics_1_1_rectangle_html"><div class="ttname"><a href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">EasyEngine::Graphics::Rectangle</a></div><div class="ttdoc">矩形</div><div class="ttdef"><b>定义</b> Basic.h:332</div></div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<div class="ttc" id="astruct_easy_engine_1_1_graphics_1_1_rectangle_html"><div class="ttname"><a href="struct_easy_engine_1_1_graphics_1_1_rectangle.html">EasyEngine::Graphics::Rectangle</a></div><div class="ttdoc">矩形</div><div class="ttdef"><b>定义</b> Basic.h:874</div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+核心功能详解</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+引擎核心 (Core Module)</h2>
+<ul>
+<li><b>完成度：85%</b></li>
+<li>提供引擎初始化、窗口管理、事件处理等核心功能</li>
+<li>支持多窗口创建和管理</li>
+<li>集成Painter绘制系统、Cursor光标系统</li>
+<li>完整的应用生命周期管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+基础模块 (Basic Module)</h2>
+<ul>
+<li><b>完成度：90%</b></li>
+<li>提供Vector2向量、Size尺寸、Geometry几何图形等基础数据结构</li>
+<li>内置StdColor命名空间，包含81种预定义标准颜色</li>
+<li>支持基本的几何计算和颜色操作</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+组件系统 (Components Module)</h2>
+<ul>
+<li><b>完成度：75%</b></li>
+<li>BGM类：背景音乐管理，支持播放、暂停、停止等操作</li>
+<li>SFX类：音效管理，支持播放、停止及循环播放</li>
+<li>Timer类：定时器组件，支持设置延迟、触发事件及循环功能</li>
+<li>Trigger类：条件触发事件系统</li>
+<li>Sprite类：完整的精灵系统，支持多种创建方式和绘制模式</li>
+<li>SpriteGroup类：精灵组管理，支持批量操作</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+算法库 (Algorithm Module)</h2>
+<ul>
+<li><b>完成度：70%</b></li>
+<li>提供UTF-8字符串分割、十六进制/RGBA颜色转换</li>
+<li>中心圆算法、精灵缩放位置与尺寸计算</li>
+<li>点/矩形/椭圆间的碰撞检测和位置关系判断</li>
+<li>窗口内容捕获功能</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+资源管理 (Resources Module)</h2>
+<ul>
+<li><b>完成度：80%</b></li>
+<li>FileSystem：完整的文件和目录操作支持</li>
+<li>ResourceSystem：统一的资源加载、预加载、异步加载管理</li>
+<li>支持资源缓存、替换、卸载等完整生命周期管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+过渡动画 (Transition Module)</h2>
+<ul>
+<li><b>完成度：60%</b></li>
+<li>提供AbstractEasingCurve抽象基类和多种具体缓动实现</li>
+<li>支持LinearCurve、InQuadCurve、OutQuadCurve、InCubicCurve等</li>
+<li>完整的动画进度控制和方向管理</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+场景管理 (Scene Module)</h2>
+<ul>
+<li><b>完成度：30%</b></li>
+<li>提供Layer图层管理、Scene场景管理、SceneManager场景管理器基础架构</li>
+<li>支持图层顺序管理、精灵和控件的组织</li>
+<li>场景切换和事件管理功能待完善</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 构建、部署和安装</h1>
-<p>这里以最简要的方式来编写构建过程，具体参见<a class="el" href="md_build.html">构建向导</a>。</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<p>项目使用 CMake 3.28+ 构建系统，支持 C++23 标准。具体构建过程参见<a class="el" href="md_build.html">构建向导</a>。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+依赖要求</h2>
+<ul>
+<li>**编译器**：支持 C++23 的现代编译器 (MSVC 2022+, GCC 11+, Clang 14+)</li>
+<li>**依赖库**：SDL3 及其扩展库 (SDL3_image, SDL3_ttf, SDL3_mixer, SDL3_gfx)</li>
+<li>**构建工具**：CMake 3.28+</li>
+<li>**其他**：fmt 库用于格式化输出</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 版本信息</h1>
 <ul>
-<li>当前版本：v1.1.0-alpha</li>
-<li>API 状态：稳定开发中</li>
-<li>兼容性：Windows/Linux/macOS (通过 SDL3)</li>
-<li>许可证：MIT 开源项目</li>
+<li>**当前版本**：v1.1.0-alpha</li>
+<li>**API 状态**：稳定开发中，核心API已稳定</li>
+<li>**兼容性**：Windows/Linux/macOS (通过 SDL3)</li>
+<li>**许可证**：MIT 开源许可证</li>
+<li>**整体完成度**：约70%</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 贡献和支持</h1>
-<p>Easy Engine 是一个持续开发中的项目，欢迎开发者参与贡献。项目采用模块化设计，便于扩展和维护。</p>
-<p>如需技术支持或功能建议，请通过项目文档中的联系方式获取帮助。 </p>
+<p>Easy Engine 是一个持续开发中的开源项目，欢迎开发者参与贡献。项目采用模块化设计，便于扩展和维护。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+如何贡献</h2>
+<ol type="1">
+<li>Fork 项目仓库</li>
+<li>创建功能分支进行开发</li>
+<li>提交 Pull Request</li>
+<li>参与代码审查和讨论</li>
+</ol>
+<p>如需技术支持、功能建议或报告问题，请通过 GitHub Issues 或项目文档中的联系方式获取帮助。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+相关文档</h1>
+<ul>
+<li><a href="./html/index.html">API 参考文档</a> - 完整的API文档</li>
+<li><a class="el" href="md_build.html">构建向导</a> - 详细的构建和安装指南 </li>
+</ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

@@ -259,13 +259,9 @@ bool Algorithm::isEllipseInsideEllipse(const Graphics::Ellipse &inner, const Gra
             {inner.pos.x - a_in * diagonalFactor, inner.pos.y - b_in * diagonalFactor}   // 左下
     };
     bool ret = false;
-    std::ranges::all_of(std::ranges::begin(points), std::ranges::end(points),
+    ret = std::ranges::all_of(std::ranges::begin(points), std::ranges::end(points),
                         [&] (const Vector2& point) {
-        if (comparePosEllipse(point, outer) <= 0) {
-            return ret;
-        }
-        ret = true;
-        return true;
+        return (comparePosEllipse(point, outer) > 0);
     });
     return ret;
 }

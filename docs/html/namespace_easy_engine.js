@@ -8,6 +8,7 @@ var namespace_easy_engine =
     [ "FileSystem", "class_easy_engine_1_1_file_system.html", null ],
     [ "Geometry", "struct_easy_engine_1_1_geometry.html", null ],
     [ "GeometryF", "struct_easy_engine_1_1_geometry_f.html", null ],
+    [ "Matrix2D", "struct_easy_engine_1_1_matrix2_d.html", "struct_easy_engine_1_1_matrix2_d" ],
     [ "Painter", "class_easy_engine_1_1_painter.html", "class_easy_engine_1_1_painter" ],
     [ "Resource", "struct_easy_engine_1_1_resource.html", "struct_easy_engine_1_1_resource" ],
     [ "ResourceSystem", "class_easy_engine_1_1_resource_system.html", "class_easy_engine_1_1_resource_system" ],

@@ -39,7 +39,7 @@ EasyEngine::TextSystem \- 文本系统
 .ti -1c
 .RI "\fBComponents::Font\fP * \fBfont\fP (const std::string &name)"
 .br
-.RI "从文本系统中获取字体信息 "
+.RI "从文本系统中获取字体 "
 .ti -1c
 .RI "void \fBaddText\fP (const std::string &text_name, const std::string &\fBtext\fP, const std::string &font_name)"
 .br
@@ -143,6 +143,19 @@ v1\&.1\&.0-alpha
 \fIfont_name\fP 指定字体名称 
 .RE
 .PP
+\fB警告\fP
+.RS 4
+执行前，必需先执行 \fR\fBload()\fP\fP 加载文本系统才能使用！否则将异常错误退出！ 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBload\fP 
+
+.PP
+\fBremoveText\fP 
+.RE
+.PP
 
 .SS "void EasyEngine::TextSystem::appendText (const std::string & text_name, const char ch)"
 
@@ -157,6 +170,13 @@ v1\&.1\&.0-alpha
 .RE
 .PP
 将追加的字符添加到原有文本的末尾 
+.PP
+\fB参见\fP
+.RS 4
+\fBmodifyText\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::TextSystem::appendText (const std::string & text_name, const std::string & append_text)"
 
 .PP
@@ -170,6 +190,13 @@ v1\&.1\&.0-alpha
 .RE
 .PP
 将追加的文本添加到原有文本的结尾。 
+.PP
+\fB参见\fP
+.RS 4
+\fBmodifyText\fP 
+.RE
+.PP
+
 .SS "void EasyEngine::TextSystem::clearText (const std::string & text_name)"
 
 .PP
@@ -180,15 +207,36 @@ v1\&.1\&.0-alpha
 \fItext_name\fP 指定文本名称 
 .RE
 .PP
+\fB参见\fP
+.RS 4
+\fBmodifyText\fP 
+
+.PP
+\fBremoveText\fP 
+.RE
+.PP
 
 .SS "\fBEasyEngine::Components::Font\fP * EasyEngine::TextSystem::font (const std::string & name)"
 
 .PP
-从文本系统中获取字体信息 
+从文本系统中获取字体 
 .PP
 \fB参数\fP
 .RS 4
 \fIname\fP 指定字体名称 
+.RE
+.PP
+\fB返回\fP
+.RS 4
+返回对应的字体 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBloadFont\fP 
+
+.PP
+\fBunloadFont\fP 
 .RE
 .PP
 
@@ -269,6 +317,14 @@ v1\&.1\&.0-alpha
 \fItext\fP 新的文本内容 
 .RE
 .PP
+\fB参见\fP
+.RS 4
+\fBappendText\fP 
+
+.PP
+\fBclearText\fP 
+.RE
+.PP
 
 .SS "void EasyEngine::TextSystem::removeText (const std::string & text_name)"
 
@@ -278,6 +334,22 @@ v1\&.1\&.0-alpha
 \fB参数\fP
 .RS 4
 \fItext_name\fP 文本名称 
+.RE
+.PP
+\fB注解\fP
+.RS 4
+此函数是将文本进行移除，而非清空原有文本。 
+
+.PP
+若清空原有文本，需执行 \fR\fBclearText()\fP\fP 函数。 
+.RE
+.PP
+\fB参见\fP
+.RS 4
+\fBaddText\fP 
+
+.PP
+\fBclearText\fP 
 .RE
 .PP
 
@@ -296,6 +368,11 @@ v1\&.1\&.0-alpha
 \fB注解\fP
 .RS 4
 最好只在绘图事件下渲染，这样就能实时渲染每一帧文本！ 
+.RE
+.PP
+\fB警告\fP
+.RS 4
+若指定的文本名称不存在，将发生异常错误并退出！ 
 .RE
 .PP
 

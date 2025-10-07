@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['🎮_20核心引擎功能_0',['🎮 核心引擎功能',['../index.html#autotoc_md6',1,'']]],
-  ['🎮_20游戏开发_1',['🎮 游戏开发',['../D:/Coding/EasyEngine/README.md#autotoc_md22',1,'']]]
+  ['算法库_20algorithm_20module_0',['算法库 (Algorithm Module)',['../index.html#autotoc_md23',1,'']]],
+  ['算法支持_1',['📐 算法支持',['../D:/Coding/EasyEngine/README.md#autotoc_md39',1,'']]]
 ];

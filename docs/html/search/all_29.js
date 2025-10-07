@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['算法支持_0',['📐 算法支持',['../D:/Coding/EasyEngine/README.md#autotoc_md25',1,'']]]
+  ['最小示例_0',['最小示例',['../index.html#autotoc_md18',1,'']]]
 ];

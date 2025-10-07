@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['版本信息_0',['版本信息',['../index.html#autotoc_md17',1,'']]]
+  ['快速开始_0',['快速开始',['../index.html#autotoc_md17',1,'快速开始'],['../D:/Coding/EasyEngine/README.md#autotoc_md41',1,'📦 快速开始']]]
 ];

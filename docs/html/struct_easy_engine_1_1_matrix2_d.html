@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Engine: EasyEngine::Matrix2D&lt; T &gt; 模板结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">var page_layout=1;</script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(function() { init_search(); });
+</script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="side-nav" class="ui-resizable side-nav-resizable"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Easy Engine<span id="projectnumber">&#160;1.1.0-alpha</span>
+   </div>
+  </td>
+ </tr>
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+</td></tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+</div><!-- top -->
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('struct_easy_engine_1_1_matrix2_d.html','','struct_easy_engine_1_1_matrix2_d-members'); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',false,false,'search.php','搜索',true);
+});
+</script>
+<div id="main-nav"></div>
+<div id="container"><div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EasyEngine::Matrix2D&lt; T &gt; 模板结构体 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>二维矩阵  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_basic_8h_source.html">Basic.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:Position" id="r_Position"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_easy_engine_1_1_matrix2_d_1_1_position.html">Position</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a611adeee2b7db3922df089fcad8368da" id="r_a611adeee2b7db3922df089fcad8368da"><td class="memItemLeft" align="right" valign="top"><a id="a611adeee2b7db3922df089fcad8368da" name="a611adeee2b7db3922df089fcad8368da"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> = typename std::vector&lt;T&gt;::iterator</td></tr>
+<tr class="memitem:ac9484e7cdf22a447c82e954d4ba16754" id="r_ac9484e7cdf22a447c82e954d4ba16754"><td class="memItemLeft" align="right" valign="top"><a id="ac9484e7cdf22a447c82e954d4ba16754" name="ac9484e7cdf22a447c82e954d4ba16754"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>constIterator</b> = typename std::vector&lt;T&gt;::const_iterator</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:af7451e07b2819b1e9b72354b44a762a7" id="r_af7451e07b2819b1e9b72354b44a762a7"><td class="memItemLeft" align="right" valign="top"><a id="af7451e07b2819b1e9b72354b44a762a7" name="af7451e07b2819b1e9b72354b44a762a7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Matrix2D</b> ()</td></tr>
+<tr class="memdesc:af7451e07b2819b1e9b72354b44a762a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建一个空白的二维矩阵（没有任何数据） <br /></td></tr>
+<tr class="memitem:adda2ac9366b31a2396ff867e01e078cc" id="r_adda2ac9366b31a2396ff867e01e078cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adda2ac9366b31a2396ff867e01e078cc">Matrix2D</a> (uint32_t row, uint32_t col, const std::function&lt; void(T &amp;)&gt; &amp;deleter={})</td></tr>
+<tr class="memdesc:adda2ac9366b31a2396ff867e01e078cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建指定行列的二维矩阵  <br /></td></tr>
+<tr class="memitem:aef481acfe1e6a4bf623ae8ab46d4e7c4" id="r_aef481acfe1e6a4bf623ae8ab46d4e7c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef481acfe1e6a4bf623ae8ab46d4e7c4">Matrix2D</a> (uint32_t row, uint32_t col, const T &amp;value, const std::function&lt; void(T &amp;)&gt; &amp;deleter={})</td></tr>
+<tr class="memdesc:aef481acfe1e6a4bf623ae8ab46d4e7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建指定行列与默认值的二维矩阵  <br /></td></tr>
+<tr class="memitem:ac46782b2ff2e7532d5eeb350bb8aa0da" id="r_ac46782b2ff2e7532d5eeb350bb8aa0da"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac46782b2ff2e7532d5eeb350bb8aa0da">Matrix2D</a> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:ac46782b2ff2e7532d5eeb350bb8aa0da"><td class="mdescLeft">&#160;</td><td class="mdescRight">复制原有的二维矩阵  <br /></td></tr>
+<tr class="memitem:acdbc3bf08f7641460ed395521e83ccf4" id="r_acdbc3bf08f7641460ed395521e83ccf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdbc3bf08f7641460ed395521e83ccf4">setDeleter</a> (const std::function&lt; void(T &amp;)&gt; &amp;function)</td></tr>
+<tr class="memdesc:acdbc3bf08f7641460ed395521e83ccf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置删除器  <br /></td></tr>
+<tr class="memitem:ab04fe64b2fdccf51ff8a4c4ca7df6520" id="r_ab04fe64b2fdccf51ff8a4c4ca7df6520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab04fe64b2fdccf51ff8a4c4ca7df6520">fill</a> (const T &amp;value)</td></tr>
+<tr class="memdesc:ab04fe64b2fdccf51ff8a4c4ca7df6520"><td class="mdescLeft">&#160;</td><td class="mdescRight">填充所有值  <br /></td></tr>
+<tr class="memitem:acec2280dd3e3fb818b4d6ed4fd748f63" id="r_acec2280dd3e3fb818b4d6ed4fd748f63"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acec2280dd3e3fb818b4d6ed4fd748f63">fillN</a> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d_1_1_position.html">Matrix2D::Position</a> &amp;start, const <a class="el" href="struct_easy_engine_1_1_matrix2_d_1_1_position.html">Matrix2D::Position</a> &amp;end, const T &amp;value)</td></tr>
+<tr class="memdesc:acec2280dd3e3fb818b4d6ed4fd748f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">填充范围内的值  <br /></td></tr>
+<tr class="memitem:a2959bd6e13ab6c880acb6ee751cebba9" id="r_a2959bd6e13ab6c880acb6ee751cebba9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2959bd6e13ab6c880acb6ee751cebba9">resize</a> (uint32_t line, uint32_t col)</td></tr>
+<tr class="memdesc:a2959bd6e13ab6c880acb6ee751cebba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">重新调整新的大小  <br /></td></tr>
+<tr class="memitem:a0d5621223b3477441c874a3ef8363425" id="r_a0d5621223b3477441c874a3ef8363425"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d5621223b3477441c874a3ef8363425">at</a> (uint32_t row, uint32_t col)</td></tr>
+<tr class="memdesc:a0d5621223b3477441c874a3ef8363425"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取矩阵中指定行列的数据  <br /></td></tr>
+<tr class="memitem:a47f61e28378fcf97dd4f9795da4546fb" id="r_a47f61e28378fcf97dd4f9795da4546fb"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47f61e28378fcf97dd4f9795da4546fb">get</a> (uint32_t row, uint32_t col)</td></tr>
+<tr class="memdesc:a47f61e28378fcf97dd4f9795da4546fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取矩阵中指定行列的数据  <br /></td></tr>
+<tr class="memitem:ae74b2e6fdacf6585128f5d6a2fcc70d6" id="r_ae74b2e6fdacf6585128f5d6a2fcc70d6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae74b2e6fdacf6585128f5d6a2fcc70d6">rows</a> () const</td></tr>
+<tr class="memdesc:ae74b2e6fdacf6585128f5d6a2fcc70d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前矩阵的总行数  <br /></td></tr>
+<tr class="memitem:a787cede6170d88be2b91658b291df946" id="r_a787cede6170d88be2b91658b291df946"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a787cede6170d88be2b91658b291df946">cols</a> () const</td></tr>
+<tr class="memdesc:a787cede6170d88be2b91658b291df946"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前矩阵的总列数  <br /></td></tr>
+<tr class="memitem:a73719bdf3698428bfd6b5fe418ffbdf8" id="r_a73719bdf3698428bfd6b5fe418ffbdf8"><td class="memItemLeft" align="right" valign="top"><a id="a73719bdf3698428bfd6b5fe418ffbdf8" name="a73719bdf3698428bfd6b5fe418ffbdf8"></a>
+<a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="memitem:ad890c4f63b5583d9f5869b6076bac1d3" id="r_ad890c4f63b5583d9f5869b6076bac1d3"><td class="memItemLeft" align="right" valign="top"><a id="ad890c4f63b5583d9f5869b6076bac1d3" name="ad890c4f63b5583d9f5869b6076bac1d3"></a>
+<a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="memitem:a8629b0eae8cd42be1e7a3cf757d4bdd6" id="r_a8629b0eae8cd42be1e7a3cf757d4bdd6"><td class="memItemLeft" align="right" valign="top"><a id="a8629b0eae8cd42be1e7a3cf757d4bdd6" name="a8629b0eae8cd42be1e7a3cf757d4bdd6"></a>
+<a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="memitem:a6d3148db98e6772dd5db9890f20f1d3e" id="r_a6d3148db98e6772dd5db9890f20f1d3e"><td class="memItemLeft" align="right" valign="top"><a id="a6d3148db98e6772dd5db9890f20f1d3e" name="a6d3148db98e6772dd5db9890f20f1d3e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="memitem:ac4146c2c51019f10ba837327315199b8" id="r_ac4146c2c51019f10ba837327315199b8"><td class="memItemLeft" align="right" valign="top"><a id="ac4146c2c51019f10ba837327315199b8" name="ac4146c2c51019f10ba837327315199b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other) const</td></tr>
+<tr class="memitem:abecf84157898efea68f959445d50ca3a" id="r_abecf84157898efea68f959445d50ca3a"><td class="memItemLeft" align="right" valign="top"><a id="abecf84157898efea68f959445d50ca3a" name="abecf84157898efea68f959445d50ca3a"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (uint32_t row, uint32_t col)</td></tr>
+<tr class="memitem:a0ef83ea6d23b7c6f15aa31df160e14aa" id="r_a0ef83ea6d23b7c6f15aa31df160e14aa"><td class="memItemLeft" align="right" valign="top"><a id="a0ef83ea6d23b7c6f15aa31df160e14aa" name="a0ef83ea6d23b7c6f15aa31df160e14aa"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="memitem:a719efdd3097cd86bf0c452d6ca6d8d2f" id="r_a719efdd3097cd86bf0c452d6ca6d8d2f"><td class="memItemLeft" align="right" valign="top"><a id="a719efdd3097cd86bf0c452d6ca6d8d2f" name="a719efdd3097cd86bf0c452d6ca6d8d2f"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr class="memitem:a97ce1a709d4ec63527c99bafa69fe44b" id="r_a97ce1a709d4ec63527c99bafa69fe44b"><td class="memItemLeft" align="right" valign="top"><a id="a97ce1a709d4ec63527c99bafa69fe44b" name="a97ce1a709d4ec63527c99bafa69fe44b"></a>
+constIterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const</td></tr>
+<tr class="memitem:a4290b920cc9c9548760fb3053ba63359" id="r_a4290b920cc9c9548760fb3053ba63359"><td class="memItemLeft" align="right" valign="top"><a id="a4290b920cc9c9548760fb3053ba63359" name="a4290b920cc9c9548760fb3053ba63359"></a>
+constIterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const</td></tr>
+<tr class="memitem:a3ea1086093ec37bb73218e1f56c0d1ef" id="r_a3ea1086093ec37bb73218e1f56c0d1ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ea1086093ec37bb73218e1f56c0d1ef">add</a> (T &amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:a3ea1086093ec37bb73218e1f56c0d1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局相加  <br /></td></tr>
+<tr class="memitem:a00c521ea35a5aed9ceab3cac017a2181" id="r_a00c521ea35a5aed9ceab3cac017a2181"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00c521ea35a5aed9ceab3cac017a2181">add</a> (T &amp;&amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:a00c521ea35a5aed9ceab3cac017a2181"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局相加  <br /></td></tr>
+<tr class="memitem:a82083a7078557b5ec68ae5acc9f4f749" id="r_a82083a7078557b5ec68ae5acc9f4f749"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82083a7078557b5ec68ae5acc9f4f749">minus</a> (T &amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:a82083a7078557b5ec68ae5acc9f4f749"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局相减  <br /></td></tr>
+<tr class="memitem:abd101338ab7193fb3a1a02117c2c2041" id="r_abd101338ab7193fb3a1a02117c2c2041"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd101338ab7193fb3a1a02117c2c2041">minus</a> (T &amp;&amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:abd101338ab7193fb3a1a02117c2c2041"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局相减  <br /></td></tr>
+<tr class="memitem:a6bf4469fd5f24a622aae5be74c2f6bc2" id="r_a6bf4469fd5f24a622aae5be74c2f6bc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bf4469fd5f24a622aae5be74c2f6bc2">times</a> (T &amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:a6bf4469fd5f24a622aae5be74c2f6bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局乘法  <br /></td></tr>
+<tr class="memitem:a104f946a7b4e8c21ec9a37c42a9654a3" id="r_a104f946a7b4e8c21ec9a37c42a9654a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a104f946a7b4e8c21ec9a37c42a9654a3">times</a> (T &amp;&amp;value, const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;function={})</td></tr>
+<tr class="memdesc:a104f946a7b4e8c21ec9a37c42a9654a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局点乘  <br /></td></tr>
+<tr class="memitem:af0c34e1e644e219337c79618df6a9ebd" id="r_af0c34e1e644e219337c79618df6a9ebd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0c34e1e644e219337c79618df6a9ebd">multiply</a> (const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;other)</td></tr>
+<tr class="memdesc:af0c34e1e644e219337c79618df6a9ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局乘法  <br /></td></tr>
+<tr class="memitem:afea10e5e61dbbedc2a3d20747f0e5cd7" id="r_afea10e5e61dbbedc2a3d20747f0e5cd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afea10e5e61dbbedc2a3d20747f0e5cd7">transpose</a> ()</td></tr>
+<tr class="memdesc:afea10e5e61dbbedc2a3d20747f0e5cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">转置矩阵  <br /></td></tr>
+<tr class="memitem:a50c196e0d00e8026c77125f7f5f921b3" id="r_a50c196e0d00e8026c77125f7f5f921b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50c196e0d00e8026c77125f7f5f921b3">reverse</a> (bool reverse_row=true, bool reverse_col=false)</td></tr>
+<tr class="memdesc:a50c196e0d00e8026c77125f7f5f921b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">翻转矩阵  <br /></td></tr>
+<tr class="memitem:a86eb2c023413ff581d2f20b84330c4de" id="r_a86eb2c023413ff581d2f20b84330c4de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86eb2c023413ff581d2f20b84330c4de">rotate</a> (bool turn_right=true)</td></tr>
+<tr class="memdesc:a86eb2c023413ff581d2f20b84330c4de"><td class="mdescLeft">&#160;</td><td class="mdescRight">旋转矩阵  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">详细描述</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+struct EasyEngine::Matrix2D&lt; T &gt;</div><p>二维矩阵 </p>
+<dl class="section since"><dt>自从</dt><dd>v1.1.0-alpha</dd></dl>
+<p>支持使用基本数据类型及简单的结构体进行存储。 </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">构造及析构函数说明</h2>
+<a id="adda2ac9366b31a2396ff867e01e078cc" name="adda2ac9366b31a2396ff867e01e078cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda2ac9366b31a2396ff867e01e078cc">&#9670;&#160;</a></span>Matrix2D() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::Matrix2D </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>col</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>deleter</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建指定行列的二维矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>行 </td></tr>
+    <tr><td class="paramname">col</td><td>列 </td></tr>
+    <tr><td class="paramname">deleter</td><td>删除器（若需要删除指针等情况时指定） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aef481acfe1e6a4bf623ae8ab46d4e7c4" name="aef481acfe1e6a4bf623ae8ab46d4e7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef481acfe1e6a4bf623ae8ab46d4e7c4">&#9670;&#160;</a></span>Matrix2D() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::Matrix2D </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>col</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>deleter</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建指定行列与默认值的二维矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>行 </td></tr>
+    <tr><td class="paramname">col</td><td>列 </td></tr>
+    <tr><td class="paramname">value</td><td>默认值（用于填充所有数据） </td></tr>
+    <tr><td class="paramname">deleter</td><td>删除器（若需要删除指针等情况时指定） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac46782b2ff2e7532d5eeb350bb8aa0da" name="ac46782b2ff2e7532d5eeb350bb8aa0da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46782b2ff2e7532d5eeb350bb8aa0da">&#9670;&#160;</a></span>Matrix2D() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::Matrix2D </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>复制原有的二维矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrix</td><td>指定二维矩阵 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">成员函数说明</h2>
+<a id="a00c521ea35a5aed9ceab3cac017a2181" name="a00c521ea35a5aed9ceab3cac017a2181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c521ea35a5aed9ceab3cac017a2181">&#9670;&#160;</a></span>add() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::add </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局相加 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行相加操作 </p>
+
+</div>
+</div>
+<a id="a3ea1086093ec37bb73218e1f56c0d1ef" name="a3ea1086093ec37bb73218e1f56c0d1ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ea1086093ec37bb73218e1f56c0d1ef">&#9670;&#160;</a></span>add() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::add </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局相加 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行相加操作 </p>
+
+</div>
+</div>
+<a id="a0d5621223b3477441c874a3ef8363425" name="a0d5621223b3477441c874a3ef8363425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5621223b3477441c874a3ef8363425">&#9670;&#160;</a></span>at()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T &amp; <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>col</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取矩阵中指定行列的数据 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>行 </td></tr>
+    <tr><td class="paramname">col</td><td>列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应行列下的数据 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a47f61e28378fcf97dd4f9795da4546fb" title="获取矩阵中指定行列的数据">get</a> </dd></dl>
+
+</div>
+</div>
+<a id="a787cede6170d88be2b91658b291df946" name="a787cede6170d88be2b91658b291df946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a787cede6170d88be2b91658b291df946">&#9670;&#160;</a></span>cols()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::cols </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取当前矩阵的总列数 </p>
+<dl class="section return"><dt>返回</dt><dd>返回对应的列数 </dd></dl>
+
+</div>
+</div>
+<a id="ab04fe64b2fdccf51ff8a4c4ca7df6520" name="ab04fe64b2fdccf51ff8a4c4ca7df6520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04fe64b2fdccf51ff8a4c4ca7df6520">&#9670;&#160;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::fill </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>填充所有值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acec2280dd3e3fb818b4d6ed4fd748f63" name="acec2280dd3e3fb818b4d6ed4fd748f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acec2280dd3e3fb818b4d6ed4fd748f63">&#9670;&#160;</a></span>fillN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::fillN </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt;::Position &amp;</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt;::Position &amp;</td>          <td class="paramname"><span class="paramname"><em>end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>填充范围内的值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">start</td><td>指定开始位置（行列） </td></tr>
+    <tr><td class="paramname">end</td><td>指定结束位置（行列） </td></tr>
+    <tr><td class="paramname">value</td><td>指定填充的值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a47f61e28378fcf97dd4f9795da4546fb" name="a47f61e28378fcf97dd4f9795da4546fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47f61e28378fcf97dd4f9795da4546fb">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const T &amp; <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::get </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>col</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取矩阵中指定行列的数据 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>行 </td></tr>
+    <tr><td class="paramname">col</td><td>列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应行列下的数据 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>区别于 <span class="tt">at</span>，此函数为常量版本，无法修改里面的数据！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a0d5621223b3477441c874a3ef8363425" title="获取矩阵中指定行列的数据">at</a> </dd></dl>
+
+</div>
+</div>
+<a id="abd101338ab7193fb3a1a02117c2c2041" name="abd101338ab7193fb3a1a02117c2c2041"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd101338ab7193fb3a1a02117c2c2041">&#9670;&#160;</a></span>minus() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::minus </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局相减 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行相减操作 </p>
+
+</div>
+</div>
+<a id="a82083a7078557b5ec68ae5acc9f4f749" name="a82083a7078557b5ec68ae5acc9f4f749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82083a7078557b5ec68ae5acc9f4f749">&#9670;&#160;</a></span>minus() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::minus </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局相减 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行相减操作 </p>
+
+</div>
+</div>
+<a id="af0c34e1e644e219337c79618df6a9ebd" name="af0c34e1e644e219337c79618df6a9ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0c34e1e644e219337c79618df6a9ebd">&#9670;&#160;</a></span>multiply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::multiply </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局乘法 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>指定矩阵，其指定的行数必需与现有的列数相等</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行乘法操作 </p><dl class="section note"><dt>注解</dt><dd>当前仅支持整数、浮点数运算，不支持其它数据类型的运算！ </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>两个矩阵必需分别为 m * n, n * p 的大小才可用！否则将异常报错！ </dd></dl>
+
+</div>
+</div>
+<a id="a2959bd6e13ab6c880acb6ee751cebba9" name="a2959bd6e13ab6c880acb6ee751cebba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2959bd6e13ab6c880acb6ee751cebba9">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::resize </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>col</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重新调整新的大小 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">line</td><td>行 </td></tr>
+    <tr><td class="paramname">col</td><td>列 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a50c196e0d00e8026c77125f7f5f921b3" name="a50c196e0d00e8026c77125f7f5f921b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c196e0d00e8026c77125f7f5f921b3">&#9670;&#160;</a></span>reverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::reverse </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>reverse_row</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>reverse_col</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>翻转矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reverse_row</td><td>行与行之间逆序（垂直翻转） </td></tr>
+    <tr><td class="paramname">reverse_col</td><td>列与列之间逆序（水平翻转） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>当两个参数都为 <span class="tt">true</span> 时，矩阵将完全逆序</dd></dl>
+<p>当选择任何一个方向的逆序时，都会发生交换。 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a86eb2c023413ff581d2f20b84330c4de" title="旋转矩阵">rotate</a> </dd></dl>
+
+</div>
+</div>
+<a id="a86eb2c023413ff581d2f20b84330c4de" name="a86eb2c023413ff581d2f20b84330c4de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86eb2c023413ff581d2f20b84330c4de">&#9670;&#160;</a></span>rotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::rotate </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>turn_right</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>旋转矩阵 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turn_right</td><td>是否向右旋转 90°，反之向左旋转 90° </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a50c196e0d00e8026c77125f7f5f921b3" title="翻转矩阵">reverse</a> </dd>
+<dd>
+<a class="el" href="#afea10e5e61dbbedc2a3d20747f0e5cd7" title="转置矩阵">transpose</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae74b2e6fdacf6585128f5d6a2fcc70d6" name="ae74b2e6fdacf6585128f5d6a2fcc70d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae74b2e6fdacf6585128f5d6a2fcc70d6">&#9670;&#160;</a></span>rows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::rows </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>获取当前矩阵的总行数 </p>
+<dl class="section return"><dt>返回</dt><dd>返回对应的行数 </dd></dl>
+
+</div>
+</div>
+<a id="acdbc3bf08f7641460ed395521e83ccf4" name="acdbc3bf08f7641460ed395521e83ccf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdbc3bf08f7641460ed395521e83ccf4">&#9670;&#160;</a></span>setDeleter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::setDeleter </td>
+          <td>(</td>
+          <td class="paramtype">const std::function&lt; void(T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置删除器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">function</td><td>指定函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>当此类析构时，将调用删除器以删除指针！ </p>
+
+</div>
+</div>
+<a id="a104f946a7b4e8c21ec9a37c42a9654a3" name="a104f946a7b4e8c21ec9a37c42a9654a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a104f946a7b4e8c21ec9a37c42a9654a3">&#9670;&#160;</a></span>times() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::times </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局点乘 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行点乘操作 </p>
+
+</div>
+</div>
+<a id="a6bf4469fd5f24a622aae5be74c2f6bc2" name="a6bf4469fd5f24a622aae5be74c2f6bc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bf4469fd5f24a622aae5be74c2f6bc2">&#9670;&#160;</a></span>times() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::times </td>
+          <td>(</td>
+          <td class="paramtype">T &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::function&lt; void(T &amp;, T &amp;)&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>function</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>全局乘法 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>指定值 </td></tr>
+    <tr><td class="paramname">function</td><td>函数（对于复杂的数据类型，此参数必需指定）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将矩阵里的所有值进行相乘操作 </p>
+
+</div>
+</div>
+<a id="afea10e5e61dbbedc2a3d20747f0e5cd7" name="afea10e5e61dbbedc2a3d20747f0e5cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afea10e5e61dbbedc2a3d20747f0e5cd7">&#9670;&#160;</a></span>transpose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_easy_engine_1_1_matrix2_d.html">EasyEngine::Matrix2D</a>&lt; T &gt;::transpose </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>转置矩阵 </p>
+<p>将原有的 m * n 大小的矩阵转置为 n * m 大小的矩阵。 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a86eb2c023413ff581d2f20b84330c4de" title="旋转矩阵">rotate</a> </dd></dl>
+
+</div>
+</div>
+<hr/>该结构体的文档由以下文件生成:<ul>
+<li>D:/Coding/EasyEngine/src/<a class="el" href="_basic_8h_source.html">Basic.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="namespace_easy_engine.html">EasyEngine</a></li><li class="navelem"><a href="struct_easy_engine_1_1_matrix2_d.html">Matrix2D</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

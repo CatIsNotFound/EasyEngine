@@ -1534,12 +1534,15 @@ EasyEngine::TextSystem *EasyEngine::TextSystem::global() {
 
 void EasyEngine::TextSystem::init() {
     if (!TTF_Init()) {
-        SDL_Log("[ERROR] Failed to initialized the font system!");
+        SDL_Log("[ERROR] Failed to initialized the Text system!");
     }
 }
 
 void EasyEngine::TextSystem::unload() {
     if (!TTF_Init()) return;
+    for (auto& text : _text_list) {
+        TTF_DestroyText(text.second);
+    }
     if (_text_engine) TTF_DestroyRendererTextEngine(_text_engine);
     for (auto& font : _font_info) {
         font.second->unload();
@@ -1603,8 +1606,13 @@ void EasyEngine::TextSystem::addText(const std::string &text_name, const std::st
         SDL_Log("[ERROR] The specified text name '%s' is exist!", text_name.c_str());
         return;
     }
+    if (!_text_engine) {
+        SDL_Log("[ERROR] Current Text system is not initialized!\n"
+                "p.s: Try to use `load()` function at first!");
+        throw std::runtime_error("[FATAL] Current Text system is not initialized!\n");
+    }
     TTF_Text* new_text = TTF_CreateText(_text_engine, _font_info.at(font_name)->TTF_font(), text.c_str(), text.size());
-    _text_list.emplace(text_name, std::shared_ptr<TTF_Text>(new_text));
+    _text_list.emplace(text_name, new_text);
 }
 
 void EasyEngine::TextSystem::removeText(const std::string &text_name) {
@@ -1612,7 +1620,7 @@ void EasyEngine::TextSystem::removeText(const std::string &text_name) {
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_DestroyText(_text_list.at(text_name).get());
+    TTF_DestroyText(_text_list.at(text_name));
     _text_list.erase(text_name);
 }
 
@@ -1621,7 +1629,7 @@ void EasyEngine::TextSystem::appendText(const std::string &text_name, const std:
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_AppendTextString(_text_list.at(text_name).get(), append_text.c_str(), append_text.size());
+    TTF_AppendTextString(_text_list.at(text_name), append_text.c_str(), append_text.size());
 }
 
 void EasyEngine::TextSystem::appendText(const std::string &text_name, const char ch) {
@@ -1631,7 +1639,7 @@ void EasyEngine::TextSystem::appendText(const std::string &text_name, const char
     }
     char chs[2] = {'\0'};
     chs[0] = ch;
-    TTF_AppendTextString(_text_list.at(text_name).get(), chs, 2);
+    TTF_AppendTextString(_text_list.at(text_name), chs, 2);
 }
 
 void EasyEngine::TextSystem::modifyText(const std::string &text_name, const std::string &text) {
@@ -1639,7 +1647,7 @@ void EasyEngine::TextSystem::modifyText(const std::string &text_name, const std:
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_SetTextString(_text_list.at(text_name).get(), text.c_str(), text.size());
+    TTF_SetTextString(_text_list.at(text_name), text.c_str(), text.size());
 }
 
 void EasyEngine::TextSystem::clearText(const std::string &text_name) {
@@ -1647,7 +1655,7 @@ void EasyEngine::TextSystem::clearText(const std::string &text_name) {
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_SetTextString(_text_list.at(text_name).get(), "", 0);
+    TTF_SetTextString(_text_list.at(text_name), "", 0);
 }
 
 std::string EasyEngine::TextSystem::text(const std::string &text_name) {
@@ -1668,7 +1676,7 @@ void EasyEngine::TextSystem::setTextFont(const std::string &text_name, const std
                 font_name.c_str());
         return;
     }
-    TTF_SetTextFont(_text_list.at(text_name).get(), _font_info.at(font_name)->TTF_font());
+    TTF_SetTextFont(_text_list.at(text_name), _font_info.at(font_name)->TTF_font());
 }
 
 void EasyEngine::TextSystem::setTextColor(const std::string &text_name, const SColor &text_color) {
@@ -1676,7 +1684,7 @@ void EasyEngine::TextSystem::setTextColor(const std::string &text_name, const SC
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_SetTextColor(_text_list.at(text_name).get(),
+    TTF_SetTextColor(_text_list.at(text_name),
                      text_color.r, text_color.g, text_color.b, text_color.a);
 }
 
@@ -1685,7 +1693,7 @@ void EasyEngine::TextSystem::setTextWrapWidth(const std::string &text_name, int 
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_SetTextWrapWidth(_text_list.at(text_name).get(), width);
+    TTF_SetTextWrapWidth(_text_list.at(text_name), width);
 }
 
 void EasyEngine::TextSystem::setTextDirection(const std::string &text_name,
@@ -1694,17 +1702,18 @@ void EasyEngine::TextSystem::setTextDirection(const std::string &text_name,
         SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
         return;
     }
-    TTF_Direction real_direction = static_cast<TTF_Direction>(direction);
-    TTF_SetTextDirection(_text_list.at(text_name).get(), real_direction);
+    auto real_direction = static_cast<TTF_Direction>(direction);
+    TTF_SetTextDirection(_text_list.at(text_name), real_direction);
 }
 
 void EasyEngine::TextSystem::renderText(const std::string &text_name, const Vector2 &position) {
     if (!_text_list.contains(text_name)) {
-        SDL_Log("[ERROR] The specified text name '%s' is not exist!", text_name.c_str());
-        return;
+        SDL_Log("[FATAL] The specified text name '%s' is not exist!", text_name.c_str());
+        throw std::runtime_error(fmt::format("[FATAL] The specified text name '{}' is not exist!",
+                                             text_name.c_str()));
     }
-    TTF_UpdateText(_text_list.at(text_name).get());
-    _painter->drawText(_text_list.at(text_name).get(), position);
+    TTF_UpdateText(_text_list.at(text_name));
+    _painter->drawText(_text_list.at(text_name), position);
 }
 
 EasyEngine::Size EasyEngine::TextSystem::textAreaSize(const std::string &text_name) const {
@@ -1713,7 +1722,7 @@ EasyEngine::Size EasyEngine::TextSystem::textAreaSize(const std::string &text_na
         return {0, 0};
     }
     int w, h;
-    TTF_GetTextSize(_text_list.at(text_name).get(), &w, &h);
+    TTF_GetTextSize(_text_list.at(text_name), &w, &h);
     return {static_cast<float>(w), static_cast<float>(h)};
 }
 

@@ -137,7 +137,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>unload</b> ()</td></t
 <tr class="memitem:ad29967ad83c1bda326a2ae95cfa496f5" id="r_ad29967ad83c1bda326a2ae95cfa496f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5">unloadFont</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:ad29967ad83c1bda326a2ae95cfa496f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文本系统中卸载指定字体  <br /></td></tr>
 <tr class="memitem:a2489bf636aca56a3e5b8cd604e719aa5" id="r_a2489bf636aca56a3e5b8cd604e719aa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_easy_engine_1_1_components_1_1_font.html">Components::Font</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5">font</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a2489bf636aca56a3e5b8cd604e719aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文本系统中获取字体信息  <br /></td></tr>
+<tr class="memdesc:a2489bf636aca56a3e5b8cd604e719aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文本系统中获取字体  <br /></td></tr>
 <tr class="memitem:a9017e080ee1ab20ba8b2fa960634a651" id="r_a9017e080ee1ab20ba8b2fa960634a651"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9017e080ee1ab20ba8b2fa960634a651">addText</a> (const std::string &amp;text_name, const std::string &amp;<a class="el" href="#acd90784dd3f6208ea3ceeeb905c325e4">text</a>, const std::string &amp;font_name)</td></tr>
 <tr class="memdesc:a9017e080ee1ab20ba8b2fa960634a651"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加新文本  <br /></td></tr>
 <tr class="memitem:ac5b2cd1032a62cae0b8d35d99eab2e5b" id="r_ac5b2cd1032a62cae0b8d35d99eab2e5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5b2cd1032a62cae0b8d35d99eab2e5b">removeText</a> (const std::string &amp;text_name)</td></tr>
@@ -215,6 +215,10 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>警告</dt><dd>执行前，必需先执行 <span class="tt"><a class="el" href="#a6b19038872b10bd5122e71680ae2a510" title="加载文本系统">load()</a></span> 加载文本系统才能使用！否则将异常错误退出！ </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a6b19038872b10bd5122e71680ae2a510" title="加载文本系统">load</a> </dd>
+<dd>
+<a class="el" href="#ac5b2cd1032a62cae0b8d35d99eab2e5b" title="删除已有的文本">removeText</a> </dd></dl>
 
 </div>
 </div>
@@ -245,7 +249,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
-<p>将追加的字符添加到原有文本的末尾 </p>
+<p>将追加的字符添加到原有文本的末尾 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a128dfbc7fce0ca97c666bdabdb2fe959" title="修改已有的文本">modifyText</a> </dd></dl>
 
 </div>
 </div>
@@ -276,7 +280,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
-<p>将追加的文本添加到原有文本的结尾。 </p>
+<p>将追加的文本添加到原有文本的结尾。 </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="#a128dfbc7fce0ca97c666bdabdb2fe959" title="修改已有的文本">modifyText</a> </dd></dl>
 
 </div>
 </div>
@@ -302,6 +306,9 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a128dfbc7fce0ca97c666bdabdb2fe959" title="修改已有的文本">modifyText</a> </dd>
+<dd>
+<a class="el" href="#ac5b2cd1032a62cae0b8d35d99eab2e5b" title="删除已有的文本">removeText</a> </dd></dl>
 
 </div>
 </div>
@@ -320,13 +327,17 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
       </table>
 </div><div class="memdoc">
 
-<p>从文本系统中获取字体信息 </p>
+<p>从文本系统中获取字体 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>指定字体名称 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>返回</dt><dd>返回对应的字体 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab9c74f55fb38db517ac6777af59258c8" title="加载字体到文本系统">loadFont</a> </dd>
+<dd>
+<a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5" title="从文本系统中卸载指定字体">unloadFont</a> </dd></dl>
 
 </div>
 </div>
@@ -384,7 +395,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </dd>
 </dl>
 <dl class="section note"><dt>注解</dt><dd>对于指定已加载的字体，将重新加载新的字体！ </dd></dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体">font</a> </dd>
 <dd>
 <a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5" title="从文本系统中卸载指定字体">unloadFont</a> </dd></dl>
 
@@ -423,7 +434,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体">font</a> </dd>
 <dd>
 <a class="el" href="#ad29967ad83c1bda326a2ae95cfa496f5" title="从文本系统中卸载指定字体">unloadFont</a> </dd></dl>
 
@@ -456,6 +467,9 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a8a0e84ad1222332818bcf34b404a7b7f" title="追加文本到末尾">appendText</a> </dd>
+<dd>
+<a class="el" href="#a9ad89da4843d31c552f2b7653477f403" title="清空已有的文本">clearText</a> </dd></dl>
 
 </div>
 </div>
@@ -481,6 +495,12 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>此函数是将文本进行移除，而非清空原有文本。 </dd>
+<dd>
+若清空原有文本，需执行 <span class="tt"><a class="el" href="#a9ad89da4843d31c552f2b7653477f403" title="清空已有的文本">clearText()</a></span> 函数。 </dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="#a9017e080ee1ab20ba8b2fa960634a651" title="添加新文本">addText</a> </dd>
+<dd>
+<a class="el" href="#a9ad89da4843d31c552f2b7653477f403" title="清空已有的文本">clearText</a> </dd></dl>
 
 </div>
 </div>
@@ -512,6 +532,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
   </dd>
 </dl>
 <dl class="section note"><dt>注解</dt><dd>最好只在绘图事件下渲染，这样就能实时渲染每一帧文本！ </dd></dl>
+<dl class="section warning"><dt>警告</dt><dd>若指定的文本名称不存在，将发生异常错误并退出！ </dd></dl>
 
 </div>
 </div>
@@ -712,7 +733,7 @@ static <a class="el" href="class_easy_engine_1_1_text_system.html">TextSystem</a
 </dl>
 <dl class="section see"><dt>参见</dt><dd><a class="el" href="#ab9c74f55fb38db517ac6777af59258c8" title="加载字体到文本系统">loadFont</a> </dd>
 <dd>
-<a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体信息">font</a> </dd></dl>
+<a class="el" href="#a2489bf636aca56a3e5b8cd604e719aa5" title="从文本系统中获取字体">font</a> </dd></dl>
 
 </div>
 </div>

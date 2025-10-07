@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['easy_20engine_0',['Easy Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md19',1,'']]],
-  ['easy_20engine_20构建向导_1',['Easy Engine 构建向导',['../md_build.html',1,'']]],
-  ['easy_20engine_20游戏引擎文档_2',['Easy Engine 游戏引擎文档',['../index.html',1,'']]],
-  ['engine_3',['Easy Engine',['../D:/Coding/EasyEngine/README.md#autotoc_md19',1,'']]],
-  ['engine_20构建向导_4',['Easy Engine 构建向导',['../md_build.html',1,'']]],
-  ['engine_20游戏引擎文档_5',['Easy Engine 游戏引擎文档',['../index.html',1,'']]]
+  ['0_0',['0',['../D:/Coding/EasyEngine/README.md#autotoc_md52',1,'中期目标 (v1.5.0)'],['../D:/Coding/EasyEngine/README.md#autotoc_md51',1,'短期目标 (v1.2.0)'],['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'长期目标 (v2.0.0)']]],
+  ['0_200_1',['长期目标 (v2.0.0)',['../D:/Coding/EasyEngine/README.md#autotoc_md53',1,'']]]
 ];

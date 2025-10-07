@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['🔮_20开发路线图_0',['🔮 开发路线图',['../D:/Coding/EasyEngine/README.md#autotoc_md35',1,'']]]
+  ['算法库_20algorithm_20module_0',['算法库 (Algorithm Module)',['../index.html#autotoc_md23',1,'']]],
+  ['算法支持_1',['📐 算法支持',['../D:/Coding/EasyEngine/README.md#autotoc_md39',1,'']]]
 ];

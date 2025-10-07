@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['短期目标_0',['短期目标',['../D:/Coding/EasyEngine/README.md#autotoc_md36',1,'']]]
+  ['数学和算法库_0',['📐 数学和算法库',['../index.html#autotoc_md9',1,'']]]
 ];

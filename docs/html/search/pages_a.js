@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['技术架构_0',['技术架构',['../index.html#autotoc_md11',1,'']]]
+  ['transition_20module_0',['过渡动画 (Transition Module)',['../index.html#autotoc_md25',1,'']]]
 ];

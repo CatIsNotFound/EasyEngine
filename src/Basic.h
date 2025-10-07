@@ -198,7 +198,7 @@ namespace EasyEngine {
          * @retval true  表示相等
          * @retval false 表示不相等
          */
-        bool isEqual(const Vector2& v, const float EPISON = 1e-6f) const {
+        [[nodiscard]] bool isEqual(const Vector2& v, const float EPISON = 1e-6f) const {
             return ((this->x >= v.x - EPISON && this->x <= v.x + EPISON) &&
                 (this->y >= v.y - EPISON && this->y <= v.y + EPISON));
         }
@@ -283,6 +283,548 @@ namespace EasyEngine {
             this->size.height = size.height;
         }
     };
+
+    /**
+     * @struct Matrix2D
+     * @brief 二维矩阵
+     * @since v1.1.0-alpha
+     *
+     * 支持使用基本数据类型及简单的结构体进行存储。
+     */
+    template<typename T>
+    struct Matrix2D {
+    private:
+        /// 矩阵数据
+        std::vector<T> _datas;
+        /// 行
+        uint32_t _row;
+        /// 列
+        uint32_t _col;
+        /// 删除器
+        std::function<void(T&)> _deleter;
+    public:
+        using iterator = typename std::vector<T>::iterator;
+        using constIterator = typename std::vector<T>::const_iterator;
+        struct Position {
+            uint32_t line;
+            uint32_t col;
+            bool isValid() const { return !line || !col; }
+            bool operator==(const Position& p) const { return (line == p.line && col == p.col); }
+            bool operator!=(const Position& p) const { return (line != p.line || col != p.col); }
+        };
+        /**
+         * @brief 创建一个空白的二维矩阵（没有任何数据）
+         */
+        explicit Matrix2D() : _row(0), _col(0), _datas() {}
+        /**
+         * @brief 创建指定行列的二维矩阵
+         * @param row 行
+         * @param col  列
+         * @param deleter 删除器（若需要删除指针等情况时指定）
+         */
+        Matrix2D(uint32_t row, uint32_t col, const std::function<void(T&)> &deleter = {});
+        /**
+         * @brief 创建指定行列与默认值的二维矩阵
+         * @param row  行
+         * @param col   列
+         * @param value 默认值（用于填充所有数据）
+         * @param deleter 删除器（若需要删除指针等情况时指定）
+         */
+        Matrix2D(uint32_t row, uint32_t col, const T &value, const std::function<void(T&)> &deleter = {});
+        /**
+         * @brief 复制原有的二维矩阵
+         * @param matrix    指定二维矩阵
+         */
+        Matrix2D(const Matrix2D<T> &matrix);
+        ~Matrix2D();
+        /**
+         * @brief 设置删除器
+         * @param function  指定函数
+         *
+         * 当此类析构时，将调用删除器以删除指针！
+         */
+        void setDeleter(const std::function<void(T&)>& function);
+        /**
+         * @brief 填充所有值
+         * @param value 指定值
+         */
+        void fill(const T& value);
+        /**
+         * @brief 填充范围内的值
+         * @param start 指定开始位置（行列）
+         * @param end   指定结束位置（行列）
+         * @param value 指定填充的值
+         */
+        bool fillN(const Matrix2D::Position &start, const Matrix2D::Position &end, const T& value);
+        /**
+         * @brief 重新调整新的大小
+         * @param line 行
+         * @param col  列
+         */
+        void resize(uint32_t line, uint32_t col);
+        /**
+         * @brief 获取矩阵中指定行列的数据
+         * @param row 行
+         * @param col  列
+         * @return 返回对应行列下的数据
+         * @see get
+         */
+        T& at(uint32_t row, uint32_t col);
+        /**
+         * @brief 获取矩阵中指定行列的数据
+         * @param row 行
+         * @param col  列
+         * @return 返回对应行列下的数据
+         * @note 区别于 `at`，此函数为常量版本，无法修改里面的数据！
+         * @see at
+         */
+        const T& get(uint32_t row, uint32_t col);
+        /**
+         * @brief 获取当前矩阵的总行数
+         * @return 返回对应的行数
+         */
+        [[nodiscard]] uint32_t rows() const;
+        /**
+         * @brief 获取当前矩阵的总列数
+         * @return 返回对应的列数
+         */
+        [[nodiscard]] uint32_t cols() const;
+        Matrix2D operator+(const Matrix2D<T>& other) const;
+        Matrix2D operator-(const Matrix2D<T>& other) const;
+        Matrix2D operator*(const Matrix2D<T>& other) const;
+
+        bool operator==(const Matrix2D<T>& other) const;
+        bool operator!=(const Matrix2D<T>& other) const;
+
+        T& operator()(uint32_t row, uint32_t col);
+
+        iterator begin() { return _datas.begin(); }
+        iterator end() { return _datas.end(); }
+        constIterator begin() const { return _datas.begin(); }
+        constIterator end() const { return _datas.end(); }
+        /**
+         * @brief 全局相加
+         * @param value     指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行相加操作
+         */
+        void add(T& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局相加
+         * @param value     指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行相加操作
+         */
+        void add(T&& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局相减
+         * @param value 指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行相减操作
+         */
+        void minus(T& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局相减
+         * @param value 指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行相减操作
+         */
+        void minus(T&& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局乘法
+         * @param value     指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行相乘操作
+         */
+        void times(T& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局点乘
+         * @param value     指定值
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         *
+         * 将矩阵里的所有值进行点乘操作
+         */
+        void times(T&& value, const std::function<void(T&, T&)>& function = {});
+        /**
+         * @brief 全局乘法
+         * @param other     指定矩阵，其指定的行数必需与现有的列数相等
+         *
+         * 将矩阵里的所有值进行乘法操作
+         * @note 当前仅支持整数、浮点数运算，不支持其它数据类型的运算！
+         * @warning 两个矩阵必需分别为 m * n, n * p 的大小才可用！否则将异常报错！
+         */
+        void multiply(const Matrix2D<T> &other);
+        /**
+         * @brief 转置矩阵
+         *
+         * 将原有的 m * n 大小的矩阵转置为 n * m 大小的矩阵。
+         * @see rotate
+         */
+        void transpose();
+        /**
+         * @brief 翻转矩阵
+         * @param reverse_row 行与行之间逆序（垂直翻转）
+         * @param reverse_col  列与列之间逆序（水平翻转）
+         * @note 当两个参数都为 `true` 时，矩阵将完全逆序
+         *
+         * 当选择任何一个方向的逆序时，都会发生交换。
+         * @see rotate
+         */
+        void reverse(bool reverse_row = true, bool reverse_col = false);
+        /**
+         * @brief 旋转矩阵
+         * @param turn_right 是否向右旋转 90°，反之向左旋转 90°
+         * @see reverse
+         * @see transpose
+         */
+        void rotate(bool turn_right = true);
+    };
+
+    template<typename T>
+    void Matrix2D<T>::setDeleter(const std::function<void(T &)> &function) {
+        _deleter = function;
+    }
+
+    template<typename T>
+    Matrix2D<T>::Matrix2D(uint32_t row, uint32_t col, const std::function<void(T&)> &deleter)
+        : _row(row), _col(col), _deleter(deleter) {
+        _datas.resize(_row * _col);
+    }
+
+    template<typename T>
+    Matrix2D<T>::Matrix2D(uint32_t row, uint32_t col, const T &value, const std::function<void(T&)> &deleter)
+            : _row(row), _col(col), _deleter(deleter) {
+        _datas.resize(_row * _col);
+        fill(value);
+    }
+
+    template<typename T>
+    Matrix2D<T>::Matrix2D(const Matrix2D<T> &matrix)
+            : _row(matrix._row), _col(matrix._col), _deleter(matrix._deleter) {
+        _datas = matrix._datas;
+    }
+
+    template<typename T>
+    Matrix2D<T>::~Matrix2D() {
+        if (_deleter) {
+            for (auto& _d : _datas) {
+                _deleter(_d);
+            }
+        }
+    }
+
+    template<typename T>
+    void Matrix2D<T>::fill(const T &value) {
+        std::fill(_datas.begin(), _datas.end(), value);
+    }
+
+    template<typename T>
+    bool Matrix2D<T>::fillN(const Matrix2D::Position &start, const Matrix2D::Position &end, const T &value) {
+        auto st = start.line * _col + start.col, ed = end.line * _col + end.col;
+        if (ed >= _datas.size()) {
+            SDL_Log("[ERROR] One of the specified position is not valid!");
+            return false;
+        }
+        std::fill(_datas.begin() + st, _datas.begin() + ed, value);
+        return true;
+    }
+
+    template<typename T>
+    void Matrix2D<T>::resize(uint32_t line, uint32_t col) {
+        if (_row * _col != line * col) _datas.resize(line * col);
+        _row = line;
+        _col = col;
+    }
+
+    template<typename T>
+    T &Matrix2D<T>::at(uint32_t row, uint32_t col) {
+        auto idx = row * _col + col;
+        if (idx >= _datas.size()) throw std::out_of_range("[FATAL] The specified position is out of range!");
+        return _datas.at(idx);
+    }
+
+    template<typename T>
+    const T &Matrix2D<T>::get(uint32_t row, uint32_t col) {
+        auto idx = row * _col + col;
+        if (idx >= _datas.size()) throw std::out_of_range("[FATAL] The specified position is out of range!");
+        return _datas.at(idx);
+    }
+
+    template<typename T>
+    uint32_t Matrix2D<T>::rows() const {
+        return _row;
+    }
+
+    template<typename T>
+    uint32_t Matrix2D<T>::cols() const {
+        return _col;
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::operator+(const Matrix2D<T> &other) const {
+        if ((_row == other._row) && (_col == other._col)) {
+            Matrix2D<T> _ret(_row, _col);
+            auto _idx = 0;
+            for (size_t i = 0; i < _row; ++i) {
+                for (size_t j = 0; j < _col; ++j) {
+                    _ret(i, j) = _datas[_idx] + other._datas[_idx];
+                    _idx += 1;
+                }
+            }
+            return _ret;
+        } else {
+            SDL_Log("[FATAL] Matrix dimensions mismatch! Original: (%d, %d), Specified: (%d, %d)",
+                    _row, _col, other._row, other._col);
+            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
+        }
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::operator-(const Matrix2D<T> &other) const {
+        if ((_row == other._row) && (_col == other._col)) {
+            Matrix2D<T> _ret(_row, _col);
+            auto _idx = 0;
+            for (size_t i = 0; i < _row; ++i) {
+                for (size_t j = 0; j < _col; ++j) {
+                    _ret(i, j) = _datas[_idx] - other._datas[_idx];
+                    _idx += 1;
+                }
+            }
+            return _ret;
+        } else {
+            SDL_Log("[FATAL] Matrix dimensions mismatch! Original: (%d, %d), Specified: (%d, %d)",
+                    _row, _col, other._row, other._col);
+            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
+        }
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::operator*(const Matrix2D<T> &other) const {
+        if ((_row == other._row) && (_col == other._col)) {
+            Matrix2D<T> _ret(_row, _col);
+            auto _idx = 0;
+            for (size_t i = 0; i < _row; ++i) {
+                for (size_t j = 0; j < _col; ++j) {
+                    _ret(i, j) = _datas[_idx] * other._datas[_idx];
+                    _idx += 1;
+                }
+            }
+            return _ret;
+        } else {
+            SDL_Log("[FATAL] Matrix dimensions mismatch! \nOriginal: (%d, %d), Specified: (%d, %d)",
+                    _row, _col, other._row, other._col);
+            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
+        }
+    }
+
+    template<typename T>
+    bool Matrix2D<T>::operator==(const Matrix2D<T> &other) const {
+        if (_row != other._row || _col != other._col) return false;
+        for (size_t i = 0; i < _datas.size(); ++i) {
+            if (_datas[i] != other._datas[i]) return false;
+        }
+        return true;
+    }
+
+    template<typename T>
+    bool Matrix2D<T>::operator!=(const Matrix2D<T> &other) const {
+        if (_row != other._row || _col != other._col) return true;
+        for (size_t i = 0; i < _datas.size(); ++i) {
+            if (_datas[i] != other._datas[i]) return true;
+        }
+        return false;
+    }
+
+    template<typename T>
+    T &Matrix2D<T>::operator()(uint32_t row, uint32_t col) {
+        auto idx = row * _col + col;
+        if (idx >= _datas.size()) throw std::out_of_range("[FATAL] The specified position is out of range!");
+        return _datas[idx];
+    }
+
+    template<typename T>
+    void Matrix2D<T>::add(T &value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v += value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\np.s: Did you forget to specify how to add values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::add(T &&value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v += value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\np.s: Did you forget to specify how to add values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::minus(T &value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v -= value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to minus values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::minus(T &&value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v -= value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to minus values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::times(T &value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v *= value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to times values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::times(T &&value, const std::function<void(T&, T&)> &function) {
+        std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
+            if (function) {
+                function(v, value);
+            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
+                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+                v *= value;
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to times values?");
+            }
+        });
+    }
+
+    template<typename T>
+    void Matrix2D<T>::multiply(const Matrix2D<T> &other) {
+        if (_col != other._row) {
+            SDL_Log("[FATAL] Matrix dimensions incompatible for multiplication!");
+            throw std::invalid_argument("[FATAL] Matrix dimensions incompatible for multiplication!");
+        }
+
+        std::vector<T> result(_row * other._col);
+        for (size_t i = 0; i < _row; ++i) {
+            for (size_t k = 0; k < _col; ++k) {
+                const T& a_ik = _datas[i * _col + k];
+                for (size_t j = 0; j < other._col; ++j) {
+                    result[i * other._col + j] += a_ik * other._datas[k * other._col + j];
+                }
+            }
+        }
+
+        _datas = std::move(result);
+        _col = other._col;
+    }
+
+    template<typename T>
+    void Matrix2D<T>::transpose() {
+        if (!_row || !_col) return;
+        if (_row == _col) {
+            for (size_t i = 0; i < _row; ++i) {
+                for (size_t j = i + 1; j < _col; ++j) {
+                    std::swap(_datas[i * _col + j], _datas[j * _col + i]);
+                }
+            }
+            return;
+        }
+        std::vector<T> temp_vec;
+        temp_vec.reserve(_row * _col);
+        for (size_t j = 0; j < _col; ++j) {
+            for (size_t i = 0; i < _row; ++i) {
+                temp_vec.push_back(_datas[i * _col + j]);
+            }
+        }
+        std::swap(_datas, temp_vec);
+        std::swap(_row, _col);
+    }
+
+    template<typename T>
+    void Matrix2D<T>::reverse(bool reverse_row, bool reverse_col) {
+        if (reverse_row && reverse_col) {
+            const size_t M_SIZE = _datas.size() / 2;
+            size_t _idx = 0, _last_idx = _datas.size() - 1;
+            for (size_t i = 0; i < M_SIZE; ++i) {
+                std::swap(_datas[_idx++], _datas[_last_idx--]);
+            }
+        } else if (reverse_col) {
+            const size_t M_SIZE_IN_COL = _col / 2;
+            for (size_t i = 0; i < _row; ++i) {
+                for (size_t j = 0; j < M_SIZE_IN_COL; ++j) {
+                    std::swap(_datas[i * _col + j], _datas[i * _col + _col - j - 1]);
+                }
+            }
+        } else if (reverse_row) {
+            const size_t M_SIZE_IN_LINE = _row / 2;
+            for (size_t i = 0; i < _col; ++i) {
+                for (size_t j = 0; j < M_SIZE_IN_LINE; ++j) {
+                    std::swap(_datas[j * _col + i], _datas[(_row - j - 1) * _col + i]);
+                }
+            }
+        }
+    }
+
+    template<typename T>
+    void Matrix2D<T>::rotate(bool turn_right) {
+        if (!_row || !_col) return;
+        std::vector<T> temp;
+        temp.reserve(_row * _col);
+        if (turn_right) {
+            for (size_t c = 0; c < _col; ++c) {
+                for (size_t r = 0; r < _row; ++r) {
+                    temp.emplace_back(_datas[(_row - r - 1) * _col + c]);
+                }
+            }
+        } else {
+            for (size_t c = 0; c < _col; ++c) {
+                for (size_t r = 0; r < _row; ++r) {
+                    temp.emplace_back(_datas[r * _col + (_col - c - 1)]);
+                }
+            }
+        }
+        std::swap(temp, _datas);
+        if (_row != _col) std::swap(_row, _col);
+    }
+
 
     /**
      * @namespace Graphics
