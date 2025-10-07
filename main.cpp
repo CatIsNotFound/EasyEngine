@@ -15,7 +15,7 @@ struct Block {
 int main() {
     Matrix2D<int> matrix(4, 6);
     Matrix2D<int> m_add(4, 6, 10);
-    Matrix2D<int> m_multply(4, 8, 2);
+    Matrix2D<int> m_multiply(4, 8, 2);
     static int n = 0;
     for (auto& i : matrix) {
         i = ++n;
@@ -24,7 +24,7 @@ int main() {
 //    matrix.rotate(false);、
 //    matrix.transpose();
     Matrix2D<int> new_matrix(2, 4, 1);
-    new_matrix.multiply(m_multply);
+    new_matrix.multiply(m_multiply);
     for (int i = 0; i < new_matrix.rows(); ++i) {
         for (int j = 0; j < new_matrix.cols(); ++j) {
             fmt::print("{:4} ", new_matrix(i, j));
