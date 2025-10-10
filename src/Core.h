@@ -46,7 +46,7 @@ namespace EasyEngine {
      */
     class Window {
     public:
-        Window(SDL_Window* window, SRenderer* renderer)
+        Window(SWindow* window, SRenderer* renderer)
             : window(window), renderer(renderer) {};
         Window() : window(nullptr), renderer(nullptr) {}
         ~Window() = default;
@@ -54,6 +54,9 @@ namespace EasyEngine {
         SWindow* window;
         /// 渲染器
         SRenderer* renderer;
+        /// 窗口图标
+        /// @since v1.1.0-alpha
+        SSurface* icon;
         /// 窗口大小、尺寸
         Geometry geometry;
     };
@@ -72,6 +75,7 @@ namespace EasyEngine {
          * @brief 标准鼠标光标样式
          *
          * 获取系统下当前使用的鼠标光标
+         * @note 修正了部分单词拼写错误的问题
          */
         enum StdCursor {
             Default             = 0x00,
@@ -88,7 +92,7 @@ namespace EasyEngine {
             Resize_NS           = 0x08,
             Move                = 0x09,
             Not_Allowed         = 0x0a,
-            Forbbiden           = 0x0a,
+            Forbidden           = 0x0a,
             Hand                = 0x0b,
             Pointer             = 0x0b,
             Resize_NW           = 0x0c,
@@ -110,7 +114,6 @@ namespace EasyEngine {
          * 包含热点坐标（点击生效点）和光标表面资源
          */
         struct UserCustom {
-
             /**
              * @struct HotPoint
              * @brief 用于定义鼠标光标的热点坐标
@@ -360,7 +363,22 @@ namespace EasyEngine {
          * @return 返回 true 表示成功，若找不到窗口 ID 等返回 false
          * @see windowIDList
          */
-        bool setFullScreen(bool enabled, bool move_cursor_to_center = false, SDL_WindowID window_id = _main_window_id);
+        bool setFullScreen(bool enabled, bool move_cursor_to_center = false, SWindowID window_id = _main_window_id);
+        /**
+         * @brief 设置窗口图标
+         * @param resource_name 资源名称
+         * @param window_id     指定窗口 ID（默认主窗口）
+         * @return 返回 `true` 表示成功设置，否则将输出错误信息
+         * @since v1.1.0-alpha
+         */
+        bool setWindowIcon(const std::string& resource_name, SWindowID window_id = _main_window_id);
+        /**
+         * @brief 窗口图标
+         * @param window_id     指定窗口 ID（默认主窗口）
+         * @return 获取用于存储窗口图标的指针
+         * @since v1.1.0-alpha
+         */
+        SSurface* windowIcon(SWindowID window_id = _main_window_id) const;
         /**
          * @brief 修改窗口标题
          * @param title  新的窗口标题名称
@@ -389,6 +407,20 @@ namespace EasyEngine {
          * @see removeWindow
          */
         uint32_t newWindow(const std::string& title, uint32_t width = 800, uint32_t height = 600);
+        /**
+         * @brief 新建一个子窗口
+         * @param resource_name 图标资源名称
+         * @param title         窗口标题
+         * @param width         窗口宽度
+         * @param height        窗口高度
+         * @return   返回新打开的窗口 ID；若无法新建，则返回 0。
+         * @since v1.1.0-alpha
+         * @see window
+         * @see windowIDList
+         * @see removeWindow
+         */
+        uint32_t newWindow(const std::string& resource_name, const std::string& title,
+                           uint32_t width = 800, uint32_t height = 600);
         /**
          * @brief 移除一个窗口
          * @param window_id  窗口 ID

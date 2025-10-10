@@ -404,11 +404,19 @@ namespace EasyEngine {
              */
             bool renameLayer(uint32_t z_order, const std::string& new_layer_name);
             /**
+             * @brief 设置场景背景颜色
+             * @param color 指定用于填充的背景色
+             * @param painter 指定绘图器
+             */
+            void setBackgroundColor(const SColor& color, Painter* painter);
+            /**
              * @brief 绘制所有图层
              */
             void drawLayers();
         private:
             std::string _name;
+            SColor _back_color{StdColor::Black};
+            Painter* _painter{nullptr};
             std::map<uint32_t, std::shared_ptr<Layer>> _layers;
             std::unordered_map<std::string, std::shared_ptr<Layer>> _layers_find_string_map;
             std::function<void()> _event;

@@ -26,6 +26,32 @@ namespace EasyEngine {
     class Algorithm {
     public:
         /**
+         * @brief 获取当前时间（毫秒）
+         * @return 返回毫秒数（从 1970/01/01 开始计算）
+         * @since v1.1.0-alpha
+         */
+        static uint64_t getTimeMillisec();
+        /**
+         * @brief 获取当前时间（秒）
+         * @return 返回秒数（从 1970/01/01 开始计算）
+         * @since v1.1.0-alpha
+         */
+        static uint64_t getTimeSec();
+        /**
+         * @brief 获取总天数
+         * @return 返回天数（从 1970/01/01 开始计算）
+         * @since v1.1.0-alpha
+         */
+        static uint64_t getTimeDays();
+        /**
+         * @brief 获取当前日期时间
+         * @param format 日期时间格式
+         * @return 返回日期时间（取决于 `format` 格式参数）
+         * @since v1.1.0-alpha
+         */
+        static std::string getDateTime(const std::string &format);
+
+        /**
          * @brief 分割每个 UTF-8 编码的字符串
          * @param utf8_string   指定 utf-8 编码的字符串
          * @return 返回每个 utf-8 编码的字符，这对于其它亚洲语言比较有用，如：汉语、韩语、日语等语言有用

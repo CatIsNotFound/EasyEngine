@@ -306,11 +306,17 @@ namespace EasyEngine {
         using iterator = typename std::vector<T>::iterator;
         using constIterator = typename std::vector<T>::const_iterator;
         struct Position {
-            uint32_t line;
+            uint32_t row;
             uint32_t col;
-            bool isValid() const { return !line || !col; }
-            bool operator==(const Position& p) const { return (line == p.line && col == p.col); }
-            bool operator!=(const Position& p) const { return (line != p.line || col != p.col); }
+            Position() : row(0), col(0) {}
+            Position(uint32_t row, uint32_t col) : row(row), col(col) {}
+            bool isValid() const { return row && col; }
+            bool operator==(const Position& p) const { return (row == p.row && col == p.col); }
+            bool operator!=(const Position& p) const { return (row != p.row || col != p.col); }
+            bool operator>(const Position& p) const { return (row >= p.row && col > p.col); }
+            bool operator<(const Position& p) const { return (row <= p.row && col < p.col); }
+            bool operator>=(const Position& p) const { return (row >= p.row && col >= p.col); }
+            bool operator<=(const Position& p) const { return (row <= p.row && col <= p.col); }
         };
         /**
          * @brief 创建一个空白的二维矩阵（没有任何数据）
@@ -391,11 +397,20 @@ namespace EasyEngine {
         [[nodiscard]] uint32_t cols() const;
         Matrix2D operator+(const Matrix2D<T>& other) const;
         Matrix2D operator-(const Matrix2D<T>& other) const;
+        /**
+         * @brief 矩阵乘法
+         * @param other     指定矩阵，其指定的行数必需与现有的列数相等
+         *
+         * 将矩阵里的所有值进行乘法操作
+         * @note 当前仅支持整数、浮点数运算，不支持其它数据类型的运算！
+         * @note 两个矩阵必需分别为 m * n, n * p 的大小才可用！
+         */
         Matrix2D operator*(const Matrix2D<T>& other) const;
 
         bool operator==(const Matrix2D<T>& other) const;
         bool operator!=(const Matrix2D<T>& other) const;
 
+        T& operator[](uint32_t index);
         T& operator()(uint32_t row, uint32_t col);
 
         iterator begin() { return _datas.begin(); }
@@ -451,12 +466,19 @@ namespace EasyEngine {
          */
         void times(T&& value, const std::function<void(T&, T&)>& function = {});
         /**
-         * @brief 全局乘法
-         * @param other     指定矩阵，其指定的行数必需与现有的列数相等
+         * @brief 矩阵点乘
+         * @param other     指定矩阵
+         * @param function  函数（对于复杂的数据类型，此参数必需指定）
+         * @note 两个矩阵的大小必需完全一样（即行列必需相等）！
+         */
+        void times(const Matrix2D<T> &other, const std::function<void(T &, const T &)> &function = {});
+        /**
+         * @brief 矩阵乘法
          *
          * 将矩阵里的所有值进行乘法操作
+         * @param other     指定矩阵，其指定的行数必需与现有的列数相等
          * @note 当前仅支持整数、浮点数运算，不支持其它数据类型的运算！
-         * @warning 两个矩阵必需分别为 m * n, n * p 的大小才可用！否则将异常报错！
+         * @note 两个矩阵必需分别为 m * n, n * p 的大小才可用！
          */
         void multiply(const Matrix2D<T> &other);
         /**
@@ -468,11 +490,11 @@ namespace EasyEngine {
         void transpose();
         /**
          * @brief 翻转矩阵
+         *
+         * 当选择任何一个方向的逆序时，都会发生交换。
          * @param reverse_row 行与行之间逆序（垂直翻转）
          * @param reverse_col  列与列之间逆序（水平翻转）
          * @note 当两个参数都为 `true` 时，矩阵将完全逆序
-         *
-         * 当选择任何一个方向的逆序时，都会发生交换。
          * @see rotate
          */
         void reverse(bool reverse_row = true, bool reverse_col = false);
@@ -483,6 +505,50 @@ namespace EasyEngine {
          * @see transpose
          */
         void rotate(bool turn_right = true);
+        /**
+         * @brief 切割指定行矩阵
+         * @param start_row     起始行
+         * @param end_row       结束行
+         * @return 返回矩阵行位于 `[start_row, end_row)` 区间内的所有行矩阵
+         */
+        Matrix2D splitRows(uint32_t start_row, uint32_t end_row);
+        /**
+         * @brief 切割指定列矩阵
+         * @param start_col     起始列
+         * @param end_col       结束列
+         * @return 返回矩阵行位于 `[start_col, end_col)` 区间内的所有列矩阵
+         */
+        Matrix2D splitCols(uint32_t start_col, uint32_t end_col);
+        /**
+         * @brief 切割矩阵
+         *
+         * 切割原有的矩阵，根据 `start_pos` 位置开始，取 `rows * cols` 个数据并创建成新的矩阵。
+         * @param rows      新的行数
+         * @param cols      新的列数
+         * @param start_pos 从哪个位置开始
+         * @return 返回新的大小为 `(rows * cols)` 的二维矩阵。
+         *
+         * @note 从 `start_pos` 位置起，若取得数据的总个数小于新的矩阵大小，则剩余部分自动填充为空数据。
+         * @note 指定的 `start_pos` 位置若超出原有矩阵的范围，将返回空矩阵。
+         */
+        Matrix2D split(uint32_t rows, uint32_t cols, const Position& start_pos);
+        /**
+         * @brief 按照矩形的方式切割矩阵
+         *
+         * 根据起始位置和结束位置包围成一个矩形，并将其切割成独立的矩阵。
+         * @param start_pos     起始位置
+         * @param end_pos       结束位置
+         * @return 返回切割后的矩阵。
+         *
+         */
+        Matrix2D split(Matrix2D::Position start_pos, Matrix2D::Position end_pos);
+        /**
+         * @brief 逆矩阵
+         * @return 返回新的矩阵，用于存储求得的结果
+         * @note 当前仅支持整数、浮点数运算，不支持其它数据类型的运算！
+         * @note 两个矩阵的大小必需完全一致！否则将返回空矩阵！
+         */
+        Matrix2D<T> inverse();
     };
 
     template<typename T>
@@ -525,7 +591,7 @@ namespace EasyEngine {
 
     template<typename T>
     bool Matrix2D<T>::fillN(const Matrix2D::Position &start, const Matrix2D::Position &end, const T &value) {
-        auto st = start.line * _col + start.col, ed = end.line * _col + end.col;
+        auto st = start.row * _col + start.col, ed = end.row * _col + end.col;
         if (ed >= _datas.size()) {
             SDL_Log("[ERROR] One of the specified position is not valid!");
             return false;
@@ -569,18 +635,14 @@ namespace EasyEngine {
     Matrix2D<T> Matrix2D<T>::operator+(const Matrix2D<T> &other) const {
         if ((_row == other._row) && (_col == other._col)) {
             Matrix2D<T> _ret(_row, _col);
-            auto _idx = 0;
-            for (size_t i = 0; i < _row; ++i) {
-                for (size_t j = 0; j < _col; ++j) {
-                    _ret(i, j) = _datas[_idx] + other._datas[_idx];
-                    _idx += 1;
-                }
+            for (size_t _idx = 0; _idx < _datas.size(); ++_idx) {
+                _ret[_idx] = _datas[_idx] + other._datas[_idx];
             }
             return _ret;
         } else {
-            SDL_Log("[FATAL] Matrix dimensions mismatch! Original: (%d, %d), Specified: (%d, %d)",
+            SDL_Log("[ERROR] Matrix dimensions mismatch!\nOriginal: (%d, %d), Specified: (%d, %d)",
                     _row, _col, other._row, other._col);
-            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
+            return Matrix2D<T>();
         }
     }
 
@@ -588,38 +650,39 @@ namespace EasyEngine {
     Matrix2D<T> Matrix2D<T>::operator-(const Matrix2D<T> &other) const {
         if ((_row == other._row) && (_col == other._col)) {
             Matrix2D<T> _ret(_row, _col);
-            auto _idx = 0;
-            for (size_t i = 0; i < _row; ++i) {
-                for (size_t j = 0; j < _col; ++j) {
-                    _ret(i, j) = _datas[_idx] - other._datas[_idx];
-                    _idx += 1;
-                }
+            for (size_t _idx = 0; _idx < _datas.size(); ++_idx) {
+                _ret[_idx] = _datas[_idx] - other._datas[_idx];
             }
             return _ret;
         } else {
-            SDL_Log("[FATAL] Matrix dimensions mismatch! Original: (%d, %d), Specified: (%d, %d)",
+            SDL_Log("[ERROR] Matrix dimensions mismatch!\nOriginal: (%d, %d), Specified: (%d, %d)",
                     _row, _col, other._row, other._col);
-            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
+            return Matrix2D<T>();
         }
     }
 
     template<typename T>
     Matrix2D<T> Matrix2D<T>::operator*(const Matrix2D<T> &other) const {
-        if ((_row == other._row) && (_col == other._col)) {
-            Matrix2D<T> _ret(_row, _col);
-            auto _idx = 0;
-            for (size_t i = 0; i < _row; ++i) {
-                for (size_t j = 0; j < _col; ++j) {
-                    _ret(i, j) = _datas[_idx] * other._datas[_idx];
-                    _idx += 1;
+        if (_col != other._row) {
+            SDL_Log("[ERROR] Matrix dimensions incompatible for multiplication!");
+            return Matrix2D<T>();
+        }
+        if constexpr (!std::is_integral_v<std::decay_t<T>> &&
+                        !std::is_floating_point_v<std::decay_t<T>>) {
+            static_assert(!std::is_integral_v<std::decay_t<T>> &&
+                          !std::is_floating_point_v<std::decay_t<T>>,
+                          "[FATAL] Can't support the current data type!");
+        }
+        Matrix2D<T> result(_row, other._col, other._deleter);
+        for (size_t i = 0; i < _row; ++i) {
+            for (size_t k = 0; k < _col; ++k) {
+                const T& a_ik = _datas[i * _col + k];
+                for (size_t j = 0; j < other._col; ++j) {
+                    result[i * other._col + j] += a_ik * other._datas[k * other._col + j];
                 }
             }
-            return _ret;
-        } else {
-            SDL_Log("[FATAL] Matrix dimensions mismatch! \nOriginal: (%d, %d), Specified: (%d, %d)",
-                    _row, _col, other._row, other._col);
-            throw std::invalid_argument("[FATAL] Matrix dimensions mismatch!");
         }
+        return result;
     }
 
     template<typename T>
@@ -641,6 +704,11 @@ namespace EasyEngine {
     }
 
     template<typename T>
+    T &Matrix2D<T>::operator[](uint32_t index) {
+        return _datas[index];
+    }
+
+    template<typename T>
     T &Matrix2D<T>::operator()(uint32_t row, uint32_t col) {
         auto idx = row * _col + col;
         if (idx >= _datas.size()) throw std::out_of_range("[FATAL] The specified position is out of range!");
@@ -652,8 +720,8 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v += value;
             } else {
                 SDL_Log("[ERROR] Unsupported data type!\np.s: Did you forget to specify how to add values?");
@@ -666,11 +734,12 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v += value;
             } else {
-                SDL_Log("[ERROR] Unsupported data type!\np.s: Did you forget to specify how to add values?");
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to add values?");
             }
         });
     }
@@ -680,8 +749,8 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v -= value;
             } else {
                 SDL_Log("[ERROR] Unsupported data type!\n"
@@ -695,8 +764,8 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v -= value;
             } else {
                 SDL_Log("[ERROR] Unsupported data type!\n"
@@ -710,8 +779,8 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v *= value;
             } else {
                 SDL_Log("[ERROR] Unsupported data type!\n"
@@ -725,8 +794,8 @@ namespace EasyEngine {
         std::for_each(_datas.begin(), _datas.end(), [&function, &value](T& v) {
             if (function) {
                 function(v, value);
-            } else if constexpr (std::is_integral_v<typename std::decay<T>::type> ||
-                                 std::is_floating_point_v<typename std::decay<T>::type>) {
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
                 v *= value;
             } else {
                 SDL_Log("[ERROR] Unsupported data type!\n"
@@ -736,12 +805,33 @@ namespace EasyEngine {
     }
 
     template<typename T>
+    void Matrix2D<T>::times(const Matrix2D<T> &other, const std::function<void(T &, const T &)> &function) {
+        if ((_row == other._row) && (_col == other._col)) {
+            if (function) {
+                for (size_t i = 0; i < _datas.size(); ++i) {
+                    function(_datas[i], other._datas[i]);
+                }
+            } else if constexpr (std::is_integral_v<std::decay_t<T>> ||
+                                 std::is_floating_point_v<std::decay_t<T>>) {
+                for (size_t i = 0; i < _datas.size(); ++i) {
+                    _datas[i] *= other._datas[i];
+                }
+            } else {
+                SDL_Log("[ERROR] Unsupported data type!\n"
+                        "p.s: Did you forget to specify how to times values?");
+            }
+        } else {
+            SDL_Log("[ERROR] Matrix dimensions mismatch!\nOriginal: (%u, %u), Specified: (%u, %u)",
+                    _row, _col, other._row, other._col);
+        }
+    }
+
+    template<typename T>
     void Matrix2D<T>::multiply(const Matrix2D<T> &other) {
         if (_col != other._row) {
-            SDL_Log("[FATAL] Matrix dimensions incompatible for multiplication!");
-            throw std::invalid_argument("[FATAL] Matrix dimensions incompatible for multiplication!");
+            SDL_Log("[ERROR] Matrix dimensions incompatible for multiplication!");
+            return;
         }
-
         std::vector<T> result(_row * other._col);
         for (size_t i = 0; i < _row; ++i) {
             for (size_t k = 0; k < _col; ++k) {
@@ -751,7 +841,6 @@ namespace EasyEngine {
                 }
             }
         }
-
         _datas = std::move(result);
         _col = other._col;
     }
@@ -823,6 +912,166 @@ namespace EasyEngine {
         }
         std::swap(temp, _datas);
         if (_row != _col) std::swap(_row, _col);
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::splitRows(uint32_t start_row, uint32_t end_row) {
+        if (start_row == end_row) {
+            SDL_Log("[ERROR] The specified start row and end row cannot be the same!");
+            return Matrix2D<T>();
+        }
+        if (end_row > _row) {
+            SDL_Log("[ERROR] The specified end row exceeds the total rows of the original matrix!");
+            return Matrix2D<T>();
+        }
+        if (start_row > end_row) std::swap(start_row, end_row);
+        auto new_rows = end_row - start_row;
+        Matrix2D<T> _ret(new_rows, _col);
+        for (size_t i = 0; i < new_rows; ++i) {
+            for (size_t j = 0; j < _col; ++j) {
+                _ret[i * _col + j] = _datas[(start_row + i) * _col + j];
+            }
+        }
+        return _ret;
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::splitCols(uint32_t start_col, uint32_t end_col) {
+        if (start_col == end_col) {
+            SDL_Log("[ERROR] The specified start col and end col cannot be the same!");
+            return Matrix2D<T>();
+        }
+        if (end_col > _col) {
+            SDL_Log("[ERROR] The specified end col exceeds the total cols of the original matrix!");
+            return Matrix2D<T>();
+        }
+        if (start_col > end_col) std::swap(start_col, end_col);
+        auto new_cols = end_col - start_col;
+        Matrix2D<T> _ret(_row, new_cols);
+        for (size_t i = 0; i < _row; ++i) {
+            for (size_t j = 0; j < new_cols; ++j) {
+                _ret[i * new_cols + j] = _datas[i * _col + j + start_col];
+            }
+        }
+        return _ret;
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::split(uint32_t rows, uint32_t cols, const Matrix2D::Position &start_pos) {
+        if (start_pos.row >= _row || start_pos.col >= _col) {
+            SDL_Log("[ERROR] The specified start position is not valid!");
+            return Matrix2D();
+        }
+        Matrix2D<T> _ret(rows, cols);
+        auto size = rows * cols;
+        auto start_index = start_pos.row * _col + start_pos.col;
+        auto elapsed = _datas.size() - start_index;
+        bool is_less = elapsed < size;
+        if (!is_less) {
+            for (size_t i = 0; i < _ret._datas.size(); ++i) {
+                _ret[i] = _datas[start_index++];
+            }
+        } else {
+            for (size_t i = 0; i < elapsed; ++i) {
+                _ret[i] = _datas[start_index++];
+            }
+            for (size_t i = elapsed; i < _ret._datas.size(); ++i) {
+                _ret[i] = {};
+            }
+        }
+        return _ret;
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::split(Matrix2D::Position start_pos,
+                                   Matrix2D::Position end_pos) {
+        if (start_pos > end_pos) {
+            auto temp = start_pos;
+            start_pos = end_pos;
+            end_pos = temp;
+        }
+        if (end_pos.row >= _row) {
+            end_pos.row = _row - 1;
+        }
+        if (end_pos.col >= _col) {
+            end_pos.col = _col - 1;
+        }
+        auto rows = end_pos.row - start_pos.row + 1;
+        auto cols = end_pos.col - start_pos.col + 1;
+        Matrix2D<T> _ret(rows, cols);
+        for (size_t i = 0; i < rows; ++i) {
+            for (size_t j = 0; j < cols; ++j) {
+                _ret[i * _ret._col + j] = _datas[(start_pos.row + i) * _col + j + start_pos.col];
+            }
+        }
+        return _ret;
+    }
+
+    template<typename T>
+    Matrix2D<T> Matrix2D<T>::inverse() {
+        if (_row != _col) {
+            SDL_Log("[ERROR] The specified matrix size is not matched!");
+            return Matrix2D<T>();
+        }
+        if constexpr (!std::is_integral_v<std::decay_t<T>> &&
+                      !std::is_floating_point_v<std::decay_t<T>>) {
+            static_assert(!std::is_integral_v<std::decay_t<T>> &&
+                          !std::is_floating_point_v<std::decay_t<T>>,
+                          "[FATAL] Can't support the current data type!");
+        }
+        const uint32_t n = _row;
+        Matrix2D<T> _ret(n, n);
+        // 创建增广矩阵 [A|I]
+        Matrix2D<T> augmented(n, 2 * n);
+        // 填充增广矩阵：左侧为原矩阵，右侧为单位矩阵
+        for (uint32_t i = 0; i < n; ++i) {
+            for (uint32_t j = 0; j < n; ++j) {
+                augmented(i, j) = _datas[i * _col + j];  // 原矩阵
+                augmented(i, j + n) = (i == j) ? static_cast<T>(1) : static_cast<T>(0);  // 单位矩阵
+            }
+        }
+        // 使用高斯-约旦消元法
+        for (uint32_t i = 0; i < n; ++i) {
+            // 寻找主元（部分主元选择）
+            uint32_t max_row = i;
+            for (uint32_t k = i + 1; k < n; ++k) {
+                if (std::abs(augmented(k, i)) > std::abs(augmented(max_row, i))) {
+                    max_row = k;
+                }
+            }
+            // 如果主元为0，矩阵不可逆
+            if (std::abs(augmented(max_row, i)) < static_cast<T>(1e-10)) {
+                SDL_Log("[ERROR] Matrix is singular and cannot be inverted!");
+                return Matrix2D<T>();
+            }
+            // 交换行
+            if (max_row != i) {
+                for (uint32_t j = 0; j < 2 * n; ++j) {
+                    std::swap(augmented(i, j), augmented(max_row, j));
+                }
+            }
+            // 将主元行标准化
+            T pivot = augmented(i, i);
+            for (uint32_t j = 0; j < 2 * n; ++j) {
+                augmented(i, j) /= pivot;
+            }
+            // 消去其他行的当前列
+            for (uint32_t k = 0; k < n; ++k) {
+                if (k != i && std::abs(augmented(k, i)) > static_cast<T>(1e-10)) {
+                    T factor = augmented(k, i);
+                    for (uint32_t j = 0; j < 2 * n; ++j) {
+                        augmented(k, j) -= factor * augmented(i, j);
+                    }
+                }
+            }
+        }
+        // 提取逆矩阵（增广矩阵的右侧部分）
+        for (uint32_t i = 0; i < n; ++i) {
+            for (uint32_t j = 0; j < n; ++j) {
+                _ret(i, j) = augmented(i, j + n);
+            }
+        }
+        return _ret;
     }
 
 

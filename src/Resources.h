@@ -190,6 +190,9 @@ namespace EasyEngine {
      */
     class ResourceSystem {
     public:
+        /// 资源类型
+        using ResourceTypes =
+                std::variant<std::monostate, std::string, SSurface *, char *, void *, std::vector<uint8_t>>;
         /**
          * @brief 获取全局资源系统
          */
@@ -268,8 +271,7 @@ namespace EasyEngine {
          * @return 返回对应的元数据
          * @warning 对于未找到的资源名或未加载的资源，将报错并异常退出！
          */
-        const std::variant<std::monostate, std::string, SSurface *, char *, void *, std::vector<uint8_t>>&
-                    metaData(const std::string &name) const;
+        const ResourceTypes& metaData(const std::string &name) const;
         /**
          * @brief 从指定资源中获取资源所在路径
          */

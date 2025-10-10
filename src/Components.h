@@ -607,14 +607,18 @@ namespace EasyEngine {
             /**
              * @brief 添加精灵
              * @param sprite 指定精灵
+             * @note 从 v1.1.0-alpha 版本起，使用此函数必需以指针的形式指定精灵！
+             * @since v1.1.0-alpha
              */
-            void append(const Sprite &sprite);
+            void append(Sprite *sprite);
             /**
              * @brief 在指定位置上插入精灵
              * @param index 指定位置
              * @param sprite 指定精灵
+             * @note 从 v1.1.0-alpha 版本起，使用此函数必需以指针的形式指定精灵！
+             * @since v1.1.0-alpha
              */
-            void insert(uint32_t index, const Sprite& sprite);
+            void insert(uint32_t index, Sprite* sprite);
             /**
              * @brief 移除指定名称的精灵
              * @param name 指定的精灵名称
@@ -635,11 +639,13 @@ namespace EasyEngine {
              * @brief 替换指定索引的精灵
              * @param index 指定索引位置
              * @param sprite 指定精灵
+             * @note 从 v1.1.0-alpha 版本起，使用此函数必需以指针的形式指定精灵！
+             * @since v1.1.0-alpha
              * @see indexAt
              * @see indexOf
              * @see lastIndexOf
              */
-            void replace(uint32_t index, const Sprite& sprite);
+            void replace(uint32_t index, Sprite *sprite);
             /**
              * @brief 交换精灵位置
              * @param index1 第一个精灵所在索引

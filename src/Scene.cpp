@@ -271,8 +271,6 @@ void Components::Layer::update() {
         } else if (_idx == 4) {
             Control* t = std::get<4>(_ele.second).get();
             t->update();
-        } else {
-            SDL_Log("Unknown!");
         }
     }
 }
@@ -513,8 +511,14 @@ bool Components::Scene::renameLayer(uint32_t z_order, const std::string &new_lay
     return true;
 }
 
+void Components::Scene::setBackgroundColor(const SColor &color, Painter* painter) {
+    _back_color = color;
+    _painter = painter;
+}
+
 void Components::Scene::drawLayers() {
     if (_event) _event();
+    if (_painter) _painter->fillBackColor(_back_color);
     for (auto& _layer : _layers) {
         _layer.second->draw(true, true);
     }

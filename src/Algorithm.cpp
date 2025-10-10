@@ -3,6 +3,31 @@
 
 using namespace EasyEngine;
 
+uint64_t Algorithm::getTimeMillisec() {
+    return std::chrono::duration_cast<std::chrono::milliseconds>
+            (std::chrono::steady_clock::now().time_since_epoch()).count();
+}
+
+uint64_t Algorithm::getTimeSec() {
+    return std::chrono::duration_cast<std::chrono::seconds>
+            (std::chrono::steady_clock::now().time_since_epoch()).count();
+}
+
+uint64_t Algorithm::getTimeDays() {
+    return std::chrono::duration_cast<std::chrono::days>
+            (std::chrono::steady_clock::now().time_since_epoch()).count();
+}
+
+std::string Algorithm::getDateTime(const std::string &format) {
+    auto now = std::chrono::system_clock::now();
+    std::time_t time_point = std::chrono::system_clock::to_time_t(now);
+    tm tm{};
+    localtime_s(&tm, &time_point);
+    char buf[128] = {'\0'};
+    strftime(buf, 128, format.c_str(), &tm);
+    return buf;
+}
+
 std::vector<std::string> Algorithm::splitUTF8(const std::string& utf8_string) {
     std::vector<std::string> _ret;
     size_t char_length; // 获取每个 UTF-8 字节的长度
@@ -391,4 +416,5 @@ SSurface *Algorithm::captureWindow(Painter *painter) {
     SDL_Log("[INFO] Captured Window! width: %d height: %d", _new->w, _new->h);
     return _new;
 }
+
 

@@ -438,8 +438,7 @@ ResourceSystem::replace(const std::string &name, const std::string &path, const 
     return true;
 }
 
-const std::variant<std::monostate, std::string, SSurface *, char *, void *, std::vector<uint8_t>> &
-ResourceSystem::metaData(const std::string &name) const {
+const ResourceSystem::ResourceTypes& ResourceSystem::metaData(const std::string &name) const {
     if (!isContain(name)) {
         SDL_Log("[ERROR] Resource '%s' is not found!", name.c_str());
         throw std::runtime_error(fmt::format("[FATAL] Resource '{}' is not found!", name));

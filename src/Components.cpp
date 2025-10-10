@@ -550,13 +550,13 @@ EasyEngine::Size EasyEngine::Components::SpriteGroup::size() const {
     return {maxX - minX, maxY - minY};
 }
 
-void EasyEngine::Components::SpriteGroup::append(const Sprite &sprite) {
-    _sprites.push_back(std::make_shared<Sprite>(sprite.name(), sprite));
+void EasyEngine::Components::SpriteGroup::append(Sprite *sprite) {
+    _sprites.push_back(std::shared_ptr<Sprite>(sprite));
 }
 
-void EasyEngine::Components::SpriteGroup::insert(uint32_t index, const EasyEngine::Components::Sprite &sprite) {
+void EasyEngine::Components::SpriteGroup::insert(uint32_t index, EasyEngine::Components::Sprite *sprite) {
     _sprites.insert(_sprites.begin() + index,
-                    std::make_shared<Sprite>(sprite.name(), sprite));
+                    std::shared_ptr<Sprite>(sprite));
 }
 
 void EasyEngine::Components::SpriteGroup::remove(const std::string &name) {
@@ -567,8 +567,8 @@ void EasyEngine::Components::SpriteGroup::remove(uint32_t index) {
     _sprites.erase(_sprites.begin() + index);
 }
 
-void EasyEngine::Components::SpriteGroup::replace(uint32_t index, const EasyEngine::Components::Sprite &sprite) {
-    _sprites.at(index).reset(new Sprite(sprite.name(), sprite));
+void EasyEngine::Components::SpriteGroup::replace(uint32_t index, Sprite *sprite) {
+    _sprites.at(index) = std::shared_ptr<Sprite>(sprite);
 }
 
 void EasyEngine::Components::SpriteGroup::swap(uint32_t index1, uint32_t index2) {

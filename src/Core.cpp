@@ -333,11 +333,32 @@ bool EasyEngine::Engine::setFullScreen(bool enabled, bool move_cursor_to_center,
     return _ok;
 }
 
-bool EasyEngine::Engine::setWindowTitle(const std::string& title, SWindowID window_id) {
+bool EasyEngine::Engine::setWindowIcon(const std::string &resource_name, SWindowID window_id) {
     if (!_sdl_window_list.contains(window_id)) {
         SDL_Log("[ERROR] wID %u is not found! \n", window_id);
         return false;
     }
+    SSurface* _window_icon = _sdl_window_list.at(window_id)->icon;
+    _window_icon = IMG_Load(ResourceSystem::global()->resourcePath(resource_name).c_str());
+    if (!_window_icon) {
+        SDL_Log("[ERROR] Can't set window icon for wID %u!\nException: %s", window_id, SDL_GetError());
+        return false;
+    }
+    bool b = SDL_SetWindowIcon(_sdl_window_list.at(window_id)->window,_window_icon);
+    if (!b) SDL_Log("[ERROR] Can't set window icon for wID %u!\nException: %s", window_id, SDL_GetError());
+    return b;
+}
+
+SSurface* EasyEngine::Engine::windowIcon(SWindowID window_id) const {
+    if (!_sdl_window_list.contains(window_id)) {
+        SDL_Log("[ERROR] wID %u is not found! \n", window_id);
+        return nullptr;
+    }
+    return _sdl_window_list.at(window_id)->icon;
+}
+
+bool EasyEngine::Engine::setWindowTitle(const std::string& title, SWindowID window_id) {
+
     bool _ok = SDL_SetWindowTitle(_sdl_window_list.at(window_id)->window, title.c_str());
     if (!_ok) {
         SDL_Log("[ERROR] wID %u can't be set window title! Code: %s\n", window_id, SDL_GetError());
