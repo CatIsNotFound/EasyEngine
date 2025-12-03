@@ -26,7 +26,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
         EasyEngine::EasyEngine
 )
 
-
 set(POST_BUILD_COMMANDS
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_DIR}/bin ${CMAKE_BINARY_DIR}
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${SDL_MIXER_DIR}/bin ${CMAKE_BINARY_DIR}

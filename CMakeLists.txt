@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.28)
 project(EasyEngine VERSION 1.0.1)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # TODO：请记得在此处修改目录
 set(SDL_DIR       "D:/CPPLibs/GIT/MSVC/SDL")
@@ -41,6 +43,8 @@ add_library(EasyEngine STATIC
     src/Scene.cpp
     src/Transition.cpp
 )
+
+add_subdirectory(test)
 
 target_include_directories(EasyEngine PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>

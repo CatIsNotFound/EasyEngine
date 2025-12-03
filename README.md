@@ -1,5 +1,7 @@
 # Easy Engine
 
+**Notes: 此项目已迁移至 [S3GF](https://github.com/CatIsNotFound/S3GF) 项目中，后续可能会删除此项目！**
+
 基于 SDL3 图形引擎库二次封装的开源游戏引擎
 
 [![C++23](https://img.shields.io/badge/C++-23-blue.svg)](https://en.cppreference.com/w/cpp/23)
